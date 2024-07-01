@@ -42,12 +42,12 @@ void InsertionSort(char *array) {
 }
 
 int main() {
+    char firstGrid[6][6], secondGrid[6][6];
     int T;
     scanf("%d", &T);
     while(T--) {
         int K;
         scanf("%d", &K);
-        char firstGrid[6][6], secondGrid[6][6];
         for(int i = 0; i < 6; ++i)
             scanf("%s", firstGrid[i]);
         for(int i = 0; i < 6; ++i)
