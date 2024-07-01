@@ -5,8 +5,7 @@ public class Main {
 	    try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 	        StreamTokenizer st = new StreamTokenizer(br);
 	        st.nextToken();
-	        int T = (int)st.nval;
-	        for(int i = 1; i <= T; ++i) {
+	        for(int i = 1; i <= (int)st.nval; ++i) {
 	            String N = br.readLine();
     			int len = N.length();
     			short[] modThreeCount = new short[3];
