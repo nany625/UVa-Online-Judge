@@ -33,10 +33,11 @@ int binarySearch(Combination *array, short size, long key) {
 }
 
 int main() {
+    short courses[5];
 	int n;
 	while(scanf("%d", &n) && n != 0) {
 	    Combination *combinations = NULL;
-		short courses[5], size = 0, max = 0, students = 0;
+		short size = 0, max = 0, students = 0;
 		while(n--) {
 		    for(int i = 0; i < 5; ++i)
 		        scanf("%hd", &courses[i]);
