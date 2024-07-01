@@ -1,4 +1,5 @@
 // #解法一
+// #解法一
 import java.io.*;
 import java.util.*;
 
@@ -23,7 +24,7 @@ public class Main {
                 digits[i] = (short)(j + (fib[i][j] - '0'));
             }
             StreamTokenizer st = new StreamTokenizer(br);
-            while((st.nextToken()) != StreamTokenizer.TT_EOF) {
+            while((st.nextToken()) == st.TT_NUMBER) {
                 int number = (int)st.nval;
                 System.out.println("The Fibonacci number for " + number + " is " + new StringBuilder(new String(fib[number], 0, digits[number])).reverse());
             }
@@ -43,7 +44,7 @@ public class Main {
     		fib.add(BigInteger.ZERO);
     		fib.add(BigInteger.ONE);
     		StreamTokenizer st = new StreamTokenizer(br);
-    		while((st.nextToken()) != StreamTokenizer.TT_EOF) {
+    		while((st.nextToken()) == st.TT_NUMBER) {
     		    int number = (int)st.nval;
     		    System.out.print("The Fibonacci number for " + number + " is ");
         		if(number >= fib.size()) {
