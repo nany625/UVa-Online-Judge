@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 int main() {
-  char M[1002];
+    char M[1002];
     int N;
     scanf("%d", &N);
     while(N--) {
