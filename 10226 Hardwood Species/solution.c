@@ -5,7 +5,7 @@
 
 typedef struct {
     char *name;
-    short count;
+    int count;
 } Species;
 
 int binarySearch(Species *array, int size, char *key) {
