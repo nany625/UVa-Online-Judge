@@ -16,9 +16,8 @@ public class Main {
     			String[] p = br.readLine().split("\\s+");
     			String[] x = br.readLine().split("\\s+");
     			int len = p.length;
-    			for(int i = 0; i < len; ++i) {
+    			for(int i = 0; i < len; ++i)
     				map.put(Integer.parseInt(p[i]), x[i]);
-    			}
     			for(String s : map.values())
     				System.out.println(s);
     			blankLine = true;
