@@ -1,27 +1,28 @@
 import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
-		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            StreamTokenizer st = new StreamTokenizer(br);
+	public static void main(String[] args) throws IOException {
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int cases = (int)st.nval;
+        StringBuilder output = new StringBuilder();
+        while(cases-- > 0) {
             st.nextToken();
-            int cases = (int)st.nval;
-            while(cases-- > 0) {
+            int r = (int)st.nval;
+            short[] s = new short[r];
+            for(int i = 0; i < r; ++i) {
                 st.nextToken();
-                int r = (int)st.nval;
-                short[] s = new short[r];
-                for(int i = 0; i < r; ++i) {
-                    st.nextToken();
-                    s[i] = (short)st.nval;
-                }
-                int median = (r - 1) / 2;
-                DualPivotQuickSelect(s, 0, r - 1, median);
-                long d = 0;
-                for(int i = 0; i < r; ++i)
-                    d += Math.abs(s[median] - s[i]);
-                System.out.println(d);
+                s[i] = (short)st.nval;
             }
-        } catch (IOException e) {}
+            int median = (r - 1) / 2;
+            DualPivotQuickSelect(s, 0, r - 1, median);
+            long d = 0;
+            for(int i = 0; i < r; ++i)
+                d += Math.abs(s[median] - s[i]);
+            output.append(d + "\n");
+        }
+        System.out.print(output);
 	}
 	
 	static void swap(short[] array, int i, int j) {
