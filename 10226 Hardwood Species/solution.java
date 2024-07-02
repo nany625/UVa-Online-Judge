@@ -15,7 +15,7 @@ public class Main {
                 HashMap<String, Integer> tree = new HashMap<>();
                 ArrayList<String> treeKeys = new ArrayList<>();
                 String species;
-    	        while((species = br.readLine()) != null && !species.equals("")) {
+    	        while((species = br.readLine()) != null && !species.isEmpty()) {
                     if(tree.containsKey(species))
                     	tree.replace(species, tree.get(species) + 1);
                     else {
