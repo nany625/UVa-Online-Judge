@@ -2,16 +2,16 @@ import java.io.*;
 
 public class Main {
     static int[] X = new int[1], Y = new int[1];
-	public static void main(String[] args) {
-	    try {
-    	    StreamTokenizer st = new StreamTokenizer(System.in);
-            while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-                int A = (int)st.nval;
-                st.nextToken();
-                int B = (int)st.nval, D = GCD(A, B);
-                System.out.println(X[0] + " " + Y[0] + " " + D);
-            }
-	    } catch(IOException e) {}
+	public static void main(String[] args) throws IOException {
+    	StreamTokenizer st = new StreamTokenizer(System.in);
+    	StringBuilder output = new StringBuilder();
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
+            int A = (int)st.nval;
+            st.nextToken();
+            int B = (int)st.nval, D = GCD(A, B);
+            output.append(String.format("%d %d %d\n", X[0], Y[0], D));
+        }
+        System.out.print(output);
 	}
 	
 	static int GCD(int A, int B) {
