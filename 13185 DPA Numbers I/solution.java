@@ -2,24 +2,24 @@ import java.io.*;
 
 public class Main {
     static char[] table = new char[999];
-	public static void main(String[] args) {
-	    try {
-	        for(int i = 0; i < 999; ++i)
-                sumOfDivisors(i);
-            StreamTokenizer st = new StreamTokenizer(System.in);
-            st.nextToken();
-            int t = (int)st.nval;
-    		while(t-- > 0) {
-    			st.nextToken();
-                int n = (int)st.nval;
-    			if(table[n - 2] == '0')
-        			System.out.println("deficient");
-        		else if(table[n - 2] == '1')
-        			System.out.println("perfect");
-        		else
-        			System.out.println("abundant");
-    		}
-        } catch(IOException e) {};
+	public static void main(String[] args) throws IOException {
+	    for(int i = 0; i < 999; ++i)
+            sumOfDivisors(i);
+        StreamTokenizer st = new StreamTokenizer(System.in);
+        st.nextToken();
+        int t = (int)st.nval;
+        StringBuilder output = new StringBuilder();
+		while(t-- > 0) {
+    		st.nextToken();
+            int n = (int)st.nval;
+    		if(table[n - 2] == '0')
+    			output.append("deficient\n");
+    		else if(table[n - 2] == '1')
+        		output.append("perfect\n");
+        	else
+        		output.append("abundant\n");
+    	}
+        System.out.print(output);
 	}
 	
 	static void sumOfDivisors(int n) {
