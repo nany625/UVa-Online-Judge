@@ -9,7 +9,7 @@ public class Main {
             int cases = (int)st.nval;
             br.readLine();
             boolean blankLine = false;
-            StringBuilder sb = new StringBuilder();
+            StringBuilder output = new StringBuilder();
             while(cases-- > 0) {
     		    if(blankLine)
                     sb.append('\n');
@@ -28,12 +28,11 @@ public class Main {
                 int treeSize = 0;
                 for(Integer i : tree.values())
                     treeSize += i;
-                
                 for(String s : treeKeys)
-                    sb.append(String.format("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize));
+                    output.append(String.format("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize));
                 blankLine = true;
     		}
-    		System.out.print(sb);
+    		System.out.print(output);
         } catch(IOException e) {};
 	}
 }
