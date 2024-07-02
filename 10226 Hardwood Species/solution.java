@@ -19,7 +19,7 @@ public class Main {
                     if(pos < tree.size() && tree.get(pos).name.equals(species))
                         ++tree.get(pos).count;
                     else
-                        tree.add(pos, new Species(species, (short)1));
+                        tree.add(pos, new Species(species, 1));
                 }
                 int treeSize = 0;
                 for(Species s : tree)
@@ -49,8 +49,8 @@ public class Main {
 
 class Species {
     String name;
-    short count;
-    Species(String name, short count) {
+    int count;
+    Species(String name, int count) {
         this.name = name;
         this.count = count;
     }
