@@ -9,9 +9,10 @@ public class Main {
             int cases = (int)st.nval;
             br.readLine();
             boolean blankLine = false;
+            StringBuilder sb = new StringBuilder();
             while(cases-- > 0) {
     		    if(blankLine)
-                    System.out.println();
+                    sb.append('\n');
                 HashMap<String, Integer> tree = new HashMap<>();
                 ArrayList<String> treeKeys = new ArrayList<>();
                 String species;
@@ -27,10 +28,12 @@ public class Main {
                 int treeSize = 0;
                 for(Integer i : tree.values())
                     treeSize += i;
+                
                 for(String s : treeKeys)
-                    System.out.printf("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize);
+                    sb.append(String.format("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize));
                 blankLine = true;
     		}
+    		System.out.print(sb);
         } catch(IOException e) {};
 	}
 }
