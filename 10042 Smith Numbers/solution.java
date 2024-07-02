@@ -4,38 +4,38 @@ import java.util.*;
 public class Main {
     static short[] primes = new short[3401];
     static int count = 1;
-	public static void main(String[] args) {
-	    try {
-	        primes[0] = 2;
-    		for(short i = 3; count < primes.length; i += 2) {
-    		    if(isPrime(i) == -1)
-    		        primes[count++] = i;
-    		}
-    	    StreamTokenizer st = new StreamTokenizer(System.in);
+	public static void main(String[] args) throws IOException {
+	    primes[0] = 2;
+    	for(short i = 3; count < primes.length; i += 2) {
+    		if(isPrime(i) == -1)
+    		    primes[count++] = i;
+    	}
+        StreamTokenizer st = new StreamTokenizer(System.in);
+        st.nextToken();
+        int cases = (int)st.nval;
+        StringBuilder output = new StringBuilder();
+        while(cases-- > 0) {
             st.nextToken();
-            int cases = (int)st.nval;
-            while(cases-- > 0) {
-                st.nextToken();
-                int n = (int)st.nval;
-                boolean found = false;
-    		    do {
-    		        ++n;
-    		        if(n <= primes[primes.length - 1]) {
-    		            if(Arrays.binarySearch(primes, (short)n) < 0) {
-    		                if(sumOfFactorDigits(0, n) == sumOfDigits(n))
-    		                    found = true;
-    		            }
-    		        } else {
-    		            int start = isPrime(n);
-    		            if(start != -1) {
-    		                if(sumOfFactorDigits(start, n) == sumOfDigits(n))
-    		                    found = true;
-    		            }
-    		        }
-    		    } while(!found);
-    		    System.out.println(n);
-            }
-	    } catch(IOException e) {}
+            int n = (int)st.nval;
+            boolean found = false;
+    	    do {
+    	        ++n;
+    		    if(n <= primes[primes.length - 1]) {
+    		        if(Arrays.binarySearch(primes, (short)n) < 0) {
+    		            if(sumOfFactorDigits(0, n) == sumOfDigits(n))
+    	                    found = true;
+    	            }
+    	        } else {
+    	            int start = isPrime(n);
+    	            if(start != -1) {
+    	                if(sumOfFactorDigits(start, n) == sumOfDigits(n))
+    	                    found = true;
+    	            }
+    	        }
+    		} while(!found);
+    		output.append(n + "\n");
+        }
+        System.out.print(output);
 	}
 	
 	static int isPrime(int n) {
