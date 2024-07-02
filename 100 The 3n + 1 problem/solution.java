@@ -3,32 +3,32 @@ import java.util.*;
 
 public class Main {
     static ArrayList<Short> lenMap = new ArrayList<>();
-	public static void main(String[] args) {
-	    try {
-	        lenMap.add((short)0);
-		    lenMap.add((short)1);
-            StreamTokenizer st = new StreamTokenizer(System.in);
-    		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-    		    int min = (int)st.nval;
-    		    st.nextToken();
-    		    int max = (int)st.nval;
-    		    System.out.print(min + " " + max + " ");
-    		    if(min > max) {
-    		        int temp = min;
-    		        min = max;
-    		        max = temp;
-    		    }
-    		    for(int i = lenMap.size(); i <= min; ++i)
-    		        Collatz(i);
-    		    short maxLen = lenMap.get(min);
-    		    for(int i = min + 1; i <= max; ++i) {
-    		        if(i >= lenMap.size())
-                        Collatz(i);
-                    maxLen = maxLen > lenMap.get(i) ? maxLen : lenMap.get(i);
-                }
-                System.out.println(maxLen);
-    		}
-        } catch(IOException e) {};
+	public static void main(String[] args) throws IOException {
+        lenMap.add((short)0);
+		lenMap.add((short)1);
+        StreamTokenizer st = new StreamTokenizer(System.in);
+    	StringBuilder output = new StringBuilder();
+    	while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
+    	    int min = (int)st.nval;
+    	    st.nextToken();
+    	    int max = (int)st.nval;
+    	    output.append(String.format("%d %d ", min, max));
+    	    if(min > max) {
+    	        int temp = min;
+    	        min = max;
+    	        max = temp;
+    	    }
+    	    for(int i = lenMap.size(); i <= min; ++i)
+    	        Collatz(i);
+    	    short maxLen = lenMap.get(min);
+    	    for(int i = min + 1; i <= max; ++i) {
+		        if(i >= lenMap.size())
+                    Collatz(i);
+                maxLen = maxLen > lenMap.get(i) ? maxLen : lenMap.get(i);
+            }
+            output.append(maxLen + "\n");
+		}
+		System.out.print(output);
 	}
 	
 	static void Collatz(int n) {
