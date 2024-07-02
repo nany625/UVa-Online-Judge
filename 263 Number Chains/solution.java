@@ -20,8 +20,7 @@ public class Main {
     				System.out.println(desc + " - " + asc + " = " + (desc - asc));
     				number = desc - asc;
     			} while(!numbers.contains(number));
-    			System.out.println("Chain length " + numbers.size());
-    			System.out.println();
+    			System.out.println("Chain length " + numbers.size() + "\n");
     		}
         } catch(IOException e) {};
 	}
