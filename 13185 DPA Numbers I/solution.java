@@ -1,9 +1,9 @@
 import java.io.*;
 
 public class Main {
-    static char[] table = new char[999];
+    static char[] table = new char[998];
 	public static void main(String[] args) throws IOException {
-	    for(int i = 0; i < 999; ++i)
+	    for(int i = 0; i < 998; ++i)
             sumOfDivisors(i);
         StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
@@ -38,7 +38,7 @@ public class Main {
         else if(sum == num)
             table[n] = '1';
         else {
-            for(i = num; i <= 1000; i += num)
+            for(i = num; i <= 999; i += num)
                 table[i - 2] = '2';
         }
     }
