@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-char table[999];
+char table[998];
 
 void sumOfDivisors(int n) {
     if(table[n] == '2')
@@ -19,13 +19,13 @@ void sumOfDivisors(int n) {
     else if(sum == num)
         table[n] = '1';
     else {
-        for(i = num; i <= 1000; i += num)
+        for(i = num; i <= 999; i += num)
             table[i - 2] = '2';
     }
 }
 
 int main() {
-    for(int i = 0; i < 999; ++i)
+    for(int i = 0; i < 998; ++i)
         sumOfDivisors(i);
 	int t;
 	scanf("%d", &t);
