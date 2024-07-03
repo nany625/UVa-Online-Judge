@@ -6,12 +6,13 @@ typedef struct {
     short relevance;
 } Webpage;
 
+Webpage webpages[10];
+
 int main() {
     int T;
     scanf("%d", &T);
     for(int i = 1; i <= T; ++i) {
         printf("Case #%d:\n", i);
-        Webpage webpages[10];
         short max = 0;
         for(int j = 0; j < 10; ++j) {
             scanf("%s %hd", webpages[j].url, &webpages[j].relevance);
