@@ -42,8 +42,7 @@ public class Main {
     			K %= p3Size * p4Size * p5Size;
 				output.append(p3.get(K / p4Size / p5Size));
     			K %= p4Size * p5Size;
-    			output.append(p4.get(K / p5Size));
-				output.append(p5.get(K % p5Size) + "\n");
+    			output.append(p4.get(K / p5Size) + "" + p5.get(K % p5Size) + "\n");
     		}
         }
 	    System.out.print(output);
