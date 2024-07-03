@@ -1,3 +1,4 @@
+// #解法一
 import java.io.*;
 
 public class Main {
@@ -32,5 +33,41 @@ class Webpage {
     Webpage(String url, short relevance) {
         this.url = url;
         this.relevance = relevance;
+    }
+}
+
+// #解法二
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        StreamTokenizer st = new StreamTokenizer(System.in);
+        st.nextToken();
+        int T = (int)st.nval;
+		StringBuilder output = new StringBuilder();
+		for(int i = 1; i <= T; ++i) {
+			output.append("Case #" + i + ":\n");
+			ArrayList<String> candidates = new ArrayList<>();
+			int count = 0, lines = 10;
+			short max = 0;
+			while(lines-- > 0) {
+			    st.nextToken();
+			    String url = st.sval;
+			    st.nextToken();
+			    if(max < (short)st.nval) {
+			        max = (short)st.nval;
+			        candidates.add(url);
+			        count = 1;
+			    } else if(max == (short)st.nval) {
+			        candidates.add(url);
+			        ++count;
+			    }
+			}
+			int size = candidates.size();
+			for(int j = size - count; j < size; ++j)
+			    output.append(candidates.get(j) + "\n");
+		}
+        System.out.print(output);
     }
 }
