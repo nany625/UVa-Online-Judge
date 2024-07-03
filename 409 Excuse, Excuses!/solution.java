@@ -2,49 +2,50 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	public static void main(String[] args) {
-	    try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-	        int set = 0;
-	        StreamTokenizer st = new StreamTokenizer(br);
-            while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-    	        int K = (int)st.nval;
+	public static void main(String[] args) throws IOException {
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    int set = 0;
+        StreamTokenizer st = new StreamTokenizer(br);
+        StringBuilder output = new StringBuilder();
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
+            int K = (int)st.nval;
+            st.nextToken();
+            int E = (int)st.nval;
+            output.append("Excuse Set #" + (++set) + "\n");
+            ArrayList<String> keywords = new ArrayList<>();
+    	    while(K-- > 0) {
     	        st.nextToken();
-    	        int E = (int)st.nval;
-    	        System.out.println("Excuse Set #" + (++set));
-    	        ArrayList<String> keywords = new ArrayList<>();
-    		    while(K-- > 0) {
-    		        st.nextToken();
-    		        String keyword = st.sval;
-    		        if(keyword.equals(keyword.toLowerCase()))
-    		            keywords.add(keyword);
-    		    }
-    		    Collections.sort(keywords);
-    		    Excuse[] excuses = new Excuse[E];
-    		    short max = 0;
-    		    for(int i = 0; i < E; ++i) {
-    		        excuses[i] = new Excuse(br.readLine(), (short)0);
-    		        int start = 0, len = excuses[i].excuse.length();
-    		        while(start < len) {
-    		            if(Character.isLetter(excuses[i].excuse.charAt(start))) {
-    		                int end = start + 1;
-    		                while(end < excuses[i].excuse.length() && Character.isLetter(excuses[i].excuse.charAt(end)))
-    		                    ++end;
-    		                String token = excuses[i].excuse.substring(start, end);
-    		                if(binarySearch(keywords, token))
-    		                    ++excuses[i].count;
-    		                start = end;
-    		            }
-    		            ++start;
-    		        }
-    		        max = (short)Math.max(max, excuses[i].count);
-    		    }
-    		    for(Excuse e : excuses) {
-    		        if(e.count == max)
-    		            System.out.println(e.excuse);
-    		    }
-    		    System.out.println();
-            }
-        } catch(IOException e) {};
+    	        String keyword = st.sval;
+    	        if(keyword.equals(keyword.toLowerCase()))
+    	            keywords.add(keyword);
+    	    }
+    	    Collections.sort(keywords);
+    	    Excuse[] excuses = new Excuse[E];
+    	    short max = 0;
+    	    for(int i = 0; i < E; ++i) {
+    	        excuses[i] = new Excuse(br.readLine(), (short)0);
+		        int start = 0, len = excuses[i].excuse.length();
+    	        while(start < len) {
+    	            if(Character.isLetter(excuses[i].excuse.charAt(start))) {
+		                int end = start + 1;
+    	                while(end < excuses[i].excuse.length() && Character.isLetter(excuses[i].excuse.charAt(end)))
+    	                    ++end;
+		                String token = excuses[i].excuse.substring(start, end);
+    	                if(binarySearch(keywords, token))
+    	                    ++excuses[i].count;
+		                start = end;
+    	            }
+    	            ++start;
+		        }
+    	        max = (short)Math.max(max, excuses[i].count);
+    	    }
+		    for(Excuse e : excuses) {
+    	        if(e.count == max)
+    	            output.append(e.excuse + "\n");
+		    }
+    	    output.append("\n");
+        }
+        System.out.print(output);
 	}
 	
 	static boolean binarySearch(ArrayList<String> arrayList, String key) {
