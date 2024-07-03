@@ -2,8 +2,7 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    	StreamTokenizer st = new StreamTokenizer(br);
+    	StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -49,7 +48,7 @@ public class Main {
 	
 	static void DualPivotQuickSelect(short[] array, int left, int right, int median) {
 		if(left < right) {
-			int partitionIndices[] = DualPivotPartition(array, left, right);
+			int[] partitionIndices = DualPivotPartition(array, left, right);
 			if(median == partitionIndices[0] || median == partitionIndices[1])
 			    return;
 			if(median < partitionIndices[0])
