@@ -51,9 +51,9 @@ int main() {
 	scanf("%d", &cases);
 	getchar();
 	getchar();
-	bool blankLine = false;
+	bool firstCase = true;
 	while(cases--) {
-	    if(blankLine)
+	    if(!firstCase)
 	        puts("");
 	    ScoreBoard *scoreBoards = NULL;
 	    int contestantCount = 0;
@@ -112,7 +112,7 @@ int main() {
 	        free(scoreBoards[i].problemTried);
 	    }
 	    free(scoreBoards);
-	    blankLine = true;
+	    firstCase = false;
 	}
 	return 0;
 }
