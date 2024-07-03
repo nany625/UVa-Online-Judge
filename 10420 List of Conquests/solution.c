@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+	char *country;
+	char count;
+} Conquest;
+
+int binarySearch(Conquest *array, int size, char *key) {
+    int left = 0, right = size - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        int cmp = strcmp(array[mid].country, key);
+        if(cmp == 0)
+            return mid;
+        if(cmp < 0)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return left;
+}
+
+int main() {
+	int n;
+	scanf("%d", &n);
+	Conquest *conquests = NULL;
+	int size = 0;
+	while(n--) {
+		char country[76];
+		scanf("%s", country);
+		int pos = binarySearch(conquests, size, country);
+		if(pos < size && strcmp(conquests[pos].country, country) == 0)
+		    ++conquests[pos].count;
+		else {
+		    conquests = (Conquest*)realloc(conquests, (size + 1) * sizeof(Conquest));
+		    for(int i = size++; i > pos; --i)
+		        conquests[i] = conquests[i - 1];
+		    conquests[pos].country = (char*)malloc((strlen(country) + 1) * sizeof(char));
+		    strcpy(conquests[pos].country, country);
+            conquests[pos].count = 1;
+		}
+		fgets(country, sizeof(country), stdin);
+	}
+	for(int i = 0; i < size; ++i) {
+	    printf("%s %d\n", conquests[i].country, conquests[i].count);
+	    free(conquests[i].country);
+	}
+	free(conquests);
+	return 0;
+}
