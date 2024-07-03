@@ -1,13 +1,19 @@
 import java.io.*;
 
 public class Main {
-	public static void main(String[] args) {
-	    try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            StringBuilder sb = new StringBuilder();
-            int ch;
-            while((ch = br.read()) != -1)
-                sb.append(ch == '\n' ? '\n' : (char)(ch - 7));
-            System.out.print(sb);
-        } catch(IOException e) {};
+	public static void main(String[] args) throws IOException {
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder output = new StringBuilder();
+        String line;
+        boolean firstCase = true;
+        while((line = br.readLine()) != null) {
+            if(!firstCase)
+                output.append("\n");
+            int len = line.length();
+            for(int i = 0; i < len; ++i)
+                output.append((char)(line.charAt(i) - 7));
+            firstCase = false;
+        }
+        System.out.print(output);
 	}
 }
