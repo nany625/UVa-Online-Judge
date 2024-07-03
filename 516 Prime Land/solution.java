@@ -3,39 +3,40 @@ import java.io.*;
 public class Main {
     static short[] primes = new short[3507];
     static int count = 1;
-	public static void main(String[] args) {
-	    try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-	        primes[0] = 2;
-    		for(short i = 3; count < primes.length; i += 2) {
-        	    if(isPrime(i))
-        	        primes[count++] = i;
-        	}
-        	String line;
-        	while(!(line = br.readLine()).equals("0")) {
-        	    int x = 1;
-        	    String[] tokens = line.split("\\s+");
-        	    for(int i = 0; i < tokens.length; i += 2) 
-        	        x *= Math.pow(Integer.parseInt(tokens[i]), Integer.parseInt(tokens[i + 1]));
-        	    --x;
-        	    int pos = binarySearch(primes, x);
-        	    boolean space = false;
-        	    while(pos >= 0 && x > 1) {
-        	        if(x % primes[pos] == 0) {
-        	            if(space)
-        	                System.out.print(" ");
-        	            int e = 0;
-        	            do {
-        	                ++e;
-        	                x /= primes[pos];
-        	            } while(x % primes[pos] == 0);
-        	            System.out.print(primes[pos] + " " + e);
-        	            space = true;
-        	        }
-        	        --pos;
-        	    }
-        	    System.out.println();
-        	}
-	    } catch(IOException e) {}
+	public static void main(String[] args) throws IOException {
+	    primes[0] = 2;
+		for(short i = 3; count < primes.length; i += 2) {
+    	    if(isPrime(i))
+    	        primes[count++] = i;
+    	}
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	String line;
+    	StringBuilder output = new StringBuilder();
+    	while(!(line = br.readLine()).equals("0")) {
+    	    int x = 1;
+    	    String[] tokens = line.split("\\s+");
+    	    for(int i = 0; i < tokens.length; i += 2) 
+    	        x *= Math.pow(Integer.parseInt(tokens[i]), Integer.parseInt(tokens[i + 1]));
+    	    --x;
+    	    int pos = binarySearch(primes, x);
+    	    boolean space = false;
+    	    while(pos >= 0 && x > 1) {
+    	        if(x % primes[pos] == 0) {
+    	            if(space)
+    	                output.append(" ");
+    	            int e = 0;
+    	            do {
+    	                ++e;
+    	                x /= primes[pos];
+    	            } while(x % primes[pos] == 0);
+    	            output.append(primes[pos] + " " + e);
+    	            space = true;
+    	        }
+    	        --pos;
+    	    }
+    	    output.append("\n");
+    	}
+	    System.out.print(output);
 	}
 	
 	static boolean isPrime(short n) {
