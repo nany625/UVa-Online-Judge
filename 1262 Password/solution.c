@@ -78,9 +78,7 @@ int main() {
             K %= len3 * len4 * len5;
             putchar(p3[K / len4 / len5]);
             K %= len4 * len5;
-            putchar(p4[K / len5]);
-            putchar(p5[K % len5]);
-            puts("");
+            printf("%c%c\n", p4[K / len5], p5[K % len5]);
         }
         free(p1);
         free(p2);
