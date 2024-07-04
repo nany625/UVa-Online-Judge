@@ -17,7 +17,10 @@ public class Main {
     	    }
     	    Arrays.sort(frequency[0]);
     	    Arrays.sort(frequency[1]);
-    		output.append(Arrays.equals(frequency[0], frequency[1]) ? "YES\n" : "NO\n");
+    	    int i = 25;
+    	    while(i >= 0 && frequency[0][i] == frequency[1][i] && frequency[0][i] > 0)
+    	        --i;
+    		output.append(i < 0 || frequency[0][i] == frequency[1][i] ? "YES\n" : "NO\n");
     	}
         System.out.print(output);
 	}
