@@ -95,11 +95,12 @@ int main() {
 	while(T--) {
 		int n;
 		scanf("%d", &n);
-		int A[n], sum = 0;
-		for(int j = 0; j < n; ++j) {
-			scanf("%d", &A[j]);
-			for(int k = 0; k < j; ++k) {
-				if(A[k] <= A[j])
+		short A[n];
+        int sum = 0;
+		for(int i = 0; i < n; ++i) {
+			scanf("%hd", &A[i]);
+			for(int j = 0; j < i; ++j) {
+				if(A[j] <= A[i])
 					++sum;
 			}
 		}
