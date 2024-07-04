@@ -6,7 +6,7 @@
 
 int main() {
 	char number[8];
-	int baseFrom, baseTo;
+	int digits[7], baseFrom, baseTo;
 	while(scanf("%s %d %d", number, &baseFrom, &baseTo) == 3) {
 		int num = 0, len = strlen(number);
 		for(int i = 0; i < len; ++i) {
@@ -19,7 +19,6 @@ int main() {
 		    puts("      0");
 		    continue;
 	    }
-		int digits[7];
 		for(int i = 6; i >= 0; --i) {
 			digits[i] = num % baseTo;
 			num /= baseTo;
