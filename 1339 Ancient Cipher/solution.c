@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 void InsertionSort(int *array, int size) {
     for(int i = 1; i < size; ++i) {
@@ -13,7 +14,7 @@ void InsertionSort(int *array, int size) {
 }
 
 int main() {
-	char encryption[101], origin[101];
+	char encryption[97], origin[97];
 	while(scanf("%s %s", encryption, origin) == 2) {
 	    int frequency[2][26] = {}, len = strlen(encryption);
 	    for(int i = 0; i < len; ++i) {
@@ -23,9 +24,9 @@ int main() {
 	    InsertionSort(frequency[0], 26);
 	    InsertionSort(frequency[1], 26);
 	    int i = 25;
-	    while(i >= 0 && frequency[0][i] == frequency[1][i])
+	    while(i >= 0 && frequency[0][i] == frequency[1][i] && frequency[0][i] > 0)
 	        --i;
-	    puts(i >= 0 ? "NO" : "YES");
+	    puts(i < 0 || frequency[0][i] == frequency[1][i] ? "YES" : "NO");
 	}
 	return 0;
 }
