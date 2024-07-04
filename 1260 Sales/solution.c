@@ -34,8 +34,8 @@ int main() {
 		        A[j] = A[j - 1];
 		    A[pos] = temp;
 		}
-		int temp;
-		scanf("%d", &temp);
+		short temp;
+		scanf("%hd", &temp);
 		sum += binarySearch(A, n - 1, temp);
 		printf("%d\n", sum);
 	}
