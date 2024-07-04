@@ -3,17 +3,17 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
-	    double H;
+	    float H;
         StringBuilder output = new StringBuilder();
-    	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (H = st.nval) != 0) {
+    	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (H = (float)st.nval) != 0) {
     	    st.nextToken();
-    	    double U = st.nval;
+    	    float U = (float)st.nval;
     	    st.nextToken();
-    	    double D = st.nval;
+    	    float D = (float)st.nval;
     	    st.nextToken();
-    	    double F = st.nval;
+    	    float F = (float)st.nval;
     	    int day = 0;
-    	    double curr = 0, lost = U * F / 100;
+    	    float curr = 0, lost = U * F / 100;
     	    do {
     	        ++day;
     	        curr += U;
