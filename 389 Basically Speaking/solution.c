@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 int main() {
-	char number[9];
+	char number[8];
 	int baseFrom, baseTo;
 	while(scanf("%s %d %d", number, &baseFrom, &baseTo) == 3) {
 		int num = 0, len = strlen(number);
