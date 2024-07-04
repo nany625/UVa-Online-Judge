@@ -35,6 +35,7 @@ int main() {
 			else
 				puts("UNDETERMINED");
 		}
+		firstCase = false;
 	}
 	return 0;
 }
