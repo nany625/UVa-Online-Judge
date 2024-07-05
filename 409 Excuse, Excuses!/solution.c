@@ -74,8 +74,7 @@ int main() {
 	                char token[end - start + 1];
 	                strncpy(token, excuses[i].excuse + start, end - start);
 	                token[end - start] = '\0';
-	                if(binarySearch(keywords, size, token))
-	                    ++excuses[i].count;
+	                excuses[i].count += binarySearch(keywords, size, token);
 	                start = end;
 	            }
 	            ++start;
