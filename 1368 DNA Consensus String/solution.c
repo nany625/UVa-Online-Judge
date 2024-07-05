@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main() {
     int T;
@@ -34,7 +33,7 @@ int main() {
             putchar(nucleotides[temp]);
             dist -= max;
         }
-        printf("\n%d\n",dist);
+        printf("\n%d\n", dist);
 	}
 	return 0;
 }
