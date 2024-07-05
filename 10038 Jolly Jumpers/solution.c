@@ -39,6 +39,8 @@ void DualPivotQuickSort(int *array, int left, int right) {
     if(left < right) {
         int partitionIndices[2];
         DualPivotPartition(array, partitionIndices, left, right);
+		if(array[partitionIndices[0]] != partitionIndices[0] + 1 || array[partitionIndices[1]] != partitionIndices[1] + 1)
+		    return;
 		DualPivotQuickSort(array, left, partitionIndices[0] - 1);
 		DualPivotQuickSort(array, partitionIndices[0] + 1, partitionIndices[1] - 1);
 		DualPivotQuickSort(array, partitionIndices[1] + 1, right);
