@@ -51,10 +51,10 @@ public class Main {
 		        @Override
 		        public int compare(ScoreBoard s1, ScoreBoard s2) {
 		            if(s1.solvedProblems.size() != s2.solvedProblems.size())
-		                return s2.solvedProblems.size() - s1.solvedProblems.size();
+		                return Integer.compare(s2.solvedProblems.size(), s1.solvedProblems.size());
 		            if(s1.penaltyTime != s2.penaltyTime)
-		                return s1.penaltyTime - s2.penaltyTime;
-		            return s1.contestant - s2.contestant;
+		                return Short.compare(s1.penaltyTime, s2.penaltyTime);
+		            return Short.compare(s1.contestant, s2.contestant);
 		        }
 		    });
 		    for(ScoreBoard S : scoreBoards)
