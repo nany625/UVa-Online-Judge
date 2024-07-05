@@ -8,17 +8,6 @@ void swap(int *a, int *b) {
 	*b = temp;
 }
 
-void InsertionSort(int *array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1, insertionNum = array[i];
-        while(j >= 0 && insertionNum < array[j]) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = insertionNum;
-    }
-}
-
 void DualPivotPartition(int *array, int *partitionIndices, int left, int right) {
 	if(array[left] > array[right])
 		swap(&array[left], &array[right]);
@@ -61,11 +50,7 @@ int main() {
 	        prev = curr;
 	    }
 	    bool Jolly = true;
-	    n <= 47 ? InsertionSort(diff, n) : DualPivotQuickSort(diff, 0, n - 1, &Jolly);
-	    for(int i = 0; i < n && Jolly; ++i) {
-	        if(diff[i] != i + 1)
-	            Jolly = false;
-	    }
+	    DualPivotQuickSort(diff, 0, n - 1, &Jolly);
 	    puts(Jolly ? "Jolly": "Not jolly");
 	}
 	return 0;
