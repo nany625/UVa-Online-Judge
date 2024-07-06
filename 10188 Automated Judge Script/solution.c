@@ -28,32 +28,24 @@ int main() {
 	    if(strcmp(solution, output) == 0)	
 			printf("Run #%d: Accepted\n", ++x);
 		else {
-		    char *solutionNum = (char*)malloc(sizeof(char)), *outputNum = (char*)malloc(sizeof(char));
-		    solutionNum[0] = outputNum[0] = '\0';
-		    int len = strlen(solution);
-		    for(int i = 0; i < len; ++i) {
-		        if(isdigit(solution[i])) {
-		            int lenNum = strlen(solutionNum);
-		            solutionNum = (char*)realloc(solutionNum, (lenNum + 2) * sizeof(char));
-		            solutionNum[lenNum] = solution[i];
-		            solutionNum[lenNum + 1] = '\0';
-		        }
+		    int i = 0, j = 0, lenSolution = strlen(solution), lenOutput = strlen(output);
+		    while(i < lenSolution && j < lenOutput) {
+		        while(i < lenSolution && !isdigit(solution[i]))
+		            ++i;
+		        while(j < lenOutput && !isdigit(output[j]))
+		            ++j;
+		        if(i < lenSolution && j < lenOutput) {
+		            if(solution[i] != output[j])
+		                break;
+		            ++i;
+		            ++j;
+		        } else
+                    break;
 		    }
-		    len = strlen(output);
-		    for(int i = 0; i < len; ++i) {
-		        if(isdigit(output[i])) {
-		            int lenNum = strlen(outputNum);
-		            outputNum = (char*)realloc(outputNum, (lenNum + 2) * sizeof(char));
-		            outputNum[lenNum] = output[i];
-		            outputNum[lenNum + 1] = '\0';
-		        }
-		    }
-		    if(strcmp(solutionNum, outputNum) == 0)
+		    if(i == lenSolution && j == lenOutput)
 		        printf("Run #%d: Presentation Error\n", ++x);
 		    else
 		        printf("Run #%d: Wrong Answer\n", ++x);
-		    free(solutionNum);
-		    free(outputNum);
 		}
 		free(solution);
 		free(output);
