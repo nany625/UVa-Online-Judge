@@ -13,7 +13,6 @@ int main() {
 	        fgets(line, sizeof(line), stdin);
 	        solution = (char*)realloc(solution, (strlen(solution) + strlen(line) + 1) * sizeof(char));
 	        strcat(solution, line);
-	        
 	    }
 	    int m;
 	    scanf("%d", &m);
