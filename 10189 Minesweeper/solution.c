@@ -16,7 +16,8 @@ int main() {
 	            if(field[i][j] == '.') {
 	                field[i][j] = '0';
 	                for(int dir = 0; dir < 8; ++dir) {
-	                    if(i + dRow[dir] < n && j + dCol[dir] < m && field[i + dRow[dir]][j + dCol[dir]] == '*')
+	                    int newRow = i + dRow[dir], newCol = j + dCol[dir];
+	                    if(newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && field[newRow][newCol] == '*')
 	                        ++field[i][j];
 	                }
 	            }
