@@ -7,7 +7,7 @@ int main() {
 	while(scanf("%s", R) == 1) {
 		int max = 1, sumOfDigits = 0, len = strlen(R);
 		for(int i = 0; i < len; ++i) {
-			int digit = 0;
+			int digit;
 			if(isdigit(R[i]))
 				digit = R[i] - '0';
 			else if(isupper(R[i]))
