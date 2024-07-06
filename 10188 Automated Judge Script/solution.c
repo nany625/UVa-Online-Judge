@@ -17,37 +17,37 @@ int main() {
 	    int m;
 	    scanf("%d", &m);
 	    getchar();
-	    char *output = (char*)malloc(sizeof(char));
-	    output[0] = '\0';
+	    char *teamOutput = (char*)malloc(sizeof(char));
+	    teamOutput[0] = '\0';
 	    while(m--) {
 	        fgets(line, sizeof(line), stdin);
-	        output = (char*)realloc(output, (strlen(output) + strlen(line) + 1) * sizeof(char));
-	        strcat(output, line);
+	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(line) + 1) * sizeof(char));
+	        strcat(teamOutput, line);
 	    }
-	    if(strcmp(solution, output) == 0)	
+	    if(strcmp(solution, teamOutput) == 0)	
 			printf("Run #%d: Accepted\n", ++x);
 		else {
-		    int i = 0, j = 0, lenSolution = strlen(solution), lenOutput = strlen(output);
-		    while(i < lenSolution && j < lenOutput) {
+		    int i = 0, j = 0, lenSolution = strlen(solution), lenteamOutput = strlen(teamOutput);
+		    while(i < lenSolution && j < lenteamOutput) {
 		        while(i < lenSolution && !isdigit(solution[i]))
 		            ++i;
-		        while(j < lenOutput && !isdigit(output[j]))
+		        while(j < lenteamOutput && !isdigit(teamOutput[j]))
 		            ++j;
-		        if(i < lenSolution && j < lenOutput) {
-		            if(solution[i] != output[j])
+		        if(i < lenSolution && j < lenteamOutput) {
+		            if(solution[i] != teamOutput[j])
 		                break;
 		            ++i;
 		            ++j;
 		        } else
                     break;
 		    }
-		    if(i == lenSolution && j == lenOutput)
+		    if(i == lenSolution && j == lenteamOutput)
 		        printf("Run #%d: Presentation Error\n", ++x);
 		    else
 		        printf("Run #%d: Wrong Answer\n", ++x);
 		}
 		free(solution);
-		free(output);
+		free(teamOutput);
 	}
 	return 0;
 }
