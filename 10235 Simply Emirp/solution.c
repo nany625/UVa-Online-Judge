@@ -32,6 +32,10 @@ int main() {
             int len = log10(N) + 1;
             char temp[len + 1];
             sprintf(temp, "%d", N);
+            if((temp[0] - '0') % 2 == 0) {
+                printf("%d is prime.\n", N);
+                continue;
+            }
             for(int i = 0; i < len / 2; ++i)
                 swap(&temp[i], &temp[len - 1 - i]);
             int reverse = atoi(temp);
