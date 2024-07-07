@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <math.h>
 #include <stdbool.h>
 
@@ -17,28 +15,17 @@ bool isPrime(int n) {
     return true;
 }
 
-void swap(char *a, char *b) {
-    char temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 int main() {
     int N;
     while(scanf("%d", &N) == 1) {
         if(!isPrime(N))
             printf("%d is not prime.\n", N);
         else {
-            int len = log10(N) + 1;
-            char temp[len + 1];
-            sprintf(temp, "%d", N);
-            if((temp[0] - '0') % 2 == 0) {
-                printf("%d is prime.\n", N);
-                continue;
+            int reverse = 0, temp = N;
+            while(temp > 0) {
+                reverse = 10 * reverse + temp % 10;
+                temp /= 10;
             }
-            for(int i = 0; i < len / 2; ++i)
-                swap(&temp[i], &temp[len - 1 - i]);
-            int reverse = atoi(temp);
             if(reverse != N && isPrime(reverse))
                 printf("%d is emirp.\n", N);
 			else
