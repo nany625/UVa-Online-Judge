@@ -1,0 +1,53 @@
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+        StreamTokenizer st = new StreamTokenizer(System.in);
+        StringBuilder output = new StringBuilder();
+        while(st.nextToken() == StreamTokenizer.TT_WORD) {
+            char[] word = st.sval.toCharArray();
+            int len = word.length;
+            for(int i = 0; i < len; ++i) {
+                switch(word[i]) {
+                    case 'B':
+                    case 'F':
+                    case 'P':
+                    case 'V':
+                        word[i] = '1';
+                        break;
+                    case 'C':
+                    case 'G':
+                    case 'J':
+                    case 'K':
+                    case 'Q':
+                    case 'S':
+                    case 'X':
+                    case 'Z':
+                        word[i] = '2';
+                        break;
+                    case 'D':
+                    case 'T':
+                        word[i] = '3';
+                        break;
+                    case 'L':
+                        word[i] = '4';
+                        break;
+                    case 'M':
+                    case 'N':
+                        word[i] = '5';
+                        break;
+                    case 'R':
+                        word[i] = '6';
+                }
+            }
+            if(Character.isDigit(word[0]))
+                output.append(word[0]);
+            for(int i = 1; i < len; ++i) {
+                if(Character.isDigit(word[i]) && word[i] != word[i - 1])
+                    output.append(word[i]);
+            }
+            output.append("\n");
+        }
+        System.out.print(output);
+	}
+}
