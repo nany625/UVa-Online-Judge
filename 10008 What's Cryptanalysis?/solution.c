@@ -24,9 +24,9 @@ int main() {
 	int n;
 	scanf("%d", &n);
 	getchar();
-	char *text = NULL;
-	size_t textsize = 0;
 	while(n--) {
+        char *text = NULL;
+	    size_t textsize = 0;
 	    getline(&text, &textsize, stdin);
 	    int len = strlen(text);
 	    for(int i = 0; i < len; ++i) {
@@ -35,6 +35,7 @@ int main() {
 	        else if(islower(text[i]))
 	            ++frequencies[text[i] - 'a'].count;
 	    }
+        free(text);
 	}
 	qsort(frequencies, 26, sizeof(Frequency), compare);
 	for(int i = 0; i < 26 && frequencies[i].count > 0; ++i)
