@@ -43,6 +43,7 @@ int main() {
     qsort(dict, size, sizeof(Dictionary), compare);
     while(scanf("%s", buffer) == 1)
         printf("%s\n", binarySearch(dict, size, buffer));
+    free(buffer);
     for(int i = 0; i < size; ++i) {
         free(dict[i].english);
         free(dict[i].foreign);
