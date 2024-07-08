@@ -33,21 +33,23 @@ int main() {
     	if(!firstCase)
     		puts("");
     	Species *tree = NULL;
-    	char species[32];
+    	char *buffer = NULL;
+    	size_t bufsize = 0;
         int speciesCount = 0;
-        while(fgets(species, sizeof(species), stdin) && strcmp(species, "\n") != 0) {
-            species[strcspn(species, "\n")] = '\0';
-            int pos = binarySearch(tree, speciesCount, species);
-            if(pos < speciesCount && strcmp(tree[pos].name, species) == 0)
+        while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
+            buffer[strcspn(buffer, "\n")] = '\0';
+            int pos = binarySearch(tree, speciesCount, buffer);
+            if(pos < speciesCount && strcmp(tree[pos].name, buffer) == 0)
                 ++tree[pos].count;
             else {
                 tree = (Species*)realloc(tree, (speciesCount + 1) * sizeof(Species));
                 for(int i = speciesCount++; i > pos; --i)
                     tree[i] = tree[i - 1];
-                tree[pos].name = strdup(species);
+                tree[pos].name = strdup(buffer);
                 tree[pos].count = 1;
             }
         }
+        free(buffer);
         int treeSize = 0;
         for(int i = 0; i < speciesCount; ++i)
             treeSize += tree[i].count;
