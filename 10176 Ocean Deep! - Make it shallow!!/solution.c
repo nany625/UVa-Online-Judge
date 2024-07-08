@@ -4,10 +4,8 @@
 
 int main() {
     char *buffer = NULL;
-    size_t bufsize = 0;
     int remainder = 0;
-    while(getline(&buffer, &bufsize, stdin) != -1) {
-        buffer[strcspn(buffer, "\n")] = '\0';
+    while(scanf("%ms", &buffer) == 1) {
         int len = strlen(buffer);
         for(int i = 0; i < len; ++i) {
             if(buffer[i] != '#')
@@ -17,7 +15,8 @@ int main() {
                 remainder = 0;
             }
         }
+        free(buffer);
+        buffer = NULL;
     }
-    free(buffer);
     return 0;
 }
