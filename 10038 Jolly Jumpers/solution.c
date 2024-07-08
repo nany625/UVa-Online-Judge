@@ -51,7 +51,7 @@ int main() {
 	    }
 	    bool Jolly = true;
 	    DualPivotQuickSort(diff, 0, n - 1, &Jolly);
-	    puts(Jolly ? "Jolly": "Not jolly");
+	    puts(Jolly ? "Jolly" : "Not jolly");
 	}
 	return 0;
 }
