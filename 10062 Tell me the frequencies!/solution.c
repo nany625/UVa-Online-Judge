@@ -45,7 +45,7 @@ int main() {
 	    }
 	    qsort(frequencies, size, sizeof(Frequency), compare);
 	    for(int i = 0; i < size; ++i)
-	        printf("%d %d\n", frequencies[i].value, frequencies[i].count);
+	        printf("%d %hd\n", frequencies[i].value, frequencies[i].count);
 	    free(frequencies);
 	    firstCase = false;
 	}
