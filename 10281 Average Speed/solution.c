@@ -9,7 +9,7 @@ int main() {
         int len = sscanf(buffer, "%d %*c %d %*c %d %d", &currHour, &currMinute, &currSecond, &currSpeed);
         dist += (3600 * (currHour - prevHour) + 60 * (currMinute - prevMinute) + (currSecond - prevSecond)) / 3600.0 * prevSpeed;
         if(len == 3)
-            printf("%.2d:%.2d:%.2d %.2f km\n", currHour, currMinute, currSecond, dist);
+            printf("%02d:%02d:%02d %.2f km\n", currHour, currMinute, currSecond, dist);
         else if(len == 4)
             prevSpeed = currSpeed;
         prevHour = currHour;
