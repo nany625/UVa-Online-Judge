@@ -25,8 +25,7 @@ int main() {
 		    printf("%d\n", N);
 		else
 			puts("such number is impossible!");
-		free(R);
-		R = NULL;
 	}
+	free(R);
 	return 0;
 }
