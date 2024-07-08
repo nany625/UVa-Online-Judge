@@ -7,23 +7,25 @@ int main() {
 	int x = 0, n;
 	while(scanf("%d", &n) && n != 0) {
 	    getchar();
-	    char *solution = (char*)malloc(sizeof(char)), line[122];
+	    char *solution = strdup(""), *buffer = NULL;
+	    size_t bufsize = 0;
 	    solution[0] = '\0';
 	    while(n--) {
-	        fgets(line, sizeof(line), stdin);
-	        solution = (char*)realloc(solution, (strlen(solution) + strlen(line) + 1) * sizeof(char));
-	        strcat(solution, line);
+	        getline(&buffer, &bufsize, stdin);
+	        solution = (char*)realloc(solution, (strlen(solution) + strlen(buffer) + 1) * sizeof(char));
+	        strcat(solution, buffer);
 	    }
 	    int m;
 	    scanf("%d", &m);
 	    getchar();
-	    char *teamOutput = (char*)malloc(sizeof(char));
+	    char *teamOutput = strdup("");
 	    teamOutput[0] = '\0';
 	    while(m--) {
-	        fgets(line, sizeof(line), stdin);
-	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(line) + 1) * sizeof(char));
-	        strcat(teamOutput, line);
+	        getline(&buffer, &bufsize, stdin);
+	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(buffer) + 1) * sizeof(char));
+	        strcat(teamOutput, buffer);
 	    }
+	    free(buffer);
 	    if(strcmp(solution, teamOutput) == 0)	
 			printf("Run #%d: Accepted\n", ++x);
 		else {
