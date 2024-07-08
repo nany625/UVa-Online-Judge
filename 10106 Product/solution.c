@@ -23,7 +23,6 @@ int main() {
 		printf("%s\n", i == lenX + lenY ? "0" : ans + i);
 	    free(X);
 	    free(Y);
-	    X = Y = NULL;
 	}
 	return 0;
 }
