@@ -28,9 +28,9 @@ int main() {
     scanf("%d", &cases);
     getchar();
     getchar();
-    bool blankLine = false;
+    bool firstCase = true;
     while(cases--) {
-    	if(blankLine)
+    	if(!firstCase)
     		puts("");
     	Species *tree = NULL;
     	char species[32];
@@ -44,8 +44,7 @@ int main() {
                 tree = (Species*)realloc(tree, (speciesCount + 1) * sizeof(Species));
                 for(int i = speciesCount++; i > pos; --i)
                     tree[i] = tree[i - 1];
-                tree[pos].name = (char*)malloc((strlen(species) + 1) * sizeof(char));
-                strcpy(tree[pos].name, species);
+                tree[pos].name = strdup(species);
                 tree[pos].count = 1;
             }
         }
@@ -57,7 +56,7 @@ int main() {
             free(tree[i].name);
         }
         free(tree);
-        blankLine = true;
+        firstCase = false;
     }
     return 0;
 }
