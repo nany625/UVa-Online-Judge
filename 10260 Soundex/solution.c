@@ -48,6 +48,7 @@ int main() {
         }
         puts("");
         free(word);
+        word = NULL;
     }
     return 0;
 }
