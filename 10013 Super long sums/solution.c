@@ -5,9 +5,9 @@
 int main() {
     int N;
     scanf("%d", &N);
-    bool blankLine = false;
+    bool firstCase = true;
     while(N--) {
-        if(blankLine)
+        if(!firstCase)
             puts("");
         int M;
         scanf("%d", &M);
@@ -27,7 +27,7 @@ int main() {
             putchar('1');
         printf("%s\n", ans + 1);
         free(ans);
-		blankLine = true;
+		firstCase = false;
     }
     return 0;
 }
