@@ -8,9 +8,7 @@ typedef struct {
 } Dictionary;
 
 int compare(const void *a, const void *b) {
-    Dictionary *d1 = (Dictionary*)a;
-    Dictionary *d2 = (Dictionary*)b;
-    return strcmp(d1->word, d2->word);
+    return strcmp(((Dictionary*)a)->word, ((Dictionary*)b)->word);
 }
 
 int binarySearch(Dictionary *array, int size, char *key) {
