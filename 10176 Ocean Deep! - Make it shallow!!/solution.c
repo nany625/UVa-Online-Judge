@@ -1,10 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
-    char buffer[101];
+    char *buffer = NULL;
+    size_t bufsize = 0;
     int remainder = 0;
-    while(scanf("%s", buffer) == 1) {
+    while(getline(&buffer, &bufsize, stdin) != -1) {
+        buffer[strcspn(buffer, "\n")] = '\0';
         int len = strlen(buffer);
         for(int i = 0; i < len; ++i) {
             if(buffer[i] != '#')
@@ -15,5 +18,6 @@ int main() {
             }
         }
     }
+    free(buffer);
     return 0;
 }
