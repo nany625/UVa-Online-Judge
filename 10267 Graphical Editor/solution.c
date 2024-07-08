@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 char table[250][251];
@@ -29,7 +30,8 @@ void dfs(int row, int rowLimit, int col, int colLimit, char R, char C) {
 }
 
 int main() {
-	char command, C, Name[101], ignore[101];
+	char command, C, *buffer = NULL;
+	size_t bufsize = 0;
 	int M, N, X, X1, X2, Y, Y1, Y2;
 	while(scanf("%c", &command) && command != 'X') {
 		if(command == 'I') {
@@ -58,12 +60,16 @@ int main() {
 			scanf("%d %d %c", &X, &Y, &C);
 			dfs(Y - 1, N, X - 1, M, table[Y - 1][X - 1], C);
 		} else if(command == 'S') {
-			scanf("%s", Name);
-			printf("%s\n", Name);
+			scanf("%ms", &buffer);
+			printf("%s\n", buffer);
 			for(int i = 0; i < N; ++i)
 			    printf("%.*s\n", M, table[i]);
+			free(buffer);
+			buffer = NULL;
 		}
-		fgets(ignore, sizeof(ignore), stdin);
+    	getline(&buffer, &bufsize, stdin);
+		free(buffer);
+		buffer = NULL;
 	}
 	return 0;
 }
