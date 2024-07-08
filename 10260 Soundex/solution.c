@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 int main() {
-    char word[20];
-    while(scanf("%s", word) == 1) {
+    char *word = NULL;
+    while(scanf("%ms", &word) == 1) {
         int len = strlen(word);
         for(int i = 0; i < len; ++i) {
             switch(word[i]) {
@@ -46,6 +47,7 @@ int main() {
                 putchar(word[i]);
         }
         puts("");
+        free(word);
     }
     return 0;
 }
