@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 typedef struct {
-    char alpha, count;
+    char alpha, count = 0;
 } Frequency;
 
 int compare(const void *a, const void *b) {
@@ -17,10 +17,8 @@ int compare(const void *a, const void *b) {
 
 int main() {
 	Frequency frequencies[26];
-	for(int i = 0; i < 26; ++i) {
+	for(int i = 0; i < 26; ++i)
 	    frequencies[i].alpha = 'A' + i;
-	    frequencies[i].count = 0;
-	}
 	int n;
 	scanf("%d", &n);
 	getchar();
