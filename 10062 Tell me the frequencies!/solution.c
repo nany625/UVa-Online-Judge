@@ -25,9 +25,10 @@ int compare(const void *a, const void *b) {
 }
 
 int main() {
-	char text[1002];
+	char *text = NULL;
+	size_t textsize = 0;
 	bool firstCase = true;
-	while(fgets(text, sizeof(text), stdin)) {
+	while(getline(&text, &textsize, stdin) != -1) {
 	    if(!firstCase)
 	        puts("");
 	    text[strcspn(text, "\n")] = '\0';
@@ -48,5 +49,6 @@ int main() {
 	    free(frequencies);
 	    firstCase = false;
 	}
+	free(text);
 	return 0;
 }
