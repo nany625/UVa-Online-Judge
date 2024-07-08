@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-    char *word = NULL;
+    char *word;
     int value;
 } Dictionary;
 
@@ -32,8 +32,10 @@ int main() {
     int m, n;
     scanf("%d %d", &m, &n);
     Dictionary dict[m];
-    for(int i = 0; i < m; ++i)
+    for(int i = 0; i < m; ++i) {
+        dict[i].word = NULL;
         scanf("%ms %d", &dict[i].word, &dict[i].value);
+    }
     qsort(dict, m, sizeof(Dictionary), compare);
     while(n--) {
         int salary = 0;
