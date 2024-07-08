@@ -4,18 +4,20 @@
 
 int main() {
     int x;
-    char line[876424];
     while(scanf("%d", &x) == 1) {
         getchar();
-        fgets(line, sizeof(line), stdin);
+        char *buffer = NULL;
+        size_t bufsize = 0;
+        getline(&buffer, &bufsize, stdin);
         long *a = NULL;
         int size = 0;
-        char *token = strtok(line, " ");
+        char *token = strtok(buffer, " ");
         while(token) {
             a = (long*)realloc(a, (size + 1) * sizeof(long));
             a[size++] = atol(token);
             token = strtok(NULL, " ");
         }
+        free(buffer);
         --size;
         long result = 0;
         for(int i = 0; i < size; ++i)
