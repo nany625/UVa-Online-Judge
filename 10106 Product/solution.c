@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
-	char X[251], Y[251];
-	while(scanf("%s %s", X, Y) == 2) {
+	char *X = NULL, *Y = NULL;
+	while(scanf("%ms %ms", &X, &Y) == 2) {
 	    int lenX = strlen(X), lenY = strlen(Y);
 	    char ans[lenX + lenY + 1];
 	    memset(ans, '0', sizeof(ans));
@@ -20,6 +21,9 @@ int main() {
 		while(i < lenX + lenY && ans[i] == '0')
 		    ++i;
 		printf("%s\n", i == lenX + lenY ? "0" : ans + i);
+	    free(X);
+	    free(Y);
+	    X = Y = NULL;
 	}
 	return 0;
 }
