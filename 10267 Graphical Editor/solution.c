@@ -64,8 +64,6 @@ int main() {
 			printf("%s\n", buffer);
 			for(int i = 0; i < N; ++i)
 			    printf("%.*s\n", M, table[i]);
-			free(buffer);
-			buffer = NULL;
 		}
     	getline(&buffer, &bufsize, stdin);
 		free(buffer);
