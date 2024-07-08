@@ -18,9 +18,9 @@ bool searchInDirection(char **grid, int m, int n, char *word, int wordLen, int r
 int main() {
 	int cases;
 	scanf("%d", &cases);
-	bool blankLine = false;
+	bool firstCase = true;
 	while(cases--) {
-		if(blankLine)
+		if(!firstCase)
 			puts("");
 		int m, n;
 		scanf("%d %d", &m, &n);
@@ -31,25 +31,30 @@ int main() {
 		}
 		int k;
 		scanf("%d", &k);
+		getchar();
 		while(k--) {
-			char word[51];
-			scanf("%s", word);
-			int wordLen = strlen(word), found = 0;
+		    char *word = NULL;
+		    size_t wordsize = 0;
+			getline(&word, &wordsize, stdin);
+			word[strcspn(word, "\n")] = '\0';
+			int wordLen = strlen(word);
+			bool found = false;
 			for(int row = 0; row < m && !found; ++row) {
 				for(int col = 0; col < n && !found; ++col) {
 					for(int dir = 0; dir < 8 && !found; ++dir) {
                         if(searchInDirection(grid, m, n, word, wordLen, row, col, dir)) {
                             printf("%d %d\n", row + 1, col + 1);
-                            found = 1;
+                            found = true;
                         }
                     }
 				}
 			}
+			free(word);
 		}
 		for(int i = 0; i < m; ++i)
             free(grid[i]);
 		free(grid);
-		blankLine = true;
+		firstCase = false;
 	}
 	return 0;
 }
