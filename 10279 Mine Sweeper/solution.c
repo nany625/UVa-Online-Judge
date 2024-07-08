@@ -8,10 +8,10 @@ int main() {
     scanf("%d", &games);
     bool firstCase = true;
     while(games--) {
-        int n;
-        scanf("%d", &n);
         if(!firstCase)
             puts("");
+        int n;
+        scanf("%d", &n);
         char mines[n][n + 1], touch[n][n + 1];
         for(int i = 0; i < n; ++i)
             scanf("%s", mines[i]);
