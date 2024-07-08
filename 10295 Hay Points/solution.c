@@ -38,10 +38,8 @@ int main() {
     while(n--) {
         int salary = 0;
         char *word = NULL;
-        while(scanf("%ms", &word) && strcmp(word, ".") != 0) {
+        while(scanf("%ms", &word) && strcmp(word, ".") != 0)
             salary += binarySearch(dict, m, word);
-            free(word);
-        }
         free(word);
         printf("%d\n", salary);
     }
