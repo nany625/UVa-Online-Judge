@@ -31,12 +31,9 @@ int main() {
 		}
 		int k;
 		scanf("%d", &k);
-		getchar();
 		while(k--) {
 		    char *word = NULL;
-		    size_t wordsize = 0;
-			getline(&word, &wordsize, stdin);
-			word[strcspn(word, "\n")] = '\0';
+			scanf("%ms", &word);
 			int wordLen = strlen(word);
 			bool found = false;
 			for(int row = 0; row < m && !found; ++row) {
