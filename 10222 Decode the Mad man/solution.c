@@ -10,12 +10,10 @@ int main() {
         else {
             if(isupper(ch))
                 tolower(ch);
-            for(int i = 2; i < 47; ++i) {
-                if(ch == keyboard[i]) {
-                    putchar(keyboard[i - 2]);
-                    break;
-                }
-            }
+            int i = 2;
+            while(ch != keyboard[i])
+                ++i;
+            putchar(keyboard[i - 2]);
         }
     }
     return 0;
