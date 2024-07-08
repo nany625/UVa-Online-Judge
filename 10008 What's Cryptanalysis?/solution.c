@@ -40,6 +40,5 @@ int main() {
 	qsort(frequencies, 26, sizeof(Frequency), compare);
 	for(int i = 0; i < 26 && frequencies[i].count > 0; ++i)
 	    printf("%c %d\n", frequencies[i].alpha, frequencies[i].count);
-	free(text);
 	return 0;
 }
