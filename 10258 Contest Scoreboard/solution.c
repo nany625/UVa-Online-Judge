@@ -57,8 +57,9 @@ int main() {
 	        puts("");
 	    ScoreBoard *scoreBoards = NULL;
 	    int contestantCount = 0;
-	    char buffer[13];
-	    while(fgets(buffer, sizeof(buffer), stdin) && strcmp(buffer, "\n") != 0) {
+	    char *buffer = NULL;
+	    size_t bufsize = 0;
+	    while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
 	        short contestant, problem, time;
 	        char L;
 	        sscanf(buffer, "%hd %hd %hd %c", &contestant, &problem, &time, &L);
@@ -105,6 +106,7 @@ int main() {
     	        ++contestantCount;
     	    }
 	    }
+	    free(buffer);
 	    qsort(scoreBoards, contestantCount, sizeof(ScoreBoard), compare);
 	    for(int i = 0; i < contestantCount; ++i) {
 	        printf("%hd %hd %hd\n", scoreBoards[i].contestant, scoreBoards[i].solvedCount, scoreBoards[i].penaltyTime);
