@@ -24,9 +24,10 @@ int main() {
 	int n;
 	scanf("%d", &n);
 	getchar();
-	char text[31];
+	char *text = NULL;
+	size_t textsize = 0;
 	while(n--) {
-	    fgets(text, sizeof(text), stdin);
+	    getline(&text, &textsize, stdin);
 	    int len = strlen(text);
 	    for(int i = 0; i < len; ++i) {
 	        if(isupper(text[i]))
@@ -38,5 +39,6 @@ int main() {
 	qsort(frequencies, 26, sizeof(Frequency), compare);
 	for(int i = 0; i < 26 && frequencies[i].count > 0; ++i)
 	    printf("%c %d\n", frequencies[i].alpha, frequencies[i].count);
+	free(text);
 	return 0;
 }
