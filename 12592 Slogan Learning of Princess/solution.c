@@ -1,20 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct {
-    char firstLine[102], secondLine[102];
+    char *firstLine, *secondLine;
 } Slogan;
 
-void InsertionSort(Slogan *array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1;
-        Slogan temp = array[i];
-        while(j >= 0 && strcmp(temp.firstLine, array[j].firstLine) < 0) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = temp;
-    }
+int compare(const void *a, const void *b) {
+    return strcmp(((Slogan*)a)->firstLine, ((Slogan*)b)->firstLine);
 }
 
 char *binarySearch(Slogan *array, int size, char *key) {
@@ -38,20 +31,27 @@ int main() {
     getchar();
     Slogan slogans[N];
     for(int i = 0; i < N; ++i) {
-        fgets(slogans[i].firstLine, sizeof(slogans[i].firstLine), stdin);
-        fgets(slogans[i].secondLine, sizeof(slogans[i].secondLine), stdin);
+        slogans[i].firstLine = slogans[i].secondLine = NULL;
+        size_t bufsize = 0;
+        getline(&slogans[i].firstLine, &bufsize, stdin);
+        getline(&slogans[i].secondLine, &bufsize, stdin);
         slogans[i].firstLine[strcspn(slogans[i].firstLine, "\n")] = '\0';
-        slogans[i].secondLine[strcspn(slogans[i].secondLine, "\n")] = '\0';
     }
-    InsertionSort(slogans, N);
+    qsort(slogans, N, sizeof(Slogan), compare);
     int Q;
     scanf("%d", &Q);
     getchar();
     while(Q--) {
-        char hear[102];
-        fgets(hear, sizeof(hear), stdin);
-        hear[strcspn(hear, "\n")] = '\0';
-        printf("%s\n", binarySearch(slogans, N, hear));
+        char *buffer = NULL;
+        size_t bufsize = 0;
+        getline(&buffer, &bufsize, stdin);
+        buffer[strcspn(buffer, "\n")] = '\0';
+        printf("%s", binarySearch(slogans, N, buffer));
+        free(buffer);
+    }
+    for(int i = 0; i < N; ++i) {
+        free(slogans[i].firstLine);
+        free(slogans[i].secondLine);
     }
     return 0;
 }
