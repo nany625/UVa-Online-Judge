@@ -28,10 +28,10 @@ void insert(int **set, int *sizeSet, int pos, int value) {
 void appendSet(int **set, int **uni, int *sizeSet, int *sizeUni, char *buffer) {
     char *token = strtok(buffer, " ");
     while(token) {
-	    int pos = binarySearch(*set, *sizeSet, atoi(token));
-	    insert(set, sizeSet, pos, atoi(token));
+        int value = atoi(token), pos = binarySearch(*set, *sizeSet, value);
+	    insert(set, sizeSet, pos, value);
 	    pos = binarySearch(*uni, *sizeUni, atoi(token));
-	    insert(uni, sizeUni, pos, atoi(token));
+	    insert(uni, sizeUni, pos, value);
 	    token = strtok(NULL, " ");
 	}
 }
