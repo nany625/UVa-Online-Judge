@@ -18,20 +18,23 @@ int main() {
 			min = max = curr;
 		int len = strlen(stockPrice);
 		for(int j = 1; j < len; ++j) {
-			if(stockPrice[j] == 'R'){
-				if(max < curr)
-					max = curr;
-				++curr;
-			} else if(stockPrice[j] == 'F') {
-				--curr;
-				if(min > curr)
-					min = curr;
-			} else if(stockPrice[j] == 'C') {
-				if(min > curr)
-					min = curr;
-				if(max < curr)
-					max = curr;
-			}
+		    switch(stockPrice[j]) {
+    			case 'R':
+    				if(max < curr)
+    					max = curr;
+    				++curr;
+    				break;
+    			case 'F':
+    				--curr;
+    				if(min > curr)
+    					min = curr;
+    				break;
+    			case 'C':
+    				if(min > curr)
+    					min = curr;
+    				if(max < curr)
+    					max = curr;
+		    }
 		}
 		char graph[max - min + 1][len + 1];
 		int start = max;
