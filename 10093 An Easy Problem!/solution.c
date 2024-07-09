@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 int main() {
-	char *R = NULL;
-	while(scanf("%ms", &R) == 1) {
+	char R[945];
+	while(scanf("%s", R) == 1) {
 		int max = 1, sumOfDigits = 0, len = strlen(R);
 		for(int i = 0; i < len; ++i) {
 			int digit = 0;
@@ -26,6 +25,5 @@ int main() {
 		else
 			puts("such number is impossible!");
 	}
-	free(R);
 	return 0;
 }
