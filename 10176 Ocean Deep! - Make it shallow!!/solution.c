@@ -1,22 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <ctype.h>
 
 int main() {
-    char *buffer = NULL;
+    char ch;
     int remainder = 0;
-    while(scanf("%ms", &buffer) == 1) {
-        int len = strlen(buffer);
-        for(int i = 0; i < len; ++i) {
-            if(buffer[i] != '#')
-                remainder = (2 * remainder + buffer[i] -'0') % 131071;
-            else {
-                puts(remainder == 0 ? "YES" : "NO");
-                remainder = 0;
-            }
+    while((ch = getchar()) != EOF) {
+        if(ch != '#') {
+            if(isdigit(ch))
+                remainder = (2 * remainder + ch -'0') % 131071;
         }
-        free(buffer);
-        buffer = NULL;
+        else {
+            puts(remainder == 0 ? "YES" : "NO");
+            remainder = 0;
+        }
     }
     return 0;
 }
