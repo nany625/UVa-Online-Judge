@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
@@ -14,8 +15,8 @@ int main() {
         int M;
         scanf("%d", &M);
         while(M--) {
-            char operation[10];
-            scanf("%s", operation);
+            char *operation = NULL;
+            scanf("%ms", &operation);
             if(strcmp(operation, "row") == 0) {
                 int a,b;
                 scanf("%d %d", &a, &b);
@@ -50,6 +51,7 @@ int main() {
                     }
                 }
             }
+            free(operation);
         }
         for(int j = 0; j < N; ++j)
             printf("%s\n", matrix[j]);
