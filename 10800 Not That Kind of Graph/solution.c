@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
@@ -6,8 +7,8 @@ int main() {
 	scanf("%d", &N);
 	for(int i = 1; i <= N; ++i) {
 		printf("Case #%d:\n", i);
-		char stockPrice[51];
-		scanf("%s", stockPrice);
+		char *stockPrice = NULL;
+		scanf("%ms", &stockPrice);
 		int min, max, curr = 0;
 		if(stockPrice[0] == 'R')
 			min = max = curr++;
@@ -57,6 +58,7 @@ int main() {
 		while(len--)
 			putchar('-');
 		puts("\n");
+		free(stockPrice);
 	}
 	return 0;
 }
