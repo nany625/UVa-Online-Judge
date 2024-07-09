@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
-    char s[12], t[89937];
-    while(scanf("%s %s", s, t) == 2) {
+    char *s = NULL, *t = NULL;
+    while(scanf("%ms %ms", &s, &t) == 2) {
         int i = 0, j = 0, lens = strlen(s), lent = strlen(t);
         while(j < lent) {
             if(s[i] == t[j])
@@ -16,6 +17,9 @@ int main() {
         }
         if(i < lens)
             puts("No");
+        free(s);
+        free(t);
+        s = t = NULL;
     }
     return 0;
 }
