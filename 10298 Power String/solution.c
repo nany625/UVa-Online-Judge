@@ -4,8 +4,8 @@
 #include <stdbool.h>
 
 int main() {
-	char *s = NULL;
-	while(scanf("%ms", &s) && strcmp(s, ".") != 0) {
+	char s[999937];
+	while(scanf("%s", s) && strcmp(s, ".") != 0) {
 		int len = strlen(s);
 		bool found = false;
 		for(int i = 1; i <= len / 2 && !found; ++i) {
@@ -18,12 +18,11 @@ int main() {
 					printf("%d\n", len / i);
 					found = true;
 				}
+				free(substring);
 			}
 		}
 		if(!found)
 		    puts("1");
-		free(s);
-		s = NULL;
 	}
 	return 0;
 }
