@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
 	int T;
 	scanf("%d", &T);
 	for(int i = 1; i <= T; ++i) {
-		char N[1001];
-		scanf("%s", N);
+		char *N = NULL;
+		scanf("%ms", &N);
 		int len = strlen(N);
 		short modThreeCount[3] = {};
 		for(int j = 0; j < len; ++j)
@@ -16,6 +17,7 @@ int main() {
 			printf("Case %d: %c\n", i, modThreeCount[0] % 2 == 1 ? 'S' : 'T');
 		else
 			printf("Case %d: %c\n", i, modThreeCount[result] && modThreeCount[0] % 2 == 0 ? 'S' : 'T');
+		free(N);
 	}
 	return 0;
 }
