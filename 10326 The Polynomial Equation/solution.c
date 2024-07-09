@@ -5,8 +5,8 @@ int main() {
 	int N;
 	while(scanf("%d", &N) == 1) {
 		int factors[N - 1][2];
-		long long int C[N][N + 1];
-		scanf("%lld", &C[0][0]);
+		long C[N][N + 1];
+		scanf("%ld", &C[0][0]);
 		C[0][0] *= -1;
 		C[0][1] = 1;
 		for(int i = 0; i < N - 1; ++i) {
@@ -32,16 +32,16 @@ int main() {
 					printf(" - ");
 				if(i > 1) {
 					if(abs(C[N - 1][i]) > 1)
-						printf("%lldx^%d", abs(C[N - 1][i]), i);
+						printf("%ldx^%d", abs(C[N - 1][i]), i);
 					else
 						printf("x^%d", i);
 				} else if(i == 1) {
 					if(abs(C[N - 1][i]) > 1)
-						printf("%lldx", abs(C[N - 1][i]));
+						printf("%ldx", abs(C[N - 1][i]));
 					else
 						putchar('x');
 				} else
-					printf("%lld", abs(C[N - 1][i]));
+					printf("%ld", abs(C[N - 1][i]));
 			}
 		}
 		if(C[N - 1][0] == 0)
