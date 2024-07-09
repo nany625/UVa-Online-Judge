@@ -33,10 +33,9 @@ int main() {
     	if(!firstCase)
     		puts("");
     	Species *tree = NULL;
-    	char *buffer = NULL;
-    	size_t bufsize = 0;
+    	char buffer[14];
         int speciesCount = 0;
-        while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
+        while(fgets(buffer, sizeof(buffer), stdin) && strcmp(buffer, "\n") != 0) {
             buffer[strcspn(buffer, "\n")] = '\0';
             int pos = binarySearch(tree, speciesCount, buffer);
             if(pos < speciesCount && strcmp(tree[pos].name, buffer) == 0)
@@ -49,7 +48,6 @@ int main() {
                 tree[pos].count = 1;
             }
         }
-        free(buffer);
         int treeSize = 0;
         for(int i = 0; i < speciesCount; ++i)
             treeSize += tree[i].count;
