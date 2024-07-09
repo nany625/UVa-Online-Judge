@@ -8,8 +8,8 @@ int main() {
     int t;
     scanf("%d", &t);
     while(t--) {
-        char buffer[256];
-        scanf("%s", buffer);
+        char *buffer = NULL;
+        scanf("%ms", &buffer);
         int i = 0, CoefficientOfX = 0, Const = 0, coefficient = 0;
         bool plus = true, EmptyCoefficient = true;
         while(buffer[i] != '=') {
@@ -92,6 +92,7 @@ int main() {
             puts("IMPOSSIBLE");
         else
             printf("%.f\n", floor((double)Const / CoefficientOfX * (-1)));
+        free(buffer);
     }
     return 0;
 }
