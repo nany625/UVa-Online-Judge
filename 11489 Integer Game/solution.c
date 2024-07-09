@@ -6,8 +6,8 @@ int main() {
 	int T;
 	scanf("%d", &T);
 	for(int i = 1; i <= T; ++i) {
-		char *N = NULL;
-		scanf("%ms", &N);
+		char N[673];
+		scanf("%s", N);
 		int len = strlen(N);
 		short modThreeCount[3] = {};
 		for(int j = 0; j < len; ++j)
@@ -17,7 +17,6 @@ int main() {
 			printf("Case %d: %c\n", i, modThreeCount[0] % 2 == 1 ? 'S' : 'T');
 		else
 			printf("Case %d: %c\n", i, modThreeCount[result] && modThreeCount[0] % 2 == 0 ? 'S' : 'T');
-		free(N);
 	}
 	return 0;
 }
