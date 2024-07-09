@@ -1,11 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int main() {
-    char *a = NULL, *b = NULL;
-    size_t bufsizea = 0, bufsizeb = 0;
-    while(getline(&a, &bufsizea, stdin) != -1 && getline(&b, &bufsizeb, stdin) != -1) {
+    char a[1002], b[1002];
+    while(fgets(a, sizeof(a), stdin) && fgets(b, sizeof(b), stdin)) {
         short frequencya[26] = {}, output[26] = {};
         int len = strlen(a);
         for(int i = 0; i < len; ++i)
@@ -21,7 +19,5 @@ int main() {
         }
         puts("");
     }
-    free(a);
-    free(b);
     return 0;
 }
