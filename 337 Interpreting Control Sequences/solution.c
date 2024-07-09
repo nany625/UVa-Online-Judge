@@ -30,10 +30,10 @@ int main() {
 	    getchar();
 	    clear();
 	    int cursorRow = 0, cursorCol = 0;
+	    char *data = NULL;
+	    size_t bufsize = 0;
 	    bool override = true;
 	    while(N--) {
-	        char *data = NULL;
-	        size_t bufsize = 0;
 	        getline(&data, &bufsize, stdin);
 	        data[strcspn(data, "\n")] = '\0';
 	        int len = strlen(data);
@@ -72,8 +72,8 @@ int main() {
 	            } else
 	                write(cursorRow, &cursorCol, data[i], override);
 	        }
-	        free(data);
 	    }
+	    free(data);
 	    puts("+----------+");
 	    for(int i = 0; i < 10; ++i)
 	        printf("|%s|\n", screen[i]);
