@@ -30,9 +30,10 @@ int main() {
     char orientation;
     while(scanf("%d %d %c", &x, &y, &orientation) == 3) {
         bool lost = false;
-        char instructions[100];
-        scanf("%s", instructions);
-        for(int i = 0; i < strlen(instructions) && !lost; ++i) {
+        char *instructions = NULL;
+        scanf("%ms", &instructions);
+        int len = strlen(instructions);
+        for(int i = 0; i < len && !lost; ++i) {
             if(orientation == 'N') {
                 if(instructions[i] == 'L')
                     orientation = 'W';
@@ -87,7 +88,8 @@ int main() {
                 }
             }
         }
-        printf("%d %d %c%s", x, y, orientation, lost ? " LOST\n" : "\n");
+        printf("%d %d %c%s\n", x, y, orientation, lost ? " LOST" : "");
+        free(instructions);
     }
     free(lostCoordinates);
     return 0;
