@@ -7,11 +7,10 @@ int main() {
 	int x = 0, n;
 	while(scanf("%d", &n) && n != 0) {
 	    getchar();
-	    char *solution = strdup(""), *buffer = NULL;
-	    size_t bufsize = 0;
+	    char *solution = strdup(""), buffer[106];
 	    solution[0] = '\0';
 	    while(n--) {
-	        getline(&buffer, &bufsize, stdin);
+	        fgets(buffer, sizeof(buffer), stdin);
 	        solution = (char*)realloc(solution, (strlen(solution) + strlen(buffer) + 1) * sizeof(char));
 	        strcat(solution, buffer);
 	    }
@@ -21,11 +20,10 @@ int main() {
 	    char *teamOutput = strdup("");
 	    teamOutput[0] = '\0';
 	    while(m--) {
-	        getline(&buffer, &bufsize, stdin);
+	        fgets(buffer, sizeof(buffer), stdin);
 	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(buffer) + 1) * sizeof(char));
 	        strcat(teamOutput, buffer);
 	    }
-	    free(buffer);
 	    if(strcmp(solution, teamOutput) == 0)	
 			printf("Run #%d: Accepted\n", ++x);
 		else {
