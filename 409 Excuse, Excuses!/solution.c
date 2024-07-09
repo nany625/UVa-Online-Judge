@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 typedef struct {
-    char excuse[72], count;
+    char *excuse, count;
 } Excuse;
 
 bool allLowerCase(char *array) {
@@ -17,16 +17,8 @@ bool allLowerCase(char *array) {
     return true;
 }
 
-void InsertionSort(char **array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1;
-        char *temp = array[i];
-        while(j >= 0 && strcmp(temp, array[j]) < 0) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = temp;
-    }
+int compare(const void *a, const void *b) {
+    return strcmp(*(const char **)a, *(const char **)b);
 }
 
 bool binarySearch(char **array, int size, char *key) {
@@ -48,22 +40,25 @@ int main() {
 	int set = 0, K, E;
 	while(scanf("%d %d", &K, &E) == 2) {
 	    printf("Excuse Set #%d\n", ++set);
-	    char **keywords = NULL, keyword[21];
+	    char **keywords = NULL, *keyword = NULL;
 	    int size = 0;
 	    while(K--) {
-	        scanf("%s", keyword);
+	        scanf("%ms", &keyword);
 	        if(allLowerCase(keyword)) {
 	            keywords = (char**)realloc(keywords, (size + 1) * sizeof(char*));
-	            keywords[size] = (char*)malloc((strlen(keyword) + 1) * sizeof(char));
-	            strcpy(keywords[size++], keyword);
+	            keywords[size++] = strdup(keyword);
 	        }
+	        free(keyword);
+	        keyword = NULL;
 	    }
-	    InsertionSort(keywords, size);
+	    qsort(keywords, size, sizeof(char*), compare);
 	    getchar();
 	    Excuse excuses[E];
 	    char max = 0;
 	    for(int i = 0; i < E; ++i) {
-	        fgets(excuses[i].excuse, sizeof(excuses[i].excuse), stdin);
+	        excuses[i].excuse = NULL;
+	        size_t bufsize = 0;
+	        getline(&excuses[i].excuse, &bufsize, stdin);
 	        excuses[i].count = 0;
 	        int start = 0, len = strlen(excuses[i].excuse);
 	        while(start < len) {
@@ -71,10 +66,9 @@ int main() {
 	                int end = start + 1;
 	                while(isalpha(excuses[i].excuse[end]))
 	                    ++end;
-	                char token[end - start + 1];
-	                strncpy(token, excuses[i].excuse + start, end - start);
-	                token[end - start] = '\0';
+	                char *token = strndup(excuses[i].excuse + start, end - start);
 	                excuses[i].count += binarySearch(keywords, size, token);
+	                free(token);
 	                start = end;
 	            }
 	            ++start;
@@ -84,6 +78,7 @@ int main() {
 	    for(int i = 0; i < E; ++i) {
 	        if(excuses[i].count == max)
 	            printf("%s", excuses[i].excuse);
+	        free(excuses[i].excuse);
 	    }
 	    puts("");
 	    for(int i = 0; i < size; ++i)
