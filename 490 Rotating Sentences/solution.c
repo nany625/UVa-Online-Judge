@@ -10,8 +10,7 @@ int main() {
 		sentence[strcspn(sentence, "\n")] = '\0';
 		maxLen = maxLen > strlen(sentence) ? maxLen : strlen(sentence);
 		sentences = (char**)realloc(sentences, (size + 1) * sizeof(char*));
-		sentences[size] = (char*)realloc(sentences[size], (strlen(sentence) + 1) * sizeof(char));
-		strcpy(sentences[size++], sentence);
+		sentences[size++] = strdup(sentence);
 	}
 	for(int i = 0; i < maxLen; ++i) {
 	    for(int j = size - 1; j >= 0; --j)
