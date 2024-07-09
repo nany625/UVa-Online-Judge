@@ -8,7 +8,6 @@ int main() {
 	while(scanf("%d", &n) && n != 0) {
 	    getchar();
 	    char *solution = strdup(""), buffer[106];
-	    solution[0] = '\0';
 	    while(n--) {
 	        fgets(buffer, sizeof(buffer), stdin);
 	        solution = (char*)realloc(solution, (strlen(solution) + strlen(buffer) + 1) * sizeof(char));
@@ -18,7 +17,6 @@ int main() {
 	    scanf("%d", &m);
 	    getchar();
 	    char *teamOutput = strdup("");
-	    teamOutput[0] = '\0';
 	    while(m--) {
 	        fgets(buffer, sizeof(buffer), stdin);
 	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(buffer) + 1) * sizeof(char));
