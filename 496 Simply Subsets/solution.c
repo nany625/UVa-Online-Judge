@@ -19,10 +19,9 @@ int binarySearch(int *array, int size, int key) {
 void insert(int **set, int *sizeSet, int pos, int value) {
     if(!(pos < *sizeSet && (*set)[pos] == value)) {
         *set = (int*)realloc(*set, (*sizeSet + 1) * sizeof(int));
-    	for(int i = *sizeSet; i > pos; --i)
+    	for(int i = (*sizeSet)++; i > pos; --i)
     	    (*set)[i] = (*set)[i - 1];
     	(*set)[pos] = value;
-    	++(*sizeSet);
     }
 }
 
@@ -38,8 +37,9 @@ void appendSet(int **set, int **uni, int *sizeSet, int *sizeUni, char *buffer) {
 }
 
 int main() {
-	char bufferA[1893], bufferB[1893];
-	while(fgets(bufferA, sizeof(bufferA), stdin) && fgets(bufferB, sizeof(bufferB), stdin)) {
+	char *bufferA = NULL, *bufferB = NULL;
+	size_t bufsizea = 0, bufsizeb = 0;
+	while(getline(&bufferA, &bufsizea, stdin) != -1 && getline(&bufferB, &bufsizeb, stdin)) {
 	    int *setA = NULL, *setB = NULL, *uni = NULL;
 	    int sizeA = 0, sizeB = 0, sizeUni = 0;
 	    appendSet(&setA, &uni, &sizeA, &sizeUni, bufferA);
@@ -58,5 +58,7 @@ int main() {
 	    free(setB);
 	    free(uni);
 	}
+	free(bufferA);
+	free(bufferB);
 	return 0;
 }
