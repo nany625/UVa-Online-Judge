@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
 #include <stdbool.h>
 
 int main() {
-	char number[8];
+	char *number = NULL;
 	int digits[7], baseFrom, baseTo;
-	while(scanf("%s %d %d", number, &baseFrom, &baseTo) == 3) {
+	while(scanf("%ms %d %d", &number, &baseFrom, &baseTo) == 3) {
 		int num = 0, len = strlen(number);
 		for(int i = 0; i < len; ++i) {
 			if(isupper(number[i]))
@@ -40,6 +41,8 @@ int main() {
 			}
 			puts("");
 		}
+		free(number);
+		number = NULL;
 	}
 	return 0;
 }
