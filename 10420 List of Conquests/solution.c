@@ -28,20 +28,21 @@ int main() {
 	Conquest *conquests = NULL;
 	int size = 0;
 	while(n--) {
-		char country[76];
-		scanf("%s", country);
-		int pos = binarySearch(conquests, size, country);
-		if(pos < size && strcmp(conquests[pos].country, country) == 0)
+		char *buffer = NULL;
+		scanf("%ms", &buffer);
+		int pos = binarySearch(conquests, size, buffer);
+		if(pos < size && strcmp(conquests[pos].country, buffer) == 0)
 		    ++conquests[pos].count;
 		else {
 		    conquests = (Conquest*)realloc(conquests, (size + 1) * sizeof(Conquest));
 		    for(int i = size++; i > pos; --i)
 		        conquests[i] = conquests[i - 1];
-		    conquests[pos].country = (char*)malloc((strlen(country) + 1) * sizeof(char));
-		    strcpy(conquests[pos].country, country);
+		    conquests[pos].country = strdup(buffer);
             conquests[pos].count = 1;
 		}
-		fgets(country, sizeof(country), stdin);
+		size_t bufsize = 0;
+		getline(&buffer, &bufsize, stdin);
+		free(buffer);
 	}
 	for(int i = 0; i < size; ++i) {
 	    printf("%s %d\n", conquests[i].country, conquests[i].count);
