@@ -5,33 +5,25 @@
 	
 typedef struct {
     int p;
-    char number[9];
+    char *number;
 } Data;
 
-void InsertionSort(Data *array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1;
-        Data temp = array[i];
-        while(j >= 0 && temp.p < array[j].p) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = temp;
-    }
+int compare(const void *a, const void *b) {
+    return ((Data*)a)->p - ((Data*)b)->p;
 }
 
 int main() {
 	int cases;
 	scanf("%d", &cases);
-	bool blankLine = false;
+	bool firstCase = true;
 	while(cases--) {
-	    if(blankLine)
+	    if(!firstCase)
 	        puts("");
 	    getchar();
 	    getchar();
-	    char buffer[25];
-	    fgets(buffer, sizeof(buffer), stdin);
-	    buffer[strcspn(buffer, "\n")] = '\0';
+	    char *buffer = NULL;
+	    size_t bufsize = 0;
+	    getline(&buffer, &bufsize, stdin);
 	    Data *datas = NULL;
 	    int size = 0;
 	    char *token = strtok(buffer, " ");
@@ -41,12 +33,14 @@ int main() {
 	        token = strtok(NULL, " ");
 	    }
 	    for(int i = 0; i < size; ++i)
-	        scanf("%s", datas[i].number);
-	    InsertionSort(datas, size);
-	    for(int i = 0; i < size; ++i)
+	        scanf("%ms", &datas[i].number);
+	    qsort(datas, size, sizeof(Data), compare);
+	    for(int i = 0; i < size; ++i) {
 	        printf("%s\n", datas[i].number);
+	        free(datas[i].number);
+	    }
 	    free(datas);
-	    blankLine = true;
+	    firstCase = false;
 	}
 	return 0;
 }
