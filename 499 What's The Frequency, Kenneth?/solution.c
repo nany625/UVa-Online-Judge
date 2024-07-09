@@ -1,17 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 int main() {
-    char text[93];
-    while(fgets(text, sizeof(text), stdin)) {
+    char *buffer = NULL;
+    size_t bufsize = 0;
+    while(getline(&buffer, &bufsize, stdin) != -1) {
         char frequency[52] = {}, max = 0;
-        int len = strlen(text);
+        int len = strlen(buffer);
         for(int i = 0; i < len; ++i) {
-            if(isupper(text[i]))
-                max = max > ++frequency[text[i] - 'A'] ? max : frequency[text[i] - 'A'];
-            else if(islower(text[i]))
-                max = max > ++frequency[text[i] - 'a' + 26] ? max : frequency[text[i] - 'a' + 26];
+            if(isupper(buffer[i]))
+                max = max > ++frequency[buffer[i] - 'A'] ? max : frequency[buffer[i] - 'A'];
+            else if(islower(buffer[i]))
+                max = max > ++frequency[buffer[i] - 'a' + 26] ? max : frequency[buffer[i] - 'a' + 26];
         }
         for(int i = 0; i < 26; ++i) {
             if(max == frequency[i])
@@ -23,5 +25,6 @@ int main() {
         }
         printf(" %d\n",max);
     }
+    free(buffer);
     return 0;
 }
