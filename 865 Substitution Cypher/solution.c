@@ -15,7 +15,7 @@ int main() {
 	    fgets(plaintext, sizeof(plaintext), stdin);
 		fgets(substitution, sizeof(substitution), stdin);
 		printf("%s%s", substitution, plaintext);
-		char text[68];
+		char text[66];
 		while(fgets(text, sizeof(text), stdin) && strcmp(text, "\n") != 0) {
 		    int lenText = strlen(text);
 		    for(int i = 0; i < lenText; ++i) {
