@@ -14,8 +14,7 @@ int contain(char *p, char ch) {
 }
 
 void filter(char **p, int index) {
-    *p = (char*)malloc(sizeof(char));
-    (*p)[0] = '\0';
+    *p = strdup("");
     int size = 0;
     for(int i = 0; i < 6; ++i) {
         for(int j = 0; j < 6; ++j) {
