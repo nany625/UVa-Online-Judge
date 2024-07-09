@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 typedef struct {
-    char M[21];
+    char *M;
     int L, H;
 } Data;
 
@@ -16,8 +17,10 @@ int main() {
 		int D;
 		scanf("%d", &D);
 		Data datas[D];
-		for(int i = 0; i < D; ++i)
-			scanf("%s %d %d", datas[i].M, &datas[i].L, &datas[i].H);
+		for(int i = 0; i < D; ++i) {
+		    datas[i].M = NULL;
+			scanf("%ms %d %d", &datas[i].M, &datas[i].L, &datas[i].H);
+		}
 		int Q;
 		scanf("%d", &Q);
 		while(Q--) {
@@ -36,6 +39,8 @@ int main() {
 				puts("UNDETERMINED");
 		}
 		firstCase = false;
+		for(int i = 0; i < D; ++i)
+		    free(datas[i].M);
 	}
 	return 0;
 }
