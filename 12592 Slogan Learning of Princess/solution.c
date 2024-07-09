@@ -42,12 +42,10 @@ int main() {
     scanf("%d", &Q);
     getchar();
     while(Q--) {
-        char *buffer = NULL;
-        size_t bufsize = 0;
-        getline(&buffer, &bufsize, stdin);
+        char buffer[24];
+        fgets(buffer, sizeof(buffer), stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
         printf("%s", binarySearch(slogans, N, buffer));
-        free(buffer);
     }
     for(int i = 0; i < N; ++i) {
         free(slogans[i].firstLine);
