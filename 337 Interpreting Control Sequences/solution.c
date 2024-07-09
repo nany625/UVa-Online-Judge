@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
@@ -31,8 +32,9 @@ int main() {
 	    int cursorRow = 0, cursorCol = 0;
 	    bool override = true;
 	    while(N--) {
-	        char data[33];
-	        fgets(data, sizeof(data), stdin);
+	        char *data = NULL;
+	        size_t bufsize = 0;
+	        getline(&data, &bufsize, stdin);
 	        data[strcspn(data, "\n")] = '\0';
 	        int len = strlen(data);
 	        for(int i = 0; i < len; ++i) {
@@ -70,6 +72,7 @@ int main() {
 	            } else
 	                write(cursorRow, &cursorCol, data[i], override);
 	        }
+	        free(data);
 	    }
 	    puts("+----------+");
 	    for(int i = 0; i < 10; ++i)
