@@ -36,10 +36,11 @@ int main() {
 	    if(isPrime(i))
 	        primes[count++] = i;
 	}
-	char line[25];
-	while(fgets(line, sizeof(line), stdin) && strcmp(line, "0\n") != 0) {
+	char *buffer = NULL;
+	size_t bufsize = 0;
+	while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "0\n") != 0) {
 	    int x = 1;
-	    char *token = strtok(line, " ");
+	    char *token = strtok(buffer, " ");
 	    while(token) {
 	        int p = atoi(token);
 	        token = strtok(NULL, " ");
@@ -65,5 +66,6 @@ int main() {
 	    }
 	    puts("");
 	}
+	free(buffer);
 	return 0;
 }
