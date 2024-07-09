@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
 int main() {
-    char M[1002];
     int N;
     scanf("%d", &N);
     while(N--) {
-        scanf("%s", M);
+        char *M = NULL;
+        scanf("%ms", &M);
         int len = strlen(M), S;
         scanf("%d", &S);
         bool wonderful = true;
@@ -25,6 +26,7 @@ int main() {
             }
         }
         printf("%s - %s\n", M, wonderful ? "Wonderful." : "Simple.");
+        free(M);
     }
     return 0;
 }
