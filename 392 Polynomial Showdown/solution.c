@@ -44,5 +44,6 @@ int main() {
 			putchar('0');
 		puts("");
 	}
+    free(buffer);
 	return 0;
 }
