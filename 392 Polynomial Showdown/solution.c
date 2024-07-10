@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 int main() {
-    short coefficients[9];
+    int coefficients[9];
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	while(getline(&buffer, &bufsize, stdin) != -1) {
@@ -27,7 +27,7 @@ int main() {
 						putchar('-');
 				}
 				if(i == 0)
-					printf("%hd", abs(coefficients[i]));
+					printf("%d", abs(coefficients[i]));
 				else if(i == 1) {
 					if(abs(coefficients[i]) > 1)
 						printf("%d", abs(coefficients[i]));
