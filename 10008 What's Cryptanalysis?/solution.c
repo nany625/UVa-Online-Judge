@@ -25,17 +25,17 @@ int main() {
 	scanf("%d", &n);
 	getchar();
 	while(n--) {
-        char *text = NULL;
-	    size_t textsize = 0;
-	    getline(&text, &textsize, stdin);
-	    int len = strlen(text);
+        char *buffer = NULL;
+	    size_t bufsize = 0;
+	    getline(&buffer, &bufsize, stdin);
+	    int len = strlen(buffer);
 	    for(int i = 0; i < len; ++i) {
-	        if(isupper(text[i]))
-	            ++frequencies[text[i] - 'A'].count;
-	        else if(islower(text[i]))
-	            ++frequencies[text[i] - 'a'].count;
+	        if(isupper(buffer[i]))
+	            ++frequencies[buffer[i] - 'A'].count;
+	        else if(islower(buffer[i]))
+	            ++frequencies[buffer[i] - 'a'].count;
 	    }
-        free(text);
+        free(buffer);
 	}
 	qsort(frequencies, 26, sizeof(Frequency), compare);
 	for(int i = 0; i < 26 && frequencies[i].count > 0; ++i)
