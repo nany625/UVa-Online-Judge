@@ -9,21 +9,18 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (guess = (int)st.nval) != 0) {
 		    String resp = br.readLine();
-		    switch(resp) {
-		        case "too high":
-		            max = Math.min(max, guess - 1);
-		            break;
-		        case "too low":
-		            min = Math.max(min, guess + 1);
-		            break;
-		        case "right on":
-		            if(guess >= min && guess <= max)
-		                output.append("Stan may be honest\n");
-		            else
-		                output.append("Stan is dishonest\n");
-		            min = 1;
-		            max = 10;
-		    }
+		    if(resp.equals("too high"))
+                max = Math.min(max, guess - 1);
+            else if(resp.equals("too low"))
+                min = Math.max(min, guess + 1);
+            else if(resp.equals("right on")) {
+                if(guess >= min && guess <= max)
+                    output.append("Stan may be honest\n");
+                else
+                    output.append("Stan is dishonest\n");
+                min = 1;
+                max = 10;
+            }
 		}
 		System.out.print(output);
 	}
