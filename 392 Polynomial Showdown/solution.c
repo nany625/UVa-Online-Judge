@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 int main() {
-    short coefficients[9];
+    int coefficients[9];
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	while(getline(&buffer, &bufsize, stdin) != -1) {
