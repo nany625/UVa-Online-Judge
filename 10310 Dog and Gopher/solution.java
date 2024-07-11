@@ -41,7 +41,4 @@ public class Main {
 
 class Coordinate {
     double x, y;
-    Coordinate() {
-        x = y = 0;
-    }
 }
