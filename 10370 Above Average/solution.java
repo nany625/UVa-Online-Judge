@@ -16,8 +16,8 @@ public class Main {
                 sum += grades[i];
             }
             int count = 0;
-            for(int i = 0; i < N; ++i)
-                count += (grades[i] * N > sum ? 1 : 0);
+            for(Integer i : grades)
+                count += (i * N > sum ? 1 : 0);
             output.append(String.format("%.3f%%\n", 100.0 * count / N));
 		}
 		System.out.print(output);
