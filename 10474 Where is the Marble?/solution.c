@@ -5,7 +5,7 @@ int compare(const void *a, const void *b) {
     return *(short*)a - *(short*)b;
 }
 
-int binarySearch(short *array, int size, int key) {
+int binarySearch(short *array, int size, short key) {
     int left = 0, right = size - 1;
     while(left <= right) {
         int mid = left + (right - left) / 2;
