@@ -1,15 +1,13 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int main() {
     int t;
     scanf("%d", &t);
     getchar();
-    char *buffer = NULL;
-    size_t bufsize = 0;
+    char buffer[202];
     while(t--) {
-        getline(&buffer, &bufsize, stdin);
+        fgets(buffer, sizeof(buffer), stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
         int press[10] = {}, len = strlen(buffer);
         char prev[11] = "0000000000", curr[11];
@@ -68,6 +66,5 @@ int main() {
             printf("%d ", press[j]);
         printf("%d\n", press[9]);
     }
-    free(buffer);
     return 0;
 }
