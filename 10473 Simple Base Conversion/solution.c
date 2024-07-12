@@ -8,6 +8,8 @@ int main() {
 	        printf("%ld\n", strtol(num, NULL, 16));
 	    else
 	        printf("0x%X\n", atoi(num));
+        free(num);
+        num = NULL;
 	}
 	return 0;
 }
