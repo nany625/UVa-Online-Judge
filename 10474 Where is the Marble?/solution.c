@@ -19,7 +19,7 @@ int binarySearch(short *array, int size, short key) {
         else
             right = mid - 1;
     }
-    return -1;
+    return 0;
 }
 
 
@@ -35,7 +35,7 @@ int main() {
         	short query;
         	scanf("%hd", &query);
             int position = binarySearch(marbles, N, query);
-            if(position != -1)
+            if(position != 0)
                 printf("%hd found at %d\n", query, position);
             else
                 printf("%hd not found\n", query);
