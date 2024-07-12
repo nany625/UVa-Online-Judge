@@ -11,5 +11,6 @@ int main() {
         free(num);
         num = NULL;
 	}
+    free(num);
 	return 0;
 }
