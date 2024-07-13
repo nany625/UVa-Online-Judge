@@ -17,7 +17,7 @@ int main() {
         else if(sscanf(buffer, "%d", &t) == 1 && t >= 0)
             printf("%.4f\n",  t * t / 8.0 * PI);
         else
-            puts("Impossible\n");
+            puts("Impossible");
     }
     free(buffer);
     return 0;
