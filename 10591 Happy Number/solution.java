@@ -46,7 +46,6 @@ import java.io.*;
 
 public class Main {
 	public static void main (String[] args) throws IOException {
-		
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		st.nextToken();
 		int cases = (int)st.nval;
