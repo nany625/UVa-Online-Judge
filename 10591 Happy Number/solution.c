@@ -50,17 +50,17 @@ int main() {
         int N;
         scanf("%d", &N);
         printf("Case #%d: %d is ", i, N);
-        bool table[729] = {};
+        bool check[729] = {};
         do {
             if(N <= 729)
-                table[N - 1] = true;
+                check[N - 1] = true;
             int temp = 0;
             while(N > 0) {
                 temp += (N % 10) * (N % 10);
                 N /= 10;
             }
             N = temp;
-        } while(N != 1 && !table[N - 1]);
+        } while(N != 1 && !check[N - 1]);
         puts(N == 1 ? "a Happy number." : "an Unhappy number.");
     }
     return 0;
