@@ -26,7 +26,7 @@ int squareSum(int n) {
 }
 
 int main() {
-    bool isHappy[716] = {};
+    bool isHappy[729] = {};
     for(int i = 0; i < 103; ++i)
         isHappy[table[i] - 1] = true;
     int cases;
@@ -35,7 +35,7 @@ int main() {
         int N;
         scanf("%d", &N);
         printf("Case #%d: %d is ", i, N);
-        while(N > 716)
+        while(N > 729)
             N = squareSum(N);
         puts(isHappy[N - 1] ? "a Happy number." : "an Unhappy number.");
     }
