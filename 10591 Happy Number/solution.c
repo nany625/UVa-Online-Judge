@@ -49,9 +49,9 @@ int main() {
         int N;
         scanf("%d", &N);
         printf("Case #%d: %d is ", i, N);
-        bool table[401] = {};
+        bool table[729] = {};
         do {
-            if(N <= 401)
+            if(N <= 729)
                 table[N - 1] = true;
             int temp = 0;
             while(N > 0) {
