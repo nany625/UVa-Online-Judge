@@ -3,7 +3,7 @@
 #include <math.h>
 
 int main() {
-    double PI = 2 * acos(0);
+    double PI = acos(-1);
     int N;
     scanf("%d", &N);
     getchar();
