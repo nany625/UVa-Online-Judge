@@ -12,10 +12,12 @@ int main() {
     while(N--) {
         getline(&buffer, &bufsize, stdin);
         int r1, r2, t;
-        if(sscanf(buffer, "%d %d", &r1, &r2) == 2)
+        if(sscanf(buffer, "%d %d", &r1, &r2) == 2 && r1 >= 0 && r2 >= 0)
             printf("%.4f\n", 2 * r1 * r2 * PI);
-        else if(sscanf(buffer, "%d", &t) == 1)
+        else if(sscanf(buffer, "%d", &t) == 1 && t >= 0)
             printf("%.4f\n",  t * t / 8.0 * PI);
+        else
+            puts("Impossible\n");
     }
     free(buffer);
     return 0;
