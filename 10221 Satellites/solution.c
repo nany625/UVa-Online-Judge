@@ -3,7 +3,7 @@
 #include <math.h>
 
 int main() {
-    double s, a, PI = 2 * acos(0.0);
+    double s, a, PI = 2 * acos(0);
     char str[4];
     while(scanf("%lf %lf %s", &s, &a, str) == 3) {
         if(strcmp(str, "min") == 0)
