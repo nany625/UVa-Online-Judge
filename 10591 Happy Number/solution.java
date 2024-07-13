@@ -40,3 +40,38 @@ public class Main {
         return result;
     }
 }
+
+// #解法二
+import java.io.*;
+
+public class Main {
+	public static void main (String[] args) throws IOException {
+		
+		StreamTokenizer st = new StreamTokenizer(System.in);
+		st.nextToken();
+		int cases = (int)st.nval;
+		StringBuilder output = new StringBuilder();
+		for(int i = 1; i <= cases; ++i) {
+            st.nextToken();
+		    int N = (int)st.nval;
+            output.append("Case #" + i + ": " + N + " is ");
+            boolean[] check = new boolean[729];
+            do {
+                if(N <= 729)
+                    check[N - 1] = true;
+                N = squareSum(N);
+            } while(N != 1 && !check[N - 1]);
+             output.append(N == 1 ? "a Happy number.\n" : "an Unhappy number.\n");
+        }
+		System.out.print(output);
+	}
+	
+	static int squareSum(int n) {
+        int result = 0;
+        while(n > 0) {
+            result += (n % 10) * (n % 10);
+            n /= 10;
+        }
+        return result;
+    }
+}
