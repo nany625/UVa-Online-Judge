@@ -60,7 +60,7 @@ public class Main {
                     check[N - 1] = true;
                 N = squareSum(N);
             } while(N != 1 && !check[N - 1]);
-             output.append(N == 1 ? "a Happy number.\n" : "an Unhappy number.\n");
+            output.append(N == 1 ? "a Happy number.\n" : "an Unhappy number.\n");
         }
 		System.out.print(output);
 	}
