@@ -7,7 +7,7 @@ int count = 1;
 
 bool isPrime(short n) {
     short limit = sqrt(n);
-    for(int i = 0; i < count && primes[i] <= limit; ++i) {
+    for(int i = 1; i < count && primes[i] <= limit; ++i) {
         if(n % primes[i] == 0)
             return false;
     }
