@@ -32,9 +32,7 @@ int main() {
                 } while(num % primes[i] == 0);
             }
         }
-        if(num > 1)
-            ++pfCount;
-        printf("%d\n", pfCount);
+        printf("%d\n", pfCount + (num > 1));
     }
     return 0;
 }
