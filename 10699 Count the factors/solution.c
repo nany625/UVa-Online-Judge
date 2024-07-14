@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 void pfCheck(int *n, int factor, int *count) {
     if(*n % factor == 0) {
@@ -12,13 +13,16 @@ void pfCheck(int *n, int factor, int *count) {
 int main() {
     int num;
     while(scanf("%d", &num) && num != 0) {
-        int temp = num, factor = 3, pfCount = 0;
-        pfCheck(&temp, 2, &pfCount);
-        while(temp > 1) {
-            pfCheck(&temp, factor, &pfCount);
+        printf("%d : ", num);
+        int limit = sqrt(num), factor = 3, pfCount = 0;
+        pfCheck(&num, 2, &pfCount);
+        while(factor <= limit) {
+            pfCheck(&num, factor, &pfCount);
             factor += 2;
         }
-        printf("%d : %d\n", num, pfCount);
+        if(num > 1)
+            ++pfCount;
+        printf("%d\n", pfCount);
     }
     return 0;
 }
