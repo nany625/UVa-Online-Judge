@@ -13,7 +13,6 @@ int sumOfDigits(int n) {
 int main() {
     char N[929];
     while(scanf("%s", N) && strcmp(N, "0") != 0) {
-        printf("%s is ", N);
         int degree = 0, temp = 0, len = strlen(N);
         for(int i = 0; i < len; ++i)
             temp += N[i] - '0';
@@ -23,9 +22,9 @@ int main() {
         }
         degree += temp == 9;
         if(degree == 0)
-            puts("not a multiple of 9.");
+            printf("%s is not a multiple of 9.\n", N);
         else
-            printf("a multiple of 9 and has 9-degree %d.\n", degree);
+            printf("%s is a multiple of 9 and has 9-degree %d.\n", N, degree);
     }
     return 0;
 }
