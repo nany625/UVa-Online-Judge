@@ -4,39 +4,45 @@
 #include <math.h>
 #include <stdbool.h>
 
-bool isPrime(int n) {
-    if(n <= 3)
-        return n > 1;
-    if(n % 2 == 0 || n % 3 == 0)
-        return false;
-    int limit = sqrt(n);
-    for(int i = 5; i <= limit; i += 6) {
-        if(n % i == 0 || n % (i + 2) == 0)
+short primes[303] = {2};
+int count = 1;
+bool table[2001] = {false, false, true};
+
+bool isPrime(short n) {
+    short limit = sqrt(n);
+    for(int i = 1; i < count && primes[i] <= limit; ++i) {
+        if(n % primes[i] == 0)
             return false;
     }
     return true;
 }
 
 int main() {
+    for(short i = 3; count < 303; i += 2) {
+        if(isPrime(i)) {
+            primes[count++] = i;
+            table[i] = true;
+        }
+    }
     int T;
     scanf("%d", &T);
-    char buffer[2001];
+    char buffer[1937];
     for(int i = 1; i <= T; ++i) {
         printf("Case %d: ", i);
         scanf("%s", buffer);
-        short count[62] = {};
+        short frequency[62] = {};
         int len = strlen(buffer);
         for(int j = 0; j < len; ++j) {
             if(isdigit(buffer[j]))
-                ++count[buffer[j] - '0'];
+                ++frequency[buffer[j] - '0'];
             else if(isupper(buffer[j]))
-                ++count[buffer[j] - 'A' + 10];
+                ++frequency[buffer[j] - 'A' + 10];
             else if(islower(buffer[j]))
-                ++count[buffer[j] - 'a' + 36];
+                ++frequency[buffer[j] - 'a' + 36];
         }
         bool empty = true;
         for(int j = 0; j < 62; ++j) {
-            if(isPrime(count[j])) {
+            if(table[frequency[j]]) {
                 if(j < 10)
                     putchar('0' + j);
                 else if(j < 36)
