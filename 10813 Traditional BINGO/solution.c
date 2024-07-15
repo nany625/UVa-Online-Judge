@@ -9,26 +9,26 @@ typedef struct {
 Card bingo[5][5];
 
 bool isBINGO(int row, int col) {
-    bool found = true;
-    for(int i = 0; i < 5 && found; ++i)
-        found = bingo[row][i].announce;
-    if(found)
+    int i = 0;
+    while(i < 5 && bingo[row][i].announce)
+        ++i;
+    if(i == 5)
         return true;
-    found = true;
-    for(int i = 0; i < 5 && found; ++i)
-        found = bingo[i][col].announce;
-    if(found)
+    i = 0;
+    while(i < 5 && bingo[i][col].announce)
+        ++i;
+    if(i == 5)
         return true;
     if(row == col || row + col == 4) {
-        found = true;
-        for(int i = 0; i < 5 && found; ++i)
-            found = bingo[i][i].announce;
-        if(found)
+        i = 0;
+        while(i < 5 && bingo[i][i].announce)
+            ++i;
+        if(i == 5)
             return true;
-        found = true;
-        for(int i = 0; i < 5 && found; ++i)
-            found = bingo[i][4 - i].announce;
-        if(found)
+        i = 0;
+        while(i < 5 && bingo[i][4 - i].announce)
+            ++i;
+        if(i == 5)
             return true;
     }
     return false;
