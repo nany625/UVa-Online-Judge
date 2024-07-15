@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int sumOfDigits(char *array) {
-    int result = 0, len = strlen(array);
-    for(int i = 0; i < len; ++i)
-        result += array[i] - '0';
+int sumOfDigits(int n) {
+    int result = 0;
+    while(n > 0) {
+        result += n % 10;
+        n /= 10;
+    }
     return result;
 }
 
@@ -12,10 +14,12 @@ int main() {
     char N[1001];
     while(scanf("%s", N) && strcmp(N, "0") != 0) {
         printf("%s is ", N);
-        int degree = 0, temp;
-        while((temp = sumOfDigits(N)) > 9 && temp % 9 == 0) {
+        int degree = 0, temp = 0, len = strlen(N);
+        for(int i = 0; i < len; ++i)
+            temp += N[i] - '0';
+        while(temp > 9 && temp % 9 == 0) {
             ++degree;
-            sprintf(N, "%d", temp);
+            temp = sumOfDigits(temp);
         }
         degree += temp == 9;
         if(degree == 0)
