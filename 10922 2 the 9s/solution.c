@@ -11,7 +11,7 @@ int sumOfDigits(int n) {
 }
 
 int main() {
-    char N[1001];
+    char N[929];
     while(scanf("%s", N) && strcmp(N, "0") != 0) {
         printf("%s is ", N);
         int degree = 0, temp = 0, len = strlen(N);
