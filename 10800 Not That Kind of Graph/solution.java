@@ -4,8 +4,9 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
 	    st.nextToken();
+        int N = (int)st.nval;
 	    StringBuilder output = new StringBuilder();
-	    for(int i = 1; i <= (int)st.nval; ++i) {
+	    for(int i = 1; i <= N; ++i) {
     	    output.append("Case #" + i + ":\n");
     	    st.nextToken();
     	    String stockPrice = st.sval;
