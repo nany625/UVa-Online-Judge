@@ -5,9 +5,10 @@ public class Main {
     static char[][] screen = new char[10][10];
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, N;
         StringBuilder output = new StringBuilder();
-        while((N = Integer.parseInt(br.readLine())) != 0) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
             output.append("Case " + (++cases) + "\n");
     		for(int i = 0; i < 10; ++i)
     	        Arrays.fill(screen[i], ' ');
