@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int M = 0, N;
+    while(scanf("%d", &N) == 1) {
+        int S[N];
+        for(int i = 0; i < N; ++i)
+            scanf("%d", &S[i]);
+        long P = 0, current;
+        for(int i = 0; i < N; ++i) {
+            current = S[i];
+            P = P > current ? P : current;
+            for(int j = i + 1; j < N; ++j) {
+                current *= S[j];
+                P = P > current ? P : current;
+            }
+        }
+        printf("Case #%d: The maximum product is %ld.\n\n", ++M, P);
+    }
+    return 0;
+}
