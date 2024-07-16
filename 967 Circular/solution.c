@@ -8,13 +8,13 @@ int cp[] = {
     993319, 999331
 };
 
-int binarySearch(int *array, int key) {
+int binarySearch(int key) {
     int left = 0, right = 41;
 	while(left <= right) {
 		int mid = left + (right - left) / 2;
-		if(array[mid] == key)
+		if(cp[mid] == key)
 			return mid;
-		if(array[mid] < key)
+		if(cp[mid] < key)
 			left = mid + 1;
 		else
 			right = mid - 1;
@@ -27,7 +27,7 @@ int main() {
 	while(scanf("%d", &i) && i != -1) {
 		int j;
 		scanf("%d", &j);
-		int posI = binarySearch(cp, i), posJ = binarySearch(cp, j);
+		int posI = binarySearch(i), posJ = binarySearch(j);
 		int cpCount = (posJ - posI) + (posJ < 42 && cp[posJ] == j);
 		if(cpCount == 0)
 		    puts("No Circular Primes.");
