@@ -1,21 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <math.h>
 #include <stdbool.h>
 
 int main() {
-	char *number = NULL;
+	char number[8];
 	int digits[7], baseFrom, baseTo;
-	while(scanf("%ms %d %d", &number, &baseFrom, &baseTo) == 3) {
-		int num = 0, len = strlen(number);
-		for(int i = 0; i < len; ++i) {
-			if(isupper(number[i]))
-			    num += (number[i] - 'A' + 10) * pow(baseFrom, len - 1 - i);
-			else
-		        num += (number[i] - '0') * pow(baseFrom, len - 1 - i);
-		}
+	while(scanf("%s %d %d", number, &baseFrom, &baseTo) == 3) {
+		int num = strtol(number, NULL, baseFrom);
 		if(num == 0) {
 		    puts("      0");
 		    continue;
@@ -41,8 +32,6 @@ int main() {
 			}
 			puts("");
 		}
-		free(number);
-		number = NULL;
 	}
 	return 0;
 }
