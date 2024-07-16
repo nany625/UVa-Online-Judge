@@ -9,7 +9,7 @@ public class Main {
 		while(t-- > 0) {
 		    st.nextToken();
 		    int n = (int)st.nval;
-		    int position, min = 99, max = 0;
+		    int min = 99, max = 0;
 		    while(n-- > 0) {
 		        st.nextToken();
 		        min = Math.min(min, (int)st.nval);
