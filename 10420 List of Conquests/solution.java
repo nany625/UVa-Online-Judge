@@ -58,7 +58,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
-        int n = Integer.parseInt(br.readLine());
+        st.nextToken();
+        int n = (int)st.nval;
         HashMap<String, Character> conquests = new HashMap<>();
         ArrayList<String> conquestsKeys = new ArrayList<>();
         StringBuilder output = new StringBuilder();
