@@ -6,13 +6,13 @@ int main() {
         int S[N];
         for(int i = 0; i < N; ++i)
             scanf("%d", &S[i]);
-        long P = 0, current;
+        long P = 0, curr;
         for(int i = 0; i < N; ++i) {
-            current = S[i];
-            P = P > current ? P : current;
+            curr = S[i];
+            P = P > curr ? P : curr;
             for(int j = i + 1; j < N; ++j) {
-                current *= S[j];
-                P = P > current ? P : current;
+                curr *= S[j];
+                P = P > curr ? P : curr;
             }
         }
         printf("Case #%d: The maximum product is %ld.\n\n", ++M, P);
