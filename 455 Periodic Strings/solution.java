@@ -3,7 +3,9 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
+        StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int N = (int)st.nval;
         boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
