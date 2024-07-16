@@ -4,7 +4,9 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int cases = Integer.parseInt(br.readLine());
+		StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int cases = (int)st.nval;
 		br.readLine();
 		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
