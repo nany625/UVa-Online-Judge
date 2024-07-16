@@ -6,7 +6,9 @@ public class Main {
     	HashMap<Character, Short> frequencies = new HashMap<>();
     	ArrayList<Character> frequenciesKeys = new ArrayList<>();
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int n = (int)st.nval;
         StringBuilder output = new StringBuilder();
     	while(n-- > 0) {
     	    String text = br.readLine();
