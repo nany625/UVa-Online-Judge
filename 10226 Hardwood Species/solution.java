@@ -5,7 +5,9 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int cases = Integer.parseInt(br.readLine());
+        StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int cases = (int)st.nval;
         br.readLine();
         StringBuilder output = new StringBuilder();
         boolean firstCase = true;
@@ -42,7 +44,9 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int cases = Integer.parseInt(br.readLine());
+        StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int cases = (int)st.nval;
         br.readLine();
         StringBuilder output = new StringBuilder();
         boolean firstCase = true;
