@@ -12,7 +12,7 @@ public class Main {
     	    int min = (int)st.nval;
     	    st.nextToken();
     	    int max = (int)st.nval;
-    	    output.append(String.format("%d %d ", min, max));
+    	    output.append(min + " " + max + " ");
     	    if(min > max) {
     	        int temp = min;
     	        min = max;
