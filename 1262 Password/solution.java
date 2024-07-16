@@ -5,7 +5,9 @@ public class Main {
     static String[] firstGrid = new String[6], secondGrid = new String[6];
 	public static void main(String[] args) throws IOException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
+        StreamTokenizer st = new StreamTokenizer(br);
+        st.nextToken();
+        int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
         while(T-- > 0) {
             int K = Integer.parseInt(br.readLine());
