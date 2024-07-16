@@ -8,8 +8,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(t-- > 0) {
 		    st.nextToken();
-		    int n = (int)st.nval;
-		    int min = 99, max = 0;
+		    int n = (int)st.nval, min = 99, max = 0;
 		    while(n-- > 0) {
 		        st.nextToken();
 		        min = Math.min(min, (int)st.nval);
