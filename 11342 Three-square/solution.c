@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdbool.h>
+#define MAX_SUM 50000
 
 typedef struct {
     short a, b, c;
 } Answer;
 
 int main() {
-    Answer answers[50000];
-    bool table[50000] = {};
+    Answer answers[MAX_SUM];
+    bool table[MAX_SUM] = {};
     for(short a = 0; a <= 129; ++a) {
-        for(short b = a; b <= 158 && a * a + b * b <= 50000; ++b) {
-            for(short c = b; c <= 223 && a * a + b * b + c * c <= 50000; ++c) {
+        for(short b = a; b <= 158; ++b) {
+            for(short c = b; a * a + b * b + c * c <= MAX_SUM; ++c) {
                 int sum = a * a + b * b + c * c;
                 if(!table[sum - 1]) {
                     table[sum - 1] = true;
