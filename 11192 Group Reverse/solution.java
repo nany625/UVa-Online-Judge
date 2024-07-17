@@ -9,8 +9,10 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (G = (int)st.nval) != 0) {
             String s = br.readLine();
             int len = s.length();
-            for(int i = 0; i < G; ++i)
-                output.append(new StringBuilder(s.substring(i * len / G, (i + 1) * len / G)).reverse());
+            for(int i = 0; i < G; ++i) {
+                for(int j = (i + 1) * len / G - 1; j >= i * len / G; --j)
+                    output.append(s.charAt(j));
+            }
     		output.append("\n");
         }
         System.out.print(output);
