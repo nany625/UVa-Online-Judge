@@ -17,10 +17,8 @@ int main() {
             }
         }
         for(int j = 0; j < (n + 1) / 2 && isSymmetric; ++j) {
-            for(int k = 0; k < n && isSymmetric; ++k) {
-                if(M[j][k] != M[n - 1 - j][n - 1 - k])
-                    isSymmetric = false;
-            }
+            for(int k = 0; k < n && isSymmetric; ++k)
+                isSymmetric = M[j][k] == M[n - 1 - j][n - 1 - k];
         }
         printf("Test #%d: %s.\n", i, isSymmetric ? "Symmetric" : "Non-symmetric");
     }
