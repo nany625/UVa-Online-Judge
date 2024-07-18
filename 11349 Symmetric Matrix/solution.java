@@ -10,21 +10,17 @@ public class Main {
             st.nextToken();
             st.nextToken();
             st.nextToken();
-            int n = (int)st.nval;
-            long[][] M = new long[n][n];
+            int size = (int)st.nval * (int)st.nval;
+            long[] M = new long[size];
             boolean isSymmetric = true;
-            for(int j = 0; j < n; ++j) {
-                for(int k = 0; k < n; ++k) {
-                    st.nextToken();
-                    M[j][k] = (long)st.nval;
-                    if(M[j][k] < 0)
-                        isSymmetric = false;
-                }
+            for(int j = 0; j < size; ++j) {
+                st.nextToken();
+                M[j] = (long)st.nval;
+                if(M[j] < 0)
+                    isSymmetric = false;
             }
-            for(int j = 0; j < (n + 1) / 2 && isSymmetric; ++j) {
-                for(int k = 0; k < n && isSymmetric; ++k)
-                    isSymmetric = M[j][k] == M[n - 1 - j][n - 1 - k];
-            }
+            for(int j = 0; j < size / 2 && isSymmetric; ++j)
+                isSymmetric = M[j] == M[size - 1 - j];
             output.append("Test #" + i + ": " + (isSymmetric ? "Symmetric" : "Non-symmetric") + ".\n");
         }
         System.out.print(output);
