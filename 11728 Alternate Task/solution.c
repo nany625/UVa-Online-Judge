@@ -3,9 +3,9 @@
 #include <math.h>
 #define MAX_NUM 1000
 
-short factorSum(int n) {
-    short result = 1 + n, limit = sqrt(n);
-    for(short i = 2; i <= limit; ++i) {
+int factorSum(int n) {
+    int result = 1 + n, limit = sqrt(n);
+    for(int i = 2; i <= limit; ++i) {
         if(n % i == 0)
             result += i + n / i;
     }
@@ -15,15 +15,15 @@ short factorSum(int n) {
 }
 
 int main() {
-    short table[MAX_NUM] = {1};
+    int table[MAX_NUM] = {1};
     for(int i = 2; i <= MAX_NUM; ++i) {
-        short temp = factorSum(i);
+        int temp = factorSum(i);
         if(temp <= MAX_NUM)
             table[temp - 1] = i;
     }
 	int cases = 0, S;
 	while(scanf("%d", &S) && S != 0)
-	    printf("Case %d: %hd\n", ++cases, table[S - 1] != 0 ? table[S - 1] : -1);
+	    printf("Case %d: %d\n", ++cases, table[S - 1] != 0 ? table[S - 1] : -1);
 	return 0;
 }
 
