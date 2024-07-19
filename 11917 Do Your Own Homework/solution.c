@@ -15,8 +15,13 @@ const char *binarySearch(Subject *array, int size, Subject key) {
     while(left <= right) {
         int mid = left + (right - left) / 2;
         int cmp = strcmp(array[mid].name, key.name);
-        if(cmp == 0)
-            return key.days >= array[mid].days ? "Yesss" : key.days + 5 < array[mid].days ? "Do your own homework!" : "Late";
+        if(cmp == 0) {
+            if(key.days >= array[mid].days)
+                return "Yesss";
+            if(key.days + 5 < array[mid].days)
+                return "Do your own homework!";
+            return "Late";
+        }
         if(cmp < 0)
             left = mid + 1;
         else
