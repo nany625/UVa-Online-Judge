@@ -17,7 +17,7 @@ int main() {
             int frequency[26] = {}, len = strlen(word);
             for(int i = 0; i < len; ++i)
                 ++frequency[word[i] - 'a'];
-            bool ans[26] = {}, isCool = true;
+            bool ans[30] = {}, isCool = true;
             int found = 0, diff = 0;
             for(int i = 0; i < 26 && found < len && isCool; ++i) {
                 if(frequency[i] > 0) {
