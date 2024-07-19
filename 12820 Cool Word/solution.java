@@ -11,27 +11,24 @@ public class Main {
 		    while(n-- > 0) {
 		        st.nextToken();
 		        String word = st.sval;
-		        HashMap<Character, Integer> frequency = new HashMap<>();
+		        int[] frequency = new int[26];
 		        int len = word.length();
-		        for(int i = 0; i < len; ++i) {
-		            if(frequency.containsKey(word.charAt(i)))
-		                frequency.replace(word.charAt(i), frequency.get(word.charAt(i)) + 1);
-		            else
-		                frequency.put(word.charAt(i), 1);
-		        }
-		        if(frequency.size() > 1) {
-		            boolean[] ans = new boolean[26];
-		            boolean isCool = true;
-		            for(Integer i : frequency.values()) {
-		                if(!ans[i - 1])
-		                    ans[i - 1] = true;
-		                else {
-		                    isCool = false;
-		                    break;
-		                }
-		            }
-		            count += isCool ? 1 : 0;
-		        }
+		        for(int i = 0; i < len; ++i)
+		            ++frequency[word.charAt(i) - 'a'];
+		        boolean[] ans = new boolean[30];
+		        boolean isCool = true;
+                int found = 0, diff = 0;
+                for(int i = 0; i < 26 && found < len && isCool; ++i) {
+                    if(frequency[i] > 0) {
+                        if(!ans[frequency[i] - 1]) {
+                            ans[frequency[i] - 1] = true;
+                            found += frequency[i];
+                            ++diff;
+                        } else
+                            isCool = false;
+                    }
+                }
+                count += (isCool && diff > 1 ? 1 : 0);
 		    }
 		    output.append("Case " + (++cases) + ": " + count + "\n");
 		}
