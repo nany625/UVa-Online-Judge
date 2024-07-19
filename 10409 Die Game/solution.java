@@ -10,28 +10,32 @@ public class Main {
 		    while(n-- > 0) {
 		        st.nextToken();
 		        char temp = top;
-		        if(st.sval.equals("north")) {
-                    top = south;
-                    south = bottom;
-                    bottom = north;
-                    north = temp;
-                } else if(st.sval.equals("east")) {
-                    top = west;
-                    west = bottom;
-                    bottom = east;
-                    east = temp;
-                } else if(st.sval.equals("south")) {
-                    top = north;
-                    north = bottom;
-                    bottom = south;
-                    south = temp;
-                } else if(st.sval.equals("west")) {
-                    top = east;
-                    east = bottom;
-                    bottom = west;
-                    west = temp;
-                }
-		    }
+		        switch(st.sval.charAt(0)) {
+                    case 'n':
+                        top = south;
+                        south = bottom;
+                        bottom = north;
+                        north = temp;
+                        break;
+                    case 'e':
+                        top = west;
+                        west = bottom;
+                        bottom = east;
+                        east = temp;
+                        break;
+                    case 's':
+                        top = north;
+                        north = bottom;
+                        bottom = south;
+                        south = temp;
+                        break;
+                    case 'w':
+                        top = east;
+                        east = bottom;
+                        bottom = west;
+                        west = temp;
+		        }
+            }
 		    output.append(top + "\n");
 		}
 		System.out.print(output);
