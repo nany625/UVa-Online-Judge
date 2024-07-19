@@ -10,7 +10,7 @@ int compare(const void *a, const void *b) {
     return strcmp(((Dictionary*)a)->foreign, ((Dictionary*)b)->foreign);
 }
 
-char *binarySearch(Dictionary *array, int size, char *key) {
+const char *binarySearch(Dictionary *array, int size, char *key) {
     int left = 0, right = size - 1;
     while(left <= right) {
         int mid = left + (right - left) / 2;
