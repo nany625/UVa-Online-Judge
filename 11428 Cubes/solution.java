@@ -1,22 +1,24 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-        HashMap<Integer, Solution> map = new HashMap<>();
-        for(int y = 1; y <= 57; ++y) {
-            for(int x = y + 1; x * x * x - y * y * y <= 10000; ++x) {
+        Solution[] solutions = new Solution[10000];
+        boolean[] table = new boolean[10000];
+        for(short y = 1; y <= 57; ++y) {
+            for(short x = (short)(y + 1); x * x * x - y * y * y <= 10000; ++x) {
                 int N = x * x * x - y * y * y;
-                if(!map.containsKey(N))
-                    map.put(N, new Solution((short)x, (short)y));
+                if(!table[N - 1]) {
+                    table[N - 1] = true;
+                    solutions[N - 1] = new Solution(x, y);
+                }
             }
         }
         StreamTokenizer st = new StreamTokenizer(System.in);
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            if(map.containsKey(N))
-                output.append(map.get(N).x + " " + map.get(N).y + "\n");
+            if(table[N - 1])
+                output.append(solutions[N - 1].x + " " + solutions[N - 1].y + "\n");
             else
                 output.append("No solution\n");
         }
