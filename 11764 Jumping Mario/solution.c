@@ -6,14 +6,16 @@ int main() {
     for(int i = 1; i <= T; ++i) {
         int N;
         scanf("%d", &N);
-        int a[N], highJumps = 0, lowJumps = 0;
-        scanf("%d", &a[0]);
-        for(int j = 1; j < N; ++j) {
-            scanf("%d", &a[j]);
-            if(a[j] > a[j - 1])
+        int prev, curr, highJumps = 0, lowJumps = 0;
+        scanf("%d", &prev);
+        --N;
+        while(N--) {
+            scanf("%d", &curr);
+            if(curr > prev)
                 ++highJumps;
-            else if(a[j] < a[j - 1])
+            else if(curr < prev)
                 ++lowJumps;
+            prev = curr;;
         }
         printf("Case %d: %d %d\n", i, highJumps, lowJumps);
     }
