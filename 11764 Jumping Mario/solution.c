@@ -6,9 +6,10 @@ int main() {
     for(int i = 1; i <= T; ++i) {
         int N;
         scanf("%d", &N);
-        int prev, curr, highJumps = 0, lowJumps = 0;
+        int prev;
         scanf("%d", &prev);
         --N;
+        int curr, highJumps = 0, lowJumps = 0;
         while(N--) {
             scanf("%d", &curr);
             if(curr > prev)
