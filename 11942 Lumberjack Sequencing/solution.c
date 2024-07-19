@@ -2,7 +2,8 @@
 #include <stdbool.h>
 
 int main() {
-    int lumberjacks[10], N;
+    char lumberjacks[10];
+    int N;
     scanf("%d", &N);
     puts("Lumberjacks:");
 	while(N--) {
