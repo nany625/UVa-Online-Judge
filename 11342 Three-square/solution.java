@@ -1,15 +1,17 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-        HashMap<Integer, Answer> map = new HashMap<>();
+        Answer[] answers = new Answer[50001];
+        boolean[] table = new boolean[50001];
         for(short a = 0; a <= 129; ++a) {
             for(short b = a; b <= 158; ++b) {
                 for(short c = b; a * a + b * b + c * c <= 50000; ++c) {
                     int sum = a * a + b * b + c * c;
-                    if(!map.containsKey(sum))
-                        map.put(sum, new Answer(a, b, c));
+                    if(!table[sum]) {
+                        table[sum] = true;
+                        answers[sum] = new Answer(a, b, c);
+                    }
                 }
             }
         }
@@ -20,8 +22,8 @@ public class Main {
         while(N-- > 0) {
             st.nextToken();
             int K = (int)st.nval;
-            if(map.containsKey(K))
-                output.append(map.get(K).a + " " + map.get(K).b + " " + map.get(K).c + "\n");
+            if(table[K])
+                output.append(answers[K].a + " " + answers[K].b + " " + answers[K].c + "\n");
             else
                 output.append("-1\n");
         }
