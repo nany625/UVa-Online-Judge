@@ -34,7 +34,7 @@ int main() {
     char *buffer = NULL;
 	size_t bufsize = 0;
 	int J, R;
-	while(scanf("%d %d", &J, &R) == 2 && J != 0 && R != 0) {
+	while(scanf("%d %d", &J, &R) == 2) {
 		getchar();
 		int points[J];
 		for(int i = 0; i < J; ++i)
