@@ -20,10 +20,7 @@ public class Main {
                         dreams.remove(dreams.size() - 1);
                     break;
                 case 'T':
-                    if(!dreams.isEmpty())
-                        output.append(dreams.get(dreams.size() - 1) + "\n");
-                    else
-                        output.append("Not in a dream\n");
+                    output.append((!dreams.isEmpty() ? dreams.get(dreams.size() - 1) : "Not in a dream") + "\n");
 		    }
 		}
 		System.out.print(output);
