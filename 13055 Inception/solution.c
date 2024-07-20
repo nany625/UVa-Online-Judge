@@ -20,10 +20,7 @@ int main() {
                 }
                 break;
             case 'T':
-                if(size > 0)
-                    printf("%s\n", dreams[size - 1]);
-                else
-                    puts("Not in a dream");
+                puts(size > 0 ? dreams[size - 1] : "Not in a dream");
         }
     }
     for(int i = 0; i < size; ++i)
