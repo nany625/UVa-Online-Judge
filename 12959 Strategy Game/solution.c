@@ -8,13 +8,13 @@ int main() {
 			points[i] = 0;
 		int max = 0, winner, point;
 		while(R--) {
-			for(int j = 0; j < J; ++j) {
+			for(int i = 0; i < J; ++i) {
 				scanf("%d", &point);
-				points[j] += point;
+				points[i] += point;
 				if(R == 0) {
-					if(max <= points[j]) {
-						max = points[j];
-						winner = j + 1;
+					if(max <= points[i]) {
+						max = points[i];
+						winner = i + 1;
 					}
 				}
 			}
