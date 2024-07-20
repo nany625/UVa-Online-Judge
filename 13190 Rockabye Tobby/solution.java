@@ -2,7 +2,8 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
 		int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
@@ -13,10 +14,8 @@ public class Main {
 		    int k = (int)st.nval;
 		    Medicine[] medicines = new Medicine[n];
 		    for(int i = 0; i < n; ++i) {
-		        st.nextToken();
-		        String name = st.sval;
-		        st.nextToken();
-		        medicines[i] = new Medicine(name, (int)st.nval);
+		        String[] tokens = br.readLine().split("\\s+");
+		        medicines[i] = new Medicine(tokens[0], Integer.parseInt(tokens[1]));
 		    }
 		    while(k > 0) {
 		        int min = medicines[0].next;
