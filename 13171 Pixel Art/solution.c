@@ -41,8 +41,7 @@ int main() {
         if(magenta >= 0 && yellow >= 0 && cyan >= 0)
             printf("YES %d %d %d\n", magenta, yellow, cyan);
         else
-            puts("NO");
-            
+            puts("NO");  
     }
 	return 0;
 }
