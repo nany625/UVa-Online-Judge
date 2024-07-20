@@ -24,7 +24,7 @@ int main() {
                 min = min < medicines[i].next ? min : medicines[i].next;
             for(int i = 0; i < n && k; ++i) {
 				if(min == medicines[i].next){
-					printf("%d %s\n", medicines[i].next, medicines[i].name);
+					printf("%d %s\n", min, medicines[i].name);
 					medicines[i].next += medicines[i].frequency;
 					--k;
 				}
