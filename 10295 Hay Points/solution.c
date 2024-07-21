@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-    char *word;
+    char word[17];
     int value;
 } Dictionary;
 
@@ -30,22 +30,15 @@ int main() {
     int m, n;
     scanf("%d %d", &m, &n);
     Dictionary dict[m];
-    for(int i = 0; i < m; ++i) {
-        dict[i].word = NULL;
-        scanf("%ms %d", &dict[i].word, &dict[i].value);
-    }
+    for(int i = 0; i < m; ++i)
+        scanf("%s %d", dict[i].word, &dict[i].value);
     qsort(dict, m, sizeof(Dictionary), compare);
+    char word[17];
     while(n--) {
         int salary = 0;
-        char *word = NULL;
-        while(scanf("%ms", &word) && strcmp(word, ".") != 0) {
+        while(scanf("%s", word) && word[0] != '.')
             salary += binarySearch(dict, m, word);
-            free(word);
-            word = NULL;
-        }
         printf("%d\n", salary);
     }
-    for(int i = 0; i < m; ++i)
-        free(dict[i].word);
     return 0;
 }
