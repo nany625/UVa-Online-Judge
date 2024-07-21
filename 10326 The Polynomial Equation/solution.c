@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
 	int N;
+	char *buffer = NULL;
+	size_t bufsize = 0;
 	while(scanf("%d", &N) == 1) {
+	    getchar();
+	    getline(&buffer, &bufsize, stdin);
 		int factors[N - 1][2];
 		long C[N][N + 1];
-		scanf("%ld", &C[0][0]);
-		C[0][0] *= -1;
+		char *token = strtok(buffer, " ");
+		C[0][0] = atol(token) * (-1);
 		C[0][1] = 1;
 		for(int i = 0; i < N - 1; ++i) {
-			scanf("%d", &factors[i][0]);
-			factors[i][0] *= -1;
+		    token = strtok(NULL, " ");
+			factors[i][0] = atoi(token) * (-1);
 			factors[i][1] = 1;
 			for(int j = 0; j < i + 3; ++j)
 				C[i + 1][j] = 0;
@@ -48,5 +53,6 @@ int main() {
 			printf(" + 0");
 		puts(" = 0");
 	}
+    free(buffer);
 	return 0;
 }
