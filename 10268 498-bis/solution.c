@@ -4,10 +4,10 @@
 
 int main() {
     int x;
+    char *buffer = NULL;
+    size_t bufsize = 0;
     while(scanf("%d", &x) == 1) {
         getchar();
-        char *buffer = NULL;
-        size_t bufsize = 0;
         getline(&buffer, &bufsize, stdin);
         long *a = NULL;
         int size = 0;
@@ -17,7 +17,6 @@ int main() {
             a[size++] = atol(token);
             token = strtok(NULL, " ");
         }
-        free(buffer);
         --size;
         long result = 0;
         for(int i = 0; i < size; ++i)
@@ -25,5 +24,6 @@ int main() {
         printf("%ld\n", result);
         free(a);
     }
+    free(buffer);
     return 0;
 }
