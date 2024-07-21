@@ -11,19 +11,25 @@ public class Main {
     	    st.nextToken();
     	    String stockPrice = st.sval;
     	    int min = 0, max = 0, curr = 0;
-    	    if(stockPrice.charAt(0) == 'R')
-    			min = max = curr++;
-    		else if(stockPrice.charAt(0) == 'F')
-    			min = max = --curr;
+    	    switch(stockPrice.charAt(0)) {
+                case 'R':
+    			    min = max = curr++;
+                    break;
+    		    case 'F':
+    			    min = max = --curr;
+            }
     		int len = stockPrice.length();
     	    for(int j = 1; j < len; ++j) {
-    	        if(stockPrice.charAt(j) == 'R')
-    	        	max = Math.max(max, curr++);
-    	        else if(stockPrice.charAt(j) == 'F')
-    	            min = Math.min(min, --curr);
-    	        else if(stockPrice.charAt(j) == 'C') {
-    		        min = Math.min(min, curr);
-    		        max = Math.max(max, curr);
+                switch(stockPrice.charAt(j)) {
+    	            case 'R':
+    	        	    max = Math.max(max, curr++);
+                        break;
+    	            case 'F':
+    	                min = Math.min(min, --curr);
+                        break;
+    	            case 'C':
+    		            min = Math.min(min, curr);
+    		            max = Math.max(max, curr);
     	        }
     	    }
     	    char[][] graph = new char[max - min + 1][len];
@@ -31,12 +37,16 @@ public class Main {
     		for(int j = 0; j < len; ++j) {
     		    for(int k = 0; k < max - min + 1; ++k)
     				graph[k][j] = ' ';
-    			if(stockPrice.charAt(j) == 'R')
-    				graph[start--][j] = '/';
-    			else if(stockPrice.charAt(j) == 'F')
-    				graph[++start][j] = '\\';
-    			else if(stockPrice.charAt(j) == 'C')
-    				graph[start][j] = '_';
+                switch(stockPrice.charAt(j)) {
+        			case 'R':
+        				graph[start--][j] = '/';
+                        break;
+        			case 'F':
+        				graph[++start][j] = '\\';
+                        break;
+        			case 'C':
+        				graph[start][j] = '_';
+                }
     		}
     		for(int j = 0; j < max - min + 1; ++j) {
     			len = graph[j].length - 1;
