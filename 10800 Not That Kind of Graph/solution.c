@@ -46,12 +46,16 @@ int main() {
 				graph[k][j] = ' ';
 				graph[k][j + 1] = '\0';
 			}
-			if(stockPrice[j] == 'R')
-				graph[start--][j] = '/';
-			else if(stockPrice[j] == 'F')
-				graph[++start][j] = '\\';
-			else if(stockPrice[j] == 'C')
-				graph[start][j] = '_';
+			switch(stockPrice[j]) {
+			    case 'R':
+    				graph[start--][j] = '/';
+    				break;
+    			case 'F':
+    				graph[++start][j] = '\\';
+    				break;
+    			case 'C':
+    				graph[start][j] = '_';
+			}
 		}
 		for(int j = 0; j < max - min + 1; ++j) {
 		    len = strlen(graph[j]) - 1;
