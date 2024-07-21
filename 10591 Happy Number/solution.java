@@ -26,7 +26,7 @@ public class Main {
 		for(int i = 1; i <= cases; ++i) {
             st.nextToken();
 		    int N = (int)st.nval;
-            output.append("Case #" + i + ": " + N + " is " + (isHappy[squareSum(N) - 1] ? "a Happy number.\n" : "an Unhappy number.\n"));
+            output.append("Case #" + i + ": " + N + " is " + (isHappy[squareSum(N) - 1] ? "a H" : "an Unh") + "appy number.\n");
         }
 		System.out.print(output);
 	}
@@ -60,7 +60,7 @@ public class Main {
                     check[N - 1] = true;
                 N = squareSum(N);
             } while(N != 1 && !check[N - 1]);
-            output.append(N == 1 ? "a Happy number.\n" : "an Unhappy number.\n");
+            output.append((N == 1 ? "a H" : "an Unh") +  "appy number.\n");
         }
 		System.out.print(output);
 	}
