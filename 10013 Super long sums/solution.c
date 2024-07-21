@@ -5,18 +5,19 @@
 int main() {
     int N;
     scanf("%d", &N);
+    char digits[5];
     bool firstCase = true;
     while(N--) {
         if(!firstCase)
             puts("");
         int M;
         scanf("%d", &M);
+        getchar();
         char *ans = (char*)malloc((M + 2) * sizeof(char));
         ans[M + 1] = '\0';
-        int digit1, digit2;
         for(int i = 1; i <= M; ++i) {
-            scanf("%d %d", &digit1, &digit2);
-            ans[i] = digit1 + digit2 + '0';
+            fgets(digits, sizeof(digits), stdin);
+            ans[i] = digits[0] + digits[2] - '0';
         }
         ans[0] = '0';
         do {
