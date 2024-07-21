@@ -34,7 +34,7 @@ int main() {
     for(int i = 1; i <= cases; ++i) {
         int N;
         scanf("%d", &N);
-        printf("Case #%d: %d is %s\n", i, N, isHappy[squareSum(N) - 1] ? "a Happy number." : "an Unhappy number.");
+        printf("Case #%d: %d is %s number.\n", i, N, isHappy[squareSum(N) - 1] ? "a Happy" : "an Unhappy");
     }
     return 0;
 }
