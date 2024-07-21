@@ -24,9 +24,9 @@ int main() {
 	int n;
 	scanf("%d", &n);
 	getchar();
+    char *buffer = NULL;
+	size_t bufsize = 0;
 	while(n--) {
-        char *buffer = NULL;
-	    size_t bufsize = 0;
 	    getline(&buffer, &bufsize, stdin);
 	    int len = strlen(buffer);
 	    for(int i = 0; i < len; ++i) {
@@ -35,10 +35,10 @@ int main() {
 	        else if(islower(buffer[i]))
 	            ++frequencies[buffer[i] - 'a'].count;
 	    }
-        free(buffer);
 	}
 	qsort(frequencies, 26, sizeof(Frequency), compare);
 	for(int i = 0; i < 26 && frequencies[i].count > 0; ++i)
 	    printf("%c %d\n", frequencies[i].alpha, frequencies[i].count);
-	return 0;
+	free(buffer);
+    return 0;
 }
