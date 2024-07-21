@@ -1,13 +1,13 @@
 import java.io.*;
 
 public class Main {
-    static short[] primes = new short[295];
+    static short[] primes = new short[303];
     static int count = 1;
-    static boolean[] table = new boolean[1937];
+    static boolean[] table = new boolean[2001];
 	public static void main (String[] args) throws IOException {
 		primes[0] = 2;
 		table[2] = true;
-		for(short i = 3; count < 295; i += 2) {
+		for(short i = 3; count < 303; i += 2) {
             if(isPrime(i)) {
                 primes[count++] = i;
                 table[i] = true;
