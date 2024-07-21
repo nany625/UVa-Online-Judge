@@ -41,7 +41,7 @@ int binarySearch(int *array, int size, int key) {
         else
             right = mid - 1;
     }
-    if(left > 0 && array[left - 1] + array[left] > 0)
+    if(left == size || (left > 0 && array[left - 1] + array[left] > 0))
 	    --left;
     return left;
 }
