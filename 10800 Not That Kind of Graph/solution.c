@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int main() {
@@ -10,12 +9,16 @@ int main() {
 		printf("Case #%d:\n", i);
 		scanf("%s", stockPrice);
 		int min, max, curr = 0;
-		if(stockPrice[0] == 'R')
-			min = max = curr++;
-		else if(stockPrice[0] == 'F')
-			min = max = --curr;
-		else if(stockPrice[0] == 'C')
-			min = max = curr;
+		switch(stockPrice[0]) {
+		    case 'R':
+		        min = max = curr++;
+		        break;
+		    case 'F':
+		        min = max = --curr;
+		        break;
+		    case 'C':
+		        min = max = curr;
+		}
 		int len = strlen(stockPrice);
 		for(int j = 1; j < len; ++j) {
 		    switch(stockPrice[j]) {
