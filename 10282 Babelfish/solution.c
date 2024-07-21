@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-    char *english, *foreign;
+    char english[11], foreign[11];
 } Dictionary;
 
 int compare(const void *a, const void *b) {
@@ -34,18 +34,13 @@ int main() {
         buffer[strcspn(buffer, "\n")] = '\0';
         dict = (Dictionary*)realloc(dict, (size + 1) * sizeof(Dictionary));
         char *token = strtok(buffer, " ");
-        dict[size].english = strdup(token);
+        strcpy(dict[size].english, token);
         token = strtok(NULL, " ");
-        dict[size++].foreign = strdup(token);
+        strcpy(dict[size++].foreign, token);
     }
     qsort(dict, size, sizeof(Dictionary), compare);
     while(scanf("%s", buffer) == 1)
         printf("%s\n", binarySearch(dict, size, buffer));
     free(buffer);
-    for(int i = 0; i < size; ++i) {
-        free(dict[i].english);
-        free(dict[i].foreign);
-    }
-    free(dict);
     return 0;
 }
