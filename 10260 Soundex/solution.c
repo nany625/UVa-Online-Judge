@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 int main() {
-    char word[4];
+    char word[20];
     while(scanf("%s", word) == 1) {
         int len = strlen(word);
         for(int i = 0; i < len; ++i) {
