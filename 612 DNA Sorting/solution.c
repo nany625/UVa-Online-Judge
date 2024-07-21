@@ -28,8 +28,8 @@ int main() {
 	while(M--) {
 	    if(!firstCase)
 	        puts("");
-	    int n, m;
-	    scanf("%d %d", &n, &m);
+	    int m;
+	    scanf("%*d %d", &m);
 	    DNA dnas[m];
 	    for(int i = 0; i < m; ++i) {
 	        dnas[i].str = NULL;
