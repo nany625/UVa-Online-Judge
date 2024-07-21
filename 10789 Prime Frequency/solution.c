@@ -4,9 +4,9 @@
 #include <math.h>
 #include <stdbool.h>
 
-short primes[295] = {2};
+short primes[303] = {2};
 int count = 1;
-bool table[1937] = {false, false, true};
+bool table[2001] = {false, false, true};
 
 bool isPrime(short n) {
     short limit = sqrt(n);
@@ -18,7 +18,7 @@ bool isPrime(short n) {
 }
 
 int main() {
-    for(short i = 3; count < 295; i += 2) {
+    for(short i = 3; count < 303; i += 2) {
         if(isPrime(i)) {
             primes[count++] = i;
             table[i] = true;
@@ -26,7 +26,7 @@ int main() {
     }
     int T;
     scanf("%d", &T);
-    char buffer[1937];
+    char buffer[2001];
     for(int i = 1; i <= T; ++i) {
         printf("Case %d: ", i);
         scanf("%s", buffer);
