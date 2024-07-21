@@ -7,12 +7,8 @@ public class Main {
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
 		    int n = (int)st.nval;
 		    st.nextToken();
-		    int k = (int)st.nval, cigarettes = n;
-		     while(n / k > 0) {
-                cigarettes += n / k;
-                n = n / k + n % k;
-            }
-            output.append(cigarettes + "\n");
+		    int k = (int)st.nval;
+            output.append(n + (int)Math.floor((n - k) / (k - 1.0)) + 1 + "\n");
 		}
 		System.out.print(output);
 	}
