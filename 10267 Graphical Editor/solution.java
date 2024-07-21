@@ -10,52 +10,63 @@ public class Main {
 		StringBuilder output = new StringBuilder();
     	while((command = br.readLine()) != null && command.charAt(0) != 'X') {
     	    String[] tokens = command.split("\\s+");
-    	    if(command.charAt(0) == 'I') {
-    	        M = Integer.parseInt(tokens[1]);
-    	        N = Integer.parseInt(tokens[2]);
-    	        fill(0, N - 1, 0, M - 1, 'O');
-    	    } else if(command.charAt(0) == 'C')
-    		    fill(0, N - 1, 0, M - 1, 'O');
-    		else if(command.charAt(0) == 'L') {
-    	        X = Integer.parseInt(tokens[1]);
-    	        Y = Integer.parseInt(tokens[2]);
-    			table[Y - 1][X - 1] = tokens[3].charAt(0);
-    		} else if(command.charAt(0) == 'V') {
-    		    X = Integer.parseInt(tokens[1]);
-    	        Y1 = Integer.parseInt(tokens[2]);
-    	        Y2 = Integer.parseInt(tokens[3]);
-    			if(Y1 > Y2) {
-    			    int temp = Y1;
-    			    Y1 = Y2;
-    			    Y2 = temp;
-    			}
-    			for(int i = Y1 - 1; i <= Y2 - 1; ++i)
-    				table[i][X - 1] = tokens[4].charAt(0);
-    		} else if(command.charAt(0) == 'H') {
-    		    X1 = Integer.parseInt(tokens[1]);
-    	        X2 = Integer.parseInt(tokens[2]);
-    	        Y = Integer.parseInt(tokens[3]);
-    			if(X1 > X2) {
-    			    int temp = X1;
-    			    X1 = X2;
-    			    X2 = temp;
-    			}
-    			Arrays.fill(table[Y - 1], X1 - 1, X2, tokens[4].charAt(0));
-    		} else if(command.charAt(0) == 'K') {
-    		    X1 = Integer.parseInt(tokens[1]);
-    	        Y1 = Integer.parseInt(tokens[2]);
-    	        X2 = Integer.parseInt(tokens[3]);
-    	        Y2 = Integer.parseInt(tokens[4]);
-    			fill(Y1 - 1, Y2 - 1, X1 - 1, X2 - 1, tokens[5].charAt(0));
-    		} else if(command.charAt(0) == 'F') {
-    	        X = Integer.parseInt(tokens[1]);
-    	        Y = Integer.parseInt(tokens[2]);
-    			dfs(Y - 1, N, X - 1, M, table[Y - 1][X - 1], tokens[3].charAt(0));
-    		} else if(command.charAt(0) == 'S') {
-    			output.append(tokens[1] + "\n");
-    			for(int i = 0; i < N; ++i)
-    			    output.append(new String(table[i], 0, M) + "\n");
-    		}
+    	    switch(command.charAt(0)) {
+    	        case 'I':
+        	        M = Integer.parseInt(tokens[1]);
+        	        N = Integer.parseInt(tokens[2]);
+        	        fill(0, N - 1, 0, M - 1, 'O');
+        	        break;
+        	    case 'C':
+        		    fill(0, N - 1, 0, M - 1, 'O');
+        		    break;
+        		case 'L':
+        	        X = Integer.parseInt(tokens[1]);
+        	        Y = Integer.parseInt(tokens[2]);
+        			table[Y - 1][X - 1] = tokens[3].charAt(0);
+        			break;
+        		case 'V':
+        		    X = Integer.parseInt(tokens[1]);
+        	        Y1 = Integer.parseInt(tokens[2]);
+        	        Y2 = Integer.parseInt(tokens[3]);
+        			if(Y1 > Y2) {
+        			    int temp = Y1;
+        			    Y1 = Y2;
+        			    Y2 = temp;
+        			}
+        			for(int i = Y1 - 1; i <= Y2 - 1; ++i)
+        				table[i][X - 1] = tokens[4].charAt(0);
+        			break;
+        		case 'H':
+        		    X1 = Integer.parseInt(tokens[1]);
+        	        X2 = Integer.parseInt(tokens[2]);
+        	        Y = Integer.parseInt(tokens[3]);
+        			if(X1 > X2) {
+        			    int temp = X1;
+        			    X1 = X2;
+        			    X2 = temp;
+        			}
+        			Arrays.fill(table[Y - 1], X1 - 1, X2, tokens[4].charAt(0));
+        			break;
+        		case 'K':
+        		    X1 = Integer.parseInt(tokens[1]);
+        	        Y1 = Integer.parseInt(tokens[2]);
+        	        X2 = Integer.parseInt(tokens[3]);
+        	        Y2 = Integer.parseInt(tokens[4]);
+        			fill(Y1 - 1, Y2 - 1, X1 - 1, X2 - 1, tokens[5].charAt(0));
+        			break;
+        		case 'F':
+        	        X = Integer.parseInt(tokens[1]);
+        	        Y = Integer.parseInt(tokens[2]);
+        			dfs(Y - 1, N, X - 1, M, table[Y - 1][X - 1], tokens[3].charAt(0));
+        			break;
+        		case 'S':
+        			output.append(tokens[1] + "\n");
+        			for(int i = 0; i < N; ++i) {
+        			    for(int j = 0; j < M; ++j)
+        			        output.append(table[i][j]);
+        			    output.append("\n");
+        			}
+	        }
     	}
 	    System.out.print(output);
 	}
