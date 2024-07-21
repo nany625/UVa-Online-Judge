@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 void swap(int *a, int *b) {
@@ -40,12 +41,15 @@ void DualPivotQuickSort(int *array, int left, int right, bool *Jolly) {
 
 int main() {
 	int n;
+	char *buffer = NULL;
+	size_t bufsize = 0;
 	while(scanf("%d", &n) == 1) {
-	    int prev, curr;
-	    scanf("%d", &prev);
-	    int diff[--n];
+	    getline(&buffer, &bufsize, stdin);
+	    char *token = strtok(buffer, " ");
+	    int prev = atoi(token), curr, diff[--n];
 	    for(int i = 0; i < n; ++i) {
-	        scanf("%d", &curr);
+	        token = strtok(NULL, " ");
+	        curr = atoi(token);
 	        diff[i] = abs(prev - curr);
 	        prev = curr;
 	    }
@@ -53,5 +57,6 @@ int main() {
 	    DualPivotQuickSort(diff, 0, n - 1, &Jolly);
 	    puts(Jolly ? "Jolly" : "Not jolly");
 	}
+	free(buffer);
 	return 0;
 }
