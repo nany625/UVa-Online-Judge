@@ -3,8 +3,7 @@
 #include <string.h>
 
 typedef struct {
-	char *country;
-	char count;
+	char *country, count;
 } Conquest;
 
 int binarySearch(Conquest *array, int size, char *key) {
@@ -25,24 +24,23 @@ int binarySearch(Conquest *array, int size, char *key) {
 int main() {
 	int n;
 	scanf("%d", &n);
+	getchar();
+	char buffer[77];
 	Conquest *conquests = NULL;
 	int size = 0;
 	while(n--) {
-		char *buffer = NULL;
-		scanf("%ms", &buffer);
-		int pos = binarySearch(conquests, size, buffer);
-		if(pos < size && strcmp(conquests[pos].country, buffer) == 0)
+	    fgets(buffer, sizeof(buffer), stdin);
+	    char *token = strtok(buffer, " ");
+		int pos = binarySearch(conquests, size, token);
+		if(pos < size && strcmp(conquests[pos].country, token) == 0)
 		    ++conquests[pos].count;
 		else {
 		    conquests = (Conquest*)realloc(conquests, (size + 1) * sizeof(Conquest));
 		    for(int i = size++; i > pos; --i)
 		        conquests[i] = conquests[i - 1];
-		    conquests[pos].country = strdup(buffer);
+		    conquests[pos].country = strdup(token);
             conquests[pos].count = 1;
 		}
-		size_t bufsize = 0;
-		getline(&buffer, &bufsize, stdin);
-		free(buffer);
 	}
 	for(int i = 0; i < size; ++i) {
 	    printf("%s %d\n", conquests[i].country, conquests[i].count);
