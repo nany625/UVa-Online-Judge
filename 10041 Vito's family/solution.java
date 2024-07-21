@@ -1,3 +1,33 @@
+// #解法一
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+    	StreamTokenizer st = new StreamTokenizer(System.in);
+        st.nextToken();
+        int cases = (int)st.nval;
+        StringBuilder output = new StringBuilder();
+        while(cases-- > 0) {
+            st.nextToken();
+            int r = (int)st.nval;
+            short[] s = new short[r];
+            for(int i = 0; i < r; ++i) {
+                st.nextToken();
+                s[i] = (short)st.nval;
+            }
+            Arrays.sort(s);
+            int median = (r - 1) / 2;
+            long d = 0;
+            for(int i = 0; i < r; ++i)
+                d += Math.abs(s[median] - s[i]);
+            output.append(d + "\n");
+        }
+        System.out.print(output);
+	}
+}
+
+// #解法二
 import java.io.*;
 
 public class Main {
