@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 int main() {
-	char s[999937];
+	char s[1000001];
 	while(scanf("%s", s) && strcmp(s, ".") != 0) {
 		int len = strlen(s);
 		bool found = false;
