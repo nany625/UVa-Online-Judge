@@ -12,8 +12,7 @@ public class Main {
 		    int[] grades = new int[N];
 		    for(int i = 0; i < N; ++i) {
 		        st.nextToken();
-                grades[i] = (int)st.nval;
-                sum += grades[i];
+                sum += grades[i] = (int)st.nval;
             }
             int count = 0;
             for(Integer i : grades)
