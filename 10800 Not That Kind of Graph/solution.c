@@ -5,10 +5,10 @@
 int main() {
 	int N;
 	scanf("%d", &N);
+	char stockPrice[51];
 	for(int i = 1; i <= N; ++i) {
 		printf("Case #%d:\n", i);
-		char *stockPrice = NULL;
-		scanf("%ms", &stockPrice);
+		scanf("%s", stockPrice);
 		int min, max, curr = 0;
 		if(stockPrice[0] == 'R')
 			min = max = curr++;
@@ -61,7 +61,6 @@ int main() {
 		while(len--)
 			putchar('-');
 		puts("\n");
-		free(stockPrice);
 	}
 	return 0;
 }
