@@ -20,13 +20,15 @@ public class Main {
 			    ans[i] += (int)st.nval;
             }
             ans[0] = '0';
-    	    do {
-    	        ans[M - 1] += (ans[M] - '0') / 10;
-    	        ans[M] = (char)((ans[M] - '0') % 10 + '0');
-    	    } while(--M > 0);
+    	    for(int i = M; i >= 1; --i) {
+    	        ans[i - 1] += (ans[i] - '0') / 10;
+    	        ans[i] = (char)((ans[i] - '0') % 10 + '0');
+    	    };
     	    if(ans[0] == '1')
     	        output.append(1);
-    	    output.append(new String(ans, 1, ans.length - 1) + "\n");
+    	    for(int i = 1; i <= M; ++i)
+    	        output.append(ans[i]);
+    	    output.append("\n");
     	    firstCase = false;
         }
         System.out.print(output);
