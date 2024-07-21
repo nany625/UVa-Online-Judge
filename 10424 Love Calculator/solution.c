@@ -20,7 +20,7 @@ int sumOfDigits(int n) {
         result += n % 10;
         n /= 10;
     }
-    return result > 9 ?  sumOfDigits(result) : result;
+    return result > 9 ? sumOfDigits(result) : result;
 }
 
 int main() {
