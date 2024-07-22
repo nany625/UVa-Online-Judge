@@ -66,16 +66,12 @@ int main() {
 	    do {
 	        ++n;
 	        if(n <= primes[MAX_SIZE - 1]) {
-	            if(!binarySearch(primes, n)) {
-	                if(sumOfFactorDigits(0, n) == sumOfDigits(n))
-	                    found = true;
-	            }
+	            if(!binarySearch(primes, n))
+	                found = sumOfFactorDigits(0, n) == sumOfDigits(n);
 	        } else {
 	            int start = isPrime(n);
-	            if(start != -1) {
-	                if(sumOfFactorDigits(start, n) == sumOfDigits(n))
-	                    found = true;
-	            }
+	            if(start != -1)
+	                found = sumOfFactorDigits(start, n) == sumOfDigits(n);
 	        }
 	    } while(!found);
 	    printf("%d\n", n);
