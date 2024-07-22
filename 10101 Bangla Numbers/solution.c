@@ -35,7 +35,7 @@ int main() {
             puts(" 0");
         else {
             split(n);
-            puts("");
+            putchar('\n');
         }
     }
     return 0;
