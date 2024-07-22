@@ -4,8 +4,8 @@
 int main() {
 	int T;
 	scanf("%d", &T);
+    char s[80];
 	while(T--) {
-		char s[49];
 		scanf("%s", s);
 		int score = 0, temp = 0, i = 0, len = strlen(s);
         do {
