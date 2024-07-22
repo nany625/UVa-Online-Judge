@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef struct {
     char *number;
@@ -26,13 +27,18 @@ int main() {
         }
         fib[i].digits = j + (fib[i].number[j] - '0');
     }
+    bool reversed[5001] = {};
     int number;
     while(scanf("%d", &number) == 1) {
-        char ans[fib[number].digits + 1];
-        ans[fib[number].digits] = '\0';
-        for(int i = 0; i < fib[number].digits; ++i)
-            ans[i] = fib[number].number[fib[number].digits - 1 - i];
-        printf("The fib number for %d is %s\n", number, ans);
+        if(!reversed[number]) {
+            for(int i = 0; i < fib[number].digits / 2; ++i) {
+                char temp = fib[number].number[i];
+                fib[number].number[i] = fib[number].number[fib[number].digits - 1 - i];
+                fib[number].number[fib[number].digits - 1 - i] = temp;
+            }
+            reversed[number] = true;
+        }
+        printf("The Fibonacci number for %d is %.*s\n", number, fib[number].digits, fib[number].number);
     }
     for(int i = 0; i <= 5000; ++i)
         free(fib[i].number);
