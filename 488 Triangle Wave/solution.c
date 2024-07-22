@@ -16,13 +16,13 @@ int main() {
 				puts("");
 			for(int i = 1; i <= amplitude; ++i) {
 				for(int j = 1; j <= i; ++j)
-					printf("%d", i);
-				puts("");
+					putchar(i + '0');
+				putchar('\n');
 			}
 			for(int i = amplitude - 1; i >= 1; --i) {
 				for(int j = 1; j <= i; ++j)
-					printf("%d", i);
-				puts("");
+					putchar(i + '0');
+				putchar('\n');
 			}
 			firstWave = false;
 		}
