@@ -27,10 +27,9 @@ int main() {
     scanf("%d %d", &boundX, &boundY);
     Coordinate *lostCoordinates = NULL;
     int x, y;
-    char orientation;
+    char orientation, instructions[100];
     while(scanf("%d %d %c", &x, &y, &orientation) == 3) {
         bool lost = false;
-        char instructions[100];
         scanf("%s", instructions);
         int len = strlen(instructions);
         for(int i = 0; i < len && !lost; ++i) {
