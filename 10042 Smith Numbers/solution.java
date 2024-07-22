@@ -21,16 +21,12 @@ public class Main {
     	    do {
     	        ++n;
     		    if(n <= primes[primes.length - 1]) {
-    		        if(Arrays.binarySearch(primes, (short)n) < 0) {
-    		            if(sumOfFactorDigits(0, n) == sumOfDigits(n))
-    	                    found = true;
-    	            }
+    		        if(Arrays.binarySearch(primes, (short)n) < 0)
+    		            found = sumOfFactorDigits(0, n) == sumOfDigits(n);
     	        } else {
     	            int start = isPrime(n);
-    	            if(start != -1) {
-    	                if(sumOfFactorDigits(start, n) == sumOfDigits(n))
-    	                    found = true;
-    	            }
+    	            if(start != -1)
+    	                found = sumOfFactorDigits(start, n) == sumOfDigits(n);
     	        }
     		} while(!found);
     		output.append(n + "\n");
