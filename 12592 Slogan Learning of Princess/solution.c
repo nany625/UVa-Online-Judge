@@ -10,7 +10,7 @@ int compare(const void *a, const void *b) {
     return strcmp(((Slogan*)a)->firstLine, ((Slogan*)b)->firstLine);
 }
 
-char *binarySearch(Slogan *array, int size, char *key) {
+const char *binarySearch(Slogan *array, int size, char *key) {
     int left = 0, right = size - 1;
     while(left <= right) {
         int mid = left + (right - left) / 2;
@@ -39,8 +39,8 @@ int main() {
     int Q;
     scanf("%d", &Q);
     getchar();
+    char buffer[102];
     while(Q--) {
-        char buffer[24];
         fgets(buffer, sizeof(buffer), stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
         printf("%s", binarySearch(slogans, N, buffer));
