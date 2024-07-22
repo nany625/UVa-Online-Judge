@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 typedef struct {
-    char *excuse, count;
+    char excuse[72], count;
 } Excuse;
 
 bool allLowerCase(char *array) {
@@ -40,25 +40,21 @@ int main() {
 	int set = 0, K, E;
 	while(scanf("%d %d", &K, &E) == 2) {
 	    printf("Excuse Set #%d\n", ++set);
-	    char **keywords = NULL, *keyword = NULL;
+	    char **keywords = NULL, keyword[21];
 	    int size = 0;
 	    while(K--) {
-	        scanf("%ms", &keyword);
+	        scanf("%s", keyword);
 	        if(allLowerCase(keyword)) {
 	            keywords = (char**)realloc(keywords, (size + 1) * sizeof(char*));
 	            keywords[size++] = strdup(keyword);
 	        }
-	        free(keyword);
-	        keyword = NULL;
 	    }
 	    qsort(keywords, size, sizeof(char*), compare);
 	    getchar();
 	    Excuse excuses[E];
 	    char max = 0;
 	    for(int i = 0; i < E; ++i) {
-	        excuses[i].excuse = NULL;
-	        size_t bufsize = 0;
-	        getline(&excuses[i].excuse, &bufsize, stdin);
+	        fgets(excuses[i].excuse, sizeof(excuses[i].excuse), stdin);
 	        excuses[i].count = 0;
 	        int start = 0, len = strlen(excuses[i].excuse);
 	        while(start < len) {
@@ -78,12 +74,8 @@ int main() {
 	    for(int i = 0; i < E; ++i) {
 	        if(excuses[i].count == max)
 	            printf("%s", excuses[i].excuse);
-	        free(excuses[i].excuse);
 	    }
 	    puts("");
-	    for(int i = 0; i < size; ++i)
-	        free(keywords[i]);
-	    free(keywords);
 	}
 	return 0;
 }
