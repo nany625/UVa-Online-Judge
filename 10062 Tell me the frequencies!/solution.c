@@ -29,7 +29,7 @@ int main() {
 	bool firstCase = true;
 	while(fgets(text, sizeof(text), stdin)) {
 	    if(!firstCase)
-	        puts("");
+	        putchar('\n');
 	    text[strcspn(text, "\n")] = '\0';
 	    Frequency *frequencies = NULL;
 	    int size = 0, len = strlen(text);
