@@ -2,25 +2,20 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= T; ++i) {
             st.nextToken();
-            int N = (int)st.nval;
-            st.nextToken();
-            int prev = (int)st.nval;
-            --N;
-            int highJumps = 0, lowJumps = 0;
-            while(N-- > 0) {
-                st.nextToken();
-                int curr = (int)st.nval;
-                if(curr > prev)
+            String wall = br.readLine();
+            int highJumps = 0, lowJumps = 0, len = wall.length();
+            for(int j = 2; j < len; j += 2) {
+                if(wall.charAt(j) > wall.charAt(j - 2))
                     ++highJumps;
-                else if(curr < prev)
+                else if(wall.charAt(j) < wall.charAt(j - 2))
                     ++lowJumps;
-                prev = curr;;
             }
             output.append("Case " + i + ": " + highJumps + " " + lowJumps + "\n");
         }
