@@ -17,8 +17,7 @@ public class Main {
     	    String[] tokens = line.split("\\s+");
     	    for(int i = 0; i < tokens.length; i += 2) 
     	        x *= Math.pow(Integer.parseInt(tokens[i]), Integer.parseInt(tokens[i + 1]));
-    	    --x;
-    	    int pos = binarySearch(primes, x);
+    	    int pos = binarySearch(primes, --x);
     	    boolean space = false;
     	    while(pos >= 0 && x > 1) {
     	        if(x % primes[pos] == 0) {
