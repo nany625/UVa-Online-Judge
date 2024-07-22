@@ -27,7 +27,7 @@ int main() {
 	bool firstCase = true;
 	while(M--) {
 	    if(!firstCase)
-	        puts("");
+	        putchar('\n');
 	    int m;
 	    scanf("%*d %d", &m);
 	    DNA dnas[m];
