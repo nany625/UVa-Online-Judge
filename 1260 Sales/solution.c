@@ -55,10 +55,8 @@ int main() {
         int sum = 0;
 		for(int i = 0; i < n; ++i) {
 			scanf("%hd", &A[i]);
-			for(int j = 0; j < i; ++j) {
-				if(A[j] <= A[i])
-					++sum;
-			}
+			for(int j = 0; j < i; ++j)
+				sum += A[j] <= A[i];
 		}
 		printf("%d\n",sum);
 	}
