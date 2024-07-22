@@ -9,7 +9,7 @@ int main() {
     bool firstCase = true;
     while(N--) {
         if(!firstCase)
-            puts("");
+			putchar('\n');
         int M;
         scanf("%d", &M);
         getchar();
