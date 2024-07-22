@@ -15,14 +15,14 @@ int compare(const void *a, const void *b) {
 int main() {
 	int cases;
 	scanf("%d", &cases);
+    char *buffer = NULL;
+	size_t bufsize = 0;
 	bool firstCase = true;
 	while(cases--) {
 	    if(!firstCase)
 	        puts("");
 	    getchar();
 	    getchar();
-	    char *buffer = NULL;
-	    size_t bufsize = 0;
 	    getline(&buffer, &bufsize, stdin);
 	    Data *datas = NULL;
 	    int size = 0;
@@ -42,5 +42,6 @@ int main() {
 	    free(datas);
 	    firstCase = false;
 	}
+    free(buffer);
 	return 0;
 }
