@@ -25,21 +25,21 @@ void write(int row, int *col, char ch, bool override) {
 
 int main() {
 	int cases = 0, N;
+	char *buffer = NULL;
+	size_t bufsize = 0;
 	while(scanf("%d", &N) && N != 0) {
 	    printf("Case %d\n", ++cases);
 	    getchar();
 	    clear();
 	    int cursorRow = 0, cursorCol = 0;
-	    char *data = NULL;
-	    size_t bufsize = 0;
 	    bool override = true;
 	    while(N--) {
-	        getline(&data, &bufsize, stdin);
-	        data[strcspn(data, "\n")] = '\0';
-	        int len = strlen(data);
+	        getline(&buffer, &bufsize, stdin);
+	        buffer[strcspn(buffer, "\n")] = '\0';
+	        int len = strlen(buffer);
 	        for(int i = 0; i < len; ++i) {
-	            if(data[i] == '^') {
-	                char control = data[++i];
+	            if(buffer[i] == '^') {
+	                char control = buffer[++i];
 	                if(control == 'b')
 	                    cursorCol = 0;
 	                else if(control == 'c')
@@ -66,18 +66,18 @@ int main() {
 	                        --cursorRow;
 	                } else if(isdigit(control)) {
 	                    cursorRow = control - '0';
-	                    cursorCol = data[++i] - '0';
+	                    cursorCol = buffer[++i] - '0';
 	                } else
 	                    write(cursorRow, &cursorCol, control, override);
 	            } else
-	                write(cursorRow, &cursorCol, data[i], override);
+	                write(cursorRow, &cursorCol, buffer[i], override);
 	        }
 	    }
-	    free(data);
 	    puts("+----------+");
 	    for(int i = 0; i < 10; ++i)
 	        printf("|%s|\n", screen[i]);
 	    puts("+----------+");
 	}
+	free(buffer);
 	return 0;
 }
