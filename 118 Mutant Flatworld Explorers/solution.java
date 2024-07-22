@@ -21,59 +21,75 @@ public class Main {
             String instructions = st.sval;
             int len = instructions.length();
 		    for(int i = 0; i < instructions.length() && !lost; ++i) {
-    	        if(orientation == 'N') {
-    	            if(instructions.charAt(i) == 'L')
-    	                orientation = 'W';
-    	            else if(instructions.charAt(i) == 'R')
-    	                orientation = 'E';
-    	            else if(instructions.charAt(i) == 'F') {
-    	                if(y < boundY)
-    	                    ++y;
-    	                else if(!contain(x, y)) {
-    	                    lostCoordinates.add(new Coordinate(x, y));
-    	                    lost = true;
-    	                }
-    	            }
-    	        } else if(orientation == 'E') {
-    	            if(instructions.charAt(i) == 'L')
-    	                orientation = 'N';
-    	            else if(instructions.charAt(i) == 'R')
-    	                orientation = 'S';
-    	            else if(instructions.charAt(i) == 'F') {
-    	                if(x < boundX)
-    	                    ++x;
-    	                else if(!contain(x, y)) {
-    	                    lostCoordinates.add(new Coordinate(x, y));
-    	                    lost = true;
-    	                }
-    	            }
-    	        } else if(orientation == 'S') {
-    	            if(instructions.charAt(i) == 'L')
-    	                orientation = 'E';
-    	            else if(instructions.charAt(i) == 'R')
-    	                orientation = 'W';
-    	            else if(instructions.charAt(i) == 'F') {
-    	                if(y > 0)
-    	                    --y;
-    	                else if(!contain(x, y)) {
-    	                    lostCoordinates.add(new Coordinate(x, y));
-    	                    lost = true;
-    	                }
-    	            }
-    	        } else {
-    	            if(instructions.charAt(i) == 'L')
-    	                orientation = 'S';
-    	            else if(instructions.charAt(i) == 'R')
-    	                orientation = 'N';
-    	            else if(instructions.charAt(i) == 'F') {
-    	                if(x > 0)
-    	                    --x;
-    	                else if(!contain(x, y)) {
-    	                    lostCoordinates.add(new Coordinate(x, y));
-    	                    lost = true;
-    	                }
-    	            }
-    	        }
+    	        switch(orientation) {
+                    case 'N':
+                        switch(instructions.charAt(i)) {
+                            case 'L':
+                                orientation = 'W';
+                                break;
+                            case 'R':
+                                orientation = 'E';
+                                break;
+                            case 'F':
+                                if(y < boundY)
+                                    ++y;
+                                else if(!contain(x, y)) {
+            	                    lostCoordinates.add(new Coordinate(x, y));
+            	                    lost = true;
+            	                }
+                        }
+                        break;
+                    case 'E':
+                        switch(instructions.charAt(i)) {
+                            case 'L':
+                                orientation = 'N';
+                                break;
+                            case 'R':
+                                orientation = 'S';
+                                break;
+                            case 'F':
+                                if(x < boundX)
+                                    ++x;
+                                else if(!contain(x, y)) {
+            	                    lostCoordinates.add(new Coordinate(x, y));
+            	                    lost = true;
+            	                }
+                        }
+                        break;
+                    case 'S':
+                        switch(instructions.charAt(i)) {
+                            case 'L':
+                                orientation = 'E';
+                                break;
+                            case 'R':
+                                orientation = 'W';
+                                break;
+                            case 'F':
+                                if(y > 0)
+                                    --y;
+                                else if(!contain(x, y)) {
+            	                    lostCoordinates.add(new Coordinate(x, y));
+            	                    lost = true;
+            	                }
+                        }
+                        break;
+                    case 'W':
+                        switch(instructions.charAt(i)) {
+                            case 'L':
+                                orientation = 'S';
+                                break;
+                            case 'R':
+                                orientation = 'N';
+                                break;
+                            case 'F':
+                                if(x > 0)
+                                    --x;
+                                else if(!contain(x, y)) {
+            	                    lostCoordinates.add(new Coordinate(x, y));
+            	                    lost = true;
+            	                }
+                        }
+                }
     	    }
     	    output.append(x + " " + y + " " + orientation + (lost ? " LOST\n" : "\n"));
     	}
