@@ -6,12 +6,12 @@
 int main() {
 	int N;
 	scanf("%d", &N);
-	char *s = NULL;
+	char s[81] = NULL;
 	bool firstCase = true;
 	while(N--) {
 		if(!firstCase)
 			puts("");
-		scanf("%ms", &s);
+		scanf("%s", s);
 		int len = strlen(s);
 		bool found = false;
 		for(int k = 1; k <= len / 2 && !found; ++k) {
@@ -29,7 +29,6 @@ int main() {
 		}
 		if(!found)
 		    printf("%d\n", len);
-		free(s);
 		firstCase = false;
 	}
 	return 0;
