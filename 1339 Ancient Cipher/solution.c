@@ -14,7 +14,7 @@ void InsertionSort(int *array, int size) {
 }
 
 int main() {
-	char encryption[97], origin[97];
+	char encryption[101], origin[101];
 	while(scanf("%s %s", encryption, origin) == 2) {
 	    int frequency[2][26] = {}, len = strlen(encryption);
 	    for(int i = 0; i < len; ++i) {
