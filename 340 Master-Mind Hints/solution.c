@@ -6,34 +6,31 @@ int main() {
 	int games = 0, N;
 	while(scanf("%d", &N) && N != 0) {
 		printf("Game %d:\n", ++games);
-		char *secretCode = (char*)malloc(N * sizeof(char));
-		for(int i = 0; i < N; ++i)
-			scanf(" %c", &secretCode[i]);
-		char *guess = (char*)malloc(N * sizeof(char));
+		getchar();
+		char *secretCode = (char*)malloc((2 * N + 2) * sizeof(char)), *guess = (char*)malloc((2 * N + 2) * sizeof(char));
+		fgets(secretCode, 2 * N + 2, stdin);
 		bool lastGuess;
 		do {
 		    lastGuess = true;
-			for(int i = 0; i < N; ++i) {
-				scanf(" %c", &guess[i]);
-				if(guess[i] != '0')
-					lastGuess = false;
-			}
+		    fgets(guess, 2 * N + 2, stdin);
+			for(int i = 0; i < 2 * N && lastGuess; i += 2)
+				lastGuess = guess[i] == '0';
 			if(!lastGuess) {
 			    bool check[N];
 				int a = 0, b = 0;
-				for(int i = 0; i < N; ++i) {
+				for(int i = 0; i < 2 * N; i += 2) {
 					if(secretCode[i] == guess[i]) {
 						++a;
-						check[i] = true;
+						check[i / 2] = true;
 						guess[i] = '0';
 					} else
-					check[i] = false;
+					    check[i / 2] = false;
 				}
-				for(int i = 0; i < N; ++i) {
-					for(int j = 0; j < N; ++j) {
-						if(secretCode[i] == guess[j] && !check[i] && guess[j] != '0') {
+				for(int i = 0; i < 2 * N; i += 2) {
+					for(int j = 0; j < 2 * N; j += 2) {
+						if(secretCode[i] == guess[j] && !check[i / 2] && guess[j] != '0') {
 							++b;
-							check[i] = true;
+							check[i / 2] = true;
 							guess[j] = '0';
 							break;
 						}
