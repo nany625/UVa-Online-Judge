@@ -33,7 +33,7 @@ int main() {
 	        continue;
 	    }
 	    for(int i = binarySearch(number); i >= 2; --i) {
-	        printf("%d", number / fib[i]);
+	        putchar(number / fib[i] + '0');
 	        number %= fib[i];
 	    }
 	    puts(" (fib)");
