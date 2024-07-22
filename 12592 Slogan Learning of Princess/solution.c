@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-    char *firstLine, *secondLine;
+    char firstLine[102], secondLine[102];
 } Slogan;
 
 int compare(const void *a, const void *b) {
@@ -31,10 +31,8 @@ int main() {
     getchar();
     Slogan slogans[N];
     for(int i = 0; i < N; ++i) {
-        slogans[i].firstLine = slogans[i].secondLine = NULL;
-        size_t bufsize = 0;
-        getline(&slogans[i].firstLine, &bufsize, stdin);
-        getline(&slogans[i].secondLine, &bufsize, stdin);
+        fgets(slogans[i].firstLine, sizeof(slogans[i].firstLine), stdin);
+        fgets(slogans[i].secondLine, sizeof(slogans[i].secondLine), stdin);
         slogans[i].firstLine[strcspn(slogans[i].firstLine, "\n")] = '\0';
     }
     qsort(slogans, N, sizeof(Slogan), compare);
@@ -46,10 +44,6 @@ int main() {
         fgets(buffer, sizeof(buffer), stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
         printf("%s", binarySearch(slogans, N, buffer));
-    }
-    for(int i = 0; i < N; ++i) {
-        free(slogans[i].firstLine);
-        free(slogans[i].secondLine);
     }
     return 0;
 }
