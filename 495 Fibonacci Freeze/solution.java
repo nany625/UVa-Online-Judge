@@ -25,7 +25,10 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((st.nextToken()) == st.TT_NUMBER) {
             int number = (int)st.nval;
-            output.append("The Fibonacci number for " + number + " is " + new StringBuilder(new String(fib[number], 0, digits[number])).reverse() + "\n");
+            output.append("The Fibonacci number for " + number + " is ");
+            for(int i = digits[number] - 1; i >= 0; --i)
+                output.append(fib[number][i]);
+            output.append("\n");
         }
 		System.out.print(output);
 	}
