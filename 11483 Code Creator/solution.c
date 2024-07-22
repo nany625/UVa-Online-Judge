@@ -6,11 +6,7 @@ int main() {
     char buffer[102];
     while(scanf("%d", &N) && N != 0) {
         getchar();
-        printf("Case %d:\n", ++cases);
-        puts("#include<string.h>");
-        puts("#include<stdio.h>");
-        puts("int main()");
-        puts("{");
+        printf("Case %d:\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n", ++cases);
         while(N--) {
             fgets(buffer, sizeof(buffer), stdin);
             printf("printf(\"");
@@ -22,9 +18,7 @@ int main() {
             }
             puts("\\n\");");
         }
-        puts("printf(\"\\n\");");
-        puts("return 0;");
-        puts("}");
+        puts("printf(\"\\n\");\nreturn 0;\n}");
     }
     return 0;
 }
