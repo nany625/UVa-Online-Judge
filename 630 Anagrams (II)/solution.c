@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 typedef struct {
-    char word[20], sortedWord[20];
+    char word[21], sortedWord[21];
 } Anagram;
 
 int compare(const void *a, const void *b) {
@@ -17,7 +17,7 @@ int main() {
 	bool firstCase = true;
 	while(T--) {
 	    if(!firstCase)
-	        puts("");
+	        putchar('\n');
 	    int N;
 	    scanf("%d", &N);
 	    Anagram anagrams[N];
@@ -27,7 +27,7 @@ int main() {
 	        int len = strlen(anagrams[i].sortedWord);
 	        qsort(anagrams[i].sortedWord, len, sizeof(char), compare);
 	    }
-	    char test[20], sortedTest[20];
+	    char test[21], sortedTest[21];
 	    while(scanf("%s", test) && strcmp(test, "END") != 0) {
 	        printf("Anagrams for: %s\n", test);
 	        strcpy(sortedTest, test);
