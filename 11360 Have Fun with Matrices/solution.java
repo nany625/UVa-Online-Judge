@@ -67,8 +67,11 @@ public class Main {
         			}
 				}
     		}
-    		for(int j = 0; j < N; ++j)
-    			output.append(new String(matrix[j]) + "\n");
+    		for(int j = 0; j < N; ++j) {
+    		    for(int k = 0; k < N; ++k)
+    			    output.append(matrix[j][k]);
+    			output.append("\n");
+    		}
     		output.append("\n");
     	}
 	    System.out.print(output);
