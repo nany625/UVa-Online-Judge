@@ -9,8 +9,8 @@ int compare(const void *a, const void *b) {
 
 int main() {
     int cases = 0, n;
+    char word[31];
 	while(scanf("%d", &n) == 1) {
-	    char word[31];
 	    int count = 0;
         while(n--) {
             scanf("%s", word);
