@@ -38,17 +38,16 @@ int main() {
 	}
 	char *buffer = NULL;
 	size_t bufsize = 0;
-	while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "0\n") != 0) {
-	    int x = 1;
+	while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '0') {
 	    char *token = strtok(buffer, " ");
+	    int x = 1;
 	    while(token) {
 	        int p = atoi(token);
 	        token = strtok(NULL, " ");
 	        x *= pow(p, atoi(token));
 	        token = strtok(NULL, " ");
 	    }
-	    --x;
-	    int pos = binarySearch(primes, x);
+	    int pos = binarySearch(primes, --x);
 	    bool space = false;
 	    while(pos >= 0 && x > 1) {
 	        if(x % primes[pos] == 0) {
@@ -64,7 +63,7 @@ int main() {
 	        }
 	        --pos;
 	    }
-	    puts("");
+	    putchar('\n');
 	}
 	free(buffer);
 	return 0;
