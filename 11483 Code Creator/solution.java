@@ -7,11 +7,7 @@ public class Main {
         int cases = 0, N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            output.append("Case " + (++cases) + ":\n");
-            output.append("#include<string.h>\n");
-            output.append("#include<stdio.h>\n");
-            output.append("int main()\n");
-            output.append("{\n");
+            output.append("Case " + (++cases) + ":\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n");
             while(N-- > 0) {
                 String line = br.readLine();
                 output.append("printf(\"");
@@ -23,9 +19,7 @@ public class Main {
                 }
                 output.append("\\n\");\n");
             }
-            output.append("printf(\"\\n\");\n");
-            output.append("return 0;\n");
-            output.append("}\n");
+            output.append("printf(\"\\n\");\nreturn 0;\n}\n");
         }
         System.out.print(output);
 	}
