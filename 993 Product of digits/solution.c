@@ -25,7 +25,7 @@ int main() {
 				puts("1");
 			else {
 				do {
-				    printf("%d", digits[--size]);
+				    putchar(digits[--size] + '0');
 				} while(size > 0);
 				puts("");
 			}
