@@ -21,7 +21,7 @@ int main() {
 	bool firstCase = true;
 	while(cases--) {
 		if(!firstCase)
-			puts("");
+			putchar('\n');
 		int m, n;
 		scanf("%d %d", &m, &n);
 		char **grid = (char**)malloc(m * sizeof(char*));
