@@ -20,12 +20,11 @@ public class Main {
             ArrayList<Integer> queue = new ArrayList<>();
             int next = 0;
 		    String command;
-    	    while(st.nextToken() == StreamTokenizer.TT_WORD && !(command = st.sval).equals("STOP")) {
-    	        if(command.equals("ENQUEUE")) {
+    	    while(st.nextToken() == StreamTokenizer.TT_WORD && (command = st.sval).charAt(0) != 'S') {
+    	        if(command.charAt(0) == 'E') {
     			    st.nextToken();
     			    queue.add((int)st.nval);
-    	        }
-    			else if(command.equals("DEQUEUE")) {
+    	        } else if(command.charAt(0) == 'D') {
     			    int dequeue = queue.get(next);
     			    output.append(dequeue + "\n");
     			    queue.remove(next);
