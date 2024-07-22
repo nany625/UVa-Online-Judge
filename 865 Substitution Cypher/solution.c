@@ -7,15 +7,14 @@ int main() {
 	scanf("%d", &cases);
 	getchar();
 	getchar();
+    char plaintext[66], substitution[66], text[66];
 	bool firstCase = true;
 	while(cases--) {
 	    if(!firstCase)
-	        puts("");
-	    char plaintext[66], substitution[66];
+	        putchar('\n');
 	    fgets(plaintext, sizeof(plaintext), stdin);
 		fgets(substitution, sizeof(substitution), stdin);
 		printf("%s%s", substitution, plaintext);
-		char text[66];
 		while(fgets(text, sizeof(text), stdin) && strcmp(text, "\n") != 0) {
 		    int lenText = strlen(text);
 		    for(int i = 0; i < lenText; ++i) {
