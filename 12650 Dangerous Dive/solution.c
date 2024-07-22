@@ -22,7 +22,7 @@ int main() {
             qsort(returned, R, sizeof(int), compare);
             for(int i = 1; i < returned[0]; ++i)
                 printf("%d ", i);
-            for(int i = 0 ; i < R - 1; ++i) {
+            for(int i = 0; i < R - 1; ++i) {
                 for(int j = returned[i] + 1; j < returned[i + 1]; ++j)
                     printf("%d ", j);
             }
