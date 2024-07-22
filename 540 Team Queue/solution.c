@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int teamNum[1000000];
 
@@ -24,8 +23,8 @@ int main() {
 	    }
 	    Queue *head = NULL, *tail = NULL, *nextDequeue = NULL;
 	    char command[8];
-	    while(scanf("%s", command) && strcmp(command, "STOP") != 0) {
-	        if(strcmp(command, "ENQUEUE") == 0) {
+	    while(scanf("%s", command) && command[0] != 'S') {
+	        if(command[0] == 'E') {
 	            Queue *newNode = (Queue*)malloc(sizeof(Queue));
 	            scanf("%d", &newNode->data);
 	            newNode->prev = tail;
@@ -35,7 +34,7 @@ int main() {
 	            else
 	                tail->next = newNode;
 	            tail = newNode;
-	        } else if(strcmp(command, "DEQUEUE") == 0) {
+	        } else if(command[0] == 'D') {
 	            printf("%d\n", nextDequeue->data);
 	            int currTeam = teamNum[nextDequeue->data];
 	            Queue *temp;
@@ -59,7 +58,7 @@ int main() {
 	                nextDequeue = head;
 	        }
 	    }
-	    puts("");
+	    putchar('\n');
 	    while(head) {
 	        Queue *temp = head;
 	        head = head->next;
