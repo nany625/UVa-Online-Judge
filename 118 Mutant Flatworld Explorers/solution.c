@@ -33,58 +33,74 @@ int main() {
         scanf("%s", instructions);
         int len = strlen(instructions);
         for(int i = 0; i < len && !lost; ++i) {
-            if(orientation == 'N') {
-                if(instructions[i] == 'L')
-                    orientation = 'W';
-                else if(instructions[i] == 'R')
-                    orientation = 'E';
-                else if(instructions[i] == 'F') {
-                    if(y < boundY)
-                        ++y;
-                    else if(!contain(lostCoordinates, x, y)) {
-                        append(&lostCoordinates, x, y);
-                        lost = true;
+            switch(orientation) {
+                case 'N':
+                    switch(instructions[i]) {
+                        case 'L':
+                            orientation = 'W';
+                            break;
+                        case 'R':
+                            orientation = 'E';
+                            break;
+                        case 'F':
+                            if(y < boundY)
+                                ++y;
+                            else if(!contain(lostCoordinates, x, y)) {
+                                append(&lostCoordinates, x, y);
+                                lost = true;
+                            }
                     }
-                }
-            } else if(orientation == 'E') {
-                if(instructions[i] == 'L')
-                    orientation = 'N';
-                else if(instructions[i] == 'R')
-                    orientation = 'S';
-                else if(instructions[i] == 'F') {
-                    if(x < boundX)
-                        ++x;
-                    else if(!contain(lostCoordinates, x, y)) {
-                        append(&lostCoordinates, x, y);
-                        lost = true;
+                    break;
+                case 'E':
+                    switch(instructions[i]) {
+                        case 'L':
+                            orientation = 'N';
+                            break;
+                        case 'R':
+                            orientation = 'S';
+                            break;
+                        case 'F':
+                            if(x < boundX)
+                                ++x;
+                            else if(!contain(lostCoordinates, x, y)) {
+                                append(&lostCoordinates, x, y);
+                                lost = true;
+                            }
                     }
-                }
-            } else if(orientation == 'S') {
-                if(instructions[i] == 'L')
-                    orientation = 'E';
-                else if(instructions[i] == 'R')
-                    orientation = 'W';
-                else if(instructions[i] == 'F') {
-                    if(y > 0)
-                        --y;
-                    else if(!contain(lostCoordinates, x, y)) {
-                        append(&lostCoordinates, x, y);
-                        lost = true;
+                    break;
+                case 'S':
+                    switch(instructions[i]) {
+                        case 'L':
+                            orientation = 'E';
+                            break;
+                        case 'R':
+                            orientation = 'W';
+                            break;
+                        case 'F':
+                            if(y > 0)
+                                --y;
+                            else if(!contain(lostCoordinates, x, y)) {
+                                append(&lostCoordinates, x, y);
+                                lost = true;
+                            }
                     }
-                }
-            } else {
-                if(instructions[i] == 'L')
-                    orientation = 'S';
-                else if(instructions[i] == 'R')
-                    orientation = 'N';
-                else if(instructions[i] == 'F') {
-                    if(x > 0)
-                        --x;
-                    else if(!contain(lostCoordinates, x, y)) {
-                        append(&lostCoordinates, x, y);
-                        lost = true;
+                    break;
+                case 'W':
+                    switch(instructions[i]) {
+                        case 'L':
+                            orientation = 'S';
+                            break;
+                        case 'R':
+                            orientation = 'N';
+                            break;
+                        case 'F':
+                            if(x > 0)
+                                --x;
+                            else if(!contain(lostCoordinates, x, y)) {
+                                append(&lostCoordinates, x, y);
+                                lost = true;
+                            }
                     }
-                }
             }
         }
         printf("%d %d %c%s\n", x, y, orientation, lost ? " LOST" : "");
