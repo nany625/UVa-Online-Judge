@@ -19,43 +19,53 @@ public class Main {
 			while(M-- > 0) {
 			    st.nextToken();
 				String operation = st.sval;
-				if(operation.equals("row")) {	
-				    st.nextToken();
-					int a = (int)st.nval - 1;
-					st.nextToken();
-					int b = (int)st.nval - 1;
-					char[] temp = matrix[a];
-                    matrix[a] = matrix[b];
-                    matrix[b] = temp;
-				} else if(operation.equals("col")) {
-					st.nextToken();
-					int a = (int)st.nval - 1;
-					st.nextToken();
-					int b = (int)st.nval - 1;
-					for(int j = 0; j < N; ++j) {
-                        char temp = matrix[j][a];
-                        matrix[j][a] = matrix[j][b];
-                        matrix[j][b] = temp;
-                    }
-    			} else if(operation.equals("inc")) {
-    				for(int j = 0; j < N; ++j) {
-                        for(int k = 0; k < N; ++k)
-                            matrix[j][k] = (char)((matrix[j][k] - '0' + 1) % 10 + '0');
-                    }
-    			} else if(operation.equals("dec")) {
-    				for(int j = 0; j < N; ++j) {
-                        for(int k = 0; k < N; ++k)
-                            matrix[j][k] = (char)((matrix[j][k] - '0' + 9) % 10 + '0');
-                    }
-    			} else if(operation.equals("transpose")) {
-    				for(int j = 0; j < N; ++j) {
-                        for(int k = 1; k < N - j; ++k) {
-                            char temp = matrix[j][j + k];
-                            matrix[j][j + k] = matrix[j + k][j];
-                            matrix[j + k][j] = temp;
+				switch(operation.charAt(0)) {
+    				case 'r': {
+    				    st.nextToken();
+    					int a = (int)st.nval - 1;
+    					st.nextToken();
+    					int b = (int)st.nval - 1;
+    					char[] temp = matrix[a];
+                        matrix[a] = matrix[b];
+                        matrix[b] = temp;
+                        break;
+    				}
+    				case 'c': {
+    					st.nextToken();
+    					int a = (int)st.nval - 1;
+    					st.nextToken();
+    					int b = (int)st.nval - 1;
+    					for(int j = 0; j < N; ++j) {
+                            char temp = matrix[j][a];
+                            matrix[j][a] = matrix[j][b];
+                            matrix[j][b] = temp;
                         }
-                    }
-    			}
+                        break;
+        			}
+        			case 'i': {
+        				for(int j = 0; j < N; ++j) {
+                            for(int k = 0; k < N; ++k)
+                                matrix[j][k] = (char)((matrix[j][k] - '0' + 1) % 10 + '0');
+                        }
+                        break;
+        			}
+        			case 'd': {
+        				for(int j = 0; j < N; ++j) {
+                            for(int k = 0; k < N; ++k)
+                                matrix[j][k] = (char)((matrix[j][k] - '0' + 9) % 10 + '0');
+                        }
+                        break;
+        			}
+        			case 't': {
+        				for(int j = 0; j < N; ++j) {
+                            for(int k = 1; k < N - j; ++k) {
+                                char temp = matrix[j][j + k];
+                                matrix[j][j + k] = matrix[j + k][j];
+                                matrix[j + k][j] = temp;
+                            }
+                        }
+        			}
+				}
     		}
     		for(int j = 0; j < N; ++j)
     			output.append(new String(matrix[j]) + "\n");
