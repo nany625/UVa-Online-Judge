@@ -11,7 +11,7 @@ int main() {
 			for(int j = (i + 1) * len / G - 1; j >= i * len / G; --j)
 				putchar(str[j]);
 		}
-		puts("");
+		putchar('\n');
     }
     return 0;
 }
