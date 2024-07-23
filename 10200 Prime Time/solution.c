@@ -33,8 +33,9 @@ int main() {
 	        continue;
 	    ppCount[i] += isPrime(i * i + i + 41);
 	}
+	double eps = 1e-6;
     int a, b;
     while(scanf("%d %d", &a, &b) == 2)
-        printf("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1])) / (b - a + 1) + 0.0000001);
+        printf("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1])) / (b - a + 1) + eps);
     return 0;
 }
