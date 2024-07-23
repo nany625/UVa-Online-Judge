@@ -25,18 +25,14 @@ public class Main {
     	    int Q = (int)st.nval;
     	    while(Q-- > 0) {
     	        st.nextToken();
-    	        int P = (int)st.nval;
-    	        int count = 0, curr = -1;
+    	        int P = (int)st.nval, count = 0, curr = -1;
     	        for(int i = 0; i < D && count <= 1; ++i) {
     	            if(P >= datas[i].L && P <= datas[i].H) {
     	                ++count;
     	                curr = i;
     	            }
     	        }
-    	        if(count == 1)
-    	            output.append(datas[curr].M + "\n");
-    	        else
-    	            output.append("UNDETERMINED\n");
+    	        output.append((count == 1 ? datas[curr].M : "UNDETERMINED") + "\n");
     	    }
     	    firstCase = false;
     	}
