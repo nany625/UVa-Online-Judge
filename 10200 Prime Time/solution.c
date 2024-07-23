@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdbool.h>
 #define MAX_PRIMES_SIZE 1230
-#define EPS 1e-6
+#define EPS 1e-5
 
 short primes[MAX_PRIMES_SIZE] = {2}, ppCount[10001] = {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
