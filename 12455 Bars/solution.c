@@ -6,8 +6,8 @@ bool isSubsetSum(short *array, int size, int sum) {
 	subsetSum[0] = true;
 	for(int i = 1; i <= sum; ++i)
 	    subsetSum[i] = false;
-	for(int i = 0; i < size; ++i) {
-	    for(int j = sum; j >= array[i]; --j) {
+	for(int i = 0; i < size && !subsetSum[sum]; ++i) {
+	    for(int j = sum; j >= array[i] && !subsetSum[sum]; --j) {
 	        if(subsetSum[j - array[i]])
 	            subsetSum[j] = true;
 	    }
@@ -16,7 +16,7 @@ bool isSubsetSum(short *array, int size, int sum) {
 }
 
 int main() {
-	int t;
+    int t;
 	scanf("%d", &t);
 	while(t--) {
 		int n, p;
