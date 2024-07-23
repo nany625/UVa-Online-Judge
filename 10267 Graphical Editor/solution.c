@@ -69,7 +69,7 @@ int main() {
     		    break;
     		case 'S':
     			scanf("%ms", &buffer);
-    			printf("%s\n", buffer);
+    			puts(buffer);
     			for(int i = 0; i < N; ++i)
     			    printf("%.*s\n", M, table[i]);
 	    }
