@@ -4,22 +4,22 @@
 void split(long n) {
     if(n >= pow(10, 7)) {
         split(n / pow(10, 7));
-        printf(" kuti");
+        fputs(" kuti", stdout);
         n %= (long)pow(10, 7);
     }
     if(n >= pow(10, 5)) {
         split(n / pow(10, 5));
-        printf(" lakh");
+        fputs(" lakh", stdout);
         n %= (long)pow(10, 5);
     }
     if(n >= pow(10, 3)) {
         split(n / pow(10, 3));
-        printf(" hajar");
+        fputs(" hajar", stdout);
         n %= (long)pow(10, 3);
     }
     if(n >= pow(10, 2)) {
         split(n / pow(10, 2));
-        printf(" shata");
+        fputs(" shata", stdout);
         n %= (long)pow(10, 2);
     }
     if(n > 0)
