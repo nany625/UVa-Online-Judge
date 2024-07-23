@@ -12,7 +12,7 @@ int main() {
     size_t bufsize = 0;
     for(int i = 1; i <= T; ++i) {
         if(i > 1)
-            puts("");
+            putchar('\n');
         printf("Case #%d:\n", i);
         while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
             char *token = strtok(buffer, " ");
@@ -22,7 +22,7 @@ int main() {
                     putchar(token[count++]);
                 token = strtok(NULL, " ");
             }
-            puts("");
+            putchar('\n');
         }
     }
     free(buffer);
