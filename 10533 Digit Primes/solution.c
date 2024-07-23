@@ -20,8 +20,7 @@ int main() {
         dpCount[i] = dpCount[i - 1];
         for(int j = 2 * i; j < MAX_SIZE; j += i)
             isComposite[j] = true;
-        if(!isComposite[i])
-            dpCount[i] += !isComposite[sumOfDigits(i)];
+        dpCount[i] += !isComposite[i] && !isComposite[sumOfDigits(i)];
     }
 	int N;
 	scanf("%d", &N);
