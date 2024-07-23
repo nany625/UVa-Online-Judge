@@ -32,9 +32,9 @@ int main() {
 		for(int i = N - 1; i >= 0; --i) {
 			if(C[N - 1][i] != 0) {
 				if(C[N - 1][i] > 0)
-					printf(" + ");
+					fputs(" + ", stdout);
 				else
-					printf(" - ");
+					fputs(" - ", stdout);
 				if(i > 1) {
 					if(abs(C[N - 1][i]) > 1)
 						printf("%ldx^%d", abs(C[N - 1][i]), i);
@@ -50,7 +50,7 @@ int main() {
 			}
 		}
 		if(C[N - 1][0] == 0)
-			printf(" + 0");
+			fputs(" + 0", stdout);
 		puts(" = 0");
 	}
     free(buffer);
