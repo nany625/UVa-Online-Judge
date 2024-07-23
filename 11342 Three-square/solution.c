@@ -26,7 +26,7 @@ int main() {
     scanf("%d", &N);
     while(N--) {
         int K;
-        scanf("%d",&K);
+        scanf("%d", &K);
         if(table[K])
             printf("%hd %hd %hd\n", answers[K].a, answers[K].b, answers[K].c);
         else
