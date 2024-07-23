@@ -19,7 +19,7 @@ int main() {
         }
         for(int j = 0; j < 10; ++j) {
             if(webpages[j].relevance == max)
-                printf("%s\n", webpages[j].url);
+                puus(webpages[j].url);
         }
     }
     return 0;
