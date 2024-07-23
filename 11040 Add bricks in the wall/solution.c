@@ -18,7 +18,7 @@ int main() {
 	                putchar(' ');
 	            printf("%d", i % 2 == 0 ? brick[i][j] : brick[i + 1][j] + brick[i + 1][j + 1]);
 	        }
-	        puts("");
+	        putchar('\n');
 	    }
 	}
 	return 0;
