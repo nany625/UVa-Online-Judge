@@ -17,7 +17,7 @@ int main() {
         }
         for(int j = 0; j < size / 2 && isSymmetric; ++j)
             isSymmetric = M[j] == M[size - 1 - j];
-        printf("Test #%d: %s.\n", i, isSymmetric ? "Symmetric" : "Non-symmetric");
+        printf("Test #%d: %symmetric.\n", i, isSymmetric ? "S" : "Non-s");
     }
     return 0;
 }
