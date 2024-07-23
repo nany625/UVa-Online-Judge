@@ -45,7 +45,7 @@ int main() {
             if(isdigit(word[i]) && word[i] != word[i - 1])
                 putchar(word[i]);
         }
-        puts("");
+        putchar('\n');
     }
     return 0;
 }
