@@ -7,7 +7,7 @@ int main() {
 	while(cases--) {
 		int M, D;
 		scanf("%d %d", &M, &D);
-		printf("%s\n", str[(D + 7 - Mondays[M - 1]) % 7]);
+		puts(str[(D + 7 - Mondays[M - 1]) % 7]);
 	}
     return 0;
 }
