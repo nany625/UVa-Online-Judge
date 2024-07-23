@@ -2,7 +2,7 @@
 #include <string.h>
 
 int main() {
-	char X[241], Y[241];
+	char X[251], Y[251];
 	while(scanf("%s %s", X, Y) == 2) {
 	    int lenX = strlen(X), lenY = strlen(Y);
 	    char ans[lenX + lenY + 1];
@@ -19,7 +19,7 @@ int main() {
 	    int i = 0;
 		while(i < lenX + lenY && ans[i] == '0')
 		    ++i;
-		printf("%s\n", i == lenX + lenY ? "0" : ans + i);
+		puts(i == lenX + lenY ? "0" : ans + i);
 	}
 	return 0;
 }
