@@ -25,8 +25,8 @@ public class Main {
         boolean[] subsetSum = new boolean[sum + 1];
         subsetSum[0] = true;
         int size = array.length;
-        for(int i = 0; i < size; ++i) {
-            for(int j = sum; j >= array[i]; --j) {
+        for(int i = 0; i < size && !subsetSum[sum]; ++i) {
+            for(int j = sum; j >= array[i] && !subsetSum[sum]; --j) {
                 if(subsetSum[j - array[i]])
                     subsetSum[j] = true;
             }
