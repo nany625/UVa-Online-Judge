@@ -12,7 +12,7 @@ int main() {
         if(n == 1)
             puts("Discarded cards:\nRemaining card: 1");
         else {
-            printf("Discarded cards:");
+            fputs("Discarded cards:", stdout);
             ListNode *head = (ListNode*)malloc(sizeof(ListNode));
             head->data = 1;
             head->next = NULL;
