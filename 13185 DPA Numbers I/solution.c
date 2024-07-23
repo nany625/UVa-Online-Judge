@@ -14,7 +14,7 @@ int main() {
             if(num % primes[i] == 0) {
                 sum += primes[i] + num / primes[i];
                 for(int j = 0; primes[j] <= primes[i] && sum <= num; ++j) {
-                    for(int factor = primes[i] * primes[j]; num % factor == 0 && factor <= num / factor && sum <= num; factor *= primes[j])
+                    for(int factor = primes[i] * primes[j]; num % factor == 0 && factor <= limit && sum <= num; factor *= primes[j])
                         sum += factor + num / factor;
                 }
             }
