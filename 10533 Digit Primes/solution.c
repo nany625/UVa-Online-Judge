@@ -38,7 +38,7 @@ int main() {
 	while(N--) {
 		int t1, t2;
 		scanf("%d %d", &t1, &t2);
-		printf("%d\n", dpCount[t2 - 1] - dpCount[t1 - 1] + (dpCount[t1 - 1] > dpCount[t1 - 2]));
+		printf("%d\n", dpCount[t2 - 1] - dpCount[t1 - 1] + (t > 1 && dpCount[t1 - 1] > dpCount[t1 - 2]));
 	}
 	return 0;
 }
