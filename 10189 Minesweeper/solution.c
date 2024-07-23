@@ -6,7 +6,7 @@ int main() {
 	int x = 0, n, m;
 	while(scanf("%d %d", &n, &m) && (n != 0 || m != 0)) {
 	    if(x >= 1)
-	        puts("");
+	        putchar('\n');
 	    printf("Field #%d:\n", ++x);
 	    char field[n][m + 1];
 	    for(int i = 0; i < n; ++i)
@@ -24,7 +24,7 @@ int main() {
 	        }
 	    }
 	    for(int i = 0; i < n; ++i)
-	        printf("%s\n", field[i]);
+	        puts(field[i]);
 	}
 	return 0;
 }
