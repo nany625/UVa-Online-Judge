@@ -1,6 +1,7 @@
 import java.io.*;
 
 public class Main {
+    static int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -39,7 +40,6 @@ public class Main {
 	
 	static void update(char[][] today, char[][] tomorrow, int i, int j, int r, int c) {
     	char curr = tomorrow[i][j] = today[i][j], winner = (curr == 'R') ? 'S' : (curr == 'S') ? 'P' : 'R', loser = (curr == 'R') ? 'P' : (curr == 'S') ? 'R' : 'S';
-        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         for(int[] k : directions) {
         	int ni = i + k[0], nj = j + k[1];
         	if(ni >= 0 && ni < r && nj >= 0 && nj < c) {
