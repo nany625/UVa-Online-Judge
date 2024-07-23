@@ -43,7 +43,7 @@ int main() {
     while(Q--) {
         fgets(buffer, sizeof(buffer), stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
-        printf("%s", binarySearch(slogans, N, buffer));
+        fputs(binarySearch(slogans, N, buffer), stdout);
     }
     return 0;
 }
