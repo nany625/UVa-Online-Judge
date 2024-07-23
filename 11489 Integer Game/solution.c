@@ -5,7 +5,7 @@ int main() {
 	int T;
 	scanf("%d", &T);
 	for(int i = 1; i <= T; ++i) {
-		char N[673];
+		char N[1001];
 		scanf("%s", N);
 		int len = strlen(N);
 		short modThreeCount[3] = {};
