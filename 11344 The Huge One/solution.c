@@ -21,11 +21,10 @@ int main() {
                     int dividend = 10 * remainder + M[i] - '0';
                     remainder = dividend % divisor;
                 }
-                if(remainder != 0)
-                    wonderful = false;
+                wonderful = remainder == 0;
             }
         }
-        printf("%s - %s\n", M, wonderful ? "Wonderful." : "Simple.");
+        printf("%s - %s.\n", M, wonderful ? "Wonderful" : "Simple");
         free(M);
     }
     return 0;
