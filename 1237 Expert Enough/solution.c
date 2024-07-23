@@ -31,10 +31,7 @@ int main() {
 					curr = i;
 				}
 			}
-			if(count == 1)
-				puts(datas[curr].M);
-			else
-				puts("UNDETERMINED");
+			puts(count == 1 ? datas[curr].M : "UNDETERMINED");
 		}
         firstCase = false;
 	}
