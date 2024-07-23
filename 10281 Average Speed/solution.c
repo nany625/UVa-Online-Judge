@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 int main() {
-    char *buffer = NULL;
-    size_t bufsize = 0;
     int prevHour = 0, prevMinute = 0, prevSecond = 0, prevSpeed = 0;
     int currHour, currMinute, currSecond, currSpeed;
     float dist = 0;
+    char *buffer = NULL;
+    size_t bufsize = 0;
     while(getline(&buffer, &bufsize, stdin) != -1) {
         int len = sscanf(buffer, "%d %*c %d %*c %d %d", &currHour, &currMinute, &currSecond, &currSpeed);
         dist += (3600 * (currHour - prevHour) + 60 * (currMinute - prevMinute) + (currSecond - prevSecond)) / 3600.0 * prevSpeed;
