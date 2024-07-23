@@ -5,7 +5,7 @@ int main() {
 	scanf("%d", &cases);
 	for(int i = 1; i <= cases; ++i) {
 		if(i > 1)
-			puts("");
+			putchar('\n');
 		printf("Case %d:\n", i);
 		short costs[36];
 		for(int j = 0; j < 36; ++j)
@@ -30,7 +30,7 @@ int main() {
 				if(totalCosts[base - 2] == cheapest)
 					printf(" %d", base);
 			}
-			puts("");
+			putchar('\n');
 		}
 	}
 	return 0;
