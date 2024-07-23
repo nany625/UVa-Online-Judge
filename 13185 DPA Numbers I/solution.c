@@ -7,6 +7,10 @@ int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
 int main() {
     char table[1001] = {};
     for(int num = 2; num <= 1000; ++num) {
+        if(num % 2 == 1) {
+            table[num] = 'd';
+            continue;
+        }
         if(table[num] == 'a')
             continue;
         int sum = 1, limit = sqrt(num);
