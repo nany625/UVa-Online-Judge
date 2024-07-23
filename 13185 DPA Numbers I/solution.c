@@ -2,32 +2,27 @@
 #include <stdio.h>
 #include <math.h>
 
-char table[1001];
-
-void sumOfDivisors(int n) {
-    if(table[n] == 'a')
-        return;
-    int sum = 1, i;
-    float limit = sqrt(n);
-    for(i = 2; i < limit && sum <= n; ++i) {
-        if(n % i == 0)
-            sum += i + n / i;
-    }
-    if(i == limit)
-        sum += i;
-    if(sum < n)
-        table[n] = 'd';
-    else if(sum == n)
-        table[n] = 'p';
-    else {
-        for(i = n; i <= 1000; i += n)
-            table[i] = 'a';
-    }
-}
-
 int main() {
-    for(int i = 2; i <= 1000; ++i)
-        sumOfDivisors(i);
+    char table[1001] = {};
+    for(int i = 2; i <= 1000; ++i) {
+        if(table[i] == 'a')
+            continue;
+        int sum = 1, limit = sqrt(i);
+        for(int j = 2; j <= limit && sum <= i; ++j) {
+            if(i % j == 0)
+                sum += j + i / j;
+        }
+        if(limit == sqrt(i))
+            sum -= limit;
+        if(sum < i)
+            table[i] = 'd';
+        else if(sum == i)
+            table[i] = 'p';
+        else {
+            for(int j = i; j <= 1000; j += i)
+                table[j] = 'a';
+        }
+    }
 	int t;
 	scanf("%d", &t);
 	while(t--) {
