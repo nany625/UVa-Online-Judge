@@ -46,9 +46,8 @@ int main() {
 // #解法二
 #include <stdio.h>
 
-int sum[1001] = {};
-
 int main() {
+    int sum[1001] = {};
     for(int i = 1; i <= 1000; ++i) {
         for(int j = 2 * i; j <= 1000; j += i)
             sum[j] += i;
