@@ -26,7 +26,7 @@ int main() {
         } while(--M);
         if(ans[0] == '1')
             putchar('1');
-        printf("%s\n", ans + 1);
+        puts(ans + 1);
         free(ans);
 		firstCase = false;
     }
