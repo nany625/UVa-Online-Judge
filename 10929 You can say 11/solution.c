@@ -3,7 +3,7 @@
 
 int main() {
 	char N[1001];
-	while(scanf("%s", N) && strcmp(N, "0") != 0) {
+	while(scanf("%s", N) && N[0] != '0') {
 	    int sum = 0, len = strlen(N);
 	    for(int i = 0; i < len; ++i) {
 	        if(i % 2 == 0)
