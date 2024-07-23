@@ -5,7 +5,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String N;
 		StringBuilder output = new StringBuilder();
-		while((N = br.readLine()) != null && !N.equals("0")) {
+		while((N = br.readLine()) != null && N.charAt(0) != '0') {
 		    int sum = 0, len = N.length();
 		    for(int i = 0; i < len; ++i) {
     	        if(i % 2 == 0)
