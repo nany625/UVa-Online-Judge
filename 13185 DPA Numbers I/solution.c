@@ -43,9 +43,9 @@ int main() {
 
 int main() {
     int sum[1001] = {};
-    for(int i = 1; i <= 1000; ++i) {
-        for(int j = 2 * i; j <= 1000; j += i)
-            sum[j] += i;
+    for(int num = 1; num <= 1000; ++num) {
+        for(int j = 2 * num; j <= 1000; j += num)
+            sum[j] += num;
     }
 	int t;
 	scanf("%d", &t);
