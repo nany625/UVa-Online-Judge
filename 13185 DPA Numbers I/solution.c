@@ -4,7 +4,7 @@
 char table[998];
 
 void sumOfDivisors(int n) {
-    if(table[n] == '2')
+    if(table[n] == 'a')
         return;
     int sum = 1, i, num = n + 2;
     float limit = sqrt(num);
@@ -15,12 +15,12 @@ void sumOfDivisors(int n) {
     if(i == limit)
         sum += i;
     if(sum < num)
-        table[n] = '0';
+        table[n] = 'd';
     else if(sum == num)
-        table[n] = '1';
+        table[n] = 'p';
     else {
         for(i = num; i <= 999; i += num)
-            table[i - 2] = '2';
+            table[i - 2] = 'a';
     }
 }
 
@@ -32,9 +32,9 @@ int main() {
 	while(t--) {
 		int n;
 		scanf("%d", &n);
-		if(table[n - 2] == '0')
+		if(table[n - 2] == 'd')
 			puts("deficient");
-		else if(table[n - 2] == '1')
+		else if(table[n - 2] == 'p')
 			puts("perfect");
 		else
 			puts("abundant");
