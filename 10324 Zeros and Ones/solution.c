@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int main() {
     int cases = 0;
-    char *buffer = NULL;
-    while(scanf("%ms", &buffer) == 1) {
+    char buffer[1000001];
+    while(scanf("%s", buffer) == 1) {
         printf("Case %d:\n", ++cases);
         int len = strlen(buffer), groups[len];
         for(int i = 1; i < len; ++i)
@@ -17,8 +16,6 @@ int main() {
             scanf("%d %d", &i, &j);
             puts(groups[i] == groups[j] ? "Yes" : "No");
         }
-        free(buffer);
-        buffer = NULL;
     }
     return 0;
 }
