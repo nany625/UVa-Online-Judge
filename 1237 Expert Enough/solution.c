@@ -13,7 +13,7 @@ int main() {
 	bool firstCase = true;
 	while(T--) {
 		if(!firstCase)
-			puts("");
+			putchar('\n');
 		int D;
 		scanf("%d", &D);
 		Data datas[D];
@@ -34,13 +34,13 @@ int main() {
 				}
 			}
 			if(count == 1)
-				printf("%s\n", datas[curr].M);
+				puts(datas[curr].M);
 			else
 				puts("UNDETERMINED");
 		}
-		firstCase = false;
 		for(int i = 0; i < D; ++i)
 		    free(datas[i].M);
+        firstCase = false;
 	}
 	return 0;
 }
