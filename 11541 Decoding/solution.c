@@ -14,7 +14,7 @@ int main() {
 			while(frequency--)
 				putchar(alpha);
 		}
-		puts("");
+		putchar('\n');
 	}
 	return 0;
 }
