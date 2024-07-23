@@ -2,25 +2,32 @@
 #include <stdio.h>
 #include <math.h>
 
+int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+
 int main() {
     char table[1001] = {};
-    for(int i = 2; i <= 1000; ++i) {
-        if(table[i] == 'a')
+    for(int num = 2; num <= 1000; ++num) {
+        if(table[num] == 'a')
             continue;
-        int sum = 1, limit = sqrt(i);
-        for(int j = 2; j <= limit && sum <= i; ++j) {
-            if(i % j == 0)
-                sum += j + i / j;
+        int sum = 1, limit = sqrt(num);
+        for(int i = 0; primes[i] <= limit && sum <= num; ++i) {
+            if(num % primes[i] == 0) {
+                sum += primes[i] + num / primes[i];
+                for(int j = 0; primes[j] <= primes[i] && sum <= num; ++j) {
+                    for(int factor = primes[i] * primes[j]; num % factor == 0 && factor <= num / factor && sum <= num; factor *= primes[j])
+                        sum += factor + num / factor;
+                }
+            }
         }
-        if(limit == sqrt(i))
+        if(limit == sqrt(num))
             sum -= limit;
-        if(sum < i)
-            table[i] = 'd';
-        else if(sum == i)
-            table[i] = 'p';
+        if(sum < num)
+            table[num] = 'd';
+        else if(sum == num)
+            table[num] = 'p';
         else {
-            for(int j = i; j <= 1000; j += i)
-                table[j] = 'a';
+            for(int i = num; i <= 1000; i += num)
+                table[i] = 'a';
         }
     }
 	int t;
