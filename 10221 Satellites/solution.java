@@ -9,7 +9,7 @@ public class Main {
     	    st.nextToken();
     	    double a = st.nval;
     	    st.nextToken();
-    	    if(st.sval.equals("min"))
+    	    if(st.sval.charAt(0) == 'm')
     	        a /= 60;
     	    if(a > 180)
     	        a = 360 - a;
