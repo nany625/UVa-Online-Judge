@@ -10,7 +10,7 @@ int main() {
     bool firstCase = true;
     while(scanf("%d", &n) && n != 0) {
         if(!firstCase)
-            puts("");
+            putchar('\n');
         Player table[n];
         for(int i = 0; i < n; ++i)
             table[i].win = table[i].lose = 0;
