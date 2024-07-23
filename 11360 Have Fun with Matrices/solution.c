@@ -63,8 +63,8 @@ int main() {
             }
         }
         for(int j = 0; j < N; ++j)
-            printf("%s\n", matrix[j]);
-        puts("");
+            puts(matrix[j]);
+        putchar('\n');
     }
     return 0;
 }
