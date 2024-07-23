@@ -31,9 +31,9 @@ int main() {
     bool firstCase = true;
     while(cases--) {
     	if(!firstCase)
-    		puts("");
+    		putchar('\n');
     	Species *tree = NULL;
-    	char buffer[14];
+    	char buffer[32];
         int speciesCount = 0;
         while(fgets(buffer, sizeof(buffer), stdin) && strcmp(buffer, "\n") != 0) {
             buffer[strcspn(buffer, "\n")] = '\0';
