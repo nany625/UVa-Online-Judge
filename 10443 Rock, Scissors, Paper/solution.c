@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+int directions[][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
 void update(char **today, char **tomorrow, int i, int j, int r, int c) {
 	char curr = tomorrow[i][j] = today[i][j], winner = (curr == 'R') ? 'S' : (curr == 'S') ? 'P' : 'R', loser = (curr == 'R') ? 'P' : (curr == 'S') ? 'R' : 'S';
-    int directions[][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     for(int k = 0; k < 4; ++k) {
     	int ni = i + directions[k][0], nj = j + directions[k][1];
     	if(ni >= 0 && ni < r && nj >= 0 && nj < c) {
@@ -22,7 +23,7 @@ int main() {
 	bool firstCase = true;
 	while(t--) {
 		if(!firstCase)
-			puts("");
+			putchar('\n');
 		int r, c, n;
 		scanf("%d %d %d", &r, &c, &n);
 		char **grid0 = (char**)malloc(r * sizeof(char*)), **grid1 = (char**)malloc(r * sizeof(char*));
@@ -41,7 +42,7 @@ int main() {
 			}
 		}
 		for(int i = 0; i < r; ++i) {
-		    printf("%s\n", n % 2 == 1 ? grid1[i] : grid0[i]);
+		    puts(n % 2 == 1 ? grid1[i] : grid0[i]);
 		    free(grid0[i]);
 		    free(grid1[i]);
     	}
