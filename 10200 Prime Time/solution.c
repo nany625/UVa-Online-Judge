@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdbool.h>
 #define MAX_PRIMES_SIZE 1230
+#define EPS 1e-6
 
 short primes[MAX_PRIMES_SIZE] = {2}, ppCount[10001] = {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -33,9 +34,8 @@ int main() {
 	        continue;
 	    ppCount[i] += isPrime(i * i + i + 41);
 	}
-	double eps = 1e-6;
     int a, b;
     while(scanf("%d %d", &a, &b) == 2)
-        printf("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1])) / (b - a + 1) + eps);
+        printf("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1])) / (b - a + 1) + EPS);
     return 0;
 }
