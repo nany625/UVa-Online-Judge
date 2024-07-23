@@ -9,7 +9,7 @@ int main() {
     bool firstCase = true;
     while(games--) {
         if(!firstCase)
-            puts("");
+            putchar('\n');
         int n;
         scanf("%d", &n);
         char mines[n][n + 1], touch[n][n + 1];
@@ -43,7 +43,7 @@ int main() {
 	        }
 	    }
 	    for(int i = 0; i < n; ++i)
-	        printf("%s\n", touch[i]);
+	        puts(touch[i]);
 	    firstCase = false;
     }
     return 0;
