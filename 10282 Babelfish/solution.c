@@ -40,7 +40,7 @@ int main() {
     }
     qsort(dict, size, sizeof(Dictionary), compare);
     while(scanf("%s", buffer) == 1)
-        printf("%s\n", binarySearch(dict, size, buffer));
+        puts(binarySearch(dict, size, buffer));
     free(buffer);
     return 0;
 }
