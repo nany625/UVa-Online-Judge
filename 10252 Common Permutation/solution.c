@@ -17,7 +17,7 @@ int main() {
             while(output[i]--)
                 putchar('a' + i);
         }
-        puts("");
+        putchar('\n');
     }
     return 0;
 }
