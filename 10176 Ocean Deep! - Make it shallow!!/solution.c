@@ -8,8 +8,7 @@ int main() {
         if(ch != '#') {
             if(isdigit(ch))
                 remainder = (2 * remainder + ch -'0') % 131071;
-        }
-        else {
+        } else {
             puts(remainder == 0 ? "YES" : "NO");
             remainder = 0;
         }
