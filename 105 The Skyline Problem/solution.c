@@ -19,7 +19,7 @@ int main() {
 	        firstBuilding = false;
 	    }
 	}
-    puts("");
+    putchar('\n');
 	return 0;
 }
 
@@ -59,7 +59,7 @@ int main() {
 	        firstBuilding = false;
 	    }
 	}
-	puts("");
+	putchar('\n');
 	free(check);
 	return 0;
 }
