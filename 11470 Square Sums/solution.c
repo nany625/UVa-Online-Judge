@@ -23,7 +23,7 @@ int main() {
         printf("Case %d:", ++cases);
         for(int i = 0; i < squares; ++i)
             printf(" %hd", sum[i]);
-        puts("");
+        putchar('\n');
     }
     return 0;
 }
