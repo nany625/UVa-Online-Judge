@@ -16,10 +16,11 @@ int sumOfDigits(int n) {
 }
 
 int main() {
-    for(long i = 2; i < MAX_SIZE; ++i) {
+    int limit = sqrt(MAX_SIZE);
+    for(int i = 2; i < MAX_SIZE; ++i) {
         dpCount[i] = dpCount[i - 1];
-        if(!isComposite[i]) {
-            for(long j = i * i; j < MAX_SIZE; j += i)
+        if(i < limit && !isComposite[i]) {
+            for(int j = i * i; j < MAX_SIZE; j += i)
                 isComposite[j] = true;
         }
         dpCount[i] += !isComposite[i] && !isComposite[sumOfDigits(i)];
