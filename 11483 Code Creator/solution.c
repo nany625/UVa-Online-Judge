@@ -9,7 +9,7 @@ int main() {
         printf("Case %d:\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n", ++cases);
         while(N--) {
             fgets(buffer, sizeof(buffer), stdin);
-            printf("printf(\"");
+            fputs("printf(\"", stdout);
             int len = strlen(buffer);
             for(int i = 0; i < len - 1; ++i) {
                 if(buffer[i] == '"' || buffer[i] == '\\')
