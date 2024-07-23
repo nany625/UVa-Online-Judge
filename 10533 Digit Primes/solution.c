@@ -19,7 +19,7 @@ int main() {
     int limit = sqrt(MAX_SIZE);
     for(int i = 2; i < MAX_SIZE; ++i) {
         dpCount[i] = dpCount[i - 1];
-        if(i < limit && !isComposite[i]) {
+        if(i <= limit && !isComposite[i]) {
             for(int j = i * i; j < MAX_SIZE; j += i)
                 isComposite[j] = true;
         }
