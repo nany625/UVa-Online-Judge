@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct {
-    char *singular, *plural;
+    char singular[21], plural[21];
 } Word;
 
 int compare(const void *a, const void *b) {
@@ -30,14 +30,14 @@ int main() {
     scanf("%d %d", &L, &N);
     Word irregular[L];
     for(int i = 0; i < L; ++i)
-        scanf("%ms %ms", &irregular[i].singular, &irregular[i].plural);
+        scanf("%s %s", irregular[i].singular, irregular[i].plural);
     qsort(irregular, L, sizeof(Word), compare);
     char word[21];
     while(N--) {
         scanf("%s", word);
         int pos = binarySearch(irregular, L, word);
         if(pos != -1)
-            printf("%s\n", irregular[pos].plural);
+            puts(irregular[pos].plural);
         else {
             int len = strlen(word);
             if(word[len - 1] == 'y') {
@@ -50,10 +50,6 @@ int main() {
             else
                 printf("%ss\n", word);
         }
-    }
-    for(int i = 0; i < L; ++i) {
-        free(irregular[i].singular);
-        free(irregular[i].plural);
     }
     return 0;
 }
