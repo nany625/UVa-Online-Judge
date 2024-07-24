@@ -14,10 +14,8 @@ public class Main {
         while((s = br.readLine()) != null) {
 	        int len = s.length();
             boolean isMirror = true;
-	        for(int i = 0; i < (len + 1) / 2 && isMirror; ++i) {
-                if(map.get(s.charAt(i)) != s.charAt(len - 1 - i))
-                    isMirror = false;
-            }
+	        for(int i = 0; i < (len + 1) / 2 && isMirror; ++i)
+                isMirror = map.get(s.charAt(i)) == s.charAt(len - 1 - i);
             String reversed = new StringBuilder(s).reverse().toString();
 	        if(s.equals(reversed) && isMirror)
                 output.append(s + " -- is a mirrored palindrome.\n\n");
