@@ -39,7 +39,7 @@ int sumOfFactorDigits(int n) {
 }
 
 int main() {
-	for(short i = 2; i <= MAX_NUM; ++i) {
+	for(short i = 2; count < MAX_PRIME_SIZE; ++i) {
 	    if(!isComposite[i]) {
 	        primes[count++] = i;
     	    if(i <= 177) {
