@@ -26,7 +26,7 @@ long sumOfDivisors(long n) {
 }
 
 int main() {
-    for(int i = 2; i <= MAX_NUM; ++i) {
+    for(int i = 2; count < MAX_PRIME_SIZE; ++i) {
         if(!isComposite[i]) {
             primes[count++] = i;
             if(i <= 1000) {
