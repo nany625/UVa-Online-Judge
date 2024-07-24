@@ -3,25 +3,21 @@
 #include <ctype.h>
 #include <math.h>
 #include <stdbool.h>
+#define MAX_NUM 2000
+#define MAX_PRIME_SIZE 303
 
-short primes[303] = {2};
-int count = 1;
-bool table[2001] = {false, false, true};
-
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
+bool isComposite[MAX_NUM + 1] = {true, true};
+short primes[MAX_PRIME_SIZE] = {};
+int count = 0;
 
 int main() {
-    for(short i = 3; count < 303; i += 2) {
-        if(isPrime(i)) {
+    for(short i = 2; count < MAX_PRIME_SIZE; ++i) {
+        if(!isComposite[i]) {
             primes[count++] = i;
-            table[i] = true;
+            if(i <= 44) {
+                for(int j = i * i; j <= MAX_NUM; j += i)
+                    isComposite[j] = true;
+            }
         }
     }
     int T;
@@ -42,7 +38,7 @@ int main() {
         }
         bool empty = true;
         for(int j = 0; j < 62; ++j) {
-            if(table[frequency[j]]) {
+            if(!isComposite[frequency[j]]) {
                 if(j < 10)
                     putchar('0' + j);
                 else if(j < 36)
