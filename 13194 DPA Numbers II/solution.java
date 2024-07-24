@@ -5,7 +5,7 @@ public class Main {
     static int[] primes = new int[78498];
     static int count = 0;
 	public static void main(String[] args) throws IOException {
-        for(int i = 2; i <= 1000000; ++i) {
+        for(int i = 2; count < 78498; ++i) {
             if(!isComposite[i]) {
                 primes[count++] = i;
                 if(i <= 1000) {
