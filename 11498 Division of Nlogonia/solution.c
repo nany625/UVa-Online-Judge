@@ -10,14 +10,11 @@ int main() {
 	        scanf("%d %d", &X, &Y);
 			if(X == N || Y == M)
 				puts("divisa");
-			else if(X > N && Y > M)
-				puts("NE");
-			else if(X < N && Y > M)
-				puts("NO");
-			else if(X < N && Y < M)
-				puts("SO");
-			else
-				puts("SE");
+			else {
+			    putchar(Y > M ? 'N' : 'S');
+			    putchar(X > N ? 'E' : 'O');
+			    putchar('\n');
+			}
 	    }
 	}
     return 0;
