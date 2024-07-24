@@ -4,7 +4,7 @@
 #define MAX_NUM 1000000
 #define MAX_PRIME_SIZE 78498
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+bool isComposite[MAX_NUM + 1] = {};
 int primes[MAX_PRIME_SIZE] = {}, count = 0;
 
 long sumOfDivisors(long n) {
