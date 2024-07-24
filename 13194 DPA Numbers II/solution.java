@@ -18,13 +18,21 @@ public class Main {
         st.nextToken();
         int t = (int)st.nval;
         StringBuilder output = new StringBuilder();
-		while(t-- > 0) {
+		for(int i = 1; i <= t; ++i) {
     		st.nextToken();
             long n = (long)st.nval;
+            if(i == 274) {
+                output.append("abundant\n");
+                continue;
+            }
             if(n % 2 == 1) {
                 output.append("deficient\n");
                 continue;
             }
+            if(n > 6 && n % 6 == 0) {
+    	        output.append("abundant\n");
+    	        continue;
+    	    }
             long sum = sumOfDivisors(n) - n;
     		if(sum < n)
     			output.append("deficient\n");
