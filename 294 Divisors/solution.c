@@ -16,12 +16,12 @@ bool isPrime(short n) {
 }
 
 int factorCount(int n) {
-    int result = 1, i = 0, temp = n;
-	while(i < MAX_PRIME_SIZE && temp > 1) {
+    int result = 1, i = 0;
+	while(i < MAX_PRIME_SIZE && n > 1) {
 	    int currPow = 0;
-	    while(temp % primes[i] == 0) {
+	    while(n % primes[i] == 0) {
 	        ++currPow;
-	        temp /= primes[i];
+	        n /= primes[i];
 	    }
 	    result *= currPow + 1;
 	    ++i;
