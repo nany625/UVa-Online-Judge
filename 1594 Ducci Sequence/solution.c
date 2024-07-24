@@ -14,10 +14,8 @@ int main() {
         int limit = 36;
         while(limit--) {
             bool ZERO = true;
-            for(int i = 0; i < n && ZERO; ++i) {
-                if(sequence[i] != 0)
-                    ZERO = false;
-            }
+            for(int i = 0; i < n && ZERO; ++i)
+                ZERO = sequence[i] == 0;
             if(ZERO)
                 break;
             int temp = sequence[0];
@@ -25,7 +23,7 @@ int main() {
                 sequence[i] = abs(sequence[i + 1] - sequence[i]);
             sequence[n - 1] = abs(temp - sequence[n - 1]);
         }
-        printf("%s\n", limit > 0 ? "ZERO" : "LOOP");
+        puts(limit > 0 ? "ZERO" : "LOOP");
     }
 	return 0;
 }
