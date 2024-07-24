@@ -32,7 +32,7 @@ bool contain(int *array, int size, int key) {
 
 int main() {
 	char number[10];
-	while(scanf("%s", number) && strcmp(number, "0") != 0) {
+	while(scanf("%s", number) && number[0] != '0') {
 		printf("Original number was %s\n", number);
 		int *numbers = NULL, size = 0;
 		do {
