@@ -3,12 +3,12 @@
 #include <stdbool.h>
 #define MAX_PRIME_SIZE 3401
 
-short primes[MAX_PRIME_SIZE] = {2, 3};
-int count = 2;
+short primes[MAX_PRIME_SIZE] = {2};
+int count = 1;
 
 bool isPrime(short n) {
     short limit = sqrt(n);
-    for(int i = 2; i < count && primes[i] <= limit; ++i) {
+    for(int i = 1; i < count && primes[i] <= limit; ++i) {
         if(n % primes[i] == 0)
             return false;
     }
@@ -30,11 +30,9 @@ int factorCount(int n) {
 }
 
 int main() {
-    for(short i = 5; count < MAX_PRIME_SIZE; i += 6) {
+    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
         if(isPrime(i))
             primes[count++] = i;
-        if(count < MAX_PRIME_SIZE && isPrime(i + 2))
-            primes[count++] = i + 2;
     }
 	int N;
 	scanf("%d", &N);
