@@ -19,9 +19,9 @@ int main() {
 			if(coefficients[i] != 0) {
 				if(!leadingZero) {
 					if(coefficients[i] < 0)
-						printf(" - ");
+						fputs(" - ", stdout);
 					else
-						printf(" + ");
+						fputs(" + ", stdout);
 				} else {
 					if(coefficients[i] < 0)
 						putchar('-');
@@ -42,7 +42,7 @@ int main() {
 		}
 		if(leadingZero)
 			putchar('0');
-		puts("");
+		putchar('\n');
 	}
     free(buffer);
 	return 0;
