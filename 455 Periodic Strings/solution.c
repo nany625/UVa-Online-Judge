@@ -6,11 +6,11 @@
 int main() {
 	int N;
 	scanf("%d", &N);
-	char s[81] = NULL;
+	char s[81];
 	bool firstCase = true;
 	while(N--) {
 		if(!firstCase)
-			puts("");
+			putchar('\n');
 		scanf("%s", s);
 		int len = strlen(s);
 		bool found = false;
