@@ -82,11 +82,10 @@ int factorCount(int n) {
 }
 
 int main() {
-    int limit = sqrt(MAX_NUM);
 	for(int i = 2; i <= MAX_NUM; ++i) {
 		if(!isComposite[i]) {
 			primes[count++] = i;
-			if(i <= limit) {
+			if(i <= 177) {
 				for(int j = i * i; j <= MAX_NUM; j += i)
 					isComposite[j] = true;
 			}
