@@ -43,7 +43,15 @@ int main() {
 		int ans = L;
 		count = factorCount(L);
 		L += L % 2;
-		for(int i = L; i <= U; i += 2) {
+		while(L % 6 != 0 && L <= U) {
+		    int temp = factorCount(L);
+			if(count < temp) {
+				count = temp;
+				ans = L;
+			}
+			L += 2;
+		}
+		for(int i = L; i <= U; i += 6) {
 		    int temp = factorCount(i);
 			if(count < temp) {
 				count = temp;
