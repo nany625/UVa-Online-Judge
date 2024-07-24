@@ -5,7 +5,7 @@ public class Main {
     static short[] primes = new short[3401];
     static int count = 0;
 	public static void main(String[] args) throws IOException {
-    	for(short i = 2; i <= 31607; ++i) {
+    	for(short i = 2; count < 3401; ++i) {
     	    if(!isComposite[i]) {
     	        primes[count++] = i;
         	    if(i <= 177) {
