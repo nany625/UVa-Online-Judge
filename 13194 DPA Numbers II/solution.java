@@ -5,12 +5,10 @@ public class Main {
     static int[] primes = new int[78498];
     static int count = 0;
 	public static void main(String[] args) throws IOException {
-        isComposite[0] = isComposite[1] = true;
-        int limit = (int)Math.sqrt(1000000);
         for(int i = 2; i <= 1000000; ++i) {
             if(!isComposite[i]) {
                 primes[count++] = i;
-                if(i <= limit) {
+                if(i <= 1000) {
                     for(int j = i * i; j <= 1000000; j += i)
                         isComposite[j] = true;
                 }
