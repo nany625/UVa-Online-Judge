@@ -20,7 +20,7 @@ int main() {
 	bool firstCase = true;
 	while(cases--) {
 	    if(!firstCase)
-	        puts("");
+	        putchar('\n');
 	    getchar();
 	    getchar();
 	    getline(&buffer, &bufsize, stdin);
@@ -36,7 +36,7 @@ int main() {
 	        scanf("%ms", &datas[i].number);
 	    qsort(datas, size, sizeof(Data), compare);
 	    for(int i = 0; i < size; ++i) {
-	        printf("%s\n", datas[i].number);
+	        puts(datas[i].number);
 	        free(datas[i].number);
 	    }
 	    free(datas);
