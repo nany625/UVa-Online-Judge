@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdbool.h>
 #define MAX_PRIMES_SIZE 1230
-#define EPS 1e-5
+#define EPS 1e-6
 
 short primes[MAX_PRIMES_SIZE] = {2}, ppCount[10001] = {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -12,27 +12,37 @@ short primes[MAX_PRIMES_SIZE] = {2}, ppCount[10001] = {
     40, 40
 };
 
-int primeCount = 1;
+int count = 1;
 
 bool isPrime(int n) {
     short limit = sqrt(n);
-	for(int i = 1; i < primeCount && primes[i] <= limit; ++i) {
+	for(int i = 1; i < count && primes[i] <= limit; ++i) {
 		if(n % primes[i] == 0)
 			return false;
 	}
 	return true;
 }
 
+bool producePrime(int n) {
+    int num = n * n + n + 41;
+    for(int i = 13; primes[i] < n; ++i) {
+        if(num % primes[i] == 0)
+            return false;
+    }
+	return true;
+}
+
+
 int main() {
-	for(short i = 3; primeCount < MAX_PRIMES_SIZE; i += 2) {
+	for(short i = 3; count < MAX_PRIMES_SIZE; i += 2) {
 	    if(isPrime(i))
-	        primes[primeCount++] = i;
+	        primes[count++] = i;
 	}
 	for(int i = 42; i <= 10000; ++i) {
 	    ppCount[i] = ppCount[i - 1];
 	    if(i % 41 == 0 || (i + 1) % 41 == 0)
 	        continue;
-	    ppCount[i] += isPrime(i * i + i + 41);
+	    ppCount[i] += producePrime(i);
 	}
     int a, b;
     while(scanf("%d %d", &a, &b) == 2)
