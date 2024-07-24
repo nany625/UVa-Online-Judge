@@ -73,9 +73,9 @@ int main() {
 	    }
 	    for(int i = 0; i < E; ++i) {
 	        if(excuses[i].count == max)
-	            printf("%s", excuses[i].excuse);
+	            fputs(excuses[i].excuse, stdout);
 	    }
-	    puts("");
+	    putchar('\n');
 	}
 	return 0;
 }
