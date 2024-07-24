@@ -44,6 +44,10 @@ int main() {
 	        puts("deficient");
 	        continue;
 	    }
+	    if(n > 6 && n % 6 == 0) {
+	        puts("abundant");
+	        continue;
+	    }
 	    long sum = sumOfDivisors(n) - n;
 	    if(sum < n)
 	        puts("deficient");
