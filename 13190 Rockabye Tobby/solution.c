@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct {
-    char *name;
+    char name[16];
     int frequency, next;
 } Medicine;
 
@@ -14,8 +13,7 @@ int main() {
         scanf("%d %d", &n, &k);
         Medicine medicines[n];
         for(int i = 0; i < n; ++i) {
-            medicines[i].name = NULL;
-            scanf("%ms %d", &medicines[i].name, &medicines[i].frequency);
+            scanf("%s %d", medicines[i].name, &medicines[i].frequency);
             medicines[i].next = medicines[i].frequency;
         }
         while(k) {
@@ -30,8 +28,6 @@ int main() {
 				}
 			}
         }
-        for(int i = 0; i < n; ++i)
-            free(medicines[i].name);
     }
 	return 0;
 }
