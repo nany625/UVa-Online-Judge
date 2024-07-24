@@ -14,11 +14,11 @@ int main() {
 	        continue;
 	    }
 	    int sum = 1, limit = sqrt(n);
-	    for(int i = 0; primes[i] <= limit && sum <= n; ++i) {
+	    for(int i = 0; primes[i] <= limit && sum <= limit + n; ++i) {
 	        if(n % primes[i] == 0) {
 	            sum += primes[i] + n / primes[i];
-	            for(int j = 0; primes[j] <= primes[i] && sum <= n; ++j) {
-	                for(int factor = primes[i] * primes[j]; n % factor == 0 && factor <= limit && sum <= n; factor *= primes[j])
+	            for(int j = 0; primes[j] <= primes[i] && sum <= limit + n; ++j) {
+	                for(int factor = primes[i] * primes[j]; n % factor == 0 && factor <= limit && sum <= limit + n; factor *= primes[j])
 	                    sum += factor + n / factor;
 	            }
 	        }
