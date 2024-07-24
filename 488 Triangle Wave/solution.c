@@ -7,13 +7,13 @@ int main() {
 	bool firstCase = true;
 	while(cases--) {
 		if(!firstCase)
-			puts("");
+			putchar('\n');
 		int amplitude, frequency;
 		scanf("%d %d", &amplitude, &frequency);
 		bool firstWave = true;
 		while(frequency--) {
 			if(!firstWave)
-				puts("");
+				putchar('\n');
 			for(int i = 1; i <= amplitude; ++i) {
 				for(int j = 1; j <= i; ++j)
 					putchar(i + '0');
