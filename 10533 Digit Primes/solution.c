@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
 #define MAX_SIZE 999999
 
