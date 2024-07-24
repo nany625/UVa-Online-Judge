@@ -3,27 +3,32 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
-#define MAX_SIZE 3507
+#define MAX_NUM 32693
+#define MAX_PRIME_SIZE 3507
 
-short primes[MAX_SIZE] = {2};
-int count = 1;
+bool isComposite[MAX_NUM + 1] = {true, true};
+short primes[MAX_PRIME_SIZE] = {};
+int count = 0;
 
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
-
-int binarySearch(short *array, int key) {
-    int left = 0, right = MAX_SIZE - 1;
+int binarySearch(int right, int key) {
+    int left = 0;
     while(left <= right) {
         int mid = left + (right - left) / 2;
-        if(array[mid] == key)
+        if(primes[mid] == key)
             return mid;
-        if(array[mid] < key)
+        if(primes[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    right = left - 1;
+    left = 0;
+    key /= 2;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if(primes[mid] == key)
+            return mid;
+        if(primes[mid] < key)
             left = mid + 1;
         else
             right = mid - 1;
@@ -32,9 +37,14 @@ int binarySearch(short *array, int key) {
 }
 
 int main() {
-	for(short i = 3; count < MAX_SIZE; i += 2) {
-	    if(isPrime(i))
-	        primes[count++] = i;
+	for(int i = 2; i <= MAX_NUM; ++i) {
+		if(!isComposite[i]) {
+			primes[count++] = i;
+			if(i <= 180) {
+				for(int j = i * i; j <= MAX_NUM; j += i)
+					isComposite[j] = true;
+			}
+		}
 	}
 	char *buffer = NULL;
 	size_t bufsize = 0;
@@ -47,9 +57,9 @@ int main() {
 	        x *= pow(p, atoi(token));
 	        token = strtok(NULL, " ");
 	    }
-	    int pos = binarySearch(primes, --x);
+	    int pos = --x >= MAX_NUM ? MAX_PRIME_SIZE - 1 : binarySearch(MAX_PRIME_SIZE - 1, x);
 	    bool space = false;
-	    while(pos >= 0 && x > 1) {
+	    while(x > 1) {
 	        if(x % primes[pos] == 0) {
 	            if(space)
 	                putchar(' ');
