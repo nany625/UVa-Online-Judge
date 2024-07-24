@@ -6,7 +6,7 @@
 #define MAX_NUM 32693
 #define MAX_PRIME_SIZE 3507
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+bool isComposite[MAX_NUM + 1] = {};
 short primes[MAX_PRIME_SIZE] = {};
 int count = 0;
 
@@ -37,7 +37,7 @@ int binarySearch(int key) {
 }
 
 int main() {
-	for(int i = 2; i <= MAX_NUM; ++i) {
+	for(int i = 2; count < MAX_PRIME_SIZE; ++i) {
 		if(!isComposite[i]) {
 			primes[count++] = i;
 			if(i <= 180) {
