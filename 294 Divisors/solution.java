@@ -17,24 +17,19 @@ public class Main {
             st.nextToken();
     		int L = (int)st.nval;
     		st.nextToken();
-			int U = (int)st.nval, maxCount = 0, ans = L;
-    		for(int i = L; i <= U; ++i) {
-    			int factorCount = 1, j = 0, temp = i;
-    			while(j < primes.length && temp > 1) {
-        		    int currPow = 0;
-        		    while(temp % primes[j] == 0) {
-    			        ++currPow;
-        		        temp /= primes[j];
-    			    }
-    			    factorCount *= currPow + 1;
-        		    ++j;
-    			}
-    			if(maxCount < factorCount) {
-        			maxCount = factorCount;
+			int U = (int)st.nval;
+			output.append("Between " + L +  " and " + U + ", ");
+			int ans = L;
+			count = factorCount(L);
+			L += L % 2;
+    		for(int i = L; i <= U; i += 2) {
+    			int temp = factorCount(i);
+    			if(count < temp) {
+    				count = temp;
     				ans = i;
     			}
         	} 
-    		output.append(String.format("Between %d and %d, %d has a maximum of %d divisors.\n", L, U, ans, maxCount));
+    		output.append(ans + " has a maximum of " + count + " divisors.\n");
 		}
 	    System.out.print(output);
 	}
@@ -46,5 +41,19 @@ public class Main {
                 return false;
         }
         return true;
+    }
+    
+    static int factorCount(int n) {
+        int result = 1, i = 0, temp = n;
+    	while(i < 3401 && temp > 1) {
+    	    int currPow = 0;
+    	    while(temp % primes[i] == 0) {
+    	        ++currPow;
+    	        temp /= primes[i];
+    	    }
+    	    result *= currPow + 1;
+    	    ++i;
+    	}
+    	return result;
     }
 }
