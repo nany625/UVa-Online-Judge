@@ -20,18 +20,13 @@ public class Main {
             if(num > 0)
                 output.append("  ERROR\n");
             else {
-                boolean leadingZero = true;
-                for(int i = 0; i < 7; ++i) {
-                    if(digits[i] == 0 && leadingZero)
-                        output.append(" ");
-                    else {
-                        leadingZero = false;
-                        if(digits[i] > 9)
-                            output.append((char)(digits[i] - 10 + 'A'));
-                        else
-                            output.append(digits[i]);
-                    }
-                }
+                int i = -1;
+    			while(digits[++i] == 0)
+    			    output.append(" ");
+                while(i < 7) {
+    			    output.append(digits[i] > 9 ? (char)(digits[i] - 10 + 'A') : (char)(digits[i] + '0'));
+    			    ++i;
+    			}
                 output.append("\n");
             }
         }
