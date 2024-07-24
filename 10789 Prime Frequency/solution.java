@@ -1,16 +1,18 @@
 import java.io.*;
 
 public class Main {
+    static boolean[] isComposite = new boolean[2001];
     static short[] primes = new short[303];
-    static int count = 1;
-    static boolean[] table = new boolean[2001];
+    static int count = 0;
 	public static void main (String[] args) throws IOException {
-		primes[0] = 2;
-		table[2] = true;
-		for(short i = 3; count < 303; i += 2) {
-            if(isPrime(i)) {
+		isComposite[0] = isComposite[1] = true;
+		for(short i = 2; count < 303; ++i) {
+            if(!isComposite[i]) {
                 primes[count++] = i;
-                table[i] = true;
+                if(i <= 44) {
+                    for(int j = i * i; j <= 2000; j += i)
+                        isComposite[j] = true;
+                }
             }
         }
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,7 +35,7 @@ public class Main {
             }
             boolean empty = true;
             for(int j = 0; j < 62; ++j) {
-                if(table[frequency[j]]) {
+                if(!isComposite[frequency[j]]) {
                     if(j < 10)
                         output.append((char)('0' + j));
                     else if(j < 36)
@@ -47,13 +49,4 @@ public class Main {
         }
 		System.out.print(output);
 	}
-	
-	static boolean isPrime(short n) {
-        short limit = (short)Math.sqrt(n);
-        for(int i = 1; i < count && primes[i] <= limit; ++i) {
-            if(n % primes[i] == 0)
-                return false;
-        }
-        return true;
-    }
 }
