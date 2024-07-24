@@ -5,7 +5,7 @@ public class Main {
     static int count = 1;
 	public static void main(String[] args) throws IOException {
 	    primes[0] = 2;
-        for(short i = 3; count < primes.length; i += 2) {
+        for(short i = 3; count < 3401; i += 2) {
             if(isPrime(i))
                 primes[count++] = i;
         }
@@ -22,7 +22,15 @@ public class Main {
 			int ans = L;
 			count = factorCount(L);
 			L += L % 2;
-    		for(int i = L; i <= U; i += 2) {
+			while(L % 6 != 0 && L <= U) {
+    		    int temp = factorCount(L);
+    			if(count < temp) {
+    				count = temp;
+    				ans = L;
+    			}
+    			L += 2;
+    		}
+    		for(int i = L; i <= U; i += 6) {
     			int temp = factorCount(i);
     			if(count < temp) {
     				count = temp;
@@ -44,12 +52,12 @@ public class Main {
     }
     
     static int factorCount(int n) {
-        int result = 1, i = 0, temp = n;
-    	while(i < 3401 && temp > 1) {
+        int result = 1, i = 0;
+    	while(i < 3401 && n > 1) {
     	    int currPow = 0;
-    	    while(temp % primes[i] == 0) {
+    	    while(n % primes[i] == 0) {
     	        ++currPow;
-    	        temp /= primes[i];
+    	        n /= primes[i];
     	    }
     	    result *= currPow + 1;
     	    ++i;
