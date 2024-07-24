@@ -22,6 +22,7 @@ public class Main {
                     do {
                         num /= primes[i];
                     } while(num % primes[i] == 0);
+                    limit = (short)Math.sqrt(num);
 		        }
 		    }
 		    output.append(pfCount + (num > 1 ? 1 : 0) + "\n");
