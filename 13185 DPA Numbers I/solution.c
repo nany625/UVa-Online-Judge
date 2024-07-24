@@ -27,17 +27,19 @@ int main() {
 	while(t--) {
 		int n;
 		scanf("%d", &n);
-		if(n % 2 == 1) {
+		if(n % 2 == 1)
 	        puts("deficient");
-	        continue;
+	    else if(n > 6 && n % 6 == 0)
+	        puts("abundant");
+	    else {
+    	    int sum = sumOfDivisors(n) - n;
+    	    if(sum < n)
+    	        puts("deficient");
+    	    else if(sum == n)
+    	        puts("perfect");
+    		else
+    			puts("abundant");
 	    }
-	    int sum = sumOfDivisors(n) - n;
-	    if(sum < n)
-	        puts("deficient");
-	    else if(sum == n)
-	        puts("perfect");
-		else
-			puts("abundant");
 	}
 	return 0;
 }
