@@ -5,10 +5,9 @@ public class Main {
     static short[] dpCount = new short[1000000];
 	public static void main(String[] args) throws IOException {
 	    isComposite[0] = isComposite[1] = true;
-	    int limit = (int)Math.sqrt(1000000);
 	    for(int i = 2; i < 1000000; ++i) {
 	        dpCount[i] = dpCount[i - 1];
-	        if(i <= limit && !isComposite[i]) {
+	        if(i <= 999 && !isComposite[i]) {
     	        for(int j = i * i; j < 1000000; j += i)
     	            isComposite[j] = true;
 	        }
