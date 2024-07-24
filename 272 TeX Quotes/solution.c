@@ -6,10 +6,10 @@ int main() {
     bool odd = true;
     while((ch = getchar()) != EOF) {
         if(ch == '"' && odd) {
-            printf("``");
+            fputs("``", stdout);
             odd = false;
         } else if(ch == '"' && !odd) {
-            printf("''");
+            fputs("''", stdout);
             odd = true;
         } else
             putchar(ch);
