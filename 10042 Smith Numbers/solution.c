@@ -8,20 +8,6 @@ bool isComposite[MAX_NUM + 1] = {};
 short primes[MAX_PRIME_SIZE] = {};
 int count = 0;
 
-bool binarySearch(short *array, int key) {
-    int left = 0, right = MAX_PRIME_SIZE - 1;
-	while(left <= right) {
-		int mid = left + (right - left) / 2;
-		if(array[mid] == key)
-			return true;
-		if(array[mid] < key)
-			left = mid + 1;
-		else
-			right = mid - 1;
-	}
-	return false;
-}
-
 int sumOfDigits(int n) {
     int result = 0;
     while(n > 0) {
@@ -70,11 +56,9 @@ int main() {
 	    bool found = false;
 	    do {
 	        ++n;
-	        if(n <= MAX_NUM) {
-	            if(isComposite[n])
-	                found = sumOfFactorDigits(n) == sumOfDigits(n);
-	        } else
-	            found = sumOfFactorDigits(n) == sumOfDigits(n);
+	        if(n <= MAX_NUM && !isComposite[n])
+	            continue;
+	        found = sumOfFactorDigits(n) == sumOfDigits(n);
 	    } while(!found);
 	    printf("%d\n", n);
 	}
