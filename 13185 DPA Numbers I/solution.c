@@ -1,7 +1,25 @@
 #include <stdio.h>
 #include <math.h>
 
-int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+
+int sumOfDivisors(int n) {
+    int sum = 1, limit = sqrt(n);
+    for(int i = 0; i < 11 && primes[i] <= limit; ++i) {
+        if(n % primes[i] == 0) {
+            int tempSum = 1, term = 1;
+            do {
+                tempSum += term *= primes[i];
+                n /= primes[i];
+            } while(n % primes[i] == 0);
+            sum *= tempSum;
+            limit = sqrt(n);
+        }
+    }
+    if(n > 1)
+        sum *= (1 + n);
+    return sum;
+}
 
 int main() {
 	int t;
@@ -13,18 +31,7 @@ int main() {
 	        puts("deficient");
 	        continue;
 	    }
-	    int sum = 1, limit = sqrt(n);
-	    for(int i = 0; primes[i] <= limit && sum <= limit + n; ++i) {
-	        if(n % primes[i] == 0) {
-	            sum += primes[i] + n / primes[i];
-	            for(int j = 0; primes[j] <= primes[i] && sum <= limit + n; ++j) {
-	                for(int factor = primes[i] * primes[j]; n % factor == 0 && factor <= limit && sum <= limit + n; factor *= primes[j])
-	                    sum += factor + n / factor;
-	            }
-	        }
-	    }
-	    if(limit == sqrt(n))
-	        sum -= limit;
+	    int sum = sumOfDivisors(n) - n;
 	    if(sum < n)
 	        puts("deficient");
 	    else if(sum == n)
