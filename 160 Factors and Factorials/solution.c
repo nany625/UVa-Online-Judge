@@ -23,10 +23,10 @@ int main() {
 		}
 		for(int i = 0; i < 25 && count[i] > 0; ++i) {
     		if(i == 15)
-    		    printf("\n      ");
+    		    fputs("\n      ", stdout);
     		printf("%3d", count[i]);
 		}
-		puts("");
+		putchar('\n');
 	}
 	return 0;
 }
