@@ -1,10 +1,8 @@
 import java.io.*;
 
 public class Main {
-    static char[] table = new char[998];
+    static int[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
 	public static void main(String[] args) throws IOException {
-	    for(int i = 0; i < 998; ++i)
-            sumOfDivisors(i);
         StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int t = (int)st.nval;
@@ -12,9 +10,14 @@ public class Main {
 		while(t-- > 0) {
     		st.nextToken();
             int n = (int)st.nval;
-    		if(table[n - 2] == '0')
+            if(n % 2 == 1) {
+                output.append("deficient\n");
+                continue;
+            }
+            int sum = sumOfDivisors(n) - n;
+    		if(sum < n)
     			output.append("deficient\n");
-    		else if(table[n - 2] == '1')
+    		else if(sum == n)
         		output.append("perfect\n");
         	else
         		output.append("abundant\n");
@@ -22,24 +25,21 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static void sumOfDivisors(int n) {
-	    if(table[n] == '2')
-	        return;
-        int sum = 1, i, num = n + 2;
-        float limit = (float)Math.sqrt(num);
-        for(i = 2; i < limit && sum <= num; ++i) {
-            if(num % i == 0)
-                sum += i + num / i;
+	static int sumOfDivisors(int n) {
+        int sum = 1, limit = (int)Math.sqrt(n);
+        for(int i = 0; i < 11 && primes[i] <= limit; ++i) {
+            if(n % primes[i] == 0) {
+                int tempSum = 1, term = 1;
+                do {
+                    tempSum += term *= primes[i];
+                    n /= primes[i];
+                } while(n % primes[i] == 0);
+                sum *= tempSum;
+                limit = (int)Math.sqrt(n);
+            }
         }
-        if(i == limit)
-            sum += i;
-        if(sum < num)
-            table[n] = '0';
-        else if(sum == num)
-            table[n] = '1';
-        else {
-            for(i = num; i <= 999; i += num)
-                table[i - 2] = '2';
-        }
+        if(n > 1)
+            sum *= (1 + n);
+        return sum;
     }
 }
