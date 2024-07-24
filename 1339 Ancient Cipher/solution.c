@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 
-void InsertionSort(int *array, int size) {
-    for(int i = 1; i < size; ++i) {
+void InsertionSort(int *array) {
+    for(int i = 1; i < 26; ++i) {
         int j = i - 1, insertionNum = array[i];
         while(j >= 0 && insertionNum < array[j]) {
             array[j + 1] = array[j];
@@ -21,8 +21,8 @@ int main() {
 	        ++frequency[0][encryption[i] - 'A'];
 			++frequency[1][origin[i] - 'A'];
 	    }
-	    InsertionSort(frequency[0], 26);
-	    InsertionSort(frequency[1], 26);
+	    InsertionSort(frequency[0]);
+	    InsertionSort(frequency[1]);
 	    int i = 25;
 	    while(i >= 0 && frequency[0][i] == frequency[1][i] && frequency[0][i] > 0)
 	        --i;
