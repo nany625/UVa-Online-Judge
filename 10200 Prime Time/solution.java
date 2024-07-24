@@ -2,12 +2,12 @@ import java.io.*;
 
 public class Main {
     static short[] primes = new short[1230], ppCount = new short[10001];
-	static int primesCount = 1;
+	static int count = 1;
 	public static void main(String[] args) throws IOException {
 	    primes[0] = 2;
-    	for(short i = 3; primesCount < primes.length; i += 2) {
+    	for(short i = 3; count < 1230; i += 2) {
     		if(isPrime(i))
-    			primes[primesCount++] = i;
+    			primes[count++] = i;
     	}
     	for(short i = 0; i < 40; ++i)
     		ppCount[i] = (short)(i + 1);
@@ -16,7 +16,7 @@ public class Main {
     	    ppCount[i] = ppCount[i - 1];
     		if(i % 41 == 0 || (i + 1) % 41 == 0)
     			continue;
-    		if(isPrime(i * i + i + 41))
+    		if(producePrime(i))
     			++ppCount[i];
     	}
 	    StreamTokenizer st = new StreamTokenizer(System.in);
@@ -32,10 +32,19 @@ public class Main {
 	
 	static boolean isPrime(int n) {
 	    short limit = (short)Math.sqrt(n);
-		for(int i = 1; i < primesCount && primes[i] <= limit; ++i) {
+		for(int i = 1; i < count && primes[i] <= limit; ++i) {
 			if(n % primes[i] == 0)
 				return false;
 		}
 		return true;
 	}
+	
+	static boolean producePrime(int n) {
+        int num = n * n + n + 41;
+        for(int i = 13; primes[i] < n; ++i) {
+            if(num % primes[i] == 0)
+                return false;
+        }
+    	return true;
+    }
 }
