@@ -18,13 +18,9 @@ public class Main {
         st.nextToken();
         int t = (int)st.nval;
         StringBuilder output = new StringBuilder();
-		for(int i = 1; i <= t; ++i) {
+		while(t-- > 0) {
     		st.nextToken();
             long n = (long)st.nval;
-            if(i == 274) {
-                output.append("abundant\n");
-                continue;
-            }
             if(n % 2 == 1) {
                 output.append("deficient\n");
                 continue;
