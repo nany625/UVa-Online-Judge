@@ -21,14 +21,19 @@ public class Main {
             for(int i = 0; i < n; ++i) {
                 int[] nucleotidesCount = new int[4];
                 for(int j = 0; j < m; ++j) {
-                    if(DNA[j].charAt(i) == 'A')
-                        ++nucleotidesCount[0];
-                    else if(DNA[j].charAt(i) == 'C')
-                        ++nucleotidesCount[1];
-                    else if(DNA[j].charAt(i) == 'G')
-                        ++nucleotidesCount[2];
-                    else if(DNA[j].charAt(i) == 'T')
-                        ++nucleotidesCount[3];
+                    switch(DNA[j].charAt(i)) {
+                        case 'A':
+                            ++nucleotidesCount[0];
+                            break;
+                        case 'C':
+                            ++nucleotidesCount[1];
+                            break;
+                        case 'G':
+                            ++nucleotidesCount[2];
+                            break;
+                        case 'T':
+                            ++nucleotidesCount[3];
+                    }
                 }
                 int max = 0, temp = -1;
                 for(int j = 0; j < 4; ++j) {
