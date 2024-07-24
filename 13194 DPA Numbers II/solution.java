@@ -21,21 +21,19 @@ public class Main {
 		while(t-- > 0) {
     		st.nextToken();
             long n = (long)st.nval;
-            if(n % 2 == 1) {
+            if(n % 2 == 1)
                 output.append("deficient\n");
-                continue;
-            }
-            if(n > 6 && n % 6 == 0) {
+            else if(n > 6 && n % 6 == 0)
     	        output.append("abundant\n");
-    	        continue;
+    	    else {
+                long sum = sumOfDivisors(n) - n;
+        		if(sum < n)
+        			output.append("deficient\n");
+        		else if(sum == n)
+            		output.append("perfect\n");
+            	else
+            		output.append("abundant\n");
     	    }
-            long sum = sumOfDivisors(n) - n;
-    		if(sum < n)
-    			output.append("deficient\n");
-    		else if(sum == n)
-        		output.append("perfect\n");
-        	else
-        		output.append("abundant\n");
     	}
         System.out.print(output);
 	}
