@@ -25,7 +25,7 @@ public class Main {
             int a = (int)st.nval;
             st.nextToken();
             int b = (int)st.nval;
-    	    output.append(String.format("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1] ? 1 : 0)) / (b - a + 1) + 0.0000001));
+    	    output.append(String.format("%.2f\n", 100.0 * (ppCount[b] - ppCount[a] + (a == 0 || ppCount[a] > ppCount[a - 1] ? 1 : 0)) / (b - a + 1) + 0.000001));
         }
 	    System.out.print(output);
 	}
