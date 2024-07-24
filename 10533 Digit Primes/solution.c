@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
-#define MAX_SIZE 1000000
+#define MAX_SIZE 999999
 
-bool isComposite[MAX_SIZE] = {true, true};
-short dpCount[MAX_SIZE] = {};
+bool isComposite[MAX_SIZE + 1] = {true, true};
+short dpCount[MAX_SIZE + 1] = {};
 
 int sumOfDigits(int n) {
     int result = 0;
@@ -16,14 +16,12 @@ int sumOfDigits(int n) {
 }
 
 int main() {
-    int limit = sqrt(MAX_SIZE);
-    for(int i = 2; i < MAX_SIZE; ++i) {
-        dpCount[i] = dpCount[i - 1];
-        if(i <= limit && !isComposite[i]) {
-            for(int j = i * i; j < MAX_SIZE; j += i)
+    for(int i = 2; i <= MAX_SIZE; ++i) {
+        if(i <= 999 && !isComposite[i]) {
+            for(int j = i * i; j <= MAX_SIZE; j += i)
                 isComposite[j] = true;
         }
-        dpCount[i] += !isComposite[i] && !isComposite[sumOfDigits(i)];
+        dpCount[i] = dpCount[i - 1] + (!isComposite[i] && !isComposite[sumOfDigits(i)]);
     }
 	int N;
 	scanf("%d", &N);
