@@ -40,21 +40,19 @@ int main() {
 	while(t--) {
 	    long n;
 	    scanf("%ld", &n);
-	    if(n % 2 == 1) {
+	    if(n % 2 == 1)
 	        puts("deficient");
-	        continue;
-	    }
-	    if(n > 6 && n % 6 == 0) {
+	    else if(n > 6 && n % 6 == 0)
 	        puts("abundant");
-	        continue;
+	    else {
+	        long sum = sumOfDivisors(n) - n;
+    	    if(sum < n)
+    	        puts("deficient");
+    	    else if(sum == n)
+    	        puts("perfect");
+    		else
+    			puts("abundant");
 	    }
-	    long sum = sumOfDivisors(n) - n;
-	    if(sum < n)
-	        puts("deficient");
-	    else if(sum == n)
-	        puts("perfect");
-		else
-			puts("abundant");
 	}
 	return 0;
 }
