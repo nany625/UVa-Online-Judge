@@ -30,6 +30,7 @@ int main() {
                 do {
                     num /= primes[i];
                 } while(num % primes[i] == 0);
+                limit = sqrt(num);
             }
         }
         printf("%d\n", pfCount + (num > 1));
