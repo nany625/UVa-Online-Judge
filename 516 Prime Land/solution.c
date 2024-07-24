@@ -57,7 +57,7 @@ int main() {
 	        x *= pow(p, atoi(token));
 	        token = strtok(NULL, " ");
 	    }
-	    int pos = --x >= MAX_NUM ? MAX_PRIME_SIZE - 1 : binarySearch(x);
+	    int pos = --x >= MAX_NUM ? 3506 : binarySearch(x);
 	    bool space = false;
 	    while(x > 1) {
 	        if(x % primes[pos] == 0) {
