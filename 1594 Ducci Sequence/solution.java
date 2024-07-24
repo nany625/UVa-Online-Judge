@@ -17,10 +17,8 @@ public class Main {
             int limit = 36;
             while(limit-- > 0) {
                 boolean ZERO = true;
-                for(int i = 0; i < n && ZERO; ++i) {
-                    if(sequence[i] != 0)
-                        ZERO = false;
-                }
+                for(int i = 0; i < n && ZERO; ++i)
+                    ZERO = sequence[i] == 0;
                 if(ZERO)
                     break;
                 int temp = sequence[0];
