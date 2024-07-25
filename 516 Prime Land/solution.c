@@ -6,14 +6,15 @@
 #define MAX_PRIME_SIZE 3507
 
 typedef struct {
-    int p, e;
+    short p;
+    int e;
 } Factor;
 
 short primes[MAX_PRIME_SIZE] = {2};
 int count = 1;
 
-bool isPrime(int n) {
-    int limit = sqrt(n);
+bool isPrime(short n) {
+    short limit = sqrt(n);
     for(int i = 1; i < count && primes[i] <= limit; ++i) {
         if(n % primes[i] == 0)
             return false;
@@ -22,7 +23,7 @@ bool isPrime(int n) {
 }
 
 int main() {
-	for(int i = 3; count < MAX_PRIME_SIZE; i += 2) {
+	for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
 	    if(isPrime(i))
 	        primes[count++] = i;
 	}
