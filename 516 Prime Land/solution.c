@@ -54,7 +54,7 @@ int main() {
 	        }
 	    }
 	    for(int i = size - 1; i >= 0; --i) {
-	        printf("%d %d", factors[i].p, factors[i].e);
+	        printf("%hd %d", factors[i].p, factors[i].e);
 	        if(i > 0)
 	            putchar(' ');
 	    }
