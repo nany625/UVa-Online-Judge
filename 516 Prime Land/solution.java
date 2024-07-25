@@ -1,18 +1,15 @@
 import java.io.*;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[32694];
     static short[] primes = new short[3507];
-    static int count = 0;
+    static int count = 1;
 	public static void main(String[] args) throws IOException {
-		for(short i = 2; count < 3507; ++i) {
-    		if(!isComposite[i]) {
-    			primes[count++] = i;
-    			if(i <= 180) {
-    				for(int j = i * i; j <= 32693; j += i)
-    					isComposite[j] = true;
-    			}
-    		}
+		primes[0] = 2;
+		for(short i = 3; count < 3507; i += 2) {
+    	    if(isPrime(i))
+    	        primes[count++] = i;
     	}
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	String line;
@@ -22,50 +19,43 @@ public class Main {
     	    String[] tokens = line.split("\\s+");
     	    for(int i = 0; i < tokens.length; i += 2) 
     	        x *= Math.pow(Integer.parseInt(tokens[i]), Integer.parseInt(tokens[i + 1]));
-    	    int pos = --x >= 32693 ? 3506 : binarySearch(x);
-    	    boolean space = false;
-    	    while(x > 1) {
-    	        if(x % primes[pos] == 0) {
-    	            if(space)
-    	                output.append(" ");
+    	    --x;
+    	    ArrayList<Factor> factors = new ArrayList<>();
+    	    for(int i = 0; x > 1; ++i) {
+    	        if(x % primes[i] == 0) {
     	            int e = 0;
     	            do {
     	                ++e;
-    	                x /= primes[pos];
-    	            } while(x % primes[pos] == 0);
-    	            output.append(primes[pos] + " " + e);
-    	            space = true;
+    	                x /= primes[i];
+    	            } while(x % primes[i] == 0);
+    	            factors.add(new Factor(primes[i], e));
     	        }
-    	        --pos;
+    	    }
+    	    for(int i = factors.size() - 1; i >= 0; --i) {
+    	        output.append(factors.get(i).p + " " + factors.get(i).e);
+    	        if(i > 0)
+    	            output.append(" ");
     	    }
     	    output.append("\n");
     	}
 	    System.out.print(output);
 	}
 	
-	static int binarySearch(int key) {
-        int left = 0, right = 3506;
-        while(left <= right) {
-            int mid = left + (right - left) / 2;
-            if(primes[mid] == key)
-                return mid;
-            if(primes[mid] < key)
-                left = mid + 1;
-            else
-                right = mid - 1;
+	static boolean isPrime(short n) {
+        short limit = (short)Math.sqrt(n);
+        for(int i = 1; i < count && primes[i] <= limit; ++i) {
+            if(n % primes[i] == 0)
+                return false;
         }
-        right = left - 1;
-        left = 0;
-        key /= 2;
-        while(left <= right) {
-            int mid = left + (right - left) / 2;
-            if(primes[mid] == key)
-                return mid;
-            if(primes[mid] < key)
-                left = mid + 1;
-            else
-                right = mid - 1;
-        }
-        return left - 1;
+        return true;
+    }
+}
+
+class Factor {
+    short p;
+    int e;
+    Factor(short p, int e) {
+        this.p = p;
+        this.e = e;
     }
 }
