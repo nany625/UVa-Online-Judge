@@ -34,7 +34,7 @@ int main() {
                     plaintext = (char*)realloc(plaintext, (size + 2) * sizeof(char));
                     plaintext[size++] = buffer[curr++];
                 } else {
-                    if(isupper(buffer[curr + 1]) && isupper(buffer[curr + 2])) {
+                    if(curr < len - 2 && isupper(buffer[curr + 1]) && isupper(buffer[curr + 2])) {
                         if(buffer[curr] == alphaKey[m] && buffer[curr + 2] == alphaKey[(m + 1) % alphaKeyLen]) {
                             char deciphChar = deciph(buffer[curr + 1], numericalKey);
                             if(L[deciphChar - 'A']) {
