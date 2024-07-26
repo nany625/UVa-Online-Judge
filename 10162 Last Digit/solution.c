@@ -7,15 +7,13 @@ int lastDigit[] = {
 };
 
 int main() {
-    char N[102], quotient[102];
+    char N[102];
     while(scanf("%s", N) && N[0] != '0') {
         int dividend = 0, len = strlen(N);
-        for(int i = 0; i < len; ++i) {
-            dividend = 10 * dividend + N[i] - '0';
-            quotient[i] = dividend / 20 + '0';
-            dividend %= 20;
-        }
-        printf("%d\n", ((quotient[len - 1] - '0') * 4 + lastDigit[dividend]) % 10);
+        for(int i = 0; i < len - 1; ++i)
+            dividend = (10 * dividend + N[i] - '0') % 20;
+        dividend = 10 * dividend + N[len - 1] - '0';
+        printf("%d\n", ((dividend / 20) * 4 + lastDigit[dividend % 20]) % 10);
     }
 	return 0;
 }
