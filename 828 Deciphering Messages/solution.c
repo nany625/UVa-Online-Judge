@@ -26,7 +26,7 @@ int main() {
         getchar();
         while(messages--) {
             getline(&buffer, &bufsize, stdin);
-            char *plaintext = strdup("");
+            char *plaintext = NULL;
             int size = 0, m = 0, curr = 0, len = strlen(buffer);
             bool error = false;
             while(curr < len && !error) {
@@ -66,7 +66,7 @@ int main() {
             }
             if(!error) {
                 plaintext[size] = '\0';
-                printf("%s", plaintext);
+                fputs(plaintext, stdout);
             } else
                 puts("error in encryption");
             free(plaintext); 
