@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
-#define MAX_PRIME_SIZE 1230
+#define MAX_PRIME_SIZE 1229
 
 short primes[MAX_PRIME_SIZE] = {2}, primesSumCount[10001] = {};
 int count = 1;
@@ -21,7 +21,7 @@ int main() {
     }
     for(int i = 0; i < MAX_PRIME_SIZE; ++i) {
         int sum = 0;
-        for(int j = i; (sum += primes[j]) <= 10000; ++j)
+        for(int j = i; j < MAX_PRIME_SIZE && (sum += primes[j]) <= 10000; ++j)
             ++primesSumCount[sum];
     }
     int num;
