@@ -25,8 +25,7 @@ int main() {
             ++primesSumCount[sum];
     }
     int num;
-    while(scanf("%d", &num) && num != 0) {
+    while(scanf("%d", &num) && num != 0)
         printf("%d\n", primesSumCount[num]);
-    }
 	return 0;
 }
