@@ -11,14 +11,14 @@ char deciph(char ch, int N) {
 int main() {
     int cases;
     scanf("%d", &cases);
-    char alphaKey[27], *buffer = NULL;
+    char *alphaKey = NULL, *buffer = NULL;
     size_t bufsize = 0;
     bool firstCase = true;
     while(cases--) {
         if(!firstCase)
             putchar('\n');
         int numericalKey, messages;
-        scanf("%s %d %d", alphaKey, &numericalKey, &messages);
+        scanf("%ms %d %d", &alphaKey, &numericalKey, &messages);
         bool L[26] = {};
         int alphaKeyLen = strlen(alphaKey);
         for(int i = 0; i < alphaKeyLen; ++i)
@@ -71,6 +71,8 @@ int main() {
                 puts("error in encryption");
             free(plaintext); 
         }
+        free(alphaKey);
+        alphaKey = NULL;
         firstCase = false;
     }
     free(buffer);
