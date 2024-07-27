@@ -11,12 +11,13 @@ char deciph(char ch, int N) {
 int main() {
     int cases;
     scanf("%d", &cases);
-    char *alphaKey = NULL, *buffer = NULL;
+    char *buffer = NULL;
     size_t bufsize = 0;
     bool firstCase = true;
     while(cases--) {
         if(!firstCase)
             putchar('\n');
+        char *alphaKey = NULL;
         int numericalKey, messages;
         scanf("%ms %d %d", &alphaKey, &numericalKey, &messages);
         bool L[26] = {};
@@ -72,7 +73,6 @@ int main() {
             free(plaintext); 
         }
         free(alphaKey);
-        alphaKey = NULL;
         firstCase = false;
     }
     free(buffer);
