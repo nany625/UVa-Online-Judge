@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
-#define MAX_NUM 12909
-#define MAX_PRIME_SIZE 1536
+#define MAX_NUM 9127
+#define MAX_PRIME_SIZE 1131
 
 bool isComposite[MAX_NUM + 1];
 short primes[MAX_PRIME_SIZE] = {2};
@@ -28,7 +27,7 @@ int main() {
     for(int i = 3; count < MAX_PRIME_SIZE; i += 2) {
 		if(!isComposite[i]) {
 			primes[count++] = i;
-			if(i <= 113) {
+			if(i <= 95) {
 				for(int j = i * i; j <= MAX_NUM; j += i)
 					isComposite[j] = true;
 			}
@@ -51,12 +50,21 @@ int main() {
 			}
 			L += 2;
 		}
-		for(int i = L; i <= U; i += 6) {
-		    int temp = factorCount(i);
+		while(L % 12 != 0 && L <= U) {
+		    int temp = factorCount(L);
 			if(count < temp) {
 				count = temp;
-				ans = i;
+				ans = L;
 			}
+			L += 6;
+		}
+		while(L <= U) {
+		    int temp = factorCount(L);
+			if(count < temp) {
+				count = temp;
+				ans = L;
+			}
+			L += 12;
 		}
 		printf("%d has a maximum of %d divisors.\n", ans, count);
 	}
