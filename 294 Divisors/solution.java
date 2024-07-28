@@ -2,7 +2,6 @@ import java.io.*;
 
 public class Main {
     static short[] primes = {2, 3, 5, 7, 11, 13};
-    static int count = 1;
 	public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
@@ -14,8 +13,7 @@ public class Main {
     		st.nextToken();
 			int U = (int)st.nval;
 			output.append("Between " + L +  " and " + U + ", ");
-			int ans = L;
-			count = factorCount(L);
+			int ans = L, count = factorCount(L);
 			L += (L + 1) % 2 + 1;
 			while(L % 6 != 0 && L <= U) {
     		    int temp = factorCount(L);
