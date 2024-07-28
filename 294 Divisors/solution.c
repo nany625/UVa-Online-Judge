@@ -1,19 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
-#define MAX_PRIME_SIZE 3401
+#define MAX_NUM 12909
+#define MAX_PRIME_SIZE 1536
 
+bool isComposite[MAX_NUM + 1];
 short primes[MAX_PRIME_SIZE] = {2};
 int count = 1;
-
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
 
 int factorCount(int n) {
     int result = 1, i = 0;
@@ -26,14 +19,21 @@ int factorCount(int n) {
 	    result *= currPow + 1;
 	    ++i;
 	}
+	if(n > 1)
+	    result *= 2;
 	return result;
 }
 
 int main() {
-    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
-        if(isPrime(i))
-            primes[count++] = i;
-    }
+    for(int i = 3; count < MAX_PRIME_SIZE; i += 2) {
+		if(!isComposite[i]) {
+			primes[count++] = i;
+			if(i <= 113) {
+				for(int j = i * i; j <= MAX_NUM; j += i)
+					isComposite[j] = true;
+			}
+		}
+	}
 	int N;
 	scanf("%d", &N);
 	while(N--) {
