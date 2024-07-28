@@ -1,20 +1,27 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
-#define MAX_NUM 31607
 #define MAX_PRIME_SIZE 3401
 
-bool isComposite[MAX_NUM + 1];
-short primes[MAX_PRIME_SIZE] = {};
-int count = 0;
+short primes[MAX_PRIME_SIZE] = {2};
+int count = 1;
+
+bool isPrime(short n) {
+    short limit = sqrt(n);
+    for(int i = 1; i < count && primes[i] <= limit; ++i) {
+        if(n % primes[i] == 0)
+            return false;
+    }
+    return true;
+}
 
 int factorCount(int n) {
-    int result = 1, i = 0, temp = n;
-	while(i < MAX_PRIME_SIZE && temp > 1) {
+    int result = 1, i = 0;
+	while(i < MAX_PRIME_SIZE && n > 1) {
 	    int currPow = 0;
-	    while(temp % primes[i] == 0) {
+	    while(n % primes[i] == 0) {
 	        ++currPow;
-	        temp /= primes[i];
+	        n /= primes[i];
 	    }
 	    result *= currPow + 1;
 	    ++i;
@@ -23,15 +30,10 @@ int factorCount(int n) {
 }
 
 int main() {
-	for(int i = 2; count < MAX_PRIME_SIZE; ++i) {
-		if(!isComposite[i]) {
-			primes[count++] = i;
-			if(i <= 177) {
-				for(int j = i * i; j <= MAX_NUM; j += i)
-					isComposite[j] = true;
-			}
-		}
-	}
+    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
+        if(isPrime(i))
+            primes[count++] = i;
+    }
 	int N;
 	scanf("%d", &N);
 	while(N--) {
