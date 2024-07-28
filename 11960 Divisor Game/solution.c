@@ -2,7 +2,7 @@
 #define MAX_NUM 1000000
 
 short factorCount[MAX_NUM + 1] = {0, 1};
-int table[MAX_NUM / 2 + 1] = {2};
+int table[MAX_NUM / 2] = {2};
 
 int main() {
     for(int i = 3; i <= MAX_NUM; ++i) {
