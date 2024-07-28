@@ -1,20 +1,9 @@
 import java.io.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[9128];
-    static short[] primes = new short[1131];
+    static short[] primes = {2, 3, 5, 7, 11, 13};
     static int count = 1;
 	public static void main(String[] args) throws IOException {
-	    primes[0] = 2;
-        for(short i = 3; count < 1131; i += 2) {
-    		if(!isComposite[i]) {
-    			primes[count++] = i;
-    			if(i <= 95) {
-    				for(int j = i * i; j <= 9127; j += i)
-    					isComposite[j] = true;
-    			}
-    		}
-    	}
         StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int N = (int)st.nval;
@@ -59,7 +48,7 @@ public class Main {
     
     static int factorCount(int n) {
         int result = 1, i = 0;
-    	while(i < 1131 && n > 1) {
+    	while(i < 6 && n > 1) {
     	    int currPow = 0;
     	    while(n % primes[i] == 0) {
     	        ++currPow;
