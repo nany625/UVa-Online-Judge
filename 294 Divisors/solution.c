@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 
 int primes[] = {2, 3, 5, 7, 11, 13};
 
