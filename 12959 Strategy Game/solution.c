@@ -13,7 +13,7 @@ int main() {
 			points[i] = 0;
 		getline(&buffer, &bufsize, stdin);
 		char *token = strtok(buffer, " ");
-		int max = 0, winner, point;
+		int max = 0, winner;
 		while(R--) {
 			for(int j = 0; j < J; ++j) {
 				points[j] += atoi(token);
