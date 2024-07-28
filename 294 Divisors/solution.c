@@ -24,7 +24,7 @@ int factorCount(int n) {
 }
 
 int main() {
-    for(int i = 3; count < MAX_PRIME_SIZE; i += 2) {
+    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
 		if(!isComposite[i]) {
 			primes[count++] = i;
 			if(i <= 95) {
