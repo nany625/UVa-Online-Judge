@@ -1,28 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 int main() {
-	char s[1000001];
-	while(scanf("%s", s) && strcmp(s, ".") != 0) {
-		int len = strlen(s);
-		bool found = false;
-		for(int i = 1; i <= len / 2 && !found; ++i) {
-			if(len % i == 0) {
-				char *substring = strndup(s, i);
-				int j = i;
-				while(j < len && strncmp(substring, s + j, i) == 0)
-					j += i;
-				if(j >= len) {
-					printf("%d\n", len / i);
-					found = true;
-				}
-				free(substring);
-			}
+    char s[1000001];
+	while(scanf("%s", s) && s[0] != '.') {
+		int len = strlen(s), LPS[len], i = 1, length = 0;
+		LPS[0] = 0;
+		while(i < len) {
+		    if(s[i] == s[length])
+		        LPS[i++] = ++length;
+		    else {
+		        if(length != 0)
+		            length = LPS[length - 1];
+		        else
+		            LPS[i++] = 0;
+		    }
 		}
-		if(!found)
-		    puts("1");
+		printf("%d\n", len % (len - LPS[len - 1]) == 0 ? len / (len - LPS[len - 1]) : 1);
 	}
 	return 0;
 }
