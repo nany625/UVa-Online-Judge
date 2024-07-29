@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -12,23 +11,19 @@ int main() {
 		if(!firstCase)
 			putchar('\n');
 		scanf("%s", s);
-		int len = strlen(s);
-		bool found = false;
-		for(int k = 1; k <= len / 2 && !found; ++k) {
-			if(len % k == 0) {
-				char *substring = strndup(s, k);
-				int i = k;
-				while(i < len && strncmp(substring, s + i, k) == 0)
-					i += k;
-				if(i >= len) {
-					printf("%d\n", k);
-					found = true;
-				}
-				free(substring);
-			}
+		int len = strlen(s), LPS[len], i = 1, length = 0;
+		LPS[0] = 0;
+		while(i < len) {
+		    if(s[i] == s[length])
+		        LPS[i++] = ++length;
+		    else {
+		        if(length != 0)
+		            length = LPS[length - 1];
+		        else
+		            LPS[i++] = 0;
+		    }
 		}
-		if(!found)
-		    printf("%d\n", len);
+		printf("%d\n", len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len);
 		firstCase = false;
 	}
 	return 0;
