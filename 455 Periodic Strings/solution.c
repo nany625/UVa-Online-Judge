@@ -11,7 +11,8 @@ int main() {
 		if(!firstCase)
 			putchar('\n');
 		scanf("%s", s);
-		int len = strlen(s), LPS[len], i = 1, length = 0;
+		int len = strlen(s), i = 1, length = 0;
+        short LPS[len];
 		LPS[0] = 0;
 		while(i < len) {
 		    if(s[i] == s[length])
