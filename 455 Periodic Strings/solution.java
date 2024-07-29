@@ -14,10 +14,10 @@ public class Main {
             br.readLine();
 	        String s = br.readLine();
             int len = s.length(), i = 1, length = 0;
-	        int[] LPS = new int[len];
+	        short[] LPS = new short[len];
 	        while(i < len) {
 	            if(s.charAt(i) == s.charAt(length))
-	                LPS[i++] = ++length;
+	                LPS[i++] = (short)(++length);
 	            else {
 	                if(length != 0)
 	                    length = LPS[length - 1];
