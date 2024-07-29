@@ -13,21 +13,19 @@ public class Main {
 				output.append("\n");
             br.readLine();
 	        String s = br.readLine();
-            int len = s.length();
-			boolean found = false;
-    		for(int k = 1; k <= len / 2 && !found; ++k) {
-				if(len % k == 0) {
-    				int i = k;
-					while(i < len && s.substring(0, k).equals(s.substring(i, i + k)))
-    					i += k;
-    				if(i >= len) {
-						output.append(k + "\n");
-    					found = true;
-					}
-				}
-			}
-			if(!found)
-			    output.append(len + "\n");
+            int len = s.length(), i = 1, length = 0;
+	        int[] LPS = new int[len];
+	        while(i < len) {
+	            if(s.charAt(i) == s.charAt(length))
+	                LPS[i++] = ++length;
+	            else {
+	                if(length != 0)
+	                    length = LPS[length - 1];
+	                else
+	                    LPS[i++] = 0;
+	            }
+	        }
+			output.append((len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len) + "\n");
 			firstCase = false;
         }
         System.out.print(output);
