@@ -5,22 +5,20 @@ public class Main {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
         String s;
         StringBuilder output = new StringBuilder();
-	    while(st.nextToken() == StreamTokenizer.TT_WORD && !(s = st.sval).equals(".")) {
-	        int len = s.length();
-			boolean found = false;
-			for(int i = 1; i <= len / 2 && !found; ++i) {
-				if(len % i == 0) {
-					int j = i;
-					while(j < len && s.substring(0, i).equals(s.substring(j, j + i)))
-						j += i;
-					if(j >= len) {
-						output.append(len / i + "\n");
-						found = true;
-					}
-				}
-			}
-			if(!found)
-			    output.append(1 + "\n");
+	    while(st.nextToken() == StreamTokenizer.TT_WORD && (s = st.sval).charAt(0) != '.') {
+	        int len = s.length(), i = 1, length = 0;
+	        int[] LPS = new int[len];
+	        while(i < len) {
+	            if(s.charAt(i) == s.charAt(length))
+	                LPS[i++] = ++length;
+	            else {
+	                if(length != 0)
+	                    length = LPS[length - 1];
+	                else
+	                    LPS[i++] = 0;
+	            }
+	        }
+			output.append((len % (len - LPS[len - 1]) == 0 ? len / (len - LPS[len - 1]) : 1) + "\n");
         }
 	    System.out.print(output);
 	}
