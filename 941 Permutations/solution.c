@@ -21,8 +21,8 @@ void InsertionSort(char *array) {
 int main() {
 	int samples;
 	scanf("%d", &samples);
+    char S[21];
 	while(samples--) {
-		char S[21];
 		long N;
 		scanf("%s %ld", S, &N);
 		InsertionSort(S);
