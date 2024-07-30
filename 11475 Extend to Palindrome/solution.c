@@ -4,10 +4,17 @@
 int main() {
 	char str[100001];
 	while(scanf("%s", str) == 1) {
-	    int len = strlen(str), LPS[len], i = 1, length = 0;
+	    int len = strlen(str);
+	    char revStr[len + 1];
+	    for(int i = 0; i < len; ++i)
+	        revStr[i] = str[len - 1 - i];
+	    revStr[len] = '\0';
+	    char concat[2 * len + 2];
+	    sprintf(concat, "%s#%s", revStr, str);
+	    int LPS[2 * len + 1], i = 1, length = 0;
 	    LPS[0] = 0;
-	    while(i < len) {
-	        if(str[i] == str[len - 1 - length])
+	    while(i < 2 * len + 1) {
+	        if(concat[i] == concat[length])
 	            LPS[i++] = ++length;
 	        else {
 	            if(length != 0)
@@ -17,7 +24,7 @@ int main() {
 	        }
 	    }
 	    fputs(str, stdout);
-	    for(int j = len - LPS[len - 1] - 1; j >= 0; --j)
+	    for(int j = len - LPS[2 * len] - 1; j >= 0; --j)
 	        putchar(str[j]);
 	    putchar('\n');
 	}
