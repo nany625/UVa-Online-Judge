@@ -17,8 +17,8 @@ int main() {
 	        }
 	    }
 	    fputs(str, stdout);
-	    for(int i = len - LPS[len - 1] - 1; i >= 0; --i)
-	        putchar(str[i]);
+	    for(int j = len - LPS[len - 1] - 1; j >= 0; --j)
+	        putchar(str[j]);
 	    putchar('\n');
 	}
 	return 0;
