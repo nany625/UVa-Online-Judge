@@ -25,8 +25,8 @@ int main() {
 	while(samples--) {
 		long N;
 		scanf("%s %ld", S, &N);
-		int len = strlen(S);
 		InsertionSort(S);
+        int len = strlen(S);
 		for(int i = len - 1; i >= 0; --i) {
 			int index = N / factorials[i];
 			putchar(S[index]);
