@@ -37,7 +37,7 @@ int main() {
         }
         max *= (prev + next);
         long min = 0;
-        prev = 0,
+        prev = 0;
         next = 1;
         add = true;
         for(int i = 0; i < len; ++i) {
