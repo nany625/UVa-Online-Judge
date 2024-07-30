@@ -4,8 +4,7 @@
 int main() {
 	char str[100001];
 	while(scanf("%s", str) == 1) {
-	    int len = strlen(str);
-	    int LPS[len], i = 1, length = 0;
+	    int len = strlen(str), LPS[len], i = 1, length = 0;
 	    LPS[0] = 0;
 	    while(i < len) {
 	        if(str[i] == str[len - 1 - length])
