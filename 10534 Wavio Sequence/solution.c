@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int binarySearch(int *array, int size, int key) {
     int left = 0, right = size - 1;
@@ -27,7 +28,7 @@ int main() {
             if(pos == lisSize)
                 LIS = (int*)realloc(LIS, ++lisSize * sizeof(int));
             LIS[pos] = sequence[i];
-            lisDP[i] = lisSize;
+            lisDP[i] = pos + 1;
         }
         int *LDS = NULL, ldsSize = 0, ldsDP[N], max = 1;
         for(int i = N - 1; i >= 0; --i) {
@@ -35,11 +36,10 @@ int main() {
             if(pos == ldsSize)
                 LDS = (int*)realloc(LDS, ++ldsSize * sizeof(int));
             LDS[pos] = sequence[i];
-            ldsDP[i] = ldsSize;
+            ldsDP[i] = pos + 1;
             int temp = lisDP[i] < ldsDP[i] ? lisDP[i] : ldsDP[i];
-            if(max <= temp)
-                max = temp;
-            else
+            max = max > temp ? max : temp;
+            if(max == lisSize)
                 break;
         }
         printf("%d\n", 2 * max - 1);
