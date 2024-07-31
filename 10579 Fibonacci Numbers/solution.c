@@ -28,21 +28,13 @@ int main() {
         fib[size].digits = i + (fib[size].number[i] - '0');
         ++size;
     }
-    bool reversed[size] = {};
     int number;
     while(scanf("%d", &number) == 1) {
-        if(!reversed[number]) {
-            for(int i = 0; i < fib[number].digits / 2; ++i) {
-                char temp = fib[number].number[i];
-                fib[number].number[i] = fib[number].number[fib[number].digits - 1 - i];
-                fib[number].number[fib[number].digits - 1 - i] = temp;
-            }
-            reversed[number] = true;
-        }
-        printf("%.*s\n", fib[number].digits, fib[number].number);
+        for(int i = fib[number].digits - 1; i >= 0; --i)
+            putchar(fib[number].number[i]);
+        putchar('\n');
     }
     for(int i = 0; i < size; ++i)
         free(fib[i].number);
-    free(fib);
     return 0;
 }
