@@ -9,7 +9,6 @@ typedef struct {
 int main() {
     Rectangle *rec = NULL;
     int size = 0;
-    char type;
     while(getchar() == 'r') {
         rec = (Rectangle*)realloc(rec, (size + 1) * sizeof(Rectangle));
         scanf("%f %f %f %f", &rec[size].x1, &rec[size].y1, &rec[size].x2, &rec[size].y2);
