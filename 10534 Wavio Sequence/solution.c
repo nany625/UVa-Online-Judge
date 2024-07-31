@@ -18,11 +18,9 @@ int binarySearch(int *array, int size, int key) {
 int main() {
     int N;
     while(scanf("%d", &N) == 1) {
-        int sequence[N];
-        for(int i = 0; i < N; ++i)
-            scanf("%d", &sequence[i]);
-        int *LIS = NULL, lisSize = 0, lisDP[N];
+        int sequence[N], *LIS = NULL, lisSize = 0, lisDP[N];
         for(int i = 0; i < N; ++i) {
+            scanf("%d", &sequence[i]);
             int pos = binarySearch(LIS, lisSize, sequence[i]);
             if(pos == lisSize)
                 LIS = (int*)realloc(LIS, ++lisSize * sizeof(int));
