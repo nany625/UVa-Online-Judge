@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int binarySearch(int *array, int size, int key) {
     int left = 0, right = size - 1;
