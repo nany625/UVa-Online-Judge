@@ -11,20 +11,20 @@ int main() {
 	        concat[i] = str[len - 1 - i];
 	    concat[len] = '#';
 	    strcat(concat, str);
-	    int LPS[2 * len + 1], i = 1, length = 0;
-	    LPS[0] = 0;
+	    int lps[2 * len + 1], i = 1, length = 0;
+	    lps[0] = 0;
 	    while(i < 2 * len + 1) {
 	        if(concat[i] == concat[length])
-	            LPS[i++] = ++length;
+	            lps[i++] = ++length;
 	        else {
 	            if(length != 0)
-	                length = LPS[length - 1];
+	                length = lps[length - 1];
 	            else
-	                LPS[i++] = 0;
+	                lps[i++] = 0;
 	        }
 	    }
 	    fputs(str, stdout);
-	    for(int j = len - LPS[2 * len] - 1; j >= 0; --j)
+	    for(int j = len - lps[2 * len] - 1; j >= 0; --j)
 	        putchar(str[j]);
 	    putchar('\n');
 	}
