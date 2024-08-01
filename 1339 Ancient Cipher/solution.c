@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 void InsertionSort(int *array) {
     for(int i = 1; i < 26; ++i) {
