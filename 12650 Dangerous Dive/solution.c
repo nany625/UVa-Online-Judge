@@ -42,7 +42,7 @@ int main() {
                     printf("%d ", i + 1);
             }
 	    }
-	    puts("");
+	    putchar('\n');
     }
     return 0;
 }
