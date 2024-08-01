@@ -8,19 +8,19 @@ public class Main {
 	        String s = st.sval;
 	        StringBuilder concat = new StringBuilder(s).reverse().append("#" + s);
             int len = s.length(), i = 1, length = 0;
-	        int[] LPS = new int[2 * len + 1];
+	        int[] lps = new int[2 * len + 1];
 	        while(i < 2 * len + 1) {
 	            if(concat.charAt(i) == concat.charAt(length))
-	                LPS[i++] = ++length;
+	                lps[i++] = ++length;
 	            else {
 	                if(length != 0)
-	                    length = LPS[length - 1];
+	                    length = lps[length - 1];
 	                else
-	                    LPS[i++] = 0;
+	                    lps[i++] = 0;
 	            }
 	        }
 			output.append(s);
-			for(int j = len - LPS[2 * len] - 1; j >= 0; --j)
+			for(int j = len - lps[2 * len] - 1; j >= 0; --j)
 			    output.append(s.charAt(j));
 			output.append("\n");
         }
