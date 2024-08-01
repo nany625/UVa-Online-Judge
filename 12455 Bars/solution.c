@@ -7,10 +7,8 @@ bool isSubsetSum(short *array, int size, int sum) {
 	for(int i = 1; i <= sum; ++i)
 	    subsetSum[i] = false;
 	for(int i = 0; i < size && !subsetSum[sum]; ++i) {
-	    for(int j = sum; j >= array[i] && !subsetSum[sum]; --j) {
-	        if(subsetSum[j - array[i]])
-	            subsetSum[j] = true;
-	    }
+	    for(int j = sum; j >= array[i] && !subsetSum[sum]; --j)
+	        subsetSum[j] = subsetSum[j] || subsetSum[j - array[i]];
 	}
 	return subsetSum[sum];
 }
