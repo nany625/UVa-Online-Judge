@@ -5,12 +5,12 @@ int main() {
 	char str[100001];
 	while(scanf("%s", str) == 1) {
 	    int len = strlen(str);
-	    char revStr[len + 1];
-	    for(int i = 0; i < len; ++i)
-	        revStr[i] = str[len - 1 - i];
-	    revStr[len] = '\0';
 	    char concat[2 * len + 2];
-	    sprintf(concat, "%s#%s", revStr, str);
+	    memset(concat + len + 1, '\0', len);
+	    for(int i = 0; i < len; ++i)
+	        concat[i] = str[len - 1 - i];
+	    concat[len] = '#';
+	    strcat(concat, str);
 	    int LPS[2 * len + 1], i = 1, length = 0;
 	    LPS[0] = 0;
 	    while(i < 2 * len + 1) {
