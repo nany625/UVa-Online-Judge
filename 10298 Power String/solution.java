@@ -7,18 +7,18 @@ public class Main {
         StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_WORD && (s = st.sval).charAt(0) != '.') {
 	        int len = s.length(), i = 1, length = 0;
-	        int[] LPS = new int[len];
+	        int[] lps = new int[len];
 	        while(i < len) {
 	            if(s.charAt(i) == s.charAt(length))
-	                LPS[i++] = ++length;
+	                lps[i++] = ++length;
 	            else {
 	                if(length != 0)
-	                    length = LPS[length - 1];
+	                    length = lps[length - 1];
 	                else
-	                    LPS[i++] = 0;
+	                    lps[i++] = 0;
 	            }
 	        }
-			output.append((len % (len - LPS[len - 1]) == 0 ? len / (len - LPS[len - 1]) : 1) + "\n");
+			output.append((len % (len - lps[len - 1]) == 0 ? len / (len - lps[len - 1]) : 1) + "\n");
         }
 	    System.out.print(output);
 	}
