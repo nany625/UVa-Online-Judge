@@ -9,14 +9,13 @@ int main() {
     char *buffer = NULL;
     size_t bufsize = 0;
     while(T--) {
-        int n, prev, size = 1;
-        scanf("%d %d", &n, &prev);
+        int prev, size = 1;
+        scanf("%*d %d", &prev);
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         while(token) {
             int curr = atoi(token);
-            if((size % 2 == 0) == curr > prev)
-                ++size;
+            size += (size % 2 == 0) == curr > prev;
             prev = curr;
             token = strtok(NULL, " ");
         }
