@@ -7,11 +7,11 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
 		    int[] array = new int[n], reg = new int[n];
-		    long[] swap = new long[1];
 		    for(int i = 0; i < n; ++i) {
 		        st.nextToken();
 		        array[i] = (int)st.nval;
 		    }
+            long[] swap = new long[1];
 		    MergeSort(array, reg, 0, n - 1, swap);
 		    output.append(swap[0] + "\n");
 		}
