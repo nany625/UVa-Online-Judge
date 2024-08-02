@@ -32,8 +32,7 @@ public class Main {
     			if(leftPointer > mid) {
     				reg[i] = array[rightPointer++];
     				sum[0] += leftPointer - left;
-    			}
-    			else if(rightPointer > right)
+    			} else if(rightPointer > right)
     				reg[i] = array[leftPointer++];
     			else if(array[leftPointer] <= array[rightPointer])
     				reg[i] = array[leftPointer++];
