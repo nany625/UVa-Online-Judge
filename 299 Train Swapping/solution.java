@@ -58,8 +58,7 @@ public class Main {
     			if(leftPointer > mid) {
     				reg[i] = array[rightPointer++];
     				swap[0] += mid - leftPointer + 1;
-    			}
-    			else if(rightPointer > right)
+    			} else if(rightPointer > right)
     				reg[i] = array[leftPointer++];
     			else if(array[leftPointer] <= array[rightPointer])
     				reg[i] = array[leftPointer++];
