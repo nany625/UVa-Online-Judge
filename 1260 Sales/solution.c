@@ -11,8 +11,7 @@ void MergeSort(short *array, short *reg, int left, int right, int *sum) {
             if(leftPointer > mid) {
                 reg[i] = array[rightPointer++];
                 *sum += leftPointer - left;
-            }
-            else if(rightPointer > right)
+            } else if(rightPointer > right)
                 reg[i] = array[leftPointer++];
             else if(array[leftPointer] <= array[rightPointer])
                 reg[i] = array[leftPointer++];
