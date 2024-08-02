@@ -10,8 +10,7 @@ void MergeSort(int *array, int *reg, int left, int right, long *swap) {
             if(leftPointer > mid) {
                 reg[i] = array[rightPointer++];
                 *swap += mid - leftPointer + 1;
-            }
-            else if(rightPointer > right)
+            } else if(rightPointer > right)
                 reg[i] = array[leftPointer++];
             else if(array[leftPointer] <= array[rightPointer])
                 reg[i] = array[leftPointer++];
