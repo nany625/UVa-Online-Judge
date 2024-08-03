@@ -67,7 +67,8 @@ int main() {
                 lis = (int*)realloc(lis, ++lisSize * sizeof(int));
             lis[left] = weights[i];
             int temp = left + 1;
-            left = 0, right = ldsSize - 1;
+            left = 0;
+            right = ldsSize - 1;
             while(left <= right) {
                 int mid = left + (right - left) / 2;
                 if(lds[mid] > weights[i])
