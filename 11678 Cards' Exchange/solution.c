@@ -13,7 +13,7 @@ int main() {
         int *X = NULL, sizeX = 0;
         while(token) {
             int temp = atoi(token);
-            if(sizeX == 0 || (sizeX > 0 && temp > X[sizeX - 1])) {
+            if(sizeX == 0 || (temp > X[sizeX - 1])) {
                 X = (int*)realloc(X, (sizeX + 1) * sizeof(int));
                 X[sizeX++] = temp;
             }
@@ -24,7 +24,7 @@ int main() {
         int *Y = NULL, sizeY = 0;
         while(token) {
             int temp = atoi(token);
-            if(sizeY == 0 || (sizeY > 0 && temp > Y[sizeY - 1])) {
+            if(sizeY == 0 || (temp > Y[sizeY - 1])) {
                 Y = (int*)realloc(Y, (sizeY + 1) * sizeof(int));
                 Y[sizeY++] = temp;
             }
