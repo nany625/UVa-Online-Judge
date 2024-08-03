@@ -9,7 +9,7 @@ public class Main {
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (B = (int)st.nval) != 0) {
 		    ArrayList<Integer> X = new ArrayList<>();
 		    int sizeX = 0;
-		    for(int i = 0; i < A; ++i) {
+		    while(A-- > 0) {
 		        st.nextToken();
 		        int temp = (int)st.nval;
 		        if(X.isEmpty() || (temp > X.get(sizeX - 1))) {
@@ -19,7 +19,7 @@ public class Main {
 		    }
 		    ArrayList<Integer> Y = new ArrayList<>();
 		    int sizeY = 0;
-		    for(int i = 0; i < B; ++i) {
+		    while(B-- > 0) {
 		        st.nextToken();
 		        int temp = (int)st.nval;
 		        if(Y.isEmpty() || (temp > Y.get(sizeY - 1))) {
