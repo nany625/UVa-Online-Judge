@@ -53,8 +53,7 @@ int main() {
         int weights[n];
         for(int i = 0; i < n; ++i)
             scanf("%d", &weights[i]);
-        int *lis = NULL, lisSize = 0;
-        int *lds = NULL, ldsSize = 0, max = 0;
+        int *lis = NULL, lisSize = 0, *lds = NULL, ldsSize = 0, max = 0;
         for(int i = n - 1; i >= 0; --i) {
             int left = 0, right = lisSize - 1;
             while(left <= right) {
