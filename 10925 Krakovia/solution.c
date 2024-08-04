@@ -34,9 +34,10 @@ int main() {
         bool leadingZero = true;
         for(int i = digits - 1; i >= 0; --i) {
             dividend = 10 * dividend + sum[i] - '0';
-            leadingZero = leadingZero && (dividend / F == 0);
+            char quotient = dividend / F + '0';
+            leadingZero = leadingZero && (quotient == '0');
             if(!leadingZero)
-                putchar(dividend / F + '0');
+                putchar(quotient);
             dividend %= F;
         }
         if(leadingZero)
