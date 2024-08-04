@@ -1,3 +1,4 @@
+// 尚未通過UVa
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
