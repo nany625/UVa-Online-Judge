@@ -17,11 +17,11 @@ int main() {
             scanf("%s", V);
             int len = strlen(V);
             sum = (char*)realloc(sum, (findMax(digits, len) + 1) * sizeof(char));
-            for(int j = digits; j <= findMax(digits, len); ++j)
-                sum[j] = '0';
-            for(int j = 0; j < len; ++j) {
-                sum[j + 1] += (sum[j] + V[len - 1 - j] - 2 * '0') / 10;
-                sum[j] = (sum[j] + V[len - 1 - j] - 2 * '0') % 10 + '0';
+            for(int i = digits; i <= findMax(digits, len); ++i)
+                sum[i] = '0';
+            for(int i = 0; i < len; ++i) {
+                sum[i + 1] += (sum[i] + V[len - 1 - i] - 2 * '0') / 10;
+                sum[i] = (sum[i] + V[len - 1 - i] - 2 * '0') % 10 + '0';
             }
             digits = findMax(digits, len) + (sum[findMax(digits, len)] == '1');
         }
