@@ -1,15 +1,14 @@
+// 尚未通過UVa
 import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line;
+	    int temp;
         StringBuilder output = new StringBuilder();
-        while((line = br.readLine()) != null) {
-            int len = line.length();
-            for(int i = 0; i < len; ++i)
-                output.append((char)(line.charAt(i) - 7));
-            output.append("\n");
+        while((temp = br.read()) != -1) {
+            char ch = (char)temp;
+            output.append(ch == '\n' ? '\n' : (char)(ch - 7));
         }
         System.out.print(output);
 	}
