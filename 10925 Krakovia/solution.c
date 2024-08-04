@@ -15,15 +15,16 @@ int main() {
         int digits = 0;
         while(N--) {
             scanf("%s", V);
-            int len = strlen(V);
-            sum = (char*)realloc(sum, (findMax(digits, len) + 1) * sizeof(char));
-            for(int i = digits; i <= findMax(digits, len); ++i)
+            int len = strlen(V), maxLen = findMax(digits, len);
+            sum = (char*)realloc(sum, (maxLen + 2) * sizeof(char));
+            for(int i = digits; i <= maxLen; ++i)
                 sum[i] = '0';
+            sum[maxLen + 1] = '\0';
             for(int i = 0; i < len; ++i) {
                 sum[i + 1] += (sum[i] + V[len - 1 - i] - 2 * '0') / 10;
                 sum[i] = (sum[i] + V[len - 1 - i] - 2 * '0') % 10 + '0';
             }
-            digits = findMax(digits, len) + (sum[findMax(digits, len)] == '1');
+            digits = maxLen + (sum[maxLen] == '1');
         }
         printf("Bill #%d costs ", ++cases);
         for(int i = digits - 1; i >= 0; --i)
