@@ -18,7 +18,7 @@ int sortedness(char *array) {
 }
 
 int compare(const void *a, const void *b) {
-    return ((DNA*)a)->sortedness - ((DNA*)b)->sortedness;
+    return ((DNA*)a)->sortedness > ((DNA*)b)->sortedness;
 }
 
 int main() {
