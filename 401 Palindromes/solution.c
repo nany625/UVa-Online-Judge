@@ -6,6 +6,9 @@ char Character[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
 char Reverse[] = "A---3--HIL-JM-O---2TUVWXY51SE-Z--8-";
 
 int main() {
+    char ASCII[128];
+    for(int i = 0; i < 35; ++i)
+        ASCII[(int)Character[i]] = Reverse[i];
     char s[21];
     while(scanf("%s", s) == 1) {
         int len = strlen(s);
@@ -13,12 +16,8 @@ int main() {
         for(int i = 0; i < len / 2 && isPalindrome; ++i)
             isPalindrome = s[i] == s[len - 1 - i];
         bool isMirror = true;
-        for(int i = 0; i < (len + 1) / 2 && isMirror; ++i) {
-            for(int j = 0; j < 35 && isMirror; ++j) {
-                if(s[i] == Character[j] && Reverse[j] != s[len - 1 - i])
-                    isMirror = false;
-            }
-        }
+        for(int i = 0; i < (len + 1) / 2 && isMirror; ++i)
+            isMirror = ASCII[(int)s[i]] == s[len - 1 - i];
         if(isPalindrome && isMirror)
             printf("%s -- is a mirrored palindrome.\n\n", s);
         else if(isPalindrome)
