@@ -27,7 +27,7 @@ int main() {
 	while(t--) {
 		int n;
 		scanf("%d", &n);
-		if(n % 2 == 1)
+		if(n % 2 == 1 && n % 15 != 0)
 	        puts("deficient");
 	    else if(n > 6 && n % 6 == 0)
 	        puts("abundant");
