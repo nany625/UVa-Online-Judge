@@ -3,7 +3,7 @@
 #include <math.h>
 
 int compare(const void *a, const void *b) {
-    return *(int*)b - *(int*)a;
+    return *(int*)a < *(int*)b;
 }
 
 int main() {
