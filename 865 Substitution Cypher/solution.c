@@ -15,20 +15,15 @@ int main() {
 	    fgets(plaintext, sizeof(plaintext), stdin);
 		fgets(substitution, sizeof(substitution), stdin);
 		printf("%s%s", substitution, plaintext);
+		int len = strlen(plaintext);
+		char ASCII[128];
+		memset(ASCII, '\0', 128);
+		for(int i = 0; i < len; ++i)
+		    ASCII[(int)plaintext[i]] = substitution[i];
 		while(fgets(text, sizeof(text), stdin) && strcmp(text, "\n") != 0) {
-		    int lenText = strlen(text);
-		    for(int i = 0; i < lenText; ++i) {
-		        int lenPlainText = strlen(plaintext);
-		        bool found = false;
-		        for(int j = 0; j < lenPlainText && !found; ++j) {
-		            if(text[i] == plaintext[j]) {
-		                putchar(substitution[j]);
-		                found = true;
-		            }
-		        }
-		        if(!found)
-		            putchar(text[i]);
-		    }
+		    len = strlen(text);
+		    for(int i = 0; i < len; ++i)
+		        putchar(ASCII[(int)text[i]] != '\0' ? ASCII[(int)text[i]] : text[i]);
 		}
 		firstCase = false;
 	}
