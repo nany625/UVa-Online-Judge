@@ -30,9 +30,9 @@ public class Main {
     	Collections.sort(frequenciesKeys, new Comparator<Character>() {
     	    @Override
     	    public int compare(Character c1, Character c2) {
-    	        if(frequencies.get(c1).equals(frequencies.get(c2)))
-    	            return Character.compare(c1, c2);
-    	        return Short.compare(frequencies.get(c2), frequencies.get(c1));
+    	        if(!frequencies.get(c1).equals(frequencies.get(c2)))
+    	            return Short.compare(frequencies.get(c2), frequencies.get(c1));
+    	        return Character.compare(c1, c2);
     	    }
     	});
     	for(Character c : frequenciesKeys)
