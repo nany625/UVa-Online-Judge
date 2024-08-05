@@ -40,10 +40,10 @@ int compare(const void *a, const void *b) {
     ScoreBoard *s1 = (ScoreBoard*)a;
     ScoreBoard *s2 = (ScoreBoard*)b;
     if(s1->solvedCount != s2->solvedCount)
-        return s2->solvedCount - s1->solvedCount;
+        return s1->solvedCount < s2->solvedCount;
     if(s1->penaltyTime != s2->penaltyTime)
-        return s1->penaltyTime - s2->penaltyTime;
-    return s1->contestant - s2->contestant;
+        return s1->penaltyTime > s2->penaltyTime;
+    return s1->contestant > s2->contestant;
 }
 
 int main() {
