@@ -20,8 +20,8 @@ int compare(const void *a, const void *b) {
     Frequency *f1 = (Frequency*)a;
     Frequency *f2 = (Frequency*)b;
     if(f1->count != f2->count)
-        return f1->count - f2->count;
-    return f2->value - f1->value;
+        return f1->count > f2->count;
+    return f1->value < f2->value;
 }
 
 int main() {
