@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <math.h>
 #include <stdbool.h>
 #define MAX_NUM 2000
 #define MAX_PRIME_SIZE 303
