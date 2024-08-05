@@ -40,10 +40,10 @@ int main() {
 	while(t--) {
 	    long n;
 	    scanf("%ld", &n);
-	    if(n > 6 && n % 6 == 0)
-	        puts("abundant");
-	    else if(n % 2 == 1 && n % 15 != 0)
+	    if(n % 2 == 1 && n % 15 != 0)
 	        puts("deficient");
+	    else if(n > 6 && n % 6 == 0)
+	        puts("abundant");
 	    else {
 	        long sum = sumOfDivisors(n) - n;
     	    if(sum < n)
