@@ -9,7 +9,7 @@ typedef struct {
 } Data;
 
 int compare(const void *a, const void *b) {
-    return ((Data*)a)->p - ((Data*)b)->p;
+    return ((Data*)a)->p > ((Data*)b)->p;
 }
 
 int main() {
