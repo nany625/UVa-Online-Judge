@@ -8,7 +8,7 @@ typedef struct {
 int compare(const void *a, const void *b) {
     Appointment *a1 = (Appointment*)a;
     Appointment *a2 = (Appointment*)b;
-    return a1->time1 - a2->time1;
+    return a1->time1 > a2->time1;
 }
 
 int main() {
