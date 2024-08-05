@@ -24,9 +24,9 @@ public class Main {
             Collections.sort(frequenciesKeys, new Comparator<Character>() {
                 @Override
                 public int compare(Character c1, Character c2) {
-                    if(frequencies.get(c1).equals(frequencies.get(c2)))
-                        return Character.compare(c2, c1);
-                    return Short.compare(frequencies.get(c1), frequencies.get(c2));
+                    if(!frequencies.get(c1).equals(frequencies.get(c2)))
+                        return Short.compare(frequencies.get(c1), frequencies.get(c2));
+                    return Character.compare(c2, c1);
                 }
             });
             for(Character c : frequenciesKeys)
