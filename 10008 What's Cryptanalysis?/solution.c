@@ -11,8 +11,8 @@ int compare(const void *a, const void *b) {
     Frequency *f1 = (Frequency*)a;
     Frequency *f2 = (Frequency*)b;
     if(f1->count != f2->count)
-        return f2->count - f1->count;
-    return f1->alpha - f2->alpha;
+        return f1->count < f2->count;
+    return f1->alpha > f2->alpha;
 }
 
 int main() {
