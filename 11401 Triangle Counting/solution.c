@@ -7,7 +7,7 @@ int main() {
     ans[3] = 0;
     for(int i = 4; i <= MAX_NUM; ++i) {
         long temp = i / 2 - 1;
-        ans[i] = ans[i - 1] + (1 + temp) * temp - temp * (i % 2 == 0);
+        ans[i] = ans[i - 1] + (1 + temp) * temp - temp * ((i + 1) % 2);
     }
     int n;
     while(scanf("%d", &n) && n >= 3)
