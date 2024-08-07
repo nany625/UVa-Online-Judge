@@ -12,7 +12,7 @@ Graph graph;
 void dfs(Graph *graph, int vertex, int *count) {
     graph->visited[vertex] = true;
     ++(*count);
-    for(int i = 0; i < graph->knockCount[vertex]; ++i) {
+    for(short i = 0; i < graph->knockCount[vertex]; ++i) {
         if(!graph->visited[graph->knockList[vertex][i]])
             dfs(graph, graph->knockList[vertex][i], count);
     }
