@@ -10,9 +10,7 @@ public class Main {
 		while(t-- > 0) {
     		st.nextToken();
             int n = (int)st.nval;
-            if(n % 2 == 1 && n % 15 != 0)
-                output.append("deficient\n");
-            else if(n > 6 && n % 6 == 0)
+            if(n > 6 && n % 6 == 0)
     	        output.append("abundant\n");
     	    else {
                 long sum = sumOfDivisors(n) - n;
