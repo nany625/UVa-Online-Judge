@@ -12,15 +12,14 @@ int main() {
         int root[n + 1];
         for(int i = 1; i <= n; ++i)
             root[i] = i;
-        int count = n;
         while(m--) {
             int i, j;
             scanf("%d %d", &i, &j);
             int rootI = findRoot(root, i), rootJ = findRoot(root, j);
-            count -= rootI != rootJ;
+            n -= rootI != rootJ;
             root[rootI] = root[rootJ];
         }
-        printf("Case %d: %d\n", ++cases, count);
+        printf("Case %d: %d\n", ++cases, n);
     }
 	return 0;
 }
