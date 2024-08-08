@@ -7,19 +7,17 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (m = (int)st.nval) != 0) {
             int[] root = new int[n + 1];
-            int count = n;
             while(m-- > 0) {
                 st.nextToken();
-                int i = (int)st.nval;
+                int rootI = findRoot(root, (int)st.nval);
                 st.nextToken();
-                int j = (int)st.nval;
-                int rootI = findRoot(root, i), rootJ = findRoot(root, j);
+                int rootJ = findRoot(root, (int)st.nval);
                 if(rootI != rootJ) {
-                    --count;
+                    --n;
                     root[rootI] = root[rootJ];
                 }
             }
-            output.append("Case " + (++cases) + ": " + count + "\n");
+            output.append("Case " + (++cases) + ": " + n + "\n");
     	}
         System.out.print(output);
 	}
