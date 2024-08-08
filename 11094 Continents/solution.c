@@ -54,9 +54,9 @@ int main() {
         for(int i = 0; i < M; ++i) {
             for(int j = 0; j < N; ++j) {
                 if(map[i][j] == region) {
-                    int curr = 0;
-                    capture(map, i, M, j, N, region, &curr);
-                    max = max > curr ? max : curr;
+                    int area = 0;
+                    capture(map, i, M, j, N, region, &area);
+                    max = max > area ? max : area;
                 }
             }
         }
