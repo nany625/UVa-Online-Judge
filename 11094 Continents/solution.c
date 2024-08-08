@@ -3,7 +3,7 @@
 
 void dfs(char **map, int row, int rowLimit, int col, int colLimit, char region) {
     if(map[row][col] == region) {
-        map[row][col] = '\0';
+        map[row][col] = ' ';
         if(row - 1 >= 0)
             dfs(map, row - 1, rowLimit, col, colLimit, region);
         if(col - 1 >= 0)
@@ -21,7 +21,7 @@ void dfs(char **map, int row, int rowLimit, int col, int colLimit, char region) 
 
 void capture(char **map, int row, int rowLimit, int col, int colLimit, char region, int *area) {
     if(map[row][col] == region) {
-        map[row][col] = '\0';
+        map[row][col] = ' ';
         ++(*area);
         if(row - 1 >= 0)
             capture(map, row - 1, rowLimit, col, colLimit, region, area);
