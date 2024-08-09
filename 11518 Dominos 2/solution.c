@@ -9,12 +9,12 @@ typedef struct {
 
 Graph graph;
 
-void dfs(Graph *graph, int vertex, int *count) {
-    graph->visited[vertex] = true;
+void dfs(Graph *graph, int startVertex, int *count) {
+    graph->visited[startVertex] = true;
     ++(*count);
-    for(short i = 0; i < graph->knockCount[vertex]; ++i) {
-        if(!graph->visited[graph->knockList[vertex][i]])
-            dfs(graph, graph->knockList[vertex][i], count);
+    for(short i = 0; i < graph->knockCount[startVertex]; ++i) {
+        if(!graph->visited[graph->knockList[startVertex][i]])
+            dfs(graph, graph->knockList[startVertex][i], count);
     }
 }
 
