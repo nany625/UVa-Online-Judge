@@ -27,7 +27,7 @@ int main() {
             for(int j = 0; j < n; ++j) {
                 if(grid[i][j] == '@') {
                     ++count;
-                    dfs(grid, i, m , j, n);
+                    dfs(grid, i, m, j, n);
                 }
             }
         }
