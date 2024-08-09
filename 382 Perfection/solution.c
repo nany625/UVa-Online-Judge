@@ -39,9 +39,7 @@ int main() {
 	    char *token = strtok(buffer, " ");
     	int n;
     	while(token && (n = atoi(token)) != 0) {
-    	    if(n % 2 == 1 && n % 15 != 0)
-    	        printf("%5d  DEFICIENT\n", n);
-    	    else if(n > 6 && n % 6 == 0)
+    	    if(n > 6 && n % 6 == 0)
     	        printf("%5d  ABUNDANT\n", n);
     	    else {
     	        int sum = sumOfDivisors(n) - n;
