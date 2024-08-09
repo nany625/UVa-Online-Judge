@@ -29,7 +29,7 @@ int main() {
         trans[0] = (short*)malloc(sizeof(short));
         trans[0][0] = S;
         bool visited[T + 1], found = false;
-        for(int i = 0; i <= T; ++i)
+        for(int i = S + 2; i <= T; ++i)
             visited[i] = false;
         while(currSize > 0 && !found) {
             trans = (short**)realloc(trans, (step + 1) * sizeof(short*));
