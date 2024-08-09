@@ -38,13 +38,13 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static void dfs(Graph graph, short vertex, int[] count) {
-	    graph.visited[vertex] = true;
+	static void dfs(Graph graph, short startVertex, int[] count) {
+	    graph.visited[startVertex] = true;
 	    ++count[0];
-	    short size = (short)graph.knockList[vertex].size();
+	    short size = (short)graph.knockList[startVertex].size();
 	    for(short i = 0; i < size; ++i) {
-	        if(!graph.visited[graph.knockList[vertex].get(i)])
-	            dfs(graph, graph.knockList[vertex].get(i), count);
+	        if(!graph.visited[graph.knockList[startVertex].get(i)])
+	            dfs(graph, graph.knockList[startVertex].get(i), count);
 	    }
 	}
 }
