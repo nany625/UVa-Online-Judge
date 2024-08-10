@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define MAX_NODES 100000
+#define MAX_NODES 50000
 
 int **conn = NULL, connCount[MAX_NODES + 1], parentCount[MAX_NODES + 1], edgeCount, startVertex;
 bool visited[MAX_NODES + 1], isTree;
