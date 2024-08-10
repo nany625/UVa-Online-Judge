@@ -8,7 +8,6 @@ typedef struct {
     bool *visited;
 } Graph;
 
-
 void dfs(Graph *graph, int startVertex, char color, bool *bicolorable) {
     graph->visited[startVertex] = true;
     graph->color[startVertex] = color;
