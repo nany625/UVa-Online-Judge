@@ -21,7 +21,7 @@ public class Main {
                     frequenciesKeys.add(text.charAt(i));
                 }
             }
-            Collections.sort(frequenciesKeys, new Comparator<Character>() {
+            frequenciesKeys.sort(new Comparator<Character>() {
                 @Override
                 public int compare(Character c1, Character c2) {
                     if(!frequencies.get(c1).equals(frequencies.get(c2)))
