@@ -21,7 +21,7 @@ public class Main {
     	        int time2 = 60 * Integer.parseInt(time[0]) + Integer.parseInt(time[1]);
     	        appointments[i] = new Appointment(time1, time2);
     	    }
-    	    Arrays.sort(appointments, new Comparator<Appointment>() {
+    	    appointments.sort(new Comparator<Appointment>() {
     	        @Override
     	        public int compare(Appointment a1, Appointment a2) {
     	            return Integer.compare(a1.time1, a2.time1);
