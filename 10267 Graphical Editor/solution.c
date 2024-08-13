@@ -18,14 +18,14 @@ void fill(int row1, int row2, int col1, int col2, char C) {
 void dfs(int row, int rowLimit, int col, int colLimit, char R, char C) {
     if(C != R) {
         table[row][col] = C;
-        if(row + 1 < rowLimit && table[row + 1][col] == R)
-            dfs(row + 1, rowLimit, col, colLimit, R, C);
-        if(col + 1 < colLimit && table[row][col + 1] == R)
-            dfs(row, rowLimit, col + 1, colLimit, R, C);
         if(row - 1 >= 0 && table[row - 1][col] == R)
             dfs(row - 1, rowLimit, col, colLimit, R, C);
         if(col - 1 >= 0 && table[row][col - 1] == R)
             dfs(row, rowLimit, col - 1, colLimit, R, C);
+        if(row + 1 < rowLimit && table[row + 1][col] == R)
+            dfs(row + 1, rowLimit, col, colLimit, R, C);
+        if(col + 1 < colLimit && table[row][col + 1] == R)
+            dfs(row, rowLimit, col + 1, colLimit, R, C);
     }
 }
 
