@@ -49,7 +49,7 @@ public class Main {
 		                scoreBoards.get(scoreBoards.size() - 1).problemTried.add(new ProblemTried(problem, (short)1));
 		        }
 		    }
-		    Collections.sort(scoreBoards, new Comparator<ScoreBoard>() {
+		    scoreBoards.sort(new Comparator<ScoreBoard>() {
 		        @Override
 		        public int compare(ScoreBoard s1, ScoreBoard s2) {
 		            if(s1.solvedProblems.size() != s2.solvedProblems.size())
