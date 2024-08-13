@@ -13,8 +13,8 @@ public class Main {
             while(st.nextToken() == StreamTokenizer.TT_NUMBER && (L = (int)st.nval) != 0)
                 cost.add(L);
             cost.sort(Comparator.reverseOrder());
-            int total = 0;
-        	for(int i = 0; i < cost.size() && total <= 5000000; ++i)
+            int total = 0, size = cost.size();
+        	for(int i = 0; i < size && total <= 5000000; ++i)
         		total += 2 * Math.pow(cost.get(i), i + 1);
             output.append((total <= 5000000 ? total : "Too expensive") + "\n");
         }
