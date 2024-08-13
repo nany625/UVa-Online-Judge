@@ -25,9 +25,9 @@ int main() {
             continue;
         }
         short **trans = (short**)malloc(sizeof(short*));
-        int currSize = 1, step = 1;
         trans[0] = (short*)malloc(sizeof(short));
         trans[0][0] = S;
+        int currSize = 1, step = 1;
         bool visited[T + 1], found = false;
         for(int i = S + 2; i <= T; ++i)
             visited[i] = false;
