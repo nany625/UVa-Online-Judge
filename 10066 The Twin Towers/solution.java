@@ -15,16 +15,19 @@ public class Main {
     	        st.nextToken();
     	        tiles2[i] = (int)st.nval;
     	    }
-    	    int[][] L = new int[N1 + 1][N2 + 1];
-    	    for(int i = 1; i <= N1; ++i) {
+    	    int[] L = new int[N2 + 1];
+    	    for(int i = 0; i < N1; ++i) {
+    	        int prev = 0;
     	        for(int j = 1; j <= N2; ++j) {
-    	            if(tiles1[i - 1] == tiles2[j - 1])
-    	                L[i][j] = L[i - 1][j - 1] + 1;
+    	            int temp = L[j];
+    	            if(tiles1[i] == tiles2[j - 1])
+    	                L[j] = prev + 1;
     	            else
-    	                L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]);
+    	                L[j] = Math.max(L[j], L[j - 1]);
+    	            prev = temp;
     	        }
     	    }
-    	    output.append("Twin Towers #" + (++twinTowers) + "\nNumber of Tiles : " + L[N1][N2] + "\n\n");
+    	    output.append("Twin Towers #" + (++twinTowers) + "\nNumber of Tiles : " + L[N2] + "\n\n");
     	}
         System.out.print(output);
 	}
