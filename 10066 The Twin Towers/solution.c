@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
 	int twinTowers = 0, N1, N2;
@@ -9,8 +10,7 @@ int main() {
 	    for(int i = 0; i < N2; ++i)
 	        scanf("%d", &tiles2[i]);
 	    int L[N2 + 1];
-	    for(int i = 0; i <= N2; ++i)
-	        L[i] = 0;
+	    memset(L, 0, sizeof(L));
 	    for(int i = 0; i < N1; ++i) {
 	        int prev = 0;
 	        for(int j = 1; j <= N2; ++j) {
