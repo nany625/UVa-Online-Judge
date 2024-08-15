@@ -26,10 +26,8 @@ int main() {
             } else {
                 int minIndex = 0, temp = priorityQueue[0];
                 for(int j = 1; j < size; ++j) {
-                    if(priorityQueue[j] < temp) {
-                        minIndex = j;
-                        temp = priorityQueue[j];
-                    }
+                    if(priorityQueue[j] < temp)
+                        temp = priorityQueue[minIndex = j];
                 }
                 priorityQueue[minIndex] = priorityQueue[minIndex] > products[i].p ? priorityQueue[minIndex] : products[i].p;
             }
