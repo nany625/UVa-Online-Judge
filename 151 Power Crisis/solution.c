@@ -22,6 +22,7 @@ int main() {
 
 // #解法二(正規演算法)
 #include <stdio.h>
+#include <string.h>
 #include <stdbool.h>
 
 int main() {
@@ -32,8 +33,7 @@ int main() {
 	    do {
 	        ++m;
     	    regionState[0] = true;
-    	    for(i = 1; i < N; ++i)
-    	        regionState[i] = false;
+            memset(regionState + 1, 0, (N - 1) * sizeof(bool));
 	        int turnOff = 1, wrapCount = 0;
 	        i = 1;
 	        while(turnOff < N) {
