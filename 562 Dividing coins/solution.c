@@ -22,8 +22,7 @@ int main() {
         int temp = sum / 2, max = 0;
         bool subsetSum[temp + 1];
         subsetSum[0] = true;
-        for(int i = 1; i <= temp; ++i)
-            subsetSum[i] = false;
+        memset(subsetSum + 1, 0, temp * sizeof(bool));
         for(int i = 0; i < m && max < temp; ++i) {
             for(int j = temp; j >= coins[i] && max < temp; --j) {
                 if(subsetSum[j - coins[i]]) {
