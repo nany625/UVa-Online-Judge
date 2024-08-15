@@ -20,8 +20,6 @@ public class Main {
 		    events.sort(new Comparator<Event>() {
 		        @Override
 		        public int compare(Event e1, Event e2) {
-		            if(e1.f == e2.f)
-		                return Short.compare(e2.s, e1.s);
 		            return Short.compare(e1.f, e2.f);
 		        }
 		    });
