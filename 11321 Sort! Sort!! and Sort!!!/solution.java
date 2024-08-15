@@ -22,7 +22,7 @@ public class Main {
 		            int isOddd1 = (int)Math.abs(d1.number % 2);
 		            int isOddd2 = (int)Math.abs(d2.number % 2);
 		            if(isOddd1 + isOddd2 == 1)
-		                return isOddd1 == 1 ? -1 : 1;
+		                return isOddd1 != 1;
 		            if(isOddd1 == 1)
 		                return Integer.compare(d2.number, d1.number);
 		            return Integer.compare(d1.number, d2.number);
