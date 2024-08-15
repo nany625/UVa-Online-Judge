@@ -5,7 +5,7 @@ public class Main {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    StreamTokenizer st = new StreamTokenizer(br);
         int n = 0;
-        int[] correct = new int[1], student = new int[1];
+        int[] correct = new int[1];
         String line;
         StringBuilder output = new StringBuilder();
         while((line = br.readLine()) != null) {
@@ -19,7 +19,7 @@ public class Main {
     	            correct[(int)st.nval - 1] = i;
     	        }
     	    } else {
-    	        student = new int[n];
+    	        int[] student = new int[n];
     	        for(int i = 0; i < n; ++i)
     	            student[Integer.parseInt(tokens[i]) - 1] = i + 1;
     	        int[] L = new int[n + 1];
