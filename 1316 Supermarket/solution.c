@@ -24,10 +24,10 @@ int main() {
                 priorityQueue = (int*)realloc(priorityQueue, (size + 1) * sizeof(int));
                 priorityQueue[size++] = products[i].p;
             } else {
-                int minIndex = 0, temp = priorityQueue[0];
+                int minIndex = 0;
                 for(int j = 1; j < size; ++j) {
-                    if(priorityQueue[j] < temp)
-                        temp = priorityQueue[minIndex = j];
+                    if(priorityQueue[j] < priorityQueue[minIndex])
+                        minIndex = j;
                 }
                 priorityQueue[minIndex] = priorityQueue[minIndex] > products[i].p ? priorityQueue[minIndex] : products[i].p;
             }
