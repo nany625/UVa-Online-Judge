@@ -20,7 +20,7 @@ int main() {
             L = (int**)realloc(L, (n + 1) * sizeof(int*));
             for(int i = 0; i <= n; ++i) 
                 L[i] = (int*)realloc(L[i], (n + 1) * sizeof(int));
-            memset(L[0], n + 1, 0);
+            memset(L[0], 0, sizeof(L[0]));
             for(int i = 1; i <= n; ++i)
                 L[i][0] = 0;
             getchar();
