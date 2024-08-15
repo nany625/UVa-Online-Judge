@@ -8,8 +8,7 @@ int main() {
 	    str2[strcspn(str2, "\n")] = '\0';
 	    int len1 = strlen(str1), len2 = strlen(str2);
 	    int L[len2 + 1];
-	    for(int i = 0; i <= len2; ++i)
-	        L[i] = 0;
+	    memset(L, 0, sizeof(L));
 	    for(int i = 0; i < len1; ++i) {
 	        int prev = 0;
 	        for(int j = 1; j <= len2; ++j) {
