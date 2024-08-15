@@ -3,7 +3,7 @@
 #include <string.h>
 
 int main() {
-    int n, *correct = NULL, *student = NULL, **L = NULL;
+    int n, *correct = NULL, *student = NULL, *L = NULL;
     char *buffer = NULL;
     size_t bufsize = 0;
     while(getline(&buffer, &bufsize, stdin) != -1) {
@@ -17,12 +17,7 @@ int main() {
                 scanf("%d", &temp);
                 correct[temp - 1] = i;
             }
-            L = (int**)realloc(L, (n + 1) * sizeof(int*));
-            for(int i = 0; i <= n; ++i) 
-                L[i] = (int*)realloc(L[i], (n + 1) * sizeof(int));
-            memset(L[0], 0, sizeof(L[0]));
-            for(int i = 1; i <= n; ++i)
-                L[i][0] = 0;
+            L = (int*)malloc((n + 1) * sizeof(int));
             getchar();
         } else {
             student = (int*)realloc(student, n * sizeof(int));
@@ -34,21 +29,23 @@ int main() {
                 student[atoi(token) - 1] = ++count;
                 token = strtok(NULL, " ");
             }
-            for(int i = 1; i <= n; ++i) {
+            memset(L, 0, (n + 1) * sizeof(int));
+            for(int i = 0; i < n; ++i) {
+                int prev = 0;
                 for(int j = 1; j <= n; ++j) {
-                    if(correct[i - 1] == student[j - 1])
-                        L[i][j] = L[i - 1][j - 1] + 1;
+                    temp = L[j];
+                    if(correct[i] == student[j - 1])
+                        L[j] = prev + 1;
                     else
-                        L[i][j] = L[i - 1][j] > L[i][j - 1] ? L[i - 1][j] : L[i][j - 1];
+                        L[j] = L[j] > L[j - 1] ? L[j] : L[j - 1];
+                    prev = temp;
                 }
             }
-            printf("%d\n", L[n][n]);
+            printf("%d\n", L[n]);
         }
     }
     free(correct);
     free(student);
-    for(int i = 0; i <= n; ++i)
-        free(L[i]);
     free(L);
     free(buffer);
 	return 0;
