@@ -19,8 +19,7 @@ int main() {
         int len = strlen(s);
         char origin[len];
         bool used[len];
-        for(int j = 0; j < len; ++j)
-            used[j] = false;
+        memset(used, 0, sizeof(used));
         for(int j = len - 1; j >= 0; --j) {
             int index = k / factorials[j], count = 0;
             for(int l = 0; l < len; ++l) {
