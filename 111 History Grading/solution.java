@@ -6,7 +6,6 @@ public class Main {
 	    StreamTokenizer st = new StreamTokenizer(br);
         int n = 0;
         int[] correct = new int[1], student = new int[1];
-        int[][] L = new int[1][1];
         String line;
         StringBuilder output = new StringBuilder();
         while((line = br.readLine()) != null) {
@@ -19,20 +18,23 @@ public class Main {
     	            st.nextToken();
     	            correct[(int)st.nval - 1] = i;
     	        }
-    	        L = new int[n + 1][n + 1];
     	    } else {
     	        student = new int[n];
     	        for(int i = 0; i < n; ++i)
     	            student[Integer.parseInt(tokens[i]) - 1] = i + 1;
-    	        for(int i = 1; i <= n; ++i) {
+    	        int[] L = new int[n + 1];
+    	        for(int i = 0; i < n; ++i) {
+    	            int prev = 0;
                     for(int j = 1; j <= n; ++j) {
-                        if(correct[i - 1] == student[j - 1])
-                            L[i][j] = L[i - 1][j - 1] + 1;
+                        int temp = L[j];
+                        if(correct[i] == student[j - 1])
+                            L[j] = prev + 1;
                         else
-                            L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]);
+                            L[j] = Math.max(L[j], L[j - 1]);
+                        prev = temp;
                     }
                 }
-                output.append(L[n][n] + "\n");
+                output.append(L[n] + "\n");
     	    }
     	}
         System.out.print(output);
