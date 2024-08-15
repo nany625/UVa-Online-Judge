@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #define MAX_PRIME_SIZE 1229
 
-short primes[MAX_PRIME_SIZE] = {2}, primesSumCount[10001] = {};
+short primes[MAX_PRIME_SIZE] = {2}, primesSumCount[10001];
 int count = 1;
 
 bool isPrime(short n) {
