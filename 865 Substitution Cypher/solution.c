@@ -17,7 +17,7 @@ int main() {
 		printf("%s%s", substitution, plaintext);
 		int len = strlen(plaintext);
 		char ASCII[128];
-		memset(ASCII, '\0', 128);
+		memset(ASCII, '\0', sizeof(ASCII));
 		for(int i = 0; i < len; ++i)
 		    ASCII[(int)plaintext[i]] = substitution[i];
 		while(fgets(text, sizeof(text), stdin) && strcmp(text, "\n") != 0) {
