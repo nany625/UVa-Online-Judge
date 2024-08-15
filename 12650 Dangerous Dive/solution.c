@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 int compare(const void *a, const void *b) {
-    return *(int*)a - *(int*)b;
+    return *(int*)a > *(int*)b;
 }
 
 int main() {
@@ -30,8 +31,7 @@ int main() {
                 printf("%d ", i);
         } else {
             bool returned[N];
-            for(int i = 0; i < N; ++i)
-                returned[i] = false;
+            memset(returned, 0, sizeof(returned));
             int num;
             while(R--) {
                 scanf("%d", &num);
