@@ -4,7 +4,7 @@
 #define MAX_NUM 331
 #define MAX_PRIME_SIZE 67
 
-bool isComposite[MAX_NUM + 1] = {};
+bool isComposite[MAX_NUM + 1];
 short primes[MAX_PRIME_SIZE] = {2};
 int count = 1;
 
