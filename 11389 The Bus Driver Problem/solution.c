@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int compare(const void *a, const void *b) {
-    return *(short*)a - *(short*)b;
+    return *(short*)a > *(short*)b;
 }
 
 int main() {
