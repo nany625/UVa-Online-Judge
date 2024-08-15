@@ -8,8 +8,6 @@ typedef struct {
 int compare(const void *a, const void *b) {
     Event *e1 = (Event*)a;
     Event *e2 = (Event*)b;
-    if(e1->f == e2->f)
-        return e1->s < e2->s;
     return e1->f > e2->f;
 }
 
