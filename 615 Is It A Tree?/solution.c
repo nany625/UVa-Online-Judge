@@ -1,17 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #define MAX_NODES 50000
 
-int **conn = NULL, connCount[MAX_NODES + 1], parentCount[MAX_NODES + 1], edgeCount, startVertex;
-bool visited[MAX_NODES + 1], isTree;
+int **conn, connCount[MAX_NODES + 1], parentCount[MAX_NODES + 1], edgeCount, startVertex;
+bool visited[MAX_NODES + 1], isTree = true;
 
 void init() {
-    conn = (int**)malloc((MAX_NODES + 1) * sizeof(int*));
-    for(int i = 1; i <= MAX_NODES; ++i) {
-        conn[i] = NULL;
-        connCount[i] = parentCount[i] = 0;
-    }
+    memset(connCount + 1, 0, MAX_NODES * sizeof(int));
+    memset(parentCount + 1, 0, MAX_NODES * sizeof(int));
     edgeCount = startVertex = 0;
     isTree = true;
 }
@@ -26,7 +24,7 @@ void dfs(int vertex, int *nodeCount) {
 }
 
 int main() {
-    init();
+    conn = (int**)calloc(MAX_NODES + 1, sizeof(int*));
     int cases = 0, parent, child;
     while(scanf("%d %d", &parent, &child) && parent >= 0 && child >= 0) {
         if(parent == 0 && child == 0) {
@@ -35,8 +33,7 @@ int main() {
             else if(edgeCount == 0)
                 printf("Case %d is a tree.\n", ++cases);
             else {
-                for(int i = 1; i <= MAX_NODES; ++i)
-                    visited[i] = false;
+                memset(visited + 1, 0, MAX_NODES * sizeof(bool));
                 int nodeCount = 0;
                 dfs(startVertex, &nodeCount);
                 if(nodeCount == edgeCount + 1)
@@ -44,8 +41,6 @@ int main() {
                 else
                     printf("Case %d is not a tree.\n", ++cases);
             }
-            for(int i = 1; i <= MAX_NODES; ++i)
-                free(conn[i]);
             init();
         } else {
             if(parentCount[child] < 1) {
@@ -60,5 +55,8 @@ int main() {
                 isTree = false;
         }
     }
+    for(int i = 1; i <= MAX_NODES; ++i)
+        free(conn[i]);
+    free(conn);
 	return 0;
 }
