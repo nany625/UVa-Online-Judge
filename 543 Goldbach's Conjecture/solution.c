@@ -4,7 +4,7 @@
 #define MAX_PRIME_SIZE 78497
 
 bool isComposite[MAX_NUM + 1];
-int primes[MAX_PRIME_SIZE] = {}, count = 0;
+int primes[MAX_PRIME_SIZE], count = 0;
 
 int main() {
     for(int i = 3; i <= MAX_NUM; i += 2) {
