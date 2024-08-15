@@ -3,7 +3,7 @@
 #define MAX_SIZE 999999
 
 bool isComposite[MAX_SIZE + 1] = {true, true};
-short dpCount[MAX_SIZE + 1] = {};
+short dpCount[MAX_SIZE + 1];
 
 int sumOfDigits(int n) {
     int result = 0;
