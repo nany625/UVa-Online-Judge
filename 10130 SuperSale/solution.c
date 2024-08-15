@@ -21,8 +21,7 @@ int main() {
 	        capacity = capacity > MW[i] ? capacity : MW[i];
 	    }
 	    int dp[capacity + 1];
-	    for(int i = 0; i <= capacity; ++i)
-	        dp[i] = 0;
+	    memset(dp, 0, sizeof(dp));
 	    for(int i = 0; i < N; ++i) {
 	        short p = objects[i].P;
 	        short w = objects[i].W;
