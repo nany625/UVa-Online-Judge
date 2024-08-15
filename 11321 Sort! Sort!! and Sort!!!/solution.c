@@ -13,9 +13,9 @@ int compare(const void *a, const void *b) {
     int abs1 = abs(d1->number % 2);
     int abs2 = abs(d2->number % 2);
     if(abs1 + abs2 == 1)
-        return abs1 == 1 ? -1 : 1;
+        return abs1 != 1;
     if(abs1 == 1)
-        return d2->number > d1->number;
+        return d1->number < d2->number;
     return d1->number > d2->number;
 }
 
