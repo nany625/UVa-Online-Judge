@@ -23,8 +23,7 @@ int main() {
         int n;
         scanf("%d", &n);
         int index[n * n + 1];
-        for(int j = 0; j < n * n; ++j)
-            index[j] = 0;
+        memset(index, 0, sizeof(index));
         getline(&buffer, &bufsize, stdin);
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
