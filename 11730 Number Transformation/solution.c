@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #define MAX_NUM 331
 #define MAX_PRIME_SIZE 67
@@ -29,8 +30,7 @@ int main() {
         trans[0][0] = S;
         int currSize = 1, step = 1;
         bool visited[T + 1], found = false;
-        for(int i = S + 2; i <= T; ++i)
-            visited[i] = false;
+        memset(visited, 0, sizeof(visited));
         while(currSize > 0 && !found) {
             trans = (short**)realloc(trans, (step + 1) * sizeof(short*));
             trans[step] = NULL;
