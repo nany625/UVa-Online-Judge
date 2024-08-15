@@ -4,8 +4,8 @@
 #define MAX_NUM 31607
 #define MAX_PRIME_SIZE 3401
 
-bool isComposite[MAX_NUM + 1] = {};
-short primes[MAX_PRIME_SIZE] = {};
+bool isComposite[MAX_NUM + 1];
+short primes[MAX_PRIME_SIZE];
 int count = 0;
 
 int sumOfDigits(int n) {
