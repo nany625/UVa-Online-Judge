@@ -14,7 +14,6 @@ TreeNode *createNode(int data) {
 }
 
 TreeNode *insertNode(TreeNode *root, int data) {
-    TreeNode *newNode = (TreeNode*)malloc(sizeof(TreeNode));
     if(!root)
         return createNode(data);
     if(root->data > data)
