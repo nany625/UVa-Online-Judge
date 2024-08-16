@@ -28,7 +28,7 @@ int main() {
             for(int i = 0; i < len; ++i)
                 money += value[(unsigned char)buffer[i]];
         }
-        printf("%d.%02d$\n", money / 100, money % 100);
+        printf("%.2f$\n", money / 100.0);
     }
 	return 0;
 }
