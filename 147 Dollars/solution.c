@@ -9,8 +9,8 @@ int main() {
         for(int j = coins[i]; j <= 30000; ++j)
             dp[j] += dp[j - coins[i]];
     }
-    double amount;
-    while(scanf("%lf", &amount) && amount != 0)
-        printf("%6.2lf%17ld\n", amount, dp[(int)(amount * 100 + 0.1)]);
+    int a, b;
+    while(scanf("%d.%d", &a, &b) && a + b > 0)
+        printf("%3d.%02d%17ld\n", a, b, dp[100 * a + b]);
 	return 0;
 }
