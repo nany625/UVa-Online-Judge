@@ -7,10 +7,10 @@ int main() {
     int **index = (int**)malloc((MAX_NUM + 1) * sizeof(int*)), size[MAX_NUM + 1];
     for(int i = 1; i <= MAX_NUM; ++i)
         index[i] = NULL;
-    int n, m;
+    int m;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(scanf("%d %d", &n, &m) == 2) {
+    while(scanf("%*d %d", &m) == 1) {
         getchar();
         memset(size, 0, sizeof(size));
         getline(&buffer, &bufsize, stdin);
