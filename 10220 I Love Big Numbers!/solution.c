@@ -10,8 +10,7 @@ typedef struct {
 Factorial fac[1000];
 
 int main() {
-    fac[0].number = (char*)malloc(2 * sizeof(char));
-    strcpy(fac[0].number, "1");
+    fac[0].number = strdup("1");
     fac[0].digits = 1;
     char temp[4];
     for(int i = 1; i < 1000; ++i) {
@@ -29,11 +28,9 @@ int main() {
                 fac[i].number[j + k + 1] = ((fac[i - 1].number[k] - '0') * (temp[j] - '0') + fac[i].number[j + k + 1] - '0') % 10 + '0';
             }
         }
-        int j = 0;
-        while(fac[i].number[j] == '0')
-            ++j;
-        fac[i].digits = fac[i - 1].digits + len - j;
-        memmove(fac[i].number, fac[i].number + j, fac[i].digits * sizeof(char));
+        fac[i].digits = fac[i - 1].digits + len - (fac[i].number[0] == '0');
+        if(fac[i].number[0] == '0')
+            memmove(fac[i].number, fac[i].number + 1, fac[i].digits * sizeof(char));
         while(fac[i].number[fac[i].digits - 1] == '0')
             --fac[i].digits;
     }
