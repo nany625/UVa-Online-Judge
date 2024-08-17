@@ -27,10 +27,9 @@ void MergeSort(int *array, int *reg, int left, int right, int *swap) {
 int main() {
     int N;
     while(scanf("%d", &N) == 1) {
-        int array[N], reg[N];
+        int array[N], reg[N], swap = 0;
         for(int i = 0; i < N; ++i)
             scanf("%d", &array[i]);
-        int swap = 0;
         MergeSort(array, reg, 0, N - 1, &swap);
         printf("Minimum exchange operations : %d\n", swap);
     }
