@@ -36,24 +36,19 @@ public class Main {
 
 // #解法二
 import java.io.*;
-import java.util.*;
 import java.math.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-        ArrayList<BigInteger> fib = new ArrayList<>();
-		fib.add(BigInteger.ZERO);
-		fib.add(BigInteger.ONE);
+        BigInteger[] fib = new BigInteger[5001];
+		fib[0] = BigInteger.ZERO;
+		fib[1] = BigInteger.ONE;
+		for(int i = 2; i <= 5000; ++i)
+		    fib[i] = fib[i - 1].add(fib[i - 2]);
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		StringBuilder output = new StringBuilder();
-		while((st.nextToken()) == st.TT_NUMBER) {
-		    int number = (int)st.nval;
-    		if(number >= fib.size()) {
-    			for(int i = fib.size(); i <= number; ++i)
-			        fib.add(fib.get(i - 1).add(fib.get(i - 2)));
-    		}
-		    output.append("The Fibonacci number for " + number + " is " + fib.get(number) + "\n");
-		}
+		while((st.nextToken()) == st.TT_NUMBER)
+		    output.append("The Fibonacci number for " + (int)st.nval + " is " + fib[(int)st.nval] + "\n");
 		System.out.print(output);
 	}
 }
