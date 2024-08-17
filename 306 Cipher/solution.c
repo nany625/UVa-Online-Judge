@@ -11,19 +11,15 @@ int main() {
             --secretKeys[i];
         }
         int k;
-        char message[n + 1];
+        char message[n + 2], cipher[n + 1];
+        cipher[n] = '\0';
+        int nextIndex[n];
+        bool visited[n];
         while(scanf("%d", &k) && k != 0) {
             getchar();
-            char ch;
-            int i = 0;
-            while((ch = getchar()) != '\n')
-                message[i++] = ch;
-            while(i < n)
-                message[i++] = ' ';
-            char cipher[n + 1];
-            cipher[n] = '\0';
-            int nextIndex[n];
-            bool visited[n];
+            fgets(message, sizeof(message), stdin);
+            int len = strlen(message) - 1;
+            memset(message + len, ' ', (n - len) * sizeof(char));
             for(int i = 0; i < n; ++i) {
                 memset(visited, 0, sizeof(visited));
                 visited[nextIndex[0] = i] = true;
