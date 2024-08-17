@@ -19,16 +19,13 @@ int main() {
         char forest[M][N + 1];
         for(int i = 0; i < M; ++i)
             scanf("%s", forest[i]);
-        bool visited[M][N];
-        memset(visited, 0, sizeof(visited));
         for(int i = 0; i < M; ++i) {
             for(int j = 0; j < N; ++j) {
                 if(forest[i][j] == 'Z') {
-                    visited[i][j] = true;
                     for(int k = 0; k < 8; ++k) {
                         int newRow = i + horsedRow[k], newCol = j + horsedCol[k];
                         if(newRow >= 0 && newRow < M && newCol >= 0 && newCol < N && forest[newRow][newCol] == '.')
-                            visited[newRow][newCol] = true;
+                            forest[newRow][newCol] = 'z';
                     }
                 }
             }
@@ -41,7 +38,7 @@ int main() {
                 kingCol = 0;
             }
         }
-        visited[kingRow][kingCol] = true;
+        forest[kingRow][kingCol] = 'z';
         Coordinate **trip = (Coordinate**)malloc(sizeof(Coordinate*));
         trip[0] = (Coordinate*)malloc(sizeof(Coordinate));
         trip[0][0].row = kingRow;
@@ -60,11 +57,11 @@ int main() {
                         if(forest[newRow][newCol] == 'B') {
                             printf("Minimal possible length of a trip is %d\n", length);
                             safe = true;
-                        } else if(forest[newRow][newCol] == '.' && !visited[newRow][newCol]) {
+                        } else if(forest[newRow][newCol] == '.') {
                             trip[length] = (Coordinate*)realloc(trip[length], (nextSize + 1) * sizeof(Coordinate));
                             trip[length][nextSize].row = newRow;
                             trip[length][nextSize++].col = newCol;
-                            visited[newRow][newCol] = true;
+                            forest[newRow][newCol] = 'z';
                         }
                     }
                 }
