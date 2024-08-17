@@ -36,5 +36,6 @@ int main() {
     }
     for(int i = 0; i < size; ++i)
         free(fib[i].number);
+    free(fib);
     return 0;
 }
