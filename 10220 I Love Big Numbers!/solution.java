@@ -25,8 +25,9 @@ public class Main {
     	    int j = 0;
     	    while(fac[i][j] == '0')
     	        ++j;
-    	    digits[i] = (short)(digits[i - 1] + len - j);
-    	    System.arraycopy(fac[i], j, fac[i], 0, digits[i]);
+    	    digits[i] = (short)(digits[i - 1] + len);
+    	    if(fac[i][0] == '0')
+    	        System.arraycopy(fac[i], 1, fac[i], 0, --digits[i]);
     	    while(fac[i][digits[i] - 1] == '0')
     	        --digits[i];
     	}
