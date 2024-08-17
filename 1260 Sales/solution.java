@@ -1,4 +1,3 @@
-// #解法一
 import java.io.*;
 
 public class Main {
@@ -43,33 +42,5 @@ public class Main {
     		}
     		System.arraycopy(reg, left, array, left, right - left + 1);
 		}
-	}
-}
-
-// #解法二
-import java.io.*;
-
-public class Main {
-	public static void main(String[] args) throws IOException {
-	    StreamTokenizer st = new StreamTokenizer(System.in);
-        st.nextToken();
-        int T = (int)st.nval;
-        StringBuilder output = new StringBuilder();
-    	while(T-- > 0) {
-    	    st.nextToken();
-    	    int n = (int)st.nval;
-    	    short[] A = new short[n];
-    		int sum = 0;
-    		for(int i = 0; i < n; ++i) {
-    		    st.nextToken();
-    		    A[i] = (short)st.nval;
-    		    for(int j = 0; j < i; ++j) {
-    		        if(A[j] <= A[i])
-					    ++sum;
-    		    }
-    		}
-    		output.append(sum + "\n");
-    	}
-        System.out.print(output);
 	}
 }
