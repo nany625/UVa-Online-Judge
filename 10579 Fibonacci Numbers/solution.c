@@ -7,10 +7,11 @@ typedef struct {
     short digits;
 } Fib;
 
-Fib *fib = (Fib*)malloc(2 * sizeof(Fib));
+Fib *fib;
 int size = 2;
 
 int main() {
+    fib = (Fib*)malloc(2 * sizeof(Fib));
     fib[0].number = strdup("0");
     fib[0].digits = 1;
     fib[1].number = strdup("1");
