@@ -11,7 +11,6 @@ int main() {
     size_t bufsize = 0;
     while(scanf("%d", &n) && n != 0) {
         getchar();
-        //memset(age, 0, sizeof(age));
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         while(token) {
