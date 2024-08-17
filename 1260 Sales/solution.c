@@ -1,4 +1,3 @@
-// #解法一
 #include <stdio.h>
 
 void MergeSort(short *array, short *reg, int left, int right, int *sum) {
@@ -37,27 +36,6 @@ int main() {
 		int sum = 0;
 		MergeSort(A, reg, 0, n - 1, &sum);
 		printf("%d\n", sum);
-	}
-	return 0;
-}
-
-// #解法二
-#include <stdio.h>
-
-int main() {
-	int T;
-	scanf("%d", &T);
-	while(T--) {
-		int n;
-		scanf("%d", &n);
-		short A[n];
-        int sum = 0;
-		for(int i = 0; i < n; ++i) {
-			scanf("%hd", &A[i]);
-			for(int j = 0; j < i; ++j)
-				sum += A[j] <= A[i];
-		}
-		printf("%d\n",sum);
 	}
 	return 0;
 }
