@@ -16,18 +16,19 @@ int main() {
     while(T--) {
         int M, N;
         scanf("%d %d", &M, &N);
-        char **forest = (char**)malloc(M * sizeof(char*));
-        for(int i = 0; i < M; ++i) {
-            forest[i] = (char*)malloc((N + 1) * sizeof(char));
+        char forest[M][N + 1];
+        for(int i = 0; i < M; ++i)
             scanf("%s", forest[i]);
-        }
+        bool visited[M][N];
+        memset(visited, 0, sizeof(visited));
         for(int i = 0; i < M; ++i) {
             for(int j = 0; j < N; ++j) {
                 if(forest[i][j] == 'Z') {
+                    visited[i][j] = true;
                     for(int k = 0; k < 8; ++k) {
                         int newRow = i + horsedRow[k], newCol = j + horsedCol[k];
                         if(newRow >= 0 && newRow < M && newCol >= 0 && newCol < N && forest[newRow][newCol] == '.')
-                            forest[newRow][newCol] = 'z';
+                            visited[newRow][newCol] = true;
                     }
                 }
             }
@@ -40,13 +41,12 @@ int main() {
                 kingCol = 0;
             }
         }
+        visited[kingRow][kingCol] = true;
         Coordinate **trip = (Coordinate**)malloc(sizeof(Coordinate*));
         trip[0] = (Coordinate*)malloc(sizeof(Coordinate));
         trip[0][0].row = kingRow;
         trip[0][0].col = kingCol;
-        bool visited[M][N], safe = false;
-        memset(visited, 0, sizeof(visited));
-        visited[kingRow][kingCol] = true;
+        bool safe = false;
         int currSize = 1, length = 1;
         while(currSize > 0 && !safe) {
             trip = (Coordinate**)realloc(trip, (length + 1) * sizeof(Coordinate*));
