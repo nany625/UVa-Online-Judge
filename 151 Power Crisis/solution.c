@@ -22,34 +22,18 @@ int main() {
 
 // #解法二(正規演算法)
 #include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
+
+int josephus(int n, int k) {
+    return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
+}
 
 int main() {
-	int N;
-	while(scanf("%d", &N) && N != 0) {
-	    bool regionState[N];
-	    int i, m = 0;
-	    do {
-	        ++m;
-    	    regionState[0] = true;
-            memset(regionState + 1, 0, (N - 1) * sizeof(bool));
-	        int turnOff = 1, wrapCount = 0;
-	        i = 1;
-	        while(turnOff < N) {
-	            if(i == N)
-	                i = 1;
-	            if(!regionState[i])
-    	            ++wrapCount;
-    	        if(wrapCount == m) {
-    	            ++turnOff;
-    	            regionState[i] = true;
-    	            wrapCount = 0;
-    	        }
-    	        ++i;
-	        }
-	   } while(i != 13);
-	   printf("%d\n", m);
-	}
+    int N;
+    while(scanf("%d", &N) && N != 0) {
+        int m = 1;
+        while(josephus(N - 1, m) != 11)
+            ++m;
+        printf("%d\n", m);
+    }
 	return 0;
 }
