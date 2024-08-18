@@ -3,18 +3,17 @@
 #include <string.h>
 #include <stdbool.h>
 
+int dRow[] = {1, 0, 0, -1}, dCol[] = {0, 1, -1, 0};
+
 void dfs(char **grid, int row, int rowLimit, int col, int colLimit, int *area) {
     if(grid[row][col] == '0') {
         grid[row][col] = '1';
         ++(*area);
-        if(row - 1 >= 0)
-            dfs(grid, row - 1, rowLimit, col, colLimit, area);
-        if(col - 1 >= 0)
-            dfs(grid, row, rowLimit, col - 1, colLimit, area);
-        if(row + 1 < rowLimit)
-            dfs(grid, row + 1, rowLimit, col, colLimit, area);
-        if(col + 1 < colLimit)
-            dfs(grid, row, rowLimit, col + 1, colLimit, area);
+        for(int i = 0; i < 4; ++i) {
+            int newRow = row + dRow[i], newCol = col + dCol[i];
+            if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit)
+                dfs(grid, newRow, rowLimit, newCol, colLimit, area);
+        }
     }
 }
 
