@@ -1,6 +1,7 @@
 import java.io.*;
 
 public class Main {
+    static int[] dRow = {1, 0, 0, -1}, dCol = {0, 1, -1, 0};
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    StreamTokenizer st = new StreamTokenizer(br);
@@ -36,18 +37,15 @@ public class Main {
 	static void dfs(char[][] map, int row, int rowLimit, int col, int colLimit, char region) {
         if(map[row][col] == region) {
             map[row][col] = ' ';
-            if(row - 1 >= 0)
-                dfs(map, row - 1, rowLimit, col, colLimit, region);
-            if(col - 1 >= 0)
-                dfs(map, row, rowLimit, col - 1, colLimit, region);
-            else
-                dfs(map, row, rowLimit, colLimit - 1, colLimit, region);
-            if(row + 1 < rowLimit)
-                dfs(map, row + 1, rowLimit, col, colLimit, region);
-            if(col + 1 < colLimit)
-                dfs(map, row, rowLimit, col + 1, colLimit, region);
-            else
-                dfs(map, row, rowLimit, 0, colLimit, region);
+            for(int i = 0; i < 4; ++i) {
+            int newRow = row + dRow[i], newCol = col + dCol[i];
+                if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit)
+                    dfs(map, newRow, rowLimit, newCol, colLimit, region);
+                else if(newCol == -1)
+                    dfs(map, newRow, rowLimit, colLimit - 1, colLimit, region);
+                else if(newCol == colLimit)
+                    dfs(map, newRow, rowLimit, 0, colLimit, region);
+            }
         }
     }
     
@@ -55,18 +53,15 @@ public class Main {
         if(map[row][col] == region) {
             map[row][col] = ' ';
             ++area[0];
-            if(row - 1 >= 0)
-                capture(map, row - 1, rowLimit, col, colLimit, region, area);
-            if(col - 1 >= 0)
-                capture(map, row, rowLimit, col - 1, colLimit, region, area);
-            else
-                capture(map, row, rowLimit, colLimit - 1, colLimit, region, area);
-            if(row + 1 < rowLimit)
-                capture(map, row + 1, rowLimit, col, colLimit, region, area);
-            if(col + 1 < colLimit)
-                capture(map, row, rowLimit, col + 1, colLimit, region, area);
-            else
-                capture(map, row, rowLimit, 0, colLimit, region, area);
+            for(int i = 0; i < 4; ++i) {
+                int newRow = row + dRow[i], newCol = col + dCol[i];
+                if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit)
+                    capture(map, newRow, rowLimit, newCol, colLimit, region, area);
+                else if(newCol == -1)
+                    capture(map, newRow, rowLimit, colLimit - 1, colLimit, region, area);
+                else if(newCol == colLimit)
+                    capture(map, newRow, rowLimit, 0, colLimit, region, area);
+            }
         }
     }
 }
