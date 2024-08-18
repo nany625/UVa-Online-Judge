@@ -32,28 +32,15 @@ public class Main {
 	    int N;
 	    StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            int i, m = 0;
-            do {
+            int m = 1;
+            while(josephus(N - 1, m) != 11)
                 ++m;
-                boolean[] regionState = new boolean[N];
-                regionState[0] = true;
-                int turnOff = 1, wrapCount = 0;
-                i = 1;
-                while(turnOff < N) {
-    	            if(i == N)
-                        i = 1;
-                    if(!regionState[i])
-        	            ++wrapCount;
-        	        if(wrapCount == m) {
-        	            ++turnOff;
-        	            regionState[i] = true;
-        	            wrapCount = 0;
-        	        }
-        	        ++i;
-                }
-            } while(i != 13);
     		output.append(m + "\n");
         }
 	    System.out.print(output);
 	}
+	
+	static int josephus(int n, int k) {
+        return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
+    }
 }
