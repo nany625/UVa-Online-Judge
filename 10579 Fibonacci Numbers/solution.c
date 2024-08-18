@@ -13,9 +13,8 @@ int size = 2;
 int main() {
     fib = (Fib*)malloc(2 * sizeof(Fib));
     fib[0].number = strdup("0");
-    fib[0].digits = 1;
     fib[1].number = strdup("1");
-    fib[1].digits = 1;
+    fib[0].digits = fib[1].digits = 1; 
     while(fib[size - 1].digits <= 1000) {
         fib = (Fib*)realloc(fib, (size + 1) * sizeof(Fib));
         fib[size].number = (char*)malloc((fib[size - 1].digits + 1) * sizeof(char));
