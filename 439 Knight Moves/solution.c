@@ -3,11 +3,11 @@
 #include <string.h>
 #include <stdbool.h>
 
+int dRow[] = {2, 2, 1, 1, -1, -1, -2, -2}, dCol[] = {1, -1, 2, -2, 2, -2, 1, -1};
+
 typedef struct {
     int row, col;
 } Square;
-
-int dRow[] = {2, 2, 1, 1, -1, -1, -2, -2}, dCol[] = {1, -1, 2, -2, 2, -2, 1, -1};
 
 int main() {
     char buffer[7];
