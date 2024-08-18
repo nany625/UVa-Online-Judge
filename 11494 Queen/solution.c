@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 int main() {
-    int X1, Y1, X2, Y2;
-    while(scanf("%d %d %d %d", &X1, &Y1, &X2, &Y2) && X1 + Y1 + X2 + Y2 > 0) {
-        if(X1 == X2 && Y1 == Y2)
+    char buffer[9];
+    while(fgets(buffer, sizeof(buffer), stdin) && buffer[0] != '0') {
+        if(buffer[0] == buffer[4] && buffer[2] == buffer[6])
             puts("0");
-        else if(X1 == X2 || Y1 == Y2 || abs(X2 - X1) ==  abs(Y2 - Y1))
+        else if(buffer[0] == buffer[4] || buffer[2] == buffer[6] || abs(buffer[4] - buffer[0]) == abs(buffer[6] - buffer[2]))
             puts("1");
         else
             puts("2");
