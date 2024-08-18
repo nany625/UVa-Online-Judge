@@ -55,7 +55,7 @@ int main() {
                 isTree = false;
         }
     }
-    for(int i = 1; i <= MAX_NODES; ++i)
+    for(int i = 0; i <= MAX_NODES; ++i)
         free(conn[i]);
     free(conn);
 	return 0;
