@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+#define MAX_NUM 198
 
 typedef struct {
-    short numVertices, **edges, *edgesCount;
-    char *color;
-    bool *visited;
+    short numVertices, **edges, edgesCount[MAX_NUM + 1];
+    char color[MAX_NUM + 1];
 } Graph;
 
 void dfs(Graph *graph, int startVertex, char color, bool *bicolorable) {
-    graph->visited[startVertex] = true;
     graph->color[startVertex] = color;
     for(int i = 0; i < graph->edgesCount[startVertex]; ++i) {
-        if(!graph->visited[graph->edges[startVertex][i]])
+        if(graph->color[graph->edges[startVertex][i]] == '\0')
             dfs(graph, graph->edges[startVertex][i], color == '0' ? '1' : '0', bicolorable);
         else if(graph->color[graph->edges[startVertex][i]] == color) {
             *bicolorable = false;
@@ -23,13 +23,13 @@ void dfs(Graph *graph, int startVertex, char color, bool *bicolorable) {
 
 int main() {
     Graph graph;
+    graph.edges = (short**)malloc((MAX_NUM + 1) * sizeof(short*));
+    for(int i = 0; i <= MAX_NUM; ++i)
+        graph.edges[i] = NULL;
     while(scanf("%hd", &graph.numVertices) && graph.numVertices != 0) {
-        graph.edges = (short**)malloc(graph.numVertices * sizeof(short*));
-        for(int i = 0; i < graph.numVertices; ++i)
-            graph.edges[i] = NULL;
-        graph.edgesCount = (short*)calloc(graph.numVertices, sizeof(short));
         short l;
         scanf("%hd", &l);
+        memset(graph.edgesCount, 0, graph.numVertices * sizeof(short));
         short startVertex;
         while(l--) {
             short a, b;
@@ -39,17 +39,13 @@ int main() {
             graph.edges[b] = (short*)realloc(graph.edges[b], (graph.edgesCount[b] + 1) * sizeof(short));
             startVertex = graph.edges[b][graph.edgesCount[b]++] = a;
         }
-        graph.color = (char*)calloc(graph.numVertices, sizeof(char));
-        graph.visited = (bool*)calloc(graph.numVertices, sizeof(bool));
+        memset(graph.color, '\0', graph.numVertices * sizeof(char));
         bool bicolorable = true;
         dfs(&graph, startVertex, '0', &bicolorable);
         puts(bicolorable ? "BICOLORABLE." : "NOT BICOLORABLE.");
-        for(int i = 0; i < graph.numVertices; ++i)
-            free(graph.edges[i]);
-        free(graph.edges);
-        free(graph.edgesCount);
-        free(graph.color);
-        free(graph.visited);
     }
+    for(int i = 0; i <= MAX_NUM; ++i)
+        free(graph.edges[i]);
+    free(graph.edges);
 	return 0;
 }
