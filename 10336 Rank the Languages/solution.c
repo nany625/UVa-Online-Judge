@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+int dRow[] = {1, 0, 0, -1}, dCol[] = {0, 1, -1, 0};
+
 typedef struct {
     char language;
     int states;
@@ -10,14 +12,11 @@ typedef struct {
 void dfs(char **map, int row, int rowLimit, int col, int colLimit, char language) {
     if(map[row][col] == language) {
         map[row][col] = ' ';
-        if(row - 1 >= 0)
-            dfs(map, row - 1, rowLimit, col, colLimit, language);
-        if(col - 1 >= 0)
-            dfs(map, row, rowLimit, col - 1, colLimit, language);
-        if(row + 1 < rowLimit)
-            dfs(map, row + 1, rowLimit, col, colLimit, language);
-        if(col + 1 < colLimit)
-            dfs(map, row, rowLimit, col + 1, colLimit, language);
+        for(int i = 0; i < 4; ++i) {
+            int newRow = row + dRow[i], newCol = col + dCol[i];
+            if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit)
+                dfs(map, newRow, rowLimit, newCol, colLimit, language);
+        }
     }
 }
 
