@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static int[] dRow = {1, 0, 0, -1}, dCol = {0, 1, -1, 0};
     static char[][] table = new char[250][250];
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -79,14 +80,11 @@ public class Main {
     static void dfs(int row, int rowLimit, int col, int colLimit, char R, char C) {
         if(C != R) {
             table[row][col] = C;
-            if(row - 1 >= 0 && table[row - 1][col] == R)
-                dfs(row - 1, rowLimit, col, colLimit, R, C);
-            if(col - 1 >= 0 && table[row][col - 1] == R)
-                dfs(row, rowLimit, col - 1, colLimit, R, C);
-            if(row + 1 < rowLimit && table[row + 1][col] == R)
-                dfs(row + 1, rowLimit, col, colLimit, R, C);
-            if(col + 1 < colLimit && table[row][col + 1] == R)
-                dfs(row, rowLimit, col + 1, colLimit, R, C);
+            for(int i = 0; i < 4; ++i) {
+                int newRow = row + dRow[i], newCol = col + dCol[i];
+                if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit && table[newRow][newCol] == R)
+                    dfs(newRow, rowLimit, newCol, colLimit, R, C);
+            }
         }
     }
 }
