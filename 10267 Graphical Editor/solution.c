@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int dRow[] = {1, 0, 0, -1}, dCol[] = {0, 1, -1, 0};
+
 char table[250][251];
 
 void swap(int *a, int *b) {
@@ -12,20 +14,17 @@ void swap(int *a, int *b) {
 
 void fill(int row1, int row2, int col1, int col2, char C) {
     for(int i = row1; i <= row2; ++i)
-        memset(table[i] + col1, C, col2 - col1 + 1);
+        memset(table[i] + col1, C, (col2 - col1 + 1) * sizeof(char));
 }
 
 void dfs(int row, int rowLimit, int col, int colLimit, char R, char C) {
     if(C != R) {
         table[row][col] = C;
-        if(row - 1 >= 0 && table[row - 1][col] == R)
-            dfs(row - 1, rowLimit, col, colLimit, R, C);
-        if(col - 1 >= 0 && table[row][col - 1] == R)
-            dfs(row, rowLimit, col - 1, colLimit, R, C);
-        if(row + 1 < rowLimit && table[row + 1][col] == R)
-            dfs(row + 1, rowLimit, col, colLimit, R, C);
-        if(col + 1 < colLimit && table[row][col + 1] == R)
-            dfs(row, rowLimit, col + 1, colLimit, R, C);
+        for(int i = 0; i < 4; ++i) {
+            int newRow = row + dRow[i], newCol = col + dCol[i];
+            if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit && table[newRow][newCol] == R)
+                dfs(newRow, rowLimit, newCol, colLimit, R, C);
+        }
     }
 }
 
