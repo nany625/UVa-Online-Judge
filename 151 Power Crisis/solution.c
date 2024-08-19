@@ -1,4 +1,22 @@
-// #解法一(偷吃步)
+// #解法一(正規演算法)
+#include <stdio.h>
+
+int josephus(int n, int k) {
+    return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
+}
+
+int main() {
+    int N;
+    while(scanf("%d", &N) && N != 0) {
+        int m = 1;
+        while(josephus(N - 1, m) != 11)
+            ++m;
+        printf("%d\n", m);
+    }
+	return 0;
+}
+
+// #解法二(捷徑)
 #include <stdio.h>
 
 short ans[] = {
@@ -17,23 +35,5 @@ int main() {
     int N;
 	while(scanf("%d", &N) && N != 0)
 	   printf("%hd\n", ans[N - 13]);
-	return 0;
-}
-
-// #解法二(正規演算法)
-#include <stdio.h>
-
-int josephus(int n, int k) {
-    return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
-}
-
-int main() {
-    int N;
-    while(scanf("%d", &N) && N != 0) {
-        int m = 1;
-        while(josephus(N - 1, m) != 11)
-            ++m;
-        printf("%d\n", m);
-    }
 	return 0;
 }
