@@ -1,4 +1,26 @@
-// #解法一(偷吃步)
+// #解法一(正規演算法)
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    int N;
+	    StringBuilder output = new StringBuilder();
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
+            int m = 1;
+            while(josephus(N - 1, m) != 11)
+                ++m;
+    		output.append(m + "\n");
+        }
+	    System.out.print(output);
+	}
+	
+	static int josephus(int n, int k) {
+        return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
+    }
+}
+
+// #解法二(捷徑)
 import java.io.*;
 
 public class Main {
@@ -21,26 +43,4 @@ public class Main {
             output.append(ans[N - 13] + "\n");
 	    System.out.print(output);
 	}
-}
-
-// #解法二(正規演算法)
-import java.io.*;
-
-public class Main {
-	public static void main(String[] args) throws IOException {
-	    StreamTokenizer st = new StreamTokenizer(System.in);
-	    int N;
-	    StringBuilder output = new StringBuilder();
-        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            int m = 1;
-            while(josephus(N - 1, m) != 11)
-                ++m;
-    		output.append(m + "\n");
-        }
-	    System.out.print(output);
-	}
-	
-	static int josephus(int n, int k) {
-        return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
-    }
 }
