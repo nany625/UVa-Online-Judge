@@ -1,11 +1,13 @@
 #include <stdio.h>
 
 long dp[10000];
-int coins[21];
+int coins[] = {
+    1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 
+    1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859, 8000, 
+    9261
+};
 
 int main() {
-    for(int i = 1; i <= 21; ++i)
-        coins[i - 1] = i * i * i;
     dp[0] = 1;
     for(int i = 0; i < 21; ++i) {
         for(int j = coins[i]; j <= 9999; ++j)
