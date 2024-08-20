@@ -5,6 +5,7 @@
 
 int horsedRow[] = {2, 2, 1, 1, -1, -1, -2, -2}, horsedCol[] = {1, -1, 2, -2, 2, -2, 1, -1};
 int kingdRow[] = {1, 1, 1, -1, -1, -1, 0, 0}, kingdCol[] = {1, 0, -1, 1, 0, -1, 1, -1};
+char forest[100][101];
 
 typedef struct {
     int row, col;
@@ -16,7 +17,6 @@ int main() {
     while(T--) {
         int M, N;
         scanf("%d %d", &M, &N);
-        char forest[M][N + 1];
         for(int i = 0; i < M; ++i)
             scanf("%s", forest[i]);
         for(int i = 0; i < M; ++i) {
