@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
-#define MAX_SIZE 999999
+#define MAX_NUM 999999
 
-bool isComposite[MAX_SIZE + 1] = {true, true};
-short dpCount[MAX_SIZE + 1];
+bool isComposite[MAX_NUM + 1] = {true, true};
+short dpCount[MAX_NUM + 1];
 
 int sumOfDigits(int n) {
     int result = 0;
@@ -15,9 +15,9 @@ int sumOfDigits(int n) {
 }
 
 int main() {
-    for(int i = 2; i <= MAX_SIZE; ++i) {
+    for(int i = 2; i <= MAX_NUM; ++i) {
         if(i <= 999 && !isComposite[i]) {
-            for(int j = i * i; j <= MAX_SIZE; j += i)
+            for(int j = i * i; j <= MAX_NUM; j += i)
                 isComposite[j] = true;
         }
         dpCount[i] = dpCount[i - 1] + (!isComposite[i] && !isComposite[sumOfDigits(i)]);
