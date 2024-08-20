@@ -3,7 +3,6 @@
 #include <string.h>
 
 int dRow[] = {1, 0, 0, -1}, dCol[] = {0, 1, -1, 0};
-
 char table[250][251];
 
 void swap(int *a, int *b) {
