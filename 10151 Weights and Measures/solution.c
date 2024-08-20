@@ -1,6 +1,53 @@
+// #解法一
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
+typedef struct {
+    int weight, strength;
+} Turtle;
+
+int compare(const void *a, const void *b) {
+    Turtle *t1 = (Turtle*)a;
+    Turtle *t2 = (Turtle*)b;
+    return t1->strength > t2->strength;
+}
+
+int main() {
+    Turtle *turtles = NULL;
+    int size = 0;
+    int w, s;
+    while(scanf("%d %d", &w, &s) == 2) {
+        turtles = (Turtle*)realloc(turtles, (size + 1) * sizeof(Turtle));
+        turtles[size].weight = w;
+        turtles[size++].strength = s;
+    }
+    qsort(turtles, size, sizeof(Turtle), compare);
+    int *stacked = NULL, totalWeight = 0, height = 0;
+    for(int i = 0; i < size; ++i) {
+        if(totalWeight + turtles[i].weight <= turtles[i].strength) {
+            stacked = (int*)realloc(stacked, (height + 1) * sizeof(int));
+            totalWeight += stacked[height++] = turtles[i].weight;
+        } else if(height > 0) {
+            int maxIndex = 0;
+            for(int j = 1; j < height; ++j) {
+                if(stacked[j] > stacked[maxIndex])
+                    maxIndex = j;
+            }
+            if(stacked[maxIndex] > turtles[i].weight) {
+                totalWeight += turtles[i].weight - stacked[maxIndex];
+                stacked[maxIndex] = turtles[i].weight;
+            }
+        }
+    }
+    printf("%d\n", height);
+    free(stacked);
+    free(turtles);
+	return 0;
+}
+
+// #解法二
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX_INT 2147483647
 
 typedef struct {
