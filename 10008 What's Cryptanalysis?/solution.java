@@ -6,6 +6,7 @@ public class Main {
     	HashMap<Character, Short> frequencies = new HashMap<>();
     	ArrayList<Character> frequenciesKeys = new ArrayList<>();
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int n = (int)st.nval;
@@ -36,7 +37,9 @@ public class Main {
     	    }
     	});
     	for(Character c : frequenciesKeys)
-    	    output.append(c + " " + frequencies.get(c) + "\n");
-        System.out.print(output);
+    	    output.append(c).append(' ').append(frequencies.get(c)).append('\n');
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
