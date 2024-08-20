@@ -7,12 +7,13 @@ public class Main {
         lenMap.add((short)0);
 		lenMap.add((short)1);
         StreamTokenizer st = new StreamTokenizer(System.in);
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     	StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
     	    int min = (int)st.nval;
     	    st.nextToken();
     	    int max = (int)st.nval;
-    	    output.append(min + " " + max + " ");
+    	    output.append(min).append(' ').append(max).append(' ');
     	    if(min > max) {
     	        int temp = min;
     	        min = max;
@@ -26,9 +27,11 @@ public class Main {
                     Collatz(i);
                 maxLen = maxLen > lenMap.get(i) ? maxLen : lenMap.get(i);
             }
-            output.append(maxLen + "\n");
+            output.append(maxLen).append('\n');
 		}
-		System.out.print(output);
+		bw.write(output.toString());
+		bw.flush();
+		bw.close();
 	}
 	
 	static void Collatz(int n) {
