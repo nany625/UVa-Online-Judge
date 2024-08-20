@@ -41,7 +41,7 @@ int main() {
             }
         }
         int totalPaths = 0;
-        for(int j = 0; j < N; ++j)
+        for(int j = (startRow + startCol) % 2; j < N; j += 2)
             totalPaths += paths[0][j];
         printf("Case %d: %d\n", i, totalPaths %= 1000007);
     }
