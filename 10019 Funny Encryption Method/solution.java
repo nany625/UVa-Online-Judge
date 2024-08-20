@@ -3,6 +3,7 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    st.nextToken();
 	    int T = (int)st.nval;
 	    StringBuilder output = new StringBuilder();
@@ -14,7 +15,7 @@ public class Main {
     	        count += temp % 2;
     	        temp /= 2;
     	    }
-    	    output.append(count + " ");
+    	    output.append(count).append(' ');
     	    count = 0;
     	    while(N > 0) {
     	        temp = N % 10;
@@ -24,8 +25,10 @@ public class Main {
         	    }
         	    N /= 10;
     	    }
-    	    output.append(count + "\n");
+    	    output.append(count).append('\n');
 	    }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
