@@ -5,6 +5,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Graph graph = new Graph();
 		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (graph.numVertices = (short)st.nval) != 0) {
 		    graph.edges = (ArrayList<Short>[])new ArrayList[graph.numVertices];
@@ -26,7 +27,9 @@ public class Main {
 		    dfs(graph, startVertex, '0', bicolorable);
 		    output.append(bicolorable[0] ? "BICOLORABLE.\n" : "NOT BICOLORABLE.\n");
 		}
-        System.out.print(output);
+        writer.write(output.toString());
+        writer.flush();
+        writer.close();
 	}
 	
 	static void dfs(Graph graph, short startVertex, char color, boolean[] bicolorable) {
