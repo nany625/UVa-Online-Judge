@@ -3,13 +3,14 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
     	StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int N = (int)st.nval;
         boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
             if(!firstCase)
-			    output.append("\n");
+			    output.append('\n');
             st.nextToken();
             int M = (int)st.nval;
             char[] ans = new char[M + 1];
@@ -28,9 +29,11 @@ public class Main {
     	        output.append(1);
     	    for(int i = 1; i <= M; ++i)
     	        output.append(ans[i]);
-    	    output.append("\n");
+    	    output.append('\n');
     	    firstCase = false;
         }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
