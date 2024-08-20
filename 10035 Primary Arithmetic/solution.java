@@ -3,6 +3,7 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
 	        int num1 = (int)st.nval;
@@ -20,8 +21,10 @@ public class Main {
 	        if(count == 0)
     	        output.append("No carry operation.\n");
     	    else
-    	        output.append(count + " carry operation" + (count > 1 ? "s.\n" : ".\n"));
+    	        output.append(count).append(" carry operation").append(count > 1 ? "s.\n" : ".\n");
 	    }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
