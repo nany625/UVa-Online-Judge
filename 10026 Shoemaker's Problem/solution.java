@@ -4,13 +4,14 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             st.nextToken();
             int N = (int)st.nval;
             Job[] jobs = new Job[N];
@@ -30,13 +31,15 @@ public class Main {
             });
     	    for(int i = 0; i < N; ++i) {
     	        if(i > 0)
-    	            output.append(" ");
+    	            output.append(' ');
     	        output.append(jobs[i].jobNum);
     	    }
-    	    output.append("\n");
+    	    output.append('\n');
     	    firstCase = false;
     	}
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
 
