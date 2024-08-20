@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
 	        int n = (int)st.nval;
@@ -24,7 +25,9 @@ public class Main {
     	    }
     	    output.append(Jolly ? "Jolly\n" : "Not jolly\n");
 	    }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 }
 
@@ -34,6 +37,7 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
 	        int n = (int)st.nval;
@@ -49,7 +53,9 @@ public class Main {
     	    DualPivotQuickSort(diff, 0, n - 1, Jolly);
         	output.append(Jolly[0] ? "Jolly\n" : "Not jolly\n");
     	}
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 	
 	static void swap(int[] array, int i, int j) {
