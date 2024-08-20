@@ -1,30 +1,29 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#define MAX_NUM 997
+#define MAX_PRIME_SIZE 168
 
-short primes[169] = {2};
+bool isComposite[MAX_NUM + 1];
+short primes[MAX_PRIME_SIZE] = {2};
 int count = 1;
 
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
-
 int main() {
-    for(short i = 3; count < 169; i += 2) {
-        if(isPrime(i))
+    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
+        if(!isComposite[i]) {
             primes[count++] = i;
+            if(i <= 31) {
+                for(short j = i * i; j <= MAX_NUM; j += i)
+                    isComposite[j] = true;
+            }
+        }
     }
     int num;
     while(scanf("%d", &num) && num != 0) {
         printf("%d : ", num);
         short limit = sqrt(num);
         int pfCount = 0;
-        for(int i = 0; num > 1 && primes[i] <= limit; ++i) {
+        for(int i = 0; i < MAX_PRIME_SIZE && primes[i] <= limit; ++i) {
             if(num % primes[i] == 0) {
                 ++pfCount;
                 do {
