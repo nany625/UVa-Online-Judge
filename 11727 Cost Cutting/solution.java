@@ -4,6 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -16,6 +17,8 @@ public class Main {
             Arrays.sort(salary);
             output.append("Case " + i + ": " + salary[1] + "\n");
         }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
     }
 }
