@@ -32,8 +32,7 @@ int main() {
             if(isupper(buffer[0])) {
                 buffer[strcspn(buffer, "\n")] = '\0';
                 strcpy(grid[n++], buffer);
-            }
-            else {
+            } else {
                 char *token = strtok(buffer, " ");
                 int i = atoi(token) - 1;
                 token = strtok(NULL, " ");
