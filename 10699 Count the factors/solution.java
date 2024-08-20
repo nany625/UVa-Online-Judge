@@ -1,13 +1,19 @@
 import java.io.*;
 
 public class Main {
-    static short[] primes = new short[169];
+    static boolean[] isComposite = new boolean[998];
+    static short[] primes = new short[168];
     static int count = 1;
 	public static void main (String[] args) throws IOException {
 		primes[0] = 2;
-		for(short i = 3; count < 169; i += 2) {
-            if(isPrime(i))
+		for(short i = 3; count < 168; i += 2) {
+            if(!isComposite[i]) {
                 primes[count++] = i;
+                if(i <= 31) {
+                    for(short j = (short)(i * i); j <= 997; j += i)
+                        isComposite[j] = true;
+                }
+            }
         }
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		int num;
@@ -16,7 +22,7 @@ public class Main {
 		    output.append(num + " : ");
 		    short limit = (short)Math.sqrt(num);
 		    int pfCount = 0;
-		    for(int i = 0; num > 1 && primes[i] <= limit; ++i) {
+		    for(int i = 0; i < 168 && primes[i] <= limit; ++i) {
 		        if(num % primes[i] == 0) {
                     ++pfCount;
                     do {
