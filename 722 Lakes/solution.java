@@ -1,8 +1,8 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
     static int[] dRow = {1, 0, 0, -1}, dCol = {0, 1, -1, 0};
+    static char[][] grid = new char[99][];
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -17,27 +17,27 @@ public class Main {
             int i = (int)st.nval - 1;
             st.nextToken();
             int j = (int)st.nval - 1;
-            ArrayList<char[]> grid = new ArrayList<>();
             String line;
+            int rows = 0;
             while((line = br.readLine()) != null && !line.isEmpty())
-                grid.add(line.toCharArray());
-            int rows = grid.size(), cols = grid.get(0).length;
+                grid[rows++] = line.toCharArray();
+            int cols = grid[0].length;
             int[] area = new int[1];
-            dfs(grid, i, rows, j, cols, area);
+            dfs(i, rows, j, cols, area);
             output.append(area[0] + "\n");
             firstCase = false;
         }
         System.out.print(output);
 	}
 	
-	static void dfs(ArrayList<char[]> grid, int row, int rowLimit, int col, int colLimit, int[] area) {
-        if(grid.get(row)[col] == '0') {
-            grid.get(row)[col] = '1';
+	static void dfs(int row, int rowLimit, int col, int colLimit, int[] area) {
+        if(grid[row][col] == '0') {
+            grid[row][col] = '1';
             ++area[0];
             for(int i = 0; i < 4; ++i) {
                 int newRow = row + dRow[i], newCol = col + dCol[i];
                 if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit)
-                    dfs(grid, newRow, rowLimit, newCol, colLimit, area);
+                    dfs(newRow, rowLimit, newCol, colLimit, area);
             }
         }
     }
