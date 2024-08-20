@@ -4,13 +4,14 @@ public class Main {
     static int[] dRow = {0, 1, 0, -1, 1, 1, -1, -1}, dCol = {1, 0, -1, 0, 1, -1, -1, 1};
 	public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
             if(!firstCase)
-			    output.append("\n");
+			    output.append('\n');
             st.nextToken();
             int m = (int)st.nval;
             st.nextToken();
@@ -31,7 +32,7 @@ public class Main {
     				for(int col = 0; col < n && !found; ++col) {
     					for(int dir = 0; dir < 8 && !found; ++dir) {
                             if(searchInDirection(grid, m, n, word, wordLen, row, col, dir)) {
-                                output.append(String.format("%d %d\n", row + 1, col + 1));
+                                output.append(row + 1).append(' ').append(col + 1).append('\n');
                                 found = true;
                             }
                         }
@@ -40,7 +41,9 @@ public class Main {
                 firstCase = false;
             }
         }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 	
 	static boolean searchInDirection(String[] grid, int m, int n, String word, int wordLen, int row, int col, int dir) {
