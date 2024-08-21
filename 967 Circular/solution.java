@@ -20,7 +20,7 @@ public class Main {
             if(cpCount == 0)
         		output.append("No Circular Primes.\n");
         	else
-        		output.append(cpCount + " Circular Prime" + (cpCount > 1 ? "s.\n" : ".\n"));
+        		output.append(cpCount).append(cpCount > 1 ? " Circular Primes.\n" : " Circular Prime.\n");
         }
 	    System.out.print(output);
 	}
