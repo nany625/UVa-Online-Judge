@@ -7,7 +7,7 @@ public class Main {
         String X;
         StringBuilder output = new StringBuilder();
         while((X = br.readLine()) != null)
-            output.append(new BigInteger(X).multiply(new BigInteger(new String(br.readLine()))) + "\n");
+            output.append(new BigInteger(X).multiply(new BigInteger(br.readLine()))).append('\n');
         System.out.print(output);
 	}
 }
