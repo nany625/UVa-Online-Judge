@@ -9,8 +9,8 @@ public class Main {
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= cases; ++i) {
 	        if(i > 1)
-	            output.append("\n");
-	        output.append("Case " + i + ":\n");
+	            output.append('\n');
+	        output.append("Case ").append(i).append(":\n");
 	        short[] costs = new short[36];
 	        for(int j = 0; j < 36; ++j) {
 	            st.nextToken();
@@ -32,12 +32,12 @@ public class Main {
     				if(cheapest > totalCosts[base - 2] || cheapest == 0)
     				    cheapest = totalCosts[base - 2];
 	            }
-	            output.append("Cheapest base(s) for number " + number + ":");
+	            output.append("Cheapest base(s) for number ").append(number).append(':');
 	            for(int base = 2; base <= 36; ++base) {
     				if(totalCosts[base - 2] == cheapest)
-    					output.append(" " + base);
+    					output.append(' ').append(base);
     			}
-    			output.append("\n");
+    			output.append('\n');
 	        }
         }
         System.out.print(output);
