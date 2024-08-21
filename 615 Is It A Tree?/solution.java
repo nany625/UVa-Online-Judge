@@ -14,17 +14,17 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (parent = (int)st.nval) >= 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (child = (int)st.nval) >= 0) {
             if(parent == 0 && child == 0) {
                 if(!isTree)
-                    output.append("Case " + (++cases) + " is not a tree.\n");
+                    output.append("Case ").append(++cases).append(" is not a tree.\n");
                 else if(edgeCount == 0)
-                    output.append("Case " + (++cases) + " is a tree.\n");
+                    output.append("Case ").append(++cases).append(" is a tree.\n");
                 else {
                     HashMap<Integer, Boolean> visited = new HashMap<>();
                     int[] nodeCount = new int[1];
                     dfs(visited, startVertex, nodeCount);
                     if(nodeCount[0] == edgeCount + 1)
-                        output.append("Case " + (++cases) + " is a tree.\n");
+                        output.append("Case ").append(++cases).append(" is a tree.\n");
                     else
-                        output.append("Case " + (++cases) + " is not a tree.\n");
+                        output.append("Case ").append(++cases).append(" is not a tree.\n");
                 }
                 init();
             } else {
