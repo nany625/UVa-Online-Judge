@@ -15,9 +15,9 @@ public class Main {
             }
             degree += temp == 9 ? 1 : 0;
             if(degree == 0)
-                output.append(N + " is not a multiple of 9.\n");
+                output.append(N).append(" is not a multiple of 9.\n");
             else
-                output.append(N + " is a multiple of 9 and has 9-degree " + degree + ".\n");
+                output.append(N).append(" is a multiple of 9 and has 9-degree ").append(degree).append(".\n");
 		}
 		System.out.print(output);
 	}
