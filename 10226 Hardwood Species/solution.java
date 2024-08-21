@@ -55,12 +55,8 @@ public class Main {
                 output.append('\n');
             TreeMap<String, Integer> tree = new TreeMap<>();
             String species;
-    	    while((species = br.readLine()) != null && !species.isEmpty()) {
-                if(tree.containsKey(species))
-                	tree.replace(species, tree.get(species) + 1);
-                else
-                	tree.put(species, 1);
-            }
+    	    while((species = br.readLine()) != null && !species.isEmpty())
+                tree.put(species, tree.getOrDefault(species, 0) + 1);
             int treeSize = 0;
             for(Integer i : tree.values())
                 treeSize += i;
