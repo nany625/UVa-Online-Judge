@@ -1,6 +1,7 @@
 import java.io.*;
 
 public class Main {
+    static int KUTI = 10000000, LAKH = 100000, HAJAR = 1000, SHATA = 100;
     static StringBuilder output;
 	public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
@@ -13,34 +14,34 @@ public class Main {
                 output.append(" 0\n");
             else {
                 split(n);
-                output.append("\n");
+                output.append('\n');
             }
 		}
         System.out.print(output);
 	}
 	
 	static void split(long n) {
-        if(n >= Math.pow(10, 7)) {
-            split(n / (long)Math.pow(10, 7));
+        if(n >= KUTI) {
+            split(n / KUTI);
             output.append(" kuti");
-            n %= (long)Math.pow(10, 7);
+            n %= KUTI;
         }
-        if(n >= Math.pow(10, 5)) {
-            split(n / (long)Math.pow(10, 5));
+        if(n >= LAKH) {
+            split(n / LAKH);
             output.append(" lakh");
-            n %= (long)Math.pow(10, 5);
+            n %= LAKH;
         }
-        if(n >= Math.pow(10, 3)) {
-            split(n / (long)Math.pow(10, 3));
+        if(n >= HAJAR) {
+            split(n / HAJAR);
             output.append(" hajar");
-            n %= (long)Math.pow(10, 3);
+            n %= HAJAR;
         }
-        if(n >= Math.pow(10, 2)) {
-            split(n / (long)Math.pow(10, 2));
+        if(n >= SHATA) {
+            split(n / SHATA);
             output.append(" shata");
-            n %= (long)Math.pow(10, 2);
+            n %= SHATA;
         }
         if(n > 0)
-            output.append(" " + n);
+            output.append(' ').append(n);
     }
 }
