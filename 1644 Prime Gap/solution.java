@@ -17,7 +17,7 @@ public class Main {
 	            do {
                     j += 2;
 	            } while(!isPrime(k + j));
-	            output.append((i + j) + "\n");
+	            output.append(i + j).append('\n');
 		    }
         }
 	    System.out.print(output);
