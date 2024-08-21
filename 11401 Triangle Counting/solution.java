@@ -11,7 +11,7 @@ public class Main {
         int n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) >= 3)
-    	    output.append(ans[n] + "\n");
+    	    output.append(ans[n]).append('\n');
         System.out.print(output);
 	}
 }
