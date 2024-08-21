@@ -10,7 +10,7 @@ public class Main {
     	    int P = (int)st.nval;
     	    st.nextToken();
     	    int M = (int)st.nval;
-    	    output.append(bigMod(B, P, M) + "\n");
+    	    output.append(bigMod(B, P, M)).append('\n');
     	}
         System.out.print(output);
 	}
