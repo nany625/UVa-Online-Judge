@@ -42,7 +42,7 @@ public class Main {
             }
             countX += sizeX - i;
             countY += sizeY - j;
-            output.append(Math.min(countX, countY) + "\n");
+            output.append(Math.min(countX, countY)).append('\n');
 		}
 		System.out.print(output);
 	}
