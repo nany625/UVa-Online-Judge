@@ -17,7 +17,7 @@ public class Main {
                     root[rootI] = root[rootJ];
                 }
             }
-            output.append("Case " + (++cases) + ": " + n + "\n");
+            output.append("Case ").append(++cases).append(": ").append(n).append('\n');
     	}
         System.out.print(output);
 	}
