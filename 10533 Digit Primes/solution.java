@@ -23,7 +23,7 @@ public class Main {
 		    int t1 = (int)st.nval;
 		    st.nextToken();
 		    int t2 = (int)st.nval;
-			output.append(dpCount[t2] - dpCount[t1 - 1] + "\n");
+			output.append(dpCount[t2] - dpCount[t1 - 1]).append('\n');
     	}
         System.out.print(output);
 	}
