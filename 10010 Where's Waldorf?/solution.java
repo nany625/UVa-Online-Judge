@@ -4,7 +4,6 @@ public class Main {
     static int[] dRow = {0, 1, 0, -1, 1, 1, -1, -1}, dCol = {1, 0, -1, 0, 1, -1, -1, 1};
 	public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         boolean firstCase = true;
@@ -41,9 +40,7 @@ public class Main {
                 firstCase = false;
             }
         }
-        bw.write(output.toString());
-        bw.flush();
-        bw.close();
+        System.out.print(output);
 	}
 	
 	static boolean searchInDirection(String[] grid, int m, int n, String word, int wordLen, int row, int col, int dir) {
