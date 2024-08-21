@@ -12,7 +12,7 @@ public class Main {
 	            array[i] = (int)st.nval;
 	        }
 	        MergeSort(array, reg, 0, N - 1, swap);
-	        output.append("Minimum exchange operations : " + swap[0] + "\n");
+	        output.append("Minimum exchange operations : ").append(swap[0]).append('\n');
         }
         System.out.print(output);
 	}
