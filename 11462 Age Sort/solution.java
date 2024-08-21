@@ -16,13 +16,13 @@ public class Main {
     	        if(age[i] > 0) {
     	            do {
     	                if(!firstNum)
-    	                    output.append(" ");
+    	                    output.append(' ');
     	                output.append(i);
     	                firstNum = false;
     	            } while(--age[i] > 0);
     	        }
     	    }
-    	    output.append("\n");
+    	    output.append('\n');
     	}
 	    System.out.print(output);
 	}
