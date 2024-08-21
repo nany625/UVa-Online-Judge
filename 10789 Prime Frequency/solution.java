@@ -21,7 +21,7 @@ public class Main {
 		int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
 		for(int i = 1; i <= T; ++i) {
-		    output.append("Case " + i + ": ");
+		    output.append("Case ").append(i).append(": ");
 		    String s = br.readLine();
 		    short[] frequency = new short[62];
 		    int len = s.length();
@@ -45,7 +45,7 @@ public class Main {
                     empty = false;
                 }
             }
-            output.append(empty ? "empty\n" : "\n");
+            output.append(empty ? "empty\n" : '\n');
         }
 		System.out.print(output);
 	}
