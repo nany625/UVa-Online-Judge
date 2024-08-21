@@ -17,7 +17,7 @@ public class Main {
                 else if(wall.charAt(j) < wall.charAt(j - 2))
                     ++lowJumps;
             }
-            output.append("Case " + i + ": " + highJumps + " " + lowJumps + "\n");
+            output.append("Case ").append(i).append(": ").append(highJumps).append(' ').append(lowJumps).append('\n');
         }
         System.out.print(output);
 	}
