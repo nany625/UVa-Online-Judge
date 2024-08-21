@@ -17,10 +17,10 @@ public class Main {
 				for(int i = 0; i < len / 2; ++i)
     			    swap(newNumber, i, len - 1 - i);
     			int desc = Integer.parseInt(new String(newNumber));
-				output.append(desc + " - " + asc + " = " + (desc - asc) + "\n");
+				output.append(desc).append(" - ").append(asc).append(" = ").append(desc - asc).append('\n');
     			number = desc - asc;
     		} while(!numbers.contains(number));
-			output.append("Chain length " + numbers.size() + "\n\n");
+			output.append("Chain length ").append(numbers.size()).append("\n\n");
     	}
         System.out.print(output);
 	}
