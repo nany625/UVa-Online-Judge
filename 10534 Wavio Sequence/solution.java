@@ -33,7 +33,7 @@ public class Main {
                 ldsDP[i] = pos + 1;
                 max = Math.max(max, Math.min(lisDP[i], ldsDP[i]));
             }
-            output.append(2 * max - 1 + "\n");
+            output.append(2 * max - 1).append('\n');
     	}
         System.out.print(output);
 	}
