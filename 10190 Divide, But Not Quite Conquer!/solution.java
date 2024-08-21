@@ -24,7 +24,7 @@ public class Main {
             else {
                 int size = a.size() - 1;
                 for(int i = 0; i < size; ++i)
-                    output.append(a.get(i) + " ");
+                    output.append(a.get(i)).append(' ');
                 output.append("1\n");
             }
         }
