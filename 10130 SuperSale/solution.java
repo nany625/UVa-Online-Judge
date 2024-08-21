@@ -34,7 +34,7 @@ public class Main {
             int maxValue = 0;
             for(Short s : MW)
                 maxValue += dp[s];
-            output.append(maxValue + "\n");
+            output.append(maxValue).append('\n');
     	}
         System.out.print(output);
 	}
