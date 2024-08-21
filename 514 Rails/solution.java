@@ -24,7 +24,7 @@ public class Main {
                 }
                 output.append(YES ? "Yes\n" : "No\n");
             }
-            output.append("\n");
+            output.append('\n');
     	}
         System.out.print(output);
 	}
