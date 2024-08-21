@@ -21,7 +21,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (T = (int)st.nval) != 0) {
             if(S == T) {
-                output.append("Case " + (++cases) + ": 0\n");
+                output.append("Case ").append(++cases).append(": 0\n");
                 continue;
             }
             ArrayList<Short> trans = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Main {
                     for(int j = 0; j < 67 && primes[j] < trans.get(i) && !found; ++j) {
                         if(trans.get(i) % primes[j] == 0) {
                             if(trans.get(i) + primes[j] == T) {
-                                output.append("Case " + (++cases) + ": " + step + "\n");
+                                output.append("Case ").append(++cases).append(": ").append(step).append('\n');
                                 found = true;
                             } else if(trans.get(i) + primes[j] < T && !visited[trans.get(i) + primes[j]]) {
                                 nextTrans.add((short)(trans.get(i) + primes[j]));
@@ -51,7 +51,7 @@ public class Main {
                 ++step;
             }
             if(!found)
-                output.append("Case " + (++cases) + ": -1\n");
+                output.append("Case ").append(++cases).append(": -1\n");
     	}
         System.out.print(output);
 	}
