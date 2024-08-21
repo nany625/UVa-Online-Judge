@@ -19,7 +19,7 @@ public class Main {
                 else
                     output.append(text.charAt(i));
             }
-            output.append("\n");
+            output.append('\n');
 		}
         System.out.print(output);
 	}
