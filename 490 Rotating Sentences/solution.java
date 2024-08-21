@@ -14,8 +14,8 @@ public class Main {
         }
         for(int i = 0; i < maxLen; ++i) {
             for(int j = sentences.size() - 1; j >= 0; --j)
-                output.append(i < sentences.get(j).length() ? sentences.get(j).charAt(i) : " ");
-            output.append("\n");
+                output.append(i < sentences.get(j).length() ? sentences.get(j).charAt(i) : ' ');
+            output.append('\n');
         }
         System.out.print(output);
 	}
