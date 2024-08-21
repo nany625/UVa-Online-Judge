@@ -29,7 +29,7 @@ public class Main {
                 short route = (short)(morning[i] + evening[n - 1 - i]);
                 pay += (route > d) ? (route - d) * r : 0;
             }
-            output.append(pay + "\n");
+            output.append(pay).append('\n');
         }
         System.out.print(output);
 	}
