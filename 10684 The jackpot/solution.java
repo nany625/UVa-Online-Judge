@@ -14,7 +14,7 @@ public class Main {
     	        max = Math.max(max, currMax);
     	    }
     	    if(max > 0)
-    	        output.append("The maximum winning streak is " + max + ".\n");
+    	        output.append("The maximum winning streak is ").append(max).append(".\n");
     	    else
     	        output.append("Losing streak.\n");
     	}
