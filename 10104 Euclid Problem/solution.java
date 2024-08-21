@@ -27,11 +27,11 @@ public class Main {
 		}
 		if(A >= B) {
 			int value = GCD(A + B * (-A / B), B);
-			Y[0] = Y[0] - X[0] * (A / B);
+			Y[0] -= X[0] * (A / B);
 			return value;
 		}
 		int value = GCD(A, B + A * (-B / A));
-		X[0] = X[0] - Y[0] * (B / A);
+		X[0] -= Y[0] * (B / A);
 		return value;
 	}
 }
