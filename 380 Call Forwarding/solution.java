@@ -8,7 +8,7 @@ public class Main {
 	    int N = (int)st.nval;
         StringBuilder output = new StringBuilder("CALL FORWARDING OUTPUT\n");
         for(int i = 1; i <= N; ++i) {
-			output.append("SYSTEM " + i + "\n");
+			output.append("SYSTEM ").append(i).append("\n");
 			ArrayList<Request> requests = new ArrayList<>();
 			short source, time, duration, target;
 			while(st.nextToken() == StreamTokenizer.TT_NUMBER && (source = (short)st.nval) != 0) {
@@ -43,7 +43,7 @@ public class Main {
 				output.append(String.format("AT %04d CALL TO %04d RINGS %04d\n", time, calls.get(0), deadEnd ? 9999 : calls.get(calls.size() - 1)));
     		}
     	}
-	    System.out.print(output + "END OF OUTPUT\n");
+	    System.out.println(output + "END OF OUTPUT");
 	}
 }
 
