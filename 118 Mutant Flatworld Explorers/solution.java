@@ -91,7 +91,7 @@ public class Main {
                         }
                 }
     	    }
-    	    output.append(x + " " + y + " " + orientation + (lost ? " LOST\n" : "\n"));
+    	    output.append(x).append(' ').append(y).append(' ').append(orientation).append(lost ? " LOST\n" : '\n');
     	}
         System.out.print(output);
 	}
