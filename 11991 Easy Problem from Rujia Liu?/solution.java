@@ -24,7 +24,7 @@ public class Main {
                 int k = (int)st.nval;
                 st.nextToken();
                 int v = (int)st.nval;
-                output.append((pos.get(v).size() >= k ? pos.get(v).get(k - 1) : 0) + "\n");
+                output.append(pos.get(v).size() >= k ? (int)pos.get(v).get(k - 1) : 0).append('\n');
             }
         }
         System.out.print(output);
