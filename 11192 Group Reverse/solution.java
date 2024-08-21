@@ -13,7 +13,7 @@ public class Main {
                 for(int j = (i + 1) * len / G - 1; j >= i * len / G; --j)
                     output.append(s.charAt(j));
             }
-    		output.append("\n");
+    		output.append('\n');
         }
         System.out.print(output);
 	}
