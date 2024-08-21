@@ -10,11 +10,11 @@ public class Main {
 		    int denominator = (int)st.nval, count = 0;
 		    do {
 		        if(count == 0)
-		            output.append("[" + numerator / denominator);
+		            output.append('[').append(numerator / denominator);
 		        else if(count == 1)
-		            output.append(";" + numerator / denominator);
+		            output.append(';').append(numerator / denominator);
 		        else
-		            output.append("," + numerator / denominator);
+		            output.append(',').append(numerator / denominator);
 		        int temp = numerator %= denominator;
 		        numerator = denominator;
 		        denominator = temp;
