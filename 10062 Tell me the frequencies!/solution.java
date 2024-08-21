@@ -9,7 +9,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((text = br.readLine()) != null) {
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             HashMap<Character, Short> frequencies = new HashMap<>();
             ArrayList<Character> frequenciesKeys = new ArrayList<>();
             int len = text.length();
@@ -30,7 +30,7 @@ public class Main {
                 }
             });
             for(Character c : frequenciesKeys)
-                output.append((int)c + " " + frequencies.get(c) + "\n");
+                output.append((int)c).append(' ').append(frequencies.get(c)).append('\n');
             firstCase = false;
         }
         System.out.print(output);
