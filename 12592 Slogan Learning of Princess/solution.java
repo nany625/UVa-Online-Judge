@@ -10,10 +10,11 @@ public class Main {
     	HashMap<String, String> slogans = new HashMap<>();
     	for(int i = 0; i < N; ++i)
     	    slogans.put(br.readLine(), br.readLine());
-        int Q = Integer.parseInt(br.readLine());
+        st.nextToken();
+        int Q = (int)st.nval;
         StringBuilder output = new StringBuilder();
     	while(Q-- > 0)
-    		output.append(slogans.get(br.readLine()) + "\n");
+    		output.append(slogans.get(br.readLine())).append('\n');
         System.out.print(output);
 	}
 }
