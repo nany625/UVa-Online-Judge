@@ -15,6 +15,7 @@ public class Main {
     	    }
     	}
         StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -28,9 +29,11 @@ public class Main {
     		        continue;
     	        found = sumOfFactorDigits(n) == sumOfDigits(n);
     		} while(!found);
-    		output.append(n + "\n");
+    		output.append(n).append('\n');
         }
-        System.out.print(output);
+        bw.write(output.toString());
+        bw.flush();
+        bw.close();
 	}
 	
 	static int sumOfDigits(int n) {
