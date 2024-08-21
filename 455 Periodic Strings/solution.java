@@ -10,7 +10,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
             if(!firstCase)
-				output.append("\n");
+				output.append('\n');
             br.readLine();
 	        String s = br.readLine();
             int len = s.length(), i = 1, length = 0;
@@ -25,7 +25,7 @@ public class Main {
 	                    LPS[i++] = 0;
 	            }
 	        }
-			output.append((len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len) + "\n");
+			output.append(len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len).append('\n');
 			firstCase = false;
         }
         System.out.print(output);
