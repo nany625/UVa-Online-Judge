@@ -10,8 +10,8 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		for(int i = 1; i <= T; ++i) {
             if(i > 1)
-                output.append("\n");
-            output.append("Case #" + i + ":\n");
+                output.append('\n');
+            output.append("Case #").append(i).append(":\n");
             String message;
             while((message = br.readLine()) != null && !message.isEmpty()) {
                 String[] tokens = message.split("\\s+");
@@ -20,7 +20,7 @@ public class Main {
                     if(s.length() > count)
                         output.append(s.charAt(count++));
                 }
-                output.append("\n");
+                output.append('\n');
             }
         }
 		System.out.print(output);
