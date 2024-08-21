@@ -16,12 +16,10 @@ int main() {
             short divisor;
             scanf("%hd", &divisor);
             if(wonderful) {
-                int remainder = 0;
-                for(int i = 0; i < len; ++i) {
-                    int dividend = 10 * remainder + M[i] - '0';
-                    remainder = dividend % divisor;
-                }
-                wonderful = remainder == 0;
+                int dividend = 0;
+                for(int i = 0; i < len; ++i)
+                    dividend = (10 * dividend + M[i] - '0') % divisor;
+                wonderful = dividend == 0;
             }
         }
         printf("%s - %s.\n", M, wonderful ? "Wonderful" : "Simple");
