@@ -37,7 +37,7 @@ public class Main {
     	    int n = (int)st.nval, sumOfDigits = 0;
     	    for(int i = 0; i < digits[n - 1]; ++i)
     			sumOfDigits += fac[n - 1][i] - '0';
-    		output.append(sumOfDigits + "\n");
+    		output.append(sumOfDigits).append('\n');
     	}
 	    System.out.print(output);
 	}
