@@ -9,7 +9,7 @@ public class Main {
         int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
 		for(int i = 1; i <= T; ++i) {
-			output.append("Case #" + i + ":\n");
+			output.append("Case #").append(i).append(":\n");
 			short max = 0;
 			for(int j = 0; j < 10; ++j) {
 			    st.nextToken();
@@ -20,7 +20,7 @@ public class Main {
 			}
 			for(Webpage w : webpages) {
 			    if(w.relevance == max)
-			        output.append(w.url + "\n");
+			        output.append(w.url).append('\n');
 			}
 		}
         System.out.print(output);
@@ -47,7 +47,7 @@ public class Main {
         int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
 		for(int i = 1; i <= T; ++i) {
-			output.append("Case #" + i + ":\n");
+			output.append("Case #").append(i).append(":\n");
 			ArrayList<String> candidates = new ArrayList<>();
 			int count = 0, lines = 10;
 			short max = 0;
@@ -66,7 +66,7 @@ public class Main {
 			}
 			int size = candidates.size();
 			for(int j = size - count; j < size; ++j)
-			    output.append(candidates.get(j) + "\n");
+			    output.append(candidates.get(j)).append('\n');
 		}
         System.out.print(output);
     }
