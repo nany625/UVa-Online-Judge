@@ -12,7 +12,7 @@ public class Main {
             dict.put(tokens[1], tokens[0]);
         }
         while((line = br.readLine()) != null)
-            output.append((dict.containsKey(line) ? dict.get(line) : "eh") + "\n");
+            output.append((dict.containsKey(line) ? dict.get(line) : "eh")).append('\n');
         System.out.print(output);
 	}
 }
