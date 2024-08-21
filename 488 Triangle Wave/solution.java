@@ -9,7 +9,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             st.nextToken();
             int amplitude = (int)st.nval;
             st.nextToken();
@@ -17,16 +17,16 @@ public class Main {
             boolean firstWave = true;
             while(frequency-- > 0) {
     			if(!firstWave)
-    				output.append("\n");
+    				output.append('\n');
     			for(int i = 1; i <= amplitude; ++i) {
     				for(int j = 1; j <= i; ++j)
     					output.append(i);
-    				output.append("\n");
+    				output.append('\n');
     			}
     			for(int i = amplitude - 1; i >= 1; --i) {
     				for(int j = 1; j <= i; ++j)
     					output.append(i);
-    				output.append("\n");
+    				output.append('\n');
     			}
     			firstWave = false;
     		}
