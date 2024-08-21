@@ -1,5 +1,4 @@
 import java.io.*;
-import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -32,11 +31,11 @@ public class Main {
     	        }
     	    }
     	    for(int i = factors.size() - 1; i >= 0; --i) {
-    	        output.append(factors.get(i).p + " " + factors.get(i).e);
+    	        output.append(factors.get(i).p).append(' ').append(factors.get(i).e);
     	        if(i > 0)
-    	            output.append(" ");
+    	            output.append(' ');
     	    }
-    	    output.append("\n");
+    	    output.append('\n');
     	}
 	    System.out.print(output);
 	}
