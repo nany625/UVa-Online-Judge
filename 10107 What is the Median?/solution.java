@@ -17,9 +17,9 @@ public class Main {
     	    }
     	    numbers.set(pos, X);
     	    if(size % 2 == 0)
-    	        output.append(numbers.get(size / 2 - 1) + (numbers.get(size / 2) - numbers.get(size / 2 - 1)) / 2 + "\n");
+    	        output.append(numbers.get(size / 2 - 1) + (numbers.get(size / 2) - numbers.get(size / 2 - 1)) / 2).append('\n');
     	    else
-    	        output.append(numbers.get(size / 2) + "\n");
+    	        output.append(numbers.get(size / 2)).append('\n');
     	}
         System.out.print(output);
 	}
