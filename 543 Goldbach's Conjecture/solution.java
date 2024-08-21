@@ -21,7 +21,7 @@ public class Main {
 	        int i = 0;
 	        while(isComposite[n - primes[i]])
 	            ++i;
-	        output.append(n + " = " + primes[i] + " + " + (n - primes[i]) + "\n");
+	        output.append(n).append(" = ").append(primes[i]).append(" + ").append(n - primes[i]).append('\n');
     	}
 	    System.out.print(output);
 	}
