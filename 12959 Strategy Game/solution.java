@@ -21,7 +21,7 @@ public class Main {
 		            }
 		        }
 		    }
-            output.append(winner + "\n");
+            output.append(winner).append('\n');
 		}
 		System.out.print(output);
 	}
