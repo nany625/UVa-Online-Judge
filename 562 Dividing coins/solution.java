@@ -25,7 +25,7 @@ public class Main {
                     }
                 }
     	    }
-    	    output.append(sum - 2 * max + "\n");
+    	    output.append(sum - 2 * max).append('\n');
     	}
         System.out.print(output);
 	}
