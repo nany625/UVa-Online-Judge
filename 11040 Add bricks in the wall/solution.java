@@ -21,10 +21,10 @@ public class Main {
     	    for(int i = 0; i < 9; ++i) {
     	        for(int j = 0; j <= i; ++j) {
     	            if(j > 0)
-    	                output.append(" ");
+    	                output.append(' ');
     	            output.append(i % 2 == 0 ? brick[i][j] : brick[i + 1][j] + brick[i + 1][j + 1]);
     	        }
-    	        output.append("\n");
+    	        output.append('\n');
     	    }
 		}
 		System.out.print(output);
