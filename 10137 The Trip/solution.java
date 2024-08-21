@@ -11,8 +11,7 @@ public class Main {
     	    int total = 0;
     	    for(int i = 0; i < n; ++i) {
     	        st.nextToken();
-    	        expense[i] = Math.round(st.nval * 100);
-    	        total += expense[i];
+    	        total += expense[i] = Math.round(st.nval * 100);
     	    }
     	    Arrays.sort(expense);
     	    int overpayCount = total % n, average = total / n;
