@@ -18,7 +18,7 @@ public class Main {
                 ++curr;
             }
             max = Math.max(max, (len - prev - 2));
-            output.append(max + "\n");
+            output.append(max).append('\n');
         }
         System.out.print(output);
 	}
