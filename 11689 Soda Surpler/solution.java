@@ -14,7 +14,7 @@ public class Main {
             st.nextToken();
             int c = (int)st.nval;
             double ans = (e + f - c) / (c - 1.0);
-            output.append((ans >= 0 ? (int)ans + 1 : 0) + "\n");
+            output.append(ans >= 0 ? (int)ans + 1 : 0).append('\n');
         }
         System.out.print(output);
 	}
