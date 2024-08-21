@@ -15,7 +15,7 @@ public class Main {
     	while(N-- > 0) {
     	    st.nextToken();
     	    int number = (int)st.nval;
-    	    output.append(number + " = ");
+    	    output.append(number).append(" = ");
     	    if(number == 1) {
     	        output.append("1 (fib)\n");
     	        continue;
