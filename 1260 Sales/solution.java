@@ -16,7 +16,7 @@ public class Main {
     	    }
     		int[] sum = new int[1];
     		MergeSort(A, reg, 0, n - 1, sum);
-    		output.append(sum[0] + "\n");
+    		output.append(sum[0]).append('\n');
     	}
         System.out.print(output);
 	}
