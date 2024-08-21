@@ -46,7 +46,7 @@ public class Main {
                 }
             }
             if(magenta >= 0 && yellow >= 0 && cyan >= 0)
-                output.append("YES " + magenta + " " + yellow + " " + cyan + "\n");
+                output.append("YES ").append(magenta).append(' ').append(yellow).append(' ').append(cyan).append('\n');
             else
                 output.append("NO\n");
 		}
