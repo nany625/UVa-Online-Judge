@@ -9,7 +9,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
     	while(T-- > 0) {
     	    if(!firstCase)
-    	        output.append("\n");
+    	        output.append('\n');
     	    st.nextToken();
     	    int D = (int)st.nval;
     	    Data[] datas = new Data[D];
@@ -32,7 +32,7 @@ public class Main {
     	                curr = i;
     	            }
     	        }
-    	        output.append((count == 1 ? datas[curr].M : "UNDETERMINED") + "\n");
+    	        output.append(count == 1 ? datas[curr].M : "UNDETERMINED").append('\n');
     	    }
     	    firstCase = false;
     	}
