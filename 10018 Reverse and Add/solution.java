@@ -3,7 +3,6 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		StreamTokenizer st = new StreamTokenizer(System.in);
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		st.nextToken();
 		int N = (int)st.nval;
 		StringBuilder output = new StringBuilder();
@@ -18,9 +17,7 @@ public class Main {
     	    } while(P != reverseP);
 		    output.append(count).append(' ').append(P).append('\n');
 		}
-		bw.write(output.toString());
-        bw.flush();
-        bw.close();
+		System.out.print(output);
 	}
 	
 	static long reverse(long n) {
