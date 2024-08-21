@@ -12,7 +12,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(cases-- > 0) {
 		    if(!firstCase)
-		        output.append("\n");
+		        output.append('\n');
 		    ArrayList<ScoreBoard> scoreBoards = new ArrayList<>();
 		    String s;
 		    while((s = br.readLine()) != null && !s.isEmpty()) {
@@ -60,7 +60,7 @@ public class Main {
 		        }
 		    });
 		    for(ScoreBoard S : scoreBoards)
-		        output.append(S.contestant + " " + S.solvedProblems.size() + " " + S.penaltyTime + "\n");
+		        output.append(S.contestant).append(' ').append(S.solvedProblems.size()).append(' ').append(S.penaltyTime).append('\n');
 		    firstCase = false;
 		}
 		System.out.print(output);
