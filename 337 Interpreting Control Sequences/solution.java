@@ -60,7 +60,7 @@ public class Main {
     	    }
     	    output.append("+----------+\n");
     	    for(int i = 0; i < 10; ++i)
-		    	output.append("|" + new String(screen[i]) + "|\n");
+		    	output.append('|').append(new String(screen[i])).append("|\n");
 		    output.append("+----------+\n");
         }
 	    System.out.print(output);
