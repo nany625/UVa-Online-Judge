@@ -6,10 +6,9 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(System.in);
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-            int n = (int)st.nval;
-            for(int i = 0; i < Math.pow(10, n / 2); ++i) {
-            	int split1 = i * i / (int)Math.pow(10, n / 2);
-            	int split2 = i * i % (int)Math.pow(10, n / 2);
+            int n = (int)st.nval, limit = (int)Math.pow(10, n / 2);
+            for(int i = 0; i < limit; ++i) {
+            	int split1 = i * i / limit, split2 = i * i % limit;
             	if(i * i == (split1 + split2) * (split1 + split2))
             		output.append(String.format("%0" + n + "d\n", i * i));
            	}
