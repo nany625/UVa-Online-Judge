@@ -3,7 +3,6 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
-	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	    st.nextToken();
 	    int T = (int)st.nval;
 	    StringBuilder output = new StringBuilder();
@@ -30,8 +29,6 @@ public class Main {
     	    } while(N-- > 0);
     	    output.append(hartals).append('\n');
     	}
-        bw.write(output.toString());
-        bw.flush();
-        bw.close();
+        System.out.print(output);
 	}
 }
