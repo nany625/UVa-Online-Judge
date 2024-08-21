@@ -8,7 +8,7 @@ public class Main {
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= T; ++i) {
-			output.append("Case #" + i + "\n");
+			output.append("Case #").append(i).append('\n');
 			st.nextToken();
             int N = (int)st.nval;
 			char[][] matrix = new char[N][N];
@@ -70,9 +70,9 @@ public class Main {
     		for(int j = 0; j < N; ++j) {
     		    for(int k = 0; k < N; ++k)
     			    output.append(matrix[j][k]);
-    			output.append("\n");
+    			output.append('\n');
     		}
-    		output.append("\n");
+    		output.append('\n');
     	}
 	    System.out.print(output);
 	}
