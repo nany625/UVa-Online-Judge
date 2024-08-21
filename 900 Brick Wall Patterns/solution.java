@@ -13,7 +13,7 @@ public class Main {
         int length;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (length = (int)st.nval) != 0)
-            output.append(Fib[length - 1] + "\n");
+            output.append(Fib[length - 1]).append('\n');
 	    System.out.print(output);
 	}
 }
