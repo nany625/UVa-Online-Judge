@@ -13,7 +13,7 @@ public class Main {
             int M = (int)st.nval;
             st.nextToken();
             int D = (int)st.nval;
-    	    output.append(s[(D + 7 - Mondays[M - 1]) % 7] + "\n");
+    	    output.append(s[(D + 7 - Mondays[M - 1]) % 7]).append('\n');
         }
         System.out.print(output);
 	}
