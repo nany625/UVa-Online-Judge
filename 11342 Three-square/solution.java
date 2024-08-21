@@ -23,7 +23,7 @@ public class Main {
             st.nextToken();
             int K = (int)st.nval;
             if(table[K])
-                output.append(answers[K].a + " " + answers[K].b + " " + answers[K].c + "\n");
+                output.append(answers[K].a).append(' ').append(answers[K].b).append(' ').append(answers[K].c).append('\n');
             else
                 output.append("-1\n");
         }
