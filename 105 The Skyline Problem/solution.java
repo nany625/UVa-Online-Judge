@@ -21,12 +21,12 @@ public class Main {
 		for(int i = 1; i <= limit; ++i) {
     	    if(skyline[i] != skyline[i - 1]) {
     	        if(!firstBuilding)
-    	            output.append(" ");
-    	        output.append(i + " " + skyline[i]);
+    	            output.append(' ');
+    	        output.append(i).append(' ').append(skyline[i]);
     	        firstBuilding = false;
     	    }
     	}
-		System.out.print(output + "\n");
+		System.out.println(output);
 	}
 }
 
@@ -64,11 +64,11 @@ public class Main {
 		for(int i = 0; i < size; ++i) {
     	    if(skyline[check.get(i)] != skyline[check.get(i) - 1]) {
     	        if(!firstBuilding)
-    	            output.append(" ");
-    	        output.append(check.get(i) + " " + skyline[check.get(i)]);
+    	            output.append(' ');
+    	        output.append(check.get(i)).append(' ').append(skyline[check.get(i)]);
     	        firstBuilding = false;
     	    }
     	}
-		System.out.print(output + "\n");
+		System.out.println(output);
 	}
 }
