@@ -7,7 +7,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while((num = br.readLine()) != null && num.charAt(0) != '-') {
 		    if(num.length() > 2 && num.charAt(1) == 'x')
-		        output.append(Integer.parseInt(num.substring(2), 16) + "\n");
+		        output.append(Integer.parseInt(num.substring(2), 16)).append('\n');
 		    else
 		        output.append(String.format("0x%X\n", Integer.parseInt(num)));
 		}
