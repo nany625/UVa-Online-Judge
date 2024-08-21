@@ -22,7 +22,7 @@ public class Main {
     		while(N <= 62 && sumOfDigits % (N - 1) != 0)
     		    ++N;
     		if(N <= 62)
-    		    output.append(N + "\n");
+    		    output.append(N).append('\n');
     		else
     			output.append("such number is impossible!\n");
 		}
