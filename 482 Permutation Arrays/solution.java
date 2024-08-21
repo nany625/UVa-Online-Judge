@@ -11,7 +11,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
     	    if(!firstCase)
-		        output.append("\n");
+		        output.append('\n');
     		br.readLine();
 			HashMap<Integer, String> map = new HashMap<>();
     		String[] p = br.readLine().split("\\s+");
@@ -20,7 +20,7 @@ public class Main {
 			for(int i = 0; i < len; ++i)
     			map.put(Integer.parseInt(p[i]), x[i]);
 			for(int i = 1; i <= len; ++i)
-    			output.append(map.get(i) + "\n");
+    			output.append(map.get(i)).append('\n');
     		firstCase = false;
     	}
         System.out.print(output);
