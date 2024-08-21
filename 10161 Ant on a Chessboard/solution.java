@@ -9,14 +9,14 @@ public class Main {
             int circle = (int)Math.ceil(Math.sqrt(N)), corner = 1 + circle * (circle - 1);
             if(circle % 2 == 1) {
                 if(N < corner) 
-                    output.append(String.format("%d %d\n", circle, circle - (corner - N)));
+                    output.append(circle).append(' ').append(circle - (corner - N)).append('\n');
                 else
-                    output.append(String.format("%d %d\n", circle - (N - corner), circle));
+                    output.append(circle - (N - corner)).append(' ').append(circle).append('\n');
             } else {
     			if(N < corner)
-                    output.append(String.format("%d %d\n", circle - (corner - N), circle));
+                    output.append(circle - (corner - N)).append(' ').append(circle).append('\n');
                 else
-                    output.append(String.format("%d %d\n", circle, circle - (N - corner)));
+                    output.append(circle).append(' ').append(circle - (N - corner)).append('\n');
     		}
         }
         System.out.print(output);
