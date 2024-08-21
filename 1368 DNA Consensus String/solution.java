@@ -45,7 +45,7 @@ public class Main {
                 output.append(nucleotides[temp]);
                 dist -= max;
             }
-            output.append("\n" + dist + "\n");
+            output.append('\n').append(dist).append('\n');
     	}
         System.out.print(output);
 	}
