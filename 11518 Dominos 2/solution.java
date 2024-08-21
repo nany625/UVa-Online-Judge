@@ -33,7 +33,7 @@ public class Main {
                 if(!graph.visited[z])
                     dfs(graph, z, count);
             }
-            output.append(count[0] + "\n");
+            output.append(count[0]).append('\n');
     	}
         System.out.print(output);
 	}
