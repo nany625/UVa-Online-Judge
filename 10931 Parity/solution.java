@@ -10,7 +10,7 @@ public class Main {
     	    int len = binaryRep.length(), bitsSum = 0;
     	    for(int i = 0; i < len; ++i)
     	        bitsSum += binaryRep.charAt(i) - '0';
-    	    output.append("The parity of " + binaryRep + " is " + bitsSum + " (mod 2).\n");
+    	    output.append("The parity of ").append(binaryRep).append(" is ").append(bitsSum).append(" (mod 2).\n");
 		}
 		System.out.print(output);
 	}
