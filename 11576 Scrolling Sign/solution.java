@@ -22,7 +22,7 @@ public class Main {
                     --temp;
                 sign += message.substring(temp, k);
 		    }
-		    output.append(sign.length() + "\n");
+		    output.append(sign.length()).append('\n');
 		}
 		System.out.print(output);
 	}
