@@ -13,7 +13,7 @@ public class Main {
 				++count;
 				a = (short)(a * a / 100 % 10000);
 			} while(!table[a]);
-			output.append(count + "\n");
+			output.append(count).append('\n');
 		}
         System.out.print(output);
     }
