@@ -39,7 +39,7 @@ public class Main {
                 }
             });
             for(int j = 0; j < 26 && ranks[j].states > 0; ++j)
-                output.append(ranks[j].language + ": " + ranks[j].states + "\n");
+                output.append(ranks[j].language).append(": ").append(ranks[j].states).append('\n');
     	}
         System.out.print(output);
 	}
