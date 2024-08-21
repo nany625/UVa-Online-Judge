@@ -12,7 +12,7 @@ public class Main {
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
     	for(int i = 1; i <= T; ++i) {
-    	    output.append("Case " + i + ": ");
+    	    output.append("Case ").append(i).append(": ");
     	    st.nextToken();
     	    char[] s = st.sval.toCharArray();
     	    long k = Long.parseLong(br.readLine()) - 1;
@@ -35,7 +35,7 @@ public class Main {
             }
             for(int j = 0; j < len; ++j)
                 output.append(origin[j]);
-		    output.append("\n");
+		    output.append('\n');
 		}
         System.out.print(output);
 	}
