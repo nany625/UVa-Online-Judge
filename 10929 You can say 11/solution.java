@@ -13,7 +13,7 @@ public class Main {
     	        else
     	            sum -= N.charAt(i) - '0';
     	    }
-    	    output.append(N + " is " + (sum % 11 == 0 ? "" : "not ") + "a multiple of 11.\n");
+    	    output.append(N).append(sum % 11 == 0 ? " is a multiple of 11.\n" : " is not a multiple of 11.\n");
 		}
 		System.out.print(output);
 	}
