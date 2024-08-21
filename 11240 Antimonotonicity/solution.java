@@ -16,7 +16,7 @@ public class Main {
                     ++size;
                 prev = curr;
 	        }
-            output.append(size + "\n");
+            output.append(size).append('\n');
         }
         System.out.print(output);
 	}
