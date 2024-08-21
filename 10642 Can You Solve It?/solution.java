@@ -16,7 +16,7 @@ public class Main {
 		    dest.x = (long)st.nval;
 		    st.nextToken();
 		    dest.y = (long)st.nval;
-		    output.append("Case " + i + ": " + ((src.x + src.y + dest.x + dest.y + 1) * (dest.x + dest.y - src.x - src.y) / 2 + dest.x - src.x) + "\n");
+		    output.append("Case ").append(i).append(": ").append((src.x + src.y + dest.x + dest.y + 1) * (dest.x + dest.y - src.x - src.y) / 2 + dest.x - src.x).append('\n');
 		}
 		System.out.print(output);
 	}
