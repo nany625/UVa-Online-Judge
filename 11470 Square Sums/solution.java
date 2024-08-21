@@ -14,10 +14,10 @@ public class Main {
                     sum[Math.min(Math.min(Math.min(i, j), n - 1 - i), n - 1 -j)] += (int)st.nval;
                 }
             }
-            output.append("Case " + (++cases) + ":");
+            output.append("Case ").append(++cases).append(':');
             for(Short s : sum)
-                output.append(" " + s);
-            output.append("\n");
+                output.append(" ").append(s);
+            output.append('\n');
         }
         System.out.print(output);
 	}
