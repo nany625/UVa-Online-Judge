@@ -9,21 +9,21 @@ public class Main {
 		    char ch = (char)c;
 		    if(Character.isUpperCase(ch)) {
                 if(ch <= 'C')
-                    output.append("2");
+                    output.append('2');
                 else if(ch <= 'F')
-                    output.append("3");
+                    output.append('3');
                 else if(ch <= 'I')
-                    output.append("4");
+                    output.append('4');
                 else if(ch <= 'L')
-                    output.append("5");
+                    output.append('5');
                 else if(ch <= 'O')
-                    output.append("6");
+                    output.append('6');
                 else if(ch <= 'S')
-                    output.append("7");
+                    output.append('7');
                 else if(ch <= 'V')
-                    output.append("8");
+                    output.append('8');
                 else
-                    output.append("9");
+                    output.append('9');
             } else
                 output.append(ch);
 		}
