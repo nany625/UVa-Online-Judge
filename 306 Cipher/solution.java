@@ -17,7 +17,7 @@ public class Main {
             while(st.nextToken() == StreamTokenizer.TT_NUMBER && (k = (int)st.nval) != 0) {
                 StringBuilder message = new StringBuilder(br.readLine());
                 while(message.length() != n)
-                    message.append(" ");
+                    message.append(' ');
                 for(int i = 0; i < n; ++i) {
                     int[] nextIndex = new int[n];
                     boolean[] visited = new boolean[n];
@@ -31,9 +31,9 @@ public class Main {
                 }
                 for(char ch : cipher)
                     output.append(ch);
-                output.append("\n");
+                output.append('\n');
             }
-            output.append("\n");
+            output.append('\n');
         }
         System.out.print(output);
     }
