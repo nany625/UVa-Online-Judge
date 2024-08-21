@@ -18,7 +18,7 @@ public class Main {
                 } else
                     output.append(line.charAt(i));
             }
-            output.append("\n");
+            output.append('\n');
         }
         System.out.print(output);
 	}
