@@ -36,7 +36,7 @@ public class Main {
                         west = temp;
 		        }
             }
-		    output.append(top + "\n");
+		    output.append(top).append('\n');
 		}
 		System.out.print(output);
 	}
