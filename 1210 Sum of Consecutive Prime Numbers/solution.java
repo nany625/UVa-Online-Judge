@@ -24,7 +24,7 @@ public class Main {
     	int num;
     	StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (num = (int)st.nval) != 0)
-	        output.append(primesSumCount[num] + "\n");
+	        output.append(primesSumCount[num]).append('\n');
 	    System.out.print(output);
 	}
 }
