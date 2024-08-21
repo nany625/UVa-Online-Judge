@@ -7,7 +7,7 @@ public class Main {
         int games = 0, N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            output.append("Game " + (++games) + ":\n");
+            output.append("Game ").append(++games).append(":\n");
     		char[] secretCode = new char[N];
     		for(int i = 0; i < N; ++i) {
     		    st.nextToken();
@@ -43,7 +43,7 @@ public class Main {
     						}
     					}
 					} 
-    				output.append(String.format("    (%d,%d)\n", a, b));
+    				output.append("    (").append(a).append(',').append(b).append(")\n");
     			}
 			} while(!lastGuess);
         }
