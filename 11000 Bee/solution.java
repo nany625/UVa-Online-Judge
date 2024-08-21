@@ -1,4 +1,25 @@
-// #解法一(偷吃步)
+// #解法一(正規演算法)
+import java.io.*;
+
+public class Main {
+    static long[] F = new long[45];
+    static int[] M = new int[45];
+	public static void main (String[] args) throws IOException {
+		F[0] = 1;
+		for(int i = 1; i < 45; ++i) {
+            F[i] = M[i - 1] + 1;
+            M[i] = (int)F[i - 1] + M[i - 1];
+        }
+		StreamTokenizer st = new StreamTokenizer(System.in);
+		int N;
+		StringBuilder output = new StringBuilder();
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
+		    output.append(M[N]).append(' ').append(F[N] + M[N]).append('\n');
+		System.out.print(output);
+	}
+}
+
+// #解法二(捷徑)
 import java.io.*;
 
 public class Main {
@@ -21,28 +42,7 @@ public class Main {
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
-		    output.append(M[N] + " " + (F[N] + M[N]) + "\n");
-		System.out.print(output);
-	}
-}
-
-// #解法二(正規演算法)
-import java.io.*;
-
-public class Main {
-    static long[] F = new long[45];
-    static int[] M = new int[45];
-	public static void main (String[] args) throws IOException {
-		F[0] = 1;
-		for(int i = 1; i < 45; ++i) {
-            F[i] = M[i - 1] + 1;
-            M[i] = (int)F[i - 1] + M[i - 1];
-        }
-		StreamTokenizer st = new StreamTokenizer(System.in);
-		int N;
-		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
-		    output.append(M[N] + " " + (F[N] + M[N]) + "\n");
+		    output.append(M[N]).append(' ').append(F[N] + M[N]).append('\n');
 		System.out.print(output);
 	}
 }
