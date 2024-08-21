@@ -22,7 +22,7 @@ public class Main {
     	        curr -= D;
     	        U = U >= lost ? U - lost : 0;
     	    } while(curr >= 0);
-    	    output.append((curr > H ? "success" : "failure") + " on day " + day + "\n");
+    	    output.append(curr > H ? "success on day " : "failure on day ").append(day).append('\n');
 		}
         System.out.print(output);
 	}
