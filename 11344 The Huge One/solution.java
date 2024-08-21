@@ -19,11 +19,10 @@ public class Main {
                     int dividend = 0;
                     for(int i = 0; i < len; ++i)
                         dividend = (10 * dividend + M.charAt(i) - '0') % divisor;
-                    if(dividend != 0)
-                        wonderful = false;
+                    wonderful = dividend == 0;
                 }	
             }
-    	    output.append(M + (wonderful ? " - Wonderful.\n" : " - Simple.\n"));
+    	    output.append(M).append(wonderful ? " - Wonderful.\n" : " - Simple.\n");
     	}
 	    System.out.print(output);
 	}
