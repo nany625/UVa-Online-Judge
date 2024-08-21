@@ -16,7 +16,7 @@ public class Main {
                 else
                     temp = 0;
             } while(++i < len);
-            output.append(score + "\n");
+            output.append(score).append('\n');
     	}
         System.out.print(output);
 	}
