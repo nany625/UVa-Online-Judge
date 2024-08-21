@@ -13,7 +13,7 @@ public class Main {
             st.nextToken();
             int n = (int)st.nval;
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             char[][] mines = new char[n][n], touch = new char[n][n];
             for(int i = 0; i < n; ++i)
                 mines[i] = br.readLine().toCharArray();
@@ -26,8 +26,7 @@ public class Main {
     	                if(mines[i][j] == '*') {
     	                    touch[i][j] = '*';
     	                    boom = true;
-    	                }
-    	                else {
+    	                } else {
         	                touch[i][j] = '0';
         	                for(int dir = 0; dir < 8; ++dir) {
         	                    int newRow = i + dRow[dir], newCol = j + dCol[dir];
@@ -46,8 +45,11 @@ public class Main {
         	        }
     	        }
     	    }
-    	    for(int i = 0; i < n; ++i)
-    	        output.append(new String(touch[i]) + "\n");
+    	    for(int i = 0; i < n; ++i) {
+        	    for(int j = 0; j < n; ++j)
+        	        output.append(touch[i][j]);
+        	    output.append('\n');
+    	    }
     	    firstCase = false;
         }
         System.out.print(output);
