@@ -15,7 +15,7 @@ public class Main {
 	            a[i] = (int)st.nval;
 	        }
 	        MergeSort(a, reg, 0, L - 1, swap);
-	        output.append("Optimal train swapping takes " + swap[0] + " swaps.\n");
+	        output.append("Optimal train swapping takes ").append(swap[0]).append(" swaps.\n");
 		}
         System.out.print(output);
 	}
