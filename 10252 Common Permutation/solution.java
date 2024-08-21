@@ -19,7 +19,7 @@ public class Main {
                 while(frequencyOutput[i]-- > 0)
                     output.append((char)('a' + i));
             }
-            output.append("\n");
+            output.append('\n');
         }
         System.out.print(output);
 	}
