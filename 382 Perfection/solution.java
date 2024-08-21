@@ -26,7 +26,7 @@ public class Main {
             		output.append(String.format("%5d  ABUNDANT\n", n));
     	    }
     	}
-	    System.out.print(output + "END OF OUTPUT\n");
+	    System.out.println(output + "END OF OUTPUT");
 	}
 	
 	static int sumOfDivisors(int n) {
