@@ -14,8 +14,8 @@ public class Main {
             if(n == 0 && m == 0)
                 break;
             if(x >= 1)
-                output.append("\n");
-            output.append("Field #" + (++x) + ":\n");
+                output.append('\n');
+            output.append("Field #").append(++x).append(":\n");
             char[][] field = new char[n][m];
             for(int i = 0; i < n; ++i)
                 field[i] = br.readLine().toCharArray();
@@ -31,8 +31,11 @@ public class Main {
     	            }
     	        }
     	    }
-    	    for(int i = 0; i < n; ++i)
-	            output.append(new String(field[i]) + "\n");
+    	    for(int i = 0; i < n; ++i) {
+    	        for(int j = 0; j < m; ++j)
+    	            output.append(field[i][j]);
+    	        output.append('\n');
+    	    }
         }
         System.out.print(output);
 	}
