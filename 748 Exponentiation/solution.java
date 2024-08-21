@@ -23,7 +23,7 @@ public class Main {
     		}
     		if(sb.charAt(sb.length() - 1) == '.')
     			sb.delete(sb.length() - 1, sb.length());
-    		output.append(sb + "\n");
+    		output.append(sb).append('\n');
         }
 	    System.out.print(output);
 	}
