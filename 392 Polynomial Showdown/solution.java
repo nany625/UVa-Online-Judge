@@ -21,14 +21,14 @@ public class Main {
     						output.append(" + ");
     				} else {
     					if(coefficients[i] < 0)
-    						output.append("-");
+    						output.append('-');
     				}
     				if(i == 8)
     					output.append(Math.abs(coefficients[i]));
     				else if(i == 7) {
     					if(Math.abs(coefficients[i]) > 1)
     						output.append(Math.abs(coefficients[i]));
-    					output.append("x");
+    					output.append('x');
     				} else {
     					if(Math.abs(coefficients[i]) > 1)
     						output.append(Math.abs(coefficients[i]));
@@ -38,8 +38,8 @@ public class Main {
     			}
 		    }
 		    if(leadingZero)
-		        output.append("0");
-		    output.append("\n");
+		        output.append('0');
+		    output.append('\n');
 		}
 		System.out.print(output);
 	}
