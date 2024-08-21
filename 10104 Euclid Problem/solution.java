@@ -9,7 +9,7 @@ public class Main {
             int A = (int)st.nval;
             st.nextToken();
             int B = (int)st.nval, D = GCD(A, B);
-            output.append(String.format("%d %d %d\n", X[0], Y[0], D));
+            output.append(X[0]).append(' ').append(Y[0]).append(' ').append(D).append('\n');
         }
         System.out.print(output);
 	}
@@ -29,10 +29,9 @@ public class Main {
 			int value = GCD(A + B * (-A / B), B);
 			Y[0] = Y[0] - X[0] * (A / B);
 			return value;
-		} else {
-			int value = GCD(A, B + A * (-B / A));
-			X[0] = X[0] - Y[0] * (B / A);
-			return value;
 		}
+		int value = GCD(A, B + A * (-B / A));
+		X[0] = X[0] - Y[0] * (B / A);
+		return value;
 	}
 }
