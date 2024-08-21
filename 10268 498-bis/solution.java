@@ -12,7 +12,7 @@ public class Main {
             int len = a.length - 1;
             for(int i = 0; i < len; ++i)
                 result = result * x + Long.parseLong(a[i]) * (len - i);
-            output.append(result + "\n");
+            output.append(result).append('\n');
         }
         System.out.print(output);
 	}
