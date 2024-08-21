@@ -14,7 +14,7 @@ public class Main {
     		int N = (int)st.nval;
     		st.nextToken();
     		int Q = (int)st.nval;
-    		output.append(M + " " + N + " " + Q + "\n");
+    		output.append(M).append(' ').append(N).append(' ').append(Q).append('\n');
             String[] rec = new String[M];
             for(int i = 0; i < M; ++i)
 		        rec[i] = br.readLine();
@@ -48,7 +48,7 @@ public class Main {
                         }
                     }
         		} while(isSquare);
-        		output.append(2 * range - 1 + "\n");
+        		output.append(2 * range - 1).append('\n');
             }
 		}
 		System.out.print(output);
