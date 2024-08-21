@@ -11,7 +11,7 @@ public class Main {
 		    BigInteger sum = BigInteger.ZERO;
 		    while(N-- > 0)
 		        sum = sum.add(new BigInteger(br.readLine()));
-            output.append("Bill #" + (++cases) + " costs " + sum + ": each friend should pay " + sum.divide(new BigInteger("" + F)) + "\n\n");
+            output.append("Bill #").append(++cases).append(" costs ").append(sum).append(": each friend should pay ").append(sum.divide(new BigInteger("" + F))).append("\n\n");
 		}
 		System.out.print(output);
 	}
