@@ -26,7 +26,7 @@ public class Main {
                 } else
                     lis.set(pos, weights[i]);
             }
-            output.append(size + "\n");
+            output.append(size).append('\n');
 		}
 		System.out.print(output);
 	}
@@ -99,7 +99,7 @@ public class Main {
                 temp += left;
                 max = Math.max(max, temp);
             }
-            output.append(max + "\n");
+            output.append(max).append('\n');
 		}
 		System.out.print(output);
 	}
