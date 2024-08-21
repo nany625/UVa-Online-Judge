@@ -21,7 +21,7 @@ public class Main {
                     P = Math.max(P, curr);
                 }
             }
-            output.append("Case #" + (++M) + ": The maximum product is " + P + ".\n\n");
+            output.append("Case #").append(++M).append(": The maximum product is ").append(P).append(".\n\n");
         }
         System.out.print(output);
 	}
