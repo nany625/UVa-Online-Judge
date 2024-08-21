@@ -36,9 +36,9 @@ public class Main {
     	    }
     	    output.append(String.format("Day #%d: the longest nap starts at %02d:%02d and will last for ", ++day, start / 60, start % 60));
     	    if(longest >= 60)
-    	        output.append(String.format("%d hours and %d minutes.\n", longest / 60, longest % 60));
+    	        output.append(longest / 60).append(" hours and ").append(longest % 60).append(" minutes.\n");
     	    else
-    	        output.append(String.format("%d minutes.\n", longest));
+    	        output.append(longest).append(" minutes.\n");
         }
         System.out.print(output);
 	}
