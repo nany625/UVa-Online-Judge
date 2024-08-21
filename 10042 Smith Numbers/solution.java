@@ -15,7 +15,6 @@ public class Main {
     	    }
     	}
         StreamTokenizer st = new StreamTokenizer(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -31,9 +30,7 @@ public class Main {
     		} while(!found);
     		output.append(n).append('\n');
         }
-        bw.write(output.toString());
-        bw.flush();
-        bw.close();
+        System.out.print(output);
 	}
 	
 	static int sumOfDigits(int n) {
