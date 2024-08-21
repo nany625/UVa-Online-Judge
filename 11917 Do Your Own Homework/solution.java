@@ -21,14 +21,14 @@ public class Main {
             int days = (int)st.nval;
             st.nextToken();
             if(!subject.containsKey(st.sval))
-                output.append("Case " + i + ": Do your own homework!\n");
+                output.append("Case ").append(i).append(": Do your own homework!\n");
             else {
                 if(days >= subject.get(st.sval))
-                    output.append("Case " + i + ": Yesss\n");
+                    output.append("Case ").append(i).append(": Yesss\n");
                 else if(days + 5 < subject.get(st.sval))
-                    output.append("Case " + i + ": Do your own homework!\n");
+                    output.append("Case ").append(i).append(": Do your own homework!\n");
                 else
-                    output.append("Case " + i + ": Late\n");
+                    output.append("Case ").append(i).append(": Late\n");
             }
         }
         System.out.print(output);
