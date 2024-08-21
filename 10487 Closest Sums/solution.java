@@ -27,7 +27,7 @@ public class Main {
                             break;
                     }
                 }
-                output.append("Closest sum to " + query + " is " + ans + ".\n");
+                output.append("Closest sum to ").append(query).append(" is ").append(ans).append(".\n");
             }
     	}
         System.out.print(output);
