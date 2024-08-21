@@ -21,7 +21,7 @@ public class Main {
             }
             for(int j = 0; j < size / 2 && isSymmetric; ++j)
                 isSymmetric = M[j] == M[size - 1 - j];
-            output.append("Test #" + i + ": " + (isSymmetric ? "S" : "Non-s") + "ymmetric.\n");
+            output.append("Test #").append(i).append(isSymmetric ? ": Symmetric.\n" : ": Non-symmetric.\n");
         }
         System.out.print(output);
 	}
