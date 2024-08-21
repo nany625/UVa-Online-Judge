@@ -10,7 +10,7 @@ public class Main {
             st.nextToken();
             int n = (int)st.nval;
             st.nextToken();
-            output.append((n / 3) * ((int)st.nval / 3) + "\n");
+            output.append((n / 3) * ((int)st.nval / 3)).append('\n');
         }
         System.out.print(output);
 	}
