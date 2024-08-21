@@ -19,9 +19,9 @@ public class Main {
 		        short query = (short)st.nval;
 		        int pos = binarySearch(marbles, query);
 		        if(pos != 0)
-		            output.append(query + " found at " + pos + "\n");
+		            output.append(query).append(" found at ").append(pos).append('\n');
 		        else
-		            output.append(query + " not found\n");
+		            output.append(query).append(" not found\n");
 		    }
 		}
 		System.out.print(output);
