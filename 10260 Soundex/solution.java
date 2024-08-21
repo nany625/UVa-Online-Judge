@@ -46,7 +46,7 @@ public class Main {
                 if(Character.isDigit(word[i]) && word[i] != word[i - 1])
                     output.append(word[i]);
             }
-            output.append("\n");
+            output.append('\n');
         }
         System.out.print(output);
 	}
