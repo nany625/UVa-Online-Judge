@@ -8,7 +8,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
 		    if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             Player[] table = new Player[n];
             for(int i = 0; i < n; ++i)
                 table[i] = new Player();
