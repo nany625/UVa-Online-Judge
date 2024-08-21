@@ -21,7 +21,7 @@ public class Main {
             int N = (int)st.nval;
             st.nextToken();
             int C = (int)st.nval;
-            output.append(N + " " + C + ":");
+            output.append(N).append(' ').append(C).append(':');
             if(pos[N - 1] % 2 == 0 && 2 * C < pos[N - 1])
         		output.append(printPrimes(pos[N - 1] / 2 - C, pos[N - 1] / 2 + C - 1));
         	else if(pos[N - 1] % 2 == 1 && 2 * C - 1 < pos[N - 1])
@@ -45,7 +45,7 @@ public class Main {
     static StringBuilder printPrimes(int first, int last) {
         StringBuilder ans = new StringBuilder();
     	for(int i = first; i <= last; ++i)
-    		ans.append(" " + primes[i]);
+    		ans.append(' ').append(primes[i]);
     	return ans;
     }
 }
