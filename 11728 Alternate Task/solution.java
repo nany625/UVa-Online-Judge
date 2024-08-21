@@ -14,7 +14,7 @@ public class Main {
         int cases = 0, S;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0)
-	        output.append("Case " + (++cases) + ": " + (table[S - 1] != 0 ? table[S - 1] : -1) + "\n");
+	        output.append("Case ").append(++cases).append(": ").append(table[S - 1] != 0 ? table[S - 1] : -1).append('\n');
         System.out.print(output);
 	}
 	
@@ -40,13 +40,13 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0) {
             if(S == 1) {
-                output.append("Case " + (++cases) + ": 1\n");
+                output.append("Case ").append(++cases).append(": 1\n");
                 continue;
             }
             int ans = S - 1, limit = (int)Math.ceil(Math.sqrt(1 + 8 * S) - 1) / 2;
             while(ans >= limit && factorSum(ans) != S)
 	            --ans;
-	        output.append("Case " + (++cases) + ": " + (ans >= limit ? ans : -1) + "\n");
+	        output.append("Case ").append(++cases).append(": ").append(ans >= limit ? ans : -1).append('\n');
         }
         System.out.print(output);
 	}
