@@ -8,7 +8,7 @@ public class Main {
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= T; ++i) {
-    		output.append("Case " + i + ": ");
+    		output.append("Case ").append(i).append(": ");
     		String encode = br.readLine();
     		int len = encode.length();
     		for(int j = 0; j < len; ++j) {
@@ -22,7 +22,7 @@ public class Main {
     		        j = k - 1;
     		    }
     		}
-    		output.append("\n");
+    		output.append('\n');
     	}
         System.out.print(output);
 	}
