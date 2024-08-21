@@ -29,12 +29,12 @@ public class Main {
     	    boolean contained = false;
     	    for(int i = 0; i < size; ++i) {
                 if(x > rec.get(i).x1 && y < rec.get(i).y1 && x < rec.get(i).x2 && y > rec.get(i).y2) {
-                    output.append("Point " + point + " is contained in figure " + (i + 1) + "\n");
+                    output.append("Point ").append(point).append(" is contained in figure ").append(i + 1).append('\n');
                     contained = true;
                 }
             }
             if(!contained)
-                output.append("Point " + point + " is not contained in any figure\n");
+                output.append("Point ").append(point).append(" is not contained in any figure\n");
     	}
         System.out.print(output);
 	}
