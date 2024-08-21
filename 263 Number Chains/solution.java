@@ -7,7 +7,7 @@ public class Main {
         int number;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (number = (int)st.nval) != 0) {
-            output.append("Original number was " + number + "\n");
+            output.append("Original number was ").append(number).append('\n');
     		ArrayList<Integer> numbers = new ArrayList<>();
 			do {
     			numbers.add(number);
