@@ -23,7 +23,7 @@ public class Main {
     	        System.arraycopy(S, index + 1, S, index, len-- - index - 1);
 		        N %= factorials[i];
 		    }
-		    output.append("\n");
+		    output.append('\n');
 		}
         System.out.print(output);
 	}
