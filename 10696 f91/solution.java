@@ -6,7 +6,7 @@ public class Main {
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
-		    output.append("f91(" + N + ") = " + (N >= 101 ? N - 10 : 91) + "\n");
+		    output.append("f91(").append(N).append(") = ").append(N >= 101 ? N - 10 : 91).append('\n');
 		System.out.print(output);
 	}
 }
