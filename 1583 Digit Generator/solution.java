@@ -17,7 +17,7 @@ public class Main {
                     temp /= 10;
                 }
                 if(sumOfDigits == N) {
-                    output.append(i + "\n");
+                    output.append(i).append('\n');
                     found = true;
                 }
 		    }
