@@ -19,13 +19,13 @@ public class Main {
             birth.month = Integer.parseInt(tokens[1]);
             birth.year = Integer.parseInt(tokens[2]);
             if(birth.year * 10000 + birth.month * 100 + birth.day > curr.year * 10000 + curr.month * 100 + curr.day)
-                output.append("Case #" + i + ": Invalid birth date\n");
+                output.append("Case #").append(i).append(": Invalid birth date\n");
             else {
                 int age = curr.year - birth.year - (birth.month * 100 + birth.day > curr.month * 100 + curr.day ? 1 : 0);
                 if(age > 130)
-                    output.append("Case #" + i + ": Check birth date\n");
+                    output.append("Case #").append(i).append(": Check birth date\n");
     			else
-    				output.append("Case #" + i + ": " + age + "\n");
+    				output.append("Case #").append(i).append(": ").append(age).append('\n');
             }
         }
         System.out.print(output);
