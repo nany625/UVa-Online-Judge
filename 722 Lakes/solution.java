@@ -12,7 +12,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(M-- > 0) {
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             st.nextToken();
             int i = (int)st.nval - 1;
             st.nextToken();
@@ -24,7 +24,7 @@ public class Main {
             int cols = grid[0].length;
             int[] area = new int[1];
             dfs(i, rows, j, cols, area);
-            output.append(area[0] + "\n");
+            output.append(area[0]).append('\n');
             firstCase = false;
         }
         System.out.print(output);
