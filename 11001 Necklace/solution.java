@@ -10,9 +10,9 @@ public class Main {
     	    if(discs - (int)discs == 0.5)
     	        output.append("0\n");
     	    else if(discs - (int)discs < 0.5)
-           		output.append((int)discs + "\n");
+           		output.append((int)discs).append('\n');
            	else
-           		output.append((int)discs + 1 + "\n");
+           		output.append((int)discs + 1).append('\n');
         }
         System.out.print(output);
 	}
