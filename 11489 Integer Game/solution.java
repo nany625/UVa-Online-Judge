@@ -15,9 +15,9 @@ public class Main {
     			++modThreeCount[(N.charAt(j) - '0') % 3];
     		short result = (short)((modThreeCount[1] + modThreeCount[2] * 2) % 3);
     		if(result == 0)
-    			output.append("Case " + i + (modThreeCount[0] % 2 == 1 ? ": S\n" : ": T\n"));
+    			output.append("Case ").append(i).append(modThreeCount[0] % 2 == 1 ? ": S\n" : ": T\n");
     		else
-    			output.append("Case " + i + (modThreeCount[result] != 0 && modThreeCount[0] % 2 == 0 ? ": S\n" : ": T\n"));
+    			output.append("Case ").append(i).append(modThreeCount[result] != 0 && modThreeCount[0] % 2 == 0 ? ": S\n" : ": T\n");
     	}
 	    System.out.print(output);
 	}
