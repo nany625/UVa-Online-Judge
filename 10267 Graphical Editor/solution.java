@@ -61,11 +61,11 @@ public class Main {
         			dfs(Y - 1, N, X - 1, M, table[Y - 1][X - 1], tokens[3].charAt(0));
         			break;
         		case 'S':
-        			output.append(tokens[1] + "\n");
+        			output.append(tokens[1]).append('\n');
         			for(int i = 0; i < N; ++i) {
         			    for(int j = 0; j < M; ++j)
         			        output.append(table[i][j]);
-        			    output.append("\n");
+        			    output.append('\n');
         			}
 	        }
     	}
