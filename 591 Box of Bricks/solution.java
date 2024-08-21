@@ -19,7 +19,7 @@ public class Main {
     	        if(s > total)
     	            moves += s - total;
     	    }
-    	    output.append("Set #" + (++set) + "\nThe minimum number of moves is " + moves + ".\n\n");
+    	    output.append("Set #").append(++set).append("\nThe minimum number of moves is ").append(moves).append(".\n\n");
     	}
         System.out.print(output);
 	}
