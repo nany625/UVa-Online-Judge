@@ -35,7 +35,7 @@ public class Main {
         				duration = 0;
     		    }
     		}
-    	    output.append(count + "\n");
+    	    output.append(count).append('\n');
         }
         System.out.print(output);
 	}
