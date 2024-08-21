@@ -23,7 +23,7 @@ public class Main {
 		            min = Math.min(min, medicines[i].next);
 		        for(int i = 0; i < n && k > 0; ++i) {
 		            if(min == medicines[i].next) {
-		                output.append(min + " " + medicines[i].name + "\n");
+		                output.append(min).append(' ').append(medicines[i].name).append('\n');
 		                medicines[i].next += medicines[i].frequency;
 		                --k;
 		            }
