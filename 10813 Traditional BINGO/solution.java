@@ -32,7 +32,7 @@ public class Main {
         		            win = isBINGO(row, col);
         		    }
         		    if(win)
-        		        output.append("BINGO after " + i + " numbers announced\n");
+        		        output.append("BINGO after ").append(i).append(" numbers announced\n");
     		    }
     		}
 		}
@@ -73,4 +73,4 @@ class Card {
         this.num = num;
         this.announce = announce;
     }
-}v
+}
