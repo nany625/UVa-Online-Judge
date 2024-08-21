@@ -14,7 +14,7 @@ public class Main {
                 if(MM < 9)
                     output.append(String.format("00:%02d\n", MM + 1));
                 else if(MM < 55)
-                    output.append("00:" + 11 * (MM / 11 + 1) + "\n");
+                    output.append("00:").append(11 * (MM / 11 + 1)).append('\n');
                 else
                     output.append("01:01\n");
             } else if(HH < 10) {
@@ -35,7 +35,7 @@ public class Main {
                 else {
                     ++HH;
                     if(HH < 16)
-                        output.append(HH + ":" + (HH % 10 * 10 + HH / 10) + "\n");
+                        output.append(HH).append(':').append(HH % 10 * 10 + HH / 10).append('\n');
                     else
                         output.append("20:02\n");
                 }
@@ -46,7 +46,7 @@ public class Main {
                     output.append(String.format("%d:%02d\n", HH, HH % 10 * 10 + HH / 10));
                 else {
                     ++HH;
-                    output.append(HH + ":" + (HH % 10 * 10 + HH / 10) + "\n");
+                    output.append(HH).append(':').append(HH % 10 * 10 + HH / 10).append('\n');
                 }
             } else
                 output.append(MM < 32 ? "23:32\n" : "00:00\n");
