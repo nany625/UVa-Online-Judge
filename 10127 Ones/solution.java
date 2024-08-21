@@ -10,7 +10,7 @@ public class Main {
                 remainder = (10 * remainder + 1) % n;
                 ++x;
             } while(remainder != 0);
-            output.append(x + "\n");
+            output.append(x).append('\n');
         }
         System.out.print(output);
 	}
