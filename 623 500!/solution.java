@@ -10,7 +10,7 @@ public class Main {
     	StreamTokenizer st = new StreamTokenizer(System.in);
     	StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER)
-	        output.append((int)st.nval + "!\n" + fac[(int)st.nval] + "\n");
+	        output.append((int)st.nval).append("!\n").append(fac[(int)st.nval]).append('\n');
 	    System.out.print(output);
 	}
 }
