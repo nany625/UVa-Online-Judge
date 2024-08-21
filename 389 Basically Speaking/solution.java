@@ -22,12 +22,12 @@ public class Main {
             else {
                 int i = -1;
     			while(digits[++i] == 0)
-    			    output.append(" ");
+    			    output.append(' ');
                 while(i < 7) {
     			    output.append(digits[i] > 9 ? (char)(digits[i] - 10 + 'A') : (char)(digits[i] + '0'));
     			    ++i;
     			}
-                output.append("\n");
+                output.append('\n');
             }
         }
         System.out.print(output);
