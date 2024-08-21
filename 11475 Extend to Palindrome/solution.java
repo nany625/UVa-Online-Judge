@@ -22,7 +22,7 @@ public class Main {
 			output.append(s);
 			for(int j = len - lps[2 * len] - 1; j >= 0; --j)
 			    output.append(s.charAt(j));
-			output.append("\n");
+			output.append('\n');
         }
         System.out.print(output);
 	}
