@@ -23,7 +23,7 @@ public class Main {
 		        if(dictionary.containsKey(description))
 		            salary += dictionary.get(description);
 		    }
-		    output.append(salary + "\n");
+		    output.append(salary).append('\n');
 		}
 	    System.out.print(output);
 	}
