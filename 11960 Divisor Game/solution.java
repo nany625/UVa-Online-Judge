@@ -25,9 +25,9 @@ public class Main {
             st.nextToken();
     		int N = (int)st.nval;
     		if(N == 1 || N == 3)
-    	        output.append(N + "\n");
+    	        output.append(N).append('\n');
     	    else
-    	        output.append(table[N / 2 - 1] + "\n");
+    	        output.append(table[N / 2 - 1]).append('\n');
 		}
 	    System.out.print(output);
 	}
