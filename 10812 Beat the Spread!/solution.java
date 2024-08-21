@@ -14,7 +14,7 @@ public class Main {
     		if(s < d || (s + d) % 2 == 1)
     		    output.append("impossible\n");
     		else
-    		    output.append((s + d) / 2 + " " + (s - d) / 2 + "\n");
+    		    output.append((s + d) / 2).append(' ').append((s - d) / 2).append('\n');
 		}
 		System.out.print(output);
 	}
