@@ -100,7 +100,7 @@ public class Main {
     		else if(CoefficientOfX == 0 && Const != 0)
     			output.append("IMPOSSIBLE\n");
 			else
-    			output.append((int)Math.floor((double)Const / CoefficientOfX * (-1)) + "\n");
+    			output.append((int)Math.floor((double)Const / CoefficientOfX * (-1))).append('\n');
         }
 	    System.out.print(output);
 	}
