@@ -22,7 +22,7 @@ public class Main {
     	        if((a * x * x + b * x + c) % d == 0)
     	            count += (L - x) / d + 1;
     	    }
-    	    output.append(count + "\n");
+    	    output.append(count).append('\n');
         }
         System.out.print(output);
 	}
@@ -52,7 +52,7 @@ public class Main {
     	        if((a * x * x + b * x + c) % d == 0)
     	            ++count;
     	    }
-    	    output.append(count + "\n");
+    	    output.append(count).append('\n');
         }
         System.out.print(output);
 	}
