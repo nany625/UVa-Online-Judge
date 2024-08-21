@@ -17,13 +17,12 @@ int GCD(int A, int B, int *X, int *Y) {
         *X = x;
         *Y = y + x * (-A / B);
         return value;
-    } else {
-        int x, y;
-        int value = GCD(A, B + A * (-B / A), &x, &y);
-        *X = x + y * (-B / A);
-        *Y = y;
-        return value;
     }
+    int x, y;
+    int value = GCD(A, B + A * (-B / A), &x, &y);
+    *X = x + y * (-B / A);
+    *Y = y;
+    return value;
 }
 
 int main() {
