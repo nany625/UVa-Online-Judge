@@ -10,9 +10,9 @@ public class Main {
             st.nextToken();
             long n = (long)st.nval, numerator = n * (n - 1);
             if(numerator % 4 == 0)
-                output.append("Case " + i + ": " + numerator / 4 + "\n");
+                output.append("Case ").append(i).append(": ").append(numerator / 4).append('\n');
             else
-                output.append("Case " + i + ": " + numerator / 2 + "/2\n");
+                output.append("Case ").append(i).append(": ").append(numerator / 2).append("/2\n");
         }
         System.out.print(output);
 	}
