@@ -11,7 +11,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(t-- > 0) {
 		    if(!firstCase)
-			    output.append("\n");
+			    output.append('\n');
 			st.nextToken();
     		int r = (int)st.nval;
     		st.nextToken();
@@ -32,7 +32,7 @@ public class Main {
     			}
     		}
     		for(int i = 0; i < r; ++i)
-    		    output.append((n % 2 == 1 ? new String(grid1[i]) : new String(grid0[i])) + "\n");
+    		    output.append((n % 2 == 1 ? new String(grid1[i]) : new String(grid0[i]))).append('\n');
         	firstCase = false;
 		}
 		System.out.print(output);
