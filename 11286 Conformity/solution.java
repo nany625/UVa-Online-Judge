@@ -19,16 +19,13 @@ public class Main {
     	        long temp = 0;
     	        for(Short s : courses)
     	            temp = 1000 * temp + s;
-    	        if(combinations.containsKey(temp))
-    	            combinations.replace(temp, (short)(combinations.get(temp) + 1));
-    	        else
-    	            combinations.put(temp, (short)1);
+    	        combinations.put(temp, (short)(combinations.getOrDefault(temp, (short)0) + 1));
     		    if(max < combinations.get(temp))
     	            students = max = combinations.get(temp);
     	        else if(max == combinations.get(temp))
     	            students += max;
     		}
-    	    output.append(students + "\n");
+    	    output.append(students).append('\n');
 	    }
 	    System.out.print(output);
 	}
