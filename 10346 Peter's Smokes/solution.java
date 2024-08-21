@@ -8,7 +8,7 @@ public class Main {
 		    int n = (int)st.nval;
 		    st.nextToken();
 		    int k = (int)st.nval;
-            output.append(n + (int)Math.floor((n - k) / (k - 1.0)) + 1 + "\n");
+            output.append(n + (int)Math.floor((n - k) / (k - 1.0)) + 1).append('\n');
 		}
 		System.out.print(output);
 	}
