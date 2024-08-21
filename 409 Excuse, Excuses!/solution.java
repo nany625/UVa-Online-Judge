@@ -11,7 +11,7 @@ public class Main {
             int K = (int)st.nval;
             st.nextToken();
             int E = (int)st.nval;
-            output.append("Excuse Set #" + (++set) + "\n");
+            output.append("Excuse Set #").append(++set).append('\n');
             ArrayList<String> keywords = new ArrayList<>();
     	    while(K-- > 0) {
     	        st.nextToken();
@@ -41,9 +41,9 @@ public class Main {
     	    }
 		    for(Excuse e : excuses) {
     	        if(e.count == max)
-    	            output.append(e.excuse + "\n");
+    	            output.append(e.excuse).append('\n');
 		    }
-    	    output.append("\n");
+    	    output.append('\n');
         }
         System.out.print(output);
 	}
