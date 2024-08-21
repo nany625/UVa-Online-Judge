@@ -19,7 +19,7 @@ public class Main {
             int save = 0;
             for(int i = n % 3; i < n; i += 3)
                 save += p[i];
-            output.append(save + "\n");
+            output.append(save).append('\n');
         }
         System.out.print(output);
 	}
