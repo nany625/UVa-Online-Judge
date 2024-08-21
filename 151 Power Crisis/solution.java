@@ -10,7 +10,7 @@ public class Main {
             int m = 1;
             while(josephus(N - 1, m) != 11)
                 ++m;
-    		output.append(m + "\n");
+    		output.append(m).append('\n');
         }
 	    System.out.print(output);
 	}
@@ -40,7 +40,7 @@ public class Main {
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
-            output.append(ans[N - 13] + "\n");
+            output.append(ans[N - 13]).append('\n');
 	    System.out.print(output);
 	}
 }
