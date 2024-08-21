@@ -15,15 +15,15 @@ public class Main {
 		    long d2 = (long)st.nval;
 		    if(v1 == 0 && d1 == 0 && v2 == 0 && d2 == 0)
 		        break;
-		    output.append("Case #" + (++cases) + ": " + (d1 * v2 < d2 * v1 ? "You owe me a beer!" : "No beer for the captain.") + "\nAvg. arrival time: ");
+		    output.append("Case #").append(++cases).append(": ").append(d1 * v2 < d2 * v1 ? "You owe me a beer!\nAvg. arrival time: " : "No beer for the captain.\nAvg. arrival time: ");
 		    long numerator = d1 * v2 + v1 * d2, denominator = 2 * v1 * v2;
             long temp = GCD(numerator, denominator);
             numerator /= temp;
             denominator /= temp;
             if(denominator > 1)
-    			output.append(numerator + "/" + denominator + "\n");
+    			output.append(numerator).append('/').append(denominator).append('\n');
     		else
-    			output.append(numerator / denominator + "\n");
+    			output.append(numerator / denominator).append('\n');
 		}
 		System.out.print(output);
 	}
