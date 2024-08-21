@@ -29,7 +29,7 @@ public class Main {
                 }
                 count += (isCool && diff > 1 ? 1 : 0);
 		    }
-		    output.append("Case " + (++cases) + ": " + count + "\n");
+		    output.append("Case ").append(++cases).append(": ").append(count).append('\n');
 		}
 		System.out.print(output);
 	}
