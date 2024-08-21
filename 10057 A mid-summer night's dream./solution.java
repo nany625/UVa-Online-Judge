@@ -4,7 +4,6 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         StreamTokenizer st = new StreamTokenizer(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
     	    int n = (int)st.nval;
@@ -21,8 +20,6 @@ public class Main {
                 ++high;
             output.append(X[(n - 1) / 2]).append(' ').append(high - low + 1).append(' ').append(X[n / 2] - X[(n - 1) / 2] + 1).append('\n');
     	}
-    	bw.write(output.toString());
-        bw.flush();
-        bw.close();
+    	System.out.print(output);
 	}
 }
