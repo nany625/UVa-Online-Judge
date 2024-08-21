@@ -18,7 +18,7 @@ public class Main {
 	                    lps[i++] = 0;
 	            }
 	        }
-			output.append((len % (len - lps[len - 1]) == 0 ? len / (len - lps[len - 1]) : 1) + "\n");
+			output.append((len % (len - lps[len - 1]) == 0 ? len / (len - lps[len - 1]) : 1)).append('\n');
         }
 	    System.out.print(output);
 	}
