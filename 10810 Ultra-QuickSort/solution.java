@@ -13,7 +13,7 @@ public class Main {
 		    }
             long[] swap = new long[1];
 		    MergeSort(array, reg, 0, n - 1, swap);
-		    output.append(swap[0] + "\n");
+		    output.append(swap[0]).append('\n');
 		}
 		System.out.print(output);
 	}
