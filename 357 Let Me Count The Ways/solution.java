@@ -14,9 +14,9 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
             if(dp[n] == 1)
-                output.append("There is only 1 way to produce " + n +  " cents change.\n");
+                output.append("There is only 1 way to produce ").append(n).append(" cents change.\n");
             else
-	            output.append("There are " + dp[n] + " ways to produce " + n +  " cents change.\n");
+	            output.append("There are ").append(dp[n]).append(" ways to produce ").append(n).append(" cents change.\n");
         }
         System.out.print(output);
 	}
