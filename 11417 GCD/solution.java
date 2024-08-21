@@ -13,7 +13,7 @@ public class Main {
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
-		    output.append(table[N - 2] + "\n");
+		    output.append(table[N - 2]).append('\n');
         System.out.print(output);
     }
     
