@@ -17,7 +17,7 @@ public class Main {
                 st.nextToken();
                 sum += size * st.nval;
             }
-            output.append(sum + "\n");
+            output.append(sum).append('\n');
 		}
 		System.out.print(output);
 	}
