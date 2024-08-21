@@ -27,7 +27,7 @@ public class Main {
             st.nextToken();
             int year = (int)st.nval;
             int totalDays = day + 20 * Haab.get(month) + 365 * year;
-            output.append(totalDays % 13 + 1 + " " + TzolkinName[totalDays % 20] + " " + totalDays / 260 + "\n");
+            output.append(totalDays % 13 + 1).append(' ').append(TzolkinName[totalDays % 20]).append(' ').append(totalDays / 260).append('\n');
         }
 	    System.out.print(output);
 	}
