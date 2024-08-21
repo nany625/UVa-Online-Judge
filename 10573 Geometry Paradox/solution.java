@@ -13,12 +13,10 @@ public class Main {
 		    if(tokens.length == 2 && Integer.parseInt(tokens[0]) >= 0 && Integer.parseInt(tokens[1]) >= 0) {
 		        int r1 = Integer.parseInt(tokens[0]), r2 = Integer.parseInt(tokens[1]);
 		        output.append(String.format("%.4f\n", 2 * r1 * r2 * Math.PI));
-		    }
-		    else if(tokens.length == 1 && Integer.parseInt(tokens[0]) >= 0) {
+		    } else if(tokens.length == 1 && Integer.parseInt(tokens[0]) >= 0) {
 		        int t = Integer.parseInt(tokens[0]);
 		        output.append(String.format("%.4f\n", t * t * Math.PI / 8));
-		    }
-		    else
+		    } else
 		        output.append("Impossible\n");
 		}
 		System.out.print(output);
