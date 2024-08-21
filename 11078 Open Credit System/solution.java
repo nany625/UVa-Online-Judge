@@ -20,7 +20,7 @@ public class Main {
     	        maxDist = Math.max(maxDist, maxScore - junior);
     	        maxScore = Math.max(maxScore, junior);
     	    }
-    		output.append(maxDist + "\n");
+    		output.append(maxDist).append('\n');
 	    }
 	    System.out.print(output);
 	}
