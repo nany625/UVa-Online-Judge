@@ -35,7 +35,7 @@ public class Main {
                 }
             }
             max = Math.max(max, D - stones[N].M);
-            output.append("Case " + i + ": " + max + "\n");
+            output.append("Case ").append(i).append(": ").append(max).append('\n');
 		}
 		System.out.print(output);
 	}
