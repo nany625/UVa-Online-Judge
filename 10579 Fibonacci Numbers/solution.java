@@ -27,7 +27,7 @@ public class Main {
             int number = (int)st.nval;
             for(int i = digits[number] - 1; i >= 0; --i)
                 output.append(fib[number][i]);
-            output.append("\n");
+            output.append('\n');
         }
 		System.out.print(output);
 	}
@@ -47,7 +47,7 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		StringBuilder output = new StringBuilder();
 		while((st.nextToken()) == st.TT_NUMBER)
-		    output.append(fib[(int)st.nval] + "\n");
+		    output.append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
 }
