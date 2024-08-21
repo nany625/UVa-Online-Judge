@@ -7,7 +7,7 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
     	    int N = (int)st.nval;
     	    if(!isPrime(N))
-    	        output.append(N + " is not prime.\n");
+    	        output.append(N).append(" is not prime.\n");
     	    else {
     	        int reverse = 0, temp = N;
                 while(temp > 0) {
@@ -15,9 +15,9 @@ public class Main {
                     temp /= 10;
                 }
                 if(reverse != N && isPrime(reverse))
-                    output.append(N + " is emirp.\n");
+                    output.append(N).append(" is emirp.\n");
     			else
-    				output.append(N + " is prime.\n");
+    				output.append(N).append(" is prime.\n");
     	    }
     	}
     	System.out.print(output);
