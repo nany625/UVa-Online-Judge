@@ -24,7 +24,7 @@ public class Main {
     	        if(max == frequency[i])
     	            output.append((char)(i - 26 + 'a'));
     	    }
-    	    output.append(" ").append(max).append('\n');
+    	    output.append(' ').append(max).append('\n');
 		}
         System.out.print(output);
 	}
@@ -56,7 +56,7 @@ public class Main {
     	        if(max == frequency.get(c))
     	            output.append(c);
     	    }
-    	    output.append(" ").append(max).append('\n');
+    	    output.append(' ').append(max).append('\n');
 		}
         System.out.print(output);
 	}
@@ -92,7 +92,7 @@ public class Main {
     	        if(max == frequency.get(c))
     	            output.append(c);
     	    }
-    	    output.append(" ").append(max).append('\n');
+    	    output.append(' ').append(max).append('\n');
 		}
         System.out.print(output);
 	}
