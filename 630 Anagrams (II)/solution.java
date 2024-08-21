@@ -10,7 +10,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(T-- > 0) {
 		    if(!firstCase)
-		        output.append("\n");
+		        output.append('\n');
 		    st.nextToken();
 		    int N = (int)st.nval;
 		    Anagram[] anagrams = new Anagram[N];
@@ -31,10 +31,10 @@ public class Main {
 		        int count = 0;
 		        for(Anagram a : anagrams) {
 		            if(sortedTest.equals(a.sortedWord))
-		                output.append("  " + (++count) + ") " + a.word + "\n");
+		                output.append("  ").append(++count).append(") ").append(a.word).append('\n');
 		        }
 		        if(count == 0)
-		            output.append("No anagrams for: " + test + "\n");
+		            output.append("No anagrams for: ").append(test).append('\n');
 		    }
 		    firstCase = false;
 		}
