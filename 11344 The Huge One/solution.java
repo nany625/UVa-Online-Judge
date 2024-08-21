@@ -16,12 +16,10 @@ public class Main {
     	        st.nextToken();
                 short divisor = (short)st.nval;
                 if(wonderful) {
-                    int remainder = 0;
-                    for(int i = 0; i < len; ++i) {
-                        int dividend = 10 * remainder + M.charAt(i) - '0';
-                        remainder = dividend % divisor;
-                    }
-                    if(remainder != 0)
+                    int dividend = 0;
+                    for(int i = 0; i < len; ++i)
+                        dividend = (10 * dividend + M.charAt(i) - '0') % divisor;
+                    if(dividend != 0)
                         wonderful = false;
                 }	
             }
