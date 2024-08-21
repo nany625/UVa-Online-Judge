@@ -23,9 +23,9 @@ public class Main {
     			}
     		}
     		if(N > 1)
-    			output.append("x^" + N);
+    			output.append("x^").append(N);
     		else
-    			output.append("x");
+    			output.append('x');
     		for(int i = N - 1; i >= 0; --i) {
     			if(C[N - 1][i] != 0) {
     				if(C[N - 1][i] > 0)
@@ -34,14 +34,14 @@ public class Main {
     					output.append(" - ");
     				if(i > 1) {
     					if(Math.abs(C[N - 1][i]) > 1)
-    						output.append(Math.abs(C[N - 1][i]) + "x^" + i);
+    						output.append(Math.abs(C[N - 1][i])).append("x^").append(i);
     					else
-    						output.append("x^" + i);
+    						output.append("x^").append(i);
     				} else if(i == 1) {
     					if(Math.abs(C[N - 1][i]) > 1)
-    						output.append(Math.abs(C[N - 1][i]) + "x");
+    						output.append(Math.abs(C[N - 1][i])).append('x');
     					else
-    						output.append("x");
+    						output.append('x');
     				} else
     					output.append(Math.abs(C[N - 1][i]));
     			}
