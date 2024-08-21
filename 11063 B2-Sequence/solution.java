@@ -18,7 +18,7 @@ public class Main {
                     isB2 = false;
             }
             if(!isB2)
-                output.append("Case #" + (++cases) + ": It is not a B2-Sequence.\n\n");
+                output.append("Case #").append(++cases).append(": It is not a B2-Sequence.\n\n");
             else {
                 boolean[] diff = new boolean[b[N - 1] - b[0]];
                 for(int i = 0; i < N - 1 && isB2; ++i) {
@@ -29,7 +29,7 @@ public class Main {
                             isB2 = false;
                     }
                 }
-                output.append("Case #" + (++cases) + ": It is " + (isB2 ? "" : "not ") + "a B2-Sequence.\n\n");
+                output.append("Case #").append(++cases).append(isB2 ? ": It is a B2-Sequence.\n\n" : ": It is not a B2-Sequence.\n\n");
             }
         }
         System.out.print(output);
