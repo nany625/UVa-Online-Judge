@@ -21,7 +21,7 @@ public class Main {
         int n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0)
-    		output.append(pairs[n / 2 - 2] + "\n");
+    		output.append(pairs[n / 2 - 2]).append('\n');
 	    System.out.print(output);
 	}
 	
