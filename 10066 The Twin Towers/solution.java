@@ -27,7 +27,7 @@ public class Main {
     	            prev = temp;
     	        }
     	    }
-    	    output.append("Twin Towers #" + (++twinTowers) + "\nNumber of Tiles : " + L[N2] + "\n\n");
+    	    output.append("Twin Towers #").append(++twinTowers).append("\nNumber of Tiles : ").append(L[N2]).append("\n\n");
     	}
         System.out.print(output);
 	}
