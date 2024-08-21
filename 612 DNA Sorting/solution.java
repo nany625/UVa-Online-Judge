@@ -10,7 +10,7 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(M-- > 0) {
 		    if(!firstCase)
-		        output.append("\n");
+		        output.append('\n');
 		    st.nextToken();
 		    st.nextToken();
 		    int m = (int)st.nval;
@@ -26,7 +26,7 @@ public class Main {
 		        }
 		    });
 		    for(DNA d : dnas)
-		        output.append(d.s + "\n");
+		        output.append(d.s).append('\n');
 		    firstCase = false;
 		}
 		System.out.print(output);
