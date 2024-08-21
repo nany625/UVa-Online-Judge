@@ -58,7 +58,7 @@ public class Main {
                 }
             }
             min += prev * next;
-            output.append("The maximum and minimum are " + max + " and " + min + ".\n");
+            output.append("The maximum and minimum are ").append(max).append(" and ").append(min).append(".\n");
     	}
         System.out.print(output);
 	}
