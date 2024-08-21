@@ -25,10 +25,10 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((st.nextToken()) == st.TT_NUMBER) {
             int number = (int)st.nval;
-            output.append("The Fibonacci number for " + number + " is ");
+            output.append("The Fibonacci number for ").append(number).append(" is ");
             for(int i = digits[number] - 1; i >= 0; --i)
                 output.append(fib[number][i]);
-            output.append("\n");
+            output.append('\n');
         }
 		System.out.print(output);
 	}
@@ -48,7 +48,7 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		StringBuilder output = new StringBuilder();
 		while((st.nextToken()) == st.TT_NUMBER)
-		    output.append("The Fibonacci number for " + (int)st.nval + " is " + fib[(int)st.nval] + "\n");
+		    output.append("The Fibonacci number for ").append((int)st.nval).append(" is ").append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
 }
