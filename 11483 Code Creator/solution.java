@@ -7,14 +7,14 @@ public class Main {
         int cases = 0, N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            output.append("Case " + (++cases) + ":\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n");
+            output.append("Case ").append(++cases).append(":\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n");
             while(N-- > 0) {
                 String line = br.readLine();
                 output.append("printf(\"");
                 int len = line.length();
                 for(int i = 0; i < len; ++i) {
                     if(line.charAt(i) == '"' || line.charAt(i) == '\\')
-                        output.append("\\");
+                        output.append('\\');
                     output.append(line.charAt(i));
                 }
                 output.append("\\n\");\n");
