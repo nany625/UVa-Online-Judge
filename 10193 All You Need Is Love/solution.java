@@ -8,7 +8,7 @@ public class Main {
         int N = (int)st.nval;
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= N; ++i)
-            output.append("Pair #" + i + ": " + (GCD(Integer.parseInt(br.readLine(), 2), Integer.parseInt(br.readLine(), 2)) > 1 ? "All you need is love" : "Love is not all you need") + "!\n");
+            output.append("Pair #").append(i).append(": ").append(GCD(Integer.parseInt(br.readLine(), 2), Integer.parseInt(br.readLine(), 2)) > 1 ? "All you need is love" : "Love is not all you need").append("!\n");
         System.out.print(output);
 	}
 	
