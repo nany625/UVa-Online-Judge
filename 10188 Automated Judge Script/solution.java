@@ -3,18 +3,20 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StreamTokenizer st = new StreamTokenizer(br);
         int x = 0, n;
         StringBuilder output = new StringBuilder();
-        while((n = Integer.parseInt(br.readLine())) != 0) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
             StringBuilder solution = new StringBuilder();
             while(n-- > 0)
-                solution.append(br.readLine() + "\n");
-            int m = Integer.parseInt(br.readLine());
+                solution.append(br.readLine()).append('\n');
+            st.nextToken();
+            int m = (int)st.nval;
             StringBuilder teamOutput = new StringBuilder();
             while(m-- > 0)
-                teamOutput.append(br.readLine() + "\n");
+                teamOutput.append(br.readLine()).append('\n');
             if(solution.toString().contentEquals(teamOutput))
-                output.append("Run #" + (++x) + ": Accepted\n");
+                output.append("Run #").append(++x).append(": Accepted\n");
             else {
                 int i = 0, j = 0, lenSolution = solution.length(), lenTeamOutput = teamOutput.length();
                 while(i < lenSolution && j < lenTeamOutput) {
@@ -31,9 +33,9 @@ public class Main {
                         break;
     		    }
     		    if(i == lenSolution && j == lenTeamOutput)
-    		        output.append("Run #" + (++x) + ": Presentation Error\n");
+    		        output.append("Run #").append(++x).append(": Presentation Error\n");
     		    else
-    		        output.append("Run #" + (++x) + ": Wrong Answer\n");
+    		        output.append("Run #").append(++x).append(": Wrong Answer\n");
             }
         }
         System.out.print(output);
