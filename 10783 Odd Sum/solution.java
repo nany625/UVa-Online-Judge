@@ -13,7 +13,7 @@ public class Main {
             int b = (int)st.nval;
             a += (a + 1) % 2;
     	 	b -= (b + 1) % 2;
-            output.append("Case " + i + ": " + (-a * a + b * b + 2 * a + 2 * b) / 4 + "\n");
+            output.append("Case ").append(i).append(": ").append((-a * a + b * b + 2 * a + 2 * b) / 4).append('\n');
         }
 		System.out.print(output);
 	}
