@@ -29,7 +29,7 @@ public class Main {
 		        }
 		    });
 		    for(Data d : datas)
-		        output.append(d.number + "\n");
+		        output.append(d.number).append('\n');
 		}
 		System.out.println(output + "0 0");
 	}
