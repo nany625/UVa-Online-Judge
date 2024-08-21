@@ -16,7 +16,7 @@ public class Main {
             int total = 0, size = cost.size();
         	for(int i = 0; i < size && total <= 5000000; ++i)
         		total += 2 * Math.pow(cost.get(i), i + 1);
-            output.append((total <= 5000000 ? total : "Too expensive") + "\n");
+            output.append(total <= 5000000 ? total : "Too expensive").append('\n');
         }
         System.out.print(output);
 	}
