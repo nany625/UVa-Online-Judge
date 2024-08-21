@@ -18,13 +18,13 @@ public class Main {
                 isMirror = map.get(s.charAt(i)) == s.charAt(len - 1 - i);
             String reversed = new StringBuilder(s).reverse().toString();
 	        if(s.equals(reversed) && isMirror)
-                output.append(s + " -- is a mirrored palindrome.\n\n");
+                output.append(s).append(" -- is a mirrored palindrome.\n\n");
 	        else if(s.equals(reversed))
-                output.append(s + " -- is a regular palindrome.\n\n");
+                output.append(s).append(" -- is a regular palindrome.\n\n");
             else if(isMirror)
-                output.append(s + " -- is a mirrored string.\n\n");
+                output.append(s).append(" -- is a mirrored string.\n\n");
             else
-                output.append(s + " -- is not a palindrome.\n\n");
+                output.append(s).append(" -- is not a palindrome.\n\n");
         }
         System.out.print(output);
 	}
