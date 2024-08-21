@@ -64,8 +64,8 @@ public class Main {
                 prev = curr;
 		    }
 		    for(int j = 0; j < 9; ++j)
-                output.append(press[j] + " ");
-            output.append(press[9] + "\n");
+                output.append(press[j]).append(' ');
+            output.append(press[9]).append('\n');
 		}
 		System.out.print(output);
 	}
