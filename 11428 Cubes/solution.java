@@ -18,7 +18,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
             if(table[N - 1])
-                output.append(solutions[N - 1].x + " " + solutions[N - 1].y + "\n");
+                output.append(solutions[N - 1].x).append(' ').append(solutions[N - 1].y).append('\n');
             else
                 output.append("No solution\n");
         }
