@@ -4,7 +4,6 @@ import java.io.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
     	StreamTokenizer st = new StreamTokenizer(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -23,9 +22,7 @@ public class Main {
                 d += Math.abs(s[median] - s[i]);
             output.append(d).append('\n');
         }
-        bw.write(output.toString());
-        bw.flush();
-        bw.close();
+        System.out.print(output);
 	}
 	
 	static void swap(short[] array, int i, int j) {
@@ -72,7 +69,6 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
     	StreamTokenizer st = new StreamTokenizer(System.in);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
@@ -91,8 +87,6 @@ public class Main {
                 d += Math.abs(s[median] - s[i]);
             output.append(d).append('\n');
         }
-        bw.write(output.toString());
-        bw.flush();
-        bw.close();
+        System.out.print(output);
 	}
 }
