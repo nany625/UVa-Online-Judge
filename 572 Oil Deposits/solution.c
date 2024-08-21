@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int dRow[] = {0, 1, 0, -1, 1, 1, -1, -1}, dCol[] = {1, 0, -1, 0, 1, -1, 1, -1};
-char grid[99][100];
+char grid[100][101];
 
 void dfs(int row, int rowLimit, int col, int colLimit) {
     if(grid[row][col] == '@') {
