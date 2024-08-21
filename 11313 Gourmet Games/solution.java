@@ -12,7 +12,7 @@ public class Main {
             st.nextToken();
             int m = (int)st.nval;
             if((n - m) % (m - 1) == 0)
-                output.append((n - m) / (m - 1) + 1 + "\n");
+                output.append((n - m) / (m - 1) + 1).append('\n');
             else
                 output.append("cannot do this\n");
         }
