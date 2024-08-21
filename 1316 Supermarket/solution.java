@@ -39,7 +39,7 @@ public class Main {
     	    int profit = 0;
     	    for(Integer i : priorityQueue)
     	        profit += i;
-    	    output.append(profit + "\n");
+    	    output.append(profit).append('\n');
     	}
         System.out.print(output);
 	}
