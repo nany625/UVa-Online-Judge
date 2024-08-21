@@ -25,7 +25,7 @@ public class Main {
                         p += (instructions[i] = instructions[(int)st.nval - 1]);
                 }
             }
-            output.append(p + "\n");
+            output.append(p).append('\n');
         }
         System.out.print(output);
 	}
