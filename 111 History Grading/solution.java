@@ -34,7 +34,7 @@ public class Main {
                         prev = temp;
                     }
                 }
-                output.append(L[n] + "\n");
+                output.append(L[n]).append('\n');
     	    }
     	}
         System.out.print(output);
