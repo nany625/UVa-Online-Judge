@@ -7,7 +7,7 @@ public class Main {
         int N = (int)st.nval;
 	    StringBuilder output = new StringBuilder();
 	    for(int i = 1; i <= N; ++i) {
-    	    output.append("Case #" + i + ":\n");
+    	    output.append("Case #").append(i).append(":\n");
     	    st.nextToken();
     	    String stockPrice = st.sval;
     	    int min = 0, max = 0, curr = 0;
@@ -52,12 +52,12 @@ public class Main {
     			len = graph[j].length - 1;
     			while(graph[j][len] == ' ')
     		    	--len;
-    			output.append("| " + new String(graph[j], 0, len + 1) + "\n");
+    			output.append("| ").append(new String(graph[j], 0, len + 1)).append('\n');
     		}
-    		output.append("+");
+    		output.append('+');
     		len = stockPrice.length() + 2;
     		while(len-- > 0)
-    			output.append("-");
+    			output.append('-');
     		output.append("\n\n");
     	}
 	    System.out.print(output);
