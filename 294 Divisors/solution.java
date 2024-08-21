@@ -12,7 +12,7 @@ public class Main {
     		int L = (int)st.nval;
     		st.nextToken();
 			int U = (int)st.nval;
-			output.append("Between " + L +  " and " + U + ", ");
+			output.append("Between ").append(L).append(" and ").append(U).append(", ");
 			int ans = L, count = factorCount(L);
 			L += (L + 1) % 2 + 1;
 			while(L % 6 != 0 && L <= U) {
@@ -39,7 +39,7 @@ public class Main {
     			}
     			L += 12;
     		}
-    		output.append(ans + " has a maximum of " + count + " divisors.\n");
+    		output.append(ans).append(" has a maximum of ").append(count).append(" divisors.\n");
 		}
 	    System.out.print(output);
 	}
