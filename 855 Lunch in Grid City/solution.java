@@ -25,7 +25,7 @@ public class Main {
     		Arrays.sort(streetLocations);
     		Arrays.sort(avenueLocations);
     		int median = (F - 1) / 2;
-    		output.append("(Street: " + streetLocations[median] + ", Avenue: " + avenueLocations[median] + ")\n");
+    		output.append("(Street: ").append(streetLocations[median]).append(", Avenue: ").append(avenueLocations[median]).append(")\n");
         }
 	    System.out.print(output);
 	}
@@ -57,7 +57,7 @@ public class Main {
     		int median = (F - 1) / 2;
     		DualPivotQuickSelect(streetLocations, 0, F - 1, median);
     		DualPivotQuickSelect(avenueLocations, 0, F - 1, median);
-    		output.append("(Street: " + streetLocations[median] + ", Avenue: " + avenueLocations[median] + ")\n");
+    		output.append("(Street: ").append(streetLocations[median]).append(", Avenue: ").append(avenueLocations[median]).append(")\n");
         }
 	    System.out.print(output);
 	}
