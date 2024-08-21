@@ -14,7 +14,7 @@ public class Main {
 	        for(int i = 0; i < len - 1; ++i)
 	            dividend = (10 * dividend + N.charAt(i) - '0') % 20;
 	        dividend = 10 * dividend + N.charAt(len - 1) - '0';
-	        output.append((dividend / 20 * 4 + lastDigit[dividend % 20]) % 10 + "\n");
+	        output.append((dividend / 20 * 4 + lastDigit[dividend % 20]) % 10).append('\n');
     	}
 	    System.out.print(output);
 	}
