@@ -18,7 +18,7 @@ public class Main {
     		    min = Math.max(min, Math.min(pos, l - pos));
                 max = Math.max(max, Math.max(pos, l - pos));
     		}
-            output.append(min + " " + max + "\n");
+            output.append(min).append(' ').append(max).append('\n');
 		}
 		System.out.print(output);
 	}
