@@ -35,7 +35,7 @@ public class Main {
     	    if(maxX < minX || maxY < minY || maxZ < minZ)
 	            output.append("0\n");
 	        else
-	            output.append((maxX - minX) * (maxY - minY) * (maxZ - minZ) + "\n");
+	            output.append((maxX - minX) * (maxY - minY) * (maxZ - minZ)).append('\n');
     	}
 	    System.out.print(output);
 	}
