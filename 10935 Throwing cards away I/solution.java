@@ -15,10 +15,10 @@ public class Main {
 		        for(int i = 1; i <= n; ++i)
 		            cards.add(i);
 		        while(cards.size() > 2) {
-		            output.append(" " + cards.removeFirst() + ",");
+		            output.append(' ').append(cards.removeFirst()).append(',');
 		            cards.add(cards.removeFirst());
 		        }
-		        output.append(" " + cards.get(0) + "\nRemaining card: " + cards.get(1) + "\n");
+		        output.append(' ').append(cards.get(0)).append("\nRemaining card: ").append(cards.get(1)).append('\n');
 		    }
 		}
 		System.out.print(output);
