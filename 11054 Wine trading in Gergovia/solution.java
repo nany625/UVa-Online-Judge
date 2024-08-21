@@ -13,7 +13,7 @@ public class Main {
 		        curr += (short)st.nval;
 		        work += Math.abs(curr);
 		    }
-		    output.append(work + "\n");
+		    output.append(work).append('\n');
 		}
         System.out.print(output);
     }	
