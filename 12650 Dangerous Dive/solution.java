@@ -23,13 +23,13 @@ public class Main {
                 }
                 Arrays.sort(returned);
                 for(int i = 1; i < returned[0]; ++i)
-                    output.append(i + " ");
+                    output.append(i).append(' ');
                 for(int i = 0; i < R - 1; ++i) {
                     for(int j = returned[i] + 1; j < returned[i + 1]; ++j)
-                        output.append(j + " ");
+                        output.append(j).append(' ');
                 }
                 for(int i = returned[R - 1] + 1; i <= N; ++i)
-                    output.append(i + " ");
+                    output.append(i).append(' ');
             } else {
                 boolean[] returned = new boolean[N];
                 while(R-- > 0) {
@@ -38,10 +38,10 @@ public class Main {
                 }
                 for(int i = 0; i < N; ++i) {
                     if(!returned[i])
-                        output.append(i + 1 + " ");
+                        output.append(i + 1).append(' ');
                 }
     	    }
-		    output.append("\n");
+		    output.append('\n');
 		}
 		System.out.print(output);
 	}
