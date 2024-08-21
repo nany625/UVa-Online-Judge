@@ -1,26 +1,29 @@
 #include <stdio.h>
-#include <math.h>
+#define KUTI 10000000
+#define LAKH 100000
+#define HAJAR 1000
+#define SHATA 100
 
 void split(long n) {
-    if(n >= pow(10, 7)) {
-        split(n / pow(10, 7));
+    if(n >= KUTI) {
+        split(n / KUTI);
         fputs(" kuti", stdout);
-        n %= (long)pow(10, 7);
+        n %= KUTI;
     }
-    if(n >= pow(10, 5)) {
-        split(n / pow(10, 5));
+    if(n >= LAKH) {
+        split(n / LAKH);
         fputs(" lakh", stdout);
-        n %= (long)pow(10, 5);
+        n %= LAKH;
     }
-    if(n >= pow(10, 3)) {
-        split(n / pow(10, 3));
+    if(n >= HAJAR) {
+        split(n / HAJAR);
         fputs(" hajar", stdout);
-        n %= (long)pow(10, 3);
+        n %= HAJAR;
     }
-    if(n >= pow(10, 2)) {
-        split(n / pow(10, 2));
+    if(n >= SHATA) {
+        split(n / SHATA);
         fputs(" shata", stdout);
-        n %= (long)pow(10, 2);
+        n %= SHATA;
     }
     if(n > 0)
         printf(" %ld", n);
