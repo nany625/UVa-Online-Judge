@@ -22,7 +22,7 @@ public class Main {
     	            output.append(decode.get(message.charAt(i)));
     	        }
     	    }
-            output.append("\n");
+            output.append('\n');
     	}
     	System.out.print(output);
 	}
