@@ -19,7 +19,7 @@ public class Main {
     	            prev = temp;
     	        }
     	    }
-    	    output.append(L[len2] + "\n");
+    	    output.append(L[len2]).append('\n');
     	}
         System.out.print(output);
 	}
