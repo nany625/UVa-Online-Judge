@@ -1,4 +1,21 @@
-// #解法一(偷吃步)
+// #解法一(正規演算法)
+#include <stdio.h>
+
+long F[45] = {1};
+int M[45] = {};
+
+int main() {
+    for(int i = 1; i < 45; ++i) {
+        F[i] = M[i - 1] + 1;
+        M[i] = F[i - 1] + M[i - 1];
+    }
+    int N;
+    while(scanf("%d", &N) && N != -1)
+        printf("%d %ld\n", M[N], F[N] + M[N]);
+    return 0;
+}
+
+// #解法二(捷徑)
 #include <stdio.h>
 
 long F[] = {
@@ -18,23 +35,6 @@ int M[] = {
 };
 
 int main() {
-    int N;
-    while(scanf("%d", &N) && N != -1)
-        printf("%d %ld\n", M[N], F[N] + M[N]);
-    return 0;
-}
-
-// #解法二(正規演算法)
-#include <stdio.h>
-
-long F[45] = {1};
-int M[45] = {};
-
-int main() {
-    for(int i = 1; i < 45; ++i) {
-        F[i] = M[i - 1] + 1;
-        M[i] = F[i - 1] + M[i - 1];
-    }
     int N;
     while(scanf("%d", &N) && N != -1)
         printf("%d %ld\n", M[N], F[N] + M[N]);
