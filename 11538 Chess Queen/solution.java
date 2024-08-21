@@ -14,7 +14,7 @@ public class Main {
             long vertical = M * (M - 1) * N;
             long horizontal = N * (N - 1) * M;
             long diagonal = 8 * M * (M - 1) * (M - 2) / 6 + 2 * M * (M - 1) * (N - M + 1);
-            output.append(vertical + horizontal + diagonal + "\n");
+            output.append(vertical + horizontal + diagonal).append('\n');
     	}
         System.out.print(output);
 	}
