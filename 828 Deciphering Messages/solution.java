@@ -10,7 +10,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
             if(!firstCase)
-                output.append("\n");
+                output.append('\n');
             st.nextToken();
             String alphaKey = st.sval;
             st.nextToken();
@@ -58,7 +58,7 @@ public class Main {
                     }
                 }
                 if(!error)
-                    output.append(plaintext + "\n");
+                    output.append(plaintext).append('\n');
                 else
                     output.append("error in encryption\n");
             }
