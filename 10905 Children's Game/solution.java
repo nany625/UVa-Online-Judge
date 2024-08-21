@@ -19,7 +19,7 @@ public class Main {
 	        });
 	        for(String s : numbers)
 	            output.append(s);
-	        output.append("\n");
+	        output.append('\n');
     	}
 	    System.out.print(output);
 	}
