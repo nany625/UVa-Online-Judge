@@ -7,7 +7,6 @@ public class Main {
         lenMap.add((short)0);
 		lenMap.add((short)1);
         StreamTokenizer st = new StreamTokenizer(System.in);
-    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     	StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
     	    int min = (int)st.nval;
@@ -29,9 +28,7 @@ public class Main {
             }
             output.append(maxLen).append('\n');
 		}
-		bw.write(output.toString());
-		bw.flush();
-		bw.close();
+		System.out.print(output);
 	}
 	
 	static void Collatz(int n) {
