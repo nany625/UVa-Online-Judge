@@ -29,7 +29,7 @@ public class Main {
                     }
                 }
             }
-            output.append(max + "\n");
+            output.append(max).append('\n');
     	}
         System.out.print(output);
 	}
