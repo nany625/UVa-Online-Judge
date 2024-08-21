@@ -29,7 +29,7 @@ public class Main {
     			else {
     				for(curr = factors.size() - 1; curr >= 0; --curr)
     					output.append(factors.get(curr));
-    				output.append("\n");
+    				output.append('\n');
     			}
     		} else
     			output.append("-1\n");
