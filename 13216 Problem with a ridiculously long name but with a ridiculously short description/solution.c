@@ -12,7 +12,7 @@ int main() {
         scanf("%s", n);
         if(n[0] == '0')
             puts("1");
-        else if(atoi(n) == 1)
+        else if(strlen(n) == 1 && n[0] == '1')
             puts("66");
         else
             printf("%d\n", ans[(n[strlen(n) - 1] - '0') % 5]);
