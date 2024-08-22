@@ -8,8 +8,8 @@ public class Main {
 		String line;
 		StringBuilder output = new StringBuilder();
 		while((line = br.readLine()) != null) {
-		    if(line.charAt(0) == line.charAt(3) && line.charAt(1) == line.charAt(4)) {
-		        output.append("To get from ").append(line.charAt(0)).append(line.charAt(1)).append(" to ").append(line.charAt(3)).append(line.charAt(4)).append(" takes 0 knight moves.\n");
+		    if(line.substring(0, 2).equals(line.substring(3, 5))) {
+		        output.append("To get from ").append(line.substring(0, 2)).append(" to ").append(line.substring(3, 5)).append(" takes 0 knight moves.\n");
 		        continue;
 		    }
 		    ArrayList<Square> squares = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Main {
 		                int newCol = s.col + dCol[i];
 		                if(newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
                             if(newRow == endRow && newCol == endCol) {
-                                output.append("To get from ").append(line.charAt(0)).append(line.charAt(1)).append(" to ").append(line.charAt(3)).append(line.charAt(4)).append(" takes ").append(move).append(" knight moves.\n");
+                                output.append("To get from ").append(line.substring(0, 2)).append(" to ").append(line.substring(3, 5)).append(" takes ").append(move).append(" knight moves.\n");
                                 found = true;
                             } else if(!visited[newRow][newCol]) {
                                 nextSquares.add(new Square(newRow, newCol));
