@@ -7,7 +7,7 @@ int main() {
     size_t bufsize = 0;
     while(getline(&buffer, &bufsize, stdin) != -1) {
         char *token = strtok(buffer, " ");
-        int max = atoi(token), curr = atoi(token);
+        int max = atoi(token), curr = max;
         token = strtok(NULL, " ");
         while(token) {
             int temp = atoi(token);
