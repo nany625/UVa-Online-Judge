@@ -20,25 +20,22 @@ public class Main {
 		    boolean found = false;
 		    while(!found) {
 		        ArrayList<Square> nextSquares = new ArrayList<>();
-		        int nextSize = 0;
-		        for(int i = 0; i < currSize && !found; ++i) {
-		            for(int j = 0; j < 8; ++j) {
-		                int newRow = squares.get(i).row + dRow[j];
-		                int newCol = squares.get(i).col + dCol[j];
+		        for(Square s : squares) {
+		            for(int i = 0; i < 8 && !found; ++i) {
+		                int newRow = s.row + dRow[i];
+		                int newCol = s.col + dCol[i];
 		                if(newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
                             if(newRow == endRow && newCol == endCol) {
                                 output.append("To get from ").append(line.charAt(0)).append(line.charAt(1)).append(" to ").append(line.charAt(3)).append(line.charAt(4)).append(" takes ").append(move).append(" knight moves.\n");
                                 found = true;
                             } else if(!visited[newRow][newCol]) {
                                 nextSquares.add(new Square(newRow, newCol));
-                                ++nextSize;
                                 visited[newRow][newCol] = true;
                             }
                         }
 		            }
 		        }
 		        squares = new ArrayList<>(nextSquares);
-		        currSize = nextSize;
 		        ++move;
 		    }
 		}
