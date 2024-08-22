@@ -14,10 +14,8 @@ int main() {
             puts("1");
         else if(atoi(n) == 1)
             puts("66");
-        else {
-            int power = n[strlen(n) - 1] - '0';
-            printf("%d\n", ans[power % 5]);
-        }
+        else
+            printf("%d\n", ans[(n[strlen(n) - 1] - '0') % 5]);
     }
 	return 0;
 }
