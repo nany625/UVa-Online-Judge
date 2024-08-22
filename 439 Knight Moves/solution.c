@@ -13,7 +13,7 @@ int main() {
     char buffer[7];
     while(fgets(buffer, sizeof(buffer), stdin)) {
         if(strncmp(buffer, buffer + 3, 2) == 0) {
-            printf("To get from %c%c to %c%c takes 0 knight moves.\n", buffer[0], buffer[1], buffer[3], buffer[4]);
+            printf("To get from %.2s to %.2s takes 0 knight moves.\n", buffer, buffer + 3);
             continue;
         }
         Square **squares = (Square**)malloc(sizeof(Square*));
