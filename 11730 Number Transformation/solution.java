@@ -1,4 +1,4 @@
-import java.io.*;
+  import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -26,28 +26,25 @@ public class Main {
             }
             ArrayList<Short> trans = new ArrayList<>();
             trans.add((short)S);
-            int currSize = 1, step = 1;
+            int step = 1;
             boolean[] visited = new boolean[T + 1];
             boolean found = false;
-            while(currSize > 0 && !found) {
+            while(!trans.isEmpty() && !found) {
                 ArrayList<Short> nextTrans = new ArrayList<>();
-                int nextSize = 0;
-                for(int i = 0; i < currSize && !found; ++i) {
-                    for(int j = 0; j < 67 && primes[j] < trans.get(i) && !found; ++j) {
-                        if(trans.get(i) % primes[j] == 0) {
-                            if(trans.get(i) + primes[j] == T) {
+                for(Short s : trans) {
+                    for(int i = 0; i < 67 && primes[i] < s && !found; ++i) {
+                        if(s % primes[i] == 0) {
+                            if(s + primes[i] == T) {
                                 output.append("Case ").append(++cases).append(": ").append(step).append('\n');
                                 found = true;
-                            } else if(trans.get(i) + primes[j] < T && !visited[trans.get(i) + primes[j]]) {
-                                nextTrans.add((short)(trans.get(i) + primes[j]));
-                                ++nextSize;
-                                visited[trans.get(i) + primes[j]] = true;
+                            } else if(s + primes[i] < T && !visited[s + primes[i]]) {
+                                nextTrans.add((short)(s + primes[i]));
+                                visited[s + primes[i]] = true;
                             }
                         }
                     }
                 }
                 trans = new ArrayList<>(nextTrans);
-                currSize = nextSize;
                 ++step;
             }
             if(!found)
