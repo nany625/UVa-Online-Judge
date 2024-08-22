@@ -29,8 +29,7 @@ int main() {
 	    int pos = binarySearch(dp, lisSize, sequence[i]);
 	    if(pos == lisSize)
 	        dp = (DP*)realloc(dp, ++lisSize * sizeof(DP));
-	    dp[pos].lastIndex = i;
-	    dp[pos].lis = sequence[i];
+	    dp[pos].lis = sequence[dp[pos].lastIndex = i];
 	    predecessor[i] = pos > 0 ? dp[pos - 1].lastIndex : -1;
 	}
 	int ans[lisSize], i = dp[lisSize - 1].lastIndex;
