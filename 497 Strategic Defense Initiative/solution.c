@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef struct {
     int altitude, length;
@@ -25,10 +24,7 @@ int main() {
     getchar();
     getchar();
     char buffer[12];
-	bool firstCase = true;
 	while(cases--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    DP *dp = NULL;
 	    int size = 0;
 	    while(fgets(buffer, sizeof(buffer), stdin) && buffer[0] != '\n') {
@@ -52,7 +48,8 @@ int main() {
 	    }
 	    free(dp);
 	    free(lis);
-	    firstCase = false;
+	    if(cases > 0)
+	        putchar('\n');
 	}
 	return 0;
 }
