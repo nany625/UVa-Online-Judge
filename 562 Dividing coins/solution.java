@@ -19,10 +19,8 @@ public class Main {
     	    subsetSum[0] = true;
     	    for(int i = 0; i < m && max < temp; ++i) {
     	        for(int j = temp; j >= coins[i] && max < temp; --j) {
-                    if(subsetSum[j - coins[i]]) {
-                        subsetSum[j] = true;
+                    if(subsetSum[j] |= subsetSum[j - coins[i]])
                         max = Math.max(max, j);
-                    }
                 }
     	    }
     	    output.append(sum - 2 * max).append('\n');
