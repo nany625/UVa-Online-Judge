@@ -25,10 +25,8 @@ int main() {
         memset(subsetSum + 1, 0, temp * sizeof(bool));
         for(int i = 0; i < m && max < temp; ++i) {
             for(int j = temp; j >= coins[i] && max < temp; --j) {
-                if(subsetSum[j - coins[i]]) {
-                    subsetSum[j] = true;
+                if(subsetSum[j] |= subsetSum[j - coins[i]])
                     max = max > j ? max : j;
-                }
             }
         }
         printf("%d\n", sum - 2 * max);
