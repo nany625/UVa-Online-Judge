@@ -11,7 +11,7 @@ bool isAsequence(short *array, int size) {
         if(subsetSum[array[i]])
             return false;
         for(int j = array[size - 1]; j >= array[i]; --j)
-            subsetSum[j] = subsetSum[j] || subsetSum[j - array[i]];
+            subsetSum[j] |= subsetSum[j - array[i]];
     }
     return true;
 }
