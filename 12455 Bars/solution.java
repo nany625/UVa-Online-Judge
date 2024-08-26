@@ -27,7 +27,7 @@ public class Main {
         int size = array.length;
         for(int i = 0; i < size && !subsetSum[sum]; ++i) {
             for(int j = sum; j >= array[i] && !subsetSum[sum]; --j)
-                subsetSum[j] = subsetSum[j] || subsetSum[j - array[i]];
+                subsetSum[j] |= subsetSum[j - array[i]];
         }
         return subsetSum[sum];
     }
