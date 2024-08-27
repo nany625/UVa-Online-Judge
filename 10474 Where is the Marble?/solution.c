@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 int compare(const void *a, const void *b) {
-    return *(short*)a - *(short*)b;
+    return *(short*)a > *(short*)b;
 }
 
 int binarySearch(short *array, int size, short key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + (right - left) / 2;
+        int mid = left + ((right - left) >> 1);
         if(array[mid] == key) {
             while(mid > left && array[mid] == array[mid-1])
                 --mid;
