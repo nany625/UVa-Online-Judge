@@ -24,7 +24,7 @@ public class Main {
     		for(int i = 1; i <= n; ++i) {
     			for(int j = 0; j < r; ++j) {
     				for(int k = 0; k < c; ++k) {
-    					if(i % 2 == 1)
+    					if((i & 1) == 1)
     						update(grid0, grid1, j, k, r, c);
     					else
     						update(grid1, grid0, j, k, r, c);
@@ -32,7 +32,7 @@ public class Main {
     			}
     		}
     		for(int i = 0; i < r; ++i)
-    		    output.append((n % 2 == 1 ? new String(grid1[i]) : new String(grid0[i]))).append('\n');
+    		    output.append((n & 1) == 1 ? new String(grid1[i]) : new String(grid0[i])).append('\n');
         	firstCase = false;
 		}
 		System.out.print(output);
