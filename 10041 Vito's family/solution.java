@@ -15,7 +15,7 @@ public class Main {
                 st.nextToken();
                 s[i] = (short)st.nval;
             }
-            int median = (r - 1) / 2;
+            int median = (r - 1) >> 1;
             DualPivotQuickSelect(s, 0, r - 1, median);
             long d = 0;
             for(int i = 0; i < r; ++i)
@@ -81,7 +81,7 @@ public class Main {
                 s[i] = (short)st.nval;
             }
             Arrays.sort(s);
-            int median = (r - 1) / 2;
+            int median = (r - 1) >> 1;
             long d = 0;
             for(int i = 0; i < r; ++i)
                 d += Math.abs(s[median] - s[i]);
