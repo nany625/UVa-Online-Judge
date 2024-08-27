@@ -31,9 +31,8 @@ int main() {
             puts("0");
             continue;
         }
-        m = (1 << m) - 1;
         long matrix[2][2] = {{1, 1}, {1, 0}};
-        printf("%ld\n", powerMatrix(matrix, n - 1, m));
+        printf("%ld\n", powerMatrix(matrix, n - 1, (1 << m) - 1));
     }
     return 0;
 }
