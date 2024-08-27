@@ -39,7 +39,7 @@ int main() {
                     }
                 }
 		    } while(isSquare);
-            printf("%d\n", 2 * range - 1);
+            printf("%d\n", (range << 1) - 1);
         }
     }
     return 0;
