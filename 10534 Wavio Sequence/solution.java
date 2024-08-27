@@ -33,7 +33,7 @@ public class Main {
                 ldsDP[i] = pos + 1;
                 max = Math.max(max, Math.min(lisDP[i], ldsDP[i]));
             }
-            output.append(2 * max - 1).append('\n');
+            output.append((max << 1) - 1).append('\n');
     	}
         System.out.print(output);
 	}
@@ -41,7 +41,7 @@ public class Main {
 	static int binarySearch(ArrayList<Integer> arrayList, int size, int key) {
         int left = 0, right = size - 1;
         while(left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             if(arrayList.get(mid) == key)
                 return mid;
             if(arrayList.get(mid) < key)
