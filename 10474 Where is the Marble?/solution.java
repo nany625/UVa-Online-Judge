@@ -7,7 +7,7 @@ public class Main {
 		int cases = 0, N, Q;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (Q = (int)st.nval) != 0) {
-		    output.append("CASE# " + (++cases) + ":\n");
+		    output.append("CASE# ").append(++cases).append(":\n");
 		    short[] marbles = new short[N];
 		    for(int i = 0; i < N; ++i) {
 		        st.nextToken();
@@ -30,7 +30,7 @@ public class Main {
 	static int binarySearch(short[] array, short key) {
         int left = 0, right = array.length - 1;
         while(left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             if(array[mid] == key) {
                 while(mid > left && array[mid] == array[mid-1])
                     --mid;
