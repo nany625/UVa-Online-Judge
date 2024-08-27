@@ -4,7 +4,7 @@
 int binarySearch(int *array, int size, int key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + (right - left) / 2;
+        int mid = left + ((right - left) >> 1);
         if(array[mid] == key)
             return mid;
         if(array[mid] < key)
@@ -37,7 +37,7 @@ int main() {
             int temp = lisDP[i] < ldsDP[i] ? lisDP[i] : ldsDP[i];
             max = max > temp ? max : temp;
         }
-        printf("%d\n", 2 * max - 1);
+        printf("%d\n", (max << 1) - 1);
         free(LIS);
         free(LDS);
     }
