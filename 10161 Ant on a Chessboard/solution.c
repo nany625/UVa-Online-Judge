@@ -5,7 +5,7 @@ int main() {
 	int N;
 	while(scanf("%d", &N) && N != 0) {
 		int circle = ceil(sqrt(N)), corner = 1 + circle * (circle - 1);
-		if(circle % 2 == 1) {
+		if(circle & 1) {
 			if(N < corner)
 				printf("%d %d\n", circle, circle - (corner - N));
 			else
