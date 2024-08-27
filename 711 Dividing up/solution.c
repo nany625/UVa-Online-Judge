@@ -36,10 +36,10 @@ int main() {
         else {
             int *marbles = NULL, size = 0;
             for(int i = 0; i < 6; ++i) {
-                for(int k = 1; k <= count[i]; k *= 2) {
+                for(int j = 1; j <= count[i]; j *= 2) {
                     marbles = (int*)realloc(marbles, (size + 1) * sizeof(int));
-                    marbles[size++] = (i + 1) * k;
-                    count[i] -= k;
+                    marbles[size++] = (i + 1) * j;
+                    count[i] -= j;
                 }
                 if(count[i] > 0) {
                     marbles = (int*)realloc(marbles, (size + 1) * sizeof(int));
