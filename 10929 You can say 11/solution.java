@@ -8,10 +8,10 @@ public class Main {
 		while((N = br.readLine()) != null && N.charAt(0) != '0') {
 		    int sum = 0, len = N.length();
 		    for(int i = 0; i < len; ++i) {
-    	        if(i % 2 == 0)
-    	            sum += N.charAt(i) - '0';
-    	        else
+    	        if((i & 1) == 1)
     	            sum -= N.charAt(i) - '0';
+    	        else
+    	            sum += N.charAt(i) - '0';
     	    }
     	    output.append(N).append(sum % 11 == 0 ? " is a multiple of 11.\n" : " is not a multiple of 11.\n");
 		}
