@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 long temp[2][2];
 
