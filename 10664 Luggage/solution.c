@@ -29,10 +29,10 @@ int main() {
             sum += weights[size++] = atoi(token);
             token = strtok(NULL, " ");
         }
-        if(sum % 2 == 1)
+        if(sum & 1)
             puts("NO");
         else
-            puts(isSubsetSum(weights, size, sum / 2) ? "YES" : "NO");
+            puts(isSubsetSum(weights, size, sum >> 1) ? "YES" : "NO");
         free(weights);
     }
     free(buffer);
