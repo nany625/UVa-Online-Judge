@@ -14,10 +14,10 @@ public class Main {
     	    int[] weights = new int[size];
     	    for(int i = 0; i < size; ++i)
     	        sum += weights[i] = Integer.parseInt(tokens[i]);
-    	    if(sum % 2 == 1)
+    	    if((sum & 1) == 1)
     	        output.append("NO\n");
     	    else
-    	        output.append(isSubsetSum(weights, size, sum / 2) ? "YES\n" : "NO\n");
+    	        output.append(isSubsetSum(weights, size, sum >> 1) ? "YES\n" : "NO\n");
     	}
         System.out.print(output);
 	}
