@@ -6,10 +6,10 @@ int main() {
     while(n--) {
         int s, d;
         scanf("%d %d", &s, &d);
-        if(s < d || (s + d) % 2 == 1)
+        if(s < d || ((s + d) & 1))
             puts("impossible");
         else
-            printf("%d %d\n", (s + d) / 2, (s - d) / 2);
+            printf("%d %d\n", (s + d) >> 1, (s - d) >> 1);
     }
     return 0;
 }
