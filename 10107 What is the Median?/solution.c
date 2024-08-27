@@ -11,10 +11,10 @@ int main() {
             --pos;
         }
         numbers[pos] = X;
-        if(size % 2 == 0)
-            printf("%d\n", numbers[size / 2 - 1] + (numbers[size / 2] - numbers[size / 2 - 1]) / 2);
+        if(size & 1)
+            printf("%d\n", numbers[size >> 1]);
         else
-            printf("%d\n", numbers[size / 2]);
+            printf("%d\n", numbers[(size >> 1) - 1] + ((numbers[size >> 1] - numbers[(size >> 1) - 1]) >> 1));
     }
     free(numbers);
 	return 0;
