@@ -1,25 +1,8 @@
 #include <stdio.h>
 
-void swap(int *a, int *b) {
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-void InsertionSort(int *array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1, insertionNum = array[i];
-        while(j >= 0 && insertionNum < array[j]) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = insertionNum;
-    }
-}
-
 void MergeSort(int *array, int left, int right) {
     if(left < right) {
-        int mid = left + (right - left) / 2;
+        int mid = left + ((right - left) >> 1);
         MergeSort(array, left, mid);
         MergeSort(array, mid + 1, right);
         int reg[right - left + 1];
@@ -45,13 +28,13 @@ int main() {
         int X[n];
         for(int i = 0; i < n; ++i)
             scanf("%d", &X[i]);
-        n <= 47 ? InsertionSort(X, n) : MergeSort(X, 0, n - 1);
-        int low = (n - 1) / 2, high = n / 2;
-        while(X[low] == X[low - 1])
+        MergeSort(X, 0, n - 1);
+        int low = (n - 1) >> 1, high = n >> 1;
+        while(low > 0 && X[low] == X[low - 1])
             --low;
-        while(X[high] == X[high + 1])
+        while(high < n - 1 && X[high] == X[high + 1])
             ++high;
-        printf("%d %d %d\n", X[(n - 1) / 2], high - low + 1, X[n / 2] - X[(n - 1) / 2] + 1);
+        printf("%d %d %d\n", X[(n - 1) >> 1], high - low + 1, X[n >> 1] - X[(n - 1) >> 1] + 1);
     }
     return 0;
 }
