@@ -34,7 +34,7 @@ int main() {
 		for(int i = 1; i <= n; ++i) {
 			for(int j = 0; j < r; ++j) {
 				for(int k = 0; k < c; ++k) {
-					if(i % 2 == 1)
+					if(i & 1)
 						update(grid0, grid1, j, k, r, c);
 					else
 						update(grid1, grid0, j, k, r, c);
@@ -42,7 +42,7 @@ int main() {
 			}
 		}
 		for(int i = 0; i < r; ++i) {
-		    puts(n % 2 == 1 ? grid1[i] : grid0[i]);
+		    puts(n & 1 ? grid1[i] : grid0[i]);
 		    free(grid0[i]);
 		    free(grid1[i]);
     	}
