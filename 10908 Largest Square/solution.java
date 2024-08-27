@@ -48,7 +48,7 @@ public class Main {
                         }
                     }
         		} while(isSquare);
-        		output.append(2 * range - 1).append('\n');
+        		output.append((range << 1) - 1).append('\n');
             }
 		}
 		System.out.print(output);
