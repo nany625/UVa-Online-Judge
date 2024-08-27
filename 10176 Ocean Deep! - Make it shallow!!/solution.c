@@ -7,7 +7,7 @@ int main() {
     while((ch = getchar()) != EOF) {
         if(ch != '#') {
             if(isdigit(ch))
-                remainder = (2 * remainder + ch -'0') % 131071;
+                remainder = (2 * remainder + ch - '0') % 131071;
         } else {
             puts(remainder == 0 ? "YES" : "NO");
             remainder = 0;
