@@ -16,10 +16,10 @@ public class Main {
     	        --pos;
     	    }
     	    numbers.set(pos, X);
-    	    if(size % 2 == 0)
-    	        output.append(numbers.get(size / 2 - 1) + (numbers.get(size / 2) - numbers.get(size / 2 - 1)) / 2).append('\n');
+    	    if((size & 1) == 1)
+    	        output.append(numbers.get(size >> 1)).append('\n');
     	    else
-    	        output.append(numbers.get(size / 2)).append('\n');
+    	        output.append(numbers.get((size >> 1) - 1) + ((numbers.get(size >> 1) - numbers.get((size >> 1) - 1)) >> 1)).append('\n');
     	}
         System.out.print(output);
 	}
