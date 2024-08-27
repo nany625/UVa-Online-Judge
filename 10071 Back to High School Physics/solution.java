@@ -7,7 +7,7 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int v = (int)st.nval;
             st.nextToken();
-            output.append(2 * v * (int)st.nval).append('\n');
+            output.append(v * (int)st.nval << 1).append('\n');
 		}
         System.out.print(output);
 	}
