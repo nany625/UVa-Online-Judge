@@ -11,7 +11,7 @@ public class Main {
     		int s = (int)st.nval;
     		st.nextToken();
     		int d = (int)st.nval;
-    		if(s < d || (s + d) % 2 == 1)
+    		if(s < d || (((s + d) & 1) == 1))
     		    output.append("impossible\n");
     		else
     		    output.append((s + d) >> 1).append(' ').append((s - d) >> 1).append('\n');
