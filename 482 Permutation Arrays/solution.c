@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 	
 typedef struct {
     int p;
@@ -17,10 +16,7 @@ int main() {
 	scanf("%d", &cases);
     char *buffer = NULL;
 	size_t bufsize = 0;
-	bool firstCase = true;
 	while(cases--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    getchar();
 	    getchar();
 	    getline(&buffer, &bufsize, stdin);
@@ -40,7 +36,8 @@ int main() {
 	        free(datas[i].number);
 	    }
 	    free(datas);
-	    firstCase = false;
+	    if(cases)
+	        putchar('\n');
 	}
     free(buffer);
 	return 0;
