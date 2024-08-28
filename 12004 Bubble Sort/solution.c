@@ -7,10 +7,10 @@ int main() {
         long n;
         scanf("%ld", &n);
         long numerator = n * (n - 1);
-        if(numerator % 4 == 0)
-            printf("Case %d: %ld\n", i, numerator / 4);
+        if(numerator & 3)
+            printf("Case %d: %ld/2\n", i, numerator >> 1);
         else
-            printf("Case %d: %ld/2\n", i, numerator / 2);
+            printf("Case %d: %ld\n", i, numerator >> 2);
     }
     return 0;
 }
