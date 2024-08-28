@@ -19,8 +19,8 @@ public class Main {
 		        public int compare(Data d1, Data d2) {
 		            if(d1.mod != d2.mod)
 		                return d1.mod - d2.mod;
-		            int isOddd1 = (int)Math.abs(d1.number % 2);
-		            int isOddd2 = (int)Math.abs(d2.number % 2);
+		            int isOddd1 = (int)Math.abs(d1.number & 1);
+		            int isOddd2 = (int)Math.abs(d2.number & 1);
 		            if(isOddd1 + isOddd2 == 1)
 		                return isOddd1 == 1 ? -1 : 1;
 		            if(isOddd1 == 1)
