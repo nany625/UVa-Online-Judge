@@ -40,7 +40,7 @@ int main() {
 		    numbers[size++] = atoi(number);
 		    InsertionSort(number);
     		int desc = atoi(number), len = strlen(number);
-    		for(int i = 0; i < len / 2; ++i)
+    		for(int i = 0; i < len >> 1; ++i)
     		    swap(&number[i], &number[len - 1 - i]);
     		int asc = atoi(number);
     		printf("%d - %d = %d\n", desc, asc, desc - asc);
