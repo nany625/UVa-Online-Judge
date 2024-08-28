@@ -6,7 +6,7 @@ public class Main {
         int N;
         StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
-    	    output.append(N * (N + 1) * (2 * N + 1) / 6).append('\n');
+    	    output.append(N * (N + 1) * ((N << 1) + 1) / 6).append('\n');
         System.out.print(output);
 	}
 }
