@@ -14,7 +14,7 @@ public class Main {
                 st.nextToken();
                 sum += coins[i] = (int)st.nval;
             }
-    	    int temp = sum / 2, max = 0;
+    	    int temp = sum >> 1, max = 0;
     	    boolean[] subsetSum = new boolean[temp + 1];
     	    subsetSum[0] = true;
     	    for(int i = 0; i < m && max < temp; ++i) {
@@ -23,7 +23,7 @@ public class Main {
                         max = Math.max(max, j);
                 }
     	    }
-    	    output.append(sum - 2 * max).append('\n');
+    	    output.append(sum - (max << 1)).append('\n');
     	}
         System.out.print(output);
 	}
