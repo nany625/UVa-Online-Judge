@@ -19,7 +19,7 @@ public class Main {
                 if(M[j] < 0)
                     isSymmetric = false;
             }
-            for(int j = 0; j < size / 2 && isSymmetric; ++j)
+            for(int j = 0; j < size >> 1 && isSymmetric; ++j)
                 isSymmetric = M[j] == M[size - 1 - j];
             output.append("Test #").append(i).append(isSymmetric ? ": Symmetric.\n" : ": Non-symmetric.\n");
         }
