@@ -8,11 +8,8 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int M = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(M-- > 0) {
-            if(!firstCase)
-                output.append('\n');
             st.nextToken();
             int i = (int)st.nval - 1;
             st.nextToken();
@@ -25,7 +22,8 @@ public class Main {
             int[] area = new int[1];
             dfs(i, rows, j, cols, area);
             output.append(area[0]).append('\n');
-            firstCase = false;
+            if(M > 0)
+                output.append('\n');
         }
         System.out.print(output);
 	}
