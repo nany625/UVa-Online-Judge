@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int main() {
     int N;
     scanf("%d", &N);
     char digits[5];
-    bool firstCase = true;
     while(N--) {
-        if(!firstCase)
-			putchar('\n');
         int M;
         scanf("%d", &M);
         getchar();
@@ -28,7 +24,8 @@ int main() {
             putchar('1');
         puts(ans + 1);
         free(ans);
-		firstCase = false;
+		if(N)
+			putchar('\n');
     }
     return 0;
 }
