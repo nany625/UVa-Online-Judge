@@ -13,10 +13,7 @@ int main() {
     scanf("%d", &cases);
     char *buffer = NULL;
     size_t bufsize = 0;
-    bool firstCase = true;
     while(cases--) {
-        if(!firstCase)
-            putchar('\n');
         char *alphaKey = NULL;
         int numericalKey, messages;
         scanf("%ms %d %d", &alphaKey, &numericalKey, &messages);
@@ -73,7 +70,8 @@ int main() {
             free(plaintext); 
         }
         free(alphaKey);
-        firstCase = false;
+        if(cases)
+            putchar('\n');
     }
     free(buffer);
     return 0;
