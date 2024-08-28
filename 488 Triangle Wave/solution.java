@@ -5,11 +5,8 @@ public class Main {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
 	    st.nextToken();
 	    int cases = (int)st.nval;
-	    boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-            if(!firstCase)
-                output.append('\n');
             st.nextToken();
             int amplitude = (int)st.nval;
             st.nextToken();
@@ -30,7 +27,8 @@ public class Main {
     			}
     			firstWave = false;
     		}
-    		firstCase = false;
+    		if(cases > 0)
+                output.append('\n');
         }
         System.out.print(output);
 	}
