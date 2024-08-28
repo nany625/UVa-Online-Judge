@@ -42,7 +42,7 @@ public class Main {
                 }
             }
             int totalPaths = 0;
-            for(int j = (startRow + startCol) % 2; j < N; j += 2)
+            for(int j = (startRow + startCol) & 1; j < N; j += 2)
                 totalPaths += paths[0][j];
             output.append("Case ").append(i).append(": ").append(totalPaths %= 1000007).append('\n');
 		}
