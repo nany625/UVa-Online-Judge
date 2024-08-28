@@ -13,14 +13,14 @@ public class Main {
 		    }
 		    long[] swap = new long[1];
 		    MergeSort(P, reg, 0, N - 1, swap);
-		    output.append(swap[0] % 2 == 1 ? "Marcelo\n" : "Carlos\n");
+		    output.append((swap[0] & 1) == 1 ? "Marcelo\n" : "Carlos\n");
 		}
 		System.out.print(output);
 	}
 	
 	static void MergeSort(int[] P, int[] reg, int left, int right, long[] swap) {
         if(left < right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             MergeSort(P, reg, left, mid, swap);
             MergeSort(P, reg, mid + 1, right, swap);
             int leftPointer = left, rightPointer = mid + 1;
