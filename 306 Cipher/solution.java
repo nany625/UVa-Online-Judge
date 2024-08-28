@@ -29,9 +29,7 @@ public class Main {
                     }
                     cipher[nextIndex[k % cycle]] = message.charAt(i);
                 }
-                for(char ch : cipher)
-                    output.append(ch);
-                output.append('\n');
+                output.append(new String(cipher)).append('\n');
             }
             output.append('\n');
         }
