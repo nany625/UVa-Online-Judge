@@ -6,11 +6,8 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		st.nextToken();
 		int T = (int)st.nval;
-		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
 		while(T-- > 0) {
-		    if(!firstCase)
-		        output.append('\n');
 		    st.nextToken();
 		    int N = (int)st.nval;
 		    Anagram[] anagrams = new Anagram[N];
@@ -36,7 +33,8 @@ public class Main {
 		        if(count == 0)
 		            output.append("No anagrams for: ").append(test).append('\n');
 		    }
-		    firstCase = false;
+		    if(T > 0)
+		        output.append('\n');
 		}
 		System.out.print(output);
 	}
