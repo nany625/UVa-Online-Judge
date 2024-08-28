@@ -16,7 +16,7 @@ public class Main {
 		    if(v1 == 0 && d1 == 0 && v2 == 0 && d2 == 0)
 		        break;
 		    output.append("Case #").append(++cases).append(": ").append(d1 * v2 < d2 * v1 ? "You owe me a beer!\nAvg. arrival time: " : "No beer for the captain.\nAvg. arrival time: ");
-		    long numerator = d1 * v2 + v1 * d2, denominator = 2 * v1 * v2;
+		    long numerator = d1 * v2 + v1 * d2, denominator = v1 * v2 << 1;
             long temp = GCD(numerator, denominator);
             numerator /= temp;
             denominator /= temp;
