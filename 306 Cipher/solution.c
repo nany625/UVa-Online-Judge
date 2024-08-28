@@ -30,7 +30,7 @@ int main() {
                 }
                 cipher[nextIndex[k % cycle]] = message[i];
             }
-            printf("%s\n", cipher);
+            puts(cipher);
         }
         putchar('\n');
     }
