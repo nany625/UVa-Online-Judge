@@ -9,7 +9,7 @@ int findMin(int a, int b, int c, int d) {
 int main() {
     int cases = 0, n;
     while(scanf("%d", &n) && n != 0) {
-        int squares = (n + 1) / 2;
+        int squares = (n + 1) >> 1;
         short sum[squares];
         for(int i = 0; i < squares; ++i)
             sum[i] = 0;
