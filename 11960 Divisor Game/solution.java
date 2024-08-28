@@ -13,9 +13,9 @@ public class Main {
         for(int i = 4; i <= 1000000; i += 2) {
             if(max <= factorCount[i] + 2) {
                 max = (short)(factorCount[i] + 2);
-                table[i / 2 - 1] = i;
+                table[(i >> 1) - 1] = i;
             } else
-                table[i / 2 - 1] = table[i / 2 - 2];
+                table[(i >> 1) - 1] = table[(i >> 1) - 2];
         }
         StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
@@ -27,7 +27,7 @@ public class Main {
     		if(N == 1 || N == 3)
     	        output.append(N).append('\n');
     	    else
-    	        output.append(table[N / 2 - 1]).append('\n');
+    	        output.append(table[(N >> 1) - 1]).append('\n');
 		}
 	    System.out.print(output);
 	}
