@@ -12,7 +12,7 @@ public class Main {
 	        while(n-- > 0) {
     	        st.nextToken();
                 int curr = (int)st.nval;
-                if((size % 2 == 0) == curr > prev)
+                if(((size & 1) == 1) == curr < prev)
                     ++size;
                 prev = curr;
 	        }
