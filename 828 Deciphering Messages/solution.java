@@ -6,11 +6,8 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int cases = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-            if(!firstCase)
-                output.append('\n');
             st.nextToken();
             String alphaKey = st.sval;
             st.nextToken();
@@ -62,7 +59,8 @@ public class Main {
                 else
                     output.append("error in encryption\n");
             }
-            firstCase = false;
+            if(cases > 0)
+                output.append('\n');
         }
 	    System.out.print(output);
 	}
