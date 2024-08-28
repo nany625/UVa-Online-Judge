@@ -24,11 +24,11 @@ int main() {
         for(int j = i; j < MAX_SIZE; ++j) {
             int sum = primes[i] + primes[j];
             if(sum < 32768)
-                ++pairs[sum / 2 - 2];
+                ++pairs[(sum >> 1) - 2];
         }
     }
 	int n;
 	while(scanf("%d", &n) && n != 0)
-		printf("%d\n", pairs[n / 2 - 2]);
+		printf("%d\n", pairs[(n >> 1) - 2]);
 	return 0;
 }
