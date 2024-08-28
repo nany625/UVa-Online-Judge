@@ -4,10 +4,7 @@
 int main() {
 	int cases;
 	scanf("%d", &cases);
-	bool firstCase = true;
 	while(cases--) {
-		if(!firstCase)
-			putchar('\n');
 		int amplitude, frequency;
 		scanf("%d %d", &amplitude, &frequency);
 		bool firstWave = true;
@@ -26,7 +23,8 @@ int main() {
 			}
 			firstWave = false;
 		}
-		firstCase = false;
+		if(cases)
+			putchar('\n');
 	}
 	return 0;
 }
