@@ -46,7 +46,7 @@ int main() {
 		short streetLocations[F], avenueLocations[F];
 		for(int i = 0; i < F; ++i)
 			scanf("%hd %hd", &streetLocations[i], &avenueLocations[i]);
-		int median = (F - 1) / 2;
+		int median = (F - 1) >> 1;
 		DualPivotQuickSelect(streetLocations, 0, F - 1, median);
 		DualPivotQuickSelect(avenueLocations, 0, F - 1, median);
 		printf("(Street: %hd, Avenue: %hd)\n", streetLocations[median], avenueLocations[median]);
