@@ -11,19 +11,19 @@ public class Main {
 		    int sum = 0;
 		    for(int i = 0; i < 6; ++i)
 		        sum += (i + 1) * count[i];
-		    if(sum % 2 == 1)
+		    if((sum & 1) == 1)
 		        output.append("Collection #").append(++cases).append(":\nCan't be divided.\n\n");
 		    else {
 		        ArrayList<Integer> marbles = new ArrayList<>();
 		        for(int i = 0; i < 6; ++i) {
-                    for(int j = 1; j <= count[i]; j *= 2) {
+                    for(int j = 1; j <= count[i]; j <<= 1) {
                         marbles.add((i + 1) * j);
                         count[i] -= j;
                     }
                     if(count[i] > 0)
                         marbles.add((i + 1) * count[i]);
                 }
-                output.append("Collection #").append(++cases).append(isSubsetSum(marbles, marbles.size(), sum / 2) ? ":\nCan be divided.\n\n" : ":\nCan't be divided.\n\n");
+                output.append("Collection #").append(++cases).append(isSubsetSum(marbles, marbles.size(), sum >> 1) ? ":\nCan be divided.\n\n" : ":\nCan't be divided.\n\n");
 		    }
 		}
 		System.out.print(output);
