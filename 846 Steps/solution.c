@@ -12,11 +12,11 @@ int main() {
 		else {
 		    int maxLen = sqrt(y - x);
 			if(maxLen == sqrt(y - x))
-				printf("%d\n", 2 * maxLen - 1);
+				printf("%d\n", (maxLen << 1) - 1);
 			else if(maxLen < sqrt(y - x - maxLen))
-				printf("%d\n", 2 * maxLen + 1);
+				printf("%d\n", (maxLen << 1) + 1);
 			else
-				printf("%d\n", 2 * maxLen);
+				printf("%d\n", maxLen << 1);
 		}
 	}
 	return 0;
