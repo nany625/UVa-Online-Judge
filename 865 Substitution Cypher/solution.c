@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 int main() {
 	int cases;
@@ -8,10 +7,7 @@ int main() {
 	getchar();
 	getchar();
     char plaintext[66], substitution[66], text[66];
-	bool firstCase = true;
 	while(cases--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    fgets(plaintext, sizeof(plaintext), stdin);
 		fgets(substitution, sizeof(substitution), stdin);
 		printf("%s%s", substitution, plaintext);
@@ -25,7 +21,8 @@ int main() {
 		    for(int i = 0; i < len; ++i)
 		        putchar(ASCII[(int)text[i]] != '\0' ? ASCII[(int)text[i]] : text[i]);
 		}
-		firstCase = false;
+	    if(cases)
+	        putchar('\n');
 	}
 	return 0;
 }
