@@ -49,7 +49,7 @@ int main() {
 	        printf("Case %d: 1\n", ++cases);
 	        continue;
 	    }
-	    int ans = S - 1, limit = ceil(sqrt(1 + 8 * S) - 1) / 2;
+	    int ans = S - 1, limit = (int)ceil(sqrt(1 + (S << 3)) - 1) >> 1;
 	    while(ans >= limit && factorSum(ans) != S)
 	        --ans;
 	    printf("Case %d: %d\n", ++cases, ans >= limit ? ans : -1);
