@@ -10,10 +10,8 @@ int main() {
 	    ans[lenX + lenY] = '\0';
 	    for(int i = lenY - 1; i >= 0; --i) {
 	        for(int j = lenX - 1; j >= 0; --j) {
-	            int mul = (X[j] - '0') * (Y[i] - '0');
-	            int temp = mul + ans[i + j + 1] - '0';
-	            ans[i + j + 1] = temp % 10 + '0';
-	            ans[i + j] += temp / 10;
+	            ans[i + j] += ((X[j] - '0') * (Y[i] - '0') + ans[i + j + 1] - '0') / 10;
+	            ans[i + j + 1] = ((X[j] - '0') * (Y[i] - '0') + ans[i + j + 1] - '0') % 10 + '0';
 	        }
 	    }
 	    int i = 0;
