@@ -8,11 +8,8 @@ public class Main {
         st.nextToken();
 	    int cases = (int)st.nval;
 	    br.readLine();
-	    boolean firstCase = true;
         StringBuilder output = new StringBuilder();
     	while(cases-- > 0) {
-    	    if(!firstCase)
-    	        output.append('\n');
     	    String plaintext = br.readLine(), substitution = br.readLine();
     	    output.append(substitution + "\n" + plaintext + "\n");
     	    int len = plaintext.length();
@@ -26,7 +23,8 @@ public class Main {
     	            output.append(cypher.containsKey(text.charAt(i)) ? (char)cypher.get(text.charAt(i)) : text.charAt(i));
     	        output.append('\n');
     	    }
-    	    firstCase = false;
+    	    if(cases > 0)
+    	        output.append('\n');
     	}
         System.out.print(output);
 	}
