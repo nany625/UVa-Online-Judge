@@ -22,13 +22,13 @@ int main() {
     while(cases--) {
         int n;
         scanf("%d", &n);
-        int weights[2 * n];
+        int weights[n << 1];
         for(int i = 0; i < n; ++i) {
             scanf("%d", &weights[n + i]);
             weights[n - 1 - i] = weights[n + i];
         }
         int *lis = NULL, size = 0;
-        for(int i = 2 * n - 1; i >= 0; --i) {
+        for(int i = (n << 1) - 1; i >= 0; --i) {
             int pos = binarySearch(lis, size, weights[i]);
             if(pos == size)
                 lis = (int*)realloc(lis, ++size * sizeof(int));
