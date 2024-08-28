@@ -12,7 +12,7 @@ public class Main {
             int curr = prev + 1, max = prev - 1;
             while(curr < len) {
                 if(bed.charAt(curr) == 'X') {
-                    max = Math.max(max, (curr - prev - 2) / 2);
+                    max = Math.max(max, (curr - prev - 2) >> 1);
                     prev = curr;
                 }
                 ++curr;
