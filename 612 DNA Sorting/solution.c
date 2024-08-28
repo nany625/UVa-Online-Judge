@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef struct {
     char *str;
@@ -24,10 +23,7 @@ int compare(const void *a, const void *b) {
 int main() {
 	int M;
 	scanf("%d", &M);
-	bool firstCase = true;
 	while(M--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    int m;
 	    scanf("%*d %d", &m);
 	    DNA dnas[m];
@@ -41,7 +37,8 @@ int main() {
             printf("%s\n", dnas[i].str);
             free(dnas[i].str);
         }
-	    firstCase = false;
+	    if(M)
+	        putchar('\n');
 	}
 	return 0;
 }
