@@ -34,10 +34,10 @@ int main() {
 	int N, C;
     while(scanf("%d %d", &N, &C) == 2) {
     	printf("%d %d:", N, C);
-    	if(pos[N - 1] % 2 == 0 && 2 * C < pos[N - 1])
-    		printPrimes(pos[N - 1] / 2 - C, pos[N - 1] / 2 + C - 1);
-    	else if(pos[N - 1] % 2 == 1 && 2 * C - 1 < pos[N - 1])
-    		printPrimes((pos[N - 1] + 1) / 2 - C, (pos[N - 1] - 3) / 2 + C);
+    	if(!(pos[N - 1] & 1) && C << 1 < pos[N - 1])
+    		printPrimes((pos[N - 1] >> 1) - C, (pos[N - 1] >> 1) + C - 1);
+    	else if(pos[N - 1] & 1 && (C << 1) - 1 < pos[N - 1])
+    		printPrimes(((pos[N - 1] + 1) >> 1) - C, ((pos[N - 1] - 3) >> 1) + C);
     	else
     		printPrimes(0, pos[N - 1] - 1);
     	puts("\n");
