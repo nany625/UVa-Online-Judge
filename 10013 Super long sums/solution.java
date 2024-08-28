@@ -5,11 +5,8 @@ public class Main {
     	StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int N = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
-            if(!firstCase)
-			    output.append('\n');
             st.nextToken();
             int M = (int)st.nval;
             char[] ans = new char[M + 1];
@@ -29,7 +26,8 @@ public class Main {
     	    for(int i = 1; i <= M; ++i)
     	        output.append(ans[i]);
     	    output.append('\n');
-    	    firstCase = false;
+    	    if(cases > 0)
+			    output.append('\n');
         }
         System.out.print(output);
 	}
