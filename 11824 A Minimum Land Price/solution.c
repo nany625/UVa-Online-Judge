@@ -18,7 +18,7 @@ int main() {
 	    qsort(cost, size, sizeof(int), compare);
 	    int total = 0;
 	    for(int i = 0; i < size && total <= 5000000; ++i)
-	        total += 2 * pow(cost[i], i + 1);
+	        total += (int)pow(cost[i], i + 1) << 1;
 	    if(total <= 5000000)
 	        printf("%d\n", total);
 	    else
