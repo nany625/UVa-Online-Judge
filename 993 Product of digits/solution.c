@@ -27,7 +27,7 @@ int main() {
 				do {
 				    putchar(digits[--size] + '0');
 				} while(size > 0);
-				puts("");
+				putchar('\n');
 			}
 		} else
 			puts("-1");
