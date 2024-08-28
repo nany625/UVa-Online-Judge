@@ -8,8 +8,8 @@ public class Main {
 	        String s = st.sval;
 	        StringBuilder concat = new StringBuilder(s).reverse().append("#" + s);
             int len = s.length(), i = 1, length = 0;
-	        int[] lps = new int[2 * len + 1];
-	        while(i < 2 * len + 1) {
+	        int[] lps = new int[(len << 1) + 1];
+	        while(i < (len << 1) + 1) {
 	            if(concat.charAt(i) == concat.charAt(length))
 	                lps[i++] = ++length;
 	            else {
@@ -20,7 +20,7 @@ public class Main {
 	            }
 	        }
 			output.append(s);
-			for(int j = len - lps[2 * len] - 1; j >= 0; --j)
+			for(int j = len - lps[(len << 1)] - 1; j >= 0; --j)
 			    output.append(s.charAt(j));
 			output.append('\n');
         }
