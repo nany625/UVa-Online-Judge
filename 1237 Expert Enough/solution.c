@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 typedef struct {
     char M[21];
@@ -10,10 +9,7 @@ typedef struct {
 int main() {
 	int T;
 	scanf("%d", &T);
-	bool firstCase = true;
 	while(T--) {
-		if(!firstCase)
-			putchar('\n');
 		int D;
 		scanf("%d", &D);
 		Data datas[D];
@@ -33,7 +29,8 @@ int main() {
 			}
 			puts(count == 1 ? datas[curr].M : "UNDETERMINED");
 		}
-        firstCase = false;
+		if(T > 0)
+		    putchar('\n');
 	}
 	return 0;
 }
