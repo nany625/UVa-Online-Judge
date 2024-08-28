@@ -35,7 +35,7 @@ public class Main {
     				}
     			}
             }
-            if(!firstCase)
+            if(cases > 0)
 			    output.append('\n');
         }
         System.out.print(output);
