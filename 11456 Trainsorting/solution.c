@@ -5,7 +5,7 @@
 int binarySearch(int *array, int size, int key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + (right - left) / 2;
+        int mid = left + ((right - left) >> 1);
         if(array[mid] == key)
             return mid;
         if(array[mid] < key)
@@ -57,7 +57,7 @@ int main() {
         for(int i = n - 1; i >= 0; --i) {
             int left = 0, right = lisSize - 1;
             while(left <= right) {
-                int mid = left + (right - left) / 2;
+                int mid = left + ((right - left) >> 1);
                 if(lis[mid] < weights[i])
                     left = mid + 1;
                 else
@@ -70,7 +70,7 @@ int main() {
             left = 0;
             right = ldsSize - 1;
             while(left <= right) {
-                int mid = left + (right - left) / 2;
+                int mid = left + ((right - left) >> 1);
                 if(lds[mid] > weights[i])
                     left = mid + 1;
                 else
