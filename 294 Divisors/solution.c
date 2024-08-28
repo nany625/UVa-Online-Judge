@@ -14,7 +14,7 @@ int factorCount(int n) {
 	    ++i;
 	}
 	if(n > 1)
-	    result *= 2;
+	    result <<= 1;
 	return result;
 }
 
@@ -26,7 +26,7 @@ int main() {
 		scanf("%d %d", &L, &U);
 		printf("Between %d and %d, ", L, U);
 		int ans = L, count = factorCount(L);
-		L += (L + 1) % 2 + 1;
+		L += ((L + 1) & 1) + 1;
 		while(L % 6 != 0 && L <= U) {
 		    int temp = factorCount(L);
 			if(count < temp) {
