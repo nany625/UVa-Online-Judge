@@ -15,7 +15,7 @@ int main() {
         char *token = strtok(buffer, " ");
         while(token) {
             int curr = atoi(token);
-            size += (size % 2 == 0) == curr > prev;
+            size += (size & 1) == curr < prev;
             prev = curr;
             token = strtok(NULL, " ");
         }
