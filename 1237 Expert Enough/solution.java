@@ -5,11 +5,8 @@ public class Main {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int T = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
     	while(T-- > 0) {
-    	    if(!firstCase)
-    	        output.append('\n');
     	    st.nextToken();
     	    int D = (int)st.nval;
     	    Data[] datas = new Data[D];
@@ -34,7 +31,8 @@ public class Main {
     	        }
     	        output.append(count == 1 ? datas[curr].M : "UNDETERMINED").append('\n');
     	    }
-    	    firstCase = false;
+    	    if(T > 0)
+                output.append('\n');
     	}
         System.out.print(output);
 	}
