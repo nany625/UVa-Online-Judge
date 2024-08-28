@@ -6,11 +6,8 @@ public class Main {
 	    StreamTokenizer st = new StreamTokenizer(System.in);
         st.nextToken();
         int cases = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-            if(!firstCase)
-                output.append('\n');
             st.nextToken();
             int N = (int)st.nval;
             Job[] jobs = new Job[N];
@@ -34,7 +31,8 @@ public class Main {
     	        output.append(jobs[i].jobNum);
     	    }
     	    output.append('\n');
-    	    firstCase = false;
+    	    if(cases > 0)
+                output.append('\n');
     	}
         System.out.print(output);
 	}
