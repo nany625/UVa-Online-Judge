@@ -6,11 +6,8 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int N = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
-            if(!firstCase)
-				output.append('\n');
             br.readLine();
 	        String s = br.readLine();
             int len = s.length(), i = 1, length = 0;
@@ -26,7 +23,8 @@ public class Main {
 	            }
 	        }
 			output.append(len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len).append('\n');
-			firstCase = false;
+			if(N > 0)
+				output.append('\n');
         }
         System.out.print(output);
 	}
