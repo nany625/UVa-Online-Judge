@@ -10,7 +10,7 @@ int main() {
         int curr = prev + 1, max = prev - 1;
         while(curr < len) {
             if(bed[curr] == 'X') {
-                max = max > (curr - prev - 2) / 2 ? max : (curr - prev - 2) / 2;
+                max = max > (curr - prev - 2) >> 1 ? max : (curr - prev - 2) >> 1;
                 prev = curr;
             }
             ++curr;
