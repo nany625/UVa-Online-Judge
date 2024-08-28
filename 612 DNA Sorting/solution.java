@@ -6,11 +6,8 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(System.in);
 		st.nextToken();
 		int M = (int)st.nval;
-		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
 		while(M-- > 0) {
-		    if(!firstCase)
-		        output.append('\n');
 		    st.nextToken();
 		    st.nextToken();
 		    int m = (int)st.nval;
@@ -27,8 +24,9 @@ public class Main {
 		    });
 		    for(DNA d : dnas)
 		        output.append(d.s).append('\n');
-		    firstCase = false;
-		}
+		    if(M > 0)
+		        output.append('\n');
+        }
 		System.out.print(output);
 	}
 	
