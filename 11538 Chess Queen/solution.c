@@ -10,7 +10,7 @@ int main() {
         }
         long vertical = M * (M - 1) * N;
         long horizontal = N * (N - 1) * M;
-        long diagonal = 8 * M * (M - 1) * (M - 2) / 6 + 2 * M * (M - 1) * (N - M + 1);
+        long diagonal = (M * (M - 1) * (M - 2) << 3) / 6 + (M * (M - 1) * (N - M + 1) << 1);
         printf("%ld\n", vertical + horizontal + diagonal);
     }
 	return 0;
