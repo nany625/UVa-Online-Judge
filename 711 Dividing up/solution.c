@@ -31,12 +31,12 @@ int main() {
         int sum = 0;
         for(int i = 0; i < 6; ++i)
             sum += (i + 1) * count[i];
-        if(sum % 2 == 1)
+        if(sum & 1)
             printf("Collection #%d:\nCan't be divided.\n\n", ++cases);
         else {
             int *marbles = NULL, size = 0;
             for(int i = 0; i < 6; ++i) {
-                for(int j = 1; j <= count[i]; j *= 2) {
+                for(int j = 1; j <= count[i]; j <<= 1) {
                     marbles = (int*)realloc(marbles, (size + 1) * sizeof(int));
                     marbles[size++] = (i + 1) * j;
                     count[i] -= j;
@@ -46,7 +46,7 @@ int main() {
                     marbles[size++] = (i + 1) * count[i];
                 }
             }
-            printf("Collection #%d:\nCan%s be divided.\n\n", ++cases, isSubsetSum(marbles, size, sum / 2) ? "" : "'t");
+            printf("Collection #%d:\nCan%s be divided.\n\n", ++cases, isSubsetSum(marbles, size, sum >> 1) ? "" : "'t");
         }
     }
 	return 0;
