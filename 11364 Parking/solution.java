@@ -14,7 +14,7 @@ public class Main {
 		        min = Math.min(min, (int)st.nval);
 		        max = Math.max(max, (int)st.nval);
 		    }
-		    output.append(2 * (max - min)).append('\n');
+		    output.append((max - min) << 1).append('\n');
 		}
 		System.out.print(output);
 	}
