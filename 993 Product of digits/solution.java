@@ -36,18 +36,4 @@ public class Main {
         }
 	    System.out.print(output);
 	}
-	
-	static int binarySearch(int[] array, int key) {
-	    int left = 0, right = 41;
-		while(left <= right) {
-			int mid = left + (right - left) / 2;
-			if(array[mid] == key)
-				return mid;
-			if(array[mid] < key)
-				left = mid + 1;
-			else
-				right = mid - 1;
-		}
-		return left;
-	}
 }
