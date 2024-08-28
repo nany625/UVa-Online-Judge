@@ -16,11 +16,11 @@ public class Main {
 		    else {
 		        int maxLen = (int)Math.sqrt(y - x);
 		        if(maxLen == Math.sqrt(y - x))
-    				output.append(2 * maxLen - 1).append('\n');
+    				output.append((maxLen << 1) - 1).append('\n');
     			else if(maxLen < Math.sqrt(y - x - maxLen))
-    				output.append(2 * maxLen + 1).append('\n');
+    				output.append((maxLen << 1) + 1).append('\n');
     			else
-    				output.append(2 * maxLen).append('\n');
+    				output.append(maxLen << 1).append('\n');
 		    }
 		}
 		System.out.print(output);
