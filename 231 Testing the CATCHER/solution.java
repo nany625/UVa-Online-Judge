@@ -33,7 +33,7 @@ public class Main {
 	static int binarySearch(ArrayList<Short> arrayList, int size, short key) {
         int left = 0, right = size - 1;
         while(left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             if(arrayList.get(mid) < key)
                 left = mid + 1;
             else
