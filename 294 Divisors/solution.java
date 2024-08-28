@@ -14,7 +14,7 @@ public class Main {
 			int U = (int)st.nval;
 			output.append("Between ").append(L).append(" and ").append(U).append(", ");
 			int ans = L, count = factorCount(L);
-			L += (L + 1) % 2 + 1;
+			L += ((L + 1) & 1) + 1;
 			while(L % 6 != 0 && L <= U) {
     		    int temp = factorCount(L);
     			if(count < temp) {
@@ -56,7 +56,7 @@ public class Main {
     	    ++i;
     	}
     	if(n > 1)
-    	    result *= 2;
+    	    result <<= 1;
     	return result;
     }
 }
