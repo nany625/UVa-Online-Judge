@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef struct {
     char word[21], sortedWord[21];
@@ -14,10 +13,7 @@ int compare(const void *a, const void *b) {
 int main() {
 	int T;
 	scanf("%d", &T);
-	bool firstCase = true;
 	while(T--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    int N;
 	    scanf("%d", &N);
 	    Anagram anagrams[N];
@@ -41,7 +37,8 @@ int main() {
 	        if(count == 0)
 	            printf("No anagrams for: %s\n", test);
 	    }
-	    firstCase = false;
+	    if(T)
+	        putchar('\n');
 	}
 	return 0;
 }
