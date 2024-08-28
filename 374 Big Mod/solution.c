@@ -5,10 +5,10 @@ int bigMod(long B, int P, int M) {
         return 1 % M;
     if(P == 1)
         return B % M;
-    int temp = bigMod(B, P / 2, M);
-    if(P % 2 == 0)
-        return temp * temp % M;
-    return temp * temp * B % M;
+    int temp = bigMod(B, P >> 1, M);
+    if(P & 1)
+        return temp * temp * B % M;
+    return temp * temp % M;
 }
 
 int main() {
