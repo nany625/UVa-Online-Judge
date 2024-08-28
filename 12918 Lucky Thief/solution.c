@@ -6,7 +6,7 @@ int main() {
 	while(T--) {
 		int n, m;
 		scanf("%d %d", &n, &m);
-		printf("%ld\n", (long)(2 * m - n - 1) * n / 2);
+		printf("%ld\n", (long)((m << 1) - n - 1) * n >> 1);
 	}
 	return 0;
 }
