@@ -5,7 +5,7 @@
 bool isPrime(int n) {
     if(n <= 3)
         return n > 1;
-    if(n % 2 == 0 || n % 3 == 0)
+    if(!(n & 1) || n % 3 == 0)
         return false;
     int limit = sqrt(n);
     for(int i = 5; i <= limit; i += 6) {
