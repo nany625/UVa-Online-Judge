@@ -7,11 +7,8 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int cases = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-    	    if(!firstCase)
-		        output.append('\n');
     		br.readLine();
 			HashMap<Integer, String> map = new HashMap<>();
     		String[] p = br.readLine().split("\\s+");
@@ -21,7 +18,8 @@ public class Main {
     			map.put(Integer.parseInt(p[i]), x[i]);
 			for(int i = 1; i <= len; ++i)
     			output.append(map.get(i)).append('\n');
-    		firstCase = false;
+    		if(cases > 0)
+		        output.append('\n');
     	}
         System.out.print(output);
 	}
