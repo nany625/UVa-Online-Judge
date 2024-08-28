@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -22,7 +23,7 @@ int main() {
 		short barsLen[p];
 		for(int i = 0; i < p; ++i)
 			scanf("%hd", &barsLen[i]);
-		printf("%s\n", isSubsetSum(barsLen, p, n) ? "YES" : "NO");
+		puts(isSubsetSum(barsLen, p, n) ? "YES" : "NO");
 	}
 	return 0;
 }
