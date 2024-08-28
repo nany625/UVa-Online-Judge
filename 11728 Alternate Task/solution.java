@@ -43,7 +43,7 @@ public class Main {
                 output.append("Case ").append(++cases).append(": 1\n");
                 continue;
             }
-            int ans = S - 1, limit = (int)Math.ceil(Math.sqrt(1 + 8 * S) - 1) / 2;
+            int ans = S - 1, limit = (int)Math.ceil(Math.sqrt(1 + (S << 3)) - 1) >> 1;
             while(ans >= limit && factorSum(ans) != S)
 	            --ans;
 	        output.append("Case ").append(++cases).append(": ").append(ans >= limit ? ans : -1).append('\n');
