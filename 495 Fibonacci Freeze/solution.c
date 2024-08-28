@@ -11,9 +11,8 @@ Fib fib[5001];
 
 int main() {
     fib[0].number = strdup("0");
-    fib[0].digits = 1;
     fib[1].number = strdup("1");
-    fib[1].digits = 1;
+    fib[0].digits = fib[1].digits = 1;
     for(int i = 2; i <= 5000; ++i) {
         fib[i].number = (char*)malloc((fib[i - 1].digits + 1) * sizeof(char));
         memset(fib[i].number, '0', fib[i - 1].digits + 1);
