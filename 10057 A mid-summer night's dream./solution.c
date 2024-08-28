@@ -1,13 +1,12 @@
 #include <stdio.h>
 
-void MergeSort(int *array, int left, int right) {
+void MergeSort(int *array, int *reg, int left, int right) {
     if(left < right) {
         int mid = left + ((right - left) >> 1);
-        MergeSort(array, left, mid);
-        MergeSort(array, mid + 1, right);
-        int reg[right - left + 1];
+        MergeSort(array, reg, left, mid);
+        MergeSort(array, reg, mid + 1, right);
         int leftPointer = left, rightPointer = mid + 1;
-        for(int i = 0; i < right - left + 1; ++i) {
+        for(int i = left; i <= right; ++i) {
             if(leftPointer > mid)
                 reg[i] = array[rightPointer++];
             else if(rightPointer > right)
@@ -17,18 +16,18 @@ void MergeSort(int *array, int left, int right) {
             else
                 reg[i] = array[rightPointer++];
         }
-        for(int i = 0; i < right - left + 1; ++i)
-            array[i + left] = reg[i];
+        for(int i = left; i <= right; ++i)
+            array[i] = reg[i];
     }
 }
 
 int main() {
     int n;
     while(scanf("%d", &n) == 1) {
-        int X[n];
+        int X[n], reg[n];
         for(int i = 0; i < n; ++i)
             scanf("%d", &X[i]);
-        MergeSort(X, 0, n - 1);
+        MergeSort(X, reg, 0, n - 1);
         int low = (n - 1) >> 1, high = n >> 1;
         while(low > 0 && X[low] == X[low - 1])
             --low;
