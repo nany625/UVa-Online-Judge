@@ -5,7 +5,7 @@ int tokenSum(char *number, int first, int last) {
     for(int i = first; i < last; ++i) {
         int digit = number[i] - '0';
 	    if(i % 5 % 4 == 0 || i % 5 % 4 == 2)
-	        result += (2 * digit) / 10 + (2 * digit) % 10;
+	        result += (digit << 1) / 10 + (digit << 1) % 10;
 	    else
 	        result += digit;
     }
