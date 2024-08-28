@@ -13,11 +13,11 @@ public class Main {
     		short[] modThreeCount = new short[3];
     		for(int j = 0; j < len; ++j)
     			++modThreeCount[(N.charAt(j) - '0') % 3];
-    		short result = (short)((modThreeCount[1] + modThreeCount[2] * 2) % 3);
+    		short result = (short)((modThreeCount[1] + (modThreeCount[2] << 1)) % 3);
     		if(result == 0)
-    			output.append("Case ").append(i).append(modThreeCount[0] % 2 == 1 ? ": S\n" : ": T\n");
+    			output.append("Case ").append(i).append((modThreeCount[0] & 1) == 1 ? ": S\n" : ": T\n");
     		else
-    			output.append("Case ").append(i).append(modThreeCount[result] != 0 && modThreeCount[0] % 2 == 0 ? ": S\n" : ": T\n");
+    			output.append("Case ").append(i).append(modThreeCount[result] != 0 && (modThreeCount[0] & 1) == 0 ? ": S\n" : ": T\n");
     	}
 	    System.out.print(output);
 	}
