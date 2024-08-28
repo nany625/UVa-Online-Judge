@@ -11,7 +11,7 @@ public class Main {
             int terms = 0;
             while(A != 1 && A <= L) {
                 ++terms;
-                A = A % 2 == 0 ? A / 2 : 3 * A + 1;
+                A = (A & 1) == 1 ? 3 * A + 1 : A >> 1;
             }
             output.append(terms + (A == 1 ? 1 : 0)).append('\n');
         }
