@@ -22,7 +22,7 @@ public class Main {
     	        for(int j = 0; j <= i; ++j) {
     	            if(j > 0)
     	                output.append(' ');
-    	            output.append(i & 1 == 1 ? brick[i + 1][j] + brick[i + 1][j + 1] : brick[i][j]);
+    	            output.append((i & 1) == 1 ? brick[i + 1][j] + brick[i + 1][j + 1] : brick[i][j]);
     	        }
     	        output.append('\n');
     	    }
