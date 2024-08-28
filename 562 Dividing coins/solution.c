@@ -19,7 +19,7 @@ int main() {
             sum += coins[i] = atoi(token);
             token = strtok(NULL, " ");
         }
-        int temp = sum / 2, max = 0;
+        int temp = sum >> 1, max = 0;
         bool subsetSum[temp + 1];
         subsetSum[0] = true;
         memset(subsetSum + 1, 0, temp * sizeof(bool));
@@ -29,7 +29,7 @@ int main() {
                     max = max > j ? max : j;
             }
         }
-        printf("%d\n", sum - 2 * max);
+        printf("%d\n", sum - (max << 1));
     }
     free(buffer);
 	return 0;
