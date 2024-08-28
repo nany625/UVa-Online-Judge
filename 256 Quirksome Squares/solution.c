@@ -5,9 +5,9 @@
 int main() {
 	int n;
 	while(scanf("%d", &n) == 1) {
-		for(int i = 0; i < pow(10, n >> 1); ++i) {
-        	int split1 = i * i / (int)pow(10, n >> 1);
-        	int split2 = i * i % (int)pow(10, n >> 1);
+	    int limit = pow(10, n >> 1);
+		for(int i = 0; i < limit; ++i) {
+        	int split1 = i * i / limit, split2 = i * i % limit;
         	if(i * i == (split1 + split2) * (split1 + split2))
         		printf("%0*d\n", n, i * i);
        	}
