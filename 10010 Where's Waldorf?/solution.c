@@ -18,10 +18,7 @@ bool searchInDirection(char **grid, int m, int n, char *word, int wordLen, int r
 int main() {
 	int cases;
 	scanf("%d", &cases);
-	bool firstCase = true;
 	while(cases--) {
-		if(!firstCase)
-			putchar('\n');
 		int m, n;
 		scanf("%d %d", &m, &n);
 		char **grid = (char**)malloc(m * sizeof(char*));
@@ -51,7 +48,8 @@ int main() {
 		for(int i = 0; i < m; ++i)
             free(grid[i]);
 		free(grid);
-		firstCase = false;
+		if(cases)
+			putchar('\n');
 	}
 	return 0;
 }
