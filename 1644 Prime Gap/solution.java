@@ -10,7 +10,7 @@ public class Main {
             if(isPrime(k))
     	        output.append("0\n");
 		    else {
-    	    	k -= (k + 1) % 2;
+    	    	k -= (k + 1) & 1;
                 int i = 0, j = 0;
 	            while(!isPrime(k - i))
                     i += 2;
@@ -26,7 +26,7 @@ public class Main {
 	static boolean isPrime(int n) {
 	    if(n <= 3)
             return n > 1;
-        if(n % 2 == 0 || n % 3 == 0)
+        if((n & 1) == 0 || n % 3 == 0)
             return false;
         int limit = (int)Math.sqrt(n);
         for(int i = 5; i <= limit; i += 6) {
