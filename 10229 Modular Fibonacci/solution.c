@@ -13,7 +13,7 @@ void multiplyMatrix(long a[2][2], long b[2][2], int mod) {
     a[1][1] = temp[1][1];
 }
 
-int powerMatrix(long matrix[2][2], int n, int mod) {
+long powerMatrix(long matrix[2][2], int n, int mod) {
     long result[2][2] = {{1, 0}, {0, 1}};
     while(n > 0) {
         if(n & 1)
