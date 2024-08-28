@@ -10,8 +10,8 @@ int compare(const void *a, const void *b) {
     Data *d2 = (Data*)b;
     if(d1->mod != d2->mod)
         return d1->mod > d2->mod;
-    int abs1 = abs(d1->number % 2);
-    int abs2 = abs(d2->number % 2);
+    int abs1 = abs(d1->number & 1);
+    int abs2 = abs(d2->number & 1);
     if(abs1 + abs2 == 1)
         return abs1 != 1;
     if(abs1 == 1)
