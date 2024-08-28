@@ -6,7 +6,7 @@ public class Main {
         int cases = 0, n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
-            int squares = (n + 1) / 2;
+            int squares = (n + 1) >> 1;
             short[] sum = new short[squares];
             for(int i = 0; i < n; ++i) {
                 for(int j = 0; j < n; ++j) {
