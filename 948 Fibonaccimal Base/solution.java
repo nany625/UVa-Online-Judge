@@ -32,7 +32,7 @@ public class Main {
 	static int binarySearch(int key) {
         int left = 0, right = 39;
         while(left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             if(fib[mid] == key)
                 return mid;
             if(fib[mid] < key)
