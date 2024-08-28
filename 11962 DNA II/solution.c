@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 
 int main() {
     int T;
@@ -13,13 +12,13 @@ int main() {
         for(int j = 0; j < A; ++j) {
             switch(DNA[j]) {
                 case 'C':
-                    B += (long)pow(4, A - 1 - j);
+                    B += (long)1 << ((A - 1 - j) << 1);
                     break;
                 case 'G':
-                    B += 2 * (long)pow(4, A - 1 - j);
+                    B += (long)1 << (((A - 1 - j) << 1) + 1);
                     break;
                 case 'T':
-                    B += 3 * (long)pow(4, A - 1 - j);
+                    B += 3 * (long)1 << ((A - 1 - j) << 1);
             }
         }
         printf("Case %d: (%d:%ld)\n", i, A, B);
