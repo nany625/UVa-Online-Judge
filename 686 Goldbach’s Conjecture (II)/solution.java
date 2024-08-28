@@ -14,14 +14,14 @@ public class Main {
             for(int j = i; j < 3512; ++j) {
                 int sum = primes[i] + primes[j];
                 if(sum < 32768)
-                    ++pairs[sum / 2 - 2];
+                    ++pairs[(sum >> 1) - 2];
             }
         }
         StreamTokenizer st = new StreamTokenizer(System.in);
         int n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0)
-    		output.append(pairs[n / 2 - 2]).append('\n');
+    		output.append(pairs[(n >> 1) - 2]).append('\n');
 	    System.out.print(output);
 	}
 	
