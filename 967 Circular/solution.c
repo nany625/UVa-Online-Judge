@@ -11,7 +11,7 @@ int cp[] = {
 int binarySearch(int key) {
     int left = 0, right = 41;
 	while(left <= right) {
-		int mid = left + (right - left) / 2;
+		int mid = left + ((right - left) >> 1);
 		if(cp[mid] == key)
 			return mid;
 		if(cp[mid] < key)
