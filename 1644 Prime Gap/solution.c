@@ -21,7 +21,7 @@ int main() {
         if(isPrime(k))
             puts("0");
         else {
-        	k -= (k + 1) % 2;
+        	k -= (k + 1) & 1;
             int i = 0, j = 0;
             while(!isPrime(k - i))
                 i += 2;
