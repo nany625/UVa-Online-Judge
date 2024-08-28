@@ -11,14 +11,14 @@ public class Main {
 		while(cases-- > 0) {
 		    st.nextToken();
 		    int n = (int)st.nval;
-		    int[] weights = new int[2 * n];
+		    int[] weights = new int[n << 1];
 		    for(int i = 0; i < n; ++i) {
 		        st.nextToken();
 		        weights[n + i] = weights[n - 1 - i] = (int)st.nval;
 		    }
 		    ArrayList<Integer> lis = new ArrayList<>();
 		    int size = 0;
-		    for(int i = 2 * n - 1; i >= 0; --i) {
+		    for(int i = (n << 1) - 1; i >= 0; --i) {
                 int pos = binarySearch(lis, size, weights[i]);
                 if(pos == size) {
                     lis.add(weights[i]);
@@ -34,7 +34,7 @@ public class Main {
 	static int binarySearch(ArrayList<Integer> arrayList, int size, int key) {
         int left = 0, right = size - 1;
         while(left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
             if(arrayList.get(mid) == key)
                 return mid;
             if(arrayList.get(mid) < key)
@@ -70,7 +70,7 @@ public class Main {
 		    for(int i = n - 1; i >= 0; --i) {
                 int left = 0, right = lisSize - 1;
                 while(left <= right) {
-                    int mid = left + (right - left) / 2;
+                    int mid = left + ((right - left) >> 1);
                     if(lis.get(mid) < weights[i])
                         left = mid + 1;
                     else
@@ -85,7 +85,7 @@ public class Main {
                 left = 0;
                 right = ldsSize - 1;
                 while(left <= right) {
-                    int mid = left + (right - left) / 2;
+                    int mid = left + ((right - left) >> 1);
                     if(lds.get(mid) > weights[i])
                         left = mid + 1;
                     else
