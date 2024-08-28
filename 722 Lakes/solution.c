@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 int dRow[] = {1, 0, 0, -1}, dCol[] = {0, 1, -1, 0};
 char grid[99][100];
@@ -21,10 +20,7 @@ int main() {
     int M;
     scanf("%d", &M);
     char buffer[101];
-    bool firstCase = true;
     while(M--) {
-        if(!firstCase)
-            putchar('\n');
         int i, j;
         scanf("%d %d", &i, &j);
         getchar();
@@ -36,7 +32,8 @@ int main() {
         int cols = strlen(grid[0]), area = 0;
         dfs(i - 1, rows, j - 1, cols, &area);
         printf("%d\n", area);
-        firstCase = false;
+        if(M)
+            putchar('\n');
     }
 	return 0;
 }
