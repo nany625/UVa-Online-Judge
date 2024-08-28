@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 typedef struct {
     int jobNum, T, S;
@@ -15,10 +14,7 @@ int compare(const void *a, const void *b) {
 int main() {
 	int cases;
 	scanf("%d", &cases);
-	bool firstCase = true;
 	while(cases--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    int N;
 	    scanf("%d", &N);
 	    Job jobs[N];
@@ -33,7 +29,8 @@ int main() {
 	        printf("%d", jobs[i].jobNum);
 	    }
 	    putchar('\n');
-	    firstCase = false;
+	    if(cases)
+	        putchar('\n');
 	}
 	return 0;
 }
