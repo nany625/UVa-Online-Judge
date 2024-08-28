@@ -20,9 +20,9 @@ public class Main {
             return 1 % M;
         if(P == 1)
             return (int)(B % M);
-        int temp = bigMod(B, P / 2, M);
-        if(P % 2 == 0)
-            return temp * temp % M;
-        return (int)(temp * temp * B % M);
+        int temp = bigMod(B, P >> 1, M);
+        if((P & 1) == 1)
+            return (int)(temp * temp * B % M);
+        return temp * temp % M;
     }
 }
