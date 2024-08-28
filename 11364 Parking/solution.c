@@ -12,7 +12,7 @@ int main() {
 	        min = min < position ? min : position;
 	        max = max > position ? max : position;
 	    }
-	    printf("%d\n", 2 * (max - min));
+	    printf("%d\n", (max - min) << 1);
 	}
 	return 0;
 }
