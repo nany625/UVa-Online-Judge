@@ -7,9 +7,7 @@ typedef struct {
 } Turtle;
 
 int compare(const void *a, const void *b) {
-    Turtle *t1 = (Turtle*)a;
-    Turtle *t2 = (Turtle*)b;
-    return t1->strength > t2->strength;
+    return ((Turtle*)a)->strength > ((Turtle*)b)->strength;
 }
 
 int main() {
@@ -54,9 +52,7 @@ typedef struct {
 } Turtle;
 
 int compare(const void *a, const void *b) {
-    Turtle *t1 = (Turtle*)a;
-    Turtle *t2 = (Turtle*)b;
-    return t1->strength > t2->strength;
+    return ((Turtle*)a)->strength > ((Turtle*)b)->strength;
 }
 
 int main() {
