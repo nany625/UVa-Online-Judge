@@ -5,7 +5,7 @@ int dRow[] = {0, 1, 0, -1, 1, 1, -1, -1}, dCol[] = {1, 0, -1, 0, 1, -1, -1, 1};
 int main() {
 	int x = 0, n, m;
 	while(scanf("%d %d", &n, &m) && (n != 0 || m != 0)) {
-	    if(x >= 1)
+	    if(x)
 	        putchar('\n');
 	    printf("Field #%d:\n", ++x);
 	    char field[n][m + 1];
