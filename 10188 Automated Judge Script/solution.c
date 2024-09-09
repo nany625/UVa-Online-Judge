@@ -7,7 +7,7 @@ int main() {
 	int x = 0, n;
 	while(scanf("%d", &n) && n != 0) {
 	    getchar();
-	    char *solution = strdup(""), buffer[106];
+	    char *solution = strdup(""), buffer[122];
 	    while(n--) {
 	        fgets(buffer, sizeof(buffer), stdin);
 	        solution = (char*)realloc(solution, (strlen(solution) + strlen(buffer) + 1) * sizeof(char));
