@@ -7,7 +7,8 @@ public class Main {
             long temp = (i >> 1) - 1;
             ans[i] = ans[i - 1] + (1 + temp) * temp - temp * ((i + 1) & 1);
         }
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) >= 3)
