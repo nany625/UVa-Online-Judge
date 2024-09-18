@@ -9,7 +9,8 @@ public class Main {
 		    for(int i = coin; i <= 6000; ++i)
 		        dp[i] += dp[i - coin];
 		}
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		double amount;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (amount = st.nval) != 0)
