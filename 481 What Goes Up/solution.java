@@ -4,7 +4,8 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         ArrayList<Integer> sequence = new ArrayList<>();
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER)
 		    sequence.add((int)st.nval);
 		ArrayList<DP> dp = new ArrayList<>();
