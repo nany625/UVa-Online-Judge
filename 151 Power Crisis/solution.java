@@ -3,7 +3,8 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 	    int N;
 	    StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
@@ -36,7 +37,8 @@ public class Main {
             137, 239, 41, 70, 60, 116, 81, 79, 55, 102, 
             49, 5, 22, 54, 52, 113, 15, 66
         };
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
