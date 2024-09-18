@@ -3,7 +3,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
