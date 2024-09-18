@@ -2,7 +2,8 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, n, m;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (m = (int)st.nval) != 0) {
