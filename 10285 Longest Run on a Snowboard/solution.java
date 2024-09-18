@@ -5,7 +5,8 @@ public class Main {
     static int[] dRow = {1, 0, 0, -1}, dCol = {0, 1, -1, 0};
     static short[][] height = new short[100][100], memo = new short[100][100];
     public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int N = (int)st.nval;
         StringBuilder output = new StringBuilder();
