@@ -21,9 +21,10 @@ public class Main {
             }
             digits[i] = (short)(j + (fib[i][j] - '0'));
         }
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
-        while((st.nextToken()) == st.TT_NUMBER) {
+        while((st.nextToken()) == StreamTokenizer.TT_NUMBER) {
             int number = (int)st.nval;
             output.append("The Fibonacci number for ").append(number).append(" is ");
             for(int i = digits[number] - 1; i >= 0; --i)
@@ -45,9 +46,10 @@ public class Main {
 		fib[1] = BigInteger.ONE;
 		for(int i = 2; i <= 5000; ++i)
 		    fib[i] = fib[i - 1].add(fib[i - 2]);
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		StringBuilder output = new StringBuilder();
-		while((st.nextToken()) == st.TT_NUMBER)
+		while((st.nextToken()) == StreamTokenizer.TT_NUMBER)
 		    output.append("The Fibonacci number for ").append((int)st.nval).append(" is ").append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
@@ -60,7 +62,8 @@ import java.math.*;
 public class Main {
     static BigInteger[][] temp = new BigInteger[2][2];
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
