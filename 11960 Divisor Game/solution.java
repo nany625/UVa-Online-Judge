@@ -17,7 +17,8 @@ public class Main {
             } else
                 table[(i >> 1) - 1] = table[(i >> 1) - 2];
         }
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int T = (int)st.nval;
         StringBuilder output = new StringBuilder();
