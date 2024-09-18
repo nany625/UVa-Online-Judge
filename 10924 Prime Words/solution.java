@@ -9,7 +9,8 @@ public class Main {
                     isComposite[j] = true;
             }
         }
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_WORD) {
             String L = st.sval;
