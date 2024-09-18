@@ -10,7 +10,8 @@ public class Main {
             F[i] = M[i - 1] + 1;
             M[i] = (int)F[i - 1] + M[i - 1];
         }
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
@@ -38,7 +39,8 @@ public class Main {
         267914295, 433494436, 701408732, 1134903169, 1836311902
     };
 	public static void main (String[] args) throws IOException {
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
