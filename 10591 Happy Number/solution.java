@@ -19,7 +19,8 @@ public class Main {
 		boolean isHappy[] = new boolean[729];
 		for(int i = 0; i < 103; ++i)
             isHappy[table[i] - 1] = true;
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
 		int cases = (int)st.nval;
 		StringBuilder output = new StringBuilder();
@@ -46,7 +47,8 @@ import java.io.*;
 
 public class Main {
 	public static void main (String[] args) throws IOException {
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
 		int cases = (int)st.nval;
 		StringBuilder output = new StringBuilder();
