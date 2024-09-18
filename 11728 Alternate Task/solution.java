@@ -10,7 +10,8 @@ public class Main {
             if(temp <= 1000)
                 table[temp - 1] = i;
         }
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, S;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0)
@@ -35,7 +36,8 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, S;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0) {
