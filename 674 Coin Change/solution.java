@@ -8,7 +8,8 @@ public class Main {
 	        for(int i = coin; i <= 7489; ++i)
 	            dp[i] += dp[i - coin];
 	    }
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		StringBuilder output = new StringBuilder();
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER)
     	    output.append(dp[(int)st.nval]).append('\n');
