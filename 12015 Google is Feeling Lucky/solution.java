@@ -4,7 +4,8 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         Webpage[] webpages = new Webpage[10];
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
@@ -42,7 +43,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int T = (int)st.nval;
 		StringBuilder output = new StringBuilder();
