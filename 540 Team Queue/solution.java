@@ -4,7 +4,8 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         int[] teamNum = new int[1000000];
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, t;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (t = (int)st.nval) != 0) {
