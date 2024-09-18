@@ -9,7 +9,8 @@ public class Main {
             for(int j = 1; j < i; ++j)
                 table[i - 2] += GCD(i, j);
         }
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0)
