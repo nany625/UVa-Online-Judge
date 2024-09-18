@@ -4,7 +4,8 @@ import java.util.*;
 public class Main {
     static ArrayList<Coordinate> lostCoordinates = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int boundX = (int)st.nval;
         st.nextToken();
