@@ -8,7 +8,8 @@ public class Main {
     static boolean isTree;
 	public static void main(String[] args) throws IOException {
 		init();
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, parent, child;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (parent = (int)st.nval) >= 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (child = (int)st.nval) >= 0) {
