@@ -3,7 +3,8 @@ import java.io.*;
 public class Main {
     static short[] primes = {2, 3, 5, 7, 11, 13};
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int N = (int)st.nval;
         StringBuilder output = new StringBuilder();
