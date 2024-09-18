@@ -10,7 +10,8 @@ public class Main {
         233, 239, 241
     };
 	public static void main(String[] args) throws IOException {
-    	StreamTokenizer st = new StreamTokenizer(System.in);
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
     	int n;
     	StringBuilder output = new StringBuilder("PERFECTION OUTPUT\n");
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
