@@ -3,7 +3,8 @@ import java.util.*;
 
 public class Main {
     static int[] count = new int[6];
-    static StreamTokenizer st = new StreamTokenizer(System.in);
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer st = new StreamTokenizer(br);
 	public static void main(String[] args) throws IOException {
 		int cases = 0;
 		StringBuilder output = new StringBuilder();
