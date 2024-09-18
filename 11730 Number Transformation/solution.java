@@ -16,7 +16,8 @@ public class Main {
                 }
             }
         }
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, S, T;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (T = (int)st.nval) != 0) {
