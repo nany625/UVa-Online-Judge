@@ -8,7 +8,8 @@ public class Main {
         832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986
     };
 	public static void main(String[] args) throws IOException {
-	    StreamTokenizer st = new StreamTokenizer(System.in);
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int N = (int)st.nval;
         StringBuilder output = new StringBuilder();
