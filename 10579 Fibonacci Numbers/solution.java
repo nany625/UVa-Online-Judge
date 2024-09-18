@@ -21,7 +21,8 @@ public class Main {
             }
             digits[i] = (short)(j + (fib[i][j] - '0'));
         }
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
         while((st.nextToken()) == st.TT_NUMBER) {
             int number = (int)st.nval;
@@ -44,9 +45,10 @@ public class Main {
 		fib[1] = BigInteger.ONE;
 		for(int i = 2; i <= 4786; ++i)
 		    fib[i] = fib[i - 1].add(fib[i - 2]);
-		StreamTokenizer st = new StreamTokenizer(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
 		StringBuilder output = new StringBuilder();
-		while((st.nextToken()) == st.TT_NUMBER)
+		while((st.nextToken()) == StreamTokenizer.TT_NUMBER)
 		    output.append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
