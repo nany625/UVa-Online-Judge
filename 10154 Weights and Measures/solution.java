@@ -5,7 +5,8 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         ArrayList<Turtle> turtles = new ArrayList<>();
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int w = (int)st.nval;
             st.nextToken();
@@ -55,7 +56,8 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         ArrayList<Turtle> turtles = new ArrayList<>();
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int w = (int)st.nval;
             st.nextToken();
