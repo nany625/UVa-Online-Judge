@@ -7,7 +7,8 @@ public class Main {
             31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 
             73, 79, 83, 89, 97
         };
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         int N;
         StringBuilder output = new StringBuilder();
         while((st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int) st.nval) != 0)) {
