@@ -4,7 +4,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
         int[] Mondays = {3, 0, 0, 4, 2, 6, 4, 1, 5, 3, 0, 5};
         String[] s = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int cases = (int)st.nval;
         StringBuilder output = new StringBuilder();
