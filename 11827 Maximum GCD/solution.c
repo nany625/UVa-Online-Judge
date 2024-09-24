@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+int compare(const void *a, const void *b) {
+    return *(int*)a < *(int*)b;
+}
+
 int GCD(int i, int j) {
     return j == 0 ? i : GCD(j, i % j);
 }
@@ -21,9 +25,10 @@ int main() {
 	        numbers[size++] = atoi(token);
 	        token = strtok(NULL, " \n");
 	    }
+	    qsort(numbers, size, sizeof(int), compare);
 	    int max = 1;
-	    for(int i = 0; i < size - 1; ++i) {
-	        for(int j = i + 1; j < size; ++j) {
+	    for(int i = 1; i < size && numbers[i] > max; ++i) {
+	        for(int j = 0; j < i; ++j) {
 	            int temp = GCD(numbers[i], numbers[j]);
 	            max = max > temp ? max : temp;
 	        }
