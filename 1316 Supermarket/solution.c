@@ -6,9 +6,7 @@ typedef struct {
 } Product;
 
 int compare(const void *a, const void *b) {
-    Product *p1 = (Product*)a;
-    Product *p2 = (Product*)b;
-    return p1->d > p2->d;
+    return ((Product*)a)->d > ((Product*)b)->d;
 }
 
 int main() {
