@@ -6,9 +6,7 @@ typedef struct {
 } Event;
 
 int compare(const void *a, const void *b) {
-    Event *e1 = (Event*)a;
-    Event *e2 = (Event*)b;
-    return e1->f > e2->f;
+    return ((Event*)a)->f > ((Event*)b)->f;
 }
 
 int main() {
