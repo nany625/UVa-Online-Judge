@@ -5,13 +5,10 @@ public class Main {
     static boolean[] isComposite = new boolean[1000000];
     static ArrayList<Long> almostPrimes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-	    for(int i = 2; i < 1000000; ++i) {
+	    appendAlmostPrimes(2);
+	    for(int i = 3; i < 1000000; i += 2) {
 	        if(!isComposite[i]) {
-	            long p = (long)i * i;
-	            while(p < 1000000000000L) {
-	                almostPrimes.add(p);
-	                p *= i;
-	            }
+	            appendAlmostPrimes(i);
 	            if(i < 1000) {
 	                for(int j = i * i; j < 1000000; j += i)
 	                    isComposite[j] = true;
@@ -36,6 +33,14 @@ public class Main {
 	    System.out.print(output);
 	}
 	
+	static void appendAlmostPrimes(int i) {
+        long p = (long)i * i;
+        while(p < 1000000000000L) {
+    	    almostPrimes.add(p);
+	        p *= i;
+        }
+    }
+    
 	static int binarySearch(int size, long key) {
 	    int left = 0, right = size - 1;
 	    while(left <= right) {
