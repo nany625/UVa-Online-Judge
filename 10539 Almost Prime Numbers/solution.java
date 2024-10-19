@@ -31,7 +31,7 @@ public class Main {
         	st.nextToken();
         	long high = (long)st.nval;
         	int posLow = binarySearch(size, low), posHigh = binarySearch(size, high);
-        	output.append(posHigh - posLow + (almostPrimes.get(posHigh) == high ? 1 : 0)).append('\n');
+        	output.append(posHigh - posLow + (posHigh < size && almostPrimes.get(posHigh) == high ? 1 : 0)).append('\n');
     	}
 	    System.out.print(output);
 	}
