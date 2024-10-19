@@ -12,7 +12,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(N-- > 0) {
             st.nextToken();
-            output.append(st.sval + ": ");
+            output.append(st.sval).append(": ");
             st.nextToken();
             int R = (int)st.nval;
             st.nextToken();
