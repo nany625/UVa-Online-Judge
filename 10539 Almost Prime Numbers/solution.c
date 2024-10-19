@@ -46,7 +46,7 @@ int main() {
 	    long low, high;
 	    scanf("%ld %ld", &low, &high);
 	    int posLow = binarySearch(low), posHigh = binarySearch(high);
-	    printf("%d\n", posHigh - posLow + (almostPrimes[posHigh] == high));
+	    printf("%d\n", posHigh - posLow + (posHigh < size && almostPrimes[posHigh] == high));
 	}
 	free(almostPrimes);
 	return 0;
