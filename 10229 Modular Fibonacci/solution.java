@@ -28,7 +28,7 @@ public class Main {
 	    System.arraycopy(temp[1], 0, a[1], 0, 2);
 	}
 	
-	static long powerMatrix(long[][] matrix, int n, int mod) {
+	static int powerMatrix(long[][] matrix, int n, int mod) {
 	    long[][] result = {{1, 0}, {0, 1}};
 	    while(n > 0) {
 	        if((n & 1) == 1)
@@ -36,6 +36,6 @@ public class Main {
 	        multiplyMatrix(matrix, matrix, mod);
 	        n >>= 1;
 	    }
-	    return result[0][0];
+	    return (int)result[0][0];
 	}
 }
