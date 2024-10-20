@@ -10,8 +10,8 @@ public class Main {
             int n = (int)st.nval;
             st.nextToken();
             int m = (int)st.nval;
-            if(n == 0) {
-                output.append("0\n");
+            if(n <= 1) {
+                output.append(n).append('\n');
                 continue;
             }
             output.append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, (1 << m) - 1)).append('\n');
@@ -24,8 +24,8 @@ public class Main {
 	    temp[0][1] = (a[0][0] * b[0][1] + a[0][1] * b[1][1]) & mod;
 	    temp[1][0] = (a[1][0] * b[0][0] + a[1][1] * b[1][0]) & mod;
 	    temp[1][1] = (a[1][0] * b[0][1] + a[1][1] * b[1][1]) & mod;
-	    for(int i = 0; i < 2; ++i)
-	        System.arraycopy(temp[i], 0, a[i], 0, 2);
+	    System.arraycopy(temp[0], 0, a[0], 0, 2);
+	    System.arraycopy(temp[1], 0, a[1], 0, 2);
 	}
 	
 	static long powerMatrix(long[][] matrix, int n, int mod) {
