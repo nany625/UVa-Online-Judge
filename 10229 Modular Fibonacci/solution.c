@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-long temp[2][2];
+int temp[2][2];
 
 void multiplyMatrix(long a[2][2], long b[2][2], int mod) {
     temp[0][0] = (a[0][0] * b[0][0] + a[0][1] * b[1][0]) & mod;
@@ -13,7 +13,7 @@ void multiplyMatrix(long a[2][2], long b[2][2], int mod) {
     a[1][1] = temp[1][1];
 }
 
-long powerMatrix(long matrix[2][2], int n, int mod) {
+int powerMatrix(long matrix[2][2], int n, int mod) {
     long result[2][2] = {{1, 0}, {0, 1}};
     while(n > 0) {
         if(n & 1)
