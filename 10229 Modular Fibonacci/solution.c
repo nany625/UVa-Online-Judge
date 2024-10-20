@@ -27,8 +27,8 @@ long powerMatrix(long matrix[2][2], int n, int mod) {
 int main() {
     int n, m;
     while(scanf("%d %d", &n, &m) == 2) {
-        if(n == 0) {
-            puts("0");
+        if(n <= 1) {
+            printf("%d\n", n);
             continue;
         }
         long matrix[2][2] = {{1, 1}, {1, 0}};
