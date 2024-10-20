@@ -6,13 +6,13 @@ public class Main {
     static int size = 0;
     public static void main(String[] args) throws IOException {
         long temp = 1;
-        while(temp <= 2000000000 && size < 5842) {
+        while(temp <= 2000000000) {
             long a = 1;
-            while(temp <= 2000000000 && size < 5842) {
+            while(temp <= 2000000000) {
                 long b = 1;
-                while(temp <= 2000000000 && size < 5842) {
+                while(temp <= 2000000000) {
                     long c = 1;
-                    while(temp <= 2000000000 && size < 5842) {
+                    while(temp <= 2000000000) {
                         humbleNumbers[size++] = (int)temp;
                         temp *= 7;
                         c *= 7;
