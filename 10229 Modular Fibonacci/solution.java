@@ -24,8 +24,10 @@ public class Main {
 	    temp[0][1] = (a[0][0] * b[0][1] + a[0][1] * b[1][1]) & mod;
 	    temp[1][0] = (a[1][0] * b[0][0] + a[1][1] * b[1][0]) & mod;
 	    temp[1][1] = (a[1][0] * b[0][1] + a[1][1] * b[1][1]) & mod;
-	    System.arraycopy(temp[0], 0, a[0], 0, 2);
-	    System.arraycopy(temp[1], 0, a[1], 0, 2);
+	    a[0][0] = temp[0][0];
+        a[0][1] = temp[0][1];
+        a[1][0] = temp[1][0];
+        a[1][1] = temp[1][1];
 	}
 	
 	static int powerMatrix(long[][] matrix, int n, int mod) {
