@@ -27,7 +27,7 @@ public class Main {
     	    for(int i = 1; i <= M; ++i)
     	        output.append(ans[i]);
     	    output.append('\n');
-    	    if(cases > 0)
+    	    if(N > 0)
 			    output.append('\n');
         }
         System.out.print(output);
