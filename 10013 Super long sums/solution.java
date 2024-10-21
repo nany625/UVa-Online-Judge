@@ -21,7 +21,7 @@ public class Main {
     	    for(int i = M; i >= 1; --i) {
     	        ans[i - 1] += (ans[i] - '0') / 10;
     	        ans[i] = (char)((ans[i] - '0') % 10 + '0');
-    	    };
+    	    }
     	    if(ans[0] == '1')
     	        output.append('1');
     	    for(int i = 1; i <= M; ++i)
