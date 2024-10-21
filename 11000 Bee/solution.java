@@ -2,20 +2,19 @@
 import java.io.*;
 
 public class Main {
-    static long[] F = new long[45];
-    static int[] M = new int[45];
+    static int[] F = new int[45], M = new int[45];
 	public static void main (String[] args) throws IOException {
 		F[0] = 1;
 		for(int i = 1; i < 45; ++i) {
             F[i] = M[i - 1] + 1;
-            M[i] = (int)F[i - 1] + M[i - 1];
+            M[i] = F[i - 1] + M[i - 1];
         }
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
-		    output.append(M[N]).append(' ').append(F[N] + M[N]).append('\n');
+		    output.append(M[N]).append(' ').append((long)F[N] + M[N]).append('\n');
 		System.out.print(output);
 	}
 }
@@ -24,7 +23,7 @@ public class Main {
 import java.io.*;
 
 public class Main {
-    static long[] F = {
+    static int[] F = {
         1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 
         89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 
         10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 
@@ -44,7 +43,7 @@ public class Main {
 		int N;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != -1)
-		    output.append(M[N]).append(' ').append(F[N] + M[N]).append('\n');
+		    output.append(M[N]).append(' ').append((long)F[N] + M[N]).append('\n');
 		System.out.print(output);
 	}
 }
