@@ -26,12 +26,9 @@ public class Main {
                     return Integer.compare(j1.T * j2.S, j1.S * j2.T);
                 }
             });
-    	    for(int i = 0; i < N; ++i) {
-    	        if(i > 0)
-    	            output.append(' ');
-    	        output.append(jobs[i].jobNum);
-    	    }
-    	    output.append('\n');
+    	    for(int i = 0; i < N - 1; ++i)
+    	        output.append(jobs[i].jobNum).append(' ');
+    	    output.append(jobs[N - 1].jobNum).append('\n');
     	    if(cases > 0)
                 output.append('\n');
     	}
