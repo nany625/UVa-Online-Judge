@@ -23,12 +23,9 @@ int main() {
 	        scanf("%d %d", &jobs[i].T, &jobs[i].S);
 	    }
 	    qsort(jobs, N, sizeof(Job), compare);
-	    for(int i = 0; i < N; ++i) {
-	        if(i > 0)
-	            putchar(' ');
-	        printf("%d", jobs[i].jobNum);
-	    }
-	    putchar('\n');
+	    for(int i = 0; i < N - 1; ++i)
+	        printf("%d ", jobs[i].jobNum);
+	    printf("%d\n", jobs[N - 1].jobNum);
 	    if(cases)
 	        putchar('\n');
 	}
