@@ -23,7 +23,7 @@ public class Main {
     	        ans[i] = (char)((ans[i] - '0') % 10 + '0');
     	    };
     	    if(ans[0] == '1')
-    	        output.append(1);
+    	        output.append('1');
     	    for(int i = 1; i <= M; ++i)
     	        output.append(ans[i]);
     	    output.append('\n');
