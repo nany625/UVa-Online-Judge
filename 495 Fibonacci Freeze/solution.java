@@ -67,8 +67,8 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
-            if(n == 0) {
-                output.append("The Fibonacci number for 0 is 0\n");
+            if(n <= 1) {
+                output.append("The Fibonacci number for ").append(n).append(" is ").append(n).append('\n');
                 continue;
             }
             output.append("The Fibonacci number for ").append(n).append(" is ").append(powerMatrix(new BigInteger[][]{{BigInteger.ONE, BigInteger.ONE}, {BigInteger.ONE, BigInteger.ZERO}}, n - 1)).append('\n');
@@ -81,8 +81,10 @@ public class Main {
 	    temp[0][1] = a[0][0].multiply(b[0][1]).add(a[0][1].multiply(b[1][1]));
 	    temp[1][0] = a[1][0].multiply(b[0][0]).add(a[1][1].multiply(b[1][0]));
 	    temp[1][1] = a[1][0].multiply(b[0][1]).add(a[1][1].multiply(b[1][1]));
-	    for(int i = 0; i < 2; ++i)
-	        System.arraycopy(temp[i], 0, a[i], 0, 2);
+	    a[0][0] = temp[0][0];
+	    a[0][1] = temp[0][1];
+	    a[1][0] = temp[1][0];
+	    a[1][1] = temp[1][1];
 	}
 	
 	static BigInteger powerMatrix(BigInteger[][] matrix, int n) {
