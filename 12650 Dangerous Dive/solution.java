@@ -16,7 +16,7 @@ public class Main {
                     st.nextToken();
                 continue;
             }
-            if(2 * R >= N) {
+            if(R << 1 >= N) {
                 int[] returned = new int[R];
                 for(int i = 0; i < R; ++i) {
                     st.nextToken();
