@@ -16,7 +16,7 @@ int main() {
                 scanf("%d", &N);
             continue;
         }
-        if(2 * R >= N) {
+        if(R << 1 >= N) {
             int returned[R];
             for(int i = 0; i < R; ++i)
                 scanf("%d", &returned[i]);
