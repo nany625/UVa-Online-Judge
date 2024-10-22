@@ -25,9 +25,7 @@ int main() {
     getchar();
     int n = 0;
     char buffer[101];
-    for(int k = 1; k <= T; ++k) {
-        if(k > 1)
-            putchar('\n');
+    while(T--) {
         while(fgets(buffer, sizeof(buffer), stdin) && buffer[0] != '\n') {
             if(isupper(buffer[0])) {
                 buffer[strcspn(buffer, "\n")] = '\0';
@@ -43,6 +41,8 @@ int main() {
             }
         }
         n = 0;
+        if(T)
+            putchar('\n');
     }
 	return 0;
 }
