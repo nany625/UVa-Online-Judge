@@ -47,7 +47,7 @@ int main() {
 	    }
 	    free(dp);
 	    free(lis);
-	    if(cases > 0)
+	    if(cases)
 	        putchar('\n');
 	}
 	return 0;
