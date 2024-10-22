@@ -13,9 +13,7 @@ public class Main {
         br.readLine();
         String line;
 		StringBuilder output = new StringBuilder();
-		for(int k = 1; k <= T; ++k) {
-		    if(k > 1)
-		        output.append('\n');
+		while(T-- > 0) {
 		    while((line = br.readLine()) != null && !line.isEmpty()) {
 		        if(Character.isUpperCase(line.charAt(0)))
 		            grid[n++] = line.toCharArray();
@@ -31,6 +29,8 @@ public class Main {
 		        }
 		    }
 		    n = 0;
+		    if(T > 0)
+		        output.append('\n');
 		}
         System.out.print(output);
 	}
