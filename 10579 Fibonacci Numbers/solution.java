@@ -61,7 +61,8 @@ import java.math.*;
 public class Main {
     static BigInteger[][] temp = new BigInteger[2][2];
 	public static void main(String[] args) throws IOException {
-        StreamTokenizer st = new StreamTokenizer(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
