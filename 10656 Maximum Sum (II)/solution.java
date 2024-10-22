@@ -33,12 +33,9 @@ public class Main {
             if(N == 0)
                 output.append("0\n");
             else {
-                for(int i = start; i < start + length; ++i) {
-                    if(i > start)
-                        output.append(' ');
-                    output.append(array[i]);
-                }
-                output.append('\n');
+                for(int i = start; i < start + length - 1; ++i)
+                    output.append(array[i]).append(' ');
+                output.append(array[start + length - 1]).append('\n');
             }
         }
 	    System.out.print(output);
