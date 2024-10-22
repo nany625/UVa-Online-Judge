@@ -28,12 +28,9 @@ int main() {
         if(N == 0)
             puts("0");
         else {
-            for(int i = start; i < start + length; ++i) {
-                if(i > start)
-                    putchar(' ');
-                printf("%d", array[i]);
-            }
-            putchar('\n');
+            for(int i = start; i < start + length - 1; ++i)
+                printf("%d ", array[i]);
+            printf("%d\n", array[start + length - 1]);
         }
     }
 	return 0;
