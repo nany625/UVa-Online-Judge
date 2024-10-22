@@ -30,12 +30,9 @@ public class Main {
     	            factors.add(new Factor(primes[i], e));
     	        }
     	    }
-    	    for(int i = factors.size() - 1; i >= 0; --i) {
-    	        output.append(factors.get(i).p).append(' ').append(factors.get(i).e);
-    	        if(i > 0)
-    	            output.append(' ');
-    	    }
-    	    output.append('\n');
+    	    for(int i = factors.size() - 1; i > 0; --i)
+    	        output.append(factors.get(i).p).append(' ').append(factors.get(i).e).append(' ');
+    	    output.append(factors.get(0).p).append(' ').append(factors.get(0).e).append('\n');
     	}
 	    System.out.print(output);
 	}
