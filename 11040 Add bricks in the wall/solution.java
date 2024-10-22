@@ -20,12 +20,9 @@ public class Main {
     	            brick[i][j] = (brick[i - 2][j - 1] - brick[i][j - 1] - brick[i][j + 1]) >> 1;
     	    }
     	    for(int i = 0; i < 9; ++i) {
-    	        for(int j = 0; j <= i; ++j) {
-    	            if(j > 0)
-    	                output.append(' ');
-    	            output.append((i & 1) == 1 ? brick[i + 1][j] + brick[i + 1][j + 1] : brick[i][j]);
-    	        }
-    	        output.append('\n');
+    	        for(int j = 0; j < i; ++j)
+    	            output.append((i & 1) == 1 ? brick[i + 1][j] + brick[i + 1][j + 1] : brick[i][j]).append(' ');
+    	        output.append((i & 1) == 1 ? brick[i + 1][i] + brick[i + 1][i + 1] : brick[i][i]).append('\n');
     	    }
 		}
 		System.out.print(output);
