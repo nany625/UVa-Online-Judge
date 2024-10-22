@@ -26,6 +26,7 @@ int main() {
 	    f[size] = f[size - 1] + pos;
 	    ++size;
 	}
+    --size;
 	int n;
 	while(scanf("%d", &n) && n != 0)
 	    printf("%d\n", binarySearch(n));
