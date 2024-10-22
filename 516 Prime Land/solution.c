@@ -53,12 +53,9 @@ int main() {
 	            ++size;
 	        }
 	    }
-	    for(int i = size - 1; i >= 0; --i) {
-	        printf("%hd %d", factors[i].p, factors[i].e);
-	        if(i > 0)
-	            putchar(' ');
-	    }
-	    putchar('\n');
+	    for(int i = size - 1; i > 0; --i)
+	        printf("%hd %d ", factors[i].p, factors[i].e);
+	    printf("%hd %d\n", factors[0].p, factors[0].e);
 	    free(factors);
 	}
 	free(buffer);
