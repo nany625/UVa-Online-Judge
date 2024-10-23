@@ -15,7 +15,7 @@ public class Main {
     		if(s < d || (((s + d) & 1) == 1))
     		    output.append("impossible\n");
     		else
-    		    output.append((s + d) >> 1).append(' ').append((s - d) >> 1).append('\n');
+    		    output.append(s + d >> 1).append(' ').append(s - d >> 1).append('\n');
 		}
 		System.out.print(output);
 	}
