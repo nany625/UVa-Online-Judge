@@ -31,7 +31,7 @@ public class Main {
 	static int binarySearch(short[] array, short key) {
         int left = 0, right = array.length - 1;
         while(left <= right) {
-            int mid = left + ((right - left) >> 1);
+            int mid = left + (right - left >> 1);
             if(array[mid] == key) {
                 while(mid > left && array[mid] == array[mid-1])
                     --mid;
