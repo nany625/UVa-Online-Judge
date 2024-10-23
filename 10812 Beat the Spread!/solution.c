@@ -9,7 +9,7 @@ int main() {
         if(s < d || ((s + d) & 1))
             puts("impossible");
         else
-            printf("%d %d\n", (s + d) >> 1, (s - d) >> 1);
+            printf("%d %d\n", s + d >> 1, s - d >> 1);
     }
     return 0;
 }
