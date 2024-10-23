@@ -32,8 +32,8 @@ public class Main {
                             if(board[newRow][newCol] == '.')
                                 paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
                             else if(board[newRow][newCol] == 'B') {
-                                newRow = j + 2 * dRow[l];
-                                newCol = k + 2 * dCol[l];
+                                newRow = j + (dRow[l] << 1);
+                                newCol = k + (dCol[l] << 1);
                                 if(newRow >= 0 && newCol >= 0 && newCol < N && board[newRow][newCol] == '.')
                                     paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
                             }
