@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int directions[][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
@@ -20,10 +19,7 @@ void update(char **today, char **tomorrow, int i, int j, int r, int c) {
 int main() {
 	int t;
 	scanf("%d", &t);
-	bool firstCase = true;
 	while(t--) {
-		if(!firstCase)
-			putchar('\n');
 		int r, c, n;
 		scanf("%d %d %d", &r, &c, &n);
 		char **grid0 = (char**)malloc(r * sizeof(char*)), **grid1 = (char**)malloc(r * sizeof(char*));
@@ -48,7 +44,8 @@ int main() {
     	}
     	free(grid0);
     	free(grid1);
-    	firstCase = false;
+    	if(t)
+            putchar('\n');
 	}
 	return 0;
 }
