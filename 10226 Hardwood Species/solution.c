@@ -11,7 +11,7 @@ typedef struct {
 int binarySearch(Species *array, int size, char *key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         int cmp = strcmp(array[mid].name, key);
         if(cmp == 0)
             return mid;
