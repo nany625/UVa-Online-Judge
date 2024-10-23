@@ -13,7 +13,7 @@ int compare(const void *a, const void *b) {
 const char *binarySearch(Subject *array, int size, Subject key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         int cmp = strcmp(array[mid].name, key.name);
         if(cmp == 0) {
             if(key.days >= array[mid].days)
