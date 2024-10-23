@@ -22,6 +22,7 @@ void append(Coordinate **array, int x, int y) {
     (*array)[lostCount].x = x;
     (*array)[lostCount++].y = y;
 }
+
 int main() {
     int boundX, boundY;
     scanf("%d %d", &boundX, &boundY);
