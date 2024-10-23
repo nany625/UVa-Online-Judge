@@ -12,7 +12,7 @@ int main() {
         for(int i = 0; i < 4; ++i)
 			scanf("%d", &sides[i]);
 		qsort(sides, 4, sizeof(int), compare);
-		if(sides[0] == sides[1] && sides[1] == sides[2] && sides[2] == sides[3])
+		if(sides[0] == sides[3])
 			puts("square");
 		else if(sides[0] == sides[1] && sides[2] == sides[3])
 			puts("rectangle");
