@@ -7,11 +7,8 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
 		int t = (int)st.nval;
-		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
 		while(t-- > 0) {
-		    if(!firstCase)
-			    output.append('\n');
 			st.nextToken();
     		int r = (int)st.nval;
     		st.nextToken();
@@ -33,7 +30,8 @@ public class Main {
     		}
     		for(int i = 0; i < r; ++i)
     		    output.append((n & 1) == 1 ? new String(grid1[i]) : new String(grid0[i])).append('\n');
-        	firstCase = false;
+        	if(t > 0)
+                output.append('\n');
 		}
 		System.out.print(output);
 	}
