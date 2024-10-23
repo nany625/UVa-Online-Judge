@@ -9,7 +9,7 @@ public class Main {
             int len = n.length(), dividend = 0;
             for(int i = 0; i < len; ++i)
                 dividend = (10 * dividend + n.charAt(i) - '0') % 17;
-            output.append(dividend == 0 ? 1 : 0).append('\n');
+            output.append(dividend == 0 ? "1\n" : "0\n");
         }
         System.out.print(output);
 	}
