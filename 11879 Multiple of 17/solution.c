@@ -7,7 +7,7 @@ int main() {
         int len = strlen(n), dividend = 0;
         for(int i = 0; i < len; ++i)
             dividend = (10 * dividend + n[i] - '0') % 17;
-        printf("%d\n", dividend == 0);
+        puts(dividend == 0 ? "1" : "0");
     }
     return 0;
 }
