@@ -14,7 +14,7 @@ int main() {
         for(int i = 0; i < len - 1; ++i)
             dividend = (10 * dividend + N[i] - '0') % 20;
         dividend = 10 * dividend + N[len - 1] - '0';
-        printf("%d\n", (dividend / 20 * 4 + lastDigit[dividend % 20]) % 10);
+        printf("%d\n", ((dividend / 20 << 2) + lastDigit[dividend % 20]) % 10);
     }
 	return 0;
 }
