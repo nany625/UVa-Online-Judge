@@ -12,7 +12,7 @@ int main() {
         a[0] = n;
         while(n % m == 0) {
             a = (int*)realloc(a, (size + 1) * sizeof(int));
-            n = a[size++] = n / m;
+            a[size++] = n /= m;
         }
         if(n != 1)
             puts("Boring!");
