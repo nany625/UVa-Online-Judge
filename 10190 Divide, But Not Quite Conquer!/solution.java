@@ -16,16 +16,16 @@ public class Main {
             }
             ArrayList<Integer> a = new ArrayList<>();
             a.add(n);
+            int next;
             while(n % m == 0) {
-                a.add(n / m);
-                n /= m;
+                a.add(next = n / m);
+                n = next;
             }
             if(n != 1)
                 output.append("Boring!\n");
             else {
-                int size = a.size() - 1;
-                for(int i = 0; i < size; ++i)
-                    output.append(a.get(i)).append(' ');
+                for(Integer i : a)
+                    output.append(i).append(' ');
                 output.append("1\n");
             }
         }
