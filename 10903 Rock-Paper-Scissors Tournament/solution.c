@@ -16,7 +16,7 @@ int main() {
             table[i].win = table[i].lose = 0;
         int k;
         scanf("%d", &k);
-        int games = k * n * (n - 1) / 2, p1, p2;
+        int games = k * n * (n - 1) >> 1, p1, p2;
         char m1[9], m2[9];
         while(games--) {
             scanf("%d %s %d %s", &p1, m1, &p2, m2);
