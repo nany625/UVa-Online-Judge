@@ -22,7 +22,7 @@ void InsertionSort(short *array) {
 int binarySearch(Combination *array, short size, long key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         if(array[mid].froshes == key)
             return mid;
         if(array[mid].froshes < key)
