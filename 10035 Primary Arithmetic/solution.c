@@ -13,7 +13,7 @@ int main() {
 	    if(count == 0)
 	        puts("No carry operation.");
 	    else
-	        printf("%d carry operation.\n", count, count > 1 ? "s" : "");
+	        printf("%d carry operation%s.\n", count, count > 1 ? "s" : "");
 	}
 	return 0;
 }
