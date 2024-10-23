@@ -16,11 +16,8 @@ public class Main {
             }
             ArrayList<Integer> a = new ArrayList<>();
             a.add(n);
-            int next;
-            while(n % m == 0) {
-                a.add(next = n / m);
-                n = next;
-            }
+            while(n % m == 0)
+                a.add(n /= m);
             if(n != 1)
                 output.append("Boring!\n");
             else {
