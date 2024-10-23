@@ -43,8 +43,7 @@ int main() {
         }
         if(leadingZero)
             putchar('0');
-        putchar('\n');
-        putchar('\n');
+        puts("\n");
         free(sum);
     }
 	return 0;
