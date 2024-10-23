@@ -11,8 +11,7 @@ int main() {
         char message[k + 1];
         scanf("%s", message);
         char *sign = strdup(message);
-        --w;
-        while(w--) {
+        while(w-- > 1) {
             scanf("%s", message);
             int temp = k, len = strlen(sign);
             while(temp > 0 && strncmp(sign + len - temp, message, temp) != 0)
