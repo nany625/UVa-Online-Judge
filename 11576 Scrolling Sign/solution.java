@@ -14,8 +14,7 @@ public class Main {
 		    int w = (int)st.nval;
 		    st.nextToken();
 		    String sign = st.sval;
-		    --w;
-		    while(w-- > 0) {
+		    while(w-- > 1) {
 		        st.nextToken();
 		        String message = st.sval;
 		        int temp = k, len = sign.length();
