@@ -37,7 +37,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
-        int n = Integer.parseInt(br.readLine());
+        st.nextToken();
+        int n = (int)st.nval;
         TreeMap<String, Short> conquests = new TreeMap<>();
         StringBuilder output = new StringBuilder();
         while(n-- > 0) {
