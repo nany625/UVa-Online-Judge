@@ -6,11 +6,11 @@ public class Main {
     static ArrayList<Long> almostPrimes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 	    appendAlmostPrimes(2);
-	    for(int i = 3; i < 1000000; i += 2) {
+	    for(int i = 3; i <= 999999; i += 2) {
 	        if(!isComposite[i]) {
 	            appendAlmostPrimes(i);
-	            if(i < 1000) {
-	                for(int j = i * i; j < 1000000; j += i)
+	            if(i <= 999) {
+	                for(int j = i * i; j <= 999999; j += i)
 	                    isComposite[j] = true;
 	            }
 	        }
@@ -44,7 +44,7 @@ public class Main {
 	static int binarySearch(int size, long key) {
 	    int left = 0, right = size - 1;
 	    while(left <= right) {
-	        int mid = left + ((right - left) >> 1);
+	        int mid = left + (right - left >> 1);
 	        if(almostPrimes.get(mid) == key)
 	            return mid;
 	        if(almostPrimes.get(mid) < key)
