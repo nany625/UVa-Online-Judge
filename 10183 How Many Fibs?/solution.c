@@ -38,7 +38,7 @@ void initFibonacci() {
 int binarySearch(char *key, int len) {
     int left = 0, right = MAX_FIBONACCI_SIZE;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         int cmp = fib[mid].digits == len ? strcmp(fib[mid].number, key) : fib[mid].digits > len ? 1 : -1;
         if(cmp == 0)
             return mid;
