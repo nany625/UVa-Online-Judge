@@ -15,7 +15,7 @@ public class Main {
     			sides[i] = (int)st.nval;
             }
     		Arrays.sort(sides);
-    		if(sides[0] == sides[1] && sides[1] == sides[2] && sides[2] == sides[3])
+    		if(sides[0] == sides[3])
     			output.append("square\n");
     		else if(sides[0] == sides[1] && sides[2] == sides[3])
     			output.append("rectangle\n");
