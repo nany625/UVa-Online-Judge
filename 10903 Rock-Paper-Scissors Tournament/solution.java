@@ -14,7 +14,7 @@ public class Main {
             for(int i = 0; i < n; ++i)
                 table[i] = new Player();
             st.nextToken();
-            int k = (int)st.nval, games = k * n * (n - 1) / 2;
+            int k = (int)st.nval, games = k * n * (n - 1) >> 1;
             while(games-- > 0) {
                 st.nextToken();
                 int p1 = (int)st.nval;
