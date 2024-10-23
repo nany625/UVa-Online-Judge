@@ -39,7 +39,7 @@ int main() {
 	for(int i = 3; i <= MAX_NUM; i += 2) {
 	    if(!isComposite[i]) {
 	        appendAlmostPrimes(i);
-	        if(i < 1000) {
+	        if(i <= 999) {
 	            for(int j = i * i; j <= MAX_NUM; j += i)
 	                isComposite[j] = true;
 	        }
