@@ -13,7 +13,7 @@ int main() {
     for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
         if(!isComposite[i]) {
             primes[count++] = i;
-            if(i <= 31) {
+            if(i <= 18) {
                 for(short j = i * i; j <= MAX_NUM; j += i)
                     isComposite[j] = true;
             }
