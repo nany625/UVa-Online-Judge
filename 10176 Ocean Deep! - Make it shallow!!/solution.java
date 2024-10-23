@@ -10,7 +10,7 @@ public class Main {
             int len = line.length();
     	    for(int i = 0; i < len; ++i) {
     	        if(line.charAt(i) != '#')
-    	            remainder = (2 * remainder + line.charAt(i) - '0') % 131071;
+    	            remainder = ((remainder << 1) + line.charAt(i) - '0') % 131071;
     	        else {
     	            output.append(remainder == 0 ? "YES\n" : "NO\n");
     	            remainder = 0;
