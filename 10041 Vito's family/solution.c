@@ -54,7 +54,7 @@ int main() {
             s[i] = atoi(token);
             token = strtok(NULL, " ");
         }
-        int median = (r - 1) >> 1;
+        int median = r - 1 >> 1;
         DualPivotQuickSelect(s, 0, r - 1, median);
         long d = 0;
         for(int i = 0; i < r; ++i)
