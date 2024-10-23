@@ -2,7 +2,7 @@
 
 void MergeSort(unsigned short *array, unsigned short *reg, int left, int right) {
     if(left < right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         MergeSort(array, reg, left, mid);
         MergeSort(array, reg, mid + 1, right);
         int leftPointer = left, rightPointer = mid + 1;
@@ -28,12 +28,12 @@ int main() {
         for(int i = 0; i < n; ++i)
             scanf("%hu", &X[i]);
         MergeSort(X, reg, 0, n - 1);
-        int low = (n - 1) >> 1, high = n >> 1;
+        int low = n - 1 >> 1, high = n >> 1;
         while(low > 0 && X[low] == X[low - 1])
             --low;
         while(high < n - 1 && X[high] == X[high + 1])
             ++high;
-        printf("%hu %d %d\n", X[(n - 1) >> 1], high - low + 1, X[n >> 1] - X[(n - 1) >> 1] + 1);
+        printf("%hu %d %d\n", X[n - 1 >> 1], high - low + 1, X[n >> 1] - X[n - 1 >> 1] + 1);
     }
     return 0;
 }
