@@ -15,13 +15,13 @@ public class Main {
 		    for(int j = 0; j < A; ++j) {
 		        switch(DNA.charAt(j)) {
 		            case 'C':
-                        B += (long)1 << ((A - 1 - j) << 1);
+                        B += (long)1 << (A - 1 - j << 1);
                         break;
                     case 'G':
-                        B += (long)1 << (((A - 1 - j) << 1) + 1);
+                        B += (long)1 << ((A - 1 - j << 1) + 1);
                         break;
                     case 'T':
-                        B += 3 * (long)1 << ((A - 1 - j) << 1);
+                        B += 3 * (long)1 << (A - 1 - j << 1);
 		        }
 		    }
 		    output.append("Case ").append(i).append(": (").append(A).append(':').append(B).append(")\n");
