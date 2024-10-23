@@ -6,7 +6,7 @@ int *f = NULL, size;
 int binarySearch(int key) {
     int left = 0, right = size - 2;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         if(f[mid] == key)
             return mid + 1;
         if(f[mid] < key)
