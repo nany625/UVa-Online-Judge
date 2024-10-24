@@ -12,10 +12,7 @@ public class Main {
             int amplitude = (int)st.nval;
             st.nextToken();
             int frequency = (int)st.nval;
-            boolean firstWave = true;
             while(frequency-- > 0) {
-    			if(!firstWave)
-    				output.append('\n');
     			for(int i = 1; i <= amplitude; ++i) {
     				for(int j = 1; j <= i; ++j)
     					output.append(i);
@@ -26,7 +23,8 @@ public class Main {
     					output.append(i);
     				output.append('\n');
     			}
-    			firstWave = false;
+    			if(frequency > 0)
+    				output.append('\n');
     		}
     		if(cases > 0)
                 output.append('\n');
