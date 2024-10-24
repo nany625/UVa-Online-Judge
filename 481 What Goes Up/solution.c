@@ -8,7 +8,7 @@ typedef struct {
 int binarySearch(DP *array, int size, int key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         if(array[mid].lis < key)
             left = mid + 1;
         else
