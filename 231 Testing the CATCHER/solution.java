@@ -7,10 +7,9 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(br);
 		int cases = 0;
 		short n;
-		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (short)st.nval) != -1) {
-		    if(!firstCase)
+		    if(cases > 0)
 		        output.append('\n');
 		    ArrayList<Short> heights = new ArrayList<>(Arrays.asList(n));
 		    while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (short)st.nval) != -1)
@@ -26,7 +25,6 @@ public class Main {
 		            lis.set(pos, heights.get(i));
 		    }
 		    output.append("Test #").append(++cases).append(":\n  maximum possible interceptions: ").append(lisSize).append('\n');
-		    firstCase = false;
 		}
         System.out.print(output);
 	}
@@ -34,7 +32,7 @@ public class Main {
 	static int binarySearch(ArrayList<Short> arrayList, int size, short key) {
         int left = 0, right = size - 1;
         while(left <= right) {
-            int mid = left + ((right - left) >> 1);
+            int mid = left + (right - left >> 1);
             if(arrayList.get(mid) < key)
                 left = mid + 1;
             else
