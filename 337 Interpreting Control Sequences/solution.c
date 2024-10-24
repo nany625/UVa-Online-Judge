@@ -20,7 +20,7 @@ void write(int row, int *col, char ch, bool override) {
 	    memmove(screen[row] + *col + 1, screen[row] + *col, 9 - *col);
 	    screen[row][*col] = ch;
 	}
-	*col = *col < 9 ? *col + 1 : *col;
+	*col += *col < 9;
 }
 
 int main() {
@@ -44,27 +44,23 @@ int main() {
 	                    cursorCol = 0;
 	                else if(control == 'c')
 	                    clear();
-	                else if(control == 'd') {
-	                    if(cursorRow < 9)
-	                        ++cursorRow;
-	                } else if(control == 'e')
+	                else if(control == 'd')
+	                    cursorRow += cursorRow < 9;
+	                else if(control == 'e')
 	                    memset(screen[cursorRow] + cursorCol, ' ', 10 - cursorCol);
 	                else if(control == 'h')
 	                    cursorRow = cursorCol = 0;
 	                else if(control == 'i')
 	                    override = false;
-	                else if(control == 'l') {
-	                    if(cursorCol > 0)
-	                        --cursorCol;
-	                } else if(control == 'o')
+	                else if(control == 'l')
+	                    cursorCol -= cursorCol > 0;
+	                else if(control == 'o')
 	                    override = true;
-	                else if(control == 'r') {
-	                    if(cursorCol < 9)
-	                        ++cursorCol;
-	                } else if(control == 'u') {
-	                    if(cursorRow > 0)
-	                        --cursorRow;
-	                } else if(isdigit(control)) {
+	                else if(control == 'r')
+	                    cursorCol += cursorCol < 9;
+	                else if(control == 'u')
+	                    cursorRow -= cursorRow > 0;
+	                else if(isdigit(control)) {
 	                    cursorRow = control - '0';
 	                    cursorCol = buffer[++i] - '0';
 	                } else
