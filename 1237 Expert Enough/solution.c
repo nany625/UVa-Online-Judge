@@ -29,7 +29,7 @@ int main() {
 			}
 			puts(count == 1 ? datas[curr].M : "UNDETERMINED");
 		}
-		if(T > 0)
+		if(T)
 		    putchar('\n');
 	}
 	return 0;
