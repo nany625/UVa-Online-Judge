@@ -12,12 +12,13 @@ public class Main {
     	    int D = (int)st.nval;
     	    Data[] datas = new Data[D];
     	    for(int i = 0; i < D; ++i) {
+                datas[i] = new Data();
     	        st.nextToken();
-    	        String M = st.sval;
+    	        datas[i].M = st.sval;
     	        st.nextToken();
-    	        int L = (int)st.nval;
+    	        datas[i].L = (int)st.nval;
     	        st.nextToken();
-    	        datas[i] = new Data(M, L, (int)st.nval);
+    	        datas[i].H = (int)st.nval;
     	    }
     	    st.nextToken();
     	    int Q = (int)st.nval;
@@ -42,9 +43,4 @@ public class Main {
 class Data {
     String M;
     int L, H;
-    Data(String M, int L, int H) {
-        this.M = M;
-        this.L = L;
-        this.H = H;
-    }
 }
