@@ -24,12 +24,9 @@ int main() {
 	for(short i = 3; i <= 1000; ++i) {
 	    pos[i - 1] = pos[i - 2];
 	    if(i & 1 && count < MAX_SIZE) {
-	        if(isPrime(i)) {
-    			primes[count++] = i;
-    			++pos[i - 1];
-    		}
+	        if(isPrime(i))
+    			++pos[primes[count++] = i - 1];
 	    }
-		
 	}
 	int N, C;
     while(scanf("%d %d", &N, &C) == 2) {
