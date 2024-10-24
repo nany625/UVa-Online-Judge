@@ -10,12 +10,12 @@ int main() {
         int curr = prev + 1, max = prev - 1;
         while(curr < len) {
             if(bed[curr] == 'X') {
-                max = max > (curr - prev - 2) >> 1 ? max : (curr - prev - 2) >> 1;
+                max = max > curr - prev - 2 >> 1 ? max : curr - prev - 2 >> 1;
                 prev = curr;
             }
             ++curr;
         }
-        max = max > (len - prev - 2) ? max : (len - prev - 2);
+        max = max > len - prev - 2 ? max : len - prev - 2;
         printf("%d\n", max);
     }
     return 0;
