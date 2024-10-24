@@ -69,6 +69,6 @@ class Excuse {
     short count;
     Excuse(String excuse) {
         this.excuse = excuse;
-        this.count = 0;
+        this.count = (short)0;
     }
 }
