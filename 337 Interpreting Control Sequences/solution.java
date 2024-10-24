@@ -9,7 +9,7 @@ public class Main {
         int cases = 0, N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            output.append("Case " + (++cases) + "\n");
+            output.append("Case ").append(++cases).append('\n');
     		for(int i = 0; i < 10; ++i)
     	        Arrays.fill(screen[i], ' ');
     	    int cursorRow = 0, cursorCol = 0;
