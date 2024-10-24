@@ -3,9 +3,10 @@ import java.io.*;
 public class Main {
     static boolean[] isComposite = new boolean[1000001]; 
     static int[] primes = new int[78498];
-    static int count = 0;
+    static int count = 1;
 	public static void main(String[] args) throws IOException {
-        for(int i = 2; count < 78498; ++i) {
+        primes[0] = 2;
+        for(int i = 3; count < 78498; i += 2) {
             if(!isComposite[i]) {
                 primes[count++] = i;
                 if(i <= 1000) {
