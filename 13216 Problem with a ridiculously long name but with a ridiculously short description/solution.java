@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Main {
-    static int[] ans = {76, 16, 56, 96, 36};
+    static String[] ans = {"76", "16", "56", "96", "36"};
 	public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
