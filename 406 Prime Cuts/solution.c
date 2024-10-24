@@ -25,7 +25,7 @@ int main() {
 	    pos[i - 1] = pos[i - 2];
 	    if(i & 1 && count < MAX_SIZE) {
 	        if(isPrime(i))
-    			++pos[primes[count++] = i - 1];
+    			++pos[(primes[count++] = i) - 1];
 	    }
 	}
 	int N, C;
