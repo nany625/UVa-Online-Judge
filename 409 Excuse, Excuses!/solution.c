@@ -18,13 +18,13 @@ bool allLowerCase(char *array) {
 }
 
 int compare(const void *a, const void *b) {
-    return strcmp(*(const char **)a, *(const char **)b);
+    return strcmp(*(const char**)a, *(const char**)b);
 }
 
 bool binarySearch(char **array, int size, char *key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         int cmp = strcasecmp(array[mid], key);
         if(cmp == 0)
             return true;
