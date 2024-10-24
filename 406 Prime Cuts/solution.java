@@ -8,11 +8,9 @@ public class Main {
 	    primes[1] = pos[1] = 2;
 	    for(short i = 3; i <= 1000; ++i) {
 	        pos[i - 1] = pos[i - 2];
-	        if(i % 2 == 1 && count < primes.length) {
-	            if(isPrime(i)) {
-	                primes[count++] = i;
-	                ++pos[i - 1];
-	            }
+	        if((i & 1) == 1 && count < primes.length) {
+	            if(isPrime(i))
+	                ++pos[(primes[count++] = i) - 1];
 	        }
 	    }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +24,7 @@ public class Main {
             if((pos[N - 1] & 1) == 0 && C << 1 < pos[N - 1])
         		output.append(printPrimes((pos[N - 1] >> 1) - C, (pos[N - 1] >> 1) + C - 1));
         	else if((pos[N - 1] & 1) == 1 && (C << 1) - 1 < pos[N - 1])
-        		output.append(printPrimes(((pos[N - 1] + 1) >> 1) - C, ((pos[N - 1] - 3) >> 1) + C));
+        		output.append(printPrimes((pos[N - 1] + 1 >> 1) - C, (pos[N - 1] - 3 >> 1) + C));
         	else
         		output.append(printPrimes(0, pos[N - 1] - 1));
     	    output.append("\n\n");
