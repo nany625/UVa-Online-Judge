@@ -12,12 +12,12 @@ public class Main {
             int curr = prev + 1, max = prev - 1;
             while(curr < len) {
                 if(bed.charAt(curr) == 'X') {
-                    max = Math.max(max, (curr - prev - 2) >> 1);
+                    max = Math.max(max, curr - prev - 2 >> 1);
                     prev = curr;
                 }
                 ++curr;
             }
-            max = Math.max(max, (len - prev - 2));
+            max = Math.max(max, len - prev - 2);
             output.append(max).append('\n');
         }
         System.out.print(output);
