@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int ans[] = {76, 16, 56, 96, 36};
+char ans[][3] = {"76", "16", "56", "96", "36"};
 
 int main() {
     int T;
@@ -14,7 +14,7 @@ int main() {
         else if(strlen(n) == 1 && n[0] == '1')
             puts("66");
         else
-            printf("%d\n", ans[(n[strlen(n) - 1] - '0') % 5]);
+            puts(ans[(n[strlen(n) - 1] - '0') % 5]);
     }
 	return 0;
 }
