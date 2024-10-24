@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int binarySearch(short *array, int size, short key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         if(array[mid] < key)
             left = mid + 1;
         else
@@ -17,9 +16,8 @@ int binarySearch(short *array, int size, short key) {
 int main() {
     int cases = 0;
 	short n;
-	bool firstCase = true;
 	while(scanf("%hd", &n) && n != -1) {
-	    if(!firstCase)
+	    if(cases)
 	        putchar('\n');
 	    short *heights = (short*)malloc(sizeof(short));
 	    heights[0] = n;
@@ -39,7 +37,6 @@ int main() {
 	    printf("Test #%d:\n  maximum possible interceptions: %d\n", ++cases, lisSize);
 	    free(heights);
 	    free(lis);
-	    firstCase = false;
 	}
 	return 0;
 }
