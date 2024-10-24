@@ -23,7 +23,7 @@ public class Main {
     	    Excuse[] excuses = new Excuse[E];
     	    short max = 0;
     	    for(int i = 0; i < E; ++i) {
-    	        excuses[i] = new Excuse(br.readLine(), (short)0);
+    	        excuses[i] = new Excuse(br.readLine());
 		        int start = 0, len = excuses[i].excuse.length();
     	        while(start < len) {
     	            if(Character.isLetter(excuses[i].excuse.charAt(start))) {
@@ -67,8 +67,8 @@ public class Main {
 class Excuse {
     String excuse;
     short count;
-    Excuse(String excuse, short count) {
+    Excuse(String excuse) {
         this.excuse = excuse;
-        this.count = count;
+        this.count = 0;
     }
 }
