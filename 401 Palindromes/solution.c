@@ -16,7 +16,7 @@ int main() {
         for(int i = 0; i < len >> 1 && isPalindrome; ++i)
             isPalindrome = s[i] == s[len - 1 - i];
         bool isMirror = true;
-        for(int i = 0; i < (len + 1) >> 1 && isMirror; ++i)
+        for(int i = 0; i < len + 1 >> 1 && isMirror; ++i)
             isMirror = ASCII[(int)s[i]] == s[len - 1 - i];
         if(isPalindrome && isMirror)
             printf("%s -- is a mirrored palindrome.\n\n", s);
