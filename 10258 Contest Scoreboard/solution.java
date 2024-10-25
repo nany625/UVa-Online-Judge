@@ -8,11 +8,8 @@ public class Main {
         st.nextToken();
         int cases = (int)st.nval;
 		br.readLine();
-		boolean firstCase = true;
 		StringBuilder output = new StringBuilder();
 		while(cases-- > 0) {
-		    if(!firstCase)
-		        output.append('\n');
 		    ArrayList<ScoreBoard> scoreBoards = new ArrayList<>();
 		    String s;
 		    while((s = br.readLine()) != null && !s.isEmpty()) {
@@ -61,7 +58,8 @@ public class Main {
 		    });
 		    for(ScoreBoard S : scoreBoards)
 		        output.append(S.contestant).append(' ').append(S.solvedProblems.size()).append(' ').append(S.penaltyTime).append('\n');
-		    firstCase = false;
+		    if(cases > 0)
+		        output.append('\n');
 		}
 		System.out.print(output);
 	}
