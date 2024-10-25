@@ -53,10 +53,7 @@ int main() {
 	getchar();
     char *buffer = NULL;
 	size_t bufsize = 0;
-	bool firstCase = true;
 	while(cases--) {
-	    if(!firstCase)
-	        putchar('\n');
 	    ScoreBoard *scoreBoards = NULL;
 	    int contestantCount = 0;
 	    while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
@@ -113,7 +110,8 @@ int main() {
 	        free(scoreBoards[i].problemTried);
 	    }
 	    free(scoreBoards);
-	    firstCase = false;
+	    if(cases)
+	        putchar('\n');
 	}
     free(buffer);
 	return 0;
