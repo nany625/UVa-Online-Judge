@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Main {
-    static int[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+    static short[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
 	public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
