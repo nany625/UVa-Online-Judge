@@ -1,16 +1,17 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[2001];
-    static short[] primes = new short[303];
-    static int count = 0;
+    static short MAX_NUM = 2000;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
 	public static void main (String[] args) throws IOException {
 		isComposite[0] = isComposite[1] = true;
-		for(short i = 2; count < 303; ++i) {
+		for(short i = 2; i <= MAX_NUM; ++i) {
             if(!isComposite[i]) {
-                primes[count++] = i;
+                primes.add(i);
                 if(i <= 44) {
-                    for(int j = i * i; j <= 2000; j += i)
+                    for(int j = i * i; j <= MAX_NUM; j += i)
                         isComposite[j] = true;
                 }
             }
