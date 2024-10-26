@@ -37,12 +37,11 @@ int sumOfFactorDigits(int n) {
 }
 
 int main() {
-    short sqrtMaxNum = sqrt(MAX_NUM);
 	for(short i = 2; i <= MAX_NUM; ++i) {
 	    if(!isComposite[i]) {
 	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
 	        primes[size++] = i;
-    	    if(i <= sqrtMaxNum) {
+    	    if(i <= 177) {
     	        for(short j = i * i; j <= MAX_NUM; j += i)
     	            isComposite[j] = true;
     	    }
