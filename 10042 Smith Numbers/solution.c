@@ -1,12 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
 #define MAX_NUM 31607
-#define MAX_PRIME_SIZE 3401
 
 bool isComposite[MAX_NUM + 1];
-short primes[MAX_PRIME_SIZE];
-int count = 0;
+short *primes = NULL;
+int size = 0;
 
 int sumOfDigits(int n) {
     int result = 0;
@@ -20,7 +20,7 @@ int sumOfDigits(int n) {
 int sumOfFactorDigits(int n) {
     int result = 0, limit = sqrt(n);
     bool isPrime = true;
-    for(int i = 0; i < MAX_PRIME_SIZE && primes[i] <= limit; ++i) {
+    for(int i = 0; i < size && primes[i] <= limit; ++i) {
 	    if(n % primes[i] == 0) {
             isPrime = false;
 	        int tempSum = sumOfDigits(primes[i]);
@@ -33,17 +33,17 @@ int sumOfFactorDigits(int n) {
 	}
 	if(isPrime)
 	    return -1;
-	if(n > 1)
-	    result += sumOfDigits(n);
-    return result;
+	return result + sumOfDigits(n) * (n > 1);
 }
 
 int main() {
-	for(short i = 2; count < MAX_PRIME_SIZE; ++i) {
+    short sqrtMaxNum = sqrt(MAX_NUM);
+	for(short i = 2; i <= MAX_NUM; ++i) {
 	    if(!isComposite[i]) {
-	        primes[count++] = i;
-    	    if(i <= 177) {
-    	        for(int j = i * i; j <= MAX_NUM; j += i)
+	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+	        primes[size++] = i;
+    	    if(i <= sqrtMaxNum) {
+    	        for(short j = i * i; j <= MAX_NUM; j += i)
     	            isComposite[j] = true;
     	    }
 	    }
@@ -62,5 +62,6 @@ int main() {
 	    } while(!found);
 	    printf("%d\n", n);
 	}
+	free(primes);
     return 0;
 }
