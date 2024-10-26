@@ -15,7 +15,6 @@ public class Main {
         	    }
     	    }
     	}
-    	int size = primes.size();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -29,7 +28,7 @@ public class Main {
     	        ++n;
     		    if(n <= MAX_NUM && !isComposite[n])
     		        continue;
-    	        found = sumOfFactorDigits(size, n) == sumOfDigits(n);
+    	        found = sumOfFactorDigits(n) == sumOfDigits(n);
     		} while(!found);
     		output.append(n).append('\n');
         }
@@ -45,10 +44,10 @@ public class Main {
 	    return result;
 	}
 	
-	static int sumOfFactorDigits(int size, int n) {
+	static int sumOfFactorDigits(int n) {
 	    int result = 0, limit = (int)Math.sqrt(n);
 	    boolean isPrime = true;
-	    for(int i = 0; i < size && primes.get(i) <= limit; ++i) {
+	    for(int i = 0; i < primes.size() && primes.get(i) <= limit; ++i) {
     	    if(n % primes.get(i) == 0) {
                 isPrime = false;
     	        int tempSum = sumOfDigits(primes.get(i));
