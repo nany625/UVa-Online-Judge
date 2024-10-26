@@ -1,23 +1,26 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[10001];
-	static short[] primes = new short[1229], primesSumCount = new short[10001];
-	static int count = 1;
+    static short MAX_NUM = 10000;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
+	static short[] primesSumCount = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
-    	primes[0] = 2;
-    	for(short i = 3; count < 1229; i += 2) {
-            if(!isComposite[i]) {
-                primes[count++] = i;
-                if(i <= 100) {
-                    for(int j = i * i; j <= 10000; j += i)
-                        isComposite[j] = true;
-                }
-            }
-        }
-	    for(int i = 0; i < 1229; ++i) {
+    	primes.add((short)2);
+    	for(short i = 3; i <= MAX_NUM; i += 2) {
+    		if(!isComposite[i]) {
+    		    primes.add(i);
+    		    if(i <= 100) {
+    	            for(int j = i * i; j <= MAX_NUM; j += i)
+    	                isComposite[j] = true;
+    	        }
+    		}
+    	}
+    	int size = primes.size();
+	    for(int i = 0; i < size; ++i) {
             int sum = 0;
-            for(int j = i; j < 1229 && (sum += primes[j]) <= 10000; ++j)
+            for(int j = i; j < size && (sum += primes.get(j)) <= MAX_NUM; ++j)
                 ++primesSumCount[sum];
         }
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
