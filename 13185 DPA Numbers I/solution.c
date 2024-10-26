@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+char primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
 
 int sumOfDivisors(int n) {
     int sum = 1, limit = sqrt(n);
