@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
 #define MAX_NUM 2000
-#define MAX_PRIME_SIZE 303
 
 bool isComposite[MAX_NUM + 1] = {true, true};
-short primes[MAX_PRIME_SIZE];
-int count = 0;
+short *primes = NULL;
+int size = 0;
 
 int main() {
-    for(short i = 2; count < MAX_PRIME_SIZE; ++i) {
+    for(short i = 2; i <= MAX_NUM; ++i) {
         if(!isComposite[i]) {
-            primes[count++] = i;
+            primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+            primes[size++] = i;
             if(i <= 44) {
                 for(int j = i * i; j <= MAX_NUM; j += i)
                     isComposite[j] = true;
@@ -21,7 +22,7 @@ int main() {
     }
     int T;
     scanf("%d", &T);
-    char buffer[2001];
+    char buffer[MAX_NUM + 1];
     for(int i = 1; i <= T; ++i) {
         printf("Case %d: ", i);
         scanf("%s", buffer);
@@ -49,5 +50,6 @@ int main() {
         }
         puts(empty ? "empty" : "");
     }
+    free(primes);
     return 0;
 }
