@@ -1,34 +1,36 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[998];
-    static short[] primes = new short[168];
-    static int count = 1;
+    static short MAX_NUM = 1000;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
 	public static void main (String[] args) throws IOException {
-		primes[0] = 2;
-		for(short i = 3; count < 168; i += 2) {
-            if(!isComposite[i]) {
-                primes[count++] = i;
-                if(i <= 31) {
-                    for(short j = (short)(i * i); j <= 997; j += i)
-                        isComposite[j] = true;
-                }
-            }
-        }
+		primes.add((short)2);
+    	for(short i = 3; i <= MAX_NUM; i += 2) {
+    		if(!isComposite[i]) {
+    		    primes.add(i);
+    		    if(i <= 31) {
+    	            for(int j = i * i; j <= MAX_NUM; j += i)
+    	                isComposite[j] = true;
+    	        }
+    		}
+    	}
+    	int size = primes.size();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		int num;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (num = (int)st.nval) != 0) {
-		    output.append(num + " : ");
+		    output.append(num).append(" : ");
 		    short limit = (short)Math.sqrt(num);
 		    int pfCount = 0;
-		    for(int i = 0; i < 168 && primes[i] <= limit; ++i) {
-		        if(num % primes[i] == 0) {
+		    for(int i = 0; i < size && primes.get(i) <= limit; ++i) {
+		        if(num % primes.get(i) == 0) {
                     ++pfCount;
                     do {
-                        num /= primes[i];
-                    } while(num % primes[i] == 0);
+                        num /= primes.get(i);
+                    } while(num % primes.get(i) == 0);
                     limit = (short)Math.sqrt(num);
 		        }
 		    }
@@ -36,13 +38,4 @@ public class Main {
 		}
 		System.out.print(output);
 	}
-	
-	static boolean isPrime(short n) {
-        short limit = (short)Math.sqrt(n);
-        for(int i = 1; i < count && primes[i] <= limit; ++i) {
-            if(n % primes[i] == 0)
-                return false;
-        }
-        return true;
-    }
 }
