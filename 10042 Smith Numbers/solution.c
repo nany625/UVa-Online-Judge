@@ -33,7 +33,9 @@ int sumOfFactorDigits(int n) {
 	}
 	if(isPrime)
 	    return -1;
-	return result + sumOfDigits(n) * (n > 1);
+	if(n > 1)
+	    result += sumOfDigits(n);
+	return result;
 }
 
 int main() {
