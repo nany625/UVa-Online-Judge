@@ -12,8 +12,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
     	while(n-- > 0) {
     	    String text = br.readLine();
-    	    int len = text.length();
-    	    for(int i = 0; i < len; ++i) {
+    	    for(int i = 0; i < text.length(); ++i) {
     	        char ch = text.charAt(i);
     	        if(Character.isLowerCase(ch))
     	            ch = Character.toUpperCase(ch);
