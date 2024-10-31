@@ -2,14 +2,20 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static short[] primes = new short[3507];
-    static int count = 1;
+    static short MAX_NUM = 32693;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-		primes[0] = 2;
-		for(short i = 3; count < 3507; i += 2) {
-    	    if(isPrime(i))
-    	        primes[count++] = i;
-    	}
+		primes.add((short)2);
+		for(short i = 3; i <= MAX_NUM; ++i) {
+	        if(!isComposite[i]) {
+    	        primes.add(i);
+                if(i <= 180) {
+                    for(int j = i * i; j <= MAX_NUM; j += i)
+                        isComposite[j] = true;
+                }
+    	    }
+	    }
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	String line;
     	StringBuilder output = new StringBuilder();
@@ -21,13 +27,12 @@ public class Main {
     	    --x;
     	    ArrayList<Factor> factors = new ArrayList<>();
     	    for(int i = 0; x > 1; ++i) {
-    	        if(x % primes[i] == 0) {
-    	            int e = 0;
+    	        if(x % primes.get(i) == 0) {
+    	            factors.add(new Factor(primes.get(i)));
     	            do {
-    	                ++e;
-    	                x /= primes[i];
-    	            } while(x % primes[i] == 0);
-    	            factors.add(new Factor(primes[i], e));
+    	                ++factors.get(factors.size() - 1).e;
+    	                x /= primes.get(i);
+    	            } while(x % primes.get(i) == 0);
     	        }
     	    }
     	    for(int i = factors.size() - 1; i > 0; --i)
@@ -36,22 +41,13 @@ public class Main {
     	}
 	    System.out.print(output);
 	}
-	
-	static boolean isPrime(short n) {
-        short limit = (short)Math.sqrt(n);
-        for(int i = 1; i < count && primes[i] <= limit; ++i) {
-            if(n % primes[i] == 0)
-                return false;
-        }
-        return true;
-    }
 }
 
 class Factor {
     short p;
     int e;
-    Factor(short p, int e) {
+    Factor(short p) {
         this.p = p;
-        this.e = e;
+        this.e = 0;
     }
 }
