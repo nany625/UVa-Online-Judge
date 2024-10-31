@@ -6,7 +6,7 @@
 
 bool isComposite[MAX_NUM + 1];
 short *primes;
-int size = 0;
+int size;
 
 int sumOfDigits(int n) {
     int result = 0;
