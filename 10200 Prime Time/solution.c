@@ -5,7 +5,7 @@
 #define EPS 1e-6
 
 bool isComposite[MAX_NUM + 1];
-short *primes = NULL, ppCount[MAX_NUM + 1] = {
+short *primes, ppCount[MAX_NUM + 1] = {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
