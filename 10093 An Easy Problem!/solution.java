@@ -6,8 +6,8 @@ public class Main {
         String R;
         StringBuilder output = new StringBuilder();
         while((R = br.readLine()) != null) {
-            int max = 1, sumOfDigits = 0, len = R.length();
-            for(int i = 0; i < len; ++i) {
+            int max = 1, sumOfDigits = 0;
+            for(int i = 0; i < R.length(); ++i) {
     			int digit = 0;
     			if(Character.isDigit(R.charAt(i)))
     				digit = R.charAt(i) - '0';
