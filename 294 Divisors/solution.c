@@ -1,10 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#define MAX_NUM 31607
 
-int primes[] = {2, 3, 5, 7, 11, 13};
+bool isComposite[MAX_NUM + 1];
+short *primes;
+int size = 1;
 
 int factorCount(int n) {
     int result = 1, i = 0;
-	while(i < 6 && n > 1) {
+	while(i < size && n > 1) {
 	    int currPow = 0;
 	    while(n % primes[i] == 0) {
 	        ++currPow;
@@ -19,6 +24,18 @@ int factorCount(int n) {
 }
 
 int main() {
+    primes = (short*)malloc(sizeof(short));
+    primes[0] = 2;
+    for(short i = 3; i <= MAX_NUM; i += 2) {
+        if(!isComposite[i]) {
+            primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+            primes[size++] = i;
+            if(i <= 177) {
+                for(int j = i * i; j <= MAX_NUM; j += i)
+                    isComposite[j] = true;
+            }
+        }
+    }
 	int N;
 	scanf("%d", &N);
 	while(N--) {
@@ -35,7 +52,7 @@ int main() {
 			}
 			L += 2;
 		}
-		while(L % 12 != 0 && L <= U) {
+		while(L <= U) {
 		    int temp = factorCount(L);
 			if(count < temp) {
 				count = temp;
@@ -43,15 +60,8 @@ int main() {
 			}
 			L += 6;
 		}
-		while(L <= U) {
-		    int temp = factorCount(L);
-			if(count < temp) {
-				count = temp;
-				ans = L;
-			}
-			L += 12;
-		}
 		printf("%d has a maximum of %d divisors.\n", ans, count);
 	}
+	free(primes);
 	return 0;
 }
