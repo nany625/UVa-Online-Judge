@@ -13,8 +13,7 @@ public class Main {
             int N = (int)st.nval;
             Job[] jobs = new Job[N];
             for(int i = 0; i < N; ++i) {
-                jobs[i] = new Job();
-                jobs[i].jobNum = i + 1;
+                jobs[i] = new Job(i + 1);
                 st.nextToken();
                 jobs[i].T = (int)st.nval;
                 st.nextToken();
@@ -38,4 +37,7 @@ public class Main {
 
 class Job {
     int jobNum, T, S;
+    Job(int jobNum) {
+        this.jobNum = jobNum;
+    }
 }
