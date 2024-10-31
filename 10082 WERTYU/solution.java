@@ -12,8 +12,7 @@ public class Main {
         String text;
         StringBuilder output = new StringBuilder();
         while((text = br.readLine()) != null) {
-            len = text.length();
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < text.length(); ++i) {
                 if(decode.containsKey(text.charAt(i)))
                     output.append(decode.get(text.charAt(i)));
                 else
