@@ -1,19 +1,11 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 #include <stdbool.h>
-#define MAX_SIZE 169
+#define MAX_NUM 1000
 
-short primes[MAX_SIZE] = {1, 2}, pos[1000] = {1, 2};
-int count = 2;
-
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 2; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
+bool isComposite[MAX_NUM + 1];
+short *primes, pos[MAX_NUM] = {1, 2};
+int size = 2;
 
 void printPrimes(int first, int last) {
 	for(int i = first; i <= last; ++i)
@@ -21,11 +13,18 @@ void printPrimes(int first, int last) {
 }
 
 int main() {
-	for(short i = 3; i <= 1000; ++i) {
+    primes = (short*)malloc(2 * sizeof(short));
+    primes[0] = 1;
+    primes[1] = 2;
+	for(short i = 3; i <= MAX_NUM; ++i) {
 	    pos[i - 1] = pos[i - 2];
-	    if(i & 1 && count < MAX_SIZE) {
-	        if(isPrime(i))
-    			++pos[(primes[count++] = i) - 1];
+	    if(i & 1 && !isComposite[i]) {
+	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+	        ++pos[(primes[size++] = i) - 1];
+	        if(i <= 31) {
+	            for(int j = i * i; j <= MAX_NUM; j += i)
+	                isComposite[j] = true;
+	        }
 	    }
 	}
 	int N, C;
@@ -39,5 +38,6 @@ int main() {
     		printPrimes(0, pos[N - 1] - 1);
     	puts("\n");
     }
+    free(primes);
 	return 0;
 }
