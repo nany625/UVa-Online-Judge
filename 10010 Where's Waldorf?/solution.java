@@ -42,7 +42,7 @@ public class Main {
 	}
 	
 	static boolean searchInDirection(String[] grid, int m, int n, String word, int row, int col, int dir) {
-        for(int i = 0; i < wordLen.length(); ++i) {
+        for(int i = 0; i < word.length(); ++i) {
             int newRow = row + i * dRow[dir], newCol = col + i * dCol[dir];
             if(newRow < 0 || newRow >= m || newCol < 0 || newCol >= n || 
                 Character.toUpperCase(word.charAt(i)) != Character.toUpperCase(grid[newRow].charAt(newCol))) {
