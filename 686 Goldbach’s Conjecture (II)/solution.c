@@ -4,7 +4,7 @@
 #define MAX_NUM 32768
 
 bool isComposite[MAX_NUM + 1];
-short *primes, pairs[(MAX_NUM >> 1) - 2] = {1};
+short *primes, pairs[16382] = {1};
 int size = 1;
 
 int main() {
