@@ -1,18 +1,25 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static short[] primes = new short[3512], pairs = new short[16382];
-    static int count = 1;
+    static int MAX_NUM = 32765;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
+    static short[] pairs = new short[16382];
 	public static void main(String[] args) throws IOException {
-    	primes[0] = 2;
-    	for(short i = 3; count < primes.length; i += 2) {
-            if(isPrime(i))
-                primes[count++] = i;
+    	for(short i = 3; i <= MAX_NUM; i += 2) {
+            if(!isComposite[i]) {
+    	        primes.add(i);
+                if(i <= 181) {
+                    for(int j = i * i; j <= MAX_NUM; j += i)
+                        isComposite[j] = true;
+                }
+    	    }
         }
         pairs[0] = 1;
-        for(int i = 1; i < 3512; ++i) {
-            for(int j = i; j < 3512; ++j) {
-                int sum = primes[i] + primes[j];
+        for(int i = 0; i < primes.size(); ++i) {
+            for(int j = i; j < primes.size(); ++j) {
+                int sum = primes.get(i) + primes.get(j);
                 if(sum < 32768)
                     ++pairs[(sum >> 1) - 2];
             }
@@ -24,14 +31,5 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0)
     		output.append(pairs[(n >> 1) - 2]).append('\n');
 	    System.out.print(output);
-	}
-	
-	static boolean isPrime(short n) {
-	    short limit = (short)Math.sqrt(n);
-	    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-	        if(n % primes[i] == 0)
-        		return false;
-        }
-        return true;
 	}
 }
