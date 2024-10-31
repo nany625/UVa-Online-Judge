@@ -6,8 +6,8 @@
 #define MAX_NUM 2000
 
 bool isComposite[MAX_NUM + 1] = {true, true};
-short *primes = NULL;
-int size = 0;
+short *primes;
+int size;
 
 int main() {
     for(short i = 2; i <= MAX_NUM; ++i) {
