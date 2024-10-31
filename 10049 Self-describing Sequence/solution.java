@@ -3,14 +3,11 @@ import java.util.*;
 
 public class Main {
     static ArrayList<Integer> f = new ArrayList<>();
-    static int size = 1;
 	public static void main(String[] args) throws IOException {
         f.add(1);
         int pos = 0;
-        while(f.get(size - 1) <= 2000000000) {
-            f.add(f.get(size - 1) + (pos += (size >= f.get(pos) ? 1 : 0)));
-            ++size;
-        }
+        while(f.get(f.size() - 1) <= 2000000000)
+            f.add(f.get(f.size() - 1) + (pos += (f.size() >= f.get(pos) ? 1 : 0)));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		int n;
@@ -21,7 +18,7 @@ public class Main {
 	}
 	
 	static int binarySearch(int key) {
-	    int left = 0, right = size - 2;
+	    int left = 0, right = f.size() - 2;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(f.get(mid) == key)
