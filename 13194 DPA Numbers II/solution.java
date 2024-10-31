@@ -1,20 +1,21 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[1000001]; 
-    static int[] primes = new int[78498];
-    static int count = 1;
+    static int MAX_NUM = 1000000;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1]; 
+    static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-        primes[0] = 2;
-        for(int i = 3; count < 78498; i += 2) {
-            if(!isComposite[i]) {
-                primes[count++] = i;
-                if(i <= 1000) {
-                    for(int j = i * i; j <= 1000000; j += i)
-                        isComposite[j] = true;
-                }
-            }
-        }
+        primes.add(2);
+    	for(int i = 3; i <= MAX_NUM; i += 2) {
+    		if(!isComposite[i]) {
+    		    primes.add(i);
+    		    if(i <= 1000) {
+    	            for(int j = i * i; j <= MAX_NUM; j += i)
+    	                isComposite[j] = true;
+    	        }
+    		}
+    	}
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -40,13 +41,13 @@ public class Main {
 	
 	static long sumOfDivisors(long n) {
         long sum = 1, limit = (long)Math.sqrt(n);
-        for(int i = 0; i < 78498 && primes[i] <= limit; ++i) {
-            if(n % primes[i] == 0) {
+        for(int i = 0; i < primes.size() && primes.get(i) <= limit; ++i) {
+            if(n % primes.get(i) == 0) {
                 long tempSum = 1, term = 1;
                 do {
-                    tempSum += term *= primes[i];
-                    n /= primes[i];
-                } while(n % primes[i] == 0);
+                    tempSum += term *= primes.get(i);
+                    n /= primes.get(i);
+                } while(n % primes.get(i) == 0);
                 sum *= tempSum;
                 limit = (long)Math.sqrt(n);
             }
