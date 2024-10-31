@@ -12,8 +12,7 @@ public class Main {
                 output.append('\n');
             HashMap<Character, Short> frequencies = new HashMap<>();
             ArrayList<Character> frequenciesKeys = new ArrayList<>();
-            int len = text.length();
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < text.length(); ++i) {
                 if(frequencies.containsKey(text.charAt(i)))
                     frequencies.replace(text.charAt(i), (short)(frequencies.get(text.charAt(i)) + 1));
                 else {
