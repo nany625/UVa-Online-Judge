@@ -1,16 +1,23 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-    static short[] primes = new short[169], pos = new short[1000];
-    static int count = 2;
+    static short MAX_NUM = 1000;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Short> primes = new ArrayList<>();
+    static short[] pos = new short[MAX_NUM];
 	public static void main(String[] args) throws IOException {
-        primes[0] = pos[0] = 1;
-	    primes[1] = pos[1] = 2;
-	    for(short i = 3; i <= 1000; ++i) {
+        primes.add(pos[0] = 1);
+        primes.add(pos[1] = 2);
+	    for(short i = 3; i <= MAX_NUM; ++i) {
 	        pos[i - 1] = pos[i - 2];
-	        if((i & 1) == 1 && count < primes.length) {
-	            if(isPrime(i))
-	                ++pos[(primes[count++] = i) - 1];
+	        if((i & 1) == 1 && !isComposite[i]) {
+	            primes.add(i);
+	            ++pos[i - 1];
+	            if(i <= 31) {
+    	            for(int j = i * i; j <= MAX_NUM; j += i)
+    	                isComposite[j] = true;
+    	        }
 	        }
 	    }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,20 +38,11 @@ public class Main {
         }
         System.out.print(output);
 	}
-	
-	static boolean isPrime(short n) {
-	    short limit = (short)Math.sqrt(n);
-        for(int i = 2; i < count && primes[i] <= limit; ++i) {
-            if(n % primes[i] == 0)
-                return false;
-        }
-        return true;
-    }
     
     static StringBuilder printPrimes(int first, int last) {
         StringBuilder ans = new StringBuilder();
     	for(int i = first; i <= last; ++i)
-    		ans.append(' ').append(primes[i]);
+    		ans.append(' ').append(primes.get(i));
     	return ans;
     }
 }
