@@ -33,8 +33,7 @@ public class Main {
 	static void dfs(Graph graph, short startVertex, char color, boolean[] bicolorable) {
         graph.visited[startVertex] = true;
         graph.color[startVertex] = color;
-        int size = graph.edges[startVertex].size();
-        for(int i = 0; i < size; ++i) {
+        for(int i = 0; i < graph.edges[startVertex].size(); ++i) {
             if(!graph.visited[graph.edges[startVertex].get(i)])
                 dfs(graph, graph.edges[startVertex].get(i), color == '0' ? '1' : '0', bicolorable);
             else if(graph.color[graph.edges[startVertex].get(i)] == color) {
