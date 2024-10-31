@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static short MAX_NUM = 31607;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1]; 
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
         primes.add((short)2);
