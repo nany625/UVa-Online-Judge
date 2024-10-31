@@ -5,7 +5,7 @@
 #define MAX_NUM 1000
 
 bool isComposite[MAX_NUM + 1];
-short *primes = NULL;
+short *primes;
 int size = 1;
 
 int main() {
