@@ -3,29 +3,29 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
-#define MAX_PRIME_SIZE 3507
+#define MAX_NUM 32693
 
 typedef struct {
     short p;
     int e;
 } Factor;
 
-short primes[MAX_PRIME_SIZE] = {2};
-int count = 1;
-
-bool isPrime(short n) {
-    short limit = sqrt(n);
-    for(int i = 1; i < count && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0)
-            return false;
-    }
-    return true;
-}
+bool isComposite[MAX_NUM + 1];
+short *primes;
+int size = 1;
 
 int main() {
-	for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
-	    if(isPrime(i))
-	        primes[count++] = i;
+    primes = (short*)malloc(sizeof(short));
+    primes[0] = 2;
+	for(short i = 3; i <= MAX_NUM; i += 2) {
+	    if(!isComposite[i]) {
+	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+            primes[size++] = i;
+            if(i <= 180) {
+                for(int j = i * i; j <= MAX_NUM; j += i)
+                    isComposite[j] = true;
+            }
+	    }
 	}
 	char *buffer = NULL;
 	size_t bufsize = 0;
@@ -40,24 +40,25 @@ int main() {
 	    }
 	    --x;
 	    Factor *factors = NULL;
-	    int size = 0;
+	    int factorCount = 0;
 	    for(int i = 0; x > 1; ++i) {
 	        if(x % primes[i] == 0) {
-	            factors = (Factor*)realloc(factors, (size + 1) * sizeof(Factor));
-	            factors[size].p = primes[i];
-	            factors[size].e = 0;
+	            factors = (Factor*)realloc(factors, (factorCount + 1) * sizeof(Factor));
+	            factors[factorCount].p = primes[i];
+	            factors[factorCount].e = 0;
 	            do {
-	                ++factors[size].e;
+	                ++factors[factorCount].e;
 	                x /= primes[i];
 	            } while(x % primes[i] == 0);
-	            ++size;
+	            ++factorCount;
 	        }
 	    }
-	    for(int i = size - 1; i > 0; --i)
+	    for(int i = factorCount - 1; i > 0; --i)
 	        printf("%hd %d ", factors[i].p, factors[i].e);
 	    printf("%hd %d\n", factors[0].p, factors[0].e);
 	    free(factors);
 	}
 	free(buffer);
+	free(primes);
 	return 0;
 }
