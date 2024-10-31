@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define MAX_NUM 32768
+#define MAX_NUM 32765
 
 bool isComposite[MAX_NUM + 1];
 short *primes, pairs[16382] = {1};
-int size = 1;
+int size;
 
 int main() {
-    primes = (short*)malloc(sizeof(short));
-    primes[0] = 2;
-    for(int i = 3; i <= MAX_NUM; i += 2) {
+    for(short i = 3; i <= MAX_NUM; i += 2) {
         if(!isComposite[i]) {
 	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = i;
@@ -20,10 +18,11 @@ int main() {
             }
 	    }
     }
-    for(int i = 1; i < size; ++i) {
+    printf("%d\n", size);
+    for(int i = 0; i < size; ++i) {
         for(int j = i; j < size; ++j) {
             int sum = primes[i] + primes[j];
-            if(sum < MAX_NUM)
+            if(sum < 32768)
                 ++pairs[(sum >> 1) - 2];
         }
     }
