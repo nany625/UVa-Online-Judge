@@ -6,7 +6,6 @@ public class Main {
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int T = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(T-- > 0) {
             st.nextToken();
