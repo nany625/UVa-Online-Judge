@@ -23,7 +23,7 @@ public class Main {
             int max = 1;
             int[] ldsDP = new int[N];
             ArrayList<Integer> LDS = new ArrayList<>();
-            for(int i = N - 1; i >= 0 && max < lisSize; --i) {
+            for(int i = N - 1; i >= 0 && max < LIS.size(); --i) {
                 int pos = binarySearch(LDS, sequence[i]);
                 if(pos == LDS.size())
                     LDS.add(sequence[i]);
