@@ -8,12 +8,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         fib.add(BigInteger.ONE);
         fib.add(new BigInteger("2"));
-        int size = 2;
         BigInteger next;
-        while((next = fib.get(size - 2).add(fib.get(size - 1))).compareTo(limit) < 0) {
+        while((next = fib.get(fib.size() - 2).add(fib.get(fib.size() - 1))).compareTo(limit) < 0)
             fib.add(next);
-            ++size;
-        }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line;
         StringBuilder output = new StringBuilder();
@@ -21,14 +18,14 @@ public class Main {
             String[] tokens = line.split("\\s+");
             if(tokens[0].equals("0") && tokens[1].equals("0"))
                 break;
-            int posA = binarySearch(size, new BigInteger(tokens[0])), posB = binarySearch(size, new BigInteger(tokens[1]));
-            output.append(posB - posA + (posB < size && fib.get(posB).compareTo(new BigInteger(tokens[1])) == 0 ? 1 : 0)).append('\n');
+            int posA = binarySearch(new BigInteger(tokens[0])), posB = binarySearch(new BigInteger(tokens[1]));
+            output.append(posB - posA + (posB < fib.size() && fib.get(posB).compareTo(new BigInteger(tokens[1])) == 0 ? 1 : 0)).append('\n');
         }
         System.out.print(output);
     }
     
-    static int binarySearch(int size, BigInteger key) {
-        int left = 0, right = size - 1;
+    static int binarySearch(BigInteger key) {
+        int left = 0, right = fib.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(fib.get(mid).compareTo(key) == 0)
