@@ -9,17 +9,17 @@ public class Main {
 	        String s = st.sval;
 	        st.nextToken();
 	        String t = st.sval;
-            int i = 0, j = 0, lens = s.length(), lent = t.length();
-	        while(j < lent) {
+            int i = 0, j = 0;
+	        while(j < t.length()) {
 		        if(s.charAt(i) == t.charAt(j))
 		            ++i;
-    	        if(i == lens) {
+    	        if(i == s.length()) {
     	            output.append("Yes\n");
     	            break;
     	        }
     	        ++j;
     	    }
-    	    if(i < lens)
+    	    if(i < s.length())
     	        output.append("No\n");
 	    }
 	    System.out.print(output);
