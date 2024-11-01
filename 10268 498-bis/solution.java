@@ -9,9 +9,8 @@ public class Main {
             int x = (int)st.nval;
             String[] a = br.readLine().split("\\s+");
             long result = 0;
-            int len = a.length - 1;
-            for(int i = 0; i < len; ++i)
-                result = result * x + Long.parseLong(a[i]) * (len - i);
+            for(int i = 0; i < a.length - 1; ++i)
+                result = result * x + Long.parseLong(a[i]) * (a.length - 1 - i);
             output.append(result).append('\n');
         }
         System.out.print(output);
