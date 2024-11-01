@@ -8,10 +8,9 @@ public class Main {
 		String s;
 		StringBuilder output = new StringBuilder();
 		while((s = br.readLine()) != null) {
-		    output.append("Case " + (++cases) + ":\n");
-		    int len = s.length();
-		    int[] groups = new int[len];
-		    for(int i = 1; i < len; ++i)
+		    output.append("Case ").append(++cases).append(":\n");
+		    int[] groups = new int[s.length()];
+		    for(int i = 1; i < s.length(); ++i)
                 groups[i] = groups[i - 1] + (s.charAt(i) != s.charAt(i - 1) ? 1 : 0);
             st.nextToken();
             int n = (int)st.nval;
