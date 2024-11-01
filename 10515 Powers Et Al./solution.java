@@ -19,11 +19,11 @@ public class Main {
             else if(base == 5 || base == 6)
                 output.append(base).append('\n');
             else {
-                int len = tokens[1].length(), N;
-                if(len == 1)
+                int N;
+                if(tokens[1].length() == 1)
                     N = tokens[1].charAt(0) - '0';
                 else
-                    N = 10 * (tokens[1].charAt(len - 2) - '0') + tokens[1].charAt(len - 1) - '0';
+                    N = 10 * (tokens[1].charAt(tokens[1].length() - 2) - '0') + tokens[1].charAt(tokens[1].length() - 1) - '0';
                 output.append(lastDigit[base - 2].charAt(N % cycle[base - 2])).append('\n');
             }
         }
