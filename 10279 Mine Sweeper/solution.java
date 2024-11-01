@@ -7,13 +7,10 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int games = (int)st.nval;
-        boolean firstCase = true;
         StringBuilder output = new StringBuilder();
         while(games-- > 0) {
             st.nextToken();
             int n = (int)st.nval;
-            if(!firstCase)
-                output.append('\n');
             char[][] mines = new char[n][n], touch = new char[n][n];
             for(int i = 0; i < n; ++i)
                 mines[i] = br.readLine().toCharArray();
@@ -50,7 +47,8 @@ public class Main {
         	        output.append(touch[i][j]);
         	    output.append('\n');
     	    }
-    	    firstCase = false;
+    	    if(games > 0)
+                output.append('\n');
         }
         System.out.print(output);
 	}
