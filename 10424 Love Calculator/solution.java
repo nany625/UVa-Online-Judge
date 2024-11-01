@@ -19,8 +19,8 @@ public class Main {
 	}
 	
 	static int sum(String s) {
-        int result = 0, len = s.length();
-        for(int i = 0; i < len; ++i) {
+        int result = 0;
+        for(int i = 0; i < s.length(); ++i) {
             if(Character.isUpperCase(s.charAt(i)))
                 result += s.charAt(i) - 'A' + 1;
             else if(Character.isLowerCase(s.charAt(i)))
