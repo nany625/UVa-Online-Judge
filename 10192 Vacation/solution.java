@@ -8,11 +8,10 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((father = br.readLine()) != null && father.charAt(0) != '#') {
             String mother = br.readLine();
-            int m = father.length(), n = mother.length();
-            int[] L = new int[n + 1];
-            for(int i = 0; i < m; ++i) {
+            int[] L = new int[mother.length() + 1];
+            for(int i = 0; i < father.length(); ++i) {
                 int prev = 0;
-                for(int j = 1; j <= n; ++j) {
+                for(int j = 1; j <= mother.length(); ++j) {
                     int temp = L[j];
                     if(father.charAt(i) == mother.charAt(j - 1))
                         L[j] = prev + 1;
@@ -21,7 +20,7 @@ public class Main {
                     prev = temp;
                 }
             }
-            output.append("Case #").append(++cases).append(": you can visit at most ").append(L[n]).append(" cities.\n");
+            output.append("Case #").append(++cases).append(": you can visit at most ").append(L[mother.length()]).append(" cities.\n");
         }
 	    System.out.print(output);
 	}
