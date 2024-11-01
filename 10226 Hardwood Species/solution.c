@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 typedef struct {
     char *name;
@@ -28,10 +27,7 @@ int main() {
     scanf("%d", &cases);
     getchar();
     getchar();
-    bool firstCase = true;
     while(cases--) {
-    	if(!firstCase)
-    		putchar('\n');
     	Species *tree = NULL;
     	char buffer[32];
         int speciesCount = 0;
@@ -56,7 +52,8 @@ int main() {
             free(tree[i].name);
         }
         free(tree);
-        firstCase = false;
+        if(cases)
+    		putchar('\n');
     }
     return 0;
 }
