@@ -7,9 +7,9 @@ public class Main {
         String s;
         StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_WORD && (s = st.sval).charAt(0) != '.') {
-	        int len = s.length(), i = 1, length = 0;
-	        int[] lps = new int[len];
-	        while(i < len) {
+	        int i = 1, length = 0;
+	        int[] lps = new int[s.length()];
+	        while(i < s.length()) {
 	            if(s.charAt(i) == s.charAt(length))
 	                lps[i++] = ++length;
 	            else {
@@ -19,7 +19,7 @@ public class Main {
 	                    lps[i++] = 0;
 	            }
 	        }
-			output.append((len % (len - lps[len - 1]) == 0 ? len / (len - lps[len - 1]) : 1)).append('\n');
+			output.append((s.length() % (s.length() - lps[s.length() - 1]) == 0 ? s.length() / (s.length() - lps[s.length() - 1]) : 1)).append('\n');
         }
 	    System.out.print(output);
 	}
