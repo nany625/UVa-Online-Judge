@@ -11,8 +11,8 @@ public class Main {
     	String N;
     	StringBuilder output = new StringBuilder();
     	while((N = br.readLine()).charAt(0) != '0') {
-	        int dividend = 0, len = N.length();
-	        for(int i = 0; i < len - 1; ++i)
+	        int dividend = 0;
+	        for(int i = 0; i < N.length() - 1; ++i)
 	            dividend = (10 * dividend + N.charAt(i) - '0') % 20;
 	        dividend = 10 * dividend + N.charAt(len - 1) - '0';
 	        output.append(((dividend / 20 << 2) + lastDigit[dividend % 20]) % 10).append('\n');
@@ -42,11 +42,10 @@ public class Main {
     	String N;
     	StringBuilder output = new StringBuilder();
     	while((N = br.readLine()).charAt(0) != '0') {
-	        int len = N.length();
-	        if(len == 1)
+	        if(N.length() == 1)
 	            output.append(lastDigit[N.charAt(0) - '0']).append('\n');
 	        else
-	            output.append(lastDigit[(N.charAt(len - 2) - '0') * 10 + N.charAt(len - 1) - '0']).append('\n');
+	            output.append(lastDigit[(N.charAt(N.length() - 2) - '0') * 10 + N.charAt(N.length() - 1) - '0']).append('\n');
     	}
 	    System.out.print(output);
 	}
