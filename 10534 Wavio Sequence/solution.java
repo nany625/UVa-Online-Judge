@@ -13,7 +13,7 @@ public class Main {
             for(int i = 0; i < N; ++i) {
                 st.nextToken();
                 sequence[i] = (int)st.nval;
-                int pos = binarySearch(LIS sequence[i]);
+                int pos = binarySearch(LIS, sequence[i]);
                 if(pos == LIS.size())
                     LIS.add(sequence[i]);
                 else
