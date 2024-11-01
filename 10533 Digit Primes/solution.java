@@ -1,14 +1,15 @@
 import java.io.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[1000000];
-    static short[] dpCount = new short[1000000];
+    static int MAX_NUM = 999999;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static short[] dpCount = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
 	    isComposite[0] = isComposite[1] = true;
-	    for(int i = 2; i < 1000000; ++i) {
+	    for(int i = 2; i <= MAX_NUM; ++i) {
 	        dpCount[i] = dpCount[i - 1];
 	        if(i <= 999 && !isComposite[i]) {
-    	        for(int j = i * i; j < 1000000; j += i)
+    	        for(int j = i * i; j <= MAX_NUM; j += i)
     	            isComposite[j] = true;
 	        }
 	        if(!isComposite[i] && !isComposite[sumOfDigits(i)])
