@@ -10,7 +10,7 @@ public class Main {
         int N = (int)st.nval;
         StringBuilder output = new StringBuilder();
         for(int i = 1; i <= N; ++i) {
-            output.append("World #" + i + "\n");
+            output.append("World #").append(i).append('\n');
             st.nextToken();
             int H = (int)st.nval;
             st.nextToken();
@@ -22,7 +22,7 @@ public class Main {
             }
             Rank[] ranks = new Rank[26];
             for(int j = 0; j < 26; ++j)
-                ranks[j] = new Rank((char)('a' + j), 0);
+                ranks[j] = new Rank((char)('a' + j));
             for(int j = 0; j < H; ++j) {
                 for(int k = 0; k < W; ++k) {
                     if(Character.isLowerCase(map[j][k])) {
@@ -60,8 +60,8 @@ public class Main {
 class Rank {
     char language;
     int states;
-    Rank(char language, int states) {
+    Rank(char language) {
         this.language = language;
-        this.states = states;
+        this.states = 0;
     }
 }
