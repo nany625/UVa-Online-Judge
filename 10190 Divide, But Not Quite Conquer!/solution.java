@@ -21,8 +21,7 @@ public class Main {
             if(n != 1)
                 output.append("Boring!\n");
             else {
-                int size = a.size() - 1;
-                for(int i = 0; i < size; ++i)
+                for(int i = 0; i < a.size() - 1; ++i)
                     output.append(a.get(i)).append(' ');
                 output.append("1\n");
             }
