@@ -10,10 +10,7 @@ public class Main {
         int cases = (int)st.nval;
         br.readLine();
         StringBuilder output = new StringBuilder();
-        boolean firstCase = true;
         while(cases-- > 0) {
-    		if(!firstCase)
-                output.append('\n');
             HashMap<String, Integer> tree = new HashMap<>();
             ArrayList<String> treeKeys = new ArrayList<>();
             String species;
@@ -31,7 +28,8 @@ public class Main {
                 treeSize += i;
             for(String s : treeKeys)
                 output.append(String.format("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize));
-            firstCase = false;
+            if(cases > 0)
+                output.append('\n');
         }
     	System.out.print(output);
 	}
@@ -49,10 +47,7 @@ public class Main {
         int cases = (int)st.nval;
         br.readLine();
         StringBuilder output = new StringBuilder();
-        boolean firstCase = true;
         while(cases-- > 0) {
-    		if(!firstCase)
-                output.append('\n');
             TreeMap<String, Integer> tree = new TreeMap<>();
             String species;
     	    while((species = br.readLine()) != null && !species.isEmpty())
@@ -62,7 +57,8 @@ public class Main {
                 treeSize += i;
             for(String s : tree.keySet())
                 output.append(String.format("%s %.4f\n", s, 100.0 * tree.get(s) / treeSize));
-            firstCase = false;
+            if(cases > 0)
+                output.append('\n');
         }
     	System.out.print(output);
 	}
