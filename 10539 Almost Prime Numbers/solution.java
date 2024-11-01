@@ -2,21 +2,22 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[1000000];
+    static int MAX_NUM = 999999;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
     static ArrayList<Long> almostPrimes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 	    appendAlmostPrimes(2);
-	    for(int i = 3; i <= 999999; i += 2) {
+	    for(int i = 3; i <= MAX_NUM; i += 2) {
 	        if(!isComposite[i]) {
 	            appendAlmostPrimes(i);
 	            if(i <= 999) {
-	                for(int j = i * i; j <= 999999; j += i)
+	                for(int j = i * i; j <= MAX_NUM; j += i)
 	                    isComposite[j] = true;
 	            }
 	        }
 	    }
 	    Collections.sort(almostPrimes);
-	    int size = almostPrimes.size();
+	    int size = ;
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	StreamTokenizer st = new StreamTokenizer(br);
     	st.nextToken();
@@ -27,8 +28,8 @@ public class Main {
         	long low = (long)st.nval;
         	st.nextToken();
         	long high = (long)st.nval;
-        	int posLow = binarySearch(size, low), posHigh = binarySearch(size, high);
-        	output.append(posHigh - posLow + (posHigh < size && almostPrimes.get(posHigh) == high ? 1 : 0)).append('\n');
+        	int posLow = binarySearch(low), posHigh = binarySearch(high);
+        	output.append(posHigh - posLow + (posHigh < almostPrimes.size() && almostPrimes.get(posHigh) == high ? 1 : 0)).append('\n');
     	}
 	    System.out.print(output);
 	}
@@ -41,8 +42,8 @@ public class Main {
         }
     }
     
-	static int binarySearch(int size, long key) {
-	    int left = 0, right = size - 1;
+	static int binarySearch(long key) {
+	    int left = 0, right = almostPrimes.size() - 1;
 	    while(left <= right) {
 	        int mid = left + (right - left >> 1);
 	        if(almostPrimes.get(mid) == key)
