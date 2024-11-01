@@ -18,13 +18,13 @@ public class Main {
             if(solution.toString().contentEquals(teamOutput))
                 output.append("Run #").append(++x).append(": Accepted\n");
             else {
-                int i = 0, j = 0, lenSolution = solution.length(), lenTeamOutput = teamOutput.length();
-                while(i < lenSolution && j < lenTeamOutput) {
-    		        while(i < lenSolution && !Character.isDigit(solution.charAt(i)))
+                int i = 0, j = 0;
+                while(i < solution.length() && j < teamOutput.length()) {
+    		        while(i < solution.length() && !Character.isDigit(solution.charAt(i)))
     		            ++i;
-    		        while(j < lenTeamOutput && !Character.isDigit(teamOutput.charAt(j)))
+    		        while(j < teamOutput.length() && !Character.isDigit(teamOutput.charAt(j)))
     		            ++j;
-    		        if(i < lenSolution && j < lenTeamOutput) {
+    		        if(i < solution.length() && j < teamOutput.length()) {
     		            if(solution.charAt(i) != teamOutput.charAt(j))
     		                break;
     		            ++i;
@@ -32,7 +32,7 @@ public class Main {
     		        } else
                         break;
     		    }
-    		    if(i == lenSolution && j == lenTeamOutput)
+    		    if(i == solution.length() && j == teamOutput.length())
     		        output.append("Run #").append(++x).append(": Presentation Error\n");
     		    else
     		        output.append("Run #").append(++x).append(": Wrong Answer\n");
