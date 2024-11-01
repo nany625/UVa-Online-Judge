@@ -62,8 +62,7 @@ public class Main {
 		}
 		Collections.sort(check);
 		boolean firstBuilding = true;
-		int size = check.size();
-		for(int i = 0; i < size; ++i) {
+		for(int i = 0; i < check.size(); ++i) {
     	    if(skyline[check.get(i)] != skyline[check.get(i) - 1]) {
     	        if(!firstBuilding)
     	            output.append(' ');
