@@ -13,10 +13,9 @@ public class Main {
     	    while(num % 10 == 0)
     	        num /= 10;
     	    String temp = "" + num;
-    	    int len = temp.length();
-    	    fac[i] = new char[digits[i - 1] + len];
+    	    fac[i] = new char[digits[i - 1] + temp.length()];
     	    Arrays.fill(fac[i], '0');
-    	    for(int j = len - 1; j >= 0; --j) {
+    	    for(int j = temp.length() - 1; j >= 0; --j) {
     	        for(int k = digits[i - 1] - 1; k >= 0; --k) {
     	            fac[i][j + k] += ((fac[i - 1][k] - '0') * (temp.charAt(j) - '0') + fac[i][j + k + 1] - '0') / 10;
     	            fac[i][j + k + 1] = (char)(((fac[i - 1][k] - '0') * (temp.charAt(j) - '0') + fac[i][j + k + 1] - '0') % 10 + '0');
@@ -25,7 +24,7 @@ public class Main {
     	    int j = 0;
     	    while(fac[i][j] == '0')
     	        ++j;
-    	    digits[i] = (short)(digits[i - 1] + len);
+    	    digits[i] = (short)(digits[i - 1] + temp.length());
     	    if(fac[i][0] == '0')
     	        System.arraycopy(fac[i], 1, fac[i], 0, --digits[i]);
     	    while(fac[i][digits[i] - 1] == '0')
