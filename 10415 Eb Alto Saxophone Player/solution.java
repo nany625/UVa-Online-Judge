@@ -11,8 +11,7 @@ public class Main {
 		    String notes = br.readLine();
 		    int[] press = new int[10];
 		    String prev = "0000000000", curr = "";
-		    int len = notes.length();
-		    for(int i = 0; i < len; ++i) {
+		    for(int i = 0; i < notes.length(); ++i) {
 		        switch(notes.charAt(i)) {
                     case 'c':
     					curr = "0111001111";
