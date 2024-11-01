@@ -7,8 +7,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_WORD) {
             char[] word = st.sval.toCharArray();
-            int len = word.length;
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < word.length; ++i) {
                 switch(word[i]) {
                     case 'B':
                     case 'F':
@@ -43,7 +42,7 @@ public class Main {
             }
             if(Character.isDigit(word[0]))
                 output.append(word[0]);
-            for(int i = 1; i < len; ++i) {
+            for(int i = 1; i < word.length; ++i) {
                 if(Character.isDigit(word[i]) && word[i] != word[i - 1])
                     output.append(word[i]);
             }
