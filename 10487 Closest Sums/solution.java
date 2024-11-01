@@ -8,7 +8,7 @@ public class Main {
         int cases = 0, n;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
-            output.append("Case " + (++cases) + ":\n");
+            output.append("Case ").append(++cases).append(":\n");
             int[] set = new int[n];
             for(int i = 0; i < n; ++i) {
                 st.nextToken();
