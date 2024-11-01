@@ -17,7 +17,6 @@ public class Main {
 	        }
 	    }
 	    Collections.sort(almostPrimes);
-	    int size = ;
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	StreamTokenizer st = new StreamTokenizer(br);
     	st.nextToken();
