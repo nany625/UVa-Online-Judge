@@ -7,11 +7,9 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((a = br.readLine()) != null && (b = br.readLine()) != null) {
             short[] frequencya = new short[26], frequencyOutput = new short[26];
-            int len = a.length();
-            for(int i = 0; i < len; ++i)
+            for(int i = 0; i < a.length(); ++i)
                 ++frequencya[a.charAt(i) - 'a'];
-            len = b.length();
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < b.length(); ++i) {
                 if(frequencyOutput[b.charAt(i) - 'a'] < frequencya[b.charAt(i) - 'a'])
                     ++frequencyOutput[b.charAt(i) - 'a'];
             }
