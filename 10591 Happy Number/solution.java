@@ -17,8 +17,8 @@ public class Main {
     };
 	public static void main (String[] args) throws IOException {
 		boolean isHappy[] = new boolean[729];
-		for(int i = 0; i < 103; ++i)
-            isHappy[table[i] - 1] = true;
+		for(Short s : table)
+            isHappy[s - 1] = true;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
