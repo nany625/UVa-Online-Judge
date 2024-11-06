@@ -25,8 +25,7 @@ public class Main {
 		    output.append("Case ").append(i).append(": ");
 		    String s = br.readLine();
 		    short[] frequency = new short[62];
-		    int len = s.length();
-		    for(int j = 0; j < len; ++j) {
+		    for(int j = 0; j < s.length(); ++j) {
                 if(Character.isDigit(s.charAt(j)))
                     ++frequency[s.charAt(j) - '0'];
                 else if(Character.isUpperCase(s.charAt(j)))
