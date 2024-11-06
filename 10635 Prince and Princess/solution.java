@@ -21,14 +21,12 @@ public class Main {
                 index[(int)st.nval] = j;
             }
             ArrayList<Integer> lis = new ArrayList<>();
-            int lisSize = 0;
             while(q-- > 0) {
                 st.nextToken();
-                int curr = index[(int)st.nval], pos = binarySearch(lis, lisSize, curr);
-                if(pos == lisSize) {
+                int curr = index[(int)st.nval], pos = binarySearch(lis, curr);
+                if(pos == lis.size())
                     lis.add(curr);
-                    ++lisSize;
-                } else
+                else
                     lis.set(pos, curr);
             }
             output.append("Case ").append(i).append(": ").append(lisSize).append('\n');
@@ -36,8 +34,8 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static int binarySearch(ArrayList<Integer> arrayList, int size, int key) {
-        int left = 0, right = size - 1;
+	static int binarySearch(ArrayList<Integer> arrayList, int key) {
+        int left = 0, right = arrayList.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(arrayList.get(mid) < key)
