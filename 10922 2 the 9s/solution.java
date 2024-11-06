@@ -6,8 +6,8 @@ public class Main {
 		String N;
 		StringBuilder output = new StringBuilder();
 		while((N = br.readLine()) != null && N.charAt(0) != '0') {
-		    int degree = 0, temp = 0, len = N.length();
-		    for(int i = 0; i < len; ++i)
+		    int degree = 0, temp = 0;
+		    for(int i = 0; i < N.length(); ++i)
                 temp += N.charAt(i) - '0';
             while(temp > 9 && temp % 9 == 0) {
                 ++degree;
