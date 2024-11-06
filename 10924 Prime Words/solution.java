@@ -14,8 +14,8 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_WORD) {
             String L = st.sval;
-            int len = L.length(), sum = 0;
-            for(int i = 0; i < len; ++i) {
+            int sum = 0;
+            for(int i = 0; i < L.length(); ++i) {
                 if(Character.isUpperCase(L.charAt(i)))
                     sum += L.charAt(i) - 'A' + 27;
                 else if(Character.isLowerCase(L.charAt(i)))
