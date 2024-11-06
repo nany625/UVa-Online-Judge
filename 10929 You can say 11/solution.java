@@ -6,8 +6,8 @@ public class Main {
 		String N;
 		StringBuilder output = new StringBuilder();
 		while((N = br.readLine()) != null && N.charAt(0) != '0') {
-		    int sum = 0, len = N.length();
-		    for(int i = 0; i < len; ++i) {
+		    int sum = 0;
+		    for(int i = 0; i < N.length(); ++i) {
     	        if((i & 1) == 1)
     	            sum -= N.charAt(i) - '0';
     	        else
