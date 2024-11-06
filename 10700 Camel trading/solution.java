@@ -10,9 +10,9 @@ public class Main {
     	while(N-- > 0) {
     	    String expression = br.readLine();
     	    long max = 1, prev = 0;
-            int next = 0, len = expression.length();
+            int next = 0;
             boolean add = false;
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < expression.length(); ++i) {
                 switch(expression.charAt(i)) {
                     case '+':
                         add = true;
@@ -37,7 +37,7 @@ public class Main {
             prev = 0;
             next = 1;
             add = true;
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < expression.length(); ++i) {
                 switch(expression.charAt(i)) {
                     case '+':
                         add = true;
