@@ -10,22 +10,22 @@ public class Main {
         StringBuilder output = new StringBuilder();
     	while(cases-- > 0) {
     	    String[] tokens = br.readLine().split("\\s+");
-    	    int size = tokens.length, sum = 0;
-    	    int[] weights = new int[size];
-    	    for(int i = 0; i < size; ++i)
+    	    int[] weights = new int[tokens.length];
+            int sum = 0;
+    	    for(int i = 0; i < tokens.length; ++i)
     	        sum += weights[i] = Integer.parseInt(tokens[i]);
     	    if((sum & 1) == 1)
     	        output.append("NO\n");
     	    else
-    	        output.append(isSubsetSum(weights, size, sum >> 1) ? "YES\n" : "NO\n");
+    	        output.append(isSubsetSum(weights, sum >> 1) ? "YES\n" : "NO\n");
     	}
         System.out.print(output);
 	}
 	
-	static boolean isSubsetSum(int[] array, int size, int sum) {
+	static boolean isSubsetSum(int[] array, int sum) {
         boolean[] subsetSum = new boolean[sum + 1];
         subsetSum[0] = true;
-        for(int i = 0; i < size && !subsetSum[sum]; ++i) {
+        for(int i = 0; i < array.length && !subsetSum[sum]; ++i) {
             for(int j = sum; j >= array[i] && !subsetSum[sum]; --j)
                 subsetSum[j] |= subsetSum[j - array[i]];
         }
