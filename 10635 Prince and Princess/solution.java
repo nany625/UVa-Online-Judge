@@ -29,7 +29,7 @@ public class Main {
                 else
                     lis.set(pos, curr);
             }
-            output.append("Case ").append(i).append(": ").append(lisSize).append('\n');
+            output.append("Case ").append(i).append(": ").append(lis.size()).append('\n');
     	}
         System.out.print(output);
 	}
