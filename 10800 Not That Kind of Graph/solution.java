@@ -19,8 +19,7 @@ public class Main {
     		    case 'F':
     			    min = max = --curr;
             }
-    		int len = stockPrice.length();
-    	    for(int j = 1; j < len; ++j) {
+    	    for(int j = 1; j < stockPrice.length(); ++j) {
                 switch(stockPrice.charAt(j)) {
     	            case 'R':
     	        	    max = Math.max(max, curr++);
@@ -33,9 +32,9 @@ public class Main {
     		            max = Math.max(max, curr);
     	        }
     	    }
-    	    char[][] graph = new char[max - min + 1][len];
+    	    char[][] graph = new char[max - min + 1][stockPrice.length()];
     		int start = max;
-    		for(int j = 0; j < len; ++j) {
+    		for(int j = 0; j < stockPrice.length(); ++j) {
     		    for(int k = 0; k < max - min + 1; ++k)
     				graph[k][j] = ' ';
                 switch(stockPrice.charAt(j)) {
@@ -50,13 +49,13 @@ public class Main {
                 }
     		}
     		for(int j = 0; j < max - min + 1; ++j) {
-    			len = graph[j].length - 1;
+    			int len = graph[j].length - 1;
     			while(graph[j][len] == ' ')
     		    	--len;
     			output.append("| ").append(new String(graph[j], 0, len + 1)).append('\n');
     		}
     		output.append('+');
-    		len = stockPrice.length() + 2;
+    		int len = stockPrice.length() + 2;
     		while(len-- > 0)
     			output.append('-');
     		output.append("\n\n");
