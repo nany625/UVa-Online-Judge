@@ -10,8 +10,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((line = br.readLine()) != null) {
     	    String[] tokens = line.split("\\s+");
-    	    int len = tokens.length;
-    	    if(len == 1) {
+    	    if(tokens.length == 1) {
     	        n = Integer.parseInt(tokens[0]);
     	        correct = new int[n];
     	        for(int i = 1; i <= n; ++i) {
