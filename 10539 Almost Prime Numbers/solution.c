@@ -4,8 +4,8 @@
 #define MAX_NUM 999999
 
 bool isComposite[MAX_NUM + 1];
-long *almostPrimes = NULL;
-int size = 0;
+long *almostPrimes;
+int size;
 
 int compare(const void *a, const void *b) {
     return *(long*)a > *(long*)b;
