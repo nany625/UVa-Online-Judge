@@ -35,7 +35,7 @@ void DualPivotQuickSort(int *array, int left, int right) {
 int binarySearch(int *array, int size, int key) {
     int left = 0, right = size - 1;
     while(left <= right) {
-        int mid = left + ((right - left) >> 1);
+        int mid = left + (right - left >> 1);
         if(array[mid] < key)
             left = mid + 1;
         else
