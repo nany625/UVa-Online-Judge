@@ -8,8 +8,8 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (I = (int)st.nval) != 0) {
 		    String binaryRep = Integer.toBinaryString(I);
-    	    int len = binaryRep.length(), bitsSum = 0;
-    	    for(int i = 0; i < len; ++i)
+    	    int bitsSum = 0;
+    	    for(int i = 0; i < binaryRep.length(); ++i)
     	        bitsSum += binaryRep.charAt(i) - '0';
     	    output.append("The parity of ").append(binaryRep).append(" is ").append(bitsSum).append(" (mod 2).\n");
 		}
