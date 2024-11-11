@@ -21,18 +21,18 @@ public class Main {
 		    if(!sorted)
 		        output.append("This is not an A-sequence.\n");
 		    else
-		        output.append(isAsequence(sequence, D) ? "This is an A-sequence.\n" : "This is not an A-sequence.\n");
+		        output.append(isAsequence(sequence) ? "This is an A-sequence.\n" : "This is not an A-sequence.\n");
 		}
         System.out.print(output);
 	}
 	
-	static boolean isAsequence(short[] array, int size) {
-        boolean[] subsetSum = new boolean[array[size - 1] + 1];
+	static boolean isAsequence(short[] array) {
+        boolean[] subsetSum = new boolean[array[array.length - 1] + 1];
         subsetSum[0] = true;
-        for(int i = 0; i < size; ++i) {
+        for(int i = 0; i < array.length; ++i) {
             if(subsetSum[array[i]])
                 return false;
-            for(int j = array[size - 1]; j >= array[i]; --j)
+            for(int j = array[array.length - 1]; j >= array[i]; --j)
                 subsetSum[j] |= subsetSum[j - array[i]];
         }
         return true;
