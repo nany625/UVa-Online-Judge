@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     static int[] F = new int[45], M = new int[45];
-	public static void main (String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		F[0] = 1;
 		for(int i = 1; i < 45; ++i) {
             F[i] = M[i - 1] + 1;
@@ -37,7 +37,7 @@ public class Main {
         2178308, 3524577, 5702886, 9227464, 14930351, 24157816, 39088168, 63245985, 102334154, 165580140, 
         267914295, 433494436, 701408732, 1134903169, 1836311902
     };
-	public static void main (String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		int N;
