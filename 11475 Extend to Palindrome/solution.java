@@ -8,9 +8,9 @@ public class Main {
         while(st.nextToken() == StreamTokenizer.TT_WORD) {
 	        String s = st.sval;
 	        StringBuilder concat = new StringBuilder(s).reverse().append('#').append(s);
-            int len = s.length(), i = 1, length = 0;
-	        int[] lps = new int[(len << 1) + 1];
-	        while(i < (len << 1) + 1) {
+            int i = 1, length = 0;
+	        int[] lps = new int[(s.length() << 1) + 1];
+	        while(i < (s.length() << 1) + 1) {
 	            if(concat.charAt(i) == concat.charAt(length))
 	                lps[i++] = ++length;
 	            else {
@@ -21,7 +21,7 @@ public class Main {
 	            }
 	        }
 			output.append(s);
-			for(int j = len - lps[(len << 1)] - 1; j >= 0; --j)
+			for(int j = s.length() - lps[(s.length() << 1)] - 1; j >= 0; --j)
 			    output.append(s.charAt(j));
 			output.append('\n');
         }
