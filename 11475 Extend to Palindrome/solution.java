@@ -7,7 +7,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_WORD) {
 	        String s = st.sval;
-	        StringBuilder concat = new StringBuilder(s).reverse().append("#" + s);
+	        StringBuilder concat = new StringBuilder(s).reverse().append('#').append(s);
             int len = s.length(), i = 1, length = 0;
 	        int[] lps = new int[(len << 1) + 1];
 	        while(i < (len << 1) + 1) {
