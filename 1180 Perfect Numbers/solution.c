@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-int primes[] = {2, 3, 5, 7, 13, 17};
+char primes[] = {2, 3, 5, 7, 13, 17};
 
 int main() {
     scanf("%*d");
