@@ -22,7 +22,7 @@ public class Main {
 		    }
 		    String test;
 		    while(st.nextToken() == StreamTokenizer.TT_WORD && !(test = st.sval).equals("END")) {
-		        output.append("Anagrams for: " + test + "\n");
+		        output.append("Anagrams for: ").append(test).append('\n');
 		        char[] temp = test.toCharArray();
 		        Arrays.sort(temp);
 		        String sortedTest = new String(temp);
