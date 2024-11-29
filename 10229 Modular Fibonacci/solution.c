@@ -28,7 +28,7 @@ int main() {
     int n, m;
     while(scanf("%d %d", &n, &m) == 2) {
         if(n <= 1) {
-            printf("%d\n", n % (1 << m));
+            printf("%d\n", n + m > 1);
             continue;
         }
         long matrix[2][2] = {{1, 1}, {1, 0}};
