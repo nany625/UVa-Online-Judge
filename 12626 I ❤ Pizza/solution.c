@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int requirement[] = {3, 1, 1, 1, 2, 1};
+int requirement[] = {3, 1, 1, 1, 2};
 
 int main() {
     int N;
@@ -31,8 +31,8 @@ int main() {
                     ++count[5];
             }
         }
-        int min = count[0] / 3;
-        for(int i = 1; i < 6; ++i)
+        int min = count[5];
+        for(int i = 0; i < 5; ++i)
             min = min < count[i] / requirement[i] ? min : count[i] / requirement[i];
         printf("%d\n", min);
     }
