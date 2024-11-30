@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Main {
-    static int[] requirement = {3, 1, 1, 1, 2, 1};
+    static int[] requirement = {3, 1, 1, 1, 2};
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -33,8 +33,8 @@ public class Main {
                         ++count[5];
                 }
             }
-            int min = count[0] / 3;
-            for(int i = 1; i < 6; ++i)
+            int min = count[5];
+            for(int i = 0; i < 5; ++i)
                 min = Math.min(min, count[i] / requirement[i]);
             output.append(min).append('\n');
         }
