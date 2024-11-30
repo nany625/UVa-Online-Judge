@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
+int requirement[] = {3, 1, 1, 1, 2, 1};
+
 int main() {
     int N;
     scanf("%d", &N);
-    char ingredients[601];
-    int requirement[] = {3, 1, 1, 1, 2, 1};
+    char ingredients[601];  
     while(N--) {
         scanf("%s", ingredients);
         int count[6] = {}, len = strlen(ingredients);
