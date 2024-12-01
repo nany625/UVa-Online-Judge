@@ -42,7 +42,7 @@ int main() {
     }
     long N;
     while(scanf("%ld", &N) && N != 0)
-        printf("%ld\n", solve(abs(N)));
+        printf("%ld\n", solve(labs(N)));
     free(primes);
     return 0;
 }
