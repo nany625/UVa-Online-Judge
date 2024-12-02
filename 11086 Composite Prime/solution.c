@@ -4,8 +4,7 @@
 #define MAX_NUM 524288
 #define MAX_N 1048576
 
-bool isComposite[MAX_NUM + 1];
-bool isCompositePrime[MAX_N + 1];
+bool isComposite[MAX_NUM + 1], isCompositePrime[MAX_N + 1];
 int *primes, size = 1;
 
 int main() {
