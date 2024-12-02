@@ -10,14 +10,14 @@ public class Main {
 	    while(N-- > 0) {
     	    String M = br.readLine();
     	    st.nextToken();
-    	    int len = M.length(), S = (int)st.nval;
+    	    int S = (int)st.nval;
     	    boolean wonderful = true;
 		    while(S-- > 0) {
     	        st.nextToken();
                 short divisor = (short)st.nval;
                 if(wonderful) {
                     int dividend = 0;
-                    for(int i = 0; i < len; ++i)
+                    for(int i = 0; i < M.length(); ++i)
                         dividend = (10 * dividend + M.charAt(i) - '0') % divisor;
                     wonderful = dividend == 0;
                 }	
