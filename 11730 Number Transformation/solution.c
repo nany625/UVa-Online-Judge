@@ -14,7 +14,7 @@ int main() {
         if(!isComposite[i]) {
             primes[count++] = i;
             if(i <= 18) {
-                for(short j = i * i; j <= MAX_NUM; j += i)
+                for(short j = i * i; j <= MAX_NUM; j += i << 1)
                     isComposite[j] = true;
             }
         }
