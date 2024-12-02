@@ -33,7 +33,7 @@ int main() {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = i;
             if(i <= 1000) {
-                for(int j = i * i; j <= MAX_NUM; j += i)
+                for(int j = i * i; j <= MAX_NUM; j += i << 1)
                     isComposite[j] = true;
             }
         }
