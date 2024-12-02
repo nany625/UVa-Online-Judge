@@ -11,7 +11,7 @@ public class Main {
             if(!isComposite[i]) {
                 primes[count++] = i;
                 if(i <= 18) {
-                    for(short j = (short)(i * i); j <= 331; j += i)
+                    for(short j = (short)(i * i); j <= 331; j += i << 1)
                         isComposite[j] = true;
                 }
             }
