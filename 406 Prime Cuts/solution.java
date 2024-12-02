@@ -15,7 +15,7 @@ public class Main {
 	            primes.add(i);
 	            ++pos[i - 1];
 	            if(i <= 31) {
-    	            for(int j = i * i; j <= MAX_NUM; j += i)
+    	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
     	                isComposite[j] = true;
     	        }
 	        }
