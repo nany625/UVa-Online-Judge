@@ -16,7 +16,7 @@ int main() {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = i;
             if(i <= 31) {
-                for(int j = i * i; j <= MAX_NUM; j += i)
+                for(int j = i * i; j <= MAX_NUM; j += i << 1)
                     isComposite[j] = true;
             }
         }
