@@ -50,7 +50,7 @@ int main() {
                 if((numbers[1][i] <= MAX_NUM && !isComposite[numbers[1][i]]) || (numbers[1][i] > MAX_NUM && isPrime(numbers[1][i]))) {
                     printf("Shortest primed subsequence is length %d:", length);
                     for(int j = i; j < i + length; ++j)
-                        printf("% d", numbers[0][j]);
+                        printf(" %d", numbers[0][j]);
                     putchar('\n');
                     antiPrimed = false;
                 } 
