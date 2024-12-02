@@ -11,7 +11,7 @@ public class Main {
 	        if(!isComposite[i]) {
 	            appendAlmostPrimes(i);
 	            if(i <= 999) {
-	                for(int j = i * i; j <= MAX_NUM; j += i)
+	                for(int j = i * i; j <= MAX_NUM; j += i << 1)
 	                    isComposite[j] = true;
 	            }
 	        }
