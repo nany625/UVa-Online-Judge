@@ -20,7 +20,7 @@ int main() {
             for(int j = 0; j < size && (temp = primes[j] * i) <= MAX_N; ++j)
                 isCompositePrime[temp] = true;
             if(i <= 724) {
-                for(int j = i * i; j <= MAX_NUM; j += i)
+                for(int j = i * i; j <= MAX_NUM; j += i << 1)
                     isComposite[j] = true;
             }
         }
