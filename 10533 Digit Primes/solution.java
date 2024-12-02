@@ -8,7 +8,7 @@ public class Main {
 	    isComposite[0] = isComposite[1] = true;
 	    for(int i = 2; i <= MAX_NUM; ++i) {
 	        dpCount[i] = dpCount[i - 1];
-	        if(i <= 999 && !isComposite[i]) {
+	        if(!isComposite[i] && i <= 999) {
     	        for(int j = i * i; j <= MAX_NUM; j += i)
     	            isComposite[j] = true;
 	        }
