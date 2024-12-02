@@ -7,7 +7,7 @@ int twinPrimes[100000], count = 1;
 
 int main() {
     twinPrimes[0] = 3;
-    for(int i = 5; i <= MAX_NUM; i += 4) {
+    for(int i = 5; count < 100000; i += 4) {
         if(!isComposite[i] && i <= 4472) {
             for(int j = i * i; j <= MAX_NUM; j += i << 1)
                 isComposite[j] = true;
