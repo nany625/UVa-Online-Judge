@@ -15,8 +15,7 @@ int main() {
         if(!isComposite[i]) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = i;
-            int temp;
-            for(int j = 0; j < size && (temp = primes[j] * i) <= MAX_N; ++j)
+            for(int j = 0, temp; j < size && (temp = primes[j] * i) <= MAX_N; ++j)
                 isCompositePrime[temp] = true;
             if(i <= 724) {
                 for(int j = i * i; j <= MAX_NUM; j += i << 1)
