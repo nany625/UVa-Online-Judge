@@ -11,8 +11,7 @@ int main() {
         if(!isHComposite[i]) {
             hPrimes = (int*)realloc(hPrimes, (hPrimeSize + 1) * sizeof(int));
             hPrimes[hPrimeSize++] = i;
-            int temp;
-            for(int j = 0; j < hPrimeSize && (temp = hPrimes[j] * i) <= MAX_NUM; ++j)
+            for(int j = 0, temp; j < hPrimeSize && (temp = hPrimes[j] * i) <= MAX_NUM; ++j)
                 isHSemiPrime[temp] = true;
             if(i <= 1000) {
                 for(int j = i * i; j <= MAX_NUM; j += i << 2)
