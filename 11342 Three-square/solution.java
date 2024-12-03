@@ -6,8 +6,8 @@ public class Main {
         boolean[] table = new boolean[50001];
         for(short a = 0; a <= 129; ++a) {
             for(short b = a; b <= 158; ++b) {
-                for(short c = b; a * a + b * b + c * c <= 50000; ++c) {
-                    int sum = a * a + b * b + c * c;
+                int sum;
+                for(short c = b; (sum = a * a + b * b + c * c) <= 50000; ++c) {
                     if(!table[sum]) {
                         table[sum] = true;
                         answers[sum] = new Answer(a, b, c);
