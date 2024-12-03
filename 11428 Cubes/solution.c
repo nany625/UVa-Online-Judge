@@ -10,8 +10,8 @@ int main() {
     Solution solutions[MAX_NUM];
     bool table[MAX_NUM] = {};
     for(short y = 1; y <= 57; ++y) {
-        for(short x = y + 1; x * x * x - y * y * y <= MAX_NUM; ++x) {
-            int N = x * x * x - y * y * y;
+        int N;
+        for(short x = y + 1; (N = x * x * x - y * y * y) <= MAX_NUM; ++x) {
             if(!table[N - 1]) {
                 table[N - 1] = true;
                 solutions[N - 1].x = x;
