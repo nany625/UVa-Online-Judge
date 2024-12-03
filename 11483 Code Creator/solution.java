@@ -11,8 +11,7 @@ public class Main {
             while(N-- > 0) {
                 String line = br.readLine();
                 output.append("printf(\"");
-                int len = line.length();
-                for(int i = 0; i < len; ++i) {
+                for(int i = 0; i < line.length(); ++i) {
                     if(line.charAt(i) == '"' || line.charAt(i) == '\\')
                         output.append('\\');
                     output.append(line.charAt(i));
