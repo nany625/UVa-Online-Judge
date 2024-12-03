@@ -10,13 +10,12 @@ public class Main {
         for(int i = 1; i <= T; ++i) {
     		output.append("Case ").append(i).append(": ");
     		String encode = br.readLine();
-    		int len = encode.length();
-    		for(int j = 0; j < len; ++j) {
+    		for(int j = 0; j < encode.length(); ++j) {
     		    if(Character.isUpperCase(encode.charAt(j))) {
     		        int frequency = 0, k = j + 1;
     		        do {
     		            frequency = 10 * frequency + encode.charAt(k++) - '0';
-    		        } while(k < len && Character.isDigit(encode.charAt(k)));
+    		        } while(k < encode.length() && Character.isDigit(encode.charAt(k)));
     		        while(frequency-- > 0)
     		            output.append(encode.charAt(j));
     		        j = k - 1;
