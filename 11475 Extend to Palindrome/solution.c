@@ -24,7 +24,7 @@ int main() {
 	        }
 	    }
 	    fputs(str, stdout);
-	    for(int j = len - lps[(len << 1)] - 1; j >= 0; --j)
+	    for(int j = len - lps[len << 1] - 1; j >= 0; --j)
 	        putchar(str[j]);
 	    putchar('\n');
 	}
