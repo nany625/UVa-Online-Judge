@@ -5,7 +5,7 @@ public class Main {
         Solution[] solutions = new Solution[10000];
         boolean[] table = new boolean[10000];
         for(short y = 1; y <= 57; ++y) {
-            for(short x = (short)(y + 1), N; (N = x * x * x - y * y * y) <= 10000; ++x) {
+            for(short x = (short)(y + 1); int N; (N = x * x * x - y * y * y) <= 10000; ++x) {
                 if(!table[N - 1]) {
                     table[N - 1] = true;
                     solutions[N - 1] = new Solution(x, y);
