@@ -18,10 +18,10 @@ public class Main {
 	    int result = 0;
 	    for(int i = first; i < last; ++i) {
             int digit = number.charAt(i) - '0';
-    	    if((i % 5 & 1) == 0)
-    	        result += (digit << 1) / 10 + (digit << 1) % 10;
+    	    if((i % 5 & 1) == 1)
+                result += digit;
     	    else
-    	        result += digit;
+    	        result += (digit << 1) / 10 + (digit << 1) % 10;
         }
         return result;
 	}
