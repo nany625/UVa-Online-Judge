@@ -42,8 +42,7 @@ public class Main {
 	static void dfs(Graph graph, short startVertex, int[] count) {
 	    graph.visited[startVertex] = true;
 	    ++count[0];
-	    short size = (short)graph.knockList[startVertex].size();
-	    for(short i = 0; i < size; ++i) {
+	    for(int i = 0; i < graph.knockList[startVertex].size(); ++i) {
 	        if(!graph.visited[graph.knockList[startVertex].get(i)])
 	            dfs(graph, graph.knockList[startVertex].get(i), count);
 	    }
