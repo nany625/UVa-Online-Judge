@@ -11,8 +11,8 @@ int main() {
     bool table[MAX_SUM + 1] = {};
     for(short a = 0; a <= 129; ++a) {
         for(short b = a; b <= 158; ++b) {
-            for(short c = b; a * a + b * b + c * c <= MAX_SUM; ++c) {
-                int sum = a * a + b * b + c * c;
+            int sum;
+            for(short c = b; (sum = a * a + b * b + c * c) <= MAX_SUM; ++c) {
                 if(!table[sum]) {
                     table[sum] = true;
                     answers[sum].a = a;
