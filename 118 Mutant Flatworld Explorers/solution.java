@@ -20,7 +20,6 @@ public class Main {
             boolean lost = false;
             st.nextToken();
             String instructions = st.sval;
-            int len = instructions.length();
 		    for(int i = 0; i < instructions.length() && !lost; ++i) {
     	        switch(orientation) {
                     case 'N':
