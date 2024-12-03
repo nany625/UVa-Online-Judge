@@ -11,8 +11,7 @@ public class Main {
         for(int i = 3; i <= MAX_NUM; i += 2) {
             if(!isComposite[i]) {
                 primes.add(i);
-                int temp;
-                for(int j = 0; j < primes.size() && (temp = primes.get(j) * i) <= MAX_N; ++j)
+                for(int j = 0, temp; j < primes.size() && (temp = primes.get(j) * i) <= MAX_N; ++j)
                     isCompositePrime[temp] = true;
                 if(i <= 724) {
                     for(int j = i * i; j <= MAX_NUM; j += i << 1)
