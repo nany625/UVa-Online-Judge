@@ -1,9 +1,10 @@
 import java.io.*;
 
 public class Main {
-	static long[] ans = new long[1000001];
+    static int MAX_NUM = 1000000;
+	static long[] ans = new long[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
-	    for(int i = 4; i <= 1000000; ++i) {
+	    for(int i = 4; i <= MAX_NUM; ++i) {
             long temp = (i >> 1) - 1;
             ans[i] = ans[i - 1] + (1 + temp) * temp - temp * ((i + 1) & 1);
         }
