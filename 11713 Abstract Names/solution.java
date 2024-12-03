@@ -12,10 +12,9 @@ public class Main {
 		    String realName = st.sval;
 		    st.nextToken();
 		    String gameName = st.sval;
-		    int len = realName.length();
-		    if(len == gameName.length()) {
+		    if(realName.length() == gameName.length()) {
 		        boolean same = true;
-		        for(int i = 0; i < len && same; ++i) {
+		        for(int i = 0; i < realName.length() && same; ++i) {
 		            if(isVowel(realName.charAt(i)) != isVowel(gameName.charAt(i)) || (!isVowel(realName.charAt(i)) && realName.charAt(i) != gameName.charAt(i))) {
     	                output.append("No\n");
     	                same = false;
