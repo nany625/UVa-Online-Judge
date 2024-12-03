@@ -21,7 +21,7 @@ public class Main {
 	            }
 	        }
 			output.append(s);
-			for(int j = s.length() - lps[(s.length() << 1)] - 1; j >= 0; --j)
+			for(int j = s.length() - lps[s.length() << 1] - 1; j >= 0; --j)
 			    output.append(s.charAt(j));
 			output.append('\n');
         }
