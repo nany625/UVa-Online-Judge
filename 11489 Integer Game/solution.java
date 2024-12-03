@@ -9,9 +9,8 @@ public class Main {
 	    StringBuilder output = new StringBuilder();
         for(int i = 1; i <= T; ++i) {
 	        String N = br.readLine();
-    		int len = N.length();
     		short[] modThreeCount = new short[3];
-    		for(int j = 0; j < len; ++j)
+    		for(int j = 0; j < N.length(); ++j)
     			++modThreeCount[(N.charAt(j) - '0') % 3];
     		short result = (short)((modThreeCount[1] + (modThreeCount[2] << 1)) % 3);
     		if(result == 0)
