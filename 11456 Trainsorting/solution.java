@@ -18,22 +18,20 @@ public class Main {
 		        weights[n + i] = weights[n - 1 - i] = (int)st.nval;
 		    }
 		    ArrayList<Integer> lis = new ArrayList<>();
-		    int size = 0;
 		    for(int i = (n << 1) - 1; i >= 0; --i) {
-                int pos = binarySearch(lis, size, weights[i]);
-                if(pos == size) {
+                int pos = binarySearch(lis, weights[i]);
+                if(pos == lis.size())
                     lis.add(weights[i]);
-                    ++size;
-                } else
+                else
                     lis.set(pos, weights[i]);
             }
-            output.append(size).append('\n');
+            output.append(lis.size()).append('\n');
 		}
 		System.out.print(output);
 	}
 	
-	static int binarySearch(ArrayList<Integer> arrayList, int size, int key) {
-        int left = 0, right = size - 1;
+	static int binarySearch(ArrayList<Integer> arrayList, int key) {
+        int left = 0, right = arrayList.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(arrayList.get(mid) == key)
@@ -68,9 +66,9 @@ public class Main {
 		    }
 		    ArrayList<Integer> lis = new ArrayList<>();
 		    ArrayList<Integer> lds = new ArrayList<>();
-		    int lisSize = 0, ldsSize = 0, max = 0;
+		    int max = 0;
 		    for(int i = n - 1; i >= 0; --i) {
-                int left = 0, right = lisSize - 1;
+                int left = 0, right = lis.size() - 1;
                 while(left <= right) {
                     int mid = left + (right - left >> 1);
                     if(lis.get(mid) < weights[i])
@@ -78,14 +76,13 @@ public class Main {
                     else
                         right = mid - 1;
                 }
-                if(left == lisSize) {
+                if(left == lis.size())
                     lis.add(weights[i]);
-                    ++lisSize;
-                } else
+                else
                     lis.set(left, weights[i]);
                 int temp = left + 1;
                 left = 0;
-                right = ldsSize - 1;
+                right = lds.size() - 1;
                 while(left <= right) {
                     int mid = left + (right - left >> 1);
                     if(lds.get(mid) > weights[i])
@@ -93,10 +90,9 @@ public class Main {
                     else
                         right = mid - 1;
                 }
-                if(left == ldsSize) {
+                if(left == lds.size())
                     lds.add(weights[i]);
-                    ++ldsSize;
-                } else
+                else
                     lds.set(left, weights[i]);
                 temp += left;
                 max = Math.max(max, temp);
