@@ -17,7 +17,7 @@ public class Main {
 		    while(w-- > 1) {
 		        st.nextToken();
 		        String message = st.sval;
-		        int temp = k, len = sign.length();
+		        int temp = k;
 		        while(temp > 0 && !sign.endsWith(message.substring(0, temp)))
                     --temp;
                 sign += message.substring(temp, k);
