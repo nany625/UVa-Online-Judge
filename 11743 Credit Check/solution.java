@@ -18,7 +18,7 @@ public class Main {
 	    int result = 0;
 	    for(int i = first; i < last; ++i) {
             int digit = number.charAt(i) - '0';
-    	    if((i % 5 & 3) == 0 || (i % 5 & 3) == 2)
+    	    if((i % 5 & 1) == 0)
     	        result += (digit << 1) / 10 + (digit << 1) % 10;
     	    else
     	        result += digit;
