@@ -2,9 +2,9 @@ import java.io.*;
 
 public class Main {
     static int[] table = {
-        0, 0, 1, 1, 3, 1, 3, 1, 3, 3,
-        3, 2, 3, 1, 3, 3, 3, 1, 3, 1,
-        3, 3, 3, 2, 3, 3, 3, 3, 3, 2,
+        0, 0, 1, 1, 3, 1, 3, 1, 3, 3, 
+        3, 2, 3, 1, 3, 3, 3, 1, 3, 1, 
+        3, 3, 3, 2, 3, 3, 3, 3, 3, 2, 
         3, 1
     };
     public static void main(String[] args) throws IOException {
