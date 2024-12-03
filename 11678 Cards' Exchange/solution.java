@@ -9,27 +9,21 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (B = (int)st.nval) != 0) {
 		    ArrayList<Integer> X = new ArrayList<>();
-		    int sizeX = 0;
 		    while(A-- > 0) {
 		        st.nextToken();
 		        int temp = (int)st.nval;
-		        if(X.isEmpty() || (temp > X.get(sizeX - 1))) {
+		        if(X.isEmpty() || (temp > X.get(X.size() - 1)))
                     X.add(temp);
-                    ++sizeX;
-                }
 		    }
 		    ArrayList<Integer> Y = new ArrayList<>();
-		    int sizeY = 0;
 		    while(B-- > 0) {
 		        st.nextToken();
 		        int temp = (int)st.nval;
-		        if(Y.isEmpty() || (temp > Y.get(sizeY - 1))) {
+		        if(Y.isEmpty() || (temp > Y.get(Y.size() - 1)))
                     Y.add(temp);
-                    ++sizeY;
-                }
 		    }
 		    int i = 0, j = 0, countX = 0, countY = 0;
-            while(i < sizeX && j < sizeY) {
+            while(i < X.size() && j < Y.size()) {
                 if(X.get(i).equals(Y.get(j))) {
                     ++i;
                     ++j;
@@ -41,8 +35,8 @@ public class Main {
                     ++j;
                 }
             }
-            countX += sizeX - i;
-            countY += sizeY - j;
+            countX += X.size() - i;
+            countY += Y.size() - j;
             output.append(Math.min(countX, countY)).append('\n');
 		}
 		System.out.print(output);
