@@ -1,13 +1,14 @@
 import java.io.*;
 
 public class Main {
+    static int MAX_NUM = 50000;
 	public static void main(String[] args) throws IOException {
-        Answer[] answers = new Answer[50001];
-        boolean[] table = new boolean[50001];
+        Answer[] answers = new Answer[MAX_NUM + 1];
+        boolean[] table = new boolean[MAX_NUM + 1];
         for(short a = 0; a <= 129; ++a) {
             for(short b = a; b <= 158; ++b) {
                 int sum;
-                for(short c = b; (sum = a * a + b * b + c * c) <= 50000; ++c) {
+                for(short c = b; (sum = a * a + b * b + c * c) <= MAX_NUM; ++c) {
                     if(!table[sum]) {
                         table[sum] = true;
                         answers[sum] = new Answer(a, b, c);
