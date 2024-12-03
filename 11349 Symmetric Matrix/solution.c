@@ -8,7 +8,7 @@ int main() {
         int n;
         scanf("%*s %*s %d", &n);
         int size = n * n;
-        long M[n * n];
+        long M[size];
         bool isSymmetric = true;
         for(int j = 0; j < size; ++j) {
             scanf("%ld", &M[j]);
