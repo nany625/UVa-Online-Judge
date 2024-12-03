@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-int lostCount = 0;
+int lostCount;
 
 typedef struct {
     int x, y;
