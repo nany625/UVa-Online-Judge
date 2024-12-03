@@ -12,7 +12,7 @@ public class Main {
             for(int i = 0; i < n; ++i) {
                 for(int j = 0; j < n; ++j) {
                     st.nextToken();
-                    sum[Math.min(Math.min(Math.min(i, j), n - 1 - i), n - 1 -j)] += (int)st.nval;
+                    sum[Math.min(Math.min(Math.min(i, j), n - 1 - i), n - 1 - j)] += (int)st.nval;
                 }
             }
             output.append("Case ").append(++cases).append(':');
