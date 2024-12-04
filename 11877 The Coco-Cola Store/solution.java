@@ -8,7 +8,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
             int exchange = (n - 3 >> 1) + 1;
-            output.append(exchange + (((n - (exchange << 1)) % 3) >> 1)).append('\n');
+            output.append(exchange + ((n - (exchange << 1)) % 3 >> 1)).append('\n');
         }   
         System.out.print(output);
 	}
