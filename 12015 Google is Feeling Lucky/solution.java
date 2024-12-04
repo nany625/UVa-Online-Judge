@@ -66,8 +66,7 @@ public class Main {
 			        ++count;
 			    }
 			}
-			int size = candidates.size();
-			for(int j = size - count; j < size; ++j)
+			for(int j = candidates.size() - count; j < candidates.size(); ++j)
 			    output.append(candidates.get(j)).append('\n');
 		}
         System.out.print(output);
