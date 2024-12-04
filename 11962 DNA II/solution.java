@@ -10,21 +10,20 @@ public class Main {
 		for(int i = 1; i <= T; ++i) {
 		    st.nextToken();
 		    String DNA = st.sval;
-		    int A = DNA.length();
 		    long B = 0;
-		    for(int j = 0; j < A; ++j) {
+		    for(int j = 0; j < DNA.length(); ++j) {
 		        switch(DNA.charAt(j)) {
 		            case 'C':
-                        B += (long)1 << (A - 1 - j << 1);
+                        B += (long)1 << (DNA.length() - 1 - j << 1);
                         break;
                     case 'G':
-                        B += (long)1 << ((A - 1 - j << 1) + 1);
+                        B += (long)1 << ((DNA.length() - 1 - j << 1) + 1);
                         break;
                     case 'T':
-                        B += 3 * (long)1 << (A - 1 - j << 1);
+                        B += 3 * (long)1 << (DNA.length() - 1 - j << 1);
 		        }
 		    }
-		    output.append("Case ").append(i).append(": (").append(A).append(':').append(B).append(")\n");
+		    output.append("Case ").append(i).append(": (").append(DNA.length()).append(':').append(B).append(")\n");
 		}
         System.out.print(output);
 	}
