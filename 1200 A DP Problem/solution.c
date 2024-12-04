@@ -51,7 +51,8 @@ int main() {
         coefficient = 0;
         EmptyCoefficient = true;
         ++i;
-        while(i < strlen(buffer)) {
+        int len = strlen(buffer);
+        while(i < len) {
             if(isdigit(buffer[i])) {
                 coefficient = coefficient * 10 + buffer[i] - '0';
                 EmptyCoefficient = false;
