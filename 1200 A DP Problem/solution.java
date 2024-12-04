@@ -75,8 +75,7 @@ public class Main {
     					Const += coefficient;
     				coefficient = 0;
     				EmptyCoefficient = true;
-    			}
-    			else if(equation[1].charAt(i) == 'x') {
+    			} else if(equation[1].charAt(i) == 'x') {
     				if(EmptyCoefficient) {
 						if(plus)
     						--CoefficientOfX;
