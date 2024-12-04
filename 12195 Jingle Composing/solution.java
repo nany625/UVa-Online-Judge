@@ -6,8 +6,8 @@ public class Main {
         String composition;
         StringBuilder output = new StringBuilder();
         while((composition = br.readLine()) != null && composition.charAt(0) != '*') {
-            int count = 0, duration = 0, len = composition.length();
-            for(int i = 1; i < len; ++i) {
+            int count = 0, duration = 0;
+            for(int i = 1; i < composition.length(); ++i) {
     		    switch(composition.charAt(i)) {
     			    case 'W':
     				    duration += 64;
