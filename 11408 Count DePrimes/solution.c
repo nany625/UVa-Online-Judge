@@ -21,7 +21,7 @@ int main() {
     while(scanf("%d", &a) && a != 0) {
         int b;
         scanf("%d", &b);
-        printf("%d\n", count[b] - count[a] + !isComposite[sum[a]]);
+        printf("%d\n", count[b] - count[a - 1]);
     }
     return 0;
 }
