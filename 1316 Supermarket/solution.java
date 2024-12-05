@@ -23,14 +23,12 @@ public class Main {
     	        }
     	    });
     	    ArrayList<Integer> priorityQueue = new ArrayList<>();
-    	    int size = 0;
     	    for(Product p : products) {
-    	        if(p.d > size) {
+    	        if(p.d > priorityQueue.size())
     	            priorityQueue.add(p.p);
-    	            ++size;
-    	        } else {
+    	        else {
     	            int minIndex = 0;
-    	            for(int j = 1; j < size; ++j) {
+    	            for(int j = 1; j < priorityQueue.size(); ++j) {
     	                if(priorityQueue.get(j) < priorityQueue.get(minIndex))
     	                    minIndex = j;
     	            }
