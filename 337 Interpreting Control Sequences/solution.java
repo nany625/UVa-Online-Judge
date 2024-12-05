@@ -16,8 +16,7 @@ public class Main {
     	    boolean override = true;
     	    while(N-- > 0) {
     	        String data = br.readLine();
-    	        int len = data.length();
-    	        for(int i = 0; i < len; ++i) {
+    	        for(int i = 0; i < data.length(); ++i) {
     	            if(data.charAt(i) == '^') {
     	                char control = data.charAt(++i);
     	                if(control == 'b')
