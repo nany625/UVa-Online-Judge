@@ -32,9 +32,9 @@ public class Main {
 	}
 	
 	static int sortedness(String s) {
-        int count = 0, len = s.length();
-        for(int i = 0; i < len - 1; ++i) {
-            for(int j = i + 1; j < len; ++j) {
+        int count = 0;
+        for(int i = 0; i < s.length() - 1; ++i) {
+            for(int j = i + 1; j < s.length(); ++j) {
                 if(s.charAt(i) > s.charAt(j))
                     ++count;
             }
