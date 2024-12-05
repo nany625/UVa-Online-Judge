@@ -7,7 +7,7 @@ public class Main {
 		int s;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (s = (int)st.nval) != 0) {
-		    int pages = ((-1 + (int)Math.sqrt(1 + (s << 3))) >> 1) + 1;
+		    int pages = (-1 + (int)Math.sqrt(1 + (s << 3)) >> 1) + 1;
             output.append(((pages + 1) * pages >> 1) - s).append(' ').append(pages).append('\n');
 		}
 		System.out.print(output);
