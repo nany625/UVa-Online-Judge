@@ -25,12 +25,7 @@ public class Main {
             filter(p3, 2);
             filter(p4, 3);
             filter(p5, 4);
-            int p1Size = p1.size();
-    		int p2Size = p2.size();
-			int p3Size = p3.size();
-    		int p4Size = p4.size();
-    		int p5Size = p5.size();
-			if(p1Size * p2Size * p3Size * p4Size * p5Size < K)
+			if(p1.size() * p2.size() * p3.size() * p4.size() * p5.size() < K)
     			output.append("NO\n");
     		else {
 				Collections.sort(p1);
@@ -38,13 +33,13 @@ public class Main {
     			Collections.sort(p3);
 				Collections.sort(p4);
     			Collections.sort(p5);
-    			output.append(p1.get(--K / p2Size / p3Size / p4Size / p5Size));
-				K %= p2Size * p3Size * p4Size * p5Size;
-    			output.append(p2.get(K / p3Size / p4Size / p5Size));
-    			K %= p3Size * p4Size * p5Size;
-				output.append(p3.get(K / p4Size / p5Size));
-    			K %= p4Size * p5Size;
-    			output.append(p4.get(K / p5Size)).append(p5.get(K % p5Size)).append('\n');
+    			output.append(p1.get(--K / p2.size() / p3.size() / p4.size() / p5.size()));
+				K %= p2.size() * p3.size() * p4.size() * p5.size();
+    			output.append(p2.get(K / p3.size() / p4.size() / p5.size()));
+    			K %= p3.size() * p4.size() * p5.size();
+				output.append(p3.get(K / p4.size() / p5.size()));
+    			K %= p4.size() * p5.size();
+    			output.append(p4.get(K / p5.size())).append(p5.get(K % p5.size())).append('\n');
     		}
         }
 	    System.out.print(output);
