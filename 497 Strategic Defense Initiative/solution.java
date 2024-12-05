@@ -17,15 +17,14 @@ public class Main {
 		    ArrayList<Integer> lis = new ArrayList<>();
 		    int lisSize = 0;
 		    for(int i = dp.size() - 1; i >= 0; --i) {
-		        dp.get(i).length = binarySearch(lis, lisSize, dp.get(i).altitude);
-		        if(dp.get(i).length == lisSize) {
+		        dp.get(i).length = binarySearch(lis, dp.get(i).altitude);
+		        if(dp.get(i).length == lis.size())
 		            lis.add(dp.get(i).altitude);
-		            ++lisSize;
-		        } else
+		        else
 		            lis.set(dp.get(i).length, dp.get(i).altitude);
 		    }
-		    output.append("Max hits: ").append(lisSize).append('\n');
-		    int i = lisSize - 1;
+		    output.append("Max hits: ").append(lis.size()).append('\n');
+		    int i = lis.size() - 1;
 		    for(int j = 0; i >= 0; ++j) {
 		        if(dp.get(j).length == i) {
 		            output.append(dp.get(j).altitude).append('\n');
@@ -38,8 +37,8 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static int binarySearch(ArrayList<Integer> arrayList, int size, int key) {
-        int left = 0, right = size - 1;
+	static int binarySearch(ArrayList<Integer> arrayList, int key) {
+        int left = 0, right = arrayList.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(arrayList.get(mid) > key)
