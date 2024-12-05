@@ -9,7 +9,7 @@ public class Main {
 	    int N = (int)st.nval;
         StringBuilder output = new StringBuilder("CALL FORWARDING OUTPUT\n");
         for(int i = 1; i <= N; ++i) {
-			output.append("SYSTEM ").append(i).append("\n");
+			output.append("SYSTEM ").append(i).append('\n');
 			ArrayList<Request> requests = new ArrayList<>();
 			short source, time, duration, target;
 			while(st.nextToken() == StreamTokenizer.TT_NUMBER && (source = (short)st.nval) != 0) {
