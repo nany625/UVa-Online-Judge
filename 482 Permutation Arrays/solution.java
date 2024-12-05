@@ -13,10 +13,9 @@ public class Main {
 			HashMap<Integer, String> map = new HashMap<>();
     		String[] p = br.readLine().split("\\s+");
 			String[] x = br.readLine().split("\\s+");
-    		int len = p.length;
-			for(int i = 0; i < len; ++i)
+			for(int i = 0; i < p.length; ++i)
     			map.put(Integer.parseInt(p[i]), x[i]);
-			for(int i = 1; i <= len; ++i)
+			for(int i = 1; i <= p.length; ++i)
     			output.append(map.get(i)).append('\n');
     		if(cases > 0)
 		        output.append('\n');
