@@ -24,7 +24,7 @@ public class Main {
                     if(count[i] > 0)
                         marbles.add((i + 1) * count[i]);
                 }
-                output.append("Collection #").append(++cases).append(isSubsetSum(marbles, marbles.size(), sum >> 1) ? ":\nCan be divided.\n\n" : ":\nCan't be divided.\n\n");
+                output.append("Collection #").append(++cases).append(isSubsetSum(marbles, sum >> 1) ? ":\nCan be divided.\n\n" : ":\nCan't be divided.\n\n");
 		    }
 		}
 		System.out.print(output);
@@ -39,10 +39,10 @@ public class Main {
         return result;
     }
     
-    static boolean isSubsetSum(ArrayList<Integer> arrayList, int size, int sum) {
+    static boolean isSubsetSum(ArrayList<Integer> arrayList, int sum) {
         boolean[] subsetSum = new boolean[sum + 1];
         subsetSum[0] = true;
-        for(int i = 0; i < size && !subsetSum[sum]; ++i) {
+        for(int i = 0; i < arrayList.size() && !subsetSum[sum]; ++i) {
             for(int j = sum; j >= arrayList.get(i) && !subsetSum[sum]; --j)
                 subsetSum[j] |= subsetSum[j - arrayList.get(i)];
         }
