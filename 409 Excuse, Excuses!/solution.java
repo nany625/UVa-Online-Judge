@@ -24,8 +24,8 @@ public class Main {
     	    short max = 0;
     	    for(int i = 0; i < E; ++i) {
     	        excuses[i] = new Excuse(br.readLine());
-		        int start = 0, len = excuses[i].excuse.length();
-    	        while(start < len) {
+		        int start = 0;
+    	        while(start < excuses[i].excuse.length()) {
     	            if(Character.isLetter(excuses[i].excuse.charAt(start))) {
 		                int end = start + 1;
     	                while(end < excuses[i].excuse.length() && Character.isLetter(excuses[i].excuse.charAt(end)))
