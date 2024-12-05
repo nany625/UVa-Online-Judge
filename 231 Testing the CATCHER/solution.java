@@ -15,13 +15,11 @@ public class Main {
 		    while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (short)st.nval) != -1)
 		        heights.add(n);
 		    ArrayList<Short> lis = new ArrayList<>();
-		    int lisSize = 0;
 		    for(int i = heights.size() - 1; i >= 0; --i) {
-		        int pos = binarySearch(lis, lisSize, heights.get(i));
-		        if(pos == lisSize) {
+		        int pos = binarySearch(lis, heights.get(i));
+		        if(pos == lis.size())
 		            lis.add(heights.get(i));
-		            ++lisSize;
-		        } else
+		        else
 		            lis.set(pos, heights.get(i));
 		    }
 		    output.append("Test #").append(++cases).append(":\n  maximum possible interceptions: ").append(lisSize).append('\n');
