@@ -31,7 +31,6 @@ public class Main {
         Arrays.sort(humbleNumbers);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
-        ;
         int n = (int)st.nval;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
