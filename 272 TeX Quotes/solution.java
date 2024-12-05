@@ -7,8 +7,7 @@ public class Main {
         boolean odd = true;
         StringBuilder output = new StringBuilder();
         while((line = br.readLine()) != null) {
-            int len = line.length();
-            for(int i = 0; i < len; ++i) {
+            for(int i = 0; i < line.length(); ++i) {
                 if(line.charAt(i) == '"' && odd) {
                     output.append("``");
                     odd = false;
