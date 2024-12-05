@@ -13,7 +13,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int) st.nval) != 0)) {
             output.append(String.format("%3d! =", N));
-    		char[] count = new char[25];
+    		short[] count = new short[25];
     		for(int i = 2; i <= N; ++i) {
         	    int j = 0, temp = i;
     		    while(temp > 1) {
@@ -27,7 +27,7 @@ public class Main {
     		for(int i = 0; i < 25 && count[i] > 0; ++i) {
         		if(i == 15)
         		    output.append("\n      ");
-        		output.append(String.format("%3d", (int)count[i]));
+        		output.append(String.format("%3d", count[i]));
     		}
         	output.append("\n");
         }
