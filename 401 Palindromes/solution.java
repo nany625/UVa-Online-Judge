@@ -12,10 +12,10 @@ public class Main {
         String s;
         StringBuilder output = new StringBuilder();
         while((s = br.readLine()) != null) {
-	        int len = s.length();
+	        int len = ;
             boolean isMirror = true;
-	        for(int i = 0; i < len + 1 >> 1 && isMirror; ++i)
-                isMirror = map.get(s.charAt(i)) == s.charAt(len - 1 - i);
+	        for(int i = 0; i < s.length() + 1 >> 1 && isMirror; ++i)
+                isMirror = map.get(s.charAt(i)) == s.charAt(s.length() - 1 - i);
             String reversed = new StringBuilder(s).reverse().toString();
 	        if(s.equals(reversed) && isMirror)
                 output.append(s).append(" -- is a mirrored palindrome.\n\n");
