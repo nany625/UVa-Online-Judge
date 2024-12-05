@@ -15,8 +15,8 @@ public class Main {
             st.nextToken();
             int messages = (int)st.nval;
             boolean[] L = new boolean[26];
-            int alphaKeyLen = alphaKey.length();
-            for(int i = 0; i < alphaKeyLen; ++i)
+            int alphaKeyLen = ;
+            for(int i = 0; i < alphaKey.length(); ++i)
                 L[alphaKey.charAt(i) - 'A'] = true;
             while(messages-- > 0) {
                 String cipheredtext = br.readLine();
@@ -32,7 +32,7 @@ public class Main {
                                 char deciphChar = deciph(cipheredtext.charAt(curr + 1), numericalKey);
                                 if(L[deciphChar - 'A']) {
                                     plaintext.append(deciphChar);
-                                    m = ++m % alphaKeyLen;
+                                    m = ++m % alphaKey.length();
                                     curr += 3;
                                 } else
                                     error = true;
