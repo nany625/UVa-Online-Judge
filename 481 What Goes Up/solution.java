@@ -24,7 +24,7 @@ public class Main {
 		    ans[j] = sequence.get(i);
 		    i = predecessor[i];
 		}
-		StringBuilder output = new StringBuilder().append(lisSize).append("\n-\n");
+		StringBuilder output = new StringBuilder().append(dp.size()).append("\n-\n");
 		for(Integer j : ans)
 		    output.append(j).append('\n');
         System.out.print(output);
