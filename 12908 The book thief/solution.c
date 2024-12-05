@@ -4,7 +4,7 @@
 int main() {
     int s;
     while(scanf("%d", &s) && s != 0) {
-        int pages = ((int)(-1 + sqrt(1 + (s << 3))) >> 1) + 1;
+        int pages = (-1 + (int)sqrt(1 + (s << 3)) >> 1) + 1;
         printf("%d %d\n", ((pages + 1) * pages >> 1) - s, pages);
     }
     return 0;
