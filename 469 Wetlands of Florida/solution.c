@@ -34,9 +34,9 @@ int main() {
                 char *token = strtok(buffer, " ");
                 int i = atoi(token) - 1;
                 token = strtok(NULL, " ");
-                int j = atoi(token) - 1, m = strlen(grid[0]), area = 0;
+                int j = atoi(token) - 1, area = 0;
                 memset(visited, 0, sizeof(visited));
-                dfs(i, n, j, m, &area);
+                dfs(i, n, j, strlen(grid[0]), &area);
                 printf("%d\n", area);
             }
         }
