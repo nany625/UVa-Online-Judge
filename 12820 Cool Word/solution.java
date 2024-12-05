@@ -12,13 +12,12 @@ public class Main {
 		        st.nextToken();
 		        String word = st.sval;
 		        int[] frequency = new int[26];
-		        int len = word.length();
-		        for(int i = 0; i < len; ++i)
+		        for(int i = 0; i < word.length(); ++i)
 		            ++frequency[word.charAt(i) - 'a'];
 		        boolean[] ans = new boolean[30];
 		        boolean isCool = true;
                 int found = 0, diff = 0;
-                for(int i = 0; i < 26 && found < len && isCool; ++i) {
+                for(int i = 0; i < 26 && found < word.length() && isCool; ++i) {
                     if(frequency[i] > 0) {
                         if(!ans[frequency[i] - 1]) {
                             ans[frequency[i] - 1] = true;
