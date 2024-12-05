@@ -10,13 +10,13 @@ public class Main {
     	while(T-- > 0) {
     	    st.nextToken();
             String s = st.sval;
-            int score = 0, temp = 0, i = 0, len = s.length();
+            int score = 0, temp = 0, i = 0;
             do {
                 if(s.charAt(i) == 'O')
                     score += ++temp;
                 else
                     temp = 0;
-            } while(++i < len);
+            } while(++i < s.length());
             output.append(score).append('\n');
     	}
         System.out.print(output);
