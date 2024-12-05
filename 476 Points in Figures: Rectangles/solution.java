@@ -19,7 +19,7 @@ public class Main {
     	    newRec.y2 = (float)st.nval;
     	    rec.add(newRec);
     	}
-    	int point = 0, size = rec.size();
+    	int point = 0;
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
     	    float x = (float)st.nval;
     	    st.nextToken();
@@ -28,7 +28,7 @@ public class Main {
     	        break;
     	    ++point;
     	    boolean contained = false;
-    	    for(int i = 0; i < size; ++i) {
+    	    for(int i = 0; i < rec.size(); ++i) {
                 if(x > rec.get(i).x1 && y < rec.get(i).y1 && x < rec.get(i).x2 && y > rec.get(i).y2) {
                     output.append("Point ").append(point).append(" is contained in figure ").append(i + 1).append('\n');
                     contained = true;
