@@ -20,11 +20,10 @@ public class Main {
 		        else {
 		            String[] tokens = line.split("\\s+");
 		            int i = Integer.parseInt(tokens[0]) - 1, j = Integer.parseInt(tokens[1]) - 1;
-		            int m = grid[0].length;
 		            int[] area = new int[1];
 		            for(boolean[] b : visited)
 		                Arrays.fill(b, false);
-		            dfs(i, n, j, m, area);
+		            dfs(i, n, j, grid[0].length, area);
 		            output.append(area[0]).append('\n');
 		        }
 		    }
