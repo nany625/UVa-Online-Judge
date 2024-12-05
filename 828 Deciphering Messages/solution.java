@@ -15,20 +15,19 @@ public class Main {
             st.nextToken();
             int messages = (int)st.nval;
             boolean[] L = new boolean[26];
-            int alphaKeyLen = ;
             for(int i = 0; i < alphaKey.length(); ++i)
                 L[alphaKey.charAt(i) - 'A'] = true;
             while(messages-- > 0) {
                 String cipheredtext = br.readLine();
                 StringBuilder plaintext = new StringBuilder();
-                int m = 0, curr = 0, len = cipheredtext.length();
+                int m = 0, curr = 0;
                 boolean error = false;
-                while(curr < len && !error) {
+                while(curr < cipheredtext.length() && !error) {
                     if(!Character.isUpperCase(cipheredtext.charAt(curr)))
                         plaintext.append(cipheredtext.charAt(curr++));
                     else {
-                        if(curr < len - 2 && Character.isUpperCase(cipheredtext.charAt(curr + 1)) && Character.isUpperCase(cipheredtext.charAt(curr + 2))) {
-                            if(cipheredtext.charAt(curr) == alphaKey.charAt(m) && cipheredtext.charAt(curr + 2) == alphaKey.charAt((m + 1) % alphaKeyLen)) {
+                        if(curr < cipheredtext.length() - 2 && Character.isUpperCase(cipheredtext.charAt(curr + 1)) && Character.isUpperCase(cipheredtext.charAt(curr + 2))) {
+                            if(cipheredtext.charAt(curr) == alphaKey.charAt(m) && cipheredtext.charAt(curr + 2) == alphaKey.charAt((m + 1) % alphaKey.length())) {
                                 char deciphChar = deciph(cipheredtext.charAt(curr + 1), numericalKey);
                                 if(L[deciphChar - 'A']) {
                                     plaintext.append(deciphChar);
