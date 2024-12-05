@@ -18,9 +18,8 @@ public class Main {
             int rows = 0;
             while((line = br.readLine()) != null && !line.isEmpty())
                 grid[rows++] = line.toCharArray();
-            int cols = grid[0].length;
             int[] area = new int[1];
-            dfs(i, rows, j, cols, area);
+            dfs(i, rows, j, grid[0].length, area);
             output.append(area[0]).append('\n');
             if(M > 0)
                 output.append('\n');
