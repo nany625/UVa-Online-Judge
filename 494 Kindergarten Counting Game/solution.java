@@ -7,11 +7,11 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while((s = br.readLine()) != null) {
     	    s.trim();
-    	    int count = 0, i = 0, len = s.length();
-    		while(i < len) {
+    	    int count = 0, i = 0;
+    		while(i < s.length()) {
     			if(Character.isLetter(s.charAt(i))) {
     				int j = i + 1;
-    				while(j < len && Character.isLetter(s.charAt(j)))
+    				while(j < s.length() && Character.isLetter(s.charAt(j)))
     					++j;
 					++count;
     				i = j;
