@@ -9,20 +9,18 @@ public class Main {
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER)
 		    sequence.add((int)st.nval);
 		ArrayList<DP> dp = new ArrayList<>();
-		int size = sequence.size(), lisSize = 0;
-		int[] predecessor = new int[size];
-		for(int i = 0; i < size; ++i) {
-		    int pos = binarySearch(dp, lisSize, sequence.get(i));
-		    if(pos == lisSize) {
+		int[] predecessor = new int[sequence.size()];
+		for(int i = 0; i < sequence.size(); ++i) {
+		    int pos = binarySearch(dp, sequence.get(i));
+		    if(pos == dp.size())
 		        dp.add(new DP(i, sequence.get(i)));
-		        ++lisSize;
-		    } else 
+		    else 
 		        dp.get(pos).lis = sequence.get(dp.get(pos).lastIndex = i);
 		    predecessor[i] = pos > 0 ? dp.get(pos - 1).lastIndex : -1;
 		}
-		int[] ans = new int[lisSize];
-		int i = dp.get(lisSize - 1).lastIndex;
-		for(int j = lisSize - 1; j >= 0; --j) {
+		int[] ans = new int[dp.size()];
+		int i = dp.get(dp.size() - 1).lastIndex;
+		for(int j = dp.size() - 1; j >= 0; --j) {
 		    ans[j] = sequence.get(i);
 		    i = predecessor[i];
 		}
@@ -32,8 +30,8 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static int binarySearch(ArrayList<DP> arrayList, int size, int key) {
-        int left = 0, right = size - 1;
+	static int binarySearch(ArrayList<DP> arrayList, int key) {
+        int left = 0, right = arrayList.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(arrayList.get(mid).lis < key)
