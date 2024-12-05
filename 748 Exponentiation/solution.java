@@ -17,11 +17,8 @@ public class Main {
     		int i = 0;
     		while(sb.charAt(i) == '0')
     			sb.delete(i, i + 1);
-    		i = sb.length() - 1;
-    		while(sb.charAt(i) == '0') {
-    			sb.delete(i, i + 1);
-    			--i;
-    		}
+    		while(sb.charAt(sb.length() - 1) == '0')
+    			sb.delete(sb.length() - 1, sb.length());
     		if(sb.charAt(sb.length() - 1) == '.')
     			sb.delete(sb.length() - 1, sb.length());
     		output.append(sb).append('\n');
