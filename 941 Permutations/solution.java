@@ -16,11 +16,11 @@ public class Main {
     	    char[] S = br.readLine().toCharArray();
     	    long N = Long.parseLong(br.readLine());
     	    Arrays.sort(S);
-    	    int len = S.length;
-    	    for(int i = len - 1; i >= 0; --i) {
+    	    //int len = ;
+    	    for(int i = S.length - 1; i >= 0; --i) {
     	        int index = (int)(N / factorials[i]);
     	        output.append(S[index]);
-    	        System.arraycopy(S, index + 1, S, index, len-- - index - 1);
+    	        System.arraycopy(S, index + 1, S, index, S.length-- - index - 1);
 		        N %= factorials[i];
 		    }
 		    output.append('\n');
