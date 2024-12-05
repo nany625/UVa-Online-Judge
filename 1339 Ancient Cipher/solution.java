@@ -11,8 +11,7 @@ public class Main {
     	    st.nextToken();
     	    String origin = st.sval;
     	    int[][] frequency = new int[2][26];
-    	    int len = encryption.length();
-    	     for(int i = 0; i < len; ++i) {
+    	    for(int i = 0; i < encryption.length(); ++i) {
     	        ++frequency[0][encryption.charAt(i) - 'A'];
     			++frequency[1][origin.charAt(i) - 'A'];
     	    }
