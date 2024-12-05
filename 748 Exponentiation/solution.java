@@ -14,9 +14,8 @@ public class Main {
     		while(n-- > 0)
     			ans = ans.multiply(new BigDecimal("" + R));
     		StringBuilder sb = new StringBuilder(ans.toPlainString());
-    		int i = 0;
-    		while(sb.charAt(i) == '0')
-    			sb.delete(i, i + 1);
+    		while(sb.charAt(0) == '0')
+    			sb.delete(0, 1);
     		while(sb.charAt(sb.length() - 1) == '0')
     			sb.delete(sb.length() - 1, sb.length());
     		if(sb.charAt(sb.length() - 1) == '.')
