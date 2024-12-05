@@ -29,7 +29,7 @@ public class Main {
         		    output.append("\n      ");
         		output.append(String.format("%3d", count[i]));
     		}
-        	output.append("\n");
+        	output.append('\n');
         }
 	    System.out.print(output);
 	}
