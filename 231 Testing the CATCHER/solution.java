@@ -22,7 +22,7 @@ public class Main {
 		        else
 		            lis.set(pos, heights.get(i));
 		    }
-		    output.append("Test #").append(++cases).append(":\n  maximum possible interceptions: ").append(lisSize).append('\n');
+		    output.append("Test #").append(++cases).append(":\n  maximum possible interceptions: ").append(lis.size()).append('\n');
 		}
         System.out.print(output);
 	}
