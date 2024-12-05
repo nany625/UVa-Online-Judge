@@ -10,9 +10,9 @@ public class Main {
         while(N-- > 0) {
             br.readLine();
 	        String s = br.readLine();
-            int len = s.length(), i = 1, length = 0;
-	        short[] LPS = new short[len];
-	        while(i < len) {
+            int i = 1, length = 0;
+	        short[] LPS = new short[s.length()];
+	        while(i < s.length()) {
 	            if(s.charAt(i) == s.charAt(length))
 	                LPS[i++] = (short)(++length);
 	            else {
@@ -22,7 +22,7 @@ public class Main {
 	                    LPS[i++] = 0;
 	            }
 	        }
-			output.append(len % (len - LPS[len - 1]) == 0 ? len - LPS[len - 1] : len).append('\n');
+			output.append(s.length() % (s.length() - LPS[s.length() - 1]) == 0 ? s.length() - LPS[s.length() - 1] : s.length()).append('\n');
 			if(N > 0)
 				output.append('\n');
         }
