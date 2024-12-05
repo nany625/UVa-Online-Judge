@@ -14,9 +14,9 @@ public class Main {
     			numbers.add(number);
 				char[] newNumber = ("" + number).toCharArray();
     			Arrays.sort(newNumber);
-    			int asc = Integer.parseInt(new String(newNumber)), len = newNumber.length;
-				for(int i = 0; i < len >> 1; ++i)
-    			    swap(newNumber, i, len - 1 - i);
+    			int asc = Integer.parseInt(new String(newNumber));
+				for(int i = 0; i < newNumber.length >> 1; ++i)
+    			    swap(newNumber, i, newNumber.length - 1 - i);
     			int desc = Integer.parseInt(new String(newNumber));
 				output.append(desc).append(" - ").append(asc).append(" = ").append(desc - asc).append('\n');
     			number = desc - asc;
