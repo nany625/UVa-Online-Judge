@@ -8,9 +8,8 @@ public class Main {
         StringBuilder output = new StringBuilder();
     	while((line = br.readLine()) != null && !line.isEmpty()) {
     	    short[] frequency = new short[52];
-    	    int len = line.length();
     	    short max = 0;
-    	    for(int i = 0; i < len; ++i) {
+    	    for(int i = 0; i < line.length(); ++i) {
     	        if(Character.isUpperCase(line.charAt(i)))
     	            max = (short)Math.max(max, ++frequency[line.charAt(i) - 'A']);
     	        else if(Character.isLowerCase(line.charAt(i)))
@@ -41,9 +40,8 @@ public class Main {
         StringBuilder output = new StringBuilder();
     	while((line = br.readLine()) != null && !line.isEmpty()) {
     	    TreeMap<Character, Short> frequency = new TreeMap<>();
-    	    int len = line.length();
     	    short max = 0;
-    	    for(int i = 0; i < len; ++i) {
+    	    for(int i = 0; i < line.length(); ++i) {
     	        if(Character.isLetter(line.charAt(i))) {
     	            if(frequency.containsKey(line.charAt(i)))
 						frequency.replace(line.charAt(i), (short)(frequency.get(line.charAt(i)) + 1));
@@ -74,9 +72,8 @@ public class Main {
     	while((line = br.readLine()) != null && !line.isEmpty()) {
     	    HashMap<Character, Short> frequency = new HashMap<>();
     	    ArrayList<Character> frequencyKeys = new ArrayList<>();
-    	    int len = line.length();
     	    short max = 0;
-    	    for(int i = 0; i < len; ++i) {
+    	    for(int i = 0; i < line.length(); ++i) {
     	        if(Character.isLetter(line.charAt(i))) {
     	            if(frequency.containsKey(line.charAt(i)))
 						frequency.replace(line.charAt(i), (short)(frequency.get(line.charAt(i)) + 1));
