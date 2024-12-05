@@ -16,8 +16,7 @@ public class Main {
 		    int cyan = (int)st.nval;
 		    st.nextToken();
 		    String pixels = st.sval;
-		    int len = pixels.length();
-		    for(int i = 0; i < len && magenta >= 0 && yellow >= 0 && cyan >= 0; ++i) {
+		    for(int i = 0; i < pixels.length() && magenta >= 0 && yellow >= 0 && cyan >= 0; ++i) {
                 switch(pixels.charAt(i)) {
                     case 'M':
                         --magenta;
