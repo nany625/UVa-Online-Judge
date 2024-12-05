@@ -27,8 +27,8 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static int binarySearch(ArrayList<Short> arrayList, int size, short key) {
-        int left = 0, right = size - 1;
+	static int binarySearch(ArrayList<Short> arrayList, short key) {
+        int left = 0, right = arrayList.size() - 1;
         while(left <= right) {
             int mid = left + (right - left >> 1);
             if(arrayList.get(mid) < key)
