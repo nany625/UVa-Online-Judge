@@ -7,10 +7,10 @@
 bool isComposite[MAX_NUM + 1] = {true, true};
 
 void eratosthenesSieve() {
-    for(short i = 2; i <= MAX_NUM; ++i) {
-        if(!isComposite[i] && i <= 44) {
-            for(int j = i * i; j <= MAX_NUM; j += i)
-                isComposite[j] = true;
+    for(short n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n] && n <= 44) {
+            for(int i = n * n; i <= MAX_NUM; i += n)
+                isComposite[i] = true;
         }
     }
 }
