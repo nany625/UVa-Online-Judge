@@ -6,15 +6,7 @@ public class Main {
     static short[] dpCount = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
 	    isComposite[0] = isComposite[1] = true;
-	    for(int i = 2; i <= MAX_NUM; ++i) {
-	        dpCount[i] = dpCount[i - 1];
-	        if(!isComposite[i] && i <= 999) {
-    	        for(int j = i * i; j <= MAX_NUM; j += i)
-    	            isComposite[j] = true;
-	        }
-	        if(!isComposite[i] && !isComposite[sumOfDigits(i)])
-	            ++dpCount[i];
-	    }
+	    eratosthenesSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -37,5 +29,18 @@ public class Main {
             n /= 10;
         }
         return result;
+    }
+    
+    static void eratosthenesSieve() {
+	    isComposite[0] = isComposite[1] = true;
+        for(int n = 2; n <= MAX_NUM; ++n) {
+            dpCount[n] = dpCount[n - 1];
+            if(!isComposite[n] && n <= 999) {
+                for(int i = n * n; i <= MAX_NUM; i += n)
+                    isComposite[i] = true;
+            }
+            if(!isComposite[n] && !isComposite[sumOfDigits(n)])
+	            ++dpCount[n];
+        }
     }
 }
