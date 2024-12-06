@@ -3,17 +3,17 @@
 #include <stdbool.h>
 #define MAX_NUM 1000001
 
-bool isHComposite[MAX_NUM + 1], isHSemiPrime[MAX_NUM + 1];
+bool isHComposite[(MAX_NUM >> 2) + 1], isHSemiPrime[MAX_NUM + 1];
 int ans[MAX_NUM + 1], *hPrimes, size;
 
 void eulerSieve() {
     for(int n = 5; n <= MAX_NUM; n += 4) {
-        if(!isHComposite[n]) {
+        if(!isHComposite[n >> 2]) {
             hPrimes = (int*)realloc(hPrimes, (size + 1) * sizeof(int));
             hPrimes[size++] = n;
         }
         for(int i = 0, temp; i < size && (temp = hPrimes[i] * n) <= MAX_NUM; ++i) {
-            isHComposite[temp] = true;
+            isHComposite[temp >> 2] = true;
             if(n % hPrimes[i] == 0)
                 break;
         }
