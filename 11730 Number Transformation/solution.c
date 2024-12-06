@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#define MAX_NUM 331
 
 short primes[] = {
     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 
