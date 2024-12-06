@@ -6,13 +6,17 @@
 
 bool isComposite[MAX_NUM + 1] = {true, true};
 
-int main() {
+void eratosthenesSieve() {
     for(short i = 2; i <= MAX_NUM; ++i) {
         if(!isComposite[i] && i <= 44) {
             for(int j = i * i; j <= MAX_NUM; j += i)
                 isComposite[j] = true;
         }
     }
+}
+
+int main() {
+    eratosthenesSieve();
     int T;
     scanf("%d", &T);
     char buffer[MAX_NUM + 1];
