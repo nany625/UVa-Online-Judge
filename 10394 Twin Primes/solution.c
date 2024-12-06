@@ -4,7 +4,7 @@
 #define MAX_NUM 20000000
 
 bool isComposite[MAX_NUM + 1];
-int *primes, size = 1, twinPrimes[100000], count = 1;
+int *primes, size, twinPrimes[100000], count = 1;
 
 void eulerSieve() {
     for(int n = 5; count < 100000; n += 4) {
@@ -33,8 +33,7 @@ void eulerSieve() {
 }
 
 int main() {
-    primes = (int*)malloc(sizeof(int));
-    primes[0] = twinPrimes[0] = 3;
+    twinPrimes[0] = 3;
     eulerSieve();
     int S;
     while(scanf("%d", &S) == 1)
