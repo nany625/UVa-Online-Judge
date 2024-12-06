@@ -14,14 +14,18 @@ int sumOfDigits(int n) {
     return result;
 }
 
-int main() {
-    for(int i = 2; i <= MAX_NUM; ++i) {
-        if(!isComposite[i] && i <= 999) {
-            for(int j = i * i; j <= MAX_NUM; j += i)
-                isComposite[j] = true;
+void eratosthenesSieve() {
+    for(int n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n] && n <= 999) {
+            for(int i = n * n; i <= MAX_NUM; i += n)
+                isComposite[i] = true;
         }
-        dpCount[i] = dpCount[i - 1] + (!isComposite[i] && !isComposite[sumOfDigits(i)]);
+        dpCount[n] = dpCount[n - 1] + (!isComposite[n] && !isComposite[sumOfDigits(n)]);
     }
+}
+
+int main() {
+    eratosthenesSieve();
 	int N;
 	scanf("%d", &N);
 	while(N--) {
