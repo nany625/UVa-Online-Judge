@@ -9,14 +9,14 @@ short *primes;
 int size;
 
 void eulerSieve() {
-    for(short i = 2; i <= MAX_NUM; ++i) {
-        if(!isComposite[i]) {
+    for(short n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
-            primes[size++] = i;
+            primes[size++] = n;
         }
-        for(int j = 0, temp; j < size && (temp = primes[j] * i) <= MAX_NUM; ++j) {
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp] = true;
-            if(i % primes[j] == 0)
+            if(n % primes[i] == 0)
                 break;
         }
     }
