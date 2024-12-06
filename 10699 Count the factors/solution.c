@@ -8,34 +8,38 @@ bool isComposite[MAX_NUM + 1];
 short *primes;
 int size = 1;
 
-int main() {
+void eratosthenesSieve() {
     primes = (short*)malloc(sizeof(short));
     primes[0] = 2;
-    for(short i = 3; i <= MAX_NUM; i += 2) {
-        if(!isComposite[i]) {
+    for(short n = 3; n <= MAX_NUM; n += 2) {
+        if(!isComposite[n]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
-            primes[size++] = i;
-            if(i <= 31) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
+            primes[size++] = n;
+            if(n <= 31) {
+                for(int i = n * n; i <= MAX_NUM; i += n << 1)
+                    isComposite[i] = true;
             }
         }
     }
+}
+
+int main() {
+    eratosthenesSieve();
     int num;
     while(scanf("%d", &num) && num != 0) {
         printf("%d : ", num);
         short limit = sqrt(num);
-        int pfCount = 0;
+        int count = 0;
         for(int i = 0; i < size && primes[i] <= limit; ++i) {
             if(num % primes[i] == 0) {
-                ++pfCount;
+                ++count;
                 do {
                     num /= primes[i];
                 } while(num % primes[i] == 0);
                 limit = sqrt(num);
             }
         }
-        printf("%d\n", pfCount + (num > 1));
+        printf("%d\n", count + (num > 1));
     }
     free(primes);
     return 0;
