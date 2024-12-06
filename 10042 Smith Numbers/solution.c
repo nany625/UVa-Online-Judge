@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAX_NUM 31622
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+bool isComposite[MAX_NUM + 1];
 short *primes;
 int size;
 
