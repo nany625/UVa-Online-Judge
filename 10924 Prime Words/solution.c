@@ -6,16 +6,20 @@
 
 bool isComposite[MAX_NUM + 1];
 
-int main() {
-    for(int i = 2; i <= MAX_NUM; ++i) {
-        if(!isComposite[i] && i <= 32) {
-            for(int j = i * i; j <= MAX_NUM; j += i)
-                isComposite[j] = true;
+void eratosthenesSieve() {
+    for(short n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n] && n <= 32) {
+            for(int i = n * n; i <= MAX_NUM; i += n)
+                isComposite[i] = true;
         }
     }
+}
+
+int main() {
+    eratosthenesSieve();
     char L[21];
     while(scanf("%s", L) == 1) {
-        int len = strlen(L), sum = 0;
+        int sum = 0, len = strlen(L);
         for(int i = 0; i < len; ++i) {
             if(isupper(L[i]))
                 sum += L[i] - 'A' + 27;
