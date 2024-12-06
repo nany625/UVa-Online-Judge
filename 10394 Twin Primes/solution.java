@@ -1,25 +1,16 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     static int MAX_NUM = 20000000;
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static ArrayList<Integer> primes = new ArrayList<>();
     static int[] twinPrimes = new int[100000];
     static int count = 1;
     public static void main(String[] args) throws IOException {
+        primes.add(3);
         twinPrimes[0] = 3;
-        for(int i = 5; count < 100000; i += 4) {
-            if(!isComposite[i] && i <= 4472) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-            i += 2;
-            if(!isComposite[i] && i <= 4472) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-            if(!isComposite[i - 2] && !isComposite[i])
-                twinPrimes[count++] = i - 2;
-        }
+        eulerSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
@@ -28,5 +19,27 @@ public class Main {
             output.append('(').append(twinPrimes[S]).append(", ").append(twinPrimes[S] + 2).append(")\n");
         }
         System.out.print(output);
+    }
+    
+    static void eulerSieve() {
+        for(int n = 5; count < 100000 ; n += 4) {
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+            n += 2;
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+            if(!isComposite[n - 2] && !isComposite[n])
+                twinPrimes[count++] = n - 2;
+        }
     }
 }
