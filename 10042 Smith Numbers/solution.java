@@ -28,7 +28,6 @@ public class Main {
 	}
 	
 	static void eulerSieve() {
-	    isComposite[0] = isComposite[1] = true;
         for(short n = 2; n <= MAX_NUM; ++n) {
             if(!isComposite[n])
                 primes.add(n);
