@@ -5,23 +5,27 @@
 #define MAX_N 1048576
 
 bool isComposite[MAX_NUM + 1], isCompositePrime[MAX_N + 1];
-int *primes, size = 1;
+int *primes, size;
+
+void eulerSieve() {
+    for(int n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n]) {
+            primes = (int*)realloc(primes, (size + 1) * sizeof(int));
+            primes[size++] = n;
+        }
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp] = true;
+            if(n % primes[i] == 0)
+                break;
+        }
+    }
+}
 
 int main() {
-    primes = (int*)malloc(sizeof(int));
-    primes[0] = 2;
-    isCompositePrime[4] = true;
-    for(int i = 3; i <= MAX_NUM; i += 2) {
-        if(!isComposite[i]) {
-            primes = (int*)realloc(primes, (size + 1) * sizeof(int));
-            primes[size++] = i;
-            for(int j = 0, temp; j < size && (temp = primes[j] * i) <= MAX_N; ++j)
-                isCompositePrime[temp] = true;
-            if(i <= 724) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-        }
+    eulerSieve();
+    for(int i = 0; i < size; ++i) {
+        for(int j = 0, temp; j < size && (temp = primes[i] * primes[j]) <= MAX_N; ++j)
+            isCompositePrime[temp] = true;
     }
     int N;
     while(scanf("%d", &N) == 1) {
