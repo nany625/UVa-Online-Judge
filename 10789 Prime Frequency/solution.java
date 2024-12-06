@@ -4,18 +4,8 @@ import java.util.*;
 public class Main {
     static short MAX_NUM = 2000;
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
-    static ArrayList<Short> primes = new ArrayList<>();
 	public static void main (String[] args) throws IOException {
-		isComposite[0] = isComposite[1] = true;
-		for(short i = 2; i <= MAX_NUM; ++i) {
-            if(!isComposite[i]) {
-                primes.add(i);
-                if(i <= 44) {
-                    for(int j = i * i; j <= MAX_NUM; j += i)
-                        isComposite[j] = true;
-                }
-            }
-        }
+		eratosthenesSieve();
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
@@ -37,7 +27,7 @@ public class Main {
             for(int j = 0; j < 62; ++j) {
                 if(!isComposite[frequency[j]]) {
                     if(j < 10)
-                        output.append((char)('0' + j));
+                        output.append(j);
                     else if(j < 36)
                         output.append((char)('A' + j - 10));
                     else
@@ -49,4 +39,14 @@ public class Main {
         }
 		System.out.print(output);
 	}
+	
+	static void eratosthenesSieve() {
+	    isComposite[0] = isComposite[1] = true;
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n] && n <= 44) {
+                for(int i = n * n; i <= MAX_NUM; i += n)
+                    isComposite[i] = true;
+            }
+        }
+    }
 }
