@@ -3,20 +3,14 @@ import java.util.*;
 
 public class Main {
     static int MAX_NUM = 1000001;
-    static boolean[] isHComposite = new boolean[MAX_NUM + 1], isHSemiPrime = new boolean[MAX_NUM + 1];
+    static boolean[] isHComposite = new boolean[(MAX_NUM >> 2) + 1], isHSemiPrime = new boolean[MAX_NUM + 1];
     static int[] ans = new int[MAX_NUM + 1];
     static ArrayList<Integer> hPrimes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-	    for(int i = 5; i <= MAX_NUM; i += 4) {
-            if(!isHComposite[i]) {
-                hPrimes.add(i);
-                for(int j = 0, temp; j < hPrimes.size() && (temp = hPrimes.get(j) * i) <= MAX_NUM; ++j)
-                    isHSemiPrime[temp] = true;
-                if(i <= 1000) {
-                    for(int j = i * i; j <= MAX_NUM; j += i << 2)
-                        isHComposite[j] = true;
-                }
-            }
+	    eulerSieve();
+	    for(int i = 0; i < hPrimes.size(); ++i) {
+            for(int j = 0, temp; j < hPrimes.size() && (temp = hPrimes.get(i) * hPrimes.get(j)) <= MAX_NUM; ++j)
+                isHSemiPrime[temp] = true;
         }
         for(int i = 1; i <= MAX_NUM; ++i)
             ans[i] = ans[i - 1] + (isHSemiPrime[i] ? 1 : 0);
@@ -28,4 +22,16 @@ public class Main {
             output.append(h).append(' ').append(ans[h]).append('\n');
         System.out.print(output);
 	}
+    
+    static void eulerSieve() {
+        for(int n = 5; n <= MAX_NUM; n += 4) {
+            if(!isHComposite[n >> 2])
+                hPrimes.add(n);
+            for(int i = 0, temp; i < hPrimes.size() && (temp = hPrimes.get(i) * n) <= MAX_NUM; ++i) {
+                isHComposite[temp >> 2] = true;
+                if(n % hPrimes.get(i) == 0)
+                    break;
+            }
+        }
+    }
 }
