@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int *f = NULL, size;
+int *f, size;
 
 int binarySearch(int key) {
     int left = 0, right = size - 2;
