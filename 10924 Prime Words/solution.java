@@ -1,14 +1,10 @@
 import java.io.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[1041];
+    static int MAX_NUM = 1040;
+    static boolean[] isComposite = new boolean[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
-		for(int i = 2; i <= 1040; ++i) {
-            if(!isComposite[i] && i <= 32) {
-                for(int j = i * i; j <= 1040; j += i)
-                    isComposite[j] = true;
-            }
-        }
+		eratosthenesSieve();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
@@ -25,4 +21,13 @@ public class Main {
         }
         System.out.print(output);
 	}
+	
+	static void eratosthenesSieve() {
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n] && n <= 32) {
+                for(int i = n * n; i <= MAX_NUM; i += n)
+                    isComposite[i] = true;
+            }
+        }
+    }
 }
