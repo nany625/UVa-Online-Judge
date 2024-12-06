@@ -7,16 +7,7 @@ public class Main {
     static ArrayList<Short> primes = new ArrayList<>();
     static short[] ppCount = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
-	    primes.add((short)2);
-    	for(short i = 3; i <= MAX_NUM; i += 2) {
-    		if(!isComposite[i]) {
-    		    primes.add(i);
-    		    if(i <= 100) {
-    	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
-    	                isComposite[j] = true;
-    	        }
-    		}
-    	}
+	    eulerSieve();
     	for(short i = 1; i <= 40; ++i)
     		ppCount[i - 1] = i;
     	ppCount[40] = ppCount[41] = 40;
@@ -38,6 +29,19 @@ public class Main {
         }
 	    System.out.print(output);
 	}
+	
+	static void eulerSieve() {
+	    isComposite[0] = isComposite[1] = true;
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+        }
+    }
 	
 	static boolean producePrime(int n) {
         int num = n * n + n + 41;
