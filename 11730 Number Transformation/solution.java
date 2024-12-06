@@ -2,20 +2,16 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static boolean[] isComposite = new boolean[332];
-    static short[] primes = new short[67];
-    static int count = 1;
+    static short[] primes = {
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 
+        31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 
+        73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 
+        127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 
+        179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 
+        233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 
+        283, 293, 307, 311, 313, 317, 331
+    };
 	public static void main(String[] args) throws IOException {
-	    primes[0] = 2;
-	    for(short i = 3; count < 67; i += 2) {
-            if(!isComposite[i]) {
-                primes[count++] = i;
-                if(i <= 18) {
-                    for(short j = (short)(i * i); j <= 331; j += i << 1)
-                        isComposite[j] = true;
-                }
-            }
-        }
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         int cases = 0, S, T;
