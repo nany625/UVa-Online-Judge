@@ -8,7 +8,6 @@ public class Main {
     static int[] twinPrimes = new int[100000];
     static int count = 1;
     public static void main(String[] args) throws IOException {
-        primes.add(3);
         twinPrimes[0] = 3;
         eulerSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
