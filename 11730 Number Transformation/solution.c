@@ -3,22 +3,18 @@
 #include <string.h>
 #include <stdbool.h>
 #define MAX_NUM 331
-#define MAX_PRIME_SIZE 67
 
-bool isComposite[MAX_NUM + 1];
-short primes[MAX_PRIME_SIZE] = {2};
-int count = 1;
+short primes[] = {
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 
+    31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 
+    73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 
+    127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 
+    179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 
+    233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 
+    283, 293, 307, 311, 313, 317, 331
+};
 
 int main() {
-    for(short i = 3; count < MAX_PRIME_SIZE; i += 2) {
-        if(!isComposite[i]) {
-            primes[count++] = i;
-            if(i <= 18) {
-                for(short j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-        }
-    }
     int cases = 0, S, T;
     while(scanf("%d %d", &S, &T) && S != 0 && T != 0) {
         if(S == T) {
@@ -36,7 +32,7 @@ int main() {
             trans[step] = NULL;
             int nextSize = 0;
             for(int i = 0; i < currSize && !found; ++i) {
-                for(int j = 0; j < MAX_PRIME_SIZE && primes[j] < trans[step - 1][i] && !found; ++j) {
+                for(int j = 0; j < 67 && primes[j] < trans[step - 1][i] && !found; ++j) {
                     if(trans[step - 1][i] % primes[j] == 0) {
                         if(trans[step - 1][i] + primes[j] == T) {
                             printf("Case %d: %d\n", ++cases, step);
