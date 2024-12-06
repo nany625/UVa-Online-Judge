@@ -2,19 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static short MAX_NUM = 31607;
+    static short MAX_NUM = 31622;
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-    	for(short i = 2; i <= MAX_NUM; ++i) {
-    	    if(!isComposite[i]) {
-    	        primes.add(i);
-        	    if(i <= 177) {
-        	        for(int j = i * i; j <= MAX_NUM; j += i)
-        	            isComposite[j] = true;
-        	    }
-    	    }
-    	}
+    	eulerSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -35,6 +27,19 @@ public class Main {
         System.out.print(output);
 	}
 	
+	static void eulerSieve() {
+	    isComposite[0] = isComposite[1] = true;
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+        }
+    }
+    
 	static int sumOfDigits(int n) {
 	    int result = 0;
 	    while(n > 0) {
