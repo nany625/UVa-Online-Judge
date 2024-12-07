@@ -12,21 +12,24 @@ typedef struct {
 
 bool isComposite[MAX_NUM + 1];
 short *primes;
-int size = 1;
+int size;
+
+void eulerSieve() {
+    for(short n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n]) {
+            primes = (short*)realloc(primes, (size + 1) * sizeof(short));
+            primes[size++] = n;
+        }
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp] = true;
+            if(n % primes[i] == 0)
+                break;
+        }
+    }
+}
 
 int main() {
-    primes = (short*)malloc(sizeof(short));
-    primes[0] = 2;
-	for(short i = 3; i <= MAX_NUM; i += 2) {
-	    if(!isComposite[i]) {
-	        primes = (short*)realloc(primes, (size + 1) * sizeof(short));
-            primes[size++] = i;
-            if(i <= 180) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-	    }
-	}
+    eulerSieve();
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '0') {
