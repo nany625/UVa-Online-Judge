@@ -4,30 +4,32 @@
 #define MAX_NUM 10000
 
 bool isComposite[MAX_NUM + 1];
-short *primes, primesSumCount[MAX_NUM + 1];
-int size = 1;
+short *primes, count[MAX_NUM + 1];
+int size;
 
-int main() {
-    primes = (short*)malloc(sizeof(short));
-    primes[0] = 2;
-    for(short i = 3; i <= MAX_NUM; i += 2) {
-        if(!isComposite[i]) {
+void eulerSieve() {
+    for(short n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
-            primes[size++] = i;
-            if(i <= 100) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
+            primes[size++] = n;
+        }
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp] = true;
+            if(n % primes[i] == 0)
+                break;
         }
     }
+}
+
+int main() {
+    eulerSieve();
     for(int i = 0; i < size; ++i) {
-        int sum = 0;
-        for(int j = i; j < size && (sum += primes[j]) <= MAX_NUM; ++j)
-            ++primesSumCount[sum];
+        for(int j = i, sum = 0; j < size && (sum += primes[j]) <= MAX_NUM; ++j)
+            ++count[sum];
     }
     int num;
     while(scanf("%d", &num) && num != 0)
-        printf("%d\n", primesSumCount[num]);
+        printf("%d\n", count[num]);
     free(primes);
 	return 0;
 }
