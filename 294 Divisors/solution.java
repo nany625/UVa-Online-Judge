@@ -2,20 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static short MAX_NUM = 31607;
+    static short MAX_NUM = 31622;
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-        primes.add((short)2);
-    	for(short i = 3; i <= MAX_NUM; i += 2) {
-    		if(!isComposite[i]) {
-    		    primes.add(i);
-    		    if(i <= 177) {
-    	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
-    	                isComposite[j] = true;
-    	        }
-    		}
-    	}
+        eulerSieve();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -49,16 +40,28 @@ public class Main {
 		}
 	    System.out.print(output);
 	}
+	
+	static void eulerSieve() {
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+        }
+    }
     
     static int factorCount(int n) {
         int result = 1, i = 0;
     	while(i < primes.size() && n > 1) {
-    	    int currPow = 0;
+    	    int term = 1;
     	    while(n % primes.get(i) == 0) {
-    	        ++currPow;
+    	        ++term;
     	        n /= primes.get(i);
     	    }
-    	    result *= currPow + 1;
+    	    result *= term;
     	    ++i;
     	}
     	if(n > 1)
