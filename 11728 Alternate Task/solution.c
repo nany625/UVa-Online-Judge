@@ -1,58 +1,36 @@
-// #解法一
 #include <stdio.h>
 #include <math.h>
 #define MAX_NUM 1000
 
-int factorSum(int n) {
-    int result = 1 + n, limit = sqrt(n);
-    for(int i = 2; i <= limit; ++i) {
-        if(n % i == 0)
-            result += i + n / i;
+char primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+short table[MAX_NUM + 1];
+
+short factorSum(short n) {
+    short sum = 1, limit = sqrt(n), temp = n;
+    for(int i = 0; i < 11 && primes[i] <= limit; ++i) {
+        if(n % primes[i] == 0) {
+            short tempSum = 1, term = 1;
+            do {
+                tempSum += term *= primes[i];
+                n /= primes[i];
+            } while(n % primes[i] == 0);
+            sum *= tempSum;
+            limit = sqrt(n);
+        }
     }
-    if(sqrt(n) == limit)
-        result -= limit;
-    return result;
+    if(n > 1)
+        sum *= (1 + n);
+    return sum;
 }
 
 int main() {
-    int table[MAX_NUM] = {1};
-    for(int i = 2; i <= MAX_NUM; ++i) {
-        int temp = factorSum(i);
+    for(short i = 1; i <= MAX_NUM; ++i) {
+        short temp = factorSum(i);
         if(temp <= MAX_NUM)
-            table[temp - 1] = i;
+            table[temp] = i;
     }
 	int cases = 0, S;
 	while(scanf("%d", &S) && S != 0)
-	    printf("Case %d: %d\n", ++cases, table[S - 1] != 0 ? table[S - 1] : -1);
-	return 0;
-}
-
-// #解法二
-#include <stdio.h>
-#include <math.h>
-
-int factorSum(int n) {
-    int result = 1 + n, limit = sqrt(n);
-    for(int i = 2; i <= limit; ++i) {
-        if(n % i == 0)
-            result += i + n / i;
-    }
-    if(sqrt(n) == limit)
-        result -= limit;
-    return result;
-}
-
-int main() {
-	int cases = 0, S;
-	while(scanf("%d", &S) && S != 0) {
-	    if(S == 1) {
-	        printf("Case %d: 1\n", ++cases);
-	        continue;
-	    }
-	    int ans = S - 1, limit = (int)ceil(sqrt(1 + (S << 3)) - 1) >> 1;
-	    while(ans >= limit && factorSum(ans) != S)
-	        --ans;
-	    printf("Case %d: %d\n", ++cases, ans >= limit ? ans : -1);
-	}
+	    printf("Case %d: %hd\n", ++cases, table[S] == 0 ? -1 : table[S]);
 	return 0;
 }
