@@ -6,16 +6,7 @@ public class Main {
     static boolean[] isComposite = new boolean[MAX_NUM + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
-		primes.add((short)2);
-		for(short i = 3; i <= MAX_NUM; ++i) {
-	        if(!isComposite[i]) {
-    	        primes.add(i);
-                if(i <= 180) {
-                    for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                        isComposite[j] = true;
-                }
-    	    }
-	    }
+		eulerSieve();
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	String line;
     	StringBuilder output = new StringBuilder();
@@ -41,6 +32,18 @@ public class Main {
     	}
 	    System.out.print(output);
 	}
+	
+	static void eulerSieve() {
+        for(short n = 2; n <= MAX_NUM; ++n) {
+            if(!isComposite[n])
+                primes.add(n);
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp] = true;
+                if(n % primes.get(i) == 0)
+                    break;
+            }
+        }
+    }
 }
 
 class Factor {
