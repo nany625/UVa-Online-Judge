@@ -15,7 +15,7 @@ public class Main {
     	int n;
     	StringBuilder output = new StringBuilder("PERFECTION OUTPUT\n");
     	while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
-    	    if(n > 6 && n % 6 == 0)
+    	    if(n % 6 == 0 && n > 6)
     	        output.append(String.format("%5d  ABUNDANT\n", n));
     	    else {
                 long sum = sumOfDivisors(n) - n;
