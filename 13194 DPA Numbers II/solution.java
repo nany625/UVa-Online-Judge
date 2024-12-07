@@ -15,7 +15,7 @@ public class Main {
 		while(t-- > 0) {
     		st.nextToken();
             long n = (long)st.nval;
-            if(n > 6 && n % 6 == 0)
+            if(n % 6 == 0 && n > 6)
     	        output.append("abundant\n");
     	    else {
                 long sum = sumOfDivisors(n) - n;
