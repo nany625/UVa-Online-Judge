@@ -46,7 +46,7 @@ int main() {
 	while(t--) {
 	    long n;
 	    scanf("%ld", &n);
-	    if(n > 6 && n % 6 == 0)
+	    if(n % 6 == 0 && n > 6)
 	        puts("abundant");
 	    else {
 	        long sum = sumOfDivisors(n) - n;
