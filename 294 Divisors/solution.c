@@ -24,12 +24,12 @@ void eulerSieve() {
 int factorCount(int n) {
     int result = 1, i = 0;
 	while(i < size && n > 1) {
-	    int currPow = 0;
+	    int term = 1;
 	    while(n % primes[i] == 0) {
-	        ++currPow;
+	        ++term;
 	        n /= primes[i];
 	    }
-	    result *= currPow + 1;
+	    result *= term;
 	    ++i;
 	}
 	if(n > 1)
