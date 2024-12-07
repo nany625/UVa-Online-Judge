@@ -1,22 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define MAX_NUM 999999
+#define MAX_NUM 999995
 
 bool isComposite[MAX_NUM + 1];
 int *primes, size;
 
-int main() {
-    for(int i = 3; i <= MAX_NUM; i += 2) {
-        if(!isComposite[i]) {
+void eulerSieve() {
+    for(int n = 3; n <= MAX_NUM; n += 2) {
+        if(!isComposite[n]) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
-            primes[size++] = i;
-            if(i <= 999) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
+            primes[size++] = n;
+        }
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp] = true;
+            if(n % primes[i] == 0)
+                break;
         }
     }
+}
+
+int main() {
+    eulerSieve();
     int n;
     while(scanf("%d", &n) && n != 0) {
         int i = 0;
