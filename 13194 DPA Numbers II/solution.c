@@ -5,7 +5,21 @@
 #define MAX_NUM 1000000
 
 bool isComposite[MAX_NUM + 1];
-int *primes, size = 1;
+int *primes, size;
+
+void eulerSieve() {
+    for(int n = 2; n <= MAX_NUM; ++n) {
+        if(!isComposite[n]) {
+            primes = (int*)realloc(primes, (size + 1) * sizeof(int));
+            primes[size++] = n;
+        }
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp] = true;
+            if(n % primes[i] == 0)
+                break;
+        }
+    }
+}
 
 long sumOfDivisors(long n) {
     long sum = 1, limit = sqrt(n);
@@ -26,18 +40,7 @@ long sumOfDivisors(long n) {
 }
 
 int main() {
-    primes = (int*)malloc(sizeof(int));
-    primes[0] = 2;
-    for(int i = 3; i <= MAX_NUM; i += 2) {
-        if(!isComposite[i]) {
-            primes = (int*)realloc(primes, (size + 1) * sizeof(int));
-            primes[size++] = i;
-            if(i <= 1000) {
-                for(int j = i * i; j <= MAX_NUM; j += i << 1)
-                    isComposite[j] = true;
-            }
-        }
-    }
+    eulerSieve();
     int t;
 	scanf("%d", &t);
 	while(t--) {
