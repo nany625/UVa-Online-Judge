@@ -27,7 +27,7 @@ int main() {
 	while(t--) {
 		int n;
 		scanf("%d", &n);
-		if(n > 6 && n % 6 == 0)
+		if(n % 6 == 0 && n > 6)
 	        puts("abundant");
 	    else {
     	    int sum = sumOfDivisors(n) - n;
