@@ -8,7 +8,7 @@ bool isComposite[MAX_NUM + 1];
 
 void eratosthenesSieve() {
     for(short n = 2; n <= MAX_NUM; ++n) {
-        if(!isComposite[n] && n <= 32) {
+        if(n <= 32 && !isComposite[n]) {
             for(int i = n * n; i <= MAX_NUM; i += n)
                 isComposite[i] = true;
         }
