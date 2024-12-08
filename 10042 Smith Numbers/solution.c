@@ -34,11 +34,9 @@ int sumOfDigits(int n) {
 }
 
 int sumOfFactorDigits(int n) {
-    int result = 0, limit = sqrt(n);
-    bool isPrime = true;
+    int result = 0, limit = sqrt(n), temp = n;
     for(int i = 0; i < size && primes[i] <= limit; ++i) {
 	    if(n % primes[i] == 0) {
-            isPrime = false;
 	        int tempSum = sumOfDigits(primes[i]);
 	        do {
 	            result += tempSum;
@@ -47,7 +45,7 @@ int sumOfFactorDigits(int n) {
 	        limit = sqrt(n);
 	    }
 	}
-	if(isPrime)
+	if(temp == n)
 	    return -1;
 	if(n > 1)
 	    result += sumOfDigits(n);
