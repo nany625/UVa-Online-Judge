@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Main {
     static short MAX_NUM = 1000;
-    static short[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31}, table = new short [MAX_NUM + 1];
+    static short[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31}, table = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
         for(short i = 1; i <= MAX_NUM; ++i) {
             short temp = factorSum(i);
