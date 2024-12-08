@@ -35,7 +35,7 @@ public class Main {
 	    isComposite[0] = isComposite[1] = true;
         for(int n = 2; n <= MAX_NUM; ++n) {
             dpCount[n] = dpCount[n - 1];
-            if(!isComposite[n] && n <= 999) {
+            if(n <= 999 && !isComposite[n]) {
                 for(int i = n * n; i <= MAX_NUM; i += n)
                     isComposite[i] = true;
             }
