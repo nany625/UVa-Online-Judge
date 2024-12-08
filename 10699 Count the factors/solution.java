@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static short MAX_NUM = 1000;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main (String[] args) throws IOException {
 		eratosthenesSieve();
@@ -32,11 +32,11 @@ public class Main {
 	static void eratosthenesSieve() {
 	    primes.add((short)2);
         for(short n = 3; n <= MAX_NUM; n += 2) {
-            if(!isComposite[n]) {
+            if(!isComposite[n >> 1]) {
                 primes.add(n);
                 if(n <= 31) {
                     for(int i = n * n; i <= MAX_NUM; i += n << 1)
-                        isComposite[i] = true;
+                        isComposite[i >> 1] = true;
                 }
             }
         }
