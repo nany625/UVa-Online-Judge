@@ -4,18 +4,20 @@
 #include <stdbool.h>
 #define MAX_NUM 31622
 
-bool isComposite[MAX_NUM + 1];
+bool isComposite[(MAX_NUM >> 1) + 1];
 short *primes;
-int size;
+int size = 1;
 
 void eulerSieve() {
-    for(short n = 2; n <= MAX_NUM; ++n) {
-        if(!isComposite[n]) {
+    primes = (short*)malloc(sizeof(short));
+    primes[0] = 2;
+    for(short n = 3; n <= MAX_NUM; n += 2) {
+        if(!isComposite[n >> 1]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = n;
         }
-        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            isComposite[temp] = true;
+        for(int i = 1, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+            isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
                 break;
         }
@@ -62,7 +64,7 @@ int main() {
 	    bool found = false;
 	    do {
 	        ++n;
-	        if(n <= MAX_NUM && !isComposite[n])
+	        if(n & 1 && n <= MAX_NUM && !isComposite[n >> 1])
 	            continue;
 	        found = sumOfFactorDigits(n) == sumOfDigits(n);
 	    } while(!found);
