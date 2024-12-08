@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAX_NUM = 20000000;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
     static ArrayList<Integer> primes = new ArrayList<>();
     static int[] twinPrimes = new int[100000];
     static int count = 1;
@@ -22,22 +22,22 @@ public class Main {
     
     static void eulerSieve() {
         for(int n = 5; count < 100000 ; n += 4) {
-            if(!isComposite[n])
+            if(!isComposite[n >> 1])
                 primes.add(n);
             for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp] = true;
+                isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
             }
             n += 2;
-            if(!isComposite[n])
+            if(!isComposite[n >> 1])
                 primes.add(n);
             for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp] = true;
+                isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
             }
-            if(!isComposite[n - 2] && !isComposite[n])
+            if(!isComposite[(n >> 1) - 1] && !isComposite[n >> 1])
                 twinPrimes[count++] = n - 2;
         }
     }
