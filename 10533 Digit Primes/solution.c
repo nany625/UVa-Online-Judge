@@ -16,7 +16,7 @@ int sumOfDigits(int n) {
 
 void eratosthenesSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
-        if(!isComposite[n] && n <= 999) {
+        if(n <= 999 && !isComposite[n]) {
             for(int i = n * n; i <= MAX_NUM; i += n)
                 isComposite[i] = true;
         }
