@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAX_NUM 1000
 
-bool isComposite[MAX_NUM + 1];
+bool isComposite[(MAX_NUM >> 1) + 1];
 short *primes;
 int size = 1;
 
@@ -12,12 +12,12 @@ void eratosthenesSieve() {
     primes = (short*)malloc(sizeof(short));
     primes[0] = 2;
     for(short n = 3; n <= MAX_NUM; n += 2) {
-        if(!isComposite[n]) {
+        if(!isComposite[n >> 1]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = n;
             if(n <= 31) {
                 for(int i = n * n; i <= MAX_NUM; i += n << 1)
-                    isComposite[i] = true;
+                    isComposite[i >> 1] = true;
             }
         }
     }
