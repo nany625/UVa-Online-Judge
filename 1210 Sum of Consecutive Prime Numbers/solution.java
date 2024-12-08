@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static short MAX_NUM = 10000;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	static short[] count = new short[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
@@ -22,11 +22,12 @@ public class Main {
 	}
 	
 	static void eulerSieve() {
-        for(short n = 2; n <= MAX_NUM; ++n) {
-            if(!isComposite[n])
+	    primes.add((short)2);
+        for(short n = 3; n <= MAX_NUM; n += 2) {
+            if(!isComposite[n >> 1])
                 primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp] = true;
+            for(int i = 1, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+                isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
             }
