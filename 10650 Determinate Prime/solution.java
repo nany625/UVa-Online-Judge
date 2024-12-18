@@ -35,7 +35,7 @@ public class Main {
 		    }
 		    int pos = binarySearch(x);
 		    while(pos < determinatePrimes.size() && determinatePrimes.get(pos).end <= y) {
-		        for(int i = determinatePrimes.get(pos).start; i < determinatePrimes.get(pos).end; i += determinatePrimes.get(pos).step)
+		        for(short i = determinatePrimes.get(pos).start; i < determinatePrimes.get(pos).end; i += determinatePrimes.get(pos).step)
 		            output.append(i).append(' ');
 		        output.append(determinatePrimes.get(pos).end).append('\n');
 		        ++pos;
