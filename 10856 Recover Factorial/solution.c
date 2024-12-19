@@ -4,7 +4,7 @@
 #define MAX_NUM 2703663
 
 bool isComposite[MAX_NUM + 1];
-int *primes, size, count[MAX_NUM + 1], ans[10000002];
+int *primes, size, count[MAX_NUM + 1];
 
 void eulerSieve() {
 	for(int n = 2; n <= MAX_NUM; ++n) {
@@ -22,21 +22,35 @@ void eulerSieve() {
 	}
 }
 
+int binarySearch(int key) {
+    int left = 2, right = MAX_NUM;
+    while(left <= right) {
+        int mid = left + (right - left >> 1);
+        if(count[mid] == key)
+            return mid;
+        if(count[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return -1;
+}
+
 int main() {
     eulerSieve();
-    for(int i = 2; i <= MAX_NUM; ++i) {
+    for(int i = 2; i <= MAX_NUM; ++i)
         count[i] += count[i - 1];
-        if(ans[count[i]] == 0)
-            ans[count[i]] = i;
-    }
     int cases = 0, N;
     while(scanf("%d", &N) && N >= 0) {
         if(N == 0)
             printf("Case %d: 0!\n", ++cases);
-        else if(ans[N] == 0)
-            printf("Case %d: Not possible.\n", ++cases);
-        else
-            printf("Case %d: %d!\n", ++cases, ans[N]);
+        else {
+            int pos = binarySearch(N);
+            if(pos == -1)
+                printf("Case %d: Not possible.\n", ++cases);
+            else
+                printf("Case %d: %d!\n", ++cases, pos);
+        }
     }
     free(primes);
 	return 0;
