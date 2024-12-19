@@ -38,14 +38,11 @@ public class Main {
     			if(count == 1) {
     				eaten[cowNum] = true;
     				++C;
-    				prev = D;
+    				prev = D + 1;
     			}
     			++D;
     		}
-    		if(C == 0)
-    		    output.append(N).append(" 0\n");
-    		else
-    		    output.append(N - C).append(' ').append(prev + 1).append('\n');
+    		output.append(N - C).append(' ').append(prev).append('\n');
 		}
 		System.out.print(output);
 	}
