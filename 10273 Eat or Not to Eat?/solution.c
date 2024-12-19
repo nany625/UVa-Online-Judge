@@ -39,14 +39,11 @@ int main() {
 			if(count == 1) {
 				eaten[cowNum] = true;
 				++C;
-				prev = D;
+				prev = D + 1;
 			}
 			++D;
 		}
-		if(C == 0)
-			printf("%d 0\n", N);
-		else
-			printf("%d %d\n", N - C, prev + 1);
+		printf("%d %d\n", N - C, prev);
 	}
 	return 0;
 }
