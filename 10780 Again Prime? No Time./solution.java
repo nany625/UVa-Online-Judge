@@ -33,7 +33,7 @@ public class Main {
 		            min = Math.min(min, table[n].get(j) / power);
 		        }
 		    }
-		    if(m > 1 || min == 10000 || min == 0)
+		    if(m > 1 || min == MAX_NUM || min == 0)
 		        output.append("Case ").append(i).append(":\nImpossible to divide\n");
 		    else
 		        output.append("Case ").append(i).append(":\n").append(min).append('\n');
