@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAX_NUM = 5003;
-    static boolean[] isComposite = new boolean[MAX_NUM + 1];
+    static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
     static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 	    eulerSieve();
