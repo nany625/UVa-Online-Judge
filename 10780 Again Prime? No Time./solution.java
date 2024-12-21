@@ -22,7 +22,7 @@ public class Main {
 		    short m = (short)st.nval;
 		    st.nextToken();
 		    short n = (short)st.nval;
-		    int min = 10000;
+		    int min = MAX_NUM;
 		    for(int j = 0; j < table[n].size() && min > 0 && m > 1; ++j) {
 		        if(m % primes.get(j) == 0) {
 		            int power = 0;
