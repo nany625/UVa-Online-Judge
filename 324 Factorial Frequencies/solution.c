@@ -35,7 +35,6 @@ int main() {
     initFactorial();
     int n;
     while(scanf("%d", &n) && n != 0) {
-        memset(count, 0, sizeof(count));
         printf("%d! --\n", n);
         for(int i = fac[n].digits - 1; i >= 0; --i)
             ++count[fac[n].number[i] - '0'];
@@ -47,6 +46,7 @@ int main() {
             else
                 printf("    (%d)%5d", i, count[i]);
         }
+        memset(count, 0, sizeof(count));
     }
     for(int i = 0; i <= MAX_FACTORIAL_SIZE; ++i)
         free(fac[i].number);
