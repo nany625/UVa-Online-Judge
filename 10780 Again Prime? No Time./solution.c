@@ -50,7 +50,7 @@ int main() {
     for(int i = 1; i <= cases; ++i) {
         short m, n;
         scanf("%hd %hd", &m, &n);
-        int min = 10000;
+        int min = MAX_NUM;
         for(int j = 0; j < pfCount[n] && min > 0 && m > 1; ++j) {
             if(m % primes[j] == 0) {
                 int power = 0;
@@ -61,7 +61,7 @@ int main() {
                 min = min < table[n][j] / power ? min : table[n][j] / power;
             }
         }
-        if(m > 1 || min == 10000 || min == 0)
+        if(m > 1 || min == MAX_NUM || min == 0)
             printf("Case %d:\nImpossible to divide\n", i);
         else
             printf("Case %d:\n%d\n", i, min);
