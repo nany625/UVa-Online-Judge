@@ -30,12 +30,10 @@ int main() {
         scanf("%hd", &N);
         N >>= 1;
         ++N;
-        for(short i = N + !(N & 1); ; i += 2) {
-            if(!isComposite[i >> 1]) {
-                printf("%hd\n", i);
-                break;
-            }
-        }
+        N += !(N & 1);
+        while(isComposite[N >> 1])
+            N += 2;
+        printf("%hd\n", N);
     }
     free(primes);
 	return 0;
