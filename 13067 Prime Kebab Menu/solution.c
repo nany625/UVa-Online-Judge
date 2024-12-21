@@ -41,7 +41,7 @@ int main() {
     eulerSieve();
     long n;
     while(scanf("%ld", &n) && n != 1)
-        printf("%d\n",n <= MAX_NUM ? ans[n] : pfCount(n));
+        printf("%d\n", n <= MAX_NUM ? ans[n] : pfCount(n));
     free(primes);
 	return 0;
 }
