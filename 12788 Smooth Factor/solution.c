@@ -7,19 +7,18 @@ int main() {
     char *buffer = NULL;
     size_t bufsize = 0;
     while(scanf("%d ", &n) == 1) {
-        int a[n];
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
-        for(int i = 0; i < n; ++i) {
-            a[i] = atoi(token);
-            token = strtok(NULL, " ");
-        }
+        int prev = atoi(token);
         int *indices = NULL, size = 0;
         for(int i = 1; i < n; ++i) {
-            if(a[i - 1] > a[i]) {
+            token = strtok(NULL, " ");
+            int curr = atoi(token);
+            if(prev > curr) {
                 indices = (int*)realloc(indices, (size + 1) * sizeof(int));
                 indices[size++] = i;
             }
+            prev = curr;
         }
         if(size <= 1)
             printf("%d\n", n);
