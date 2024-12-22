@@ -66,7 +66,7 @@ int main() {
         else
             printf("Case %d:\n%d\n", i, min);
     }
-    for(int i = 0; i <= MAX_NUM; ++i)
+    for(int i = 2; i <= MAX_NUM; ++i)
         free(table[i]);
     free(table);
     free(primes);
