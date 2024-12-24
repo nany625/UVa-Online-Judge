@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     static int[][] table = {
@@ -36,16 +37,8 @@ public class Main {
                 for(int i = 0; i < 4; ++i)
                     generator2[i] += table[digit][i];
             }
-            output.append(equal(generator1, generator2) ? "YES\n" : "NO\n");
+            output.append(Arrays.equals(generator1, generator2) ? "YES\n" : "NO\n");
 		}
 		System.out.print(output);
 	}
-	
-	static boolean equal(int[] array1, int[] array2) {
-        for(int i = 0; i < 4; ++i) {
-            if(array1[i] != array2[i])
-                return false;
-        }
-        return true;
-    }
 }
