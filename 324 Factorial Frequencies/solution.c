@@ -39,9 +39,9 @@ int main() {
         for(int i = fac[n].digits - 1; i >= 0; --i)
             ++count[fac[n].number[i] - '0'];
         for(int i = 0; i < 10; ++i) {
-            if(i == 0 || i == 5)
+            if(i % 5 == 0)
                 printf("   (%d)%5d", i, count[i]);
-            else if(i == 4 || i == 9)
+            else if(i % 5 == 4)
                 printf("    (%d)%5d\n", i, count[i]);
             else
                 printf("    (%d)%5d", i, count[i]);
