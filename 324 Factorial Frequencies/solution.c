@@ -10,7 +10,6 @@ typedef struct {
 
 BigNumber fac[MAX_FACTORIAL_SIZE + 1];
 char temp[4];
-int count[10];
 
 void initFactorial() {
 	fac[0].number = strdup("1");
@@ -36,6 +35,7 @@ int main() {
     int n;
     while(scanf("%d", &n) && n != 0) {
         printf("%d! --\n", n);
+        int count[10] = {};
         for(int i = fac[n].digits - 1; i >= 0; --i)
             ++count[fac[n].number[i] - '0'];
         for(int i = 0; i < 10; ++i) {
@@ -46,7 +46,6 @@ int main() {
             else
                 printf("    (%d)%5d", i, count[i]);
         }
-        memset(count, 0, sizeof(count));
     }
     for(int i = 0; i <= MAX_FACTORIAL_SIZE; ++i)
         free(fac[i].number);
