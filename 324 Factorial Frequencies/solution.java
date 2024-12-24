@@ -15,9 +15,9 @@ public class Main {
 		    int[] count = new int[10];
 		    countDigits(count, fac[n]);
 		    for(int i = 0; i < 10; ++i) {
-		        if(i == 0 || i == 5)
+		        if(i % 5 == 0)
                     output.append(String.format("   (%d)%5d", i, count[i]));
-                else if(i == 4 || i == 9)
+                else if(i % 5 == 4)
                     output.append(String.format("    (%d)%5d\n", i, count[i]));
                 else
                     output.append(String.format("    (%d)%5d", i, count[i]));
