@@ -31,7 +31,7 @@ int main() {
     while(scanf("%d %d", &N, &D) && (N != 0 || D != 0)) {
         D = abs(D);
         if(N <= 1)
-            printf("%d\n", D == 1);
+            printf("%d\n", 1 / D);
         else {
             long ans = 1;
             for(int i = 0; i < size[N] && ans > 0; ++i) {
