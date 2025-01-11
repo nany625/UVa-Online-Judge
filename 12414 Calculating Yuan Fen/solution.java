@@ -9,9 +9,9 @@ public class Main {
 			String name = st.sval;
 			int ST = 1;
 			while(ST <= 10000) {
-				String num = "";
+				StringBuilder num = new StringBuilder();
 				for(int i = 0; i < name.length(); ++i)
-					num += name.charAt(i) - 'A' + ST;
+					num.append(name.charAt(i) - 'A' + ST);
 				int[][] YuanFen = new int[num.length() - 2][num.length()];
 				for(int i = 0; i < num.length(); ++i)
 				    YuanFen[0][i] = num.charAt(i) - '0';
