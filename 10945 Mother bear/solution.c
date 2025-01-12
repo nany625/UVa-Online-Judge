@@ -10,11 +10,8 @@ char toLower(char ch) {
 int main() {
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(getline(&buffer, &bufsize, stdin) != -1) {
-        buffer[strcspn(buffer, "\n")] = '\0';
-        if(strcmp(buffer, "DONE") == 0)
-            break;
-        int i = 0, j = strlen(buffer) - 1;
+    while(getline(&buffer, &bufsize, stdin) != -1 && strncmp(buffer, "DONE", 4) != 0) {
+        int i = 0, j = strlen(buffer) - 2;
         while(i < j) {
             while(i < j && !isalpha(buffer[i]))
                 ++i;
