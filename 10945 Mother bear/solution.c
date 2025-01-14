@@ -3,10 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-char toLower(char ch) {
-    return isupper(ch) ? ch + 32 : ch;
-}
-
 int main() {
     char *buffer = NULL;
     size_t bufsize = 0;
@@ -17,7 +13,7 @@ int main() {
                 ++i;
             while(i < j && !isalpha(buffer[j]))
                 --j;
-            if(toLower(buffer[i]) != toLower(buffer[j]))
+            if(tolower(buffer[i]) != tolower(buffer[j]))
                 break;
             ++i;
             --j;
