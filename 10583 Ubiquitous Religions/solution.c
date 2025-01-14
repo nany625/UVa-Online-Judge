@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 int findRoot(int *root, int child) {
-    if(root[child] == child)
-        return child;
-    return root[child] = findRoot(root, root[child]);
+    return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
 }
 
 int main() {
