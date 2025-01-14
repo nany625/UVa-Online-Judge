@@ -21,9 +21,9 @@ public class Main {
 			    int computerj = Integer.parseInt(tokens[2]);
 			    int rootI = findRoot(root, computeri);
 			    int rootJ = findRoot(root, computerj);
-			    if(tokens[0].charAt(0) == 'c') {
+			    if(tokens[0].charAt(0) == 'c')
 			        root[rootI] = root[rootJ];
-			    } else if(tokens[0].charAt(0) == 'q') {
+			    else if(tokens[0].charAt(0) == 'q') {
 			        ++query;
 			        succ += root[rootI] == root[rootJ] ? 1 : 0;
 			    }
