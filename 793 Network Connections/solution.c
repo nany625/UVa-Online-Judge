@@ -17,7 +17,7 @@ int main() {
         int root[computers + 1];
         for(int i = 1; i <= computers; ++i)
 			root[i] = i;
-	    int query = 0, succ = 0;
+	    int succ = 0, unsucc = 0;
 	    while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
 	        char *token = strtok(buffer, " ");
 	        char command = token[0];
@@ -29,12 +29,10 @@ int main() {
 			int rootJ = findRoot(root, computerj);
 			if(command == 'c')
 			    root[rootI] = root[rootJ];
-			else if(command == 'q') {
-			    ++query;
-			    succ += root[rootI] == root[rootJ];
-			}
+			else if(command == 'q')
+			    root[rootI] == root[rootJ] ? ++succ : ++unsucc;
 	    }
-        printf("%d,%d\n", succ, query - succ);
+        printf("%d,%d\n", succ, unsucc);
         if(cases)
             putchar('\n');
     }
