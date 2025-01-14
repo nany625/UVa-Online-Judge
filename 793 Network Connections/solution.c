@@ -3,7 +3,7 @@
 #include <string.h>
 
 int findRoot(int* root, int child) {
-	return root[child] == child ? child : root[child] = findRoot(root, root[child]);
+	return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
 }
 
 int main() {
