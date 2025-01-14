@@ -13,7 +13,7 @@ public class Main {
 			int[] root = new int[computers + 1];
 			for(int i = 1; i <= computers; ++i)
 			    root[i] = i;
-			int query = 0, succ = 0;
+			int succ = 0, unsucc = 0;
 			String s;
 			while((s = br.readLine()) != null && !s.isEmpty()) {
 			    String[] tokens = s.split("\\s+");
@@ -24,11 +24,13 @@ public class Main {
 			    if(tokens[0].charAt(0) == 'c')
 			        root[rootI] = root[rootJ];
 			    else if(tokens[0].charAt(0) == 'q') {
-			        ++query;
-			        succ += root[rootI] == root[rootJ] ? 1 : 0;
-			    }
+			        if(root[rootI] == root[rootJ])
+			            ++succ;
+			        else
+			            ++unsucc;
+                }
 			}
-			output.append(succ).append(',').append(query - succ).append('\n');
+			output.append(succ).append(',').append(unsucc).append('\n');
 			if(cases > 0)
 			    output.append('\n');
 		}
