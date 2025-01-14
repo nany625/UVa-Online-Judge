@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-	    Graph graph = new Graph(); 
+	    Graph graph = new Graph();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		st.nextToken();
