@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
-long fac[21] = {1};
+long fac[21] = {1, 1};
 int count[26];
 
 int main() {
-    for(int i = 1; i < 21; ++i)
+    for(int i = 2; i < 21; ++i)
         fac[i] = fac[i - 1] * i;
     int dataSets;
     scanf("%d", &dataSets);
