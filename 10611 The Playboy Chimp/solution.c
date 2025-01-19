@@ -10,11 +10,11 @@ void binarySearch(int *array, int size, int key) {
             left = mid - 1;
             while(left >= 0 && array[left] == key)
                 --left;
-            ans[0] = left < 0 ? -1 : array[left];
+            ans[0] = left == -1 ? -1 : array[left];
             right = mid + 1;
             while(right < size && array[right] == key)
                 ++right;
-            ans[1] = right >= size ? -1 : array[right];
+            ans[1] = right == size ? -1 : array[right];
             return;
         }
         if(array[mid] < key)
