@@ -5,10 +5,9 @@ int main() {
     int k;
     scanf("%d", &k);
     char S[100001], T[1001];
+    int q;
     while(k--) {
-        scanf("%s", S);
-        int q;
-        scanf("%d", &q);
+        scanf("%s %d", S, &q);
         while(q--) {
             scanf("%s", T);
             puts(strstr(S, T) ? "y" : "n");
