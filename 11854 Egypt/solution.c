@@ -1,19 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+int compare(const void *a, const void *b) {
+    return *(int*)a > *(int*)b;
 }
 
 int main() {
-    int a, b, c;
-    while(scanf("%d %d %d", &a, &b, &c) && a != 0) {
-        if(a > b)
-            swap(&a, &b);
-        if(b > c)
-            swap(&b, &c);
-        puts(a * a + b * b == c * c ? "right" : "wrong");
+    int lengths[3];
+    while(scanf("%d %d %d", &lengths[0], &lengths[1], &lengths[2]) && lengths[0] != 0) {
+        qsort(lengths, 3, sizeof(int), compare);
+        puts(lengths[0] * lengths[0] + lengths[1] * lengths[1] == lengths[2] * lengths[2] ? "right" : "wrong");
     }
 	return 0;
 }
