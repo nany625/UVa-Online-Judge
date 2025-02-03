@@ -11,9 +11,8 @@ int main() {
             scanf("%s", grid[i]);
         bool exit = false;
         int currRow = 0, step = 0;
-        --currCol;
         memset(steps, -1, sizeof(steps));
-        steps[currRow][currCol] = 0;
+        steps[currRow][--currCol] = 0;
         while(true) {
             ++step;
             switch(grid[currRow][currCol]) {
