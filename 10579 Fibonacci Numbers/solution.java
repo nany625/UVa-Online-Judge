@@ -24,7 +24,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
-        while((st.nextToken()) == StreamTokenizer.TT_NUMBER) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int number = (int)st.nval;
             for(int i = digits[number] - 1; i >= 0; --i)
                 output.append(fib[number][i]);
@@ -48,7 +48,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		StringBuilder output = new StringBuilder();
-		while((st.nextToken()) == StreamTokenizer.TT_NUMBER)
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER)
 		    output.append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
