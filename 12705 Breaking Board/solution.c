@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-int count[36], costs[] = {
+int costs[] = {
     2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 
     6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 
     7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 
@@ -20,8 +20,7 @@ int main() {
     char L[102];
     while(T--) {
         fgets(L, sizeof(L), stdin);
-        memset(count, 0, sizeof(count));
-        int len = strlen(L);
+        int count[36] = {}, len = strlen(L);
         for(int i = 0; i < len; ++i) {
             if(isdigit(L[i]))
                 ++count[L[i] - '0'];
