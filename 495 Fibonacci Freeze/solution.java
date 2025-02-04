@@ -24,7 +24,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         StringBuilder output = new StringBuilder();
-        while((st.nextToken()) == StreamTokenizer.TT_NUMBER) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int number = (int)st.nval;
             output.append("The Fibonacci number for ").append(number).append(" is ");
             for(int i = digits[number] - 1; i >= 0; --i)
@@ -49,7 +49,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 		StringBuilder output = new StringBuilder();
-		while((st.nextToken()) == StreamTokenizer.TT_NUMBER)
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER)
 		    output.append("The Fibonacci number for ").append((int)st.nval).append(" is ").append(fib[(int)st.nval]).append('\n');
 		System.out.print(output);
 	}
