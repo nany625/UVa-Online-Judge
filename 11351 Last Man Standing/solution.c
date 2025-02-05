@@ -2,7 +2,10 @@
 #include <stdio.h>
 
 int josephus(int n, int k) {
-    return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
+    int ans = 0;
+    for(int i = 2; i <= n; ++i)
+        ans = (ans + k) % i;
+    return ans;
 }
 
 int main() {
@@ -20,19 +23,7 @@ int main() {
 #include <stdio.h>
 
 int josephus(int n, int k) {
-    if(n == 1)
-        return 0;
-    if(k == 1)
-        return n - 1;
-    if(k > n)
-        return (josephus(n - 1, k) + k) % n;
-    int ans = josephus(n - n / k, k);
-    ans -= n % k;
-    if(ans < 0)
-        ans += n;
-    else
-        ans += ans / (k - 1);
-    return ans;
+    return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
 }
 
 int main() {
