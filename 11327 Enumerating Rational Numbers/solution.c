@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #define MAX_NUM 200000
-#define MAX_PRIME 447
+#define MAX_PRIME 443
 
 bool isComposite[(MAX_PRIME >> 1) + 1];
 short *primes;
