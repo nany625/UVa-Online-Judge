@@ -3,11 +3,6 @@
 
 int root[MAX_NUM + 1], depth[MAX_NUM + 1];
 
-void init(int N) {
-    for(int n = 1; n <= N; ++n)
-        depth[root[n] = n] = 1;
-}
-
 int findRoot(int child) {
     return root[child] == child ? child : findRoot(root[child]);
 }
@@ -18,7 +13,8 @@ int main() {
     while(cases--) {
         int N, M;
         scanf("%d %d", &N, &M);
-        init(N);
+        for(int n = 1; n <= N; ++n)
+            depth[root[n] = n] = 1;
         int max = 1;
         while(M--) {
             int A, B;
