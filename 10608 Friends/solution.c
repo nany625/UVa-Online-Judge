@@ -4,7 +4,7 @@
 int root[MAX_NUM + 1], depth[MAX_NUM + 1];
 
 int findRoot(int child) {
-    return root[child] == child ? child : findRoot(root[child]);
+    return root[child] == child ? child : (root[child] = findRoot(root[child]));
 }
 
 int main() {
