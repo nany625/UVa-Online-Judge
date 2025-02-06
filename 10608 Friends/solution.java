@@ -14,7 +14,8 @@ public class Main {
     		int N = (int)st.nval;
     		st.nextToken();
     		int M = (int)st.nval;
-    		init(N);
+    		for(int n = 1; n <= N; ++n)
+                depth[root[n] = n] = 1;
     		int max = 1;
     		while(M-- > 0) {
     		    st.nextToken();
@@ -32,13 +33,6 @@ public class Main {
 		}
 		System.out.print(output);
 	}
-	
-	static void init(int N) {
-        for(int n = 1; n <= N; ++n) {
-            root[n] = n;
-            depth[n] = 1;
-        }
-    }
     
     static int findRoot(int child) {
         return root[child] == child ? child : findRoot(root[child]);
