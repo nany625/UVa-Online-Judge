@@ -35,6 +35,6 @@ public class Main {
 	}
     
     static int findRoot(int child) {
-        return root[child] == child ? child : findRoot(root[child]);
+        return root[child] == child ? child : (root[child] = findRoot(root[child]));
     }
 }
