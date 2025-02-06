@@ -4,10 +4,8 @@
 int root[MAX_NUM + 1], depth[MAX_NUM + 1];
 
 void init(int N) {
-    for(int n = 1; n <= N; ++n) {
-        root[n] = n;
-        depth[n] = 1;
-    }
+    for(int n = 1; n <= N; ++n)
+        depth[root[n] = n] = 1;
 }
 
 int findRoot(int child) {
