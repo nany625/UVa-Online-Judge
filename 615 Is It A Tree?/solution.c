@@ -19,7 +19,7 @@ int findRoot(int child) {
 int main() {
     init();
     int cases = 0, parent, child;
-    while(scanf("%d %d", &parent, &child) && parent >= 0 && child >= 0) {
+    while(scanf("%d %d", &parent, &child) && parent >= 0) {
         if(parent == 0 && child == 0) {
             if(!isTree)
                 printf("Case %d is not a tree.\n", ++cases);
@@ -72,7 +72,7 @@ void dfs(int vertex, int *nodeCount) {
 int main() {
     conn = (int**)calloc(MAX_NODES + 1, sizeof(int*));
     int cases = 0, parent, child;
-    while(scanf("%d %d", &parent, &child) && parent >= 0 && child >= 0) {
+    while(scanf("%d %d", &parent, &child) && parent >= 0) {
         if(parent == 0 && child == 0) {
             if(!isTree)
                 printf("Case %d is not a tree.\n", ++cases);
