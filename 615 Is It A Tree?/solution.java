@@ -1,3 +1,63 @@
+// #解法一
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static int MAX_NUM = 50000;
+    static int[] root = new int[MAX_NUM + 1];
+    static ArrayList<Integer> nodes;
+    static boolean isTree;
+	public static void main(String[] args) throws IOException {
+	    init();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
+		int cases = 0;
+		StringBuilder output = new StringBuilder();
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
+    		int parent = (int)st.nval;
+    		st.nextToken();
+    		int child = (int)st.nval;
+    		if(parent < 0)
+    		    break;
+    		if(parent == 0 && child == 0) {
+                if(!isTree)
+                    output.append("Case ").append(++cases).append(" is not a tree.\n");
+                else {
+                    int rootCount = 0;
+                    for(int i = 0; i < nodes.size() && rootCount <= 1; ++i) {
+                        if(nodes.get(i) == findRoot(nodes.get(i)))
+                            ++rootCount;
+                    }
+                    output.append("Case ").append(++cases).append(rootCount <= 1 ? " is a tree.\n" : " is not a tree.\n");
+                }
+                init();
+            } else {
+                int rootParent = findRoot(parent), rootChild = findRoot(child);
+                if(rootParent != rootChild)
+                    root[rootChild] = rootParent;
+                else
+                    isTree = false;
+            }
+		}
+		System.out.print(output);
+	}
+
+    static void init() {
+        Arrays.fill(root, 0);
+        nodes = new ArrayList<>();
+        isTree = true;
+    }
+    
+    static int findRoot(int child) {
+        if(root[child] == 0) {
+            nodes.add(child);
+            return root[child] = child;
+        }
+        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+    }
+}
+
+// #解法二
 import java.io.*;
 import java.util.*;
 
