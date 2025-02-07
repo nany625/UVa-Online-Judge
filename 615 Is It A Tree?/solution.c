@@ -1,32 +1,39 @@
 // #解法一
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #define MAX_NUM 50000
 
-int root[MAX_NUM + 1];
+int root[MAX_NUM + 1], *nodes, size;
 bool isTree;
 
 void init() {
     memset(root, 0, sizeof(root));
+    size = 0;
     isTree = true;
 }
 
 int findRoot(int child) {
-    return root[child] == 0 || root[child] == child ? (root[child] = child) : (root[child] = findRoot(root[child]));
+    if(root[child] == 0) {
+        nodes = (int*)realloc(nodes, (size + 1) * sizeof(int));
+        nodes[size++] = child;
+        return root[child] = child;
+    }
+    return root[child] == child ? child : (root[child] = findRoot(root[child]));
 }
 
 int main() {
     init();
     int cases = 0, parent, child;
-    while(scanf("%d %d", &parent, &child) && parent >= 0) {
+    while(scanf("%d %d", &parent, &child) && parent >= 0 && child >= 0) {
         if(parent == 0 && child == 0) {
             if(!isTree)
                 printf("Case %d is not a tree.\n", ++cases);
             else {
                 int rootCount = 0;
-                for(int n = 1; n <= MAX_NUM && rootCount <= 1; ++n) {
-                    if(root[n] != 0 && n == findRoot(n))
+                for(int i = 0; i < size && rootCount <= 1; ++i) {
+                    if(nodes[i] == findRoot(nodes[i]))
                         ++rootCount;
                 }
                 printf("Case %d is %sa tree.\n", ++cases, rootCount <= 1 ? "" : "not ");
@@ -40,6 +47,7 @@ int main() {
                 isTree = false;
         }
     }
+    free(nodes);
     return 0;
 }
 
