@@ -1,3 +1,49 @@
+// #解法一
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#define MAX_NUM 50000
+
+int root[MAX_NUM + 1];
+bool isTree;
+
+void init() {
+    memset(root, 0, sizeof(root));
+    isTree = true;
+}
+
+int find(int x) {
+    return root[x] == 0 || root[x] == x ? (root[x] = x) : (root[x] = find(root[x]));
+}
+
+int main() {
+    init();
+    int cases = 0, parent, child;
+    while(scanf("%d %d", &parent, &child) && parent >= 0 && child >= 0) {
+        if(parent == 0 && child == 0) {
+            if(!isTree)
+                printf("Case %d is not a tree.\n", ++cases);
+            else {
+                int rootCount = 0;
+                for(int n = 1; n <= MAX_NUM && rootCount <= 1; ++n) {
+                    if(root[n] != 0 && n == find(n))
+                        ++rootCount;
+                }
+                printf("Case %d is %sa tree.\n", ++cases, rootCount <= 1 ? "" : "not ");
+            }
+            init();
+        } else {
+            int rootParent = find(parent), rootChild = find(child);
+            if(rootParent != rootChild)
+                root[rootChild] = rootParent;
+            else
+                isTree = false;
+        }
+    }
+    return 0;
+}
+
+// #解法二
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
