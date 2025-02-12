@@ -14,7 +14,6 @@ public class Main {
 		    int r = (int)st.nval;
 		    if(n == 0)
 		        break;
-    		output.append("Scenario #").append(++cases).append('\n');
     		HashMap<String, Integer> cityID = new HashMap<>();
     		ArrayList<Edge> edges = new ArrayList<>();
     		int id = 0;
@@ -51,7 +50,7 @@ public class Main {
                     limit = Math.min(limit, edges.get(i).weight);
                 }
             }
-            output.append(limit).append(" tons\n\n");
+            output.append("Scenario #").append(++cases).append('\n').append(limit).append(" tons\n\n");
 		}
 		System.out.print(output);
 	}
