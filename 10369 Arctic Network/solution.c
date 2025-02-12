@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define MAXP 500
+#define MAXV 500
 
 typedef struct {
 	int x, y;
@@ -12,11 +12,12 @@ typedef struct {
 	double weight;
 } Edge;
 
-Edge edges[MAXP * (MAXP - 1) >> 1];
-int root[MAXP];
+Edge edges[MAXV * (MAXV - 1) >> 1];
+int root[MAXV];
 
 int compare(const void *a, const void *b) {
-	return ((Edge*)a)->weight > ((Edge*)b)->weight;
+	double diff = ((Edge*)a)->weight - ((Edge*)b)->weight;
+	return (diff > 0) - (diff < 0);
 }
 
 double dist(Coordinate c1, Coordinate c2) {
