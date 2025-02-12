@@ -28,7 +28,11 @@ public class Main {
             edges.sort(new Comparator<Edge>() {
                 @Override
                 public int compare(Edge e1, Edge e2) {
-                    return Integer.compare(e1.weight, e2.weight);
+                    if(e1.weight != e2.weight)
+                        return Integer.compare(e1.weight, e2.weight);
+                    if(e1.parent == e2.parent)
+                        return Integer.compare(e1.child, e2.child);
+                    return Integer.compare(e1.parent, e2.parent);
                 }
             });
             int count = 0;
