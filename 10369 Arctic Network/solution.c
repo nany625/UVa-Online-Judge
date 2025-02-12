@@ -8,20 +8,18 @@ typedef struct {
 } Coordinate;
 
 typedef struct {
-	int parent, child;
-	double weight;
+	int parent, child, weight;
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
 int root[MAXV];
 
 int compare(const void *a, const void *b) {
-	double diff = ((Edge*)a)->weight - ((Edge*)b)->weight;
-	return (diff > 0) - (diff < 0);
+	return ((Edge*)a)->weight > ((Edge*)b)->weight;
 }
 
-double dist(Coordinate c1, Coordinate c2) {
-	return sqrt(pow(c1.x - c2.x, 2) + pow(c1.y - c2.y, 2));
+int dist(Coordinate c1, Coordinate c2) {
+	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
 int findRoot(int child) {
@@ -45,7 +43,7 @@ int main() {
 				edges[count++] = (Edge){i, j, dist(outposts[i], outposts[j])};
 		}
 		qsort(edges, count, sizeof(Edge), compare);
-		double MST[P - 1];
+		int MST[P - 1];
 		count = 0;
 		for(int i = 0; count < P - 1; ++i) {
 			int root1 = findRoot(edges[i].parent), root2 = findRoot(edges[i].child);
@@ -54,7 +52,7 @@ int main() {
 				MST[count++] = edges[i].weight;
 			}
 		}
-		printf("%.2lf\n", MST[P - 1 - S]);
+		printf("%.2lf\n", sqrt(MST[P - 1 - S]));
 	}
 	return 0;
 }
