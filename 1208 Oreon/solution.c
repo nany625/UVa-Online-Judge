@@ -32,9 +32,7 @@ int main() {
                     scanf("%d", &w);
                 if(w > 0 && j < k) {
                     edges = (Edge*)realloc(edges, (size + 1) * sizeof(Edge));
-                    edges[size].parent = j;
-                    edges[size].child = k;
-                    edges[size++].weight = w;
+                    edges[size++] = (Edge){j, k, w};
                 }
             }
         }
