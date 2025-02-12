@@ -10,9 +10,9 @@ int compare(const void *a, const void *b) {
 	Edge *e2 = (Edge*)b;
 	if(e1->weight != e2->weight)
     	return e1->weight > e2->weight;
-    if(e1->parent == e2->parent)
-    	return e1->child > e2->child;
-    return e1->parent > e2->parent;
+    if(e1->parent != e2->parent)
+        return e1->parent > e2->parent;
+    return e1->child > e2->child;
 }
 
 int findRoot(int *root, int child) {
