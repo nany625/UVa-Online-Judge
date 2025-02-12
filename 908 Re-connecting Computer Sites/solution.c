@@ -9,12 +9,12 @@ typedef struct {
 
 int root[MAXV + 1];
 
-int compare(const void *a, const void *b) {
-	return ((Edge*)a)->weight > ((Edge*)b)->weight;
-}
-
 int findRoot(int child) {
 	return root[child] == child ? child : (root[child] = findRoot(root[child]));
+}
+
+int compare(const void *a, const void *b) {
+	return ((Edge*)a)->weight > ((Edge*)b)->weight;
 }
 
 int main() {
