@@ -12,14 +12,14 @@ typedef struct {
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
-int root[MAXV], state[MAXV];
+int root[MAXV];
 
 int dist(Coordinate c1, Coordinate c2) {
     return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
-int find(int *array, int x) {
-	return array[x] == x ? x : (array[x] = find(array, array[x]));
+int findRoot(int child) {
+	return root[child] == child ? child : (root[child] = findRoot(root[child]));
 }
 
 int compare(const void *a, const void *b) {
@@ -35,7 +35,7 @@ int main() {
 	    Coordinate cities[n];
 	    for(int j = 0; j < n; ++j) {
 	        scanf("%d %d", &cities[j].x, &cities[j].y);
-	        root[j] = state[j] = j;
+	        root[j] = j;
 	    }
 	    int size = 0;
 	    for(int j = 0; j < n - 1; ++j) {
@@ -47,12 +47,11 @@ int main() {
 	    double roadLen = 0, railroadLen = 0;
 	    int count = 0, groups = n;
 	    for(int j = 0; count < n - 1; ++j) {
-	        int root1 = find(root, edges[j].parent), root2 = find(root, edges[j].child);
+	        int root1 = findRoot(edges[j].parent), root2 = findRoot(edges[j].child);
 	        if(root1 != root2) {
 	            root[root2] = root1;
 	            ++count;
 	            if(edges[j].weight <= r) {
-	                state[find(state, edges[j].child)] = find(state, edges[j].parent);
 	                roadLen += sqrt(edges[j].weight);
 	                --groups;
 	            } else
