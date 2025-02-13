@@ -40,12 +40,11 @@ public class Main {
 			}
 			while(n-- > 0) {
 				st.nextToken();
-				String city1 = st.sval;
+				int start = cityID.get(st.sval);
 				st.nextToken();
-				String city2 = st.sval;
+				int end = cityID.get(st.sval);
 				int[] prev = new int[cityName.size()];
 				boolean[] visited = new boolean[cityName.size()];
-				int start = cityID.get(city1), end = cityID.get(city2);
 				visited[prev[start] = start] = true;
 				ArrayList<Integer> curr = new ArrayList<>();
 				curr.add(start);
