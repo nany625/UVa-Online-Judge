@@ -32,7 +32,7 @@ public class Main {
 				edges[i] = new Edge(cityID.get(city1), cityID.get(city2));
 			}
 			ArrayList<Integer>[] conn = (ArrayList<Integer>[])new ArrayList[cityName.size()];
-			for(int i = 0; i < cityName.size(); ++i)
+			for(int i = 0; i < conn.length; ++i)
 				conn[i] = new ArrayList<>();
 			for(Edge e : edges) {
 				conn[e.parent].add(e.child);
