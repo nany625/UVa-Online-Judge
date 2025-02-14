@@ -13,23 +13,24 @@ public class Main {
 			int m = (int)st.nval;
 			st.nextToken();
 			int n = (int)st.nval;
-			HashMap<String, Integer> cityID = new HashMap<>();
-			ArrayList<String> cityName = new ArrayList<>();
+			int[] cityID = new int[26];
+			Arrays.fill(cityID, -1);
 			Edge[] edges = new Edge[m];
+			ArrayList<String> cityName = new ArrayList<>();
 			for(int i = 0; i < m; ++i) {
 				st.nextToken();
 				String city1 = st.sval;
 				st.nextToken();
 				String city2 = st.sval;
-				if(!cityID.containsKey(city1)) {
-					cityID.put(city1, cityName.size());
-					cityName.add(city1);
+				if(cityID[city1.charAt(0) - 'A'] == -1) {
+				    cityID[city1.charAt(0) - 'A'] = cityName.size();
+				    cityName.add(city1);
 				}
-				if(!cityID.containsKey(city2)) {
-					cityID.put(city2, cityName.size());
-					cityName.add(city2);
+				if(cityID[city2.charAt(0) - 'A'] == -1) {
+				    cityID[city2.charAt(0) - 'A'] = cityName.size();
+				    cityName.add(city2);
 				}
-				edges[i] = new Edge(cityID.get(city1), cityID.get(city2));
+				edges[i] = new Edge(cityID[city1.charAt(0) - 'A'], cityID[city2.charAt(0) - 'A']);
 			}
 			ArrayList<Integer>[] conn = (ArrayList<Integer>[])new ArrayList[cityName.size()];
 			for(int i = 0; i < conn.length; ++i)
@@ -40,9 +41,9 @@ public class Main {
 			}
 			while(n-- > 0) {
 				st.nextToken();
-				int start = cityID.get(st.sval);
+				int start = cityID[st.sval.charAt(0) - 'A'];
 				st.nextToken();
-				int end = cityID.get(st.sval);
+				int end = cityID[st.sval.charAt(0) - 'A'];
 				int[] prev = new int[cityName.size()];
 				boolean[] visited = new boolean[cityName.size()];
 				visited[prev[start] = start] = true;
