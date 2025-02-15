@@ -15,10 +15,9 @@ int main() {
         total[5] = bottles[0] + bottles[5] + bottles[7];
         int maxTotal = 0, maxIndex;
         for(int i = 0; i < 6; ++i) {
-            if(total[i] > maxTotal) {
-                maxTotal = total[i];
-                maxIndex = i;
-            } else if(total[i] == maxTotal && strcmp(color[i], color[maxIndex]) < 0)
+            if(total[i] > maxTotal)
+                maxTotal = total[maxIndex = i];
+            else if(total[i] == maxTotal && strcmp(color[i], color[maxIndex]) < 0)
                 maxIndex = i;
         }
         printf("%s %d\n", color[maxIndex], total[0] + total[1] + total[2] - maxTotal);
