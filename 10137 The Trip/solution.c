@@ -7,18 +7,6 @@ void swap(double *a, double *b) {
     *b = temp;
 }
 
-void InsertionSort(double *array, int size) {
-    for(int i = 1; i < size; ++i) {
-        int j = i - 1;
-        double insertionNum = array[i];
-        while(j >= 0 && insertionNum < array[j]) {
-            array[j + 1] = array[j];
-            --j;
-        }
-        array[j + 1] = insertionNum;
-    }
-}
-
 void DualPivotPartition(double *array, int *partitionIndices, int left, int right) {
     if(array[left] > array[right])
         swap(&array[left], &array[right]);
@@ -56,7 +44,7 @@ int main() {
 	        expense[i] = round(expense[i] * 100);
 	        total += expense[i];
 	    }
-	    n <= 47 ? InsertionSort(expense, n) : DualPivotQuickSort(expense, 0, n - 1);
+	    DualPivotQuickSort(expense, 0, n - 1);
 	    int overpayCount = total % n, average = total / n, exchange[2] = {};
 	    for(int i = 0; i < n - overpayCount; ++i) {
 	        if(expense[i] < average)
