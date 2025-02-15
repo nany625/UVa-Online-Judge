@@ -5,8 +5,7 @@
 
 int main() {
 	int x = 0, n;
-	while(scanf("%d", &n) && n != 0) {
-	    getchar();
+	while(scanf("%d ", &n) && n != 0) {
 	    char *solution = strdup(""), buffer[122];
 	    while(n--) {
 	        fgets(buffer, sizeof(buffer), stdin);
@@ -14,8 +13,7 @@ int main() {
 	        strcat(solution, buffer);
 	    }
 	    int m;
-	    scanf("%d", &m);
-	    getchar();
+	    scanf("%d ", &m);
 	    char *teamOutput = strdup("");
 	    while(m--) {
 	        fgets(buffer, sizeof(buffer), stdin);
