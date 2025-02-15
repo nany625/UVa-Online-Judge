@@ -1,6 +1,8 @@
 import java.io.*;
 
 public class Main {
+    static int MAX_LEN = 1000000;
+    static char[] ans = new char[MAX_LEN + 1];
 	public static void main(String[] args) throws IOException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -10,7 +12,6 @@ public class Main {
         while(N-- > 0) {
             st.nextToken();
             int M = (int)st.nval;
-            char[] ans = new char[M + 1];
             for(int i = 1; i <= M; ++i) {
                 st.nextToken();
 			    ans[i] = (char)(st.nval + '0');
