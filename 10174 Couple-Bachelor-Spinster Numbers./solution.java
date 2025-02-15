@@ -21,7 +21,7 @@ public class Main {
                     ++n1;
                 while((n2 & 3) != 2)
                     --n2;
-                output.append(((n2 - n1) >> 2) + 1).append('\n');
+                output.append((n2 - n1 >> 2) + 1).append('\n');
 			}
 		}
 		System.out.print(output);
