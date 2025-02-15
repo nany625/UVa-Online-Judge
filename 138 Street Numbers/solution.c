@@ -23,7 +23,7 @@ int main() {
     int count = 0;
     long n = 2;
     while(count < 10) {
-        double k = ((-(n << 1) - 1) + sqrt(((n << 1) + 1) * ((n << 1) + 1) + ((n * n - n) << 2))) / 2;
+        double k = ((-(n << 1) - 1) + sqrt((n * n << 3) + 1)) / 2;
         if(k == (int)k) {
             printf("%10ld%10ld\n", n, n + (int)k);
             ++count;
