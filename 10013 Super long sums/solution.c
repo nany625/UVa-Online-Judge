@@ -7,8 +7,7 @@ int main() {
     char digits[5];
     while(N--) {
         int M;
-        scanf("%d", &M);
-        getchar();
+        scanf("%d ", &M);
         char *ans = (char*)malloc((M + 2) * sizeof(char));
         ans[M + 1] = '\0';
         for(int i = 1; i <= M; ++i) {
