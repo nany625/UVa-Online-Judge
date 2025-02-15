@@ -24,14 +24,12 @@ int binarySearch(Species *array, int size, char *key) {
 
 int main() {
     int cases;
-    scanf("%d", &cases);
-    getchar();
-    getchar();
+    scanf("%d  ", &cases);
+    char buffer[32];
     while(cases--) {
     	Species *tree = NULL;
-    	char buffer[32];
         int speciesCount = 0;
-        while(fgets(buffer, sizeof(buffer), stdin) && strcmp(buffer, "\n") != 0) {
+        while(fgets(buffer, sizeof(buffer), stdin) && buffer[0] != '\n') {
             buffer[strcspn(buffer, "\n")] = '\0';
             int pos = binarySearch(tree, speciesCount, buffer);
             if(pos < speciesCount && strcmp(tree[pos].name, buffer) == 0)
