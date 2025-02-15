@@ -48,15 +48,13 @@ int compare(const void *a, const void *b) {
 
 int main() {
 	int cases;
-	scanf("%d", &cases);
-	getchar();
-	getchar();
+	scanf("%d  ", &cases);
     char *buffer = NULL;
 	size_t bufsize = 0;
 	while(cases--) {
 	    ScoreBoard *scoreBoards = NULL;
 	    int contestantCount = 0;
-	    while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
+	    while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
 	        short contestant, problem, time;
 	        char L;
 	        sscanf(buffer, "%hd %hd %hd %c", &contestant, &problem, &time, &L);
