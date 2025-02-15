@@ -10,11 +10,10 @@ public class Main {
             int n = (int)st.nval;
             st.nextToken();
             int m = (int)st.nval;
-            if(n <= 1) {
+            if(n <= 1)
                 output.append(n == 1 && m != 0 ? 1 : 0).append('\n');
-                continue;
-            }
-            output.append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, (1 << m) - 1)).append('\n');
+            else
+                output.append(powerMatrix(new long[][]{{1, 1}, {1, 0}}, n - 1, (1 << m) - 1)).append('\n');
         }
         System.out.print(output);
 	}
