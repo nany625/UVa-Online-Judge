@@ -37,8 +37,7 @@ int main() {
 	        int pos = contain(frequencies, size, text[i]);
 	        if(pos == -1) {
 	            frequencies = (Frequency*)realloc(frequencies, (size + 1) * sizeof(Frequency));
-	            frequencies[size].value = text[i];
-	            frequencies[size++].count = 1;
+	            frequencies[size++] = (Frequency){text[i], 1};
 	        } else
 	            ++frequencies[pos].count;
 	    }
