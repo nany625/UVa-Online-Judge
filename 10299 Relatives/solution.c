@@ -5,14 +5,17 @@
 #define MAX_NUM 31621
 
 bool isComposite[(MAX_NUM >> 1) + 1];
-short primes[3401];
+short *primes;
 int size = 1;
 
 void eulerSieve() {
+    primes = (short*)malloc(sizeof(short));
     primes[0] = 2;
     for(short n = 3; n <= MAX_NUM; n += 2) {
-        if(!isComposite[n >> 1])
+        if(!isComposite[n >> 1]) {
+            primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = n;
+        }
         for(int i = 1, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
@@ -42,5 +45,6 @@ int main() {
     int n;
     while(scanf("%d", &n) && n != 0)
         printf("%d\n", n == 1 ? 0 : eulerTotient(n));
+    free(primes);
     return 0;
 }
