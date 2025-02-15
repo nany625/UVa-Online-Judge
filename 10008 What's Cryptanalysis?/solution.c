@@ -22,8 +22,7 @@ int main() {
 	    frequencies[i].count = 0;
 	}
 	int n;
-	scanf("%d", &n);
-	getchar();
+	scanf("%d ", &n);
     char *buffer = NULL;
 	size_t bufsize = 0;
 	while(n--) {
