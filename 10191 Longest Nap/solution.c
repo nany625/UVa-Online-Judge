@@ -6,8 +6,6 @@ typedef struct {
 } Appointment;
 
 int compare(const void *a, const void *b) {
-    Appointment *a1 = (Appointment*)a;
-    Appointment *a2 = (Appointment*)b;
     return ((Appointment*)a)->time1 > ((Appointment*)b)->time1;
 }
 
@@ -17,8 +15,7 @@ int main() {
 	size_t bufsize = 0;
 	while(scanf("%d", &s) == 1) {
 	    Appointment appointments[s + 2];
-	    appointments[0].time1 = 0;
-	    appointments[0].time2 = 600;
+	    appointments[0] = (Appointment){0, 600};
 	    appointments[s + 1].time1 = 1080;
 	    int hh, mm;
 	    for(int i = 1; i < s + 1; ++i) {
