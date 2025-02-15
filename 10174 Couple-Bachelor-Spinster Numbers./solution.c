@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 int main() {
+    int n1, n2;
     char *buffer = NULL;
     size_t bufsize = 0;
-    int n1, n2;
     while(getline(&buffer, &bufsize, stdin) != -1) {
         if(sscanf(buffer, "%d %d", &n1, &n2) == 1) {
             if((n1 & 3) == 2)
@@ -18,7 +18,7 @@ int main() {
                 ++n1;
             while((n2 & 3) != 2)
                 --n2;
-            printf("%d\n", ((n2 - n1) >> 2) + 1);
+            printf("%d\n", (n2 - n1 >> 2) + 1);
         }
     }
     free(buffer);
