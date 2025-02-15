@@ -12,12 +12,10 @@ int compare(const void *a, const void *b) {
 
 int main() {
     Turtle *turtles = NULL;
-    int size = 0;
-    int w, s;
+    int size = 0, w, s;
     while(scanf("%d %d", &w, &s) == 2) {
         turtles = (Turtle*)realloc(turtles, (size + 1) * sizeof(Turtle));
-        turtles[size].weight = w;
-        turtles[size++].strength = s;
+        turtles[size++] = (Turtle){w, s};
     }
     qsort(turtles, size, sizeof(Turtle), compare);
     int *stacked = NULL, totalWeight = 0, height = 0;
@@ -57,19 +55,16 @@ int compare(const void *a, const void *b) {
 
 int main() {
     Turtle *turtles = NULL;
-    int size = 0;
-    int w, s;
+    int size = 0, w, s;
     while(scanf("%d %d", &w, &s) == 2) {
         turtles = (Turtle*)realloc(turtles, (size + 1) * sizeof(Turtle));
-        turtles[size].weight = w;
-        turtles[size++].strength = s;
+        turtles[size++] = (Turtle){w, s};
     }
     qsort(turtles, size, sizeof(Turtle), compare);
     int dp[size + 1], maxHeight = 0;
     dp[0] = 0;
-    for(int i = 1; i <= size; ++i)
-        dp[i] = 1e9;
     for(int i = 0; i < size; ++i) {
+        dp[i + 1] = 1e9;
         for(int j = maxHeight; j >= 0; --j) {
             if(dp[j] + turtles[i].weight <= turtles[i].strength) {
                 dp[j + 1] = dp[j + 1] < dp[j] + turtles[i].weight ? dp[j + 1] : dp[j] + turtles[i].weight;
