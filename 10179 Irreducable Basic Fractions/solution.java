@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int MAX_NUM = 31622;
+    static int MAX_NUM = 31621;
     static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
 	static ArrayList<Short> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
