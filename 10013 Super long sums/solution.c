@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_LEN 1000000
+
+char ans[MAX_LEN + 2];
 
 int main() {
     int N;
@@ -8,7 +11,6 @@ int main() {
     while(N--) {
         int M;
         scanf("%d ", &M);
-        char *ans = (char*)malloc((M + 2) * sizeof(char));
         ans[M + 1] = '\0';
         for(int i = 1; i <= M; ++i) {
             fgets(digits, sizeof(digits), stdin);
@@ -22,7 +24,6 @@ int main() {
         if(ans[0] == '1')
             putchar('1');
         puts(ans + 1);
-        free(ans);
 		if(N)
 			putchar('\n');
     }
