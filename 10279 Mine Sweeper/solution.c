@@ -40,7 +40,7 @@ int main() {
 	        }
 	    }
 	    for(int i = 0; i < n; ++i)
-	        printf("%s\n", touch[i]);
+	        puts(touch[i]);
 	    if(games)
             putchar('\n');
     }
