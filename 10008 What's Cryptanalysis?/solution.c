@@ -17,10 +17,8 @@ int compare(const void *a, const void *b) {
 
 int main() {
 	Frequency frequencies[26];
-	for(int i = 0; i < 26; ++i) {
-	    frequencies[i].alpha = 'A' + i;
-	    frequencies[i].count = 0;
-	}
+	for(int i = 0; i < 26; ++i)
+	    frequencies[i] = (Frequency){'A' + i, 0};
 	int n;
 	scanf("%d ", &n);
     char *buffer = NULL;
