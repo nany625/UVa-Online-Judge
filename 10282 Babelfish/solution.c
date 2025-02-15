@@ -30,7 +30,7 @@ int main() {
     int size = 0;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
+    while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
         buffer[strcspn(buffer, "\n")] = '\0';
         dict = (Dictionary*)realloc(dict, (size + 1) * sizeof(Dictionary));
         char *token = strtok(buffer, " ");
