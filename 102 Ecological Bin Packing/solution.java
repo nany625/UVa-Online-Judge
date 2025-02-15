@@ -21,10 +21,9 @@ public class Main {
             total[5] = bottles[0] + bottles[5] + bottles[7];
             int maxTotal = 0, maxIndex = 0;
             for(int i = 0; i < 6; ++i) {
-                if(total[i] > maxTotal) {
-                    maxTotal = total[i];
-                    maxIndex = i;
-                } else if(total[i] == maxTotal && color[i].compareTo(color[maxIndex]) < 0)
+                if(total[i] > maxTotal)
+                    maxTotal = total[maxIndex = i];
+                else if(total[i] == maxTotal && color[i].compareTo(color[maxIndex]) < 0)
                     maxIndex = i;
             }
             output.append(color[maxIndex]).append(' ').append(total[0] + total[1] + total[2] - maxTotal).append('\n');
