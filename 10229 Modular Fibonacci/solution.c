@@ -27,12 +27,12 @@ int powerMatrix(long matrix[2][2], int n, int mod) {
 int main() {
     int n, m;
     while(scanf("%d %d", &n, &m) == 2) {
-        if(n <= 1) {
+        if(n <= 1)
             printf("%d\n", n == 1 && m != 0);
-            continue;
+        else {
+            long matrix[2][2] = {{1, 1}, {1, 0}};
+            printf("%ld\n", powerMatrix(matrix, n - 1, (1 << m) - 1));
         }
-        long matrix[2][2] = {{1, 1}, {1, 0}};
-        printf("%ld\n", powerMatrix(matrix, n - 1, (1 << m) - 1));
     }
     return 0;
 }
