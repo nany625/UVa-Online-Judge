@@ -5,16 +5,19 @@
 
 int main() {
 	int x = 0, n;
-	while(scanf("%d ", &n) && n != 0) {
-	    char *solution = strdup(""), buffer[122];
+    char buffer[122];
+	while(scanf("%d", &n) && n != 0) {
+	    char *solution = strdup("");
+	    fgets(buffer, sizeof(buffer), stdin);
 	    while(n--) {
 	        fgets(buffer, sizeof(buffer), stdin);
 	        solution = (char*)realloc(solution, (strlen(solution) + strlen(buffer) + 1) * sizeof(char));
 	        strcat(solution, buffer);
 	    }
 	    int m;
-	    scanf("%d ", &m);
+	    scanf("%d", &m);
 	    char *teamOutput = strdup("");
+	    fgets(buffer, sizeof(buffer), stdin);
 	    while(m--) {
 	        fgets(buffer, sizeof(buffer), stdin);
 	        teamOutput = (char*)realloc(teamOutput, (strlen(teamOutput) + strlen(buffer) + 1) * sizeof(char));
