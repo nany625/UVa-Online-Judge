@@ -48,7 +48,7 @@ int compare(const void *a, const void *b) {
 
 int main() {
 	int cases;
-	scanf("%d  ", &cases);
+	scanf("%d ", &cases);
     char *buffer = NULL;
 	size_t bufsize = 0;
 	while(cases--) {
