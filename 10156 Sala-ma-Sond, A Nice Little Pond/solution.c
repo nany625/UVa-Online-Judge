@@ -9,11 +9,9 @@ Coordinate turtles[10001];
 char grid[60][61], dir[3];
 
 int main() {
-    int N;
-    while(scanf("%d", &N) == 1) {
+    int N, M, T, K;
+    while(scanf("%d %d %d %d", &N, &M, &T, &K) == 4) {
         memset(grid, ' ', sizeof(grid));
-        int M, T, K;
-        scanf("%d %d %d", &M, &T, &K);
         while(T--) {
             int id;
             scanf("%d", &id);
