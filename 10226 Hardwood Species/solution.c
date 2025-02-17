@@ -24,7 +24,7 @@ int binarySearch(Species *array, int size, char *key) {
 
 int main() {
     int cases;
-    scanf("%d  ", &cases);
+    scanf("%d ", &cases);
     char buffer[32];
     while(cases--) {
     	Species *tree = NULL;
