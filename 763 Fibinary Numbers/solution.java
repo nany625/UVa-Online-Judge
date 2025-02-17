@@ -10,7 +10,6 @@ public class Main {
 	    for(int n = 2; n <= 100; ++n)
 	        fib.add(fib.get(n - 2).add(fib.get(n - 1)));
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //StreamTokenizer st = new StreamTokenizer(br);
         String s1;
         boolean firstCase = true;
         StringBuilder output = new StringBuilder();
