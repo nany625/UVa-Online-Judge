@@ -3,8 +3,8 @@
 
 int root[MAX_NUM + 1];
 
-int findRoot(int child) {
-    return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int main() {
@@ -15,9 +15,9 @@ int main() {
         while(m--) {
             int i, j;
             scanf("%d %d", &i, &j);
-            int rootI = findRoot(i), rootJ = findRoot(j);
+            int rootI = find(i), rootJ = find(j);
             n -= rootI != rootJ;
-            root[rootJ] = root[rootI];
+            root[rootJ] = rootI;
         }
         printf("Case %d: %d\n", ++cases, n);
     }
