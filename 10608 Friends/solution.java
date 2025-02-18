@@ -22,11 +22,11 @@ public class Main {
         		int A = (int)st.nval;
         		st.nextToken();
         		int B = (int)st.nval;
-        		int rootA = findRoot(A), rootB = findRoot(B);
+        		int rootA = find(A), rootB = find(B);
         		if(rootA != rootB) {
-        		    depth[root[rootA]] += depth[root[rootB]];
-        		    max = Math.max(max, depth[root[rootA]]);
-        		    root[rootB] = root[rootA];
+        		    depth[rootA] += depth[rootB];
+        		    max = Math.max(max, depth[rootA]);
+        		    root[rootB] = rootA;
         		}
     		}
     		output.append(max).append('\n');
@@ -34,7 +34,7 @@ public class Main {
 		System.out.print(output);
 	}
     
-    static int findRoot(int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+    static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 }
