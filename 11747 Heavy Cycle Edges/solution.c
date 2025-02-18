@@ -16,7 +16,7 @@ int find(int x) {
 }
 
 int compare(const void *a, const void *b) {
-	return ((Edge*)a)->w - ((Edge*)b)->w;
+	return ((Edge*)a)->w > ((Edge*)b)->w;
 }
 
 int main() {
