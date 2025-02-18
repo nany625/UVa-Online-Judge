@@ -14,13 +14,13 @@ void init() {
     isTree = true;
 }
 
-int findRoot(int child) {
-    if(root[child] == 0) {
+int find(int x) {
+    if(root[x] == 0) {
         nodes = (int*)realloc(nodes, (size + 1) * sizeof(int));
-        nodes[size++] = child;
-        return root[child] = child;
+        nodes[size++] = x;
+        return root[x] = x;
     }
-    return root[child] == child ? child : (root[child] = findRoot(root[child]));
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int main() {
@@ -33,14 +33,14 @@ int main() {
             else {
                 int rootCount = 0;
                 for(int i = 0; i < size && rootCount <= 1; ++i) {
-                    if(nodes[i] == findRoot(nodes[i]))
+                    if(nodes[i] == find(nodes[i]))
                         ++rootCount;
                 }
                 printf("Case %d is %sa tree.\n", ++cases, rootCount <= 1 ? "" : "not ");
             }
             init();
         } else {
-            int rootParent = findRoot(parent), rootChild = findRoot(child);
+            int rootParent = find(parent), rootChild = find(child);
             if(rootParent != rootChild)
                 root[rootChild] = rootParent;
             else
