@@ -16,7 +16,7 @@ public class Main {
     		} else {
     		    st.nextToken();
     		    int y = (int)st.nval;
-    		    int rootX = findRoot(x), rootY = findRoot(y);
+    		    int rootX = find(x), rootY = find(y);
     		    if(rootX == rootY)
     		        ++refusals;
     		    else
@@ -32,7 +32,7 @@ public class Main {
         refusals = 0;
     }
 
-    static int findRoot(int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+    static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 }
