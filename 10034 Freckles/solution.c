@@ -8,8 +8,8 @@ typedef struct {
 } Coordinate;
 
 typedef struct {
-    int parent, child;
-    double weight;
+    int u, v;
+    double w;
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
@@ -19,12 +19,12 @@ double dist(Coordinate c1, Coordinate c2) {
     return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
-int findRoot(int child) {
-    return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int compare(const void *a, const void *b) {
-    double diff = ((Edge*)a)->weight - ((Edge*)b)->weight;
+    double diff = ((Edge*)a)->w - ((Edge*)b)->w;
     return (diff > 0) > (diff < 0);
 }
 
@@ -48,9 +48,9 @@ int main() {
         int count = 0;
         double length = 0;
         for(int i = 0; count < n - 1; ++i) {
-            int root1 = findRoot(edges[i].parent), root2 = findRoot(edges[i].child);
+            int root1 = find(edges[i].u), root2 = find(edges[i].v);
             if(root1 != root2) {
-                length += sqrt(edges[i].weight);
+                length += sqrt(edges[i].w);
                 root[root2] = root1;
                 ++count;
             }
