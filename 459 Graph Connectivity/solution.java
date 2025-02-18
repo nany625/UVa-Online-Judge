@@ -15,8 +15,7 @@ public class Main {
                 root[n] = n;
             String s;
             while((s = br.readLine()) != null && !s.isEmpty()) {
-                int node1 = s.charAt(0) - 'A', node2 = s.charAt(1) - 'A';
-                int root1 = findRoot(node1), root2 = findRoot(node2);
+                int root1 = find(s.charAt(0) - 'A'), root2 = find(s.charAt(1) - 'A');
                 if(root1 != root2) {
                     --subgraphs;
                     root[root2] = root1;
@@ -29,7 +28,7 @@ public class Main {
 		System.out.print(output);
 	}
 
-    static int findRoot(int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+    static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 }
