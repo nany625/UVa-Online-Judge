@@ -19,8 +19,8 @@ public class Main {
 			    String[] tokens = s.split("\\s+");
 			    int computeri = Integer.parseInt(tokens[1]);
 			    int computerj = Integer.parseInt(tokens[2]);
-			    int rootI = findRoot(root, computeri);
-			    int rootJ = findRoot(root, computerj);
+			    int rootI = find(root, computeri);
+			    int rootJ = find(root, computerj);
 			    if(tokens[0].charAt(0) == 'c')
 			        root[rootI] = root[rootJ];
 			    else if(tokens[0].charAt(0) == 'q') {
@@ -37,7 +37,7 @@ public class Main {
 		System.out.print(output);
 	}
 	
-	static int findRoot(int[] root, int child) {
-	    return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
+	static int find(int[] root, int x) {
+	    return root[x] == x ? x : (root[x] = find(root, root[x]));
 	}
 }
