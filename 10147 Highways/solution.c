@@ -7,7 +7,7 @@ typedef struct {
 } Coordinate;
 
 typedef struct {
-	int parent, child, weight;
+	int u, v, w;
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
@@ -17,18 +17,18 @@ int dist(Coordinate c1, Coordinate c2) {
     return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
-int findRoot(int child) {
-	return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int compare(const void *a, const void *b) {
     Edge *e1 = (Edge*)a;
     Edge *e2 = (Edge*)b;
-    if(e1->weight != e2->weight)
-	    return e1->weight > e2->weight;
-	if(e1->parent != e2->parent)
-	    return e1->parent > e2->parent;
-	return e1->child > e2->child;
+    if(e1->w != e2->w)
+	    return e1->w > e2->w;
+	if(e1->u != e2->u)
+	    return e1->u > e2->u;
+	return e1->v > e2->v;
 }
 
 int main() {
@@ -48,7 +48,7 @@ int main() {
 	    while(M--) {
 	        int town1, town2;
 	        scanf("%d %d", &town1, &town2);
-	        int root1 = findRoot(town1), root2 = findRoot(town2);
+	        int root1 = find(town1), root2 = find(town2);
 	        if(root1 != root2) {
 	            root[root2] = root1;
 	            ++count;
@@ -64,9 +64,9 @@ int main() {
     	    }
     	    qsort(edges, size, sizeof(Edge), compare);
     	    for(int i = 0; count < N - 1; ++i) {
-    	        int root1 = findRoot(edges[i].parent), root2 = findRoot(edges[i].child);
+    	        int root1 = find(edges[i].u), root2 = find(edges[i].v);
     	        if(root1 != root2) {
-    	            printf("%d %d\n", edges[i].parent, edges[i].child);
+    	            printf("%d %d\n", edges[i].u, edges[i].v);
     	            root[root2] = root1;
     	            ++count;
     	        }
