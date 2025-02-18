@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-int findRoot(int* root, int child) {
-	return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
+int find(int *root, int x) {
+	return root[x] == x ? x : (root[x] = find(root, root[x]));
 }
 
 int main() {
@@ -25,8 +25,8 @@ int main() {
             int computeri = atoi(token);
             token = strtok(NULL, " ");
             int computerj = atoi(token);
-            int rootI = findRoot(root, computeri);
-			int rootJ = findRoot(root, computerj);
+            int rootI = find(root, computeri);
+			int rootJ = find(root, computerj);
 			if(command == 'c')
 			    root[rootI] = root[rootJ];
 			else if(command == 'q')
