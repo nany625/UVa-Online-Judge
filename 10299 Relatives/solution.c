@@ -25,6 +25,8 @@ void eulerSieve() {
 }
 
 int eulerTotient(int n) {
+    if(n == 1)
+        return 0;
     int ans = n, limit = sqrt(n);
     for(int i = 0; i < size && primes[i] <= limit; ++i) {
         if(n % primes[i] == 0) {
@@ -44,7 +46,7 @@ int main() {
     eulerSieve();
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("%d\n", n == 1 ? 0 : eulerTotient(n));
+        printf("%d\n", eulerTotient(n));
     free(primes);
     return 0;
 }
