@@ -28,18 +28,18 @@ public class Main {
             edges.sort(new Comparator<Edge>() {
                 @Override
                 public int compare(Edge e1, Edge e2) {
-                    if(e1.weight != e2.weight)
-                        return Integer.compare(e1.weight, e2.weight);
-                    if(e1.parent != e2.parent)
-                        return Integer.compare(e1.parent, e2.parent);
-                    return Integer.compare(e1.child, e2.child);
+                    if(e1.w != e2.w)
+                        return Integer.compare(e1.w, e2.w);
+                    if(e1.u != e2.u)
+                        return Integer.compare(e1.u, e2.u);
+                    return Integer.compare(e1.v, e2.v);
                 }
             });
             int count = 0;
             for(int j = 0; count < cities - 1; ++j) {
-                int root1 = findRoot(root, edges.get(j).parent), root2 = findRoot(root, edges.get(j).child);
+                int root1 = find(root, edges.get(j).u), root2 = find(root, edges.get(j).v);
                 if(root1 != root2) {
-                    output.append((char)(edges.get(j).parent + 'A')).append('-').append((char)(edges.get(j).child + 'A')).append(' ').append(edges.get(j).weight).append('\n');
+                    output.append((char)(edges.get(j).u + 'A')).append('-').append((char)(edges.get(j).v + 'A')).append(' ').append(edges.get(j).w).append('\n');
                     root[root2] = root1;
                     ++count;
                 }
@@ -48,16 +48,16 @@ public class Main {
 		System.out.print(output);
 	}
 	
-	static int findRoot(int[] root, int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
+	static int find(int[] root, int x) {
+    	return root[x] == x ? x : (root[x] = find(root, root[x]));
     }
 }
 
 class Edge {
-    int parent, child, weight;
-    Edge(int parent, int child, int weight) {
-        this.parent = parent;
-        this.child = child;
-        this.weight = weight;
+    int u, v, w;
+    Edge(int u, int v, int w) {
+        this.u = u;
+        this.v = v;
+        this.w = w;
     }
 }
