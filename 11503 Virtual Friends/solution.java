@@ -29,18 +29,18 @@ public class Main {
     		        root[count] = count;
     		        depth[count++] = 1;
     		    }
-    		    int root1 = findRoot(friendNum.get(name1)), root2 = findRoot(friendNum.get(name2));
+    		    int root1 = find(friendNum.get(name1)), root2 = find(friendNum.get(name2));
     		    if(root1 != root2) {
-    		        depth[root[root1]] += depth[root[root2]];
-                    root[root2] = root[root1];
+    		        depth[root1] += depth[root2];
+                    root[root2] = root1;
     		    }
-    		    output.append(depth[root[root1]]).append('\n');
+    		    output.append(depth[root1]).append('\n');
     		}
 		}
 		System.out.print(output);
 	}
     
-    static int findRoot(int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+    static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 }
