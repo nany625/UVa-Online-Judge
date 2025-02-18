@@ -19,7 +19,7 @@ public class Main {
     		    if(command == 'E') {
     		        st.nextToken();
                     int I = (int)st.nval;
-                    findRoot(I);
+                    find(I);
                     output.append(length[I]).append('\n');
                 } else {
                     st.nextToken();
@@ -34,12 +34,12 @@ public class Main {
 		System.out.print(output);
 	}
     
-    static int findRoot(int child) {
-        if(root[child] != child) {
-            int temp = findRoot(root[child]);
-            length[child] += length[root[child]];
-            return root[child] = temp;
+    static int find(int x) {
+        if(root[x] != x) {
+            int temp = find(root[x]);
+            length[x] += length[root[x]];
+            return root[x] = temp;
         }
-        return child;
+        return x;
     }
 }
