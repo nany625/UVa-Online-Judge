@@ -3,8 +3,8 @@
 
 int root[MAX_NUM + 1], depth[MAX_NUM + 1];
 
-int findRoot(int child) {
-    return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int main() {
@@ -19,11 +19,11 @@ int main() {
         while(M--) {
             int A, B;
             scanf("%d %d", &A, &B);
-            int rootA = findRoot(A), rootB = findRoot(B);
+            int rootA = find(A), rootB = find(B);
             if(rootA != rootB) {
-                depth[root[rootA]] += depth[root[rootB]];
-                max = max > depth[root[rootA]] ? max : depth[root[rootA]];
-                root[rootB] = root[rootA];
+                depth[rootA] += depth[rootB];
+                max = max > depth[rootA] ? max : depth[rootA];
+                root[rootB] = rootA;
             }
         }
         printf("%d\n", max);
