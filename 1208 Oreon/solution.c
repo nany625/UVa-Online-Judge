@@ -2,21 +2,21 @@
 #include <stdlib.h>
 
 typedef struct {
-    int parent, child, weight;
+    int u, v, w;
 } Edge;
 
 int compare(const void *a, const void *b) {
 	Edge *e1 = (Edge*)a;
 	Edge *e2 = (Edge*)b;
-	if(e1->weight != e2->weight)
-    	return e1->weight > e2->weight;
-    if(e1->parent != e2->parent)
-        return e1->parent > e2->parent;
-    return e1->child > e2->child;
+	if(e1->w != e2->w)
+    	return e1->w > e2->w;
+    if(e1->u != e2->u)
+        return e1->u > e2->u;
+    return e1->v > e2->v;
 }
 
-int findRoot(int *root, int child) {
-    return root[child] == child ? child : (root[child] = findRoot(root, root[child]));
+int find(int *root, int x) {
+    return root[x] == x ? x : (root[x] = find(root, root[x]));
 }
 
 int main() {
@@ -45,9 +45,9 @@ int main() {
         qsort(edges, size, sizeof(Edge), compare);
         int count = 0;
         for(int j = 0; count < cities - 1; ++j) {
-            int root1 = findRoot(root, edges[j].parent), root2 = findRoot(root, edges[j].child);
+            int root1 = find(root, edges[j].u), root2 = find(root, edges[j].v);
             if(root1 != root2) {
-                printf("%c-%c %d\n", edges[j].parent + 'A', edges[j].child + 'A', edges[j].weight);
+                printf("%c-%c %d\n", edges[j].u + 'A', edges[j].v + 'A', edges[j].w);
                 root[root2] = root1;
                 ++count;
             }
