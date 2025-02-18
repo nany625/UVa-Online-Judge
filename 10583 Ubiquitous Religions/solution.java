@@ -6,19 +6,24 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
-        int cases = 0, n, m;
+        int cases = 0;
         StringBuilder output = new StringBuilder();
-        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (m = (int)st.nval) != 0) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
+            int n = (int)st.nval;
+            if(n == 0)
+                break;
+            st.nextToken();
+            int m = (int)st.nval;
             for(int i = 1; i <= n; ++i)
                 root[i] = i;
             while(m-- > 0) {
                 st.nextToken();
-                int rootI = findRoot((int)st.nval);
+                int rootI = find((int)st.nval);
                 st.nextToken();
-                int rootJ = findRoot((int)st.nval);
+                int rootJ = find((int)st.nval);
                 if(rootI != rootJ) {
                     --n;
-                    root[rootJ] = root[rootI];
+                    root[rootJ] = rootI;
                 }
             }
             output.append("Case ").append(++cases).append(": ").append(n).append('\n');
@@ -26,7 +31,7 @@ public class Main {
         System.out.print(output);
 	}
 	
-	static int findRoot(int child) {
-	    return root[child] == child ? child : (root[child] = findRoot(root[child]));
-	}
+	static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
 }
