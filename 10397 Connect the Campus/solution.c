@@ -8,7 +8,7 @@ typedef struct {
 } Coordinate;
 
 typedef struct {
-	int parent, child, weight;
+	int u, v, w;
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
@@ -18,12 +18,12 @@ int dist(Coordinate c1, Coordinate c2) {
 	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
-int findRoot(int child) {
-	return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int compare(const void *a, const void *b) {
-	return ((Edge*)a)->weight > ((Edge*)b)->weight;
+	return ((Edge*)a)->w > ((Edge*)b)->w;
 }
 
 int main() {
@@ -46,7 +46,7 @@ int main() {
 		while(M--) {
 			int label1, label2;
 			scanf("%d %d", &label1, &label2);
-			int root1 = findRoot(label1 - 1), root2 = findRoot(label2 - 1);
+			int root1 = find(label1 - 1), root2 = find(label2 - 1);
 			if(root1 != root2) {
 				root[root2] = root1;
 				++count;
@@ -54,9 +54,9 @@ int main() {
 		}
 		double length = 0;
 		for(int i = 0; count < N - 1; ++i) {
-			int root1 = findRoot(edges[i].parent), root2 = findRoot(edges[i].child);
+			int root1 = find(edges[i].u), root2 = find(edges[i].v);
 			if(root1 != root2) {
-				length += sqrt(edges[i].weight);
+				length += sqrt(edges[i].w);
 				root[root2] = root1;
 				++count;
 			}
