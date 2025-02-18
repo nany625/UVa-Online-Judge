@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <stdbool.h>
 #define MAXV 1000
 #define MAXE 25000
@@ -12,8 +11,8 @@ typedef struct {
 Edge edges[MAXE];
 int root[MAXV];
 
-int findRoot(int child) {
-	return root[child] == child ? child : (root[child] = findRoot(root[child]));
+int find(int x) {
+	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
 int compare(const void *a, const void *b) {
@@ -30,7 +29,7 @@ int main() {
 		qsort(edges, m, sizeof(Edge), compare);
 		bool isForest = true;
 		for(int i = 0; i < m; ++i) {
-			int root1 = findRoot(edges[i].u), root2 = findRoot(edges[i].v);
+			int root1 = find(edges[i].u), root2 = find(edges[i].v);
 			if(root1 != root2) {
 				root[root2] = root1;
 			} else {
