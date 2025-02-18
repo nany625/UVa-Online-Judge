@@ -4,13 +4,13 @@
 
 int root[MAX_NUM + 1], length[MAX_NUM + 1];
 
-int findRoot(int child) {
-    if(root[child] != child) {
-        int temp = findRoot(root[child]);
-        length[child] += length[root[child]];
-        return root[child] = temp;
+int find(int x) {
+    if(root[x] != x) {
+        int temp = find(root[x]);
+        length[x] += length[root[x]];
+        return root[x] = temp;
     }
-    return child;
+    return x;
 }
 
 int main() {
@@ -26,7 +26,7 @@ int main() {
             if(command == 'E') {
                 int I;
                 scanf("%d ", &I);
-                findRoot(I);
+                find(I);
                 printf("%d\n", length[I]);
             } else {
                 int I, J;
