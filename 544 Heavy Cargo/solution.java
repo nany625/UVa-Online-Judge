@@ -33,38 +33,40 @@ public class Main {
             edges.sort(new Comparator<Edge>() {
                 @Override
                 public int compare(Edge e1, Edge e2) {
-                    return Integer.compare(e2.weight, e1.weight);
+                    return Integer.compare(e2.w, e1.w);
                 }
             });
             st.nextToken();
-    		String city1 = st.sval;
+            int city1 = cityID.get(st.sval);
     		st.nextToken();
-    		String city2 = st.sval;
+    		int city2 = cityID.get(st.sval);
     		for(int i = 0; i < id; ++i)
                 root[i] = i;
-            int limit = 10000;
-            for(int i = 0; findRoot(cityID.get(city1)) != findRoot(cityID.get(city2)); ++i) {
-                int root1 = findRoot(edges.get(i).parent), root2 = findRoot(edges.get(i).child);
-                if(root1 != root2) {
+            int i = 0;
+            while(true) {
+                int root1 = find(edges.get(i).u), root2 = find(edges.get(i).v);
+                if(root1 != root2)
                     root[root2] = root1;
-                    limit = Math.min(limit, edges.get(i).weight);
+                if(find(city1) == find(city2)) {
+                    output.append("Scenario #").append(++cases).append('\n').append(edges.get(i).w).append(" tons\n\n");
+                    break;
                 }
+                ++i;
             }
-            output.append("Scenario #").append(++cases).append('\n').append(limit).append(" tons\n\n");
 		}
 		System.out.print(output);
 	}
 	
-	static int findRoot(int child) {
-        return root[child] == child ? child : (root[child] = findRoot(root[child]));
+	static int find(int x) {
+    	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 }
 
 class Edge {
-    int parent, child, weight;
-    Edge(int parent, int child, int weight) {
-        this.parent = parent;
-        this.child = child;
-        this.weight = weight;
+    int u, v, w;
+    Edge(int u, int v, int w) {
+        this.u = u;
+        this.v = v;
+        this.w = w;
     }
 }
