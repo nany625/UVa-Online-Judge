@@ -18,7 +18,7 @@ public class Main {
 		    int R = (int)st.nval;
 		    HashMap<String, Integer> peopleID = new HashMap<>();
 		    int id = 0;
-		    for(int i = 0; i < R; ++i) {
+		    while(R-- > 0) {
 		    	st.nextToken();
 		    	String name1 = st.sval;
 		    	st.nextToken();
