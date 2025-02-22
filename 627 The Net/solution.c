@@ -7,9 +7,9 @@
 int dist[MAXV][MAXV], next[MAXV][MAXV];
 
 void floydWarshall(int n) {
-    for(int k = 1; k <= n; ++k) {
-        for(int i = 1; i <= n; ++i) {
-            for(int j = 1; j <= n; ++j) {
+    for(int k = 1; k <= V; ++k) {
+        for(int i = 1; i <= V; ++i) {
+            for(int j = 1; j <= V; ++j) {
                 if(dist[i][j] > dist[i][k] + dist[k][j]) {
                     dist[i][j] = dist[i][k] + dist[k][j];
                     next[i][j] = next[i][k];
