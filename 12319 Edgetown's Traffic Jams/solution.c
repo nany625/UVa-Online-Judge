@@ -6,6 +6,21 @@
 #define MAXV 100
 
 int **dist, **newDist;
+char *buffer;
+size_t bufsize;
+
+void input(int **array, int V) {
+    for(int u = 1; u <= V; ++u) {
+        scanf("%*d");
+        getline(&buffer, &bufsize, stdin);
+        char *token = strtok(buffer, " ");
+        while(token) {
+            int v = atoi(token);
+            array[u][v] = 1;
+            token = strtok(NULL, " ");
+        }
+    }
+}
 
 void floydWarshall(int **array, int V) {
     for(int k = 1; k <= V; ++k) {
@@ -35,34 +50,14 @@ int main() {
         newDist[i] = (int*)malloc((MAXV + 1) * sizeof(int));
     }
     int n;
-    char *buffer = NULL;
-    size_t bufsize = 0;
     while(scanf("%d", &n) && n != 0) {
         for(int i = 1; i <= n; ++i) {
             for(int j = 1; j <= n; ++j)
                 dist[i][j] = newDist[i][j] = i == j ? 0 : INF;
         }
-        for(int u = 1; u <= n; ++u) {
-            scanf("%*d");
-            getline(&buffer, &bufsize, stdin);
-            char *token = strtok(buffer, " ");
-            while(token) {
-                int v = atoi(token);
-                dist[u][v] = 1;
-                token = strtok(NULL, " ");
-            }
-        }
+        input(dist, n);
         floydWarshall(dist, n);
-        for(int u = 1; u <= n; ++u) {
-            scanf("%*d");
-            getline(&buffer, &bufsize, stdin);
-            char *token = strtok(buffer, " ");
-            while(token) {
-                int v = atoi(token);
-                newDist[u][v] = 1;
-                token = strtok(NULL, " ");
-            }
-        }
+        input(newDist, n);
         floydWarshall(newDist, n);
         int A, B;
         scanf("%d %d", &A, &B);
