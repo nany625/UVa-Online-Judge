@@ -1,44 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #define MAX_NUM 200000
-#define MAX_PRIME 443
 
-bool isComposite[(MAX_PRIME >> 1) + 1];
-short *primes;
-int size = 1;
 long ans[MAX_NUM + 1] = {0, 2};
 
-void eulerSieve() {
-    primes = (short*)malloc(sizeof(short));
-    primes[0] = 2;
-    for(short n = 3; n <= MAX_PRIME; n += 2) {
-        if(!isComposite[n >> 1]) {
-            primes = (short*)realloc(primes, (size + 1) * sizeof(short));
-            primes[size++] = n;
+void eratosthenesSieve() {
+    for(int n = 2; n <= MAX_NUM; ++n) {
+        if(ans[n] == n) {
+            for(int i = n; i <= MAX_NUM; i += n)
+                ans[i] -= ans[i] / n;
         }
-        for(int i = 1, temp; i < size && (temp = primes[i] * n) <= MAX_PRIME; ++i) {
-            isComposite[temp >> 1] = true;
-            if(n % primes[i] == 0)
-                break;
-        }
+        ans[n] += ans[n - 1];
     }
-}
-
-int eulerTotient(int n) {
-    int result = n, limit = sqrt(n);
-    for(int i = 0; i < size && primes[i] <= limit; ++i) {
-        if(n % primes[i] == 0) {
-            result -= result / primes[i];
-            do {
-                n /= primes[i];
-            } while(n % primes[i] == 0);
-            limit = sqrt(n);
-        }
-    }
-    if(n > 1)
-        result -= result / n;
-    return result;
 }
 
 int binarySearch(long key) {
@@ -58,9 +30,9 @@ int GCD(int i, int j) {
 }
 
 int main() {
-    eulerSieve();
     for(int n = 2; n <= MAX_NUM; ++n)
-        ans[n] = ans[n - 1] + eulerTotient(n);
+        ans[n] = n;
+    eratosthenesSieve();
     long k;
     while(scanf("%ld", &k) && k != 0) {
         if(k <= 2)
@@ -88,6 +60,5 @@ int main() {
             }
         }
     }
-    free(primes);
     return 0;
 }
