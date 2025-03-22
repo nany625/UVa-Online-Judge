@@ -32,7 +32,7 @@ void findPath(int a, int b) {
     while(b != a) {
         path[length++] = b;
         b = prev[b];
-    };
+    }
     path[length++] = a;
 }
 
