@@ -13,30 +13,17 @@ public class Main {
             int P = (int)st.nval;
             st.nextToken();
             int T = (int)st.nval;
-            ArrayList<Integer>[] hear = (ArrayList<Integer>[])new ArrayList[P];
-            for(int i = 0; i < P; ++i)
-                hear[i] = new ArrayList<>();
-            boolean[][] used = new boolean[P][T];
+            int[][] hear = new int[P][T];
             String s;
             while((s = br.readLine()) != null && !s.isEmpty()) {
                 String[] tokens = s.split("\\s+");
-                int i = Integer.parseInt(tokens[0]) - 1;
-                int j = Integer.parseInt(tokens[1]) - 1;
-                if(!used[i][j]) {
-                    hear[i].add(j);
-                    used[i][j] = true;
-                }
+                hear[Integer.parseInt(tokens[0]) - 1][Integer.parseInt(tokens[1]) - 1] = 1;
             }
             HashMap<String, Boolean> opinions = new HashMap<>();
-            for(ArrayList<Integer> al : hear) {
-                Collections.sort(al);
+            for(int[] array : hear) {
                 String opinion = "";
-                for(Integer i : al) {
-                    if(i < 10)
-                        opinion += "0" + i;
-                    else
-                        opinion += i;
-                }
+                for(Integer i : array)
+                    opinion += i;
                 if(!opinions.containsKey(opinion))
                     opinions.put(opinion, true);
             }
