@@ -53,27 +53,24 @@ int main() {
             bool visited[id];
             memset(visited, 0, sizeof(visited));
             visited[prev[start] = start] = true;
-            int **bfs = (int**)malloc(sizeof(int*)), currSize = 1, step = 1;
-            bfs[0] = (int*)malloc(sizeof(int));
-            bfs[0][0] = start;
+            int curr[25], next[25], currSize = 1, step = 0;
+            curr[0] = start;
             while(!visited[end]) {
-                bfs = (int**)realloc(bfs, (step + 1) * sizeof(int*));
-                bfs[step] = NULL;
                 int nextSize = 0;
                 for(int i = 0; i < currSize; ++i) {
-                    for(int j = 0; j < connSize[bfs[step - 1][i]]; ++j) {
-                        if(!visited[conn[bfs[step - 1][i]][j]]) {
-                            bfs[step] = (int*)realloc(bfs[step], (nextSize + 1) * sizeof(int));
-                            bfs[step][nextSize++] = conn[bfs[step - 1][i]][j];
-                            visited[conn[bfs[step - 1][i]][j]] = true;
-                            prev[conn[bfs[step - 1][i]][j]] = bfs[step - 1][i];
+                    for(int j = 0; j < connSize[curr[i]]; ++j) {
+                        if(!visited[conn[curr[i]][j]]) {
+                            visited[next[nextSize++] = conn[curr[i]][j]] = true;
+                            prev[conn[curr[i]][j]] = curr[i];
                         }
                     }
                 }
-                currSize = nextSize;
+                for(int i = 0; i < nextSize; ++i)
+                    curr[i] = next[i];
                 ++step;
+                currSize = nextSize;
             }
-            int route[step - 1], i = 0;
+            int route[step], i = 0;
             while(end != start) {
                 route[i++] = end;
                 end = prev[end];
@@ -82,9 +79,6 @@ int main() {
             while(i--)
                 putchar(cityName[route[i]]);
             putchar('\n');
-            for(i = 0; i < step; ++i)
-                free(bfs[i]);
-            free(bfs);
         }
         if(cases)
             putchar('\n');
