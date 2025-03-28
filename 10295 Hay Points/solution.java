@@ -9,7 +9,7 @@ public class Main {
 	    int m = (int)st.nval;
 	    st.nextToken();
         int n = (int)st.nval;
-	    HashMap<String, Integer> dictionary = new HashMap<>();
+	    Map<String, Integer> dictionary = new HashMap<>();
         while(m-- > 0) {
             st.nextToken();
             String word = st.sval;
