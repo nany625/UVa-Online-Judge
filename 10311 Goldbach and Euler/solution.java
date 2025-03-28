@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int MAX_NUM = 100000000;
-    static boolean[] isComposite = new boolean[(MAX_NUM >> 1) + 1];
+    static int MAXN = 100000000;
+    static boolean[] isComposite = new boolean[(MAXN >> 1) + 1];
     static ArrayList<Integer> primes = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 	    eulerSieve();
@@ -37,10 +37,10 @@ public class Main {
 	}
 	
 	static void eulerSieve() {
-        for(int n = 3; n <= MAX_NUM; n += 2) {
+        for(int n = 3; n <= MAXN; n += 2) {
             if(!isComposite[n >> 1])
                 primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAXN; ++i) {
                 isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
