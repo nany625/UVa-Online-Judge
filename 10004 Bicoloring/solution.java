@@ -2,15 +2,18 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static int MAXN = 199;
+    static ArrayList<Short>[] edges;
+    static char[] color = new char[MAXN];
 	public static void main(String[] args) throws IOException {
-		Graph graph = new Graph();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
+		short n;
 		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (graph.numVertices = (short)st.nval) != 0) {
-		    graph.edges = (ArrayList<Short>[])new ArrayList[graph.numVertices];
-		    for(int i = 0; i < graph.numVertices; ++i)
-		        graph.edges[i] = new ArrayList<>();
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (short)st.nval) != 0) {
+		    edges = (ArrayList<Short>[])new ArrayList[n];
+		    for(int i = 0; i < n; ++i)
+		        edges[i] = new ArrayList<>();
 		    st.nextToken();
 		    short l = (short)st.nval, startVertex = 0;
 		    while(l-- > 0) {
@@ -18,35 +21,26 @@ public class Main {
     		    short a = (short)st.nval;
     		    st.nextToken();
     		    short b = (short)st.nval;
-    		    graph.edges[a].add(b);
-    		    graph.edges[b].add(startVertex = a);
+    		    edges[a].add(b);
+    		    edges[b].add(startVertex = a);
 		    }
-		    graph.color = new char[graph.numVertices];
-		    graph.visited = new boolean[graph.numVertices];
+		    Arrays.fill(color, '\0');
 		    boolean[] bicolorable = {true};
-		    dfs(graph, startVertex, '0', bicolorable);
+		    dfs(startVertex, '0', bicolorable);
 		    output.append(bicolorable[0] ? "BICOLORABLE.\n" : "NOT BICOLORABLE.\n");
 		}
         System.out.print(output);
 	}
 	
-	static void dfs(Graph graph, short startVertex, char color, boolean[] bicolorable) {
-        graph.visited[startVertex] = true;
-        graph.color[startVertex] = color;
-        for(int i = 0; i < graph.edges[startVertex].size(); ++i) {
-            if(!graph.visited[graph.edges[startVertex].get(i)])
-                dfs(graph, graph.edges[startVertex].get(i), color == '0' ? '1' : '0', bicolorable);
-            else if(graph.color[graph.edges[startVertex].get(i)] == color) {
+	static void dfs(short startVertex, char c, boolean[] bicolorable) {
+        color[startVertex] = c;
+        for(int i = 0; i < edges[startVertex].size(); ++i) {
+            if(color[edges[startVertex].get(i)] == '\0')
+                dfs(edges[startVertex].get(i), c == '0' ? '1' : '0', bicolorable);
+            else if(color[edges[startVertex].get(i)] == c) {
                 bicolorable[0] = false;
                 return;
             }
         }
     }
-}
-
-class Graph {
-    short numVertices;
-    ArrayList<Short>[] edges;
-    char[] color;
-    boolean[] visited;
 }
