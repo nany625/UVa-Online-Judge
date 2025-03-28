@@ -41,10 +41,8 @@ int main() {
             scanf("%s", map[j]);
         }
         Rank ranks[26];
-        for(int j = 0; j < 26; ++j) {
-            ranks[j].language = 'a' + j;
-            ranks[j].states = 0;
-        }
+        for(int j = 0; j < 26; ++j)
+            ranks[j] = (Rank){'a' + j, 0};
         for(int j = 0; j < H; ++j) {
             for(int k = 0; k < W; ++k) {
                 if(islower(map[j][k])) {
