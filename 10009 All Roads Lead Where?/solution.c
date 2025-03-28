@@ -7,6 +7,7 @@ typedef struct {
     int parent, child;
 } Edge;
 
+int curr[25], next[25];
 char cityName[26], city1[9], city2[9];
 
 int main() {
@@ -53,7 +54,7 @@ int main() {
             bool visited[id];
             memset(visited, 0, sizeof(visited));
             visited[prev[start] = start] = true;
-            int curr[25], next[25], currSize = 1, step = 0;
+            int currSize = 1, step = 0;
             curr[0] = start;
             while(!visited[end]) {
                 int nextSize = 0;
