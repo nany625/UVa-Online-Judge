@@ -52,7 +52,7 @@ int main() {
 				MST[count++] = edges[i].w;
 			}
 		}
-		printf("%.2lf\n", sqrt(MST[P - 1 - S]));
+		printf("%.2f\n", sqrt(MST[P - 1 - S]));
 	}
 	return 0;
 }
