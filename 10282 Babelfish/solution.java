@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        HashMap<String, String> dict = new HashMap<>();
+        Map<String, String> dict = new HashMap<>();
         String line;
         StringBuilder output = new StringBuilder();
         while(!(line = br.readLine()).isEmpty()) {
