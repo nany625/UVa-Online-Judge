@@ -9,7 +9,7 @@ int main() {
         else {
             double s = (a + b + c) / 2;
             double area = sqrt(s * (s - a) * (s - b) * (s - c));
-            printf("The radius of the round table is: %.3lf\n", area * 2 / (a + b + c));
+            printf("The radius of the round table is: %.3f\n", area * 2 / (a + b + c));
         }
     }
     return 0;
