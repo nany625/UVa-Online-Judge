@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_NUM 100
+#define MAXN 100
 
-short **links, linksCount[MAX_NUM + 1];
-bool visited[MAX_NUM + 1];
+short **links, linksCount[MAXN + 1];
+bool visited[MAXN + 1];
 
 int main() {
-    links = (short**)malloc((MAX_NUM + 1) * sizeof(short*));
-    for(int i = 1; i <= MAX_NUM; ++i)
+    links = (short**)malloc((MAXN + 1) * sizeof(short*));
+    for(int i = 1; i <= MAXN; ++i)
         links[i] = NULL;
     int cases = 0, n;
     while(scanf("%d", &n) && n != 0) {
@@ -43,7 +43,7 @@ int main() {
             finish = finish < curr[i] ? finish : curr[i];
         printf("Case %d: The longest path from %d has length %d, finishing at %d.\n\n", ++cases, s, length, finish);
     }
-    for(int i = 1; i <= MAX_NUM; ++i)
+    for(int i = 1; i <= MAXN; ++i)
         free(links[i]);
     free(links);
 	return 0;
