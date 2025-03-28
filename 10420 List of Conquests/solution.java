@@ -8,7 +8,7 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int n = (int)st.nval;
-        HashMap<String, Short> conquests = new HashMap<>();
+        Map<String, Short> conquests = new HashMap<>();
         ArrayList<String> conquestsKeys = new ArrayList<>();
         StringBuilder output = new StringBuilder();
         while(n-- > 0) {
@@ -39,7 +39,7 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int n = (int)st.nval;
-        TreeMap<String, Short> conquests = new TreeMap<>();
+        Map<String, Short> conquests = new TreeMap<>();
         StringBuilder output = new StringBuilder();
         while(n-- > 0) {
             st.nextToken();
