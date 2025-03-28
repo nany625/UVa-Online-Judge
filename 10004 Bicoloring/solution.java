@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXN = 199;
-    static ArrayList<Short>[] edges;
+    static ArrayList<Short>[] edges = (ArrayList<Short>[])new ArrayList[MAXN];;
     static char[] color = new char[MAXN];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -11,7 +11,6 @@ public class Main {
 		short n;
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (short)st.nval) != 0) {
-		    edges = (ArrayList<Short>[])new ArrayList[n];
 		    for(int i = 0; i < n; ++i)
 		        edges[i] = new ArrayList<>();
 		    st.nextToken();
