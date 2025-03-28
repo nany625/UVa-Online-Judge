@@ -16,7 +16,7 @@ public class Main {
 			}
 			st.nextToken();
 		    int R = (int)st.nval;
-		    HashMap<String, Integer> peopleID = new HashMap<>();
+		    Map<String, Integer> peopleID = new HashMap<>();
 		    int id = 0;
 		    while(R-- > 0) {
 		    	st.nextToken();
