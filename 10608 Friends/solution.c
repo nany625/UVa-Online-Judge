@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define MAX_NUM 30000
+#define MAXN 30000
 
-int root[MAX_NUM + 1], depth[MAX_NUM + 1];
+int root[MAXN + 1], depth[MAXN + 1];
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
