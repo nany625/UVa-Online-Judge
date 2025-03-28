@@ -34,7 +34,7 @@ int main() {
 	        }
 	    }
 	    printf("Day #%d: the longest nap starts at %02d:%02d and will last for ", ++day, start / 60, start % 60);
-	    if(longest / 60)
+	    if(longest >= 60)
 	        printf("%d hours and %d minutes.\n", longest / 60, longest % 60);
 	    else
 	        printf("%d minutes.\n", longest);
