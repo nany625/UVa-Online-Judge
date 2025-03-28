@@ -53,9 +53,8 @@ int main() {
             int prev[id];
             bool visited[id];
             memset(visited, 0, sizeof(visited));
-            visited[prev[start] = start] = true;
+            visited[curr[0] = prev[start] = start] = true;
             int currSize = 1, step = 0;
-            curr[0] = start;
             while(!visited[end]) {
                 int nextSize = 0;
                 for(int i = 0; i < currSize; ++i) {
