@@ -1,51 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h>
+#define MAXN 999999
 
-short *lenMap = NULL;
+short collatz[MAXN + 1] = {0, 1};
 
-void Collatz(int n) {
-    if(n % 2 == 0) {
-        lenMap[n] = lenMap[n / 2] + 1;
-        return;
-    }
-    lenMap[n] = 1;
+void init(int n) {
+    collatz[n] = 1;
     long temp = n;
     while(temp != 1) {
         if(temp < n) {
-            lenMap[n] += lenMap[temp] - 1;
+            collatz[n] += collatz[temp] - 1;
             return;
         }
-        temp = temp % 2 == 1 ? 3 * temp + 1 : temp / 2;
-        ++lenMap[n];
+        temp = temp & 1 ? 3 * temp + 1 : temp >> 1;
+        ++collatz[n];
     }
 }
 
 int main() {
-    lenMap = (short*)malloc(2 * sizeof(short));
-    lenMap[0] = 0;
-    lenMap[1] = 1;
-    int min, max, size = 2;
+	for(int n = 2; n <= MAXN; ++n)
+        init(n);
+    int min, max;
     while(scanf("%d %d", &min, &max) == 2) {
-    	printf("%d %d ", min, max);
-    	if(min > max) {
-    	    int temp = min;
-    	    min = max;
-    	    max = temp;
-    	}
-    	for(int i = size; i <= min; ++i) {
-    	    lenMap = (short*)realloc(lenMap, (size++ + 1) * sizeof(short));
-    	    Collatz(i);
-    	}
-    	short maxLen = lenMap[min];
-        for(int i = min + 1; i <= max; ++i) {
-            if(i >= size) {
-                lenMap = (short*)realloc(lenMap, (size++ + 1) * sizeof(short));
-                Collatz(i);
-            }
-            maxLen = maxLen > lenMap[i] ? maxLen : lenMap[i];
+        printf("%d %d ", min, max);
+        if(min > max) {
+            int temp = min;
+            min = max;
+            max = temp;
         }
-        printf("%d\n", maxLen);
+        short maxLen = collatz[min];
+        for(int i = min + 1; i <= max; ++i)
+            maxLen = maxLen > collatz[i] ? maxLen : collatz[i];
+        printf("%hd\n", maxLen);
     }
-    free(lenMap);
-    return 0;
+	return 0;
 }
