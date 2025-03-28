@@ -11,7 +11,7 @@ public class Main {
         br.readLine();
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-            HashMap<String, Integer> tree = new HashMap<>();
+            Map<String, Integer> tree = new HashMap<>();
             ArrayList<String> treeKeys = new ArrayList<>();
             String species;
     	    while((species = br.readLine()) != null && !species.isEmpty()) {
@@ -48,7 +48,7 @@ public class Main {
         br.readLine();
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
-            TreeMap<String, Integer> tree = new TreeMap<>();
+            Map<String, Integer> tree = new TreeMap<>();
             String species;
     	    while((species = br.readLine()) != null && !species.isEmpty())
                 tree.put(species, tree.getOrDefault(species, 0) + 1);
