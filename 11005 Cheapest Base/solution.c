@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+short costs[36];
+
 int main() {
 	int cases;
 	scanf("%d", &cases);
@@ -7,7 +9,6 @@ int main() {
 		if(i > 1)
 			putchar('\n');
 		printf("Case %d:\n", i);
-		short costs[36];
 		for(int j = 0; j < 36; ++j)
 			scanf("%hd", &costs[j]);
 		int queries;
