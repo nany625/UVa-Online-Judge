@@ -16,8 +16,7 @@ bool isSubsetSum(int *array, int size, int sum) {
 
 int main() {
     int cases;
-    scanf("%d", &cases);
-    getchar();
+    scanf("%d ", &cases);
     char *buffer = NULL;
     size_t bufsize = 0;
     while(cases--) {
