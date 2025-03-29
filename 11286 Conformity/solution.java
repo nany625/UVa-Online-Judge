@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static short[] courses = new short[5];;
     public static void main(String[] args) throws IOException {
-        short[] courses = new short[5];
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
 	    int n;
 	    StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
-	        HashMap<Long, Short> combinations = new HashMap<>();
+	        Map<Long, Short> combinations = new HashMap<>();
     		short max = 0, students = 0;
     		while(n-- > 0) {
     	        for(int i = 0; i < 5; ++i) {
