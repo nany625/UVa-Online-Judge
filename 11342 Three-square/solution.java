@@ -2,9 +2,9 @@ import java.io.*;
 
 public class Main {
     static int MAX_NUM = 50000;
+    static Answer[] answers = new Answer[MAX_NUM + 1];
+    static boolean[] table = new boolean[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
-        Answer[] answers = new Answer[MAX_NUM + 1];
-        boolean[] table = new boolean[MAX_NUM + 1];
         for(short a = 0; a <= 129; ++a) {
             for(short b = a; b <= 158; ++b) {
                 int sum;
