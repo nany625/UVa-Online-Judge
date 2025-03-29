@@ -4,8 +4,7 @@
 int main() {
     int cases = 0, N;
     char buffer[102];
-    while(scanf("%d", &N) && N != 0) {
-        getchar();
+    while(scanf("%d ", &N) && N != 0) {
         printf("Case %d:\n#include<string.h>\n#include<stdio.h>\nint main()\n{\n", ++cases);
         while(N--) {
             fgets(buffer, sizeof(buffer), stdin);
