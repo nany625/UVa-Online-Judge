@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static short[] costs = new short[36];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -12,7 +13,6 @@ public class Main {
 	        if(i > 1)
 	            output.append('\n');
 	        output.append("Case ").append(i).append(":\n");
-	        short[] costs = new short[36];
 	        for(int j = 0; j < 36; ++j) {
 	            st.nextToken();
 	            costs[j] = (short)st.nval;
