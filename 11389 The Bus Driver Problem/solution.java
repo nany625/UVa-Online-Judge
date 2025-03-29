@@ -8,12 +8,12 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int n = (int)st.nval;
+            if(n == 0)
+                break;
             st.nextToken();
             int d = (int)st.nval;
             st.nextToken();
             int r = (int)st.nval;
-            if(n == 0 && d == 0 && r == 0)
-                break;
             short[] morning = new short[n], evening = new short[n];
             for(int i = 0; i < n; ++i) {
                 st.nextToken();
