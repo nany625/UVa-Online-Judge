@@ -88,19 +88,13 @@ unsigned long hash(long key) {
     return (unsigned long)key % HASH_SIZE;
 }
 
-void addCombination(Combination **hashTable, long key, short *max, int *students) {
+void addCombination(Combination **hashTable, long key) {
     unsigned long index = hash(key);
     Combination *entry = hashTable[index];
 
     while (entry != NULL) {
         if (entry->froshes == key) {
             entry->popularity++;
-            if (entry->popularity > *max) {
-                *max = entry->popularity;
-                *students = *max;
-            } else if (entry->popularity == *max) {
-                *students += *max;
-            }
             return;
         }
         entry = entry->next;
@@ -116,20 +110,13 @@ void addCombination(Combination **hashTable, long key, short *max, int *students
     entry->popularity = 1;
     entry->next = hashTable[index];
     hashTable[index] = entry;
-
-    if (*max == 1) {
-        (*students)++;
-    } else if (*max == 0) {
-        *max = 1;
-        *students = 1;
-    }
 }
 
 void InsertionSort(short *array) {
-    for(int i = 1; i < 5; ++i) {
+    for (int i = 1; i < 5; ++i) {
         int j = i - 1;
         short insertionNum = array[i];
-        while(j >= 0 && insertionNum < array[j]) {
+        while (j >= 0 && insertionNum < array[j]) {
             array[j + 1] = array[j];
             --j;
         }
@@ -139,22 +126,42 @@ void InsertionSort(short *array) {
 
 int main() {
     short courses[5];
-	int n;
-	while(scanf("%d", &n) && n != 0) {
-	    Combination *hashTable[HASH_SIZE] = {0};
+    int n;
+
+    while (scanf("%d", &n) && n != 0) {
+        Combination *hashTable[HASH_SIZE] = {0};
+
+        while (n--) {
+            for (int i = 0; i < 5; ++i)
+                scanf("%hd", &courses[i]);
+            InsertionSort(courses);
+
+            long temp = 0;
+            for (int i = 0; i < 5; ++i)
+                temp = 1000 * temp + courses[i];
+
+            addCombination(hashTable, temp);
+        }
+
+        // 計算 max 和 students
         short max = 0;
         int students = 0;
-		while(n--) {
-		    for(int i = 0; i < 5; ++i)
-		        scanf("%hd", &courses[i]);
-		    InsertionSort(courses);
-		    long temp = 0;
-		    for(int i = 0; i < 5; ++i)
-		        temp += 1000 * temp + courses[i];
-		    addCombination(hashTable, temp, &max, &students);
-		}
-		printf("%hd\n", students);
-		for (int i = 0; i < HASH_SIZE; i++) {
+        for (int i = 0; i < HASH_SIZE; i++) {
+            Combination *entry = hashTable[i];
+            while (entry != NULL) {
+                if (entry->popularity > max) {
+                    students = max = entry->popularity;
+                } else if (entry->popularity == max) {
+                    students += max;
+                }
+                entry = entry->next;
+            }
+        }
+
+        printf("%hd\n", students);
+
+        // 釋放記憶體
+        for (int i = 0; i < HASH_SIZE; i++) {
             Combination *entry = hashTable[i];
             while (entry != NULL) {
                 Combination *prev = entry;
@@ -162,6 +169,7 @@ int main() {
                 free(prev);
             }
         }
-	}
-	return 0;
+    }
+
+    return 0;
 }
