@@ -14,7 +14,7 @@ public class Main {
             int b = (int)st.nval;
             a += (a + 1) & 1;
     	 	b -= (b + 1) & 1;
-            output.append("Case ").append(i).append(": ").append(-a * a + b * b + (a << 1) + (b << 1) >> 2).append('\n');
+            output.append("Case ").append(i).append(": ").append(- a * a + b * b + (a << 1) + (b << 1) >> 2).append('\n');
         }
 		System.out.print(output);
 	}
