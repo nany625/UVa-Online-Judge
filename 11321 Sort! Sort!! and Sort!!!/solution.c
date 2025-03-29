@@ -21,7 +21,7 @@ int compare(const void *a, const void *b) {
 
 int main() {
 	int N, M;
-	while(scanf("%d %d", &N, &M) && N != 0 && M != 0) {
+	while(scanf("%d %d", &N, &M) && N != 0) {
 	    printf("%d %d\n", N, M);
 	    Data datas[N];
 	    for(int i = 0; i < N; ++i) {
