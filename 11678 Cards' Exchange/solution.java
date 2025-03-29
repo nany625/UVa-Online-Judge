@@ -5,9 +5,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
-		int A, B;
+		int A;
 		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (B = (int)st.nval) != 0) {
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (int)st.nval) != 0) {
+		    st.nextToken();
+		    int B = (int)st.nval;
 		    ArrayList<Integer> X = new ArrayList<>();
 		    while(A-- > 0) {
 		        st.nextToken();
