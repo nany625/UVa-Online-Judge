@@ -37,8 +37,7 @@ public class Main {
 		    while(pos < determinatePrimes.size() && determinatePrimes.get(pos).end <= y) {
 		        for(short i = determinatePrimes.get(pos).start; i < determinatePrimes.get(pos).end; i += determinatePrimes.get(pos).step)
 		            output.append(i).append(' ');
-		        output.append(determinatePrimes.get(pos).end).append('\n');
-		        ++pos;
+		        output.append(determinatePrimes.get(pos++).end).append('\n');
 		    }
 		}
 		System.out.print(output);
