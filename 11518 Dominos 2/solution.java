@@ -2,8 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static int MAXN = 10000;
+    static ArrayList<Short>[] knock;
+    static boolean[] visited;
 	public static void main(String[] args) throws IOException {
-	    Graph graph = new Graph();
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
@@ -11,46 +13,40 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
             st.nextToken();
-            graph.numVertices = (short)st.nval;
+            short n = (short)st.nval;
             st.nextToken();
             short m = (short)st.nval;
             st.nextToken();
             short l = (short)st.nval;
-            graph.knockList = (ArrayList<Short>[])new ArrayList[graph.numVertices + 1];
-            for(int i = 1; i <= graph.numVertices; ++i)
-                graph.knockList[i] = new ArrayList<>();
+            knock = (ArrayList<Short>[])new ArrayList[n + 1];
+            for(int i = 1; i <= n; ++i)
+                knock[i] = new ArrayList<>();
             while(m-- > 0) {
                 st.nextToken();
                 short x = (short)st.nval;
                 st.nextToken();
                 short y = (short)st.nval;
-                graph.knockList[x].add(y);
+                knock[x].add(y);
             }
-            graph.visited = new boolean[graph.numVertices + 1];
+            visited = new boolean[n + 1];
             int[] count = new int[1];
             while(l-- > 0) {
                 st.nextToken();
                 short z = (short)st.nval;
-                if(!graph.visited[z])
-                    dfs(graph, z, count);
+                if(!visited[z])
+                    dfs(z, count);
             }
             output.append(count[0]).append('\n');
     	}
         System.out.print(output);
 	}
 	
-	static void dfs(Graph graph, short startVertex, int[] count) {
-	    graph.visited[startVertex] = true;
+	static void dfs(short start, int[] count) {
+	    visited[start] = true;
 	    ++count[0];
-	    for(Short s : graph.knockList[startVertex]) {
-	        if(!graph.visited[s])
-	            dfs(graph, s, count);
+	    for(Short s : knock[start]) {
+	        if(!visited[s])
+	            dfs(s, count);
 	    }
 	}
-}
-
-class Graph {
-    short numVertices;
-    ArrayList<Short>[] knockList;
-    boolean[] visited;
 }
