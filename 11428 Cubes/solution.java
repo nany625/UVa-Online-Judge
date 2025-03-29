@@ -1,16 +1,16 @@
 import java.io.*;
 
 public class Main {
-    static int MAX_NUM = 10000;
+    static int MAXN = 10000;
+    static Solution[] solutions = new Solution[MAXN + 1];
+    static boolean[] table = new boolean[MAXN + 1];
 	public static void main(String[] args) throws IOException {
-        Solution[] solutions = new Solution[MAX_NUM];
-        boolean[] table = new boolean[MAX_NUM];
         for(short y = 1; y <= 57; ++y) {
             int N;
-            for(short x = (short)(y + 1); (N = x * x * x - y * y * y) <= MAX_NUM; ++x) {
-                if(!table[N - 1]) {
-                    table[N - 1] = true;
-                    solutions[N - 1] = new Solution(x, y);
+            for(short x = (short)(y + 1); (N = x * x * x - y * y * y) <= MAXN; ++x) {
+                if(!table[N]) {
+                    table[N] = true;
+                    solutions[N] = new Solution(x, y);
                 }
             }
         }
@@ -19,8 +19,8 @@ public class Main {
         int N;
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
-            if(table[N - 1])
-                output.append(solutions[N - 1].x).append(' ').append(solutions[N - 1].y).append('\n');
+            if(table[N])
+                output.append(solutions[N].x).append(' ').append(solutions[N].y).append('\n');
             else
                 output.append("No solution\n");
         }
