@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdbool.h>
-#define MAX_SUM 50000
+#define MAXK 50000
 
 typedef struct {
     short a, b, c;
 } Answer;
 
-Answer answers[MAX_SUM + 1];
-bool table[MAX_SUM + 1];
+Answer answers[MAXK + 1];
+bool table[MAXK + 1];
 
 int main() {
     for(short a = 0; a <= 129; ++a) {
         for(short b = a; b <= 158; ++b) {
-            int sum;
-            for(short c = b; (sum = a * a + b * b + c * c) <= MAX_SUM; ++c) {
-                if(!table[sum]) {
-                    table[sum] = true;
-                    answers[sum] = (Answer){a, b, c};
+            int k;
+            for(short c = b; (k = a * a + b * b + c * c) <= MAXK; ++c) {
+                if(!table[k]) {
+                    table[k] = true;
+                    answers[k] = (Answer){a, b, c};
                 }
             }
         }
