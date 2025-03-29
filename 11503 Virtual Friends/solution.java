@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int MAX_NUM = 200000;
-    static int[] root = new int[MAX_NUM], depth = new int[MAX_NUM];
+    static int MAXF = 200000;
+    static int[] root = new int[MAXF], depth = new int[MAXF];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -11,7 +11,7 @@ public class Main {
 		int cases = (int)st.nval;
 		StringBuilder output = new StringBuilder();
 		while(cases-- > 0) {
-		    HashMap<String, Integer> friendNum = new HashMap<>();
+		    Map<String, Integer> friendNum = new HashMap<>();
 		    st.nextToken();
     		int F = (int)st.nval, count = 0;
     		while(F-- > 0) {
