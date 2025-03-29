@@ -1,14 +1,14 @@
 import java.io.*;
 
 public class Main {
-    static int MAX_NUM = 500;
-    static int[] phi = new int[MAX_NUM + 1], ans = new int[MAX_NUM + 1];
+    static int MAXN = 500;
+    static int[] phi = new int[MAXN + 1], ans = new int[MAXN + 1];
     public static void main(String[] args) throws IOException {
-        for(int n = 2; n <= MAX_NUM; ++n)
+        for(int n = 2; n <= MAXN; ++n)
             phi[n] = n;
         eratosthenesSieve();
-        for(int n = 2; n <= MAX_NUM; ++n) {
-            for(int i = n << 1; i <= MAX_NUM; i += n)
+        for(int n = 2; n <= MAXN; ++n) {
+            for(int i = n << 1; i <= MAXN; i += n)
                 ans[i] += n * phi[i / n];
             ans[n] += ans[n - 1] + phi[n];
         }
@@ -22,9 +22,9 @@ public class Main {
     }
     
     static void eratosthenesSieve() {
-        for(int n = 2; n <= MAX_NUM; ++n) {
+        for(int n = 2; n <= MAXN; ++n) {
             if(phi[n] == n) {
-                for(int i = n; i <= MAX_NUM; i += n)
+                for(int i = n; i <= MAXN; i += n)
                     phi[i] -= phi[i] / n;
             }
         }
