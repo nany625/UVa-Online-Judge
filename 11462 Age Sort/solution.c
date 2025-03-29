@@ -9,8 +9,7 @@ int main() {
     int n;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(scanf("%d", &n) && n != 0) {
-        getchar();
+    while(scanf("%d ", &n) && n != 0) {
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         while(token) {
