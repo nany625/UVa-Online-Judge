@@ -1,23 +1,23 @@
 #include <stdio.h>
-#define MAX_NUM 500
+#define MAXN 500
 
-int phi[MAX_NUM + 1], ans[MAX_NUM + 1];
+int phi[MAXN + 1], ans[MAXN + 1];
 
 void eratosthenesSieve() {
-    for(int n = 2; n <= MAX_NUM; ++n) {
+    for(int n = 2; n <= MAXN; ++n) {
         if(phi[n] == n) {
-            for(int i = n; i <= MAX_NUM; i += n)
+            for(int i = n; i <= MAXN; i += n)
                 phi[i] -= phi[i] / n;
         }
     }
 }
 
 int main() {
-    for(int n = 2; n <= MAX_NUM; ++n)
+    for(int n = 2; n <= MAXN; ++n)
         phi[n] = n;
     eratosthenesSieve();
-    for(int n = 2; n <= MAX_NUM; ++n) {
-        for(int i = n << 1; i <= MAX_NUM; i += n)
+    for(int n = 2; n <= MAXN; ++n) {
+        for(int i = n << 1; i <= MAXN; i += n)
             ans[i] += n * phi[i / n];
         ans[n] += ans[n - 1] + phi[n];
     }
