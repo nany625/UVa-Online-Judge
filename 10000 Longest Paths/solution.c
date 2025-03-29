@@ -35,8 +35,8 @@ int main() {
                 break;
             for(int i = 0; i < nextSize; ++i)
                 curr[i] = next[i];
-            ++length;
             currSize = nextSize;
+            ++length;
         }
         int finish = curr[0];
         for(int i = 1; i < currSize; ++i)
