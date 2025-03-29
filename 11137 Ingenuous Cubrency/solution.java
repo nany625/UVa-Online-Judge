@@ -11,8 +11,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		dp[0] = 1;
 		for(Integer coin : coins) {
-		    for(int j = coin; j <= MAX_AMOUNT; ++j)
-		        dp[j] += dp[j - coin];
+		    for(int i = coin; i <= MAX_AMOUNT; ++i)
+		        dp[i] += dp[i - coin];
 		}
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
