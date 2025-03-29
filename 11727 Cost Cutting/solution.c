@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+short salary[3];
+
 void swap(short *a, short *b) {
     short temp = *a;
     *a = *b;
@@ -10,7 +12,6 @@ int main() {
     int T;
     scanf("%d", &T);
     for(int i = 1; i <= T; ++i) {
-        short salary[3];
         for(int j = 0; j < 3; ++j)
             scanf("%hd", &salary[j]);
         if(salary[0] > salary[1])
