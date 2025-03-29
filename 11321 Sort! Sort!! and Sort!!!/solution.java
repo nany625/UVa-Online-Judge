@@ -5,10 +5,12 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
-		int N, M;
+		int N;
 		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (M = (int)st.nval) != 0) {
-		    output.append(N + " " + M + "\n");
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
+		    st.nextToken();
+		    int M = (int)st.nval;
+		    output.append(N).append(' ').append(M).append('\n');
 		    Data[] datas = new Data[N];
 		    for(int i = 0; i < N; ++i) {
 		        st.nextToken();
