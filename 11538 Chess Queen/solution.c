@@ -2,7 +2,7 @@
 
 int main() {
     long M, N;
-    while(scanf("%ld %ld", &M, &N) && M != 0 && N != 0) {
+    while(scanf("%ld %ld", &M, &N) && M != 0) {
         if(M > N) {
             long temp = M;
             M = N;
