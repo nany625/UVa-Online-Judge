@@ -1,12 +1,12 @@
 #include <stdio.h>
-#define MAX_NUM 1000000
+#define MAXN 1000000
 
-long ans[MAX_NUM + 1];
+long ans[MAXN + 1];
 
 int main() {
-    for(int i = 4; i <= MAX_NUM; ++i) {
-        long temp = (i >> 1) - 1;
-        ans[i] = ans[i - 1] + (1 + temp) * temp - temp * ((i + 1) & 1);
+    for(int n = 4; n <= MAXN; ++n) {
+        long temp = (n >> 1) - 1;
+        ans[n] = ans[n - 1] + (1 + temp) * temp - temp * ((n + 1) & 1);
     }
     int n;
     while(scanf("%d", &n) && n >= 3)
