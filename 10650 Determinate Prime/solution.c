@@ -60,8 +60,7 @@ int main() {
 		while(pos < dtPrimeSize && determinatePrimes[pos][1] <= y) {
 		    for(short i = determinatePrimes[pos][0]; i < determinatePrimes[pos][1]; i += determinatePrimes[pos][2])
 		        printf("%hd ", i);
-		    printf("%hd\n", determinatePrimes[pos][1]);
-		    ++pos;
+		    printf("%hd\n", determinatePrimes[pos++][1]);
 		}
     }
     for(int i = 0; i < dtPrimeSize; ++i)
