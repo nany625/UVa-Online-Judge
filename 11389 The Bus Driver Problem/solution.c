@@ -7,7 +7,7 @@ int compare(const void *a, const void *b) {
 
 int main() {
     int n, d, r;
-    while(scanf("%d %d %d", &n, &d, &r) && n != 0 && d != 0 && r != 0) {
+    while(scanf("%d %d %d", &n, &d, &r) && n != 0) {
         short morning[n], evening[n];
         for(int i = 0; i < n; ++i)
             scanf("%hd", &morning[i]);
