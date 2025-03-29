@@ -4,8 +4,8 @@
 int main() {
 	int T;
 	scanf("%d", &T);
+    char N[1001];
 	for(int i = 1; i <= T; ++i) {
-		char N[1001];
 		scanf("%s", N);
 		int len = strlen(N);
 		short modThreeCount[3] = {};
