@@ -67,8 +67,8 @@ int main() {
                 }
                 for(int i = 0; i < nextSize; ++i)
                     curr[i] = next[i];
-                ++step;
                 currSize = nextSize;
+                ++step;
             }
             int route[step], i = 0;
             while(end != start) {
