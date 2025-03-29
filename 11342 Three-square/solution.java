@@ -1,17 +1,17 @@
 import java.io.*;
 
 public class Main {
-    static int MAX_NUM = 50000;
-    static Answer[] answers = new Answer[MAX_NUM + 1];
-    static boolean[] table = new boolean[MAX_NUM + 1];
+    static int MAXK = 50000;
+    static Answer[] answers = new Answer[MAXK + 1];
+    static boolean[] table = new boolean[MAXK + 1];
 	public static void main(String[] args) throws IOException {
         for(short a = 0; a <= 129; ++a) {
             for(short b = a; b <= 158; ++b) {
-                int sum;
-                for(short c = b; (sum = a * a + b * b + c * c) <= MAX_NUM; ++c) {
-                    if(!table[sum]) {
-                        table[sum] = true;
-                        answers[sum] = new Answer(a, b, c);
+                int k;
+                for(short c = b; (k = a * a + b * b + c * c) <= MAXK; ++c) {
+                    if(!table[k]) {
+                        table[k] = true;
+                        answers[k] = new Answer(a, b, c);
                     }
                 }
             }
