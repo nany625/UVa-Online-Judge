@@ -10,7 +10,6 @@ public class Main {
 	    StringBuilder output = new StringBuilder();
 	    while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
 	        Map<Long, Short> combinations = new HashMap<>();
-    		short max = 0, students = 0;
     		while(n-- > 0) {
     	        for(int i = 0; i < 5; ++i) {
     	            st.nextToken();
@@ -21,10 +20,13 @@ public class Main {
     	        for(Short s : courses)
     	            temp = 1000 * temp + s;
     	        combinations.put(temp, (short)(combinations.getOrDefault(temp, (short)0) + 1));
-    		    if(max < combinations.get(temp))
-    	            students = max = combinations.get(temp);
-    	        else if(max == combinations.get(temp))
-    	            students += max;
+    		}
+    		short max = 0, students = 0;
+    		for(Short s : combinations.values()) {
+    		    if(max < s)
+    		        students = max = s;
+    		    else if(max == s)
+    		        students += max;
     		}
     	    output.append(students).append('\n');
 	    }
