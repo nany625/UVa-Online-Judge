@@ -28,9 +28,9 @@ int main() {
 	int n;
 	while(scanf("%d", &n) && n != 0) {
 	    int array[n], reg[n];
-	    long swap = 0;
 	    for(int i = 0; i < n; ++i)
 	        scanf("%d", &array[i]);
+        long swap = 0;
 	    MergeSort(array, reg, 0, n - 1, &swap);
 	    printf("%ld\n", swap);
 	}
