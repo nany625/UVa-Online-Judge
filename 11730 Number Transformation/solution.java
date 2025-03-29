@@ -14,38 +14,40 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
-        int cases = 0, S, T;
+        int cases = 0, S;
         StringBuilder output = new StringBuilder();
-        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (T = (int)st.nval) != 0) {
-            if(S == T) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (S = (int)st.nval) != 0) {
+            st.nextToken();
+            int T = (int)st.nval;
+            if(S == T)
                 output.append("Case ").append(++cases).append(": 0\n");
-                continue;
-            }
-            ArrayList<Short> trans = new ArrayList<>();
-            trans.add((short)S);
-            int step = 1;
-            boolean[] visited = new boolean[T + 1];
-            boolean found = false;
-            while(!trans.isEmpty() && !found) {
-                ArrayList<Short> nextTrans = new ArrayList<>();
-                for(Short s : trans) {
-                    for(int i = 0; i < 67 && primes[i] < s && !found; ++i) {
-                        if(s % primes[i] == 0) {
-                            if(s + primes[i] == T) {
-                                output.append("Case ").append(++cases).append(": ").append(step).append('\n');
-                                found = true;
-                            } else if(s + primes[i] < T && !visited[s + primes[i]]) {
-                                nextTrans.add((short)(s + primes[i]));
-                                visited[s + primes[i]] = true;
+            else {
+                ArrayList<Short> curr = new ArrayList<>();
+                curr.add((short)S);
+                int step = 1;
+                boolean[] visited = new boolean[T + 1];
+                boolean found = false;
+                while(!curr.isEmpty() && !found) {
+                    ArrayList<Short> next = new ArrayList<>();
+                    for(Short s : curr) {
+                        for(int i = 0; i < 67 && primes[i] < s && !found; ++i) {
+                            if(s % primes[i] == 0) {
+                                if(s + primes[i] == T) {
+                                    output.append("Case ").append(++cases).append(": ").append(step).append('\n');
+                                    found = true;
+                                } else if(s + primes[i] < T && !visited[s + primes[i]]) {
+                                    next.add((short)(s + primes[i]));
+                                    visited[s + primes[i]] = true;
+                                }
                             }
                         }
                     }
+                    curr = new ArrayList<>(next);
+                    ++step;
                 }
-                trans = new ArrayList<>(nextTrans);
-                ++step;
+                if(!found)
+                    output.append("Case ").append(++cases).append(": -1\n");
             }
-            if(!found)
-                output.append("Case ").append(++cases).append(": -1\n");
     	}
         System.out.print(output);
 	}
