@@ -13,7 +13,7 @@ int main() {
             putchar('\n');
         Player table[n];
         for(int i = 0; i < n; ++i)
-            table[i].win = table[i].lose = 0;
+            table[i] = (Player){0, 0};
         int k;
         scanf("%d", &k);
         int games = k * n * (n - 1) >> 1, p1, p2;
