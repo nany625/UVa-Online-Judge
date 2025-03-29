@@ -8,7 +8,7 @@ int main() {
         scanf("%d %d", &a, &b);
         a += (a + 1) & 1;
 	 	b -= (b + 1) & 1;
-        printf("Case %d: %d\n", i, -a * a + b * b + (a << 1) + (b << 1) >> 2);
+        printf("Case %d: %d\n", i, - a * a + b * b + (a << 1) + (b << 1) >> 2);
     }
     return 0;
 }
