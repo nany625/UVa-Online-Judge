@@ -18,8 +18,7 @@ int main() {
             value[ch] = v;
         }
         int M;
-        scanf("%d", &M);
-        getchar();
+        scanf("%d ", &M);
         int money = 0;
         while(M--) {
             fgets(buffer, sizeof(buffer), stdin);
