@@ -5,16 +5,14 @@
 
 int main() {
     int T;
-    scanf("%d", &T);
-    getchar();
-    getchar();
+    scanf("%d ", &T);
     char *buffer = NULL;
     size_t bufsize = 0;
     for(int i = 1; i <= T; ++i) {
         if(i > 1)
             putchar('\n');
         printf("Case #%d:\n", i);
-        while(getline(&buffer, &bufsize, stdin) != -1 && strcmp(buffer, "\n") != 0) {
+        while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
             char *token = strtok(buffer, " ");
             int count = 0;
             while(token) {
