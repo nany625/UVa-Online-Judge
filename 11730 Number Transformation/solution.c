@@ -15,43 +15,43 @@ short primes[] = {
 
 int main() {
     int cases = 0, S, T;
-    while(scanf("%d %d", &S, &T) && S != 0 && T != 0) {
-        if(S == T) {
+    while(scanf("%d %d", &S, &T) && S != 0) {
+        if(S == T)
             printf("Case %d: 0\n", ++cases);
-            continue;
-        }
-        short **trans = (short**)malloc(sizeof(short*));
-        trans[0] = (short*)malloc(sizeof(short));
-        trans[0][0] = S;
-        int currSize = 1, step = 1;
-        bool visited[T + 1], found = false;
-        memset(visited, 0, sizeof(visited));
-        while(currSize > 0 && !found) {
-            trans = (short**)realloc(trans, (step + 1) * sizeof(short*));
-            trans[step] = NULL;
-            int nextSize = 0;
-            for(int i = 0; i < currSize && !found; ++i) {
-                for(int j = 0; j < 67 && primes[j] < trans[step - 1][i] && !found; ++j) {
-                    if(trans[step - 1][i] % primes[j] == 0) {
-                        if(trans[step - 1][i] + primes[j] == T) {
-                            printf("Case %d: %d\n", ++cases, step);
-                            found = true;
-                        } else if(trans[step - 1][i] + primes[j] < T && !visited[trans[step - 1][i] + primes[j]]) {
-                            trans[step] = (short*)realloc(trans[step], (nextSize + 1) * sizeof(short));
-                            trans[step][nextSize++] = trans[step - 1][i] + primes[j];
-                            visited[trans[step - 1][i] + primes[j]] = true;
+        else {
+            short *curr = (short*)malloc(sizeof(short));
+            curr[0] = S;
+            int currSize = 1, step = 1;
+            bool visited[T + 1], found = false;
+            memset(visited, 0, sizeof(visited));
+            while(currSize > 0 && !found) {
+                short *next = NULL;
+                int nextSize = 0;
+                for(int i = 0; i < currSize && !found; ++i) {
+                    for(int j = 0; j < 67 && primes[j] < curr[i] && !found; ++j) {
+                        if(curr[i] % primes[j] == 0) {
+                            if(curr[i] + primes[j] == T) {
+                                printf("Case %d: %d\n", ++cases, step);
+                                found = true;
+                            } else if(curr[i] + primes[j] < T && !visited[curr[i] + primes[j]]) {
+                                next = (short*)realloc(next, (nextSize + 1) * sizeof(short));
+                                next[nextSize++] = curr[i] + primes[j];
+                                visited[curr[i] + primes[j]] = true;
+                            }
                         }
                     }
                 }
+                curr = (short*)realloc(curr, (nextSize) * sizeof(short));
+                for(int i = 0; i < nextSize; ++i)
+                    curr[i] = next[i];
+                currSize = nextSize;
+                ++step;
+                free(next);
             }
-            currSize = nextSize;
-            ++step;
+            if(!found)
+                printf("Case %d: -1\n", ++cases);
+            free(curr);
         }
-        if(!found)
-            printf("Case %d: -1\n", ++cases);
-        for(int i = 0; i < step; ++i)
-            free(trans[i]);
-        free(trans);
     }
 	return 0;
 }
