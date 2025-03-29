@@ -6,8 +6,7 @@ int main() {
     int A, B;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(scanf("%d %d", &A, &B) && A != 0 && B != 0) {
-        getchar();
+    while(scanf("%d %d ", &A, &B) && A != 0) {
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         int *X = NULL, sizeX = 0;
