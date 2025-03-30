@@ -27,9 +27,8 @@ int main() {
 	int cases = 0, N;
 	char *buffer = NULL;
 	size_t bufsize = 0;
-	while(scanf("%d", &N) && N != 0) {
+	while(scanf("%d ", &N) && N != 0) {
 	    printf("Case %d\n", ++cases);
-	    getchar();
 	    clear();
 	    int cursorRow = 0, cursorCol = 0;
 	    bool override = true;
