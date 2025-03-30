@@ -17,13 +17,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
+        int N;
 		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-		    int N = (int)st.nval;
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (N = (int)st.nval) != 0) {
 		    st.nextToken();
 		    int M = (int)st.nval;
-		    if(N == 0 || M == 0)
-		        break;
 		    int[] generator1 = new int[4], generator2 = new int[4];
 		    while(N-- > 0) {
 		        st.nextToken();
