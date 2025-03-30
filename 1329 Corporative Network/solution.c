@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_NUM 20000
+#define MAXN 20000
 
-int root[MAX_NUM + 1], length[MAX_NUM + 1];
+int root[MAXN + 1], length[MAXN + 1];
 
 int find(int x) {
     if(root[x] != x) {
