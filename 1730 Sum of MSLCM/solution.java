@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Main {
-    static int MAX_NUM = 20000000;
-    static long[] ans = new long[MAX_NUM + 1];
+    static int MAXN = 20000000;
+    static long[] ans = new long[MAXN + 1];
 	public static void main(String[] args) throws IOException {
 	    init();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,11 +15,11 @@ public class Main {
 	}
 	
 	static void init() {
-        for(int n = 2; n <= MAX_NUM; ++n) {
-            for(int i = n; i <= MAX_NUM; i += n)
+        for(int n = 2; n <= MAXN; ++n) {
+            for(int i = n; i <= MAXN; i += n)
                 ans[i] += n;
         }
-        for(int n = 3; n <= MAX_NUM; ++n)
+        for(int n = 3; n <= MAXN; ++n)
             ans[n] += ans[n - 1];
     }
 }
