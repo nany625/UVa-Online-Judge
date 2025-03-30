@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Main {
-    static int MAX_NUM = 20000;
-    static int[] root = new int[MAX_NUM + 1], length = new int[MAX_NUM + 1];
+    static int MAXN = 20000;
+    static int[] root = new int[MAXN + 1], length = new int[MAXN + 1];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
