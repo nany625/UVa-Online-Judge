@@ -30,9 +30,9 @@ int main() {
 		bool isForest = true;
 		for(int i = 0; i < m; ++i) {
 			int root1 = find(edges[i].u), root2 = find(edges[i].v);
-			if(root1 != root2) {
+			if(root1 != root2)
 				root[root2] = root1;
-			} else {
+			else {
 				if(!isForest)
 					putchar(' ');
 				printf("%d", edges[i].w);
