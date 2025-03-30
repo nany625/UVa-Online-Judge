@@ -2,7 +2,7 @@
 
 int main() {
     int N, M;
-    while(scanf("%d %d", &N, &M) && N != 0 && M != 0) {
+    while(scanf("%d %d", &N, &M) && N != 0) {
         int Jack[N], Jill[M];
         for(int i = 0; i < N; ++i)
             scanf("%d", &Jack[i]);
