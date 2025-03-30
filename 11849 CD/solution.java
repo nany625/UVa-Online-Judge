@@ -7,10 +7,10 @@ public class Main {
 		StringBuilder output = new StringBuilder();
 		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
 		    int N = (int)st.nval;
+            if(N == 0)
+		        break;
 		    st.nextToken();
 		    int M = (int)st.nval;
-		    if(N == 0 || M == 0)
-		        break;
 		    int[] Jack = new int[N], Jill = new int[M];
 		    for(int i = 0; i < N; ++i) {
 		        st.nextToken();
