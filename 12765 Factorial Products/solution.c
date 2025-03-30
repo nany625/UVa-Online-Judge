@@ -24,7 +24,7 @@ bool equal(int *array1, int *array2) {
 
 int main() {
     int N, M;
-    while(scanf("%d %d", &N, &M) && N != 0 && M != 0) {
+    while(scanf("%d %d", &N, &M) && N != 0) {
         int generator1[4] = {}, generator2[4] = {}, digit;
         while(N--) {
             scanf("%d", &digit);
