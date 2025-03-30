@@ -6,8 +6,7 @@ int main() {
 	int J, R;
     char *buffer = NULL;
 	size_t bufsize = 0;
-	while(scanf("%d %d", &J, &R) == 2) {
-		getchar();
+	while(scanf("%d %d ", &J, &R) == 2) {
 		int points[J];
 		for(int i = 0; i < J; ++i)
 			points[i] = 0;
