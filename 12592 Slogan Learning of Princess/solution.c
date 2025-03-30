@@ -27,8 +27,7 @@ const char *binarySearch(Slogan *array, int size, char *key) {
 
 int main() {
     int N;
-    scanf("%d", &N);
-    getchar();
+    scanf("%d ", &N);
     Slogan slogans[N];
     for(int i = 0; i < N; ++i) {
         fgets(slogans[i].firstLine, sizeof(slogans[i].firstLine), stdin);
@@ -37,8 +36,7 @@ int main() {
     }
     qsort(slogans, N, sizeof(Slogan), compare);
     int Q;
-    scanf("%d", &Q);
-    getchar();
+    scanf("%d ", &Q);
     char buffer[102];
     while(Q--) {
         fgets(buffer, sizeof(buffer), stdin);
