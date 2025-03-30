@@ -14,8 +14,7 @@ int tokenSum(char *number, int first, int last) {
 	
 int main() {
 	int N;
-	scanf("%d", &N);
-	getchar();
+	scanf("%d ", &N);
 	char number[21];
 	while(N--) {
 	    fgets(number, sizeof(number), stdin);
