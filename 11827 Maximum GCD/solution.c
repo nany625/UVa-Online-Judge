@@ -17,12 +17,12 @@ int main() {
 	size_t bufsize = 0;
 	while(N--) {
 	    getline(&buffer, &bufsize, stdin);
-	    char *token = strtok(buffer, " \n");
+	    char *token = strtok(buffer, " ");
 	    int *numbers = NULL, size = 0;
 	    while(token) {
 	        numbers = (int*)realloc(numbers, (size + 1) * sizeof(int));
 	        numbers[size++] = atoi(token);
-	        token = strtok(NULL, " \n");
+	        token = strtok(NULL, " ");
 	    }
 	    qsort(numbers, size, sizeof(int), compare);
 	    int max = 1;
