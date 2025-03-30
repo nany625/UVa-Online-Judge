@@ -8,8 +8,7 @@ int main() {
     char *buffer = NULL;
     size_t bufsize = 0;
     for(int i = 1; i <= T; ++i) {
-        scanf("%*d");
-        getchar();
+        scanf("%*d ");
         getline(&buffer, &bufsize, stdin);
         int highJumps = 0, lowJumps = 0, len = strlen(buffer);
         for(int j = 2; j < len; j += 2) {
