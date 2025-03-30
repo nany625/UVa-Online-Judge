@@ -11,7 +11,7 @@ public class Main {
         for(int i = 1; i <= T; ++i) {
             st.nextToken();
             int N = (int)st.nval;
-            HashMap<String, Integer> subject = new HashMap<>();
+            Map<String, Integer> subject = new HashMap<>();
             while(N-- > 0) {
                 st.nextToken();
                 String name = st.sval;
