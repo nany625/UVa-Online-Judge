@@ -12,8 +12,7 @@ int GCD(int i, int j) {
 
 int main() {
 	int N;
-	scanf("%d", &N);
-	getchar();
+	scanf("%d ", &N);
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	while(N--) {
