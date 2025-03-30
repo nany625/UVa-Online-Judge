@@ -18,8 +18,7 @@ int main() {
         short s, f;
         while(scanf("%hd %hd", &s, &f) && (s != 0 || f != 0)) {
             events = (Event*)realloc(events, (size + 1) * sizeof(Event));
-            events[size].s = s;
-            events[size++].f = f;
+            events[size++] = (Event){s, f};
         }
         qsort(events, size, sizeof(Event), compare);
         int end = 0, count = 0;
