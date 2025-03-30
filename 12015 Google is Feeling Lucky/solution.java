@@ -2,8 +2,8 @@
 import java.io.*;
 
 public class Main {
+    static Webpage[] webpages = new Webpage[10];
     public static void main(String[] args) throws IOException {
-        Webpage[] webpages = new Webpage[10];
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
