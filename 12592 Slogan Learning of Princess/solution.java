@@ -7,7 +7,7 @@ public class Main {
         StreamTokenizer st = new StreamTokenizer(br);
         st.nextToken();
         int N = (int)st.nval;
-    	HashMap<String, String> slogans = new HashMap<>();
+    	Map<String, String> slogans = new HashMap<>();
     	for(int i = 0; i < N; ++i)
     	    slogans.put(br.readLine(), br.readLine());
         st.nextToken();
