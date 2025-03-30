@@ -1,16 +1,17 @@
 import java.io.*;
 
 public class Main {
-    static short[] factorCount = new short[1000001];
-    static int[] table = new int[500000];
+    static int MAXN = 1000000;
+    static short[] factorCount = new short[MAXN + 1];
+    static int[] table = new int[MAXN >> 1];
 	public static void main(String[] args) throws IOException {
-        for(int i = 3; i <= 1000000; ++i) {
-            for(int j = i; j <= 1000000; j += i)
+        for(int i = 3; i <= MAXN; ++i) {
+            for(int j = i; j <= MAXN; j += i)
                 ++factorCount[j];
         }
         short max = 2;
         table[0] = 2;
-        for(int i = 4; i <= 1000000; i += 2) {
+        for(int i = 4; i <= MAXN; i += 2) {
             if(max <= factorCount[i] + 2) {
                 max = (short)(factorCount[i] + 2);
                 table[(i >> 1) - 1] = i;
