@@ -1,6 +1,7 @@
 import java.io.*;
 
 public class Main {
+    static int MOD = 1000007;
     static int[] dRow = {-1, -1}, dCol = {1, -1};
     static char[][] board = new char[100][100];
 	public static void main(String[] args) throws IOException {
@@ -30,12 +31,12 @@ public class Main {
                         int newRow = j + dRow[l], newCol = k + dCol[l];
                         if(newRow >= 0 && newCol >= 0 && newCol < N) {
                             if(board[newRow][newCol] == '.')
-                                paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
+                                paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % MOD;
                             else if(board[newRow][newCol] == 'B') {
                                 newRow = j + (dRow[l] << 1);
                                 newCol = k + (dCol[l] << 1);
                                 if(newRow >= 0 && newCol >= 0 && newCol < N && board[newRow][newCol] == '.')
-                                    paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
+                                    paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % MOD;
                             }
                         }
                     }
@@ -44,7 +45,7 @@ public class Main {
             int totalPaths = 0;
             for(int j = (startRow + startCol) & 1; j < N; j += 2)
                 totalPaths += paths[0][j];
-            output.append("Case ").append(i).append(": ").append(totalPaths %= 1000007).append('\n');
+            output.append("Case ").append(i).append(": ").append(totalPaths %= MOD).append('\n');
 		}
         System.out.print(output);
 	}
