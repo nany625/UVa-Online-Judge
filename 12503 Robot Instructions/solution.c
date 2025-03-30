@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    char command[6];
     int T;
     scanf("%d", &T);
+    char command[6];
 	while(T--) {
 		int n;
         scanf("%d", &n);
