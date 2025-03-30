@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#define MOD 1000007
 
 int dRow[] = {-1, -1}, dCol[] = {1, -1};
 char board[100][101];
@@ -29,12 +30,12 @@ int main() {
                     int newRow = j + dRow[l], newCol = k + dCol[l];
                     if(newRow >= 0 && newCol >= 0 && newCol < N) {
                         if(board[newRow][newCol] == '.')
-                            paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
+                            paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % MOD;
                         else if(board[newRow][newCol] == 'B') {
                             newRow = j + (dRow[l] << 1);
                             newCol = k + (dCol[l] << 1);
                             if(newRow >= 0 && newCol >= 0 && newCol < N && board[newRow][newCol] == '.')
-                                paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % 1000007;
+                                paths[newRow][newCol] = (paths[newRow][newCol] + paths[j][k]) % MOD;
                         }
                     }
                 }
@@ -43,7 +44,7 @@ int main() {
         int totalPaths = 0;
         for(int j = (startRow + startCol) & 1; j < N; j += 2)
             totalPaths += paths[0][j];
-        printf("Case %d: %d\n", i, totalPaths %= 1000007);
+        printf("Case %d: %d\n", i, totalPaths %= MOD);
     }
 	return 0;
 }
