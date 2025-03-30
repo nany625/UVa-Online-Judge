@@ -3,8 +3,7 @@
 
 int main() {
     int T;
-    scanf("%d", &T);
-    getchar();
+    scanf("%d ", &T);
     char decode[82];
     while(T--) {
         while(fgets(decode, sizeof(decode), stdin) && decode[0] != '\n') {
