@@ -1,12 +1,13 @@
 import java.io.*;
 
 public class Main {
-    static long[] dp = new long[30001];
+    static int MAX_AMOUNT = 30000;
+    static long[] dp = new long[MAX_AMOUNT + 1];
     static int[] coins = {1, 5, 10, 25, 50};
 	public static void main(String[] args) throws IOException {
 		dp[0] = 1;
 		for(int coin : coins) {
-            for(int i = coin; i <= 30000; ++i)
+            for(int i = coin; i <= MAX_AMOUNT; ++i)
                 dp[i] += dp[i - coin];
         }
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
