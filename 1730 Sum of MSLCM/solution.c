@@ -1,14 +1,14 @@
 #include <stdio.h>
-#define MAX_NUM 20000000
+#define MAXN 20000000
 
-long ans[MAX_NUM + 1];
+long ans[MAXN + 1];
 
 void init() {
-    for(int n = 2; n <= MAX_NUM; ++n) {
-        for(int i = n; i <= MAX_NUM; i += n)
+    for(int n = 2; n <= MAXN; ++n) {
+        for(int i = n; i <= MAXN; i += n)
             ans[i] += n;
     }
-    for(int n = 3; n <= MAX_NUM; ++n)
+    for(int n = 3; n <= MAXN; ++n)
         ans[n] += ans[n - 1];
 }
 
