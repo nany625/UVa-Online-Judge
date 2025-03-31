@@ -43,10 +43,7 @@ public class Main {
     	    short max = 0;
     	    for(int i = 0; i < line.length(); ++i) {
     	        if(Character.isLetter(line.charAt(i))) {
-    	            if(frequency.containsKey(line.charAt(i)))
-						frequency.replace(line.charAt(i), (short)(frequency.get(line.charAt(i)) + 1));
-					else
-						frequency.put(line.charAt(i), (short)1);
+    	            frequency.put(line.charAt(i), (short)(frequency.getOrDefault(line.charAt(i), (short)0) + 1));
 					max = (short)Math.max(max, frequency.get(line.charAt(i)));
     	        }
     	    }
@@ -60,6 +57,7 @@ public class Main {
 	}
 }
 
+
 // #解法三
 import java.io.*;
 import java.util.*;
@@ -70,7 +68,7 @@ public class Main {
         String line;
         StringBuilder output = new StringBuilder();
     	while((line = br.readLine()) != null && !line.isEmpty()) {
-    	    HashMap<Character, Short> frequency = new HashMap<>();
+    	    Map<Character, Short> frequency = new HashMap<>();
     	    ArrayList<Character> frequencyKeys = new ArrayList<>();
     	    short max = 0;
     	    for(int i = 0; i < line.length(); ++i) {
