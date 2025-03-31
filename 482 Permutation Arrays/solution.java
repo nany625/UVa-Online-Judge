@@ -10,7 +10,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(cases-- > 0) {
     		br.readLine();
-			HashMap<Integer, String> map = new HashMap<>();
+			Map<Integer, String> map = new HashMap<>();
     		String[] p = br.readLine().split("\\s+");
 			String[] x = br.readLine().split("\\s+");
 			for(int i = 0; i < p.length; ++i)
