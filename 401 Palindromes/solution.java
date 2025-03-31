@@ -2,17 +2,16 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static String Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+    static String Reverses = "A---3--HIL-JM-O---2TUVWXY51SE-Z--8-";
 	public static void main(String[] args) throws IOException {
-	    String Characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-        String Reverses = "A---3--HIL-JM-O---2TUVWXY51SE-Z--8-";
-        HashMap<Character, Character> map = new HashMap<>();
+        Map<Character, Character> map = new HashMap<>();
         for(int i = 0; i < 35; ++i)
             map.put(Characters.charAt(i), Reverses.charAt(i));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s;
         StringBuilder output = new StringBuilder();
         while((s = br.readLine()) != null) {
-	        int len = ;
             boolean isMirror = true;
 	        for(int i = 0; i < s.length() + 1 >> 1 && isMirror; ++i)
                 isMirror = map.get(s.charAt(i)) == s.charAt(s.length() - 1 - i);
