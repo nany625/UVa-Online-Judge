@@ -8,7 +8,7 @@ public class Main {
         String sentence;
         int maxLen = 0;
         StringBuilder output = new StringBuilder();
-        while((sentence = br.readLine()) != null && !sentence.isEmpty()) {
+        while((sentence = br.readLine()) != null) {
             maxLen = Math.max(maxLen, sentence.length());
             sentences.add(sentence);
         }
