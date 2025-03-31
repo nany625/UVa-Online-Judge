@@ -35,8 +35,8 @@ public class Main {
 	}
 	
 	static void dfs(int row, int rowLimit, int col, int colLimit, int[] area) {
-        ++area[0];
         visited[row][col] = true;
+        ++area[0];
         for(int i = 0; i < 8; ++i) {
             int newRow = row + dRow[i], newCol = col + dCol[i];
             if(newRow >= 0 && newRow < rowLimit && newCol >= 0 && newCol < colLimit && !visited[newRow][newCol] && grid[newRow][newCol] == grid[row][col])
