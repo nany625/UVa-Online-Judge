@@ -39,7 +39,7 @@ public class Main {
         String line;
         StringBuilder output = new StringBuilder();
     	while((line = br.readLine()) != null && !line.isEmpty()) {
-    	    TreeMap<Character, Short> frequency = new TreeMap<>();
+    	    Map<Character, Short> frequency = new TreeMap<>();
     	    short max = 0;
     	    for(int i = 0; i < line.length(); ++i) {
     	        if(Character.isLetter(line.charAt(i))) {
