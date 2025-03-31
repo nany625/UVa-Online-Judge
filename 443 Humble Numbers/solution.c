@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int humbleNumbers[5842], size = 0;
+int humbleNumbers[5842], size;
 
 int compare(const void *a, const void *b) {
     return *(int*)a > *(int*)b;
