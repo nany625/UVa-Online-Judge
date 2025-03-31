@@ -17,11 +17,37 @@ public class Main {
 	}
 	
 	static int josephus(int n, int k) {
+        int ans = 0;
+        for(int i = 2; i <= n; ++i)
+            ans = (ans + k) % i;
+        return ans;
+    }
+}
+
+// #解法二(正規演算法)
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StreamTokenizer st = new StreamTokenizer(br);
+        int n;
+		StringBuilder output = new StringBuilder();
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
+		    int m = 2;
+		    while(josephus(n - 1, m) != 0)
+                ++m;
+		    output.append(m).append('\n');
+		}
+        System.out.print(output);
+	}
+	
+	static int josephus(int n, int k) {
         return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
     }
 }
 
-// #解法二(捷徑)
+// #解法三(捷徑)
 import java.io.*;
 
 public class Main {
