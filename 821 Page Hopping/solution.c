@@ -35,7 +35,7 @@ int main() {
         for(int i = 0; i < nodesCount; ++i) {
             memset(visited, 0, sizeof(visited));
             visited[path[0][0] = nodes[i]] = true;
-            int length = 1, currSize = 1;
+            int currSize = 1, length = 1;
             while(currSize > 0) {
                 int nextSize = 0;
                 for(int j = 0; j < currSize; ++j) {
