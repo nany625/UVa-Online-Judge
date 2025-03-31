@@ -6,7 +6,7 @@
 int main() {
 	char **sentences = NULL, sentence[102];
 	int maxLen = 0, size = 0;
-	while(fgets(sentence, sizeof(sentence), stdin) && strcmp(sentence, "\0") != 0) {
+	while(fgets(sentence, sizeof(sentence), stdin)) {
 		sentence[strcspn(sentence, "\n")] = '\0';
 		maxLen = maxLen > strlen(sentence) ? maxLen : strlen(sentence);
 		sentences = (char**)realloc(sentences, (size + 1) * sizeof(char*));
