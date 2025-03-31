@@ -17,15 +17,15 @@ public class Main {
     	    st.nextToken();
     	    int number = (int)st.nval;
     	    output.append(number).append(" = ");
-    	    if(number == 1) {
+    	    if(number == 1)
     	        output.append("1 (fib)\n");
-    	        continue;
+    	    else {
+    	        for(int i = binarySearch(number); i >= 2; --i) {
+        	        output.append(number / fib[i]);
+        	        number %= fib[i];
+        	    }
+        	    output.append(" (fib)\n");
     	    }
-    	    for(int i = binarySearch(number); i >= 2; --i) {
-    	        output.append(number / fib[i]);
-    	        number %= fib[i];
-    	    }
-    	    output.append(" (fib)\n");
     	}
         System.out.print(output);
 	}
