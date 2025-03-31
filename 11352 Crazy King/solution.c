@@ -3,75 +3,51 @@
 #include <string.h>
 #include <stdbool.h>
 
-int horsedRow[] = {2, 2, 1, 1, -1, -1, -2, -2}, horsedCol[] = {1, -1, 2, -2, 2, -2, 1, -1};
-int kingdRow[] = {1, 1, 1, -1, -1, -1, 0, 0}, kingdCol[] = {1, 0, -1, 1, 0, -1, 1, -1};
-char forest[100][101];
+int dRow[] = {2, 2, 1, 1, -1, -1, -2, -2}, dCol[] = {1, -1, 2, -2, 2, -2, 1, -1};
 
 typedef struct {
     int row, col;
-} Coordinate;
+} Square;
 
 int main() {
-    int T;
-    scanf("%d", &T);
-    while(T--) {
-        int M, N;
-        scanf("%d %d", &M, &N);
-        for(int i = 0; i < M; ++i)
-            scanf("%s", forest[i]);
-        for(int i = 0; i < M; ++i) {
-            for(int j = 0; j < N; ++j) {
-                if(forest[i][j] == 'Z') {
-                    for(int k = 0; k < 8; ++k) {
-                        int newRow = i + horsedRow[k], newCol = j + horsedCol[k];
-                        if(newRow >= 0 && newRow < M && newCol >= 0 && newCol < N && forest[newRow][newCol] == '.')
-                            forest[newRow][newCol] = 'z';
-                    }
-                }
-            }
-        }
-        int kingRow = 0, kingCol = 0;
-        while(forest[kingRow][kingCol] != 'A') {
-            ++kingCol;
-            if(kingCol == N) {
-                ++kingRow;
-                kingCol = 0;
-            }
-        }
-        forest[kingRow][kingCol] = 'z';
-        Coordinate *curr = (Coordinate*)malloc(sizeof(Coordinate));
-        curr[0] = (Coordinate){kingRow, kingCol};
-        bool safe = false;
-        int currSize = 1, length = 1;
-        while(currSize > 0 && !safe) {
-            Coordinate *next = NULL;
-            int nextSize = 0;
-            for(int i = 0; i < currSize && !safe; ++i) {
-                for(int j = 0; j < 8 && !safe; ++j) {
-                    int newRow = curr[i].row + kingdRow[j];
-                    int newCol = curr[i].col + kingdCol[j];
-                    if(newRow >= 0 && newRow < M && newCol >= 0 && newCol < N) {
-                        if(forest[newRow][newCol] == 'B') {
-                            printf("Minimal possible length of a trip is %d\n", length);
-                            safe = true;
-                        } else if(forest[newRow][newCol] == '.') {
-                            next = (Coordinate*)realloc(next, (nextSize + 1) * sizeof(Coordinate));
-                            next[nextSize++] = (Coordinate){newRow, newCol};
-                            forest[newRow][newCol] = 'z';
+    char buffer[7];
+    while(fgets(buffer, sizeof(buffer), stdin)) {
+        if(strncmp(buffer, buffer + 3, 2) == 0)
+            printf("To get from %.2s to %.2s takes 0 knight moves.\n", buffer, buffer + 3);
+        else {
+            Square *curr = (Square*)malloc(sizeof(Square));
+            curr[0] = (Square){buffer[1] - '1', buffer[0] - 'a'};
+            int endRow = buffer[4] - '1', endCol = buffer[3] - 'a', currSize = 1, move = 1;
+            bool visited[8][8] = {}, found = false;
+            visited[curr[0].row][curr[0].col] = true;
+            while(!found) {
+                Square *next = NULL;
+                int nextSize = 0;
+                for(int i = 0; i < currSize && !found; ++i) {
+                    for(int j = 0; j < 8 && !found; ++j) {
+                        int newRow = curr[i].row + dRow[j];
+                        int newCol = curr[i].col + dCol[j];
+                        if(newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8) {
+                            if(newRow == endRow && newCol == endCol) {
+                                printf("To get from %c%c to %c%c takes %d knight moves.\n", buffer[0], buffer[1], buffer[3], buffer[4], move);
+                                found = true;
+                            } else if(!visited[newRow][newCol]) {
+                                next = (Square*)realloc(next, (nextSize + 1) * sizeof(Square));
+                                next[nextSize++] = (Square){newRow, newCol};
+                                visited[newRow][newCol] = true;
+                            }
                         }
                     }
                 }
+                curr = (Square*)realloc(curr, nextSize * sizeof(Square));
+                for(int i = 0; i < nextSize; ++i)
+                    curr[i] = next[i];
+                currSize = nextSize;
+                ++move;
+                free(next);
             }
-            curr = (Coordinate*)realloc(curr, (nextSize) * sizeof(Coordinate));
-            for(int i = 0; i < nextSize; ++i)
-                curr[i] = next[i];
-            currSize = nextSize;
-            ++length;
-            free(next);
+            free(curr);
         }
-        if(!safe)
-            puts("King Peter, you can't go now!");
-        free(curr);
     }
     return 0;
 }
