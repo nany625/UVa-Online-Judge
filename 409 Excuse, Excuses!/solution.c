@@ -38,9 +38,10 @@ bool binarySearch(char **array, int size, char *key) {
 
 int main() {
 	int set = 0, K, E;
+    char keyword[21];
 	while(scanf("%d %d", &K, &E) == 2) {
 	    printf("Excuse Set #%d\n", ++set);
-	    char **keywords = NULL, keyword[21];
+	    char **keywords = NULL;
 	    int size = 0;
 	    while(K--) {
 	        scanf("%s", keyword);
