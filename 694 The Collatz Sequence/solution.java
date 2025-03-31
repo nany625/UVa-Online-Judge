@@ -5,9 +5,11 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
         long A;
-        int cases = 0, L;
+        int cases = 0;
         StringBuilder output = new StringBuilder();
-        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (long)st.nval) >= 0 && st.nextToken() == StreamTokenizer.TT_NUMBER && (L = (int)st.nval) >= 0) {
+        while(st.nextToken() == StreamTokenizer.TT_NUMBER && (A = (long)st.nval) >= 0) {
+            st.nextToken();
+            int L = (int)st.nval;
             output.append("Case ").append(++cases).append(": A = ").append(A).append(", limit = ").append(L).append(", number of terms = ");
             int terms = 0;
             while(A != 1 && A <= L) {
