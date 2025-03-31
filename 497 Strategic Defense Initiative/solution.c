@@ -19,9 +19,7 @@ int binarySearch(int *array, int size, int key) {
 
 int main() {
     int cases;
-    scanf("%d", &cases);
-    getchar();
-    getchar();
+    scanf("%d ", &cases);
     char buffer[12];
 	while(cases--) {
 	    DP *dp = NULL;
