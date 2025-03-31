@@ -6,15 +6,12 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
-		int cases = 0;
+		int cases = 0, n;
 		StringBuilder output = new StringBuilder();
-		while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
-		    int n = (int)st.nval;
+		while(st.nextToken() == StreamTokenizer.TT_NUMBER && (n = (int)st.nval) != 0) {
 		    st.nextToken();
 		    int r = (int)st.nval;
-		    if(n == 0)
-		        break;
-    		HashMap<String, Integer> cityID = new HashMap<>();
+    		Map<String, Integer> cityID = new HashMap<>();
     		ArrayList<Edge> edges = new ArrayList<>();
     		int id = 0;
     		while(r-- > 0) {
