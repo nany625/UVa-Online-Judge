@@ -13,7 +13,7 @@ int main() {
 		int len = strlen(plaintext);
 		for(int i = 0; i < len; ++i)
 		    ASCII[(int)plaintext[i]] = substitution[i];
-		while(fgets(text, sizeof(text), stdin) && strcmp(text, "\n") != 0) {
+		while(fgets(text, sizeof(text), stdin) && text[0] != '\n') {
 		    len = strlen(text);
 		    for(int i = 0; i < len; ++i)
 		        putchar(ASCII[(int)text[i]] != '\0' ? ASCII[(int)text[i]] : text[i]);
