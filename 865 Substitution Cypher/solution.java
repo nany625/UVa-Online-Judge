@@ -12,7 +12,7 @@ public class Main {
     	while(cases-- > 0) {
     	    String plaintext = br.readLine(), substitution = br.readLine();
     	    output.append(substitution).append('\n').append(plaintext).append('\n');
-    	    HashMap<Character, Character> cypher = new HashMap<>();
+    	    Map<Character, Character> cypher = new HashMap<>();
     	    for(int i = 0; i < plaintext.length(); ++i)
     	        cypher.put(plaintext.charAt(i), substitution.charAt(i));
     	    String text;
