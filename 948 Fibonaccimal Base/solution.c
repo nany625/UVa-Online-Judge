@@ -28,15 +28,15 @@ int main() {
 	    int number;
 	    scanf("%d", &number);
 	    printf("%d = ", number);
-	    if(number == 1) {
+	    if(number == 1)
 	        puts("1 (fib)");
-	        continue;
+	    else {
+	        for(int i = binarySearch(number); i >= 2; --i) {
+    	        putchar(number / fib[i] + '0');
+    	        number %= fib[i];
+    	    }
+    	    puts(" (fib)");
 	    }
-	    for(int i = binarySearch(number); i >= 2; --i) {
-	        putchar(number / fib[i] + '0');
-	        number %= fib[i];
-	    }
-	    puts(" (fib)");
 	}
 	return 0;
 }
