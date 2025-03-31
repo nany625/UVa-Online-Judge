@@ -11,9 +11,8 @@ int main() {
     int size = 0;
     while(getchar() == 'r') {
         rec = (Rectangle*)realloc(rec, (size + 1) * sizeof(Rectangle));
-        scanf("%f %f %f %f", &rec[size].x1, &rec[size].y1, &rec[size].x2, &rec[size].y2);
+        scanf("%f %f %f %f ", &rec[size].x1, &rec[size].y1, &rec[size].x2, &rec[size].y2);
         ++size;
-        getchar();
     }
     int point = 0;
     float x, y;
