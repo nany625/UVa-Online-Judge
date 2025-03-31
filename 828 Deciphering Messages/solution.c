@@ -16,12 +16,11 @@ int main() {
     while(cases--) {
         char *alphaKey = NULL;
         int numericalKey, messages;
-        scanf("%ms %d %d", &alphaKey, &numericalKey, &messages);
+        scanf("%ms %d %d ", &alphaKey, &numericalKey, &messages);
         bool L[26] = {};
         int alphaKeyLen = strlen(alphaKey);
         for(int i = 0; i < alphaKeyLen; ++i)
             L[alphaKey[i] - 'A'] = true;
-        getchar();
         while(messages--) {
             getline(&buffer, &bufsize, stdin);
             char *plaintext = NULL;
