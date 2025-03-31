@@ -22,8 +22,7 @@ int main() {
     char buffer[101];
     while(M--) {
         int i, j;
-        scanf("%d %d", &i, &j);
-        getchar();
+        scanf("%d %d ", &i, &j);
         int rows = 0;
         while(fgets(buffer, sizeof(buffer), stdin) && buffer[0] != '\n') {
             buffer[strcspn(buffer, "\n")] = '\0';
