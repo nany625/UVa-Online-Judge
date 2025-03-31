@@ -2,6 +2,27 @@
 #include <stdio.h>
 
 int josephus(int n, int k) {
+    int ans = 0;
+    for(int i = 2; i <= n; ++i)
+        ans = (ans + k) % i;
+    return ans;
+}
+
+int main() {
+    int n;
+    while(scanf("%d", &n) && n != 0) {
+        int m = 2;
+        while(josephus(n - 1, m) != 0)
+            ++m;
+        printf("%d\n", m);
+    }
+	return 0;
+}
+
+// #解法二(正規演算法)
+#include <stdio.h>
+
+int josephus(int n, int k) {
     return n == 1 ? 0 : (josephus(n - 1, k) + k) % n;
 }
 
@@ -16,7 +37,7 @@ int main() {
 	return 0;
 }
 
-// #解法二(捷徑)
+// #解法三(捷徑)
 #include <stdio.h>
 
 short ans[] = {
