@@ -9,7 +9,7 @@ typedef struct {
 } Answer;
 
 Answer *answers;
-bool isComposite[(MAXN >> 1) + 1];
+bool isComposite[(MAXN >> 2) + 1];
 int answerSize, *primes, primeSize;
 
 int compare(const void *a, const void *b) {
@@ -17,7 +17,7 @@ int compare(const void *a, const void *b) {
 }
 
 void eulerSieve() {
-    for(int n = 3; n <= MAXN; n += 2) {
+    for(int n = 3; n <= MAXN >> 1; n += 2) {
         if(!isComposite[n >> 1]) {
             primes = (int*)realloc(primes, (primeSize + 1) * sizeof(int));
             primes[primeSize++] = n;
@@ -29,7 +29,7 @@ void eulerSieve() {
                 term <<= 1;
             }
         }
-        for(int i = 0, temp; i < primeSize && (temp = primes[i] * n) <= MAXN; ++i) {
+        for(int i = 0, temp; i < primeSize && (temp = primes[i] * n) <= MAXN >> 1; ++i) {
             isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
                 break;
