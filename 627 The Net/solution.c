@@ -6,7 +6,7 @@
 
 int dist[MAXV][MAXV], next[MAXV][MAXV];
 
-void floydWarshall(int n) {
+void floydWarshall(int V) {
     for(int k = 1; k <= V; ++k) {
         for(int i = 1; i <= V; ++i) {
             for(int j = 1; j <= V; ++j) {
