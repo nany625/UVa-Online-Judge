@@ -55,7 +55,7 @@ int main() {
                 ++count;
             }
         }
-        printf("%.2lf\n", length);
+        printf("%.2f\n", length);
         if(cases)
             putchar('\n');
     }
