@@ -25,7 +25,7 @@ public class Main {
             Arrays.sort(edges, new Comparator<Edge>() {
                 @Override
                 public int compare(Edge e1, Edge e2) {
-                    return Double.compare(e1.w, e2.w);
+                    return Integer.compare(e1.w, e2.w);
                 }
             });
             for(int i = 0; i < m; ++i)
