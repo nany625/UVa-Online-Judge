@@ -21,7 +21,6 @@ int compare(const void *a, const void *b) {
 int main() {
 	int m, n;
 	while(scanf("%d %d", &m, &n) && m != 0) {
-	    int cost = 0;
 	    for(int i = 0; i < n; ++i)
 	        scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].w);
 	    qsort(edges, n, sizeof(Edge), compare);
