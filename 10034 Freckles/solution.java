@@ -2,7 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int[] root = new int[100];
+    static int MAXV = 100;
+    static int[] root = new int[MAXV];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
