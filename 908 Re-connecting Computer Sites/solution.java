@@ -44,7 +44,7 @@ public class Main {
                 st.nextToken();
                 edges.add(new Edge(u, v, (int)st.nval));
             }
-            Collections.sort(edges, new Comparator<Edge>() {
+            edges.sort(new Comparator<Edge>() {
                 @Override
                 public int compare(Edge e1, Edge e2) {
                     return Integer.compare(e1.w, e2.w);
