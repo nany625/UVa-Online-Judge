@@ -24,24 +24,20 @@ int main() {
     eulerSieve();
     long N;
     while(scanf("%ld", &N) == 1) {
-        if(N == 0)
-            puts("0");
-        else {
-            while((N & 1) == 0)
-                N >>= 1;
-            int count = 1;
-            for(int i = 0; i < size && N > 1; ++i) {
-                int term = 0;
-                while(N % primes[i] == 0) {
-                    ++term;
-                    N /= primes[i];
-                }
-                count *= (term + 1);
+        while((N & 1) == 0)
+            N >>= 1;
+        int count = 1;
+        for(int i = 0; i < size && N > 1; ++i) {
+            int term = 0;
+            while(N % primes[i] == 0) {
+                ++term;
+                N /= primes[i];
             }
-            if(N > 1)
-                count <<= 1;
-            printf("%d\n", count);
+            count *= (term + 1);
         }
+        if(N > 1)
+            count <<= 1;
+        printf("%d\n", count);
     }
     free(primes);
     return 0;
