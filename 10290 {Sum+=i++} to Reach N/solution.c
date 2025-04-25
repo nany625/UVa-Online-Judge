@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define MAX_NUM 800000
+#define MAX_NUM 750000
 
 bool isComposite[(MAX_NUM >> 1) + 1];
 int *primes, size;
