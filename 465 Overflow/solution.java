@@ -2,7 +2,7 @@ import java.io.*;
 import java.math.*;
 
 public class Main {
-    static BigInteger limit = new BigInteger("2147483648");
+    static BigInteger limit = new BigInteger("2147483647");
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -18,11 +18,11 @@ public class Main {
                 ans = first.add(second);
             else
                 ans = first.multiply(second);
-            if(!first.divide(limit).equals(BigInteger.ZERO))
+            if(first.compareTo(limit) > 0)
                 output.append("first number too big\n");
-            if(!second.divide(limit).equals(BigInteger.ZERO))
+            if(second.compareTo(limit) > 0)
                 output.append("second number too big\n");
-            if(!ans.divide(limit).equals(BigInteger.ZERO))
+            if(ans.compareTo(limit) > 0)
                 output.append("result too big\n");
         }
         System.out.print(output);
