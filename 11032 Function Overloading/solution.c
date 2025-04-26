@@ -15,7 +15,7 @@ int sod(int n) {
 int main() {
     for(int n = 1; n <= MAX_NUM; ++n) {
         int temp = n + sod(n);
-        if(fun[temp] == 0 && temp <= MAX_NUM)
+        if(temp <= MAX_NUM && fun[temp] == 0)
             fun[temp] = n;
         count[n] = count[n - 1] + (fun[n] == 0);
     }
@@ -25,9 +25,9 @@ int main() {
     for(int i = 1; i <= cases; ++i) {
         fgets(buffer, sizeof(buffer), stdin);
         int a, b;
-        if(sscanf(buffer, "%d %d", &a, &b) == 2) {
+        if(sscanf(buffer, "%d %d", &a, &b) == 2)
             printf("Case %d: %d\n", i, count[b] - count[a - 1]);
-        } else {
+        else {
             sscanf(buffer, "%d", &a);
             printf("Case %d: %d\n", i, fun[a] == 0 ? -1 : fun[a]);
         }
