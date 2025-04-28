@@ -1,13 +1,5 @@
 #include <stdio.h>
 
-int F(int n) {
-    if(n == 0)
-        return 0;
-    while(n % 10 == 0)
-        n /= 10;
-    return n % 10;
-}
-
 long solve(long n) {
     long ans = 0;
     while(n > 0) {
