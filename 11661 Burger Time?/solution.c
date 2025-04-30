@@ -23,7 +23,7 @@ int main() {
             } else if(S[i] == 'Z')
                 min = 0;
         }
-        printf("%d\n", min == MAX_LEN ? 0 : min);
+        printf("%d\n", min);
     }
     return 0;
 }
