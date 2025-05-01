@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #define MAX_SUM 498
 
-int subsetSum(int *array, int size, int target) {
+int subsetSum(int *array, int size, int sum) {
     bool subsetSum[MAX_SUM + 1];
     subsetSum[0] = true;
     memset(subsetSum + 1, 0, MAX_SUM * sizeof(bool));
@@ -11,7 +11,7 @@ int subsetSum(int *array, int size, int target) {
         for(int j = MAX_SUM; j >= array[i]; --j)
             subsetSum[j] |= subsetSum[j - array[i]];
     }
-    for(int i = target; i <= MAX_SUM; ++i) {
+    for(int i = sum; i <= MAX_SUM; ++i) {
         if(subsetSum[i])
             return i;
     }
