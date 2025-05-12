@@ -42,7 +42,7 @@ int main() {
             scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].w);
         qsort(edges, m, sizeof(Edge), compare);
         int slimness = 10000;
-        for(int i = 0; i < m; ++i)
+        for(int i = 0; i <= m - n + 1; ++i)
             kruskal(n, m, i, &slimness);
         printf("%d\n", slimness == 10000 ? -1 : slimness);
     }
