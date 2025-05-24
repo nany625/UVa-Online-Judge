@@ -7,8 +7,8 @@ typedef struct {
     int u, v, w;
 } Edge;
 
-int root[MAXV + 1];
 Edge edges[MAXE];
+int root[MAXV + 1];
 
 int find(int x) {
     return root[x] == x ? x : (root[x] = find(root[x]));
