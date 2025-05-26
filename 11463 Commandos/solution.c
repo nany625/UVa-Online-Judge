@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define MAXV 100
 #define INF 100
+#define MAXV 100
 
 int dist[MAXV][MAXV];
 
