@@ -38,7 +38,7 @@ int main() {
                 }
             }
 	    }
-	    printf("max coverage = %3d :", max);
+	    printf("max coverage =%4d :", max);
 	    for(int i = 0; i < size[ans]; ++i)
             printf("%3d", denomination[ans][i]);
         putchar('\n');
