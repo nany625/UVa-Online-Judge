@@ -18,9 +18,8 @@ int main() {
                 dp[j] = S + 1;
             dp[0] = 0;
             for(int j = 0; j < size[i]; ++j) {
-                for(int k = denomination[i][j]; k <= S * denomination[i][size[i] - 1]; ++k) {
+                for(int k = denomination[i][j]; k <= S * denomination[i][size[i] - 1]; ++k)
                     dp[k] = dp[k] < dp[k - denomination[i][j]] + 1 ? dp[k] : dp[k - denomination[i][j]] + 1;
-                }
             }
             int temp = 1;
             while(temp <= S * denomination[i][size[i] - 1] && dp[temp] <= S)
