@@ -1,7 +1,6 @@
 #include <stdio.h>
-#define MAXM 30000
 
-int A[MAXM];
+int A[30000];
 
 int main() {
     int K;
