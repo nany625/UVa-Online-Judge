@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
 
 int dRow[] = {1, -1, 0, 0}, dCol[] = {0, 0, 1, -1}, count[6];
