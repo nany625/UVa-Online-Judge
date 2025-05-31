@@ -8,13 +8,11 @@ int main() {
         scanf("%d %d", &D, &I);
         int ans = 1;
         while(D-- > 1) {
-            if(I & 1) {
+            if(I & 1)
                 ans <<= 1;
-                I = (I + 1) >> 1;
-            } else {
+            else
                 ans = (ans << 1) + 1;
-                I >>= 1;
-            }
+            I = I + (I & 1) >> 1;
         }
         printf("%d\n", ans);
     }
