@@ -54,10 +54,8 @@ int main() {
     while(scanf("%d %ld", &p, &a) && p != 0) {
         if(isPrime(p))
             puts("no");
-        else {
-            long ans = bigMod(a, p, p);
-            puts(ans == a ? "yes" : "no");
-        }
+        else
+            puts(bigMod(a, p, p) == a ? "yes" : "no");
     }
     free(primes);
 	return 0;
