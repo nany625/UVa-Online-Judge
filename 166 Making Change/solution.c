@@ -37,7 +37,6 @@ int main() {
                 }
             }
         }
-
         int min = MAX_AMOUNT;
         for(int i = value; i <= value + 40; ++i) {
             if(dp[i] != MAX_AMOUNT + 1)
