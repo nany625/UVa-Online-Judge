@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAXN 199
 
-short numVertices, **edges, edgesCount[MAXN];
+short **edges, edgesCount[MAXN];
 char color[MAXN];
 
 void dfs(int startVertex, char c, bool *bicolorable) {
