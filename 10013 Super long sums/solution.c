@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #define MAX_LEN 1000000
 
 char ans[MAX_LEN + 2];
