@@ -12,17 +12,15 @@ short *primes, ppCount[MAX_NUM + 1] = {
     31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
     40, 40
 };
-int size = 1;
+int size;
 
 void eulerSieve() {
-    primes = (short*)malloc(sizeof(short));
-    primes[0] = 2;
     for(short n = 3; n <= MAX_NUM; n += 2) {
         if(!isComposite[n >> 1]) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = n;
         }
-        for(int i = 1, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
                 break;
@@ -32,7 +30,7 @@ void eulerSieve() {
 
 bool producePrime(int n) {
     int num = n * n + n + 41;
-    for(int i = 13; primes[i] < n; ++i) {
+    for(int i = 12; primes[i] < n; ++i) {
         if(num % primes[i] == 0)
             return false;
     }
