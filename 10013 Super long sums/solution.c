@@ -11,7 +11,7 @@ int main() {
         int M;
         scanf("%d ", &M);
         ans[M + 1] = '\0';
-        for(int i = 1; i <= M; ++i) {
+        for(int i = 0; i < M; ++i) {
             fgets(digits, sizeof(digits), stdin);
             ans[i] = digits[0] + digits[2] - '0';
         }
