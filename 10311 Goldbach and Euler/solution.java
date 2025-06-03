@@ -40,7 +40,7 @@ public class Main {
         for(int n = 3; n <= MAXN; n += 2) {
             if(!isComposite[n >> 1])
                 primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAXN; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAXN; ++i) {
                 isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
