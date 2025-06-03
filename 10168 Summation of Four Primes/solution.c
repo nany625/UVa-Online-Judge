@@ -4,7 +4,7 @@
 #define MAXN 9999993
 
 bool isComposite[(MAXN >> 1) + 1];
-int *primes, size, ans[3];
+int *primes, size;
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN; n += 2) {
@@ -18,10 +18,6 @@ void eulerSieve() {
                 break;
         }
     }
-}
-
-int compare(const void *a, const void *b) {
-    return *(int*)a > *(int*)b;
 }
 
 int main() {
@@ -38,11 +34,7 @@ int main() {
                 int i = 0;
                 while(isComposite[primes[i] >> 1] || isComposite[N - primes[i] >> 1])
                     ++i;
-                ans[0] = 3;
-                ans[1] = primes[i];
-                ans[2] = N - primes[i];
-                qsort(ans, 3, sizeof(int), compare);
-                printf("2 %d %d %d\n", ans[0], ans[1], ans[2]);
+                printf("2 3 %d %d\n", primes[i], N - primes[i]);
             }
         } else {
             if(N == 8)
