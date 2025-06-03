@@ -25,23 +25,27 @@ int main() {
     eulerSieve();
     long N;
     while(scanf("%ld", &N) == 1) {
-        while((N & 1) == 0)
-            N >>= 1;
-        int count = 1, limit = sqrt(N);
-        for(int i = 0; i < size && primes[i] <= limit; ++i) {
-            if(N % primes[i] == 0) {
-                int term = 0;
-                do {
-                    ++term;
-                    N /= primes[i];
-                } while(N % primes[i] == 0);
-                count *= (term + 1);
-                limit = sqrt(N);
+        if(N == 0)
+            puts("0");
+        else {
+            while((N & 1) == 0)
+                N >>= 1;
+            int count = 1, limit = sqrt(N);
+            for(int i = 0; i < size && primes[i] <= limit; ++i) {
+                if(N % primes[i] == 0) {
+                    int term = 1;
+                    do {
+                        ++term;
+                        N /= primes[i];
+                    } while(N % primes[i] == 0);
+                    count *= term;
+                    limit = sqrt(N);
+                }
             }
+            if(N > 1)
+                count <<= 1;
+            printf("%d\n", count);
         }
-        if(N > 1)
-            count <<= 1;
-        printf("%d\n", count);
     }
     free(primes);
     return 0;
