@@ -34,7 +34,7 @@ public class Main {
         for(short n = 3; n <= MAX_NUM; n += 2) {
             if(!isComposite[n >> 1])
                 primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
                 isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
