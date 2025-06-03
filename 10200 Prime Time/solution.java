@@ -31,11 +31,10 @@ public class Main {
 	}
 	
 	static void eulerSieve() {
-	    primes.add((short)2);
         for(short n = 3; n <= MAX_NUM; n += 2) {
             if(!isComposite[n >> 1])
                 primes.add(n);
-            for(int i = 1, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
                 isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
@@ -45,7 +44,7 @@ public class Main {
 	
 	static boolean producePrime(int n) {
         int num = n * n + n + 41;
-        for(int i = 13; primes.get(i) < n; ++i) {
+        for(int i = 12; primes.get(i) < n; ++i) {
             if(num % primes.get(i) == 0)
                 return false;
         }
