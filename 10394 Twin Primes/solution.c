@@ -4,7 +4,7 @@
 #define MAX_NUM 20000000
 
 bool isComposite[(MAX_NUM >> 1) + 1];
-int *primes, size, twinPrimes[100000], count = 1;
+int *primes, size, twinPrimes[100000] = {3}, count = 1;
 
 void eulerSieve() {
     for(int n = 5; count < 100000; n += 4) {
@@ -12,7 +12,7 @@ void eulerSieve() {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = n;
         }
-        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+        for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
                 break;
@@ -22,7 +22,7 @@ void eulerSieve() {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = n;
         }
-        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+        for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp >> 1] = true;
             if(n % primes[i] == 0)
                 break;
@@ -33,7 +33,6 @@ void eulerSieve() {
 }
 
 int main() {
-    twinPrimes[0] = 3;
     eulerSieve();
     int S;
     while(scanf("%d", &S) == 1)
