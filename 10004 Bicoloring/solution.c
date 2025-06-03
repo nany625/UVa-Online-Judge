@@ -20,7 +20,7 @@ void dfs(int startVertex, char c, bool *bicolorable) {
 }
 
 int main() {
-    edges = (short**)malloc((MAXN + 1) * sizeof(short*));
+    edges = (short**)malloc(MAXN * sizeof(short*));
     for(int i = 0; i < MAXN; ++i)
         edges[i] = NULL;
     short n;
