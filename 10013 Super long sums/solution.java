@@ -12,7 +12,7 @@ public class Main {
         while(N-- > 0) {
             st.nextToken();
             int M = (int)st.nval;
-            for(int i = 1; i <= M; ++i) {
+            for(int i = 0; i < M; ++i) {
                 st.nextToken();
 			    ans[i] = (char)(st.nval + '0');
 			    st.nextToken();
