@@ -20,25 +20,22 @@ public class Main {
         System.out.print(output);
     }
     
+    static void solve(int n) {
+    	if(!isComposite[n >> 1])
+            primes.add(n);
+        for(int i = 0, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            isComposite[temp >> 1] = true;
+            if(n % primes.get(i) == 0)
+                break;
+        }
+    }
+    
     static void eulerSieve() {
-        for(int n = 5; count < 100000 ; n += 4) {
-            if(!isComposite[n >> 1])
-                primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp >> 1] = true;
-                if(n % primes.get(i) == 0)
-                    break;
-            }
-            n += 2;
-            if(!isComposite[n >> 1])
-                primes.add(n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
-                isComposite[temp >> 1] = true;
-                if(n % primes.get(i) == 0)
-                    break;
-            }
-            if(!isComposite[(n >> 1) - 1] && !isComposite[n >> 1])
-                twinPrimes[count++] = n - 2;
+        for(int n = 5; count < 100000 ; n += 6) {
+            solve(n);
+            solve(n + 2);
+            if(!isComposite[n >> 1] && !isComposite[(n >> 1) + 1])
+                twinPrimes[count++] = n;
         }
     }
 }
