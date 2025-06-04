@@ -37,7 +37,7 @@ public class Main {
                     term <<= 1;
                 }
             }
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAXN >> 1; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAXN >> 1; ++i) {
                 isComposite[temp >> 1] = true;
                 if(n % primes.get(i) == 0)
                     break;
