@@ -23,7 +23,7 @@ public class Main {
         for(int n = 2; n <= MAX_NUM; ++n) {
             if(!isComposite[n])
                 primes.add(sum[n] = n);
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
                 isComposite[temp] = true;
                 if(n % primes.get(i) == 0) {
                     sum[temp] = sum[n];
