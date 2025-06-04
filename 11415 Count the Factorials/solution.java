@@ -27,7 +27,7 @@ public class Main {
                 primes.add(n);
                 count[n] = 1;
             }
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAXN; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAXN; ++i) {
                 count[temp] = count[primes.get(i)] + count[n];
                 if(n % primes.get(i) == 0)
                     break;
