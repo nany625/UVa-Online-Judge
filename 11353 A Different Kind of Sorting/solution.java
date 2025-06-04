@@ -31,7 +31,7 @@ public class Main {
                 primes.add(n);
                 answers[n] = new Answer(n, 1);
             }
-            for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
                 isComposite[temp] = true;
                 answers[temp] = new Answer(temp, answers[primes.get(i)].pfCount + answers[n].pfCount);
                 if(n % primes.get(i) == 0)
