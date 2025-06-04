@@ -19,7 +19,7 @@ void eulerSieve() {
             primes[size++] = n;
             answers[n].pfCount = 1;
         }
-        for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+        for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
             isComposite[temp] = true;
             answers[temp].pfCount = answers[primes[i]].pfCount + answers[n].pfCount;
             if(n % primes[i] == 0)
