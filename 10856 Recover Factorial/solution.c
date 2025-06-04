@@ -13,7 +13,7 @@ void eulerSieve() {
 			primes[size++] = n;
 			count[n] = 1;
 		}
-		for(int i = 0, temp; i < size && (temp = primes[i] * n) <= MAX_NUM; ++i) {
+		for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
 			isComposite[temp] = true;
 			count[temp] = count[primes[i]] + count[n];
 			if(n % primes[i] == 0)
