@@ -27,7 +27,7 @@ public class Main {
         for(int n = 5; n <= MAX_NUM; n += 4) {
             if(!isHComposite[n >> 2])
                 hPrimes.add(n);
-            for(int i = 0, temp; i < hPrimes.size() && (temp = hPrimes.get(i) * n) <= MAX_NUM; ++i) {
+            for(int i = 0, temp; (temp = hPrimes.get(i) * n) <= MAX_NUM; ++i) {
                 isHComposite[temp >> 2] = true;
                 if(n % hPrimes.get(i) == 0)
                     break;
