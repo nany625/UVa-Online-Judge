@@ -12,7 +12,7 @@ void eulerSieve() {
             hPrimes = (int*)realloc(hPrimes, (size + 1) * sizeof(int));
             hPrimes[size++] = n;
         }
-        for(int i = 0, temp; i < size && (temp = hPrimes[i] * n) <= MAX_NUM; ++i) {
+        for(int i = 0, temp; (temp = hPrimes[i] * n) <= MAX_NUM; ++i) {
             isHComposite[temp >> 2] = true;
             if(n % hPrimes[i] == 0)
                 break;
