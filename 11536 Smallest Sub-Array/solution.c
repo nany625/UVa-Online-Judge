@@ -20,19 +20,24 @@ int main() {
             memset(prevPos, 0, sizeof(prevPos));
             for(int j = 1; j <= 3; ++j)
                 prevPos[j] = j;
-            int min = N, count = 3;
+            int min = N, start = 1, count = 3;
             for(int j = 4; j <= N; ++j) {
                 X[j] = (X[j - 1] + X[j - 2] + X[j - 3]) % M + 1;
                 if(X[j] <= K) {
                     if(prevPos[X[j]] == 0)
                         ++count;
-                    prevPos[X[j]] = j;
-                    if(count == K) {
-                        int start = prevPos[1];
-                        for(int k = 2; k <= K; ++k)
-                            start = start < prevPos[k] ? start : prevPos[k];
-                        min = min < j - start + 1 ? min : j - start + 1;
+                    else {
+                        if(prevPos[X[j]] == start) {
+                            start = j;
+                            for(int k = 1; k <= K; ++k) {
+                                if(prevPos[k] != 0 && k != X[j])
+                                    start = start < prevPos[k] ? start : prevPos[k];
+                            }
+                        }
                     }
+                    prevPos[X[j]] = j;
+                    if(count == K)
+                        min = min < j - start + 1 ? min : j - start + 1;
                 }
             }
             if(count == K)
