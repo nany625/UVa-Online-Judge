@@ -23,7 +23,7 @@ public class Main {
 				primes.add(n);
 				ans[n] = 1;
 			}
-			for(int i = 0, temp; i < primes.size() && (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
+			for(int i = 0, temp; (temp = primes.get(i) * n) <= MAX_NUM; ++i) {
 				isComposite[temp] = true;
 				ans[temp] = ans[primes.get(i)] + ans[n];
 				if(n % primes.get(i) == 0)
