@@ -49,8 +49,7 @@ int main() {
 	    for(int i = 0; x > 1; ++i) {
 	        if(x % primes[i] == 0) {
 	            factors = (Factor*)realloc(factors, (factorCount + 1) * sizeof(Factor));
-	            factors[factorCount].p = primes[i];
-	            factors[factorCount].e = 0;
+	            factors[factorCount] = (Factor){primes[i], 0};
 	            do {
 	                ++factors[factorCount].e;
 	                x /= primes[i];
