@@ -87,7 +87,7 @@ public class Main {
 	}
 	
 	static BigInteger powerMatrix(BigInteger[][] matrix, int n) {
-	    BigInteger[][] result = {{BigInteger.ONE, BigInteger.ZERO}, {BigInteger.ZERO, BigInteger.ONE}};
+	    BigInteger[][] result = {{BigInteger.ONE, BigInteger.ZERO}, {BigInteger.ZERO, BigInteger.ZERO}};
 	    while(n > 0) {
 	        if((n & 1) == 1)
 	            multiplyMatrix(result, matrix);
