@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int temp[2][2], mod[] = {0, 10, 100, 1000, 10000};
+int result[2][2], temp[2][2], mod[] = {0, 10, 100, 1000, 10000};
 
 void multiplyMatrix(int a[2][2], int b[2][2], int mod) {
     temp[0][0] = (a[0][0] * b[0][0] + a[0][1] * b[1][0]) % mod;
@@ -13,10 +13,7 @@ void multiplyMatrix(int a[2][2], int b[2][2], int mod) {
     a[1][1] = temp[1][1];
 }
 
-int powerMatrix(int a, int b, int matrix[2][2], int n, int mod) {
-    int result[2][2] = {};
-    result[0][0] = b;
-    result[0][1] = a;
+int powerMatrix(int matrix[2][2], int n, int mod) {
     while(n > 0) {
         if(n & 1)
             multiplyMatrix(result, matrix, mod);
@@ -30,13 +27,13 @@ int main() {
     int cases;
     scanf("%d", &cases);
     while(cases--) {
-        int a, b, n, m;
-        scanf("%d %d %d %d", &a, &b, &n, &m);
+        int n, m;
+        scanf("%d %d %d %d", &result[0][1], &result[0][0], &n, &m);
         if(n == 0)
-            printf("%d\n", a % mod[m]);
+            printf("%d\n", result[0][1] % mod[m]);
         else {
             int matrix[2][2] = {{1, 1}, {1, 0}};
-            printf("%d\n", powerMatrix(a, b, matrix, n - 1, mod[m]));
+            printf("%d\n", powerMatrix(matrix, n - 1, mod[m]));
         }
     }
     return 0;
