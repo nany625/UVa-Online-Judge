@@ -30,7 +30,7 @@ public class Main {
 	}
 	
 	static int powerMatrix(long[][] matrix, int n, int mod) {
-	    long[][] result = {{1, 0}, {0, 1}};
+	    long[][] result = {{1, 0}, {0, 0}};
 	    while(n > 0) {
 	        if((n & 1) == 1)
 	            multiplyMatrix(result, matrix, mod);
