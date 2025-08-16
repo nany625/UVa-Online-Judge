@@ -11,7 +11,7 @@ int main() {
         for(int i = 1; i <= n; ++i) {
             int num;
             scanf("%d", &num);
-            if(snowflake[num] != 0 && top <= snowflake[num]) {
+            if(top <= snowflake[num]) {
                 ans = ans > i - top ? ans : i - top;
                 top = snowflake[num] + 1;
             }
