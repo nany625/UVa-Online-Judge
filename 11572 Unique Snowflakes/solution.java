@@ -16,14 +16,11 @@ public class Main {
             for(int i = 1; i <= n; ++i) {
                 st.nextToken();
                 int num = (int)st.nval;
-                if(snowflake.containsKey(num)) {
-                    if(top <= snowflake.get(num)) {
-                        ans = Math.max(ans, i - top);
-                        top = snowflake.get(num) + 1;
-                    }
-                    snowflake.replace(num, i);
-                } else
-                    snowflake.put(num, i);
+                if(snowflake.containsKey(num) && top <= snowflake.get(num)) {
+                    ans = Math.max(ans, i - top);
+                    top = snowflake.get(num) + 1;
+                }
+                snowflake.put(num, i);
             }
             output.append(Math.max(ans, n + 1 - top)).append('\n');
         }
