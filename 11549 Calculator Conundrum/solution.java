@@ -10,14 +10,13 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(t-- > 0) {
             st.nextToken();
-            int n = (int)st.nval;
+            int n = (int)Math.pow(10, (int)st.nval);
             st.nextToken();
             long k = (long)st.nval;
-            Set<Long> display = new HashSet<>();
-            n = (int)Math.pow(10, n);
             while(k >= n)
                 k /= 10;
             long max = k;
+            Set<Long> display = new HashSet<>();
             do {
                 display.add(k);
                 k *= k;
