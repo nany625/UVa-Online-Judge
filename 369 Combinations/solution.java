@@ -7,8 +7,9 @@ public class Main {
 	    for(int i = 1; i <= 100; ++i)
             ans[i][1] = new BigInteger("" + i);
         for(int i = 2; i <= 100; ++i) {
+            ans[i - 1][i] = BigInteger.ZERO;
             for(int j = i; j <= 100; ++j)
-                ans[j][i] = ans[j][i - 1].multiply(new BigInteger("" + (j - i + 1))).divide(new BigInteger("" + i));
+                ans[j][i] = ans[j - 1][i - 1].add(ans[j - 1][i]);
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
