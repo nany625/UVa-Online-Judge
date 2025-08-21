@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-unsigned long ans[101][101] = {};
+unsigned long ans[101][101];
 
 int main() {
     for(int i = 1; i <= 100; ++i)
