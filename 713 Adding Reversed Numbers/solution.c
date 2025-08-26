@@ -8,6 +8,10 @@ int main() {
     while(N--) {
         scanf("%s %s", num1, num2);
         int len1 = strlen(num1), len2 = strlen(num2), carry = 0;
+        while(num1[len1 - 1] == '0')
+            --len1;
+        while(num2[len2 - 1] == '0')
+            --len2;
         if(len1 > len2) {
             memset(num2 + len2, '0', len1 - len2);
             for(int i = 0; i < len1; ++i) {
