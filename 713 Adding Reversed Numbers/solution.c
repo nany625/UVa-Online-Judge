@@ -4,7 +4,7 @@
 int main() {
     int N;
     scanf("%d", &N);
-    char num1[201], num2[201], sum[202];
+    char num1[201], num2[201], sum[201];
     while(N--) {
         scanf("%s %s", num1, num2);
         int len1 = strlen(num1), len2 = strlen(num2), carry = 0;
