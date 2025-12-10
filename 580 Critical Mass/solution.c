@@ -10,5 +10,5 @@ int ans[31] = {
 int main() {
 	int size;
 	while(scanf("%d", &size) && size != 0)
-		printf("%ld\n", ans[size]);
+		printf("%d\n", ans[size]);
 }
