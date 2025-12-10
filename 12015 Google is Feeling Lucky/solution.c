@@ -19,7 +19,7 @@ int main() {
         }
         for(int j = 0; j < 10; ++j) {
             if(webpages[j].relevance == max)
-                puus(webpages[j].url);
+                puts(webpages[j].url);
         }
     }
     return 0;
