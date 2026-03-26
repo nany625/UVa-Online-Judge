@@ -10,9 +10,8 @@ public class Main {
 		while(cases-- > 0) {
 			st.nextToken();
 			int computers = (int)st.nval;
-			int[] root = new int[computers + 1];
-			for(int i = 1; i <= computers; ++i)
-			    root[i] = i;
+			int[] root = new int[computers + 1], rank = new int[computers + 1];
+			init(root, rank, computers);
 			int succ = 0, unsucc = 0;
 			String s;
 			while((s = br.readLine()) != null && !s.isEmpty()) {
@@ -22,7 +21,7 @@ public class Main {
 			    int rootI = find(root, computeri);
 			    int rootJ = find(root, computerj);
 			    if(tokens[0].charAt(0) == 'c')
-			        root[rootI] = root[rootJ];
+			        unite(root, rank, rootI, rootJ);
 			    else if(tokens[0].charAt(0) == 'q') {
 			        if(root[rootI] == root[rootJ])
 			            ++succ;
@@ -37,7 +36,23 @@ public class Main {
 		System.out.print(output);
 	}
 	
+	static void init(int[] root, int[] rank, int n) {
+        for(int i = 1; i <= n; ++i)
+    		rank[root[i] = i] = 0;
+    }
+    
 	static int find(int[] root, int x) {
 	    return root[x] == x ? x : (root[x] = find(root, root[x]));
 	}
+	
+	static void unite(int[] root, int[] rank, int rootX, int rootY) {
+        if(rootX != rootY) {
+            if(rank[rootX] > rank[rootY])
+                root[rootY] = rootX;
+            else if(rank[rootX] < rank[rootY])
+                root[rootX] = rootY;
+            else
+                ++rank[root[rootY] = rootX];
+        }
+    }
 }
