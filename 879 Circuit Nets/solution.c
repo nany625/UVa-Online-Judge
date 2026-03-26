@@ -2,8 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+void init(int *root, int *rank, int n) {
+    for(int i = 1; i <= n; ++i)
+        rank[root[i] = i] = 0;
+}
+
 int find(int *root, int x) {
     return root[x] == x ? x : (root[x] = find(root, root[x]));
+}
+
+void unite(int *root, int *rank, int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
 }
 
 int main() {
@@ -15,9 +29,8 @@ int main() {
         int N;
         scanf("%d", &N);
         getchar();
-        int root[N + 1];
-        for(int i = 1; i <= N; ++i)
-            root[i] = i;
+        int root[N + 1], rank[N + 1];
+        init(root, rank, N);
         int nets = N;
         while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
             char *token = strtok(buffer, " ");
@@ -26,7 +39,7 @@ int main() {
                 token = strtok(NULL, " ");
                 int root2 = find(root, atoi(token));
                 if(root1 != root2) {
-                    root[root2] = root1;
+                    unite(root, rank, root1, root2);
                     --nets;
                 }
                 token = strtok(NULL, " ");
