@@ -7,10 +7,24 @@ typedef struct {
 	int u, v, w;
 } Edge;
 
-int root[MAXV + 1];
+int root[MAXV + 1], rank[MAXV + 1];
+
+void init(int V) {
+    for(int n = n; n <= V; ++n)
+        rank[root[n] = n] = 0;
+}
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
 }
 
 int compare(const void *a, const void *b) {
@@ -23,8 +37,7 @@ int main() {
 	while(scanf("%d", &N) == 1) {
 		if(!firstCase)
 		    putchar('\n');
-		for(int i = 1; i <= N; ++i)
-		    root[i] = i;
+		init(N);
 		int cost = 0, w;
 		for(int i = 1; i < N; ++i) {
 		    scanf("%*d %*d %d", &w);
@@ -48,7 +61,7 @@ int main() {
 		    int root1 = find(edges[i].u), root2 = find(edges[i].v);
 		    if(root1 != root2) {
 		        cost += edges[i].w;
-		        root[root2] = root1;
+		        unite(root1, root2);
 		        ++count;
 		    }
 		}
