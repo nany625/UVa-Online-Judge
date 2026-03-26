@@ -13,7 +13,12 @@ typedef struct {
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
-int root[MAXV];
+int root[MAXV], rank[MAXV];
+
+void init(int V) {
+    for(int n = 0; n < V; ++n)
+        rank[root[n] = n] = 0;
+}
 
 int dist(Coordinate c1, Coordinate c2) {
 	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
@@ -21,6 +26,19 @@ int dist(Coordinate c1, Coordinate c2) {
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int x, int y) {
+    int rootX = find(x);
+    int rootY = find(y);
+    if(rootX != rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
+    }
 }
 
 int compare(const void *a, const void *b) {
@@ -39,13 +57,10 @@ int main() {
 				edges[size++] = (Edge){i, j, dist(stones[i], stones[j])};
 		}
 		qsort(edges, size, sizeof(Edge), compare);
-		for(int i = 0; i < n; ++i)
-			root[i] = i;
+		init(n);
 		int i = 0;
 		while(true) {
-			int root1 = find(edges[i].u), root2 = find(edges[i].v);
-			if(root1 != root2)
-				root[root2] = root1;
+		    unite(edges[i].u, edges[i].v);
 			if(find(0) == find(1)) {
 				printf("Scenario #%d\nFrog Distance = %.3lf\n\n", ++cases, sqrt(edges[i].w));
 				break;
