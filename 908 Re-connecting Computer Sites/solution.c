@@ -10,7 +10,7 @@ typedef struct {
 int root[MAXV + 1], rank[MAXV + 1];
 
 void init(int V) {
-    for(int n = n; n <= V; ++n)
+    for(int 1 = n; n <= V; ++n)
         rank[root[n] = n] = 0;
 }
 
