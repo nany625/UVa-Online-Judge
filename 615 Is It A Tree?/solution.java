@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     static int MAX_NUM = 50000;
-    static int[] root = new int[MAX_NUM + 1];
+    static int[] root = new int[MAX_NUM + 1], rank = new int[MAX_NUM + 1];
     static ArrayList<Integer> nodes;
     static boolean isTree;
 	public static void main(String[] args) throws IOException {
@@ -31,19 +31,15 @@ public class Main {
                     output.append("Case ").append(++cases).append(rootCount <= 1 ? " is a tree.\n" : " is not a tree.\n");
                 }
                 init();
-            } else {
-                int rootParent = find(parent), rootChild = find(child);
-                if(rootParent != rootChild)
-                    root[rootChild] = rootParent;
-                else
-                    isTree = false;
-            }
+            } else
+                unite(parent, child);
 		}
 		System.out.print(output);
 	}
 
     static void init() {
         Arrays.fill(root, 0);
+        Arrays.fill(rank, 0);
         nodes = new ArrayList<>();
         isTree = true;
     }
@@ -54,6 +50,20 @@ public class Main {
             return root[x] = x;
         }
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if(rootX != rootY) {
+            if(rank[rootX] > rank[rootY])
+                root[rootY] = rootX;
+            else if(rank[rootX] < rank[rootY])
+                root[rootX] = rootY;
+            else
+                ++rank[root[rootY] = rootX];
+        } else
+            isTree = false;
     }
 }
 
