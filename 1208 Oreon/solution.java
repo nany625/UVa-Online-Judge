@@ -12,10 +12,10 @@ public class Main {
     		output.append("Case ").append(i).append(":\n");
     		st.nextToken();
     		int cities = (int)st.nval;
-    		int[] root = new int[cities];
+    		int[] root = new int[cities], rank = new int[cities];
+    		init(root, rank, cities);
     		ArrayList<Edge> edges = new ArrayList<>();
     		for(int j = 0; j < cities; ++j) {
-                root[j] = j;
                 for(int k = 0; k < cities; ++k) {
                     st.nextToken();
                     int w = (int)st.nval;
@@ -40,7 +40,7 @@ public class Main {
                 int root1 = find(root, edges.get(j).u), root2 = find(root, edges.get(j).v);
                 if(root1 != root2) {
                     output.append((char)(edges.get(j).u + 'A')).append('-').append((char)(edges.get(j).v + 'A')).append(' ').append(edges.get(j).w).append('\n');
-                    root[root2] = root1;
+                    unite(root, rank, root1, root2);
                     ++count;
                 }
             }
@@ -48,8 +48,22 @@ public class Main {
 		System.out.print(output);
 	}
 	
+	static void init(int[] root, int[] rank, int V) {
+        for(int n = 0; n < V; ++n)
+            rank[root[n] = n] = 0;
+    }
+    
 	static int find(int[] root, int x) {
     	return root[x] == x ? x : (root[x] = find(root, root[x]));
+    }
+    
+    static void unite(int[] root, int[] rank, int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
 
