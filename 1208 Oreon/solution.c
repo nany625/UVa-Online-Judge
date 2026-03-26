@@ -40,7 +40,7 @@ int main() {
         printf("Case %d:\n", i);
         int cities;
         scanf("%d", &cities);
-        int root[cities], rank[cities],size = 0;
+        int root[cities], rank[cities], size = 0;
         init(root, rank, cities);
         Edge *edges = NULL;
         for(int j = 0; j < cities; ++j) {
