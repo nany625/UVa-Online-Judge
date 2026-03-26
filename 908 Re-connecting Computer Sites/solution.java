@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXV = 1000000;
-    static int[] root = new int[MAXV + 1];
+    static int[] root = new int[MAXV + 1], rank = new int[MAXV + 1];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -13,8 +13,7 @@ public class Main {
             int N = (int)st.nval;
             if(!firstCase)
                 output.append('\n');
-            for(int i = 1; i <= N; ++i)
-		        root[i] = i;
+            init(N);
 		    int cost = 0;
 		    for(int i = 1; i < N; ++i) {
 		        st.nextToken();
@@ -56,7 +55,7 @@ public class Main {
     		    int root1 = find(edges.get(i).u), root2 = find(edges.get(i).v);
     		    if(root1 != root2) {
     		        cost += edges.get(i).w;
-    		        root[root2] = root1;
+    		        unite(root1, root2);
     		        ++count;
     		    }
     		}
@@ -66,8 +65,22 @@ public class Main {
         System.out.print(output);
     }
     
+    static void init(int V) {
+        for(int n = 1; n <= V; ++n)
+            rank[root[n] = n] = 0;
+    }
+    
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
 
