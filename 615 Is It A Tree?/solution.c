@@ -5,11 +5,12 @@
 #include <stdbool.h>
 #define MAX_NUM 50000
 
-int root[MAX_NUM + 1], *nodes, size;
+int root[MAX_NUM + 1], rank[MAX_NUM + 1], *nodes, size;
 bool isTree;
 
 void init() {
     memset(root, 0, sizeof(root));
+    memset(rank, 0, sizeof(rank));
     size = 0;
     isTree = true;
 }
@@ -21,6 +22,20 @@ int find(int x) {
         return root[x] = x;
     }
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int x, int y) {
+    int rootX = find(x);
+    int rootY = find(y);
+    if(rootX != rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
+    } else
+        isTree = false;
 }
 
 int main() {
@@ -39,13 +54,8 @@ int main() {
                 printf("Case %d is %sa tree.\n", ++cases, rootCount <= 1 ? "" : "not ");
             }
             init();
-        } else {
-            int rootParent = find(parent), rootChild = find(child);
-            if(rootParent != rootChild)
-                root[rootChild] = rootParent;
-            else
-                isTree = false;
-        }
+        } else
+            unite(parent, child);
     }
     free(nodes);
     return 0;
