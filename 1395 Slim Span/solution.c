@@ -8,24 +8,33 @@ typedef struct {
 } Edge;
 
 Edge edges[MAXE];
-int root[MAXV + 1];
+int root[MAXV + 1], rank[MAXV + 1];
+
+void init(int V) {
+    for(int n = 1; n <= V; ++n)
+        rank[root[n] = n] = 0;
+}
 
 int find(int x) {
     return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
-int compare(const void *a, const void *b) {
-    return ((Edge*)a)->w > ((Edge*)b)->w;
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
 }
 
 void kruskal(int V, int E, int start, int *slimness) {
-    for(int i = 1; i <= V; ++i)
-        root[i] = i;
+    init(V);
     int count = 0;
     for(int i = start; i < E; ++i) {
         int root1 = find(edges[i].u), root2 = find(edges[i].v);
         if(root1 != root2) {
-            root[root2] = root1;
+            unite(root1, root2);
             ++count;
         }
         if(count == V - 1) {
@@ -33,6 +42,10 @@ void kruskal(int V, int E, int start, int *slimness) {
             return;
         }
     }
+}
+
+int compare(const void *a, const void *b) {
+    return ((Edge*)a)->w > ((Edge*)b)->w;
 }
 
 int main() {
