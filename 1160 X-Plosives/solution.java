@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Main {
     static int MAX_NUM = 100000, refusals;
-    static int[] root = new int[MAX_NUM + 1];
+    static int[] root = new int[MAX_NUM + 1], rank = new int[MAX_NUM + 1];
 	public static void main(String[] args) throws IOException {
 	    init();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,19 +20,28 @@ public class Main {
     		    if(rootX == rootY)
     		        ++refusals;
     		    else
-    		        root[rootY] = rootX;
+    		        unite(rootX, rootY);
     		}
 		}
 		System.out.print(output);
 	}
     
     static void init() {
-        for(int n = 0; n <= MAX_NUM; ++n)
-            root[n] = n;
+        for(int i = 0; i <= MAX_NUM; ++i)
+            rank[root[i] = i] = 0;
         refusals = 0;
     }
 
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
