@@ -12,14 +12,28 @@ typedef struct {
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
-int root[MAXV];
+int root[MAXV], rank[MAXV];
 
-int dist(Coordinate c1, Coordinate c2) {
-    return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+void init(int V) {
+    for(int n = 0; n < V; ++n)
+        rank[root[n] = n] = 0;
 }
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
+}
+
+int dist(Coordinate c1, Coordinate c2) {
+    return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
 int compare(const void *a, const void *b) {
@@ -32,11 +46,10 @@ int main() {
 	for(int i = 1; i <= T; ++i) {
 	    int n, r;
 	    scanf("%d %d", &n, &r);
-	    Coordinate cities[n];
-	    for(int j = 0; j < n; ++j) {
+        init(n);
+        Coordinate cities[n];
+	    for(int j = 0; j < n; ++j)
 	        scanf("%d %d", &cities[j].x, &cities[j].y);
-	        root[j] = j;
-	    }
 	    int size = 0;
 	    for(int j = 0; j < n - 1; ++j) {
 	        for(int k = j + 1; k < n; ++k)
@@ -49,7 +62,7 @@ int main() {
 	    for(int j = 0; count < n - 1; ++j) {
 	        int root1 = find(edges[j].u), root2 = find(edges[j].v);
 	        if(root1 != root2) {
-	            root[root2] = root1;
+	            unite(root1, root2);
 	            ++count;
 	            if(edges[j].w <= r) {
 	                roadLen += sqrt(edges[j].w);
