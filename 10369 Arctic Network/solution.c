@@ -12,14 +12,28 @@ typedef struct {
 } Edge;
 
 Edge edges[MAXV * (MAXV - 1) >> 1];
-int root[MAXV];
+int root[MAXV], rank[MAXV];
 
-int dist(Coordinate c1, Coordinate c2) {
-	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+void init(int V) {
+    for(int n = 0; n < V; ++n)
+        rank[root[n] = n] = 0;
 }
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
+}
+
+int dist(Coordinate c1, Coordinate c2) {
+	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
 }
 
 int compare(const void *a, const void *b) {
@@ -32,11 +46,10 @@ int main() {
 	while(N--) {
 		int S, P;
 		scanf("%d %d", &S, &P);
+        init(P);
 		Coordinate outposts[P];
-		for(int i = 0; i < P; ++i) {
+		for(int i = 0; i < P; ++i)
 			scanf("%d %d", &outposts[i].x, &outposts[i].y);
-			root[i] = i;
-		}
 		int count = 0;
 		for(int i = 0; i < P - 1; ++i) {
 			for(int j = i + 1; j < P; ++j)
@@ -48,7 +61,7 @@ int main() {
 		for(int i = 0; count < P - 1; ++i) {
 			int root1 = find(edges[i].u), root2 = find(edges[i].v);
 			if(root1 != root2) {
-				root[root2] = root1;
+				unite(root1, root2);
 				MST[count++] = edges[i].w;
 			}
 		}
