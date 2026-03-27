@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXV = 1000;
-    static int[] root = new int[MAXV];
+    static int[] root = new int[MAXV], rank = new int[MAXV];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -15,6 +15,7 @@ public class Main {
             int n = (int)st.nval;
             st.nextToken();
             int r = (int)st.nval;
+            init(n);
             Coordinate[] cities = new Coordinate[n];
             for(int j = 0; j < n; ++j) {
                 cities[j] = new Coordinate();
@@ -22,7 +23,6 @@ public class Main {
                 cities[j].x = (int)st.nval;
                 st.nextToken();
                 cities[j].y = (int)st.nval;
-                root[j] = j;
             }
             Edge[] edges = new Edge[n * (n - 1) >> 1];
             int size = 0;
@@ -42,7 +42,7 @@ public class Main {
     	    for(int j = 0; count < n - 1; ++j) {
     	        int root1 = find(edges[j].u), root2 = find(edges[j].v);
     	        if(root1 != root2) {
-    	            root[root2] = root1;
+    	            unite(root1, root2);
     	            ++count;
     	            if(edges[j].w <= r) {
     	                roadLen += Math.sqrt(edges[j].w);
@@ -55,13 +55,27 @@ public class Main {
         }
         System.out.print(output);
     }
-    
-    static int dist(Coordinate c1, Coordinate c2) {
-    	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+
+    static void init(int V) {
+        for(int n = 0; n < V; ++n)
+            rank[root[n] = n] = 0;
     }
     
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
+    }
+    
+    static int dist(Coordinate c1, Coordinate c2) {
+    	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
     }
 }
 
