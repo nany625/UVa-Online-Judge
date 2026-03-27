@@ -56,7 +56,6 @@ public class Main {
             rank[root[n] = n] = 0;
     }
     
-    
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
     }
