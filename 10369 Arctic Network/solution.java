@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXV = 500;
-    static int[] root = new int[MAXV];
+    static int[] root = new int[MAXV], rank = new int[MAXV];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -15,6 +15,7 @@ public class Main {
             int S = (int)st.nval;
             st.nextToken();
             int P = (int)st.nval;
+            init(P);
             Coordinate[] outposts = new Coordinate[P];
             for(int i = 0; i < P; ++i) {
                 outposts[i] = new Coordinate();
@@ -41,7 +42,7 @@ public class Main {
     		for(int i = 0; count < P - 1; ++i) {
     			int root1 = find(edges[i].u), root2 = find(edges[i].v);
     			if(root1 != root2) {
-    				root[root2] = root1;
+    				unite(root1, root2);
     				MST[count++] = edges[i].w;
     			}
     		}
@@ -49,13 +50,27 @@ public class Main {
         }
         System.out.print(output);
     }
-    
-    static int dist(Coordinate c1, Coordinate c2) {
-    	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+
+    static void init(int V) {
+        for(int n = 0; n < V; ++n)
+            rank[root[n] = n] = 0;
     }
     
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
+    }
+
+    static int dist(Coordinate c1, Coordinate c2) {
+    	return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
     }
 }
 
