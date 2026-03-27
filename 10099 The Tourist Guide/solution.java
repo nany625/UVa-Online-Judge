@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int[] root = new int[101];
+    static int[] root = new int[101], rank = new int[101];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -12,8 +12,7 @@ public class Main {
             int N = (int)st.nval;
             st.nextToken();
             int R = (int)st.nval;
-            for(int i = 1; i <= N; ++i)
-			    root[i] = i;
+            init(N);
             Edge[] edges = new Edge[R];
             for(int i = 0; i < R; ++i) {
                 edges[i] = new Edge();
@@ -39,7 +38,7 @@ public class Main {
             for(int i = 0; i < R; ++i) {
     			int root1 = find(edges[i].u), root2 = find(edges[i].v);
     			if(root1 != root2)
-    				root[root2] = root1;
+    				unite(root1, root2);
     			if(find(S) == find(D)) {
     				output.append("Scenario #").append(++scenario).append("\nMinimum Number of Trips = ").append((int)Math.ceil(T / (edges[i].w - 1.0))).append("\n\n");
     				break;
@@ -49,8 +48,22 @@ public class Main {
         System.out.print(output);
     }
     
+    static void init(int V) {
+        for(int n = 1; n <= V; ++n)
+            rank[root[n] = n] = 0;
+    }
+    
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
 
