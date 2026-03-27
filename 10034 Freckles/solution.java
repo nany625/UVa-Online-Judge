@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXV = 100;
-    static int[] root = new int[MAXV];
+    static int[] root = new int[MAXV], rank = new int[MAXV];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -13,6 +13,7 @@ public class Main {
         while(cases-- > 0) {
             st.nextToken();
             int n = (int)st.nval;
+            init(n);
             Coordinate[] freckles = new Coordinate[n];
             for(int i = 0; i < n; ++i) {
                 freckles[i] = new Coordinate();
@@ -20,7 +21,6 @@ public class Main {
                 freckles[i].x = st.nval;
                 st.nextToken();
                 freckles[i].y = st.nval;
-                root[i] = i;
             }
             Edge[] edges = new Edge[n * (n - 1) >> 1];
             int size = 0;
@@ -40,7 +40,7 @@ public class Main {
                 int root1 = find(edges[i].u), root2 = find(edges[i].v);
                 if(root1 != root2) {
                     length += Math.sqrt(edges[i].w);
-                    root[root2] = root1;
+                    unite(root1, root2);
                     ++count;
                 }
             }
@@ -51,12 +51,27 @@ public class Main {
         System.out.print(output);
     }
     
-    static double dist(Coordinate c1, Coordinate c2) {
-        return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+    static void init(int V) {
+        for(int n = 0; n < V; ++n)
+            rank[root[n] = n] = 0;
     }
+    
     
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
+    }
+    
+    static double dist(Coordinate c1, Coordinate c2) {
+        return (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
     }
 }
 
