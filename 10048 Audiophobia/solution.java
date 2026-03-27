@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int[] root = new int[101];
+    static int[] root = new int[101], rank = new int[101];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -37,13 +37,12 @@ public class Main {
     		    int c1 = (int)st.nval;
     		    st.nextToken();
     		    int c2 = (int)st.nval;
-    		    for(int i = 1; i <= C; ++i)
-    			    root[i] = i;
+    		    init(C);
     			boolean noPath = false;
     			for(int i = 0; i < S && !noPath; ++i) {
         			int root1 = find(edges[i].u), root2 = find(edges[i].v);
         			if(root1 != root2)
-        				root[root2] = root1;
+        				unite(root1, root2);
         			if(find(c1) == find(c2)) {
         			    output.append(edges[i].w).append('\n');
         			    noPath = true;
@@ -55,9 +54,23 @@ public class Main {
         }
         System.out.print(output);
     }
+
+    static void init(int V) {
+        for(int n = 1; n <= V; ++n)
+            rank[root[n] = n] = 0;
+    }
     
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
 
