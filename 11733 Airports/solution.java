@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     static int MAXV = 10000;
-    static int[] root = new int[MAXV + 1];
+    static int[] root = new int[MAXV + 1], rank = new int[MAXV + 1];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer st = new StreamTokenizer(br);
@@ -17,6 +17,7 @@ public class Main {
             int M = (int)st.nval;
             st.nextToken();
             int A = (int)st.nval;
+            init(N);
             Edge[] edges = new Edge[M];
             for(int j = 0; j < M; ++j) {
                 edges[j] = new Edge();
@@ -43,7 +44,7 @@ public class Main {
                         cost += edges[j].w;
                         --airports;
                     }
-                    root[root2] = root1;
+                    unite(root1, root2);
                     ++count;
                 }
             }
@@ -52,8 +53,22 @@ public class Main {
         System.out.print(output);
     }
     
+    static void init(int V) {
+        for(int n = 1; n <= V; ++n)
+            rank[root[n] = n] = 0;
+    }
+    
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static void unite(int rootX, int rootY) {
+        if(rank[rootX] > rank[rootY])
+            root[rootY] = rootX;
+        else if(rank[rootX] < rank[rootY])
+            root[rootX] = rootY;
+        else
+            ++rank[root[rootY] = rootX];
     }
 }
 
