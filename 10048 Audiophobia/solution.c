@@ -7,10 +7,24 @@ typedef struct {
 } Edge;
 
 Edge edges[1000];
-int root[101];
+int root[101], rank[101];
+
+void init(int V) {
+    for(int n = 1; n <= V; ++n)
+        rank[root[n] = n] = 0;
+}
 
 int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
+}
+
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
 }
 
 int compare(const void *a, const void *b) {
@@ -29,13 +43,12 @@ int main() {
 		while(Q--) {
 		    int c1, c2;
 		    scanf("%d %d", &c1, &c2);
-		    for(int i = 1; i <= C; ++i)
-			    root[i] = i;
+		    init(C);
 			bool noPath = false;
 			for(int i = 0; i < S && !noPath; ++i) {
     			int root1 = find(edges[i].u), root2 = find(edges[i].v);
     			if(root1 != root2)
-    				root[root2] = root1;
+    				unite(root1, root2);
     			if(find(c1) == find(c2)) {
     			    printf("%d\n", edges[i].w);
     			    noPath = true;
