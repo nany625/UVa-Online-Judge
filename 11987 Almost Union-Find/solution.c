@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAX_NUM 100000
 
-int root[(MAX_NUM << 1) + 1], elements[(MAX_NUM << 1) + 1];
+int root[(MAX_NUM << 1) + 1], rank[(MAX_NUM << 1) + 1], elements[(MAX_NUM << 1) + 1];
 long sum[(MAX_NUM << 1) + 1];
 
 int find(int x) {
@@ -13,6 +13,7 @@ int main() {
     while(scanf("%d %d", &n, &m) == 2) {
         for(int i = 1; i <= n; ++i) {
             root[i] = root[i + n] = i + n;
+            rank[i] = 0;
             elements[i] = elements[i + n] = 1;
             sum[i] = sum[i + n] = i;
         }
@@ -25,9 +26,20 @@ int main() {
                     rootP = find(p);
                     rootQ = find(q);
                     if(rootP != rootQ) {
-                        root[rootQ] = rootP;
-                        elements[rootP] += elements[rootQ];
-                        sum[rootP] += sum[rootQ];
+                        if(rank[rootP] > rank[rootQ]) {
+                            elements[rootP] += elements[rootQ];
+                            sum[rootP] += sum[rootQ];
+                            root[rootQ] = rootP;
+                        }
+                        else if(rank[rootP] < rank[rootQ]) {
+                            elements[rootQ] += elements[rootP];
+                            sum[rootQ] += sum[rootP];
+                            root[rootP] = rootQ;
+                        } else {
+                            elements[rootP] += elements[rootQ];
+                            sum[rootP] += sum[rootQ];
+                            ++rank[root[rootQ] = rootP];
+                        }
                     }
                     break;
                 case 2:
