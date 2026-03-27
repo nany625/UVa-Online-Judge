@@ -30,8 +30,7 @@ int main() {
                             elements[rootP] += elements[rootQ];
                             sum[rootP] += sum[rootQ];
                             root[rootQ] = rootP;
-                        }
-                        else if(rank[rootP] < rank[rootQ]) {
+                        } else if(rank[rootP] < rank[rootQ]) {
                             elements[rootQ] += elements[rootP];
                             sum[rootQ] += sum[rootP];
                             root[rootP] = rootQ;
