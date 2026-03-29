@@ -27,11 +27,9 @@ int main() {
     size_t bufsize = 0;
     while(cases--) {
         int N;
-        scanf("%d", &N);
-        getchar();
-        int root[N + 1], rank[N + 1];
+        scanf("%d ", &N);
+        int root[N + 1], rank[N + 1], nets = N;
         init(root, rank, N);
-        int nets = N;
         while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
             char *token = strtok(buffer, " ");
             while(token) {
