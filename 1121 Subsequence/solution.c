@@ -12,7 +12,7 @@ int main() {
 	while(scanf("%d %d ", &N, &S) == 2) {
 	    getline(&buffer, &bufsize, stdin);
 	    char *token = strtok(buffer, " ");
-	    int start = 0, ans = N, sum = 0;
+	    int start = 0, ans = N + 1, sum = 0;
 	    for(int i = 0; i < N; ++i) {
 	        sequence[i] = atoi(token);
 	        sum += sequence[i];
@@ -24,7 +24,7 @@ int main() {
 	        }
 	        token = strtok(NULL, " ");
 	    }
-	    printf("%d\n", ans == N ? 0 : ans);
+	    printf("%d\n", ans == N + 1 ? 0 : ans);
 	}
 	free(buffer);
 	return 0;
