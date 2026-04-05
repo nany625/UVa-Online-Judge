@@ -14,8 +14,7 @@ int main() {
     size_t bufsize = 0;
     for(int i = 1; i <= T; ++i) {
         int N, D;
-        scanf("%d %d", &N, &D);
-        getchar();
+        scanf("%d %d ", &N, &D);
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         Stone stones[N + 2];
