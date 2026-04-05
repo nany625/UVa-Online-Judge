@@ -17,8 +17,7 @@ void unite(int rootX, int rootY) {
     if(rank[rootX] > rank[rootY]) {
         sum[rootX] += sum[rootY];
         root[rootY] = rootX;
-    }
-    else if(rank[rootX] < rank[rootY]) {
+    } else if(rank[rootX] < rank[rootY]) {
         sum[rootY] += sum[rootX];
         root[rootX] = rootY;
     } else {
