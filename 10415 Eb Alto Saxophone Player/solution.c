@@ -3,8 +3,7 @@
 
 int main() {
     int t;
-    scanf("%d", &t);
-    getchar();
+    scanf("%d ", &t);
     char buffer[202];
     while(t--) {
         fgets(buffer, sizeof(buffer), stdin);
