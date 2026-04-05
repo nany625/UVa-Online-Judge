@@ -6,8 +6,7 @@ int main() {
     int x;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(scanf("%d", &x) == 1) {
-        getchar();
+    while(scanf("%d ", &x) == 1) {
         getline(&buffer, &bufsize, stdin);
         long *a = NULL;
         int size = 0;
