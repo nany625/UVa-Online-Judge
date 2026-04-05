@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #define MAXN 10000
 
-short**knock, knockCount[MAXN + 1];
+short **knock, knockCount[MAXN + 1];
 bool visited[MAXN + 1];
 
 void dfs(int start, int *count) {
