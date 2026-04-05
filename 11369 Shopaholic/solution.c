@@ -41,8 +41,7 @@ int main() {
     size_t bufsize = 0;
     while(t--) {
         int n;
-        scanf("%d", &n);
-        getchar();
+        scanf("%d ", &n);
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
         int p[n];
