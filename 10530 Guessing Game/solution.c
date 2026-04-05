@@ -3,8 +3,7 @@
 int main() {
 	int min = 1, max = 10, guess;
 	char resp[10];
-	while(scanf("%d", &guess) && guess != 0) {
-	    getchar();
+	while(scanf("%d ", &guess) && guess != 0) {
 	    fgets(resp, sizeof(resp), stdin);
 	    switch(resp[4]) {
 	        case 'h':
