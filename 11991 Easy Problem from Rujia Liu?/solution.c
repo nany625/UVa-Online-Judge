@@ -12,8 +12,7 @@ int main() {
     int m;
     char *buffer = NULL;
     size_t bufsize = 0;
-    while(scanf("%*d %d", &m) == 1) {
-        getchar();
+    while(scanf("%*d %d ", &m) == 1) {
         memset(size, 0, sizeof(size));
         getline(&buffer, &bufsize, stdin);
         char *token = strtok(buffer, " ");
