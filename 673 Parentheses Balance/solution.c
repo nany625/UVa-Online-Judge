@@ -5,8 +5,7 @@
 
 int main() {
     int n;
-    scanf("%d", &n);
-    getchar();
+    scanf("%d ", &n);
     char *buffer = NULL, stack[128];
     size_t bufsize = 0;
     while(n--) {
