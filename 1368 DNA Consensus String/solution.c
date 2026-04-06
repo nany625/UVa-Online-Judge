@@ -3,7 +3,7 @@
 int main() {
     int T;
 	scanf("%d", &T);
-	char nucleotides[5] = "ACGT";
+	char nucleotides[] = "ACGT";
 	while(T--) {
 		int m, n;
 		scanf("%d %d", &m, &n);
