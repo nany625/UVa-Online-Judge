@@ -11,6 +11,15 @@ int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
+void unite(int rootX, int rootY) {
+    if(rank[rootX] > rank[rootY])
+        root[rootY] = rootX;
+    else if(rank[rootX] < rank[rootY])
+        root[rootX] = rootY;
+    else
+        ++rank[root[rootY] = rootX];
+}
+
 int main() {
     int cases;
     scanf("%d ", &cases);
@@ -23,12 +32,7 @@ int main() {
             int root1 = find(line[0] - 'A'), root2 = find(line[1] - 'A');
             if(root1 != root2) {
                 --subgraphs;
-                if(rank[root1] > rank[root2])
-                    root[root2] = root1;
-                else if(rank[root1] < rank[root2])
-                    root[root1] = root2;
-                else
-                    ++rank[root[root2] = root1];
+                unite(root1, root2);
             }
         }
         printf("%d\n", subgraphs);
