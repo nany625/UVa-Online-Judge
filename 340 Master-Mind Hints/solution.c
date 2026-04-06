@@ -4,9 +4,8 @@
 
 int main() {
 	int games = 0, N;
-	while(scanf("%d", &N) && N != 0) {
+	while(scanf("%d ", &N) && N != 0) {
 		printf("Game %d:\n", ++games);
-		getchar();
 		char *secretCode = (char*)malloc(((N << 1) + 2) * sizeof(char)), *guess = (char*)malloc(((N << 1) + 2) * sizeof(char));
 		fgets(secretCode, (N << 1) + 2, stdin);
 		bool lastGuess;
