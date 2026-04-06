@@ -31,8 +31,8 @@ int main() {
         while(fgets(line, sizeof(line), stdin) && line[0] != '\n') {
             int root1 = find(line[0] - 'A'), root2 = find(line[1] - 'A');
             if(root1 != root2) {
-                --subgraphs;
                 unite(root1, root2);
+                --subgraphs;
             }
         }
         printf("%d\n", subgraphs);
