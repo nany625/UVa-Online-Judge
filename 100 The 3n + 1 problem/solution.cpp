@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int MAXN = 999999;
-
+const int MAXN = 999999;
 vector<short> collatz(MAXN + 1);
 
 void init(int n) {
@@ -27,9 +26,8 @@ int main() {
     int min, max;
     while(cin >> min >> max) {
         cout << min << ' ' << max << ' ';
-        if(min > max)
-            swap(min, max);
-        cout << max_element(collatz + min, collatz + max + 1) << '\n';
+        auto [l, r] = minmax(min, max);
+        cout << *max_element(collatz.begin() + l, collatz.begin() + r + 1) << '\n';
     }
     return 0;
 }
