@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #define MAXN 64999
-#define GET(n) (isComposite[(n) >> 5] & (1u << ((n) & 31)))
-#define SET(n) (isComposite[(n) >> 5] |= (1u << ((n) & 31)))
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-unsigned int isComposite[(MAXN >> 6) + 1];
+unsigned int mark[(MAXN >> 6) + 1];
 int *primes, size;
 
 void eulerSieve() {
