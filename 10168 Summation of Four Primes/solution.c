@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #define MAXN 9999993
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[(MAXN >> 1) + 1];
+unsigned int mark[(MAXN >> 6) + 1];
 int *primes, size;
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN; n += 2) {
-        if(!isComposite[n >> 1]) {
+        if(!GET(n >> 1)) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = n;
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAXN; ++i) {
-            isComposite[temp >> 1] = true;
+            SET(temp >> 1);
             if(n % primes[i] == 0)
                 break;
         }
@@ -27,12 +29,12 @@ int main() {
         if(N < 8)
             puts("Impossible.");
         else if(N & 1) {
-            if(!isComposite[N - 6 >> 1])
+            if(!GET(N - 6 >> 1))
                 printf("2 2 2 %d\n", N - 6);
             else {
                 N -= 5;
                 int i = 0;
-                while(isComposite[primes[i] >> 1] || isComposite[N - primes[i] >> 1])
+                while(GET(primes[i] >> 1) || GET(N - primes[i] >> 1))
                     ++i;
                 printf("2 3 %d %d\n", primes[i], N - primes[i]);
             }
@@ -42,7 +44,7 @@ int main() {
             else {
                 N -= 4;
                 int i = 0;
-                while(isComposite[primes[i] >> 1] || isComposite[N - primes[i] >> 1])
+                while(GET(primes[i] >> 1) || GET(N - primes[i] >> 1))
                     ++i;
                 printf("2 2 %d %d\n", primes[i], N - primes[i]);
             }
