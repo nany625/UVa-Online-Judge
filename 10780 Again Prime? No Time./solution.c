@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #define MAX_NUM 9999
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[MAX_NUM + 1];
+unsigned int mark[(MAX_NUM >> 5) + 1];
 short *primes, **table;
 int size, pfCount[MAX_NUM + 1];
 
 void eulerSieve() {
 	for(int n = 2; n <= MAX_NUM; ++n) {
-		if(!isComposite[n]) {
+		if(!GET(n)) {
 			primes = (short*)realloc(primes, (size + 1) * sizeof(short));
 			primes[size++] = n;
 		}
 		for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-			isComposite[temp] = true;
+			SET(temp);
 			if(n % primes[i] == 0)
 				break;
 		}
@@ -26,7 +27,7 @@ void initTable(int n) {
     for(int i = 0; i < pfCount[n - 1]; ++i)
         table[n][i] = table[n - 1][i];
     pfCount[n] = pfCount[n - 1];
-    if(!isComposite[n]) {
+    if(!GET(n)) {
         table[n] = (short*)realloc(table[n], (pfCount[n] + 1) * sizeof(short));
         table[n][pfCount[n]++] = 1;
     } else {
