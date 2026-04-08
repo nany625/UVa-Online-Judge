@@ -6,8 +6,7 @@
 #define GET(n) (isComposite[(n) >> 5] & (1 << ((n) & 31)))
 #define SET(n) (isComposite[(n) >> 5] |= (1 << ((n) & 31)))
 
-int isComposite[(MAXN >> 5) + 1];
-int *primes, size;
+int isComposite[(MAXN >> 5) + 1], *primes, size;
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN; n += 2) {
