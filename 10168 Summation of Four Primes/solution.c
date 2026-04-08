@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #define MAXN 9999993
 #define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
