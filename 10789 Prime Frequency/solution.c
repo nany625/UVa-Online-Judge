@@ -3,14 +3,18 @@
 #include <ctype.h>
 #include <stdbool.h>
 #define MAX_NUM 2000
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+unsigned int mark[(MAX_NUM >> 5) + 1];
 
 void eratosthenesSieve() {
+    SET(0);
+    SET(1);
     for(short n = 2; n <= MAX_NUM; ++n) {
-        if(n <= 44 && !isComposite[n]) {
+        if(n <= 44 && !GET(n)) {
             for(int i = n * n; i <= MAX_NUM; i += n)
-                isComposite[i] = true;
+                SET(i);
         }
     }
 }
@@ -35,7 +39,7 @@ int main() {
         }
         bool empty = true;
         for(int j = 0; j < 62; ++j) {
-            if(!isComposite[frequency[j]]) {
+            if(!GET(frequency[j])) {
                 if(j < 10)
                     putchar('0' + j);
                 else if(j < 36)
