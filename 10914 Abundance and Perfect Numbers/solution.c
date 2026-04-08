@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #define MAXN 10000000
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
 typedef struct {
     int n;
@@ -9,7 +10,7 @@ typedef struct {
 } Answer;
 
 Answer *answers;
-bool isComposite[(MAXN >> 2) + 1];
+unsigned int mark[(MAXN >> 7) + 1];
 int answerSize, *primes, primeSize;
 
 int compare(const void *a, const void *b) {
@@ -18,7 +19,7 @@ int compare(const void *a, const void *b) {
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN >> 1; n += 2) {
-        if(!isComposite[n >> 1]) {
+        if(!GET(n >> 1)) {
             primes = (int*)realloc(primes, (primeSize + 1) * sizeof(int));
             primes[primeSize++] = n;
             int tempSum = 1, term = 2;
@@ -30,7 +31,7 @@ void eulerSieve() {
             }
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAXN >> 1; ++i) {
-            isComposite[temp >> 1] = true;
+            SET(temp >> 1);
             if(n % primes[i] == 0)
                 break;
         }
