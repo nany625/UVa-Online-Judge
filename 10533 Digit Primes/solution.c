@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #define MAX_NUM 999999
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+unsigned int mark[(MAX_NUM >> 5) + 1];
 short dpCount[MAX_NUM + 1];
 
 int sumOfDigits(int n) {
@@ -15,12 +17,14 @@ int sumOfDigits(int n) {
 }
 
 void eratosthenesSieve() {
+    SET(0);
+    SET(1);
     for(int n = 2; n <= MAX_NUM; ++n) {
-        if(n <= 999 && !isComposite[n]) {
+        if(n <= 999 && !GET(n)) {
             for(int i = n * n; i <= MAX_NUM; i += n)
-                isComposite[i] = true;
+                SET(i);
         }
-        dpCount[n] = dpCount[n - 1] + (!isComposite[n] && !isComposite[sumOfDigits(n)]);
+        dpCount[n] = dpCount[n - 1] + (!GET(n) && !GET(sumOfDigits(n)));
     }
 }
 
