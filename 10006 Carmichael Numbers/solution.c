@@ -3,18 +3,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #define MAXN 64999
+#define GET(n) (isComposite[(n) >> 5] & (1 << ((n) & 31)))
+#define SET(n) (isComposite[(n) >> 5] |= (1 << ((n) & 31)))
 
-bool isComposite[(MAXN >> 1) + 1];
+int isComposite[(MAXN >> 5) + 1];
 int *primes, size;
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN; n += 2) {
-        if(!isComposite[n >> 1]) {
+        if(!GET(n >> 1)) {
             primes = (int*)realloc(primes, (size + 1) * sizeof(int));
             primes[size++] = n;
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAXN; ++i) {
-            isComposite[temp >> 1] = true;
+            SET(temp >> 1);
             if(n % primes[i] == 0)
                 break;
         }
@@ -44,7 +46,7 @@ int main() {
     eulerSieve();
     int n;
     while(scanf("%d", &n) && n != 0) {
-        if(n & 1 && !isComposite[n >> 1])
+        if(n & 1 && !GET(n >> 1))
             printf("%d is normal.\n", n);
         else {
             if(isCarmichael(n))
@@ -54,7 +56,7 @@ int main() {
         }
     }
     free(primes);
-	return 0;
+    return 0;
 }
 
 // #解法二(捷徑)
