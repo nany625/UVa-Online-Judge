@@ -2,15 +2,16 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <stdbool.h>
 #define MAX_NUM 32693
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
 typedef struct {
     short p;
     int e;
 } Factor;
 
-bool isComposite[(MAX_NUM >> 1) + 1];
+unsigned int mark[(MAX_NUM >> 6) + 1];
 short *primes;
 int size = 1;
 
@@ -18,12 +19,12 @@ void eulerSieve() {
     primes = (short*)malloc(sizeof(short));
     primes[0] = 2;
     for(short n = 3; n <= MAX_NUM; n += 2) {
-        if(!isComposite[n >> 1]) {
+        if(!GET(n >> 1)) {
             primes = (short*)realloc(primes, (size + 1) * sizeof(short));
             primes[size++] = n;
         }
         for(int i = 1, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            isComposite[temp >> 1] = true;
+            SET(temp >> 1);
             if(n % primes[i] == 0)
                 break;
         }
