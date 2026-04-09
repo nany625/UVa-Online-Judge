@@ -1,21 +1,19 @@
 #include <stdio.h>
-#define MAXN 20000000
-
-long ans[MAXN + 1];
-
-void init() {
-    for(int n = 2; n <= MAXN; ++n) {
-        for(int i = n; i <= MAXN; i += n)
-            ans[i] += n;
-    }
-    for(int n = 3; n <= MAXN; ++n)
-        ans[n] += ans[n - 1];
-}
+#include <math.h>
 
 int main() {
-    init();
     int N;
-    while(scanf("%d", &N) && N != 0)
-        printf("%ld\n", ans[N] + N - 1);
+    while(scanf("%d", &N) && N != 0) {
+        long limit = sqrt(N), quotients[limit + 1], ans = -1;
+        for(int i = 1; i <= limit; ++i) {
+            quotients[i] = N / i;
+            ans += i * quotients[i];
+        }
+        for(int i = 1; i < limit; ++i)
+            ans += i * (quotients[i] + quotients[i + 1] + 1) * (quotients[i] - quotients[i + 1]) >> 1;
+        if(limit != quotients[limit])
+            ans += limit * (quotients[limit] + N / (limit + 1) + 1) * (quotients[limit] - N / (limit + 1)) >> 1;
+        printf("%ld\n", ans);
+    }
     return 0;
 }
