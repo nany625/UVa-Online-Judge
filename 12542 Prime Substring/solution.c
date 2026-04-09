@@ -3,18 +3,22 @@
 #include <string.h>
 #include <stdbool.h>
 #define MAX_NUM 99999
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[MAX_NUM + 1] = {true, true};
+unsigned int mark[(MAX_NUM >> 5) + 1];
 int *primes, size;
 
 void eulerSieve() {
+    SET(0);
+    SET(1);
 	for(int n = 2; n <= MAX_NUM; ++n) {
-		if(!isComposite[n]) {
+		if(!GET(n)) {
 		    primes = (int*)realloc(primes, (size + 1) * sizeof(int));
 			primes[size++] = n;
 		}
 		for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-			isComposite[temp] = true;
+			SET(temp);
 			if(n % primes[i] == 0)
 			    break;
 		}
@@ -37,7 +41,7 @@ int main() {
         for(int i = len < 5 ? len : 5; !found; --i) {
             for(int j = 0; j <= len - i; ++j) {
                 int num = subNum(s, j, i);
-                if(!isComposite[num]) {
+                if(!GET(num)) {
                     max = max > num ? max : num;
                     found = true;
                 }
