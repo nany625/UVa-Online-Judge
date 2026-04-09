@@ -28,7 +28,7 @@ int main() {
     eulerSieve();
     for(int i = 0; i < size; ++i) {
         for(int j = 0, temp; j < size && (temp = primes[i] * primes[j]) <= MAX_N; ++j)
-            isCompositePrime[temp >> 5] |= (1u << (temp & 31));
+            isCompositePrime[temp >> 5] |= 1u << (temp & 31);
     }
     int N;
     while(scanf("%d", &N) == 1) {
