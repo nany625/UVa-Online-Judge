@@ -4,7 +4,8 @@
 int main() {
     int N;
     while(scanf("%d", &N) && N != 0) {
-        long limit = sqrt(N), quotients[limit + 1], ans = -1;
+        int limit = sqrt(N);
+        long quotients[limit + 1], ans = -1;
         for(int i = 1; i <= limit; ++i) {
             quotients[i] = N / i;
             ans += i * quotients[i];
