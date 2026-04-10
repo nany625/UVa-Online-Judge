@@ -3,7 +3,7 @@
 
 int ans[MAXN + 1] = {0, 1};
 
-void eratosthenesSieve() {
+void computePhi() {
     for(int n = 2; n <= MAXN; ++n) {
         if(ans[n] == n) {
             for(int i = n; i <= MAXN; i += n)
@@ -15,7 +15,7 @@ void eratosthenesSieve() {
 int main() {
     for(int n = 2; n <= MAXN; ++n)
         ans[n] = n;
-    eratosthenesSieve();
+    computePhi();
     for(int n = 2; n <= MAXN; ++n)
         ans[n] = (ans[n] << 1) + ans[n - 1];
     int N;
