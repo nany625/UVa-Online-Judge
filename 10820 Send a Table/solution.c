@@ -9,6 +9,7 @@ void computePhi() {
             for(int i = n; i <= MAXN; i += n)
                 ans[i] -= ans[i] / n;
         }
+        ans[n] = (ans[n] << 1) + ans[n - 1];
     }
 }
 
@@ -16,8 +17,6 @@ int main() {
     for(int n = 2; n <= MAXN; ++n)
         ans[n] = n;
     computePhi();
-    for(int n = 2; n <= MAXN; ++n)
-        ans[n] = (ans[n] << 1) + ans[n - 1];
     int N;
     while(scanf("%d", &N) && N != 0)
         printf("%d\n", ans[N]);
