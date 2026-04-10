@@ -3,7 +3,7 @@
 
 int phi[MAX_NUM + 1], sodf[MAX_NUM + 1];
 
-void eratosthenesSieve() {
+void computePhi() {
     for(int n = 2; n <= MAX_NUM; ++n) {
         if(phi[n] == n) {
             for(int i = n; i <= MAX_NUM; i += n)
@@ -15,7 +15,7 @@ void eratosthenesSieve() {
 int main() {
     for(int n = 2; n <= MAX_NUM; ++n)
         phi[n] = n;
-    eratosthenesSieve();
+    computePhi();
     for(int n = 2; n <= MAX_NUM; ++n)
         sodf[n] = sodf[phi[n]] + 1;
     for(int n = 3; n <= MAX_NUM; ++n)
