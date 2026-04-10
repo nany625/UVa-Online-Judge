@@ -5,11 +5,11 @@ const int MAXN = 50000;
 
 vector<int> ans(MAXN + 1);
 
-void eratosthenesSieve() {
+void computePhi() {
     for(int n = 2; n <= MAXN; ++n) {
-        if(ans.at(n) == n) {
+        if(ans[n] == n) {
             for(int i = n; i <= MAXN; i += n)
-                ans.at(i) -= ans.at(i) / n;
+                ans[i] -= ans[i] / n;
         }
     }
 }
@@ -17,13 +17,12 @@ void eratosthenesSieve() {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    for(int n = 1; n <= MAXN; ++n)
-        ans.at(n) = n;
-    eratosthenesSieve();
+    iota(ans.begin(), ans.end(), 0);
+    computePhi();
     for(int n = 2; n <= MAXN; ++n)
-        ans.at(n) = (ans.at(n) << 1) + ans.at(n - 1);
+        ans[n] = (ans[n] << 1) + ans[n - 1];
     int N;
     while(cin >> N && N != 0)
-        cout << ans.at(N) << '\n';
+        cout << ans[N] << '\n';
     return 0;
 }
