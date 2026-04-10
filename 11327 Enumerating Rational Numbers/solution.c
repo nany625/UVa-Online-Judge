@@ -3,7 +3,7 @@
 
 long ans[MAX_NUM + 1] = {0, 2};
 
-void eratosthenesSieve() {
+void computePhi() {
     for(int n = 2; n <= MAX_NUM; ++n) {
         if(ans[n] == n) {
             for(int i = n; i <= MAX_NUM; i += n)
@@ -32,7 +32,7 @@ int GCD(int i, int j) {
 int main() {
     for(int n = 2; n <= MAX_NUM; ++n)
         ans[n] = n;
-    eratosthenesSieve();
+    computePhi();
     long k;
     while(scanf("%ld", &k) && k != 0) {
         if(k <= 2)
