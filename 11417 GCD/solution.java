@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         for(int n = 2; n <= MAXN; ++n)
             phi[n] = n;
-        eratosthenesSieve();
+        computePhi();
         for(int n = 2; n <= MAXN; ++n) {
             for(int i = n << 1; i <= MAXN; i += n)
                 ans[i] += n * phi[i / n];
@@ -21,7 +21,7 @@ public class Main {
         System.out.print(output);
     }
     
-    static void eratosthenesSieve() {
+    static void computePhi() {
         for(int n = 2; n <= MAXN; ++n) {
             if(phi[n] == n) {
                 for(int i = n; i <= MAXN; i += n)
