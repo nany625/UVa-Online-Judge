@@ -11,6 +11,7 @@ void computePhi() {
             for(int i = n; i <= MAXN; i += n)
                 ans[i] -= ans[i] / n;
         }
+        ans[n] = (ans[n] << 1) + ans[n - 1];
     }
 }
 
@@ -19,8 +20,6 @@ int main() {
     cin.tie(0);
     iota(ans.begin(), ans.end(), 0);
     computePhi();
-    for(int n = 2; n <= MAXN; ++n)
-        ans[n] = (ans[n] << 1) + ans[n - 1];
     int N;
     while(cin >> N && N != 0)
         cout << ans[N] << '\n';
