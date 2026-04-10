@@ -2,7 +2,6 @@
 using namespace std;
 
 const int MAXN = 50000;
-
 vector<int> ans(MAXN + 1);
 
 void computePhi() {
