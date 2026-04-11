@@ -8,7 +8,6 @@ public class Main {
         StringBuilder output = new StringBuilder();
         while(st.nextToken() == StreamTokenizer.TT_NUMBER) {
             int x = (int)st.nval;
-            //br.readLine();
             String line = br.readLine();
             StringTokenizer strtok = new StringTokenizer(line);
             int n = strtok.countTokens();
