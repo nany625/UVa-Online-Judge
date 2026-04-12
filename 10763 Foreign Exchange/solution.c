@@ -1,25 +1,25 @@
 #include <stdio.h>
-#define MAXN 500000
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return *(int*)a > *(int*)b;
+}
 
 int main() {
     int n;
     while(scanf("%d", &n) && n != 0) {
-        int exchange[MAXN + 1] = {}, count = 0;
-        while(n--) {
-            int a, b;
-            scanf("%d %d", &a, &b);
-            ++exchange[a];
-            --exchange[b];
-            if(exchange[a] == 1)
-                ++count;
-            if(exchange[b] == -1)
-                ++count;
-            if(exchange[a] == 0)
-                --count;
-            if(exchange[b] == 0)
-                --count;
+        int original[n], target[n];
+        for(int i = 0; i < n; ++i)
+            scanf("%d %d", &original[i], &target[i]);
+        qsort(original, n, sizeof(int), compare);
+        qsort(target, n, sizeof(int), compare);
+        int i = 0;
+        while(i < n) {
+            if(original[i] != target[i])
+                break;
+            ++i;
         }
-        puts(count == 0 ? "YES" : "NO");
+        puts(i == n ? "YES" : "NO");
     }
-	return 0;
+    return 0;
 }
