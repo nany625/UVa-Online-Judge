@@ -14,11 +14,8 @@ int main() {
         qsort(original, n, sizeof(int), compare);
         qsort(target, n, sizeof(int), compare);
         int i = 0;
-        while(i < n) {
-            if(original[i] != target[i])
-                break;
+        while(i < n && original[i] == target[i])
             ++i;
-        }
         puts(i == n ? "YES" : "NO");
     }
     return 0;
