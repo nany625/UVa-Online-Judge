@@ -12,11 +12,8 @@ int main() {
         sort(original.begin(), original.end());
         sort(target.begin(), target.end());
         int i = 0;
-        while(i < n) {
-            if(original[i] != target[i])
-                break;
+        while(i < n && original[i] != target[i])
             ++i;
-        }
         cout << (i == n ? "YES\n" : "NO\n");
     }
     return 0;
