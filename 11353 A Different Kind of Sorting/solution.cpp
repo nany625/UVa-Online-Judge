@@ -35,14 +35,11 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     eulerSieve();
-    sort(answers.begin(), answers.end(), [](const pair &a, const pair &b) {
-        if(a.second != b.second)
-            return a.second < b.second;
-        return a.first < b.first;
+    stable_sort(answers.begin(), answers.end(), [](const pair<int, int> &a, const pair<int, int> &b) {
+        return a.second < b.second;
     });
     int cases = 0, n;
-    while(cin >> n && n != 0) {
+    while(cin >> n && n != 0)
         cout << "Case " << ++cases << ": " << answers[n].first << '\n';
-    }
     return 0;
 }
