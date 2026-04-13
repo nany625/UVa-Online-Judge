@@ -7,17 +7,13 @@ unsigned int mark[(MAX_NUM >> 5) + 1];
 vector<int> primes, pf(MAX_NUM + 1), order;
 vector<vector<int>> bucket(MAX_CNT + 1);
 
-bool get(int n) {
-    return mark[n >> 5] & (1u << (n & 31));
-}
-
 void setBit(int n) {
     mark[n >> 5] |= 1u << (n & 31);
 }
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
-        if(!get(n)) {
+        if(pf[n] == 0) {
             primes.push_back(n);
             pf[n] = 1;
         }
