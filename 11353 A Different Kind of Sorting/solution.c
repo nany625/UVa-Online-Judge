@@ -10,7 +10,7 @@ int *primes, primeSize, pf[MAX_NUM + 1], **bucket, size[MAX_CNT + 1], order[MAX_
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
-        if(!GET(n)) {
+        if(pf[n] == 0) {
             primes = (int*)realloc(primes, (primeSize + 1) * sizeof(int));
             primes[primeSize++] = n;
             pf[n] = 1;
