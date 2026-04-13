@@ -56,7 +56,7 @@ int main() {
                 break;
             } else if(strcmp(P, "=") == 0) {
                 scanf("%d", &n);
-                printf("Guess #%d was %s.\n", i, abs(sum - n) < EPS ? "correct" : "incorrect");
+                printf("Guess #%d was %s.\n", i, fabs(sum - n) < EPS ? "correct" : "incorrect");
                 break;
             } else if(P[0] == '+')
                 continue;
