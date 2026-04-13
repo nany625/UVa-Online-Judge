@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #define MAX_NUM 2000000
 #define MAX_CNT 20
-#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
 unsigned int mark[(MAX_NUM >> 5) + 1];
