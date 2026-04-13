@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int MAXF = 200000;
+    static int MAXF = 100000;
     static int[] root = new int[MAXF], depth = new int[MAXF];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,7 +34,7 @@ public class Main {
     		        depth[root1] += depth[root2];
                     root[root2] = root1;
     		    }
-    		    output.append(depth[root1]).append('\n');
+    		    output.append(unite(friendNum.get(name1), friendNum.get(name2))).append('\n');
     		}
 		}
 		System.out.print(output);
@@ -42,5 +42,20 @@ public class Main {
     
     static int find(int x) {
     	return root[x] == x ? x : (root[x] = find(root[x]));
+    }
+    
+    static int unite(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if(x != y) {
+            if(depth[x] < depth[y]) {
+                int temp = x;
+                x = y;
+                y = temp;
+            }
+            depth[x] += depth[y];
+            root[y] = x;
+        }
+        return depth[x];
     }
 }
