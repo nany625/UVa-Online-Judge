@@ -8,7 +8,7 @@ public class Main {
         st.nextToken();
         int N = (int)st.nval;
     	Map<String, String> slogans = new HashMap<>();
-    	for(int i = 0; i < N; ++i)
+    	while(N-- > 0)
     	    slogans.put(br.readLine(), br.readLine());
         st.nextToken();
         int Q = (int)st.nval;
