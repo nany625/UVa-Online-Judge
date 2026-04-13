@@ -26,11 +26,11 @@ int main() {
                 break;
             } else if(P.compare(">") == 0) {
                 cin >> n;
-                cout << "Guess #" << i << " was " << (sum + EPS > n ? "correct.\n" : "incorrect.\n");
+                cout << "Guess #" << i << " was " << (sum - EPS > n ? "correct.\n" : "incorrect.\n");
                 break;
             } else if(P.compare("<=") == 0) {
                 cin >> n;
-                cout << "Guess #" << i << " was " << (sum + EPS <= n ? "correct.\n" : "incorrect.\n");
+                cout << "Guess #" << i << " was " << (sum - EPS <= n ? "correct.\n" : "incorrect.\n");
                 break;
             } else if(P.compare(">=") == 0) {
                 cin >> n;
@@ -38,7 +38,7 @@ int main() {
                 break;
             } else if(P[0] == '=') {
                 cin >> n;
-                cout << "Guess #" << i << " was " << (abs(sum - n) < EPS ? "correct.\n" : "incorrect.\n");
+                cout << "Guess #" << i << " was " << (fabs(sum - n) < EPS ? "correct.\n" : "incorrect.\n");
                 break;
             } else if(P[0] == '+')
                 continue;
