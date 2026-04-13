@@ -16,11 +16,10 @@ int main() {
     }
     int Q;
     cin >> Q;
-    cout << Q;
     cin.ignore();
     while(Q--) {
         getline(cin, first);
-        cout << slogans[first];
+        cout << slogans[first] << '\n';
     }
     return 0;
 }
