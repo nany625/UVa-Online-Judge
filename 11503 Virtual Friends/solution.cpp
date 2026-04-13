@@ -1,11 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXF = 200000;
+const int MAXF = 100000;
 vector<int> root(MAXF), depth(MAXF);
 
 int find(int x) {
     return root[x] == x ? x : root[x] = find(root[x]);
+}
+
+int unite(int x, int y) {
+    x = find(x);
+    y = find(y);
+    if(x != y) {
+        if(depth[x] < depth[y])
+            swap(x, y);
+        depth[x] += depth[y];
+        root[y] = x;
+    }
+    return depth[x];
 }
 
 int main() {
@@ -30,12 +42,7 @@ int main() {
                 root[cnt] = cnt;
                 depth[cnt++] = 1;
             }
-            int root1 = find(friendNum[name1]), root2 = find(friendNum[name2]);
-            if(root1 != root2) {
-                depth[root1] += depth[root2];
-                root[root2] = root1;
-            }
-            cout << depth[root1] << '\n';
+            cout << unite(friendNum[name1], friendNum[name2]) << '\n';
         }
     }
     return 0;
