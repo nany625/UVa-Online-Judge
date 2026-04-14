@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #define MAX_NUM 999999
+#define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
+#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-bool isComposite[MAX_NUM + 1];
+unsigned int mark[(MAX_NUM >> 6) + 1];
 long *almostPrimes;
 int size;
 
@@ -18,6 +19,19 @@ void appendAlmostPrimes(int i) {
 	    almostPrimes[size++] = p;
 	    p *= i;
     }
+}
+
+void eratosthenesSieve() {
+    appendAlmostPrimes(2);
+	for(int i = 3; i <= MAX_NUM; i += 2) {
+	    if(!GET(i >> 1)) {
+	        appendAlmostPrimes(i);
+	        if(i <= 999) {
+	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
+	                SET(j >> 1);
+	        }
+	    }
+	}
 }
 
 int binarySearch(long key) {
@@ -35,16 +49,7 @@ int binarySearch(long key) {
 }
 	
 int main() {
-    appendAlmostPrimes(2);
-	for(int i = 3; i <= MAX_NUM; i += 2) {
-	    if(!isComposite[i]) {
-	        appendAlmostPrimes(i);
-	        if(i <= 999) {
-	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
-	                isComposite[j] = true;
-	        }
-	    }
-	}
+    eratosthenesSieve();
 	qsort(almostPrimes, size, sizeof(long), compare);
 	int N;
 	scanf("%d", &N);
