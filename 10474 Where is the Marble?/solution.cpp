@@ -6,7 +6,7 @@ int main() {
     cin.tie(0);
     int cases = 0, N, Q;
     while(cin >> N >> Q && N != 0) {
-        cout << "CASE#" << ++cases << ":\n";
+        cout << "CASE# " << ++cases << ":\n";
         vector<int> marbles(N);
         for(int i = 0; i < N; ++i)
             cin >> marbles[i];
