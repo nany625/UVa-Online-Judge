@@ -16,7 +16,7 @@ void eulerSieve() {
 		}
 		for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
 			SET(temp);
-			count[temp] = count[primes[i]] + count[n];
+			count[temp] = 1 + count[n];
 			if(n % primes[i] == 0)
 				break;
 		}
