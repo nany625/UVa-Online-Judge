@@ -14,7 +14,7 @@ int main() {
         while(Q--) {
             int query;
             cin >> query;
-            int pos = lower_bound(marbles.begin(), marbles.end(), query) - marbles;
+            int pos = lower_bound(marbles.begin(), marbles.end(), query) - marbles.begin();
             if(marbles[pos] == query)
                 cout << query << " found at " << pos + 1 << '\n';
             else
