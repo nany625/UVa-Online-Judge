@@ -38,8 +38,8 @@ int main() {
         long low, high;
         cin >> low >> high;
         int posLow = lower_bound(almostPrimes.begin(), almostPrimes.end(), low) - almostPrimes.begin();
-        int posHigh = lower_bound(almostPrimes.begin(), almostPrimes.end(), high) - almostPrimes.begin();
-        cout << posHigh - posLow + (posHigh < almostPrimes.size() && almostPrimes[posHigh] == high) << '\n';
+        int posHigh = upper_bound(almostPrimes.begin(), almostPrimes.end(), high) - almostPrimes.begin();
+        cout << posHigh - posLow << '\n';
     }
     return 0;
 }
