@@ -18,14 +18,13 @@ int main() {
         }
         vector<int> LDS;
         int ans = 1;
-        for(int i = N - 1; i >= 0; --i) {
+        for(int i = N - 1; i >= 0 && ans < LIS.size(); --i) {
             int idx = lower_bound(LDS.begin(), LDS.end(), sequence[i]) - LDS.begin();
             if(idx == LDS.size())
                 LDS.push_back(sequence[i]);
             else
                 LDS[idx] = sequence[i];
-            int temp = min(pos[i], idx + 1);
-            ans = max(ans, temp);
+            ans = max(ans, min(pos[i], idx + 1));
         }
         cout << (ans << 1) - 1 << '\n';
     }
