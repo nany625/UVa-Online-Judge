@@ -27,14 +27,13 @@ int main() {
             LIS[pos] = sequence[i];
             lisDP[i] = pos + 1;
         }
-        int *LDS = NULL, ldsSize = 0, ldsDP[N], max = 1;
+        int *LDS = NULL, ldsSize = 0, max = 1;
         for(int i = N - 1; i >= 0 && max < lisSize; --i) {
             int pos = binarySearch(LDS, ldsSize, sequence[i]);
             if(pos == ldsSize)
                 LDS = (int*)realloc(LDS, ++ldsSize * sizeof(int));
             LDS[pos] = sequence[i];
-            ldsDP[i] = pos + 1;
-            int temp = lisDP[i] < ldsDP[i] ? lisDP[i] : ldsDP[i];
+            int temp = lisDP[i] < pos + 1 ? lisDP[i] : pos + 1;
             max = max > temp ? max : temp;
         }
         printf("%d\n", (max << 1) - 1);
