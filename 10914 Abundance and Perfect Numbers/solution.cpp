@@ -45,8 +45,7 @@ int main() {
     for(int i = 1; i < answers.size(); ++i)
         answers[i].second += answers[i - 1].second - (answers[i].first << 1);
     int n;
-    while(cin >> n && n != 0) {
+    while(cin >> n && n != 0)
         cout << n << ' ' << (n <= 9 ? 0 : answers[findPos(n)].second) << '\n';
-    }
     return 0;
 }
