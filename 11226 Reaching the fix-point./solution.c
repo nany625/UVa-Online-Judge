@@ -33,8 +33,8 @@ int main() {
             n = m;
             m = temp;
         }
-        int max = 0;
-        for(int j = n; j <= m; ++j)
+        int max = lsopf[n];
+        for(int j = n + 1; j <= m; ++j)
             max = max > lsopf[j] ? max : lsopf[j];
         printf("Case #%d:\n%d\n", i, max);
     }
