@@ -13,7 +13,7 @@ void eulerSieve() {
             mu[n] = -1;
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            pfCount[temp] = pfCount[primes[i]] + pfCount[n];
+            pfCount[temp] = 1 + pfCount[n];
             if(n % primes[i] == 0)
                 break;
             else if(mu[n] != 0)
