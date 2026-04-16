@@ -23,7 +23,13 @@ int main() {
         vector<int> dp(N);
         dp[0] = get<2>(ad[0]);
         for(int j = 1; j < N; ++j) {
-            int idx = upper_bound(ends.begin(), ends.begin() + j, get<0>(ad[j])) - ends.begin();
+            int idx = upper_bound(
+                ad.begin(), 
+                ad.begin() + j, 
+                get<0>(ad[j]), 
+                [](int val, const tuple<int, int, int> &a) {
+                    return val < get<1>(a);
+                }) - ad.begin();
             if(idx == 0)
                 dp[j] = max(dp[j - 1], get<2>(ad[j]));
             else
