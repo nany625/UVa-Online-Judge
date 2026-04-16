@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int *C, size;
 
@@ -23,13 +24,13 @@ int binarySearch(int key) {
 
 int main() {
     long i = 1;
-    while(i <= 2147483647) {
+    while(i <= INT_MAX) {
         long temp = i;
         do {
             C = (int*)realloc(C, (size + 1) * sizeof(int));
             C[size++] = temp;
             temp *= 3;
-        } while(temp <= 2147483647);
+        } while(temp <= INT_MAX);
         i <<= 1;
     }
     qsort(C, size, sizeof(int), compare);
