@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_NUM 2000000000
 
 int humbleNumbers[5842], size;
 
@@ -9,13 +10,13 @@ int compare(const void *a, const void *b) {
 
 int main() {
     long temp = 1;
-    while(temp <= 2000000000) {
+    while(temp <= MAX_NUM) {
         long a = 1;
-        while(temp <= 2000000000) {
+        while(temp <= MAX_NUM) {
             long b = 1;
-            while(temp <= 2000000000) {
+            while(temp <= MAX_NUM) {
                 long c = 1;
-                while(temp <= 2000000000) {
+                while(temp <= MAX_NUM) {
                     humbleNumbers[size++] = temp;
                     temp *= 7;
                     c *= 7;
