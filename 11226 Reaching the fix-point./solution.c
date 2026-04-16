@@ -14,7 +14,7 @@ void eulerSieve() {
         } else
             lsopf[n] = 1 + lsopf[sopf[n]];
         for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            sopf[temp] = sopf[primes[i]] + sopf[n];
+            sopf[temp] = primes[i] + sopf[n];
             if(n % primes[i] == 0)
                 break;
         }
