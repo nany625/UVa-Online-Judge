@@ -38,5 +38,6 @@ int main() {
     int n;
     while(scanf("%d", &n) && n != 0)
         printf("%d %ld\n", n, answers[n]);
+    free(primes);
     return 0;
 }
