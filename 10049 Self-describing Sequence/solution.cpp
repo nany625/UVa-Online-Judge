@@ -26,6 +26,6 @@ int main() {
         f.push_back(f.back() + (pos += f.size() >= f[pos]));
     int n;
     while(cin >> n && n != 0)
-        cout << binarySearch(n) << '\n';
+        cout << upper_bound(f.begin(), f.end() - 1, n) - f.begin() << '\n';
     return 0;
 }
