@@ -4,29 +4,22 @@
 #define GET(n) (mark[(n) >> 5] & (1u << ((n) & 31)))
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-typedef struct {
-    int n;
-    long abun;
-} Answer;
-
-Answer *answers;
 unsigned int mark[(MAXN >> 7) + 1];
-int answerSize, *primes, primeSize;
-
-int compare(const void *a, const void *b) {
-    return ((Answer*)a)->n > ((Answer*)b)->n;
-}
+int *primes, size;
+long answers[MAXN + 1];
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN >> 1; n += 2) {
         if(!GET(n >> 1)) {
-            primes = (int*)realloc(primes, (primeSize + 1) * sizeof(int));
-            primes[primeSize++] = n;
+            primes = (int*)realloc(primes, (size + 1) * sizeof(int));
+            primes[size++] = n;
             int tempSum = 1, term = 2;
-            while(term * n <= MAXN) {
+            while(1) {
+                int op = term * n;
+                if(op > MAXN)
+                    break;
                 tempSum += term;
-                answers = (Answer*)realloc(answers, (answerSize + 1) * sizeof(Answer));
-                answers[answerSize++] = {term * n, tempSum * (1 + n)};
+                answers[op] = tempSum * (1 + n) - (op << 1);
                 term <<= 1;
             }
         }
@@ -38,30 +31,12 @@ void eulerSieve() {
     }
 }
 
-int binarySearch(int key) {
-    int left = 0, right = answerSize - 1;
-    while(left <= right) {
-        int mid = left + (right - left >> 1);
-        if(answers[mid].n == key)
-            return mid;
-        if(answers[mid].n < key)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return left - 1;
-}
-
 int main() {
     eulerSieve();
-    qsort(answers, answerSize, sizeof(Answer), compare);
-    answers[0].abun = 0;
-    for(int i = 1; i < answerSize; ++i)
-        answers[i].abun += answers[i - 1].abun - (answers[i].n << 1);
+    for(int i = 11; i <= MAXN; ++i)
+        answers[i] += answers[i - 1];
     int n;
     while(scanf("%d", &n) && n != 0)
-        printf("%d %ld\n", n, n <= 9 ? 0 : answers[binarySearch(n)].abun);
-    free(primes);
-    free(answers);
+        printf("%d %ld\n", n, answers[n]);
     return 0;
 }
