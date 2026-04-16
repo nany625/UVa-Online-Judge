@@ -5,7 +5,7 @@
 #define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
 unsigned int mark[(MAX_NUM >> 5) + 1];
-int *primes, sum[MAX_NUM + 1], count[MAX_NUM + 1], size;
+int *primes, size, sum[MAX_NUM + 1], count[MAX_NUM + 1];
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
