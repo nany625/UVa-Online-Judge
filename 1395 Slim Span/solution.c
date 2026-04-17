@@ -19,24 +19,25 @@ int find(int x) {
     return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
-void unite(int rootX, int rootY) {
-    if(rank[rootX] > rank[rootY])
-        root[rootY] = rootX;
-    else if(rank[rootX] < rank[rootY])
-        root[rootX] = rootY;
-    else
-        ++rank[root[rootY] = rootX];
+void unite(int x, int y, int *count) {
+    x = find(x);
+    y = find(y);
+    if(x != y) {
+        ++(*count);
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
+        else
+            ++rank[root[y] = x];
+    }
 }
 
 void kruskal(int V, int E, int start, int *slimness) {
     init(V);
     int count = 0;
     for(int i = start; i < E; ++i) {
-        int root1 = find(edges[i].u), root2 = find(edges[i].v);
-        if(root1 != root2) {
-            unite(root1, root2);
-            ++count;
-        }
+        unite(edges[i].u, edges[i].v, &count);
         if(count == V - 1) {
             *slimness = *slimness < edges[i].w - edges[start].w ? *slimness : edges[i].w - edges[start].w;
             return;
