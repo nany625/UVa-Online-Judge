@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -13,17 +14,16 @@ public class Main {
 			int[] root = new int[computers + 1], rank = new int[computers + 1];
 			init(root, rank, computers);
 			int succ = 0, unsucc = 0;
-			String s;
-			while((s = br.readLine()) != null && !s.isEmpty()) {
-			    String[] tokens = s.split("\\s+");
-			    int computeri = Integer.parseInt(tokens[1]);
-			    int computerj = Integer.parseInt(tokens[2]);
-			    int rootI = find(root, computeri);
-			    int rootJ = find(root, computerj);
-			    if(tokens[0].charAt(0) == 'c')
-			        unite(root, rank, rootI, rootJ);
-			    else if(tokens[0].charAt(0) == 'q') {
-			        if(root[rootI] == root[rootJ])
+			String line;
+			while((line = br.readLine()) != null && !line.isEmpty()) {
+                StringTokenizer strtok = new StringTokenizer(line);
+                char command = strtok.nextToken().charAt(0);
+			    int computeri = Integer.parseInt(strtok.nextToken());
+			    int computerj = Integer.parseInt(strtok.nextToken());
+			    if(command == 'c')
+			        unite(root, rank, computeri, computerj);
+			    else if(command == 'q') {
+			        if(find(root, computeri) == find(root, computerj))
 			            ++succ;
 			        else
 			            ++unsucc;
@@ -45,14 +45,16 @@ public class Main {
 	    return root[x] == x ? x : (root[x] = find(root, root[x]));
 	}
 	
-	static void unite(int[] root, int[] rank, int rootX, int rootY) {
-        if(rootX != rootY) {
-            if(rank[rootX] > rank[rootY])
-                root[rootY] = rootX;
-            else if(rank[rootX] < rank[rootY])
-                root[rootX] = rootY;
+	static void unite(int[] root, int[] rank, int x, int y) {
+        x = find(root, x);
+        y = find(root, y);
+        if(x != y) {
+            if(rank[x] > rank[y])
+                root[y] = x;
+            else if(rank[x] < rank[y])
+                root[x] = y;
             else
-                ++rank[root[rootY] = rootX];
+                ++rank[root[y] = x];
         }
     }
 }
