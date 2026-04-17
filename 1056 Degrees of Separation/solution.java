@@ -30,16 +30,12 @@ public class Main {
 		    	dist[peopleID.get(name1)][peopleID.get(name2)] = dist[peopleID.get(name2)][peopleID.get(name1)] = 1;
 		    }
 		    floydWarshall(P);
-		    int max = 0;
-		    boolean disconnected = false;
-		    for(int i = 0; i < P && !disconnected; ++i) {
-		    	for(int j = 0; j < P && !disconnected; ++j)
-		    		if(dist[i][j] == INF)
-		    			disconnected = true;
-		    		else
-		    			max = Math.max(max, dist[i][j]);
+		    int max = 1;
+		    for(int i = 0; i < P; ++i) {
+		    	for(int j = 0; j < P; ++j)
+		    		max = Math.max(max, dist[i][j]);
 		    }
-		    output.append("Network ").append(++dataSets).append(": ").append(disconnected ? "DISCONNECTED" : max).append("\n\n");
+		    output.append("Network ").append(++dataSets).append(": ").append(max == INF ? "DISCONNECTED" : max).append("\n\n");
 		}
 		System.out.print(output);
 	}
