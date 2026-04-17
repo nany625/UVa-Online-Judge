@@ -11,14 +11,16 @@ int find(int *root, int x) {
 	return root[x] == x ? x : (root[x] = find(root, root[x]));
 }
 
-void unite(int *root, int *rank, int rootX, int rootY) {
-    if(rootX != rootY) {
-        if(rank[rootX] > rank[rootY])
-            root[rootY] = rootX;
-        else if(rank[rootX] < rank[rootY])
-            root[rootX] = rootY;
+void unite(int *root, int *rank, int x, int y) {
+    x = find(root, x);
+    y = find(root, y);
+    if(x != y) {
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
         else
-            ++rank[root[rootY] = rootX];
+            ++rank[root[y] = x];
     }
 }
 
@@ -40,12 +42,10 @@ int main() {
             int computeri = atoi(token);
             token = strtok(NULL, " ");
             int computerj = atoi(token);
-            int rootI = find(root, computeri);
-			int rootJ = find(root, computerj);
 			if(command == 'c')
-			    unite(root, rank, rootI, rootJ);
+			    unite(root, rank, computeri, computerj);
 			else if(command == 'q')
-			    root[rootI] == root[rootJ] ? ++succ : ++unsucc;
+			    find(root, computeri) == find(root, computerj) ? ++succ : ++unsucc;
 	    }
         printf("%d,%d\n", succ, unsucc);
         if(cases)
