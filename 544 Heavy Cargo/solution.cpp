@@ -7,7 +7,7 @@ vector<int> root(MAXE), ranks(MAXE);
 vector<tuple<int, int, int>> edges(MAXV);
 
 int find(int x) {
-    return x == root[x] ? x : find(root[x]);
+    return x == root[x] ? x : root[x] = find(root[x]);
 }
 
 void unite(int x, int y) {
@@ -45,9 +45,10 @@ int main() {
         iota(root.begin(), root.begin() + n, 0);
         fill(ranks.begin(), ranks.begin() + n, 0);
         cin >> city1 >> city2;
+        int s = cityNum[city1], t = cityNum[city2];
         for(int i = 0; i < r; ++i) {
             unite(get<0>(edges[i]), get<1>(edges[i]));
-            if(find(cityNum[city1]) == find(cityNum[city2])) {
+            if(find(s) == find(t)) {
                 cout << "Scenario #" << ++scenarios << '\n' << get<2>(edges[i]) << " tons\n\n";
                 break;
             }
