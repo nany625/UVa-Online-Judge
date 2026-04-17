@@ -10,17 +10,13 @@ public class Main {
     	br.readLine();
 		StringBuilder output = new StringBuilder();
 		while(cases-- > 0) {
-    		int subgraphs = br.readLine().charAt(0) - 'A' + 1;
-    		init(subgraphs);
+    		int[] subgraphs = new int[1];
+    		subgraphs[0] = br.readLine().charAt(0) - 'A' + 1;
+    		init(subgraphs[0]);
             String s;
-            while((s = br.readLine()) != null && !s.isEmpty()) {
-                int root1 = find(s.charAt(0) - 'A'), root2 = find(s.charAt(1) - 'A');
-                if(root1 != root2) {
-                    unite(root1, root2);
-                    --subgraphs;
-                }
-            }
-            output.append(subgraphs).append('\n');
+            while((s = br.readLine()) != null && !s.isEmpty())
+                unite(s.charAt(0) - 'A', s.charAt(1) - 'A', subgraphs);
+            output.append(subgraphs[0]).append('\n');
             if(cases > 0)
                 output.append('\n');
 		}
@@ -36,12 +32,17 @@ public class Main {
     	return root[x] == x ? x : (root[x] = find(root[x]));
     }
 
-    static void unite(int rootX, int rootY) {
-        if(rank[rootX] > rank[rootY])
-            root[rootY] = rootX;
-        else if(rank[rootX] < rank[rootY])
-            root[rootX] = rootY;
-        else
-            ++rank[root[rootY] = rootX];
+    static void unite(int x, int y, int[] subgraphs) {
+        x = find(x);
+        y = find(y);
+        if(x != y) {
+            --subgraphs[0];
+            if(rank[x] > rank[y])
+                root[y] = x;
+            else if(rank[x] < rank[y])
+                root[x] = y;
+            else
+                ++rank[root[y] = x];
+        }
     }
 }
