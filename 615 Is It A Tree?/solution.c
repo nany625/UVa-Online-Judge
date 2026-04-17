@@ -25,15 +25,15 @@ int find(int x) {
 }
 
 void unite(int x, int y) {
-    int rootX = find(x);
-    int rootY = find(y);
-    if(rootX != rootY) {
-        if(rank[rootX] > rank[rootY])
-            root[rootY] = rootX;
-        else if(rank[rootX] < rank[rootY])
-            root[rootX] = rootY;
+    x = find(x);
+    y = find(y);
+    if(x != y) {
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
         else
-            ++rank[root[rootY] = rootX];
+            ++rank[root[y] = x];
     } else
         isTree = false;
 }
