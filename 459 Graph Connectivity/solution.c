@@ -11,13 +11,18 @@ int find(int x) {
 	return root[x] == x ? x : (root[x] = find(root[x]));
 }
 
-void unite(int rootX, int rootY) {
-    if(rank[rootX] > rank[rootY])
-        root[rootY] = rootX;
-    else if(rank[rootX] < rank[rootY])
-        root[rootX] = rootY;
-    else
-        ++rank[root[rootY] = rootX];
+void unite(int x, int y, int *subgraphs) {
+    x = find(x);
+    y = find(y);
+    if(x != y) {
+        --(*subgraphs);
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
+        else
+            ++rank[root[y] = x];
+    }
 }
 
 int main() {
@@ -28,13 +33,8 @@ int main() {
         fgets(line, sizeof(line), stdin);
         int subgraphs = line[0] - 'A' + 1;
         init(subgraphs);
-        while(fgets(line, sizeof(line), stdin) && line[0] != '\n') {
-            int root1 = find(line[0] - 'A'), root2 = find(line[1] - 'A');
-            if(root1 != root2) {
-                unite(root1, root2);
-                --subgraphs;
-            }
-        }
+        while(fgets(line, sizeof(line), stdin) && line[0] != '\n')
+            unite(line[0] - 'A', line[1] - 'A', &subgraphs);
         printf("%d\n", subgraphs);
         if(cases)
             putchar('\n');
