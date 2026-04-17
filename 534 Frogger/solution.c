@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <stdbool.h>
 #define MAXV 200
 
 typedef struct {
@@ -25,15 +24,15 @@ int find(int x) {
 }
 
 void unite(int x, int y) {
-    int rootX = find(x);
-    int rootY = find(y);
-    if(rootX != rootY) {
-        if(rank[rootX] > rank[rootY])
-            root[rootY] = rootX;
-        else if(rank[rootX] < rank[rootY])
-            root[rootX] = rootY;
+    x = find(x);
+    y = find(y);
+    if(x != y) {
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
         else
-            ++rank[root[rootY] = rootX];
+            ++rank[root[y] = x];
     }
 }
 
@@ -59,7 +58,7 @@ int main() {
 		qsort(edges, size, sizeof(Edge), compare);
 		init(n);
 		int i = 0;
-		while(true) {
+		while(1) {
 		    unite(edges[i].u, edges[i].v);
 			if(find(0) == find(1)) {
 				printf("Scenario #%d\nFrog Distance = %.3lf\n\n", ++cases, sqrt(edges[i].w));
