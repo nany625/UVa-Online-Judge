@@ -11,13 +11,18 @@ int find(int *root, int x) {
     return root[x] == x ? x : (root[x] = find(root, root[x]));
 }
 
-void unite(int *root, int *rank, int rootX, int rootY) {
-    if(rank[rootX] > rank[rootY])
-        root[rootY] = rootX;
-    else if(rank[rootX] < rank[rootY])
-        root[rootX] = rootY;
-    else
-        ++rank[root[rootY] = rootX];
+void unite(int *root, int *rank, int x, int y, int *nets) {
+    x = find(root, x);
+    y = find(root, y);
+    if(x != y) {
+        --(*nets);
+        if(rank[x] > rank[y])
+            root[y] = x;
+        else if(rank[x] < rank[y])
+            root[x] = y;
+        else
+            ++rank[root[y] = x];
+    }
 }
 
 int main() {
@@ -33,13 +38,10 @@ int main() {
         while(getline(&buffer, &bufsize, stdin) != -1 && buffer[0] != '\n') {
             char *token = strtok(buffer, " ");
             while(token) {
-                int root1 = find(root, atoi(token));
+                int x = atoi(token);
                 token = strtok(NULL, " ");
-                int root2 = find(root, atoi(token));
-                if(root1 != root2) {
-                    unite(root, rank, root1, root2);
-                    --nets;
-                }
+                int y = atoi(token);
+                unite(root, rank, x, y, &nets);
                 token = strtok(NULL, " ");
             }
         }
