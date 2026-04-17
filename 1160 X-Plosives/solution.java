@@ -16,11 +16,7 @@ public class Main {
     		} else {
     		    st.nextToken();
     		    int y = (int)st.nval;
-    		    int rootX = find(x), rootY = find(y);
-    		    if(rootX == rootY)
-    		        ++refusals;
-    		    else
-    		        unite(rootX, rootY);
+    		    unite(x, y);
     		}
 		}
 		System.out.print(output);
@@ -36,12 +32,17 @@ public class Main {
     	return root[x] == x ? x : (root[x] = find(root[x]));
     }
     
-    static void unite(int rootX, int rootY) {
-        if(rank[rootX] > rank[rootY])
-            root[rootY] = rootX;
-        else if(rank[rootX] < rank[rootY])
-            root[rootX] = rootY;
-        else
-            ++rank[root[rootY] = rootX];
+    static void unite(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if(x != y) {
+            if(rank[x] > rank[y])
+                root[y] = x;
+            else if(rank[x] < rank[y])
+                root[x] = y;
+            else
+                ++rank[root[y] = x];
+        } else
+            ++refusals;
     }
 }
