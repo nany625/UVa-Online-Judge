@@ -8,7 +8,7 @@ vector<vector<int>> dir = {{-1, 1, 0, 0, 0, 0}, {0, 0, -1, 1, 0, 0}, {0, 0, 0, 0
 
 void bfs(queue<tuple<int, int, int>>& q, int L, int R, int C) {
     while(!q.empty()) {
-        auto[x, y, z] = q.front();
+        auto [x, y, z] = q.front();
         for(int i = 0; i < 6; ++i) {
             int nx = x + dir[0][i];
             int ny = y + dir[1][i];
