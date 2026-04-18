@@ -21,10 +21,10 @@ int main() {
         --end.first;
         --end.second;
         for(int i = start.second; i <= end.second; ++i) {
-            for(int j = start.first; j <= end.first; ++j) {
+            Nblock[i].reset();
+            Eblock[i].reset();
+            for(int j = start.first; j <= end.first; ++j)
                 ways[i][j] = 0;
-                Nblock[i][j] = Eblock[i][j] = 0;
-            }
         }
         int W;
         cin >> W;
