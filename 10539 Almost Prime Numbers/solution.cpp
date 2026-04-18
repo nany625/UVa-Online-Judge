@@ -21,7 +21,7 @@ void eratosthenesSieve() {
 	        appendAlmostPrimes(i);
 	        if(i <= 999) {
 	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
-	                mark.set(j >> 1);
+	                mark[j >> 1] = 1;
 	        }
 	    }
 	}
