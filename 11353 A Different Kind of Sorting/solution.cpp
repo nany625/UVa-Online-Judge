@@ -3,13 +3,8 @@ using namespace std;
 
 const int MAX_NUM = 2000000;
 const int MAX_CNT = 20;
-unsigned int mark[(MAX_NUM >> 5) + 1];
 vector<int> primes, pf(MAX_NUM + 1), order;
 vector<vector<int>> bucket(MAX_CNT + 1);
-
-void setBit(int n) {
-    mark[n >> 5] |= 1u << (n & 31);
-}
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
@@ -18,7 +13,6 @@ void eulerSieve() {
             pf[n] = 1;
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            setBit(temp);
             pf[temp] = 1 + pf[n];
             if(n % primes[i] == 0)
                 break;
