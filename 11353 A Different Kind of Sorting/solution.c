@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #define MAX_NUM 2000000
 #define MAX_CNT 20
-#define SET(n) (mark[(n) >> 5] |= (1u << ((n) & 31)))
 
-unsigned int mark[(MAX_NUM >> 5) + 1];
 int *primes, primeSize, pf[MAX_NUM + 1], **bucket, size[MAX_CNT + 1], order[MAX_NUM];
 
 void eulerSieve() {
@@ -15,7 +13,6 @@ void eulerSieve() {
             pf[n] = 1;
         }
         for(int i = 0, temp; (temp = primes[i] * n) <= MAX_NUM; ++i) {
-            SET(temp);
             pf[temp] = 1 + pf[n];
             if(n % primes[i] == 0)
                 break;
