@@ -2,19 +2,15 @@
 using namespace std;
 
 const int MAX = 70;
-vector<vector<long>> ans(MAX, vector<long>(MAX));
+vector<vector<int>> ans(MAX + 1, vector<int>(MAX + 1));
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    for(int i = 1; i < MAX; ++i) {
+    for(int i = 1; i <= MAX; ++i) {
         ans[i][0] = 1;
-        for(int j = 1; j < MAX; ++j)
+        for(int j = 1; j <= MAX; ++j)
             ans[i][j] = ans[i - 1][j] + ans[i][j - 1];
-    }
-    for(int i = 1; i < MAX; ++i) {
-        for(int j = 1; j < MAX; ++j)
-            ans[i][j] += ans[i][j - 1];
     }
     int K;
     cin >> K;
@@ -24,7 +20,7 @@ int main() {
         if(T - N * P < 0)
             cout << "0\n";
         else
-            cout << ans[N - 1][T - N * P] << '\n';
+            cout << ans[N][T - N * P] << '\n';
     }
     return 0;
 }
