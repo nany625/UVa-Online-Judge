@@ -1,15 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<unsigned int>> dp(2, vector<unsigned int>(4));
-
-bool get(int row, int num) {
-    return dp[row][num >> 5] & (1u << (num & 31));
-}
-
-void setBit(int row, int num) {
-    dp[row][num >> 5] |= 1u << (num & 31);
-}
+vector<bitset<100>> dp(2);
 
 int main() {
     ios::sync_with_stdio(false);
@@ -19,23 +11,23 @@ int main() {
     while(M--) {
         int N, K;
         cin >> N >> K;
-        fill(dp[0].begin(), dp[0].end(), 0);
+        dp[0].reset();
         int num;
         cin >> num;
         num = (num % K + K) % K;
-        setBit(0, num);
+        dp[0][num] = 1;
         for(int i = 1; i < N; ++i) {
             cin >> num;
             num = (num % K + K) % K;
-            fill(dp[i & 1].begin(), dp[i & 1].end(), 0);
+            dp[i & 1].reset();
             for(int j = 0; j < K; ++j) {
-                if(get(!(i & 1), j)) {
-                    setBit(i & 1, (j + num) % K);
-                    setBit(i & 1, (j + K - num) % K);
+                if(dp[!(i & 1)][j]) {
+                    dp[i & 1][(j + num) % K] = 1;
+                    dp[i & 1][(j + K - num) % K] = 1;
                 }
             }
         }
-        cout << (get((N - 1) & 1, 0) ? "Divisible\n" : "Not divisible\n");
+        cout << (dp[(N - 1) & 1][0] ? "Divisible\n" : "Not divisible\n");
     }
     return 0;
 }
