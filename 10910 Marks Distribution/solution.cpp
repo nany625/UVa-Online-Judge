@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAX = 70;
-vector<vector<unsigned int>> ans(MAX, vector<unsigned int>(MAX));
+vector<vector<long>> ans(MAX, vector<long>(MAX));
 
 int main() {
     ios::sync_with_stdio(false);
