@@ -18,8 +18,8 @@ int main() {
     sort(C.begin(), C.end());
     int m;
     while(cin >> m && m != 0) {
-        int idx = lower_bound(C.begin(), C.end(), m) - C.begin();
-        cout << (idx < C.size() ? C[idx] : 2147483648) << '\n';
+        int pos = lower_bound(C.begin(), C.end(), m) - C.begin();
+        cout << (pos < C.size() ? C[pos] : 2147483648) << '\n';
     }
     return 0;
 }
