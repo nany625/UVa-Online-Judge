@@ -12,12 +12,12 @@ void init(int N) {
     fill(used.begin(), used.begin() + N + 1, 0);
 }
 
-int bfs(int X) {
+int bfs(int X, vector<int> important) {
     visited.reset();
     queue<int> q;
     q.push(X);
     visited[X] = 1;
-    int ans = 0, dist = 0;
+    int ans = 0, dist = 0, cnt = important.size() - 1;
     do {
         ++dist;
         queue<int> temp;
@@ -27,12 +27,14 @@ int bfs(int X) {
                 if(!visited[v]) {
                     temp.push(v);
                     visited[v] = 1;
-                    if(used[v] > 1)
+                    if(used[v] > 1) {
                         ans += dist;
+                        --cnt;
+                    }
                 }
             }
             q.pop();
-        } while(!q.empty());
+        } while(!q.empty() && cnt);
         q = temp;
     } while(!q.empty());
     return ans;
@@ -59,14 +61,17 @@ int main() {
                 u = v;
             }
         }
-        int X = -1, mn = INT_MAX;
+        vector<int> important;
         for(int i = 1; i <= N; ++i) {
-            if(used[i] > 1) {
-                int dist = bfs(i);
-                if(dist < mn) {
-                    mn = dist;
-                    X = i;
-                }
+            if(used[i] > 1)
+                important.push_back(i);
+        }
+        int X = -1, mn = INT_MAX;
+        for(int u : important) {
+            int dist = bfs(u, important);
+            if(dist < mn) {
+                mn = dist;
+                X = u;
             }
         }
         cout << "Krochanska is in: " << X << '\n';
