@@ -32,9 +32,11 @@ int bfs(int X, int cnt) {
                         --cnt;
                     }
                 }
+                if(cnt == 0)
+                    return ans;
             }
             q.pop();
-        } while(!q.empty() && cnt);
+        } while(!q.empty());
         q = temp;
     } while(!q.empty());
     return ans;
