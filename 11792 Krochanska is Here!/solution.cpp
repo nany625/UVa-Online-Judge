@@ -66,7 +66,7 @@ int main() {
             if(used[i] > 1)
                 important.push_back(i);
         }
-        int X = -1, mn = INT_MAX;
+        int X, mn = INT_MAX;
         for(int u : important) {
             int dist = bfs(u, important);
             if(dist < mn) {
