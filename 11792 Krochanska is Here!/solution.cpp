@@ -12,12 +12,12 @@ void init(int N) {
     fill(used.begin(), used.begin() + N + 1, 0);
 }
 
-int bfs(int X, vector<int> important) {
+int bfs(int X, int cnt) {
     visited.reset();
     queue<int> q;
     q.push(X);
     visited[X] = 1;
-    int ans = 0, dist = 0, cnt = important.size() - 1;
+    int ans = 0, dist = 0;
     do {
         ++dist;
         queue<int> temp;
@@ -68,7 +68,7 @@ int main() {
         }
         int X, mn = INT_MAX;
         for(int u : important) {
-            int dist = bfs(u, important);
+            int dist = bfs(u, important.size() - 1);
             if(dist < mn) {
                 mn = dist;
                 X = u;
