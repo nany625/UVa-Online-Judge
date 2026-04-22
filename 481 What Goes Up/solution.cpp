@@ -23,7 +23,7 @@ int main() {
             pre[i] = tailIdx[pos - 1];
     }
     vector<int> LIS;
-    int last = tailIdx[tailIdx.size() - 1];
+    int last = tailIdx.back();
     while(last != -1) {
         LIS.push_back(sequence[last]);
         last = pre[last];
