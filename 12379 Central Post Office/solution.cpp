@@ -5,11 +5,6 @@ const int MAXN = 10000;
 vector<vector<int>> adj(MAXN + 1);
 bitset<MAXN + 1> visited;
 
-void init(int N) {
-    for(int i = 1; i <= N; ++i)
-        adj[i].clear();
-}
-
 int bfs() {
     visited.reset();
     queue<int> q;
@@ -69,8 +64,8 @@ int main() {
     while(T--) {
         int N;
         cin >> N;
-        init(N);
         for(int u = 1; u <= N; ++u) {
+            adj[u].clear();
             int M;
             cin >> M;
             while(M--) {
