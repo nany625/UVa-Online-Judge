@@ -23,12 +23,12 @@ void appendAlmostPrimes(int i) {
 
 void eratosthenesSieve() {
     appendAlmostPrimes(2);
-	for(int i = 3; i <= MAX_NUM; i += 2) {
-	    if(!GET(i >> 1)) {
-	        appendAlmostPrimes(i);
-	        if(i <= 999) {
-	            for(int j = i * i; j <= MAX_NUM; j += i << 1)
-	                SET(j >> 1);
+	for(int n = 3; n <= MAX_NUM; n += 2) {
+	    if(!GET(n >> 1)) {
+	        appendAlmostPrimes(n);
+	        if(n <= 999) {
+	            for(int i = n * n; i <= MAX_NUM; i += n << 1)
+	                SET(i >> 1);
 	        }
 	    }
 	}
