@@ -11,6 +11,8 @@ int dijkstra(int n, int S, int T) {
     pq.emplace(0, S);
     do {
         auto [d, u] = pq.top();
+        if(u == T)
+            break;
         pq.pop();
         if(d > dist[u])
             continue;
