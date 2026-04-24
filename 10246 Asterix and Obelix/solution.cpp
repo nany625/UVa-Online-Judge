@@ -14,9 +14,8 @@ void floydWarshall(int V) {
     for(int k : order) {
         for(int i = 1; i <= V; ++i) {
             for(int j = 1; j <= V; ++j) {
-                if(dist[i][j] > dist[i][k] + dist[k][j]) {
+                if(dist[i][j] > dist[i][k] + dist[k][j])
                     dist[i][j] = dist[i][k] + dist[k][j];
-                }
                 int mx = max({feast[i], feast[j], feast[k]});
                 ans[i][j] = min(ans[i][j], dist[i][j] + mx);
             }
