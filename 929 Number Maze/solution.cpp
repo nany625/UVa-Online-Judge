@@ -2,8 +2,7 @@
 using namespace std;
 
 const int MAXN = 999;
-vector<vector<int>> maze(MAXN, vector<int>(MAXN)), dist(MAXN, vector<int>(MAXN));
-vector<vector<int>> dir = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
+vector<vector<int>> maze(MAXN, vector<int>(MAXN)), dist(MAXN, vector<int>(MAXN)), dir = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
 
 int dijkstra(int N, int M) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
