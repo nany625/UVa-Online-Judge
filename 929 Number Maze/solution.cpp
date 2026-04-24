@@ -9,7 +9,7 @@ int dijkstra(int N, int M) {
     for(int i = 0; i < N; ++i)
         dist[i].assign(M, INT_MAX);
     dist[0][0] = maze[0][0];
-    pq.emplace(0, 0);
+    pq.emplace(maze[0][0], 0);
     do {
         auto [d, u] = pq.top();
         int row = u / M, col = u % M;
