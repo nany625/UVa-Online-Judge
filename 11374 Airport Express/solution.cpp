@@ -49,7 +49,6 @@ void dijkstra2(int N, int S) {
 
 vector<int> findPath(pair<int, int> CXpress, int E) {
     vector<int> path;
-    //沒使用ticket
     if(CXpress.first == -1) {
         while(E != pre1[E]) {
             path.push_back(E);
