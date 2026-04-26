@@ -2,7 +2,9 @@ import java.io.*;
 import java.math.*;
 
 public class Main {
-    static BigInteger MOD = new BigInteger("1000000007");
+    static int MOD = 1000000007;
+    static int inv2 = MOD + 1 >> 1;
+    static int inv6 = 166666668;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StreamTokenizer st = new StreamTokenizer(br);
@@ -12,16 +14,19 @@ public class Main {
 		int N;
 		for(int i = 1; i <= t; ++i) {
 		    st.nextToken();
-		    BigInteger n = new BigInteger("" + (long)st.nval);
-		    BigInteger startRow = n.divide(new BigInteger("2")).add(BigInteger.ONE);
-		    BigInteger rows = n.subtract(startRow).add(BigInteger.ONE);
-		    BigInteger cols = rows;
-		    if(n.mod(new BigInteger("2")).compareTo(BigInteger.ZERO) == 0)
-		        cols = cols.add(BigInteger.ONE);
-		    BigInteger topLeft = startRow.multiply(startRow.subtract(BigInteger.ONE)).divide(new BigInteger("2")).add(BigInteger.ONE);
-		    BigInteger topRight = topLeft.add(startRow).subtract(BigInteger.ONE);
-		    BigInteger sum1 = (topLeft.add(topRight)).multiply(cols).divide(new BigInteger("2"));
-		    output.append("Case #").append(i).append(": ").append(rows.multiply(sum1).add   ((  (rows.multiply(rows.subtract(BigInteger.ONE)).divide(new BigInteger("2")).multiply(startRow) .add( (rows.subtract(BigInteger.ONE)).multiply(rows).multiply(rows.add(BigInteger.ONE)).divide(new BigInteger("6")))))  .multiply(cols))    .mod(MOD)).append('\n');
+		    long n = (long)st.nval;
+		    long startRow = ((n >> 1) + 1) % MOD;
+            long rows = (n - startRow + 1) % MOD;
+            long cols = (rows + ((n & 1) == 0 ? 1 : 0)) % MOD;
+            long topLeft = startRow * (startRow - 1) % MOD * inv2 % MOD;
+            ++topLeft;
+            long topRight = (topLeft + startRow - 1) % MOD;
+            long sum1 = (topLeft + topRight) * cols % MOD * inv2 % MOD;
+            long part1 = rows * sum1 % MOD;
+            long part2 = rows * (rows - 1) % MOD * inv2 % MOD * startRow % MOD;
+            long part3 = (rows - 1) * rows % MOD * (rows + 1) % MOD * inv6 % MOD;
+            long ans = (part1 + (part2 + part3) % MOD * cols % MOD) % MOD;
+            output.append("Case #").append(i).append(": ").append(ans).append('\n');
 		}
 		System.out.print(output);
 	}
