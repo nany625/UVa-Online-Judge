@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MOD = 1000000007;
-const int inv2 = (MOD + 1) >> 1;
+const int inv2 = MOD + 1 >> 1;
 const int inv6 = 166666668;
 
 int main() {
