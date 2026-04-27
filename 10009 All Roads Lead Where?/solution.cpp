@@ -3,7 +3,7 @@
 using namespace std;
 
 const int MAXV = 26;
-vector<vector<int>> adj(MAXV), nxt(MAXV, vector<int>(MAXV));
+vector<vector<int>> adj(MAXV);
 bitset<MAXV> visited;
 
 vector<int> bfs(int S, int E) {
@@ -25,6 +25,8 @@ vector<int> bfs(int S, int E) {
                     pre[v] = u;
                 }
             }
+            if(visited[E])
+                break;
         } while(!q.empty());
         q = temp;
     } while(!visited[E]);
