@@ -15,11 +15,11 @@ vector<int> topo_sort(int n) {
     while(!q.empty()) {
         int u = q.front();
         q.pop();
+        topo.push_back(u);
         for(int v : adj[u]) {
             if(--indeg[v] == 0)
                 q.push(v);
         }
-        topo.push_back(u);
     }
     if(topo.size() != n)
         return {};
