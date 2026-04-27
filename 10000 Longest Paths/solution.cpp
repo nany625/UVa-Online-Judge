@@ -15,11 +15,11 @@ pair<int, int> topo_sort(int n, int s) {
     do {
         int u = q.front();
         q.pop();
+        topo.push_back(u);
         for(int v : adj[u]) {
             if(--indeg[v] == 0)
                 q.push(v);
-        }
-        topo.push_back(u);
+        } 
     } while(!q.empty());
     vector<int> dist(n + 1, -1);
     dist[s] = 0;
