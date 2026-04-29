@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string str;
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     int n;
     cin >> n;
+    string str;
     while(n--) {
         cin >> str;
         sort(str.begin(), str.end());
