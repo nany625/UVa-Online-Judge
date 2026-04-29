@@ -27,9 +27,7 @@ int main() {
         }
         int ans = 0, mx = 0;
         for(int i = 1; i <= N; ++i) {
-            int sum = 0;
-            for(int j = 1; j <= N; ++j)
-                sum += reach[i][j];
+            int sum = reach[i].count();
             if(mx < sum) {
                 mx = sum;
                 ans = i;
