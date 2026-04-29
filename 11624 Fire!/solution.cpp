@@ -17,8 +17,7 @@ pair<int, int> findJoe(int R, int C) {
     }
 }
 
-queue<pair<int, int>> findFire(int R, int C) {
-    queue<pair<int, int>> q;
+void findFire(queue<pair<int, int>>& q, int R, int C) {
     for(int i = 0; i < R; ++i) {
         for(int j = 0; j < C; ++j) {
             if(maze[i][j] == 'F') {
@@ -27,7 +26,6 @@ queue<pair<int, int>> findFire(int R, int C) {
             }
         }
     }
-    return q;
 }
 
 void spread(queue<pair<int, int>>& q, int R, int C) {
@@ -44,11 +42,12 @@ void spread(queue<pair<int, int>>& q, int R, int C) {
             }
         }
     }
-    q = temp;
+    swap(q, temp);
 }
 
 int bfs(int R, int C) {
-    queue<pair<int, int>> fireQueue = findFire(R, C);
+    queue<pair<int, int>> fireQueue;
+    findFire(fireQueue, R, C);
     queue<pair<int, int>> q;
     q.push(findJoe(R, C));
     do {
@@ -68,7 +67,7 @@ int bfs(int R, int C) {
                 }
             }
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!q.empty());
     return -1;
 }
