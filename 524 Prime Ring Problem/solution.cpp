@@ -1,12 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<bool> isPrime = {
-    0, 0, 1, 1, 0, 1, 0, 1, 0, 0,
-    0, 1, 0, 1, 0, 0, 0, 1, 0, 1,
-    0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
-    0, 1
-};
+bitset<32> isPrime("10100000100010100010100010101100");
 bitset<16> used;
 vector<int> path(16, 1);
 
