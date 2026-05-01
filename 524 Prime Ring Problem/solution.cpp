@@ -8,10 +8,7 @@ vector<bool> isPrime = {
     0, 1
 };
 bitset<16> used;
-vector<int> num = {
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 14, 15, 16
-}, path(16, 1);
+vector<int> path(16, 1);
 
 void backtrack(int n, int depth) {
     if(depth == n && isPrime[1 + path[n - 1]]) {
@@ -21,9 +18,9 @@ void backtrack(int n, int depth) {
         return;
     }
     for(int i = 1; i < n; ++i) {
-        if(!used[i] && isPrime[path[depth - 1] + num[i]]) {
+        if(!used[i] && isPrime[path[depth - 1] + i + 1]) {
             used[i] = 1;
-            path[depth] = num[i];
+            path[depth] = i + 1;
             backtrack(n, depth + 1);
             used[i] = 0;
         }
