@@ -8,7 +8,7 @@ vector<vector<int>> floorToNode(MAX_FLOOR);
 unordered_map<int, int> nodeToFloor;
 
 int dijkstra(int n, int k) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     vector<int> dist(n, INT_MAX);
     dist[floorToNode[0][0]] = 0;
     pq.emplace(0, floorToNode[0][0]);
