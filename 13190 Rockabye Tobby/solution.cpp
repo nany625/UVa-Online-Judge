@@ -10,7 +10,7 @@ int main() {
         int n, k;
         cin >> n >> k;
         vector<pair<string, int>> medicine(n);
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
         for(int i = 0; i < n; ++i) {
             cin >> medicine[i].first >> medicine[i].second;
             pq.emplace(medicine[i].second, i);
