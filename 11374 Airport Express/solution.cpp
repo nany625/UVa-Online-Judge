@@ -6,7 +6,7 @@ vector<vector<pair<int, int>>> adj(MAXN + 1);
 vector<int> dist1(MAXN + 1), dist2(MAXN + 1), pre1(MAXN + 1), pre2(MAXN + 1);
 
 void dijkstra1(int N, int S) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     dist1.assign(N + 1, 1e9);
     dist1[S] = 0;
     iota(pre1.begin(), pre1.begin() + N + 1, 0);
