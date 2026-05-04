@@ -7,7 +7,7 @@ vector<int> dist(MAXI + 1);
 bitset<MAXI + 1> used;
 
 void dijkstra(int n, vector<int> &station) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<>> pq;
     fill(dist.begin(), dist.begin() + n + 1, INT_MAX);
     used.reset();
     for(int x : station) {
