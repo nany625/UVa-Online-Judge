@@ -6,25 +6,27 @@ vector<vector<int>> adj(MAXN + 1);
 vector<int> dist(MAXN + 1);
 bitset<MAXN + 1> hasAirport;
 
-int dijkstra(int n, int s, int t) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+int bfs01(int n, int s, int t) {
+    deque<int> dq;
     fill(dist.begin(), dist.begin() + n + 1, INT_MAX);
     dist[s] = 1 - hasAirport[s];
-    pq.emplace(dist[s], s);
+    dq.push_back(s);
     do {
-        auto [d, u] = pq.top();
+        int u = dq.front();
         if(u == t)
             break;
-        pq.pop();
-        if(d > dist[u])
-            continue;
+        dq.pop_front();
         for(int v : adj[u]) {
-            if(dist[v] > dist[u] + 1 - hasAirport[v]) {
-                dist[v] = dist[u] + 1 - hasAirport[v];
-                pq.emplace(dist[v], v);
+            int w = 1 - hasAirport[v];
+            if(dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                if(w == 0)
+                    dq.push_front(v);
+                else
+                    dq.push_back(v);
             }
         }
-    } while(!pq.empty());
+    } while(!dq.empty());
     return dist[t];
 }
 
@@ -59,7 +61,7 @@ int main() {
             if(x == y)
                 cout << "0\n";
             else {
-                int ans = dijkstra(N, x, y);
+                int ans = bfs01(N, x, y);
                 if(ans == INT_MAX)
                     cout << "-1\n";
                 else
