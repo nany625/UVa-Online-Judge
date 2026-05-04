@@ -5,7 +5,7 @@ const int MAXN = 999;
 vector<vector<int>> maze(MAXN, vector<int>(MAXN)), dist(MAXN, vector<int>(MAXN)), dir = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
 
 int dijkstra(int N, int M) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     for(int i = 0; i < N; ++i)
         dist[i].assign(M, INT_MAX);
     dist[0][0] = maze[0][0];
