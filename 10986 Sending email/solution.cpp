@@ -5,7 +5,7 @@ const int MAXN = 20000;
 vector<vector<pair<int, int>>> adj(MAXN);
 
 int dijkstra(int n, int S, int T) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     vector<int> dist(n, INT_MAX);
     dist[S] = 0;
     pq.emplace(0, S);
