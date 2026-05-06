@@ -2,8 +2,9 @@
 using namespace std;
 
 const int MAXV = 8;
-vector<vector<double>> dp(1 << MAXV, vector<double>(MAXV)), dist(MAXV, vector<double>(MAXV));
-vector<vector<int>> parent(1 << MAXV, vector<int>(MAXV));
+array<array<double, MAXV>, 1 << MAXV> dp;
+array<array<double, MAXV>, MAXV> dist;
+array<array<int, MAXV>, 1 << MAXV> parent;
 vector<int> path;
 
 void findPath(int mask, int e) {
