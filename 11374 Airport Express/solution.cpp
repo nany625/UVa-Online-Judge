@@ -27,7 +27,7 @@ void dijkstra1(int N, int S) {
 }
 
 void dijkstra2(int N, int S) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     dist2.assign(N + 1, 1e9);
     dist2[S] = 0;
     iota(pre2.begin(), pre2.begin() + N + 1, 0);
