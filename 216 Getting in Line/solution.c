@@ -28,7 +28,7 @@ int main() {
             scanf("%d %d", &node[i].x, &node[i].y);
         for(int i = 0; i < computers - 1; ++i) {
             for(int j = i + 1; j < computers; ++j)
-                dist[i][j] = dist[j][i] = sqrt((node[i].x - node[j].x) * (node[i].x - node[j].x) + (node[i].y - node[j].y) * (node[i].y - node[j].y));
+                dist[i][j] = dist[j][i] = hypot(node[i].x - node[j].x, node[i].y - node[j].y);
         }
         int FULL = 1 << computers;
         double cableLen = INF;
