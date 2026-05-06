@@ -2,7 +2,6 @@
 using namespace std;
 
 const int MAXN = 10000000;
-
 vector<int> cnt(MAXN + 1), primes;
 
 void eulerSieve() {
