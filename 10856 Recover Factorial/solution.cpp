@@ -2,7 +2,6 @@
 using namespace std;
 
 const int MAX_NUM = 2703663;
-
 bitset<MAX_NUM + 1> mark;
 vector<int> primes, pf(MAX_NUM + 1);
 
