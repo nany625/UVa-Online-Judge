@@ -6,7 +6,7 @@ vector<vector<int>> adj(MAXN);
 vector<int> indeg(MAXN);
 
 vector<int> topo_sort(int n) {
-    priority_queue<int, vector<int>, greater<int>> pq;
+    priority_queue<int, vector<int>, greater<>> pq;
     for(int i = 0; i < n; ++i) {
         if(indeg[i] == 0)
             pq.push(i);
