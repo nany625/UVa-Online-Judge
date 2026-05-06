@@ -2,12 +2,12 @@
 using namespace std;
 
 const int MAXN = 26;
-array<vector<int>, MAXN> adj;
+vector<int> adj[MAXN];
 array<int, MAXN> indeg;
 unordered_map<char, int> charNum;
 vector<char> charDict;
 
-vector<int> topo_sort() {
+void topo_sort() {
     queue<int> q;
     for(int i = 0; i < charDict.size(); ++i) {
         if(indeg[i] == 0)
@@ -23,7 +23,9 @@ vector<int> topo_sort() {
                 q.push(v);
         }
     } while(!q.empty());
-    return topo;
+    for(int x : topo)
+        cout << charDict[x];
+    cout << '\n';
 }
 
 int main() {
@@ -55,9 +57,6 @@ int main() {
         }
         swap(pre,nxt);
     }
-    vector<int> topo = topo_sort();
-    for(int x : topo)
-        cout << charDict[x];
-    cout << '\n';
+    topo_sort();
     return 0;
 }
