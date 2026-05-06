@@ -27,7 +27,7 @@ int main() {
                 ad.begin(), 
                 ad.begin() + j, 
                 get<0>(ad[j]), 
-                [](int val, const tuple<int, int, int> &a) {
+                [](int val, const tuple<int, int, int>& a) {
                     return val < get<1>(a);
                 }) - ad.begin();
             if(pos == 0)
