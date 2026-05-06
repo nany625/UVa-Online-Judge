@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 999999;
-vector<short> collatz(MAXN + 1);
+array<short, MAXN + 1> collatz = {0, 1};
 
 void init(int n) {
     collatz[n] = 1;
@@ -20,7 +20,6 @@ void init(int n) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    collatz[1] = 1;
     for(int n = 2; n <= MAXN; ++n)
         init(n);
     int min, max;
