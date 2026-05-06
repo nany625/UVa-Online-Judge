@@ -3,7 +3,7 @@ using namespace std;
 
 bitset<32> isPrime("10100000100010100010100010101100");
 bitset<16> used;
-vector<int> path(16, 1);
+array<int, 16> path = {1};
 
 void backtrack(int n, int depth) {
     if(depth == n && isPrime[1 + path[n - 1]]) {
