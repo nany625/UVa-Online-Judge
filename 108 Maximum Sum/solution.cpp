@@ -4,7 +4,7 @@ using namespace std;
 const int MAXN = 100;
 vector<vector<int>> rec(MAXN, vector<int>(MAXN));
 
-int maxSubarraySum(vector<int> a) {
+int maxSubarraySum(vector<int>& a) {
     int ans = a[0], temp = a[0];
     for(int i = 1; i < a.size(); ++i) {
         temp = max(a[i], temp + a[i]);
