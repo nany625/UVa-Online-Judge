@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXN = 26;
-vector<vector<int>> adj(MAXN);
-vector<int> indeg(MAXN), days(MAXN);
+vector<int> adj[MAXN];
+array<int, MAXN> indeg, days;
 
 int topo_sort() {
     queue<int> q;
@@ -21,7 +21,7 @@ int topo_sort() {
                 q.push(v);
         }
     } while(!q.empty());
-    vector<int> dist = days;
+    array<int, MAXN> dist = days;
     for(int u : topo) {
         if(dist[u] == -1)
             continue;
