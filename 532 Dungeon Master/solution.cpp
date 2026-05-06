@@ -2,9 +2,13 @@
 using namespace std;
 
 const int MAX = 30;
-vector<vector<string>> maze(MAX, vector<string>(MAX));
-vector<vector<vector<int>>> times(MAX, vector<vector<int>>(MAX, vector<int>(MAX)));
-vector<vector<int>> dir = {{-1, 1, 0, 0, 0, 0}, {0, 0, -1, 1, 0, 0}, {0, 0, 0, 0, -1, 1}};
+array<array<string, MAX>, MAX> maze;
+array<array<array<int, MAX>, MAX>, MAX> times;
+array<array<int, 6>, 3> dir = {{
+    {{-1, 1, 0, 0, 0, 0}},
+    {{0, 0, -1, 1, 0, 0}},
+    {{0, 0, 0, 0, -1, 1}}
+}};
 
 void bfs(queue<tuple<int, int, int>>& q, int L, int R, int C) {
     while(!q.empty()) {
