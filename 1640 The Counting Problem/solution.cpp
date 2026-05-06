@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(int n, vector<int> &cnt) {
+void solve(int n, vector<int>& cnt) {
     int base = 1;
     do {
         int high = n / (base * 10);
