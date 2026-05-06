@@ -6,7 +6,7 @@ vector<vector<int>> adj1(MAXV + 1), adj2(MAXV + 1);
 vector<int> days(MAXV + 1);
 bitset<MAXV + 1> visited;
 
-void dfs1(int u, int &sum) {
+void dfs1(int u, int& sum) {
     visited[u] = 1;
     sum -= days[u];
     for(int v : adj1[u]) {
