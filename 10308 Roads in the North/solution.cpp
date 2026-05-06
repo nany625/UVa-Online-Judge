@@ -13,7 +13,7 @@ void init() {
     ans = 0;
 }
 
-void addRoads(string line) {
+void addRoads(string& line) {
     istringstream iss(line);
     int u, v, w;
     iss >> u >> v >> w;
