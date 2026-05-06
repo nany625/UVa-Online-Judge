@@ -14,7 +14,7 @@ int main() {
             cin >> get<0>(ad[j]) >> get<1>(ad[j]) >> get<2>(ad[j]);
             get<1>(ad[j]) += get<0>(ad[j]);
         }
-        sort(ad.begin(), ad.end(), [](auto &a, auto &b) {
+        sort(ad.begin(), ad.end(), [](auto& a, auto& b) {
             return get<1>(a) < get<1>(b);
         });
         vector<int> ends(N);
