@@ -4,7 +4,7 @@ using namespace std;
 const int MAXSIZE = 20;
 vector<vector<vector<long>>> heap(MAXSIZE, vector<vector<long>>(MAXSIZE, vector<long>(MAXSIZE)));
 
-long maxSubarraySum(vector<long> a) {
+long maxSubarraySum(vector<long>& a) {
     long ans = a[0], temp = a[0];
     for(int i = 1; i < a.size(); ++i) {
         temp = max(a[i], temp + a[i]);
