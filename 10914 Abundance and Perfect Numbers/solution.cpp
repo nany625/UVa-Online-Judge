@@ -2,7 +2,6 @@
 using namespace std;
 
 const int MAXN = 10000000;
-
 bitset<(MAXN >> 1) + 1> mark;
 vector<int> primes;
 vector<long> answers(MAXN + 1);
