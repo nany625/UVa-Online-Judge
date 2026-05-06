@@ -27,7 +27,7 @@ int main() {
     return 0;
 }
 
-//#解法二
+// #解法二
 #include <bits/stdc++.h>
 using namespace std;
 
