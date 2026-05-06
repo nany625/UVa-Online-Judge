@@ -15,7 +15,7 @@ void dfs1(int u, int& sum) {
     }
 }
 
-void dfs2(int u, int &sum) {
+void dfs2(int u, int& sum) {
     for(int v : adj2[u]) {
         if(!visited[v]) {
             visited[v] = 1;
