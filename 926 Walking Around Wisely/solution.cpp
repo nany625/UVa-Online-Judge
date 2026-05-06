@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 30;
-vector<vector<long>> ways(MAXN + 1, vector<long>(MAXN + 1));
+array<array<long, MAXN + 1>, MAXN + 1> ways;
 vector<bitset<MAXN + 1>> Nblock(MAXN + 1);
 vector<bitset<MAXN + 1>> Eblock(MAXN + 1);
 
