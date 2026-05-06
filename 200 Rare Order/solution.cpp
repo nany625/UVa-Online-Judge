@@ -53,7 +53,7 @@ int main() {
                 break;
             }
         }
-        pre = nxt;
+        swap(pre,nxt);
     }
     vector<int> topo = topo_sort();
     for(int x : topo)
