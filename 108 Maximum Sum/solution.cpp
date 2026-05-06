@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<int>> rec(MAXN, vector<int>(MAXN));
+array<array<int, MAXN>, MAXN> rec;
 
 int maxSubarraySum(vector<int>& a) {
     int ans = a[0], temp = a[0];
