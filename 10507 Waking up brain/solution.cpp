@@ -5,7 +5,7 @@ const int MAXN = 26;
 vector<vector<int>> adj(MAXN);
 vector<int> indeg(MAXN);
 
-int topo_sort(int n, string dirSti) {
+int topo_sort(int n, string& dirSti) {
     vector<int> q;
     for(int i = 0; i < dirSti.length(); ++i) {
         indeg[dirSti[i] - 'A'] = 0;
