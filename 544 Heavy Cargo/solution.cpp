@@ -3,8 +3,8 @@ using namespace std;
 
 const int MAXE = 200;
 const int MAXV = 19900;
-vector<int> root(MAXE), ranks(MAXE);
-vector<tuple<int, int, int>> edges(MAXV);
+array<int, MAXE> root, ranks;
+array<tuple<int, int, int>, MAXV> edges;
 
 int find(int x) {
     return x == root[x] ? x : root[x] = find(root[x]);
@@ -39,7 +39,7 @@ int main() {
                 cityNum[city2] = cityNum.size();
             edges[i] = {cityNum[city1], cityNum[city2], w};
         }
-        sort(edges.begin(), edges.begin() + r, [](auto &a, auto &b) {
+        sort(edges.begin(), edges.begin() + r, [](auto& a, auto& b) {
             return get<2>(a) > get<2>(b);
         });
         iota(root.begin(), root.begin() + n, 0);
