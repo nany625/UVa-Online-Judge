@@ -49,8 +49,8 @@ int main() {
 using namespace std;
 
 const int MAXN = 1000;
-vector<vector<pair<int, int>>> adj(MAXN);
-vector<int> dist(MAXN), cnt(MAXN);
+array<vector<pair<int, int>>, MAXN> adj;
+array<int, MAXN> dist, cnt;
 bitset<MAXN> inQueue;
 
 bool spfa(int n) {
