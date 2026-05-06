@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXN = 26;
-vector<vector<int>> adj(MAXN);
-vector<int> indeg(MAXN);
+array<vector<int>, MAXN> adj;
+array<int, MAXN> indeg;
 unordered_map<char, int> charNum;
 vector<char> charDict;
 
