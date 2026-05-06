@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<string> split(string line) {
+vector<string> split(string& line) {
     vector<string> words;
     string temp;
     for(int i = 0; i < line.length(); ++i) {
