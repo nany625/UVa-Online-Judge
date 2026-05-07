@@ -5,8 +5,8 @@ const int MAXN = 100;
 const int INF = 1e9;
 const int radius = 6378;
 const double PI = acos(-1);
-vector<vector<int>> dist(MAXN, vector<int>(MAXN));
-vector<pair<double, double>> coordinate(MAXN);
+array<array<int, MAXN>, MAXN> dist;
+array<pair<double, double>, MAXN> coordinate;
 
 double toRad(double deg) {
     return deg * PI / 180;
