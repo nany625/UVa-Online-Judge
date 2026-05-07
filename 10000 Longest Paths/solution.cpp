@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<int>> adj(MAXN + 1);
-vector<int> indeg(MAXN + 1);
+array<vector<int>, MAXN + 1> adj;
+array<int, MAXN + 1> indeg;
 
 pair<int, int> topo_sort(int n, int s) {
     queue<int> q;
