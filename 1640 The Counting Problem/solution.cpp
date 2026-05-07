@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(int n, vector<int>& cnt) {
+array<int, 10> cnt1, cnt2;
+
+void solve(int n, array<int, 10>& cnt) {
     int base = 1;
     do {
         int high = n / (base * 10);
@@ -31,7 +33,8 @@ int main() {
     while(cin >> a >> b && a != 0) {
         if(a > b)
             swap(a, b);
-        vector<int> cnt1(10), cnt2(10);
+        cnt1.fill(0);
+        cnt2.fill(0);
         solve(a - 1, cnt1);
         solve(b, cnt2);
         for(int i = 0; i < 9; ++i)
