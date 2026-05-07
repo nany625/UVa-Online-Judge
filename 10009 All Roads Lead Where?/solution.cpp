@@ -3,7 +3,7 @@
 using namespace std;
 
 const int MAXV = 26;
-vector<vector<int>> adj(MAXV);
+array<vector<int>, MAXV> adj;
 bitset<MAXV> visited;
 
 vector<int> bfs(int S, int E) {
@@ -28,7 +28,7 @@ vector<int> bfs(int S, int E) {
             if(visited[E])
                 break;
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!visited[E]);
     vector<int> path;
     while(E != S) {
@@ -92,7 +92,7 @@ int main() {
 using namespace std;
 
 const int MAXV = 26;
-vector<vector<int>> dist(MAXV, vector<int>(MAXV)), nxt(MAXV, vector<int>(MAXV));
+array<array<int, MAXV>, MAXV> dist, nxt;
 
 void floydWarshall(int V) {
     for(int k = 0; k < V; ++k) {
