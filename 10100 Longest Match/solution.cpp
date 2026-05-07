@@ -43,7 +43,7 @@ int main() {
                 prev = temp;
             }
         }
-        cout << setw(2) << ++cases << ". Length of longest match: " << dp[words2.size()] << '\n';
+        cout << setw(2) << ++cases << ". Length of longest match: " << dp.back() << '\n';
     }
     return 0;
 }
