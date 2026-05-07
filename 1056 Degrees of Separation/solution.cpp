@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int INF = 50;
-vector<vector<int>> dist(50, vector<int>(50));
+const int MAXP = 50;
+array<array<int, MAXP>, MAXP> dist;
 
 void floydWarshall(int V) {
     for(int k = 0; k < V; ++k) {
@@ -20,7 +20,7 @@ int main() {
     while(cin >> P >> R && P != 0) {
         for(int i = 0; i < P; ++i) {
             for(int j = 0; j < P; ++j)
-                dist[i][j] = i == j ? 0 : INF;
+                dist[i][j] = i == j ? 0 : MAXP;
         }
         unordered_map<string, int> peopleNum;
         string name1, name2;
@@ -38,7 +38,7 @@ int main() {
             for(int j = 0; j < P; ++j)
                 ans = max(ans, dist[i][j]);
         }
-        if(ans == INF)
+        if(ans == MAXP)
             cout << "Network " << ++dataSets << ": DISCONNECTED\n\n";
         else
             cout << "Network " << ++dataSets << ": " << ans << "\n\n";
