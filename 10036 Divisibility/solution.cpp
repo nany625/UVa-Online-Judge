@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<bitset<100>> dp(2);
+array<bitset<100>, 2> dp;
 
 int main() {
     ios::sync_with_stdio(false);
