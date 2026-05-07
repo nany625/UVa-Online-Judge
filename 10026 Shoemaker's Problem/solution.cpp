@@ -18,7 +18,7 @@ int main() {
             jobs[i].jobNum = i + 1;
             cin >> jobs[i].T >> jobs[i].S;
         }
-        sort(jobs.begin(), jobs.end(), [](const Job &a, const Job &b) {
+        sort(jobs.begin(), jobs.end(), [](const Job& a, const Job& b) {
             if(a.T * b.S != a.S * b.T)
                 return a.T * b.S < a.S * b.T;
             return a.jobNum < b.jobNum;
