@@ -2,12 +2,12 @@
 using namespace std;
 
 const int MAXI = 500;
-vector<vector<pair<int, int>>> adj(MAXI + 1);
-vector<int> dist(MAXI + 1);
+array<vector<pair<int, int>>, MAXI + 1> adj;
+array<int, MAXI + 1> dist, newDist;
 bitset<MAXI + 1> used;
 
 void dijkstra(int n, vector<int>& station) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<>> pq;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     fill(dist.begin(), dist.begin() + n + 1, INT_MAX);
     used.reset();
     for(int x : station) {
@@ -30,8 +30,8 @@ void dijkstra(int n, vector<int>& station) {
 }
 
 int dijkstra(int n, int s) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    vector<int> newDist = dist;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    newDist = dist;
     newDist[s] = 0;
     pq.emplace(0, s);
     do {
