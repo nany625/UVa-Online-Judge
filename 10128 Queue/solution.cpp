@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 13;
-vector<vector<vector<long>>> dp(MAXN + 1, vector<vector<long>>(MAXN + 1, vector<long>(MAXN + 1)));
+array<array<array<int, MAXN>, MAXN>, MAXN> dp;
 
 int main() {
     ios::sync_with_stdio(false);
