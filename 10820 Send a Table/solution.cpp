@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 50000;
-vector<int> ans(MAXN + 1);
+array<int, MAXN + 1> ans;
 
 void computePhi() {
     for(int n = 2; n <= MAXN; ++n) {
