@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXSIZE = 20;
-vector<vector<vector<long>>> heap(MAXSIZE, vector<vector<long>>(MAXSIZE, vector<long>(MAXSIZE)));
+array<array<array<long, MAXSIZE>, MAXSIZE>, MAXSIZE> heap;
 
 long maxSubarraySum(vector<long>& a) {
     long ans = a[0], temp = a[0];
