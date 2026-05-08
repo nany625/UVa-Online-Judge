@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXV = 500;
-vector<vector<int>> adj1(MAXV + 1), adj2(MAXV + 1);
-vector<int> days(MAXV + 1);
+array<vector<int>, MAXV + 1> adj1, adj2;
+array<int, MAXV + 1> days;
 bitset<MAXV + 1> visited;
 
 void dfs1(int u, int& sum) {
