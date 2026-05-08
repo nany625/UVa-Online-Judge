@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 10000;
-vector<vector<int>> adj(MAXN + 1);
+array<vector<int>, MAXN + 1> adj;
 bitset<MAXN + 1> visited;
 
 int bfs() {
@@ -24,7 +24,7 @@ int bfs() {
             }
             q.pop();
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!q.empty());
     return root;
 }
@@ -51,7 +51,7 @@ int bfs(int S) {
             }
             q.pop();
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!q.empty());
     return ans;
 }
