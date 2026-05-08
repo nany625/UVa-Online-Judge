@@ -12,7 +12,7 @@ int main() {
     sort(elephant.begin(), elephant.end());
     vector<int> tail, tailIdx, pre(elephant.size(), -1);
     for(int i = 0; i < elephant.size(); ++i) {
-        int pos = lower_bound(tail.begin(), tail.end(), get<1>(elephant[i]), greater<int>()) - tail.begin();
+        int pos = lower_bound(tail.begin(), tail.end(), get<1>(elephant[i]), greater<>()) - tail.begin();
         if(pos == tail.size()) {
             tail.push_back(get<1>(elephant[i]));
             tailIdx.push_back(i);
