@@ -2,7 +2,6 @@
 using namespace std;
 
 const int MAX_NUM = 999999;
-
 bitset<500000> mark;
 vector<long> almostPrimes;
 
