@@ -3,8 +3,12 @@ using namespace std;
 
 const int MAXR = 1000;
 const int MAXC = 1000;
-vector<string> maze(MAXR);
-vector<vector<int>> dist(MAXR, vector<int>(MAXC)), fire(MAXR, vector<int>(MAXC)), dir = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
+array<string, MAXR> maze;
+array<array<int, MAXC>, MAXR> dist, fire;
+array<array<int, 4>, 2> dir = {{
+    {{-1, 1, 0, 0}},
+    {{0, 0, -1, 1}}
+}};
 
 pair<int, int> findJoe(int R, int C) {
     for(int i = 0; i < R; ++i) {
@@ -45,7 +49,7 @@ void spread(queue<pair<int, int>>& q, int R, int C) {
     swap(q, temp);
 }
 
-int bfs(int R, int C) {
+void bfs(int R, int C) {
     queue<pair<int, int>> fireQueue;
     findFire(fireQueue, R, C);
     queue<pair<int, int>> q;
@@ -59,8 +63,10 @@ int bfs(int R, int C) {
             for(int i = 0; i < 4; ++i) {
                 int nx = x + dir[0][i];
                 int ny = y + dir[1][i];
-                if(nx < 0 || nx == R || ny < 0 || ny == C)
-                    return dist[x][y] + 1;
+                if(nx < 0 || nx == R || ny < 0 || ny == C) {
+                    cout << dist[x][y] + 1 << '\n';
+                    return;
+                }
                 if(nx >= 0 && nx < R && ny >= 0 && ny < C && maze[nx][ny] != '#' && dist[nx][ny] == -1 && (fire[nx][ny] == -1 || fire[nx][ny] > dist[x][y] + 1)) {
                     temp.emplace(nx, ny);
                     dist[nx][ny] = dist[x][y] + 1;
@@ -69,7 +75,7 @@ int bfs(int R, int C) {
         } while(!q.empty());
         swap(q, temp);
     } while(!q.empty());
-    return -1;
+    cout << "IMPOSSIBLE\n";
 }
 
 int main() {
@@ -85,11 +91,7 @@ int main() {
             fill(fire[i].begin(), fire[i].begin() + C, -1);
             cin >> maze[i];
         }
-        int ans = bfs(R, C);
-        if(ans == -1)
-            cout << "IMPOSSIBLE\n";
-        else
-            cout << ans << '\n';
+        bfs(R, C);
     }
     return 0;
 }
