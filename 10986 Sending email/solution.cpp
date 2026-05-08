@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 20000;
-vector<vector<pair<int, int>>> adj(MAXN);
+array<vector<pair<int, int>>, MAXN> adj;
 
 int dijkstra(int n, int S, int T) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
