@@ -2,25 +2,26 @@
 using namespace std;
 
 array<set<int>, 2> v;
-array<int, 10> cnt;
+array<array<int, 10>, 10000> cnt;
+array<int, 10> cnt1;
+
+void digitCnt(int n) {
+    int temp = n;
+    while(n > 0) {
+        ++cnt[temp][n % 10];
+        n /= 10;
+    }
+}
 
 void solve(int n, int a, int b) {
     int temp1 = a * b, temp2 = temp1;
-    cnt.fill(0);
-    while(a > 0) {
-        ++cnt[a % 10];
-        a /= 10;
-    }
-    while(b > 0) {
-        ++cnt[b % 10];
-        b /= 10;
-    }
+    cnt1.fill(0);
     while(temp1 > 0) {
-        --cnt[temp1 % 10];
+        ++cnt1[temp1 % 10];
         temp1 /= 10;
     }
-    for(int d : cnt) {
-        if(d != 0)
+    for(int i = 0; i <= 9; ++i) {
+        if(cnt1[i] != cnt[a][i] + cnt[b][i])
             return;
     }
     v[n].insert(temp2);
@@ -29,6 +30,8 @@ void solve(int n, int a, int b) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
+    for(int n = 101; n <= 9999; ++n)
+        digitCnt(n);
     for(int x = 999; x > 316; --x) {
         if(x & 1) {
             int y = x - 1;
@@ -45,7 +48,6 @@ int main() {
                 --y;
             }
         }
-        
     }
     for(int x = 9999; x > 3162; --x) {
         if(x & 1) {
