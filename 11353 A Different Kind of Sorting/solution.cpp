@@ -3,8 +3,9 @@ using namespace std;
 
 const int MAX_NUM = 2000000;
 const int MAX_CNT = 20;
-vector<int> primes, pf(MAX_NUM + 1), order;
-vector<vector<int>> bucket(MAX_CNT + 1);
+vector<int> primes, order;
+array<int, MAX_NUM + 1> pf;
+array<vector<int>, MAX_CNT + 1> bucket;
 
 void eulerSieve() {
     for(int n = 2; n <= MAX_NUM; ++n) {
