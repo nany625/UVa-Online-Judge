@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAX = 70;
-vector<vector<int>> ans(MAX + 1, vector<int>(MAX));
+array<array<int, MAX>, MAX + 1> ans;
 
 int main() {
     ios::sync_with_stdio(false);
