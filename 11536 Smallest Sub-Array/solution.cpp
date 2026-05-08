@@ -3,7 +3,8 @@ using namespace std;
 
 const int MAXN = 1000000;
 const int MAXK = 100;
-vector<int> X(MAXN + 1), prevPos(MAXK + 1);
+array<int, MAXN + 1> X;
+array<int, MAXK + 1> prevPos;
 
 int main() {
     ios::sync_with_stdio(false);
