@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<pair<int, int>>> adj(MAXN);
+array<vector<pair<int, int>>, MAXN> adj;
 
 int main() {
     ios::sync_with_stdio(false);
