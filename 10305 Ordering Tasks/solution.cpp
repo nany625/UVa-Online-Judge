@@ -2,10 +2,10 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<int>> adj(MAXN + 1);
-vector<int> indeg(MAXN + 1);
+array<vector<int>, MAXN + 1> adj;
+array<int, MAXN + 1> indeg;
 
-vector<int> topo_sort(int n) {
+void topo_sort(int n) {
     queue<int> q;
     for(int i = 1; i <= n; ++i) {
         if(indeg[i] == 0)
@@ -21,9 +21,9 @@ vector<int> topo_sort(int n) {
                 q.push(v);
         }
     }
-    if(topo.size() != n)
-        return {};
-    return topo;
+    for(int i = 0; i < topo.size() - 1; ++i)
+        cout << topo[i] << ' ';
+    cout << topo.back() << '\n';
 }
 
 int main() {
@@ -40,10 +40,7 @@ int main() {
             adj[i].push_back(j);
             ++indeg[j];
         }
-        vector<int> topo = topo_sort(n);
-        for(int i = 0; i < topo.size() - 1; ++i)
-            cout << topo[i] << ' ';
-        cout << topo.back() << '\n';
+        topo_sort(n);
     }
     return 0;
 }
