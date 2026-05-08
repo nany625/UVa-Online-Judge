@@ -3,8 +3,8 @@ using namespace std;
 
 const int MAX_FLOOR = 100;
 const int MAXN = 5;
-vector<vector<pair<int, int>>> adj(MAX_FLOOR * MAXN);
-vector<vector<int>> floorToNode(MAX_FLOOR);
+array<vector<pair<int, int>>, MAX_FLOOR * MAXN> adj;
+array<vector<int>, MAX_FLOOR> floorToNode;
 unordered_map<int, int> nodeToFloor;
 
 int dijkstra(int n, int k) {
