@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<long> ans(51);
+array<long, 51> ans;
 
 int main() {
     ios::sync_with_stdio(false);
