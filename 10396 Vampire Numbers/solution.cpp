@@ -2,26 +2,28 @@
 using namespace std;
 
 array<set<int>, 2> v;
+array<int, 10> cnt;
 
 void solve(int n, int a, int b) {
     int temp1 = a * b, temp2 = temp1;
-    vector<int> d1, d2;
+    cnt.fill(0);
     while(a > 0) {
-        d1.push_back(a % 10);
+        ++cnt[a % 10];
         a /= 10;
     }
     while(b > 0) {
-        d1.push_back(b % 10);
+        ++cnt[b % 10];
         b /= 10;
     }
     while(temp1 > 0) {
-        d2.push_back(temp1 % 10);
+        --cnt[temp1 % 10];
         temp1 /= 10;
     }
-    sort(d1.begin(), d1.end());
-    sort(d2.begin(), d2.end());
-    if(d1 == d2)
-        v[n].insert(temp2);
+    for(int d : cnt) {
+        if(d != 0)
+            return;
+    }
+    v[n].insert(temp2);
 }
 
 int main() {
