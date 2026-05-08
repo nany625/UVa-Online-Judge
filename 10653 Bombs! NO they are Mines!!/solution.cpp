@@ -3,7 +3,11 @@ using namespace std;
 
 const int MAXR = 1000;
 const int MAXC = 1000;
-vector<vector<int>> grid(MAXR, vector<int>(MAXC)), dir = {{-1, 1, 0, 0}, {0, 0, -1, 1}};
+array<array<int, MAXC>, MAXR> grid;
+array<array<int, 4>, 2> dir = {{
+    {{-1, 1, 0, 0}},
+    {{0, 0, -1, 1}}
+}};
 
 int bfs(pair<int, int> start, pair<int, int> dest, int R, int C) {
     queue<pair<int, int>> q;
@@ -15,17 +19,17 @@ int bfs(pair<int, int> start, pair<int, int> dest, int R, int C) {
             auto [x, y] = q.front();
             q.pop();
             for(int i = 0; i < 4; ++i) {
-                int nrow = x + dir[0][i];
-                int ncol = y + dir[1][i];
-                if(nrow >= 0 && nrow < R && ncol >= 0 && ncol < C && grid[nrow][ncol] != -1 && grid[nrow][ncol] == INT_MAX) {
-                    grid[nrow][ncol] = grid[x][y] + 1;
-                    if(nrow == dest.first && ncol == dest.second)
-                        return grid[nrow][ncol];
-                    q.emplace(nrow, ncol);
+                int nx = x + dir[0][i];
+                int ny = y + dir[1][i];
+                if(nx >= 0 && nx < R && ny >= 0 && ny < C && grid[nx][ny] != -1 && grid[nx][ny] == INT_MAX) {
+                    grid[nx][ny] = grid[x][y] + 1;
+                    if(nx == dest.first && ny == dest.second)
+                        return grid[nx][ny];
+                    q.emplace(nx, ny);
                 }
             }
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!q.empty());
 }
 
