@@ -3,7 +3,8 @@ using namespace std;
 
 const int MAX_NUM = 2703663;
 bitset<MAX_NUM + 1> mark;
-vector<int> primes, pf(MAX_NUM + 1);
+vector<int> primes;
+array<int, MAX_NUM + 1> pf;
 
 void eulerSieve() {
 	for(int n = 2; n <= MAX_NUM; ++n) {
