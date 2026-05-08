@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 21;
-vector<vector<unsigned long>> dp(MAXN + 1, vector<unsigned long>(MAXN));
+array<array<unsigned long, MAXN>, MAXN + 1> dp;
 
 int main() {
     ios::sync_with_stdio(false);
