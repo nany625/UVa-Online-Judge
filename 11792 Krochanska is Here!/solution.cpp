@@ -2,15 +2,9 @@
 using namespace std;
 
 const int MAXN = 10000;
-vector<vector<int>> adj(MAXN + 1);
-vector<int> used(MAXN + 1);
+array<vector<int>, MAXN + 1> adj;
+array<int, MAXN + 1> used;
 bitset<MAXN + 1> visited;
-
-void init(int N) {
-    for(int i = 1; i <= N; ++i)
-        adj[i].clear();
-    fill(used.begin(), used.begin() + N + 1, 0);
-}
 
 int bfs(int X, int cnt) {
     visited.reset();
@@ -37,7 +31,7 @@ int bfs(int X, int cnt) {
             }
             q.pop();
         } while(!q.empty());
-        q = temp;
+        swap(q, temp);
     } while(!q.empty());
     return ans;
 }
@@ -50,7 +44,9 @@ int main() {
     while(cases--) {
         int N, S;
         cin >> N >> S;
-        init(N);
+        for(int i = 1; i <= N; ++i)
+            adj[i].clear();
+        fill(used.begin(), used.begin() + N + 1, 0);
         while(S--) {
             int u;
             cin >> u;
