@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXE = 10000;
-vector<vector<pair<int, int>>> roads(MAXE + 1);
+array<vector<pair<int, int>>, MAXE + 1> roads;
 bitset<MAXE + 1> visited;
 int ans, S;
 
