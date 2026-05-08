@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXT = 99;
+array<bitset<99>, 99> hear;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -14,15 +14,16 @@ int main() {
         int P, T;
         cin >> P >> T;
         cin.ignore();
-        vector<bitset<MAXT>> hear(P);
+        for(int i = 0; i < P; ++i)
+            hear[i].reset();
         string line;
         while(getline(cin, line) && !line.empty()) {
             istringstream iss(line);
             int i, j;
             iss >> i >> j;
-            hear[i - 1].set(j - 1);
+            hear[i - 1][j - 1] = 1;
         }
-        unordered_set<bitset<MAXT>> opinions(hear.begin(), hear.end());
+        unordered_set<bitset<99>> opinions(hear.begin(), hear.begin() + P);
         cout << opinions.size() << '\n';
         if(cases)
             cout << '\n';
