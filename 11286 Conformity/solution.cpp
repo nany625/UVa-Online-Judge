@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<short> courses(5);
+array<short, 5> courses;
 
 int main() {
     ios::sync_with_stdio(false);
