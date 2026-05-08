@@ -4,7 +4,7 @@ using namespace std;
 const int MAXN = 10000000;
 bitset<(MAXN >> 1) + 1> mark;
 vector<int> primes;
-vector<long> answers(MAXN + 1);
+array<long, MAXN + 1> answers;
 
 void eulerSieve() {
     for(int n = 3; n <= MAXN >> 1; n += 2) {
