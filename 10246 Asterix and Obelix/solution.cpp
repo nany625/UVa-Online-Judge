@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXC = 80;
-vector<vector<int>> dist(MAXC + 1, vector<int>(MAXC + 1)), ans(MAXC + 1, vector<int>(MAXC + 1));
-vector<int> feast(MAXC + 1);
+array<array<int, MAXC + 1>, MAXC + 1> dist, ans;
+array<int, MAXC + 1> feast;
 
 void floydWarshall(int V) {
     vector<int> order(V);
