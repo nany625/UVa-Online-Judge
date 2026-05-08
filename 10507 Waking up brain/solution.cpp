@@ -2,10 +2,10 @@
 using namespace std;
 
 const int MAXN = 26;
-vector<vector<int>> adj(MAXN);
-vector<int> indeg(MAXN);
+array<vector<int>, MAXN> adj;
+array<int, MAXN> indeg;
 
-int topo_sort(int n, string& dirSti) {
+void topo_sort(int n, string& dirSti) {
     vector<int> q;
     for(int i = 0; i < dirSti.length(); ++i) {
         indeg[dirSti[i] - 'A'] = 0;
@@ -28,8 +28,9 @@ int topo_sort(int n, string& dirSti) {
             ++year;
     } while(!q.empty());
     if(n == 0)
-        return year;
-    return INT_MAX;
+        cout << "WAKE UP IN, " << year << ", YEARS\n";
+    else
+        cout << "THIS BRAIN NEVER WAKES UP\n";
 }
 
 int main() {
@@ -50,11 +51,7 @@ int main() {
             adj[conn[0] - 'A'].push_back(conn[1] - 'A');
             adj[conn[1] - 'A'].push_back(conn[0] - 'A');
         }
-        int ans = topo_sort(N - dirSti.length(), dirSti);
-        if(ans == INT_MAX)
-            cout << "THIS BRAIN NEVER WAKES UP\n";
-        else
-            cout << "WAKE UP IN, " << ans << ", YEARS\n";
+        topo_sort(N - dirSti.length(), dirSti);
     }
     return 0;
 }
