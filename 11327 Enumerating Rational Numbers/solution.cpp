@@ -2,8 +2,7 @@
 using namespace std;
 
 const int MAX_NUM = 200000;
-
-vector<long> ans(MAX_NUM + 1);
+array<long, MAX_NUM + 1> ans = {0, 2};
 
 void computePhi() {
     for(int n = 2; n <= MAX_NUM; ++n) {
@@ -18,7 +17,6 @@ void computePhi() {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ans[1] = 2;
     iota(ans.begin() + 2, ans.end(), 2);
     computePhi();
     long k;
