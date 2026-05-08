@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 1000;
-vector<pair<int, int>> box(MAXN);
+array<pair<int, int>, MAXN> box;
 
 int main() {
     ios::sync_with_stdio(false);
