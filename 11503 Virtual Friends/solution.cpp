@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXF = 100000;
-vector<int> root(MAXF), depth(MAXF);
+array<int, MAXF> root, depth;
 
 int find(int x) {
     return root[x] == x ? x : root[x] = find(root[x]);
