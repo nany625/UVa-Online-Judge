@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<int>> adj(MAXN);
-vector<int> indeg(MAXN);
+array<vector<int>, MAXN> adj;
+array<int, MAXN> indeg;
 
 vector<int> topo_sort(int n) {
     priority_queue<int, vector<int>, greater<>> pq;
