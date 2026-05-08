@@ -2,8 +2,8 @@
 using namespace std;
 
 const int MAXN = 100;
-vector<vector<pair<int, int>>> adj(MAXN);
-vector<int> dist1(MAXN), dist2(MAXN);
+array<vector<pair<int, int>>, MAXN> adj;
+array<int, MAXN> dist1, dist2;
 
 int dijkstra(int n, int s, int t) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
